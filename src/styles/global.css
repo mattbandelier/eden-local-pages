@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+/* Eden Health Clubs brand tokens.
+ * Exposed as Tailwind theme colors so utilities like
+ * bg-eden-navy, text-eden-green work everywhere. */
+@theme {
+	--color-eden-navy: #0F2733;
+	--color-eden-green: #8FAE3C;
+}

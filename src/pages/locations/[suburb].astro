@@ -1,0 +1,22 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+// Suburb hub page (e.g. /locations/greenwood-village)
+// Placeholder route — Phase 3 will populate getStaticPaths from
+// src/data/suburbs.json.
+export async function getStaticPaths() {
+	return [];
+}
+
+const { suburb } = Astro.params;
+---
+
+<BaseLayout
+	title={`Coming soon — ${suburb} location page`}
+	description={`Eden Health Clubs services in ${suburb}, CO. Coming soon.`}
+	canonicalUrl={`https://landing.edenhealthclubs.com/locations/${suburb}`}
+>
+	<main class="flex min-h-screen items-center justify-center px-6">
+		<p class="text-eden-navy/80">Coming soon: {suburb} location page</p>
+	</main>
+</BaseLayout>
