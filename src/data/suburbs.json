@@ -1,0 +1,254 @@
+[
+  {
+    "slug": "greenwood-village",
+    "name": "Greenwood Village",
+    "nameVariants": ["Greenwood Village", "GV"],
+    "county": "Arapahoe County",
+    "state": "CO",
+    "primaryZip": "80121",
+    "zipsServed": ["80111", "80121"],
+    "driveTimeMinutes": 0,
+    "nearbyLandmarks": ["Fiddler's Green Amphitheatre", "Denver Tech Center", "Cherry Creek State Park", "Park Meadows Mall"],
+    "neighborhoodBlurb": "Greenwood Village is Eden's home. Our flagship clinic sits on S University Blvd, minutes from Fiddler's Green, the Tech Center, and Cherry Creek State Park. Most of our members live or work within a 10-minute drive.",
+    "demographicHook": "Home base. Every Eden service — injectables, hormones, peptides, recovery — runs out of this S University Blvd flagship.",
+    "localKeywords": [
+      "greenwood village medspa",
+      "greenwood village botox",
+      "medical spa greenwood village",
+      "wellness center greenwood village",
+      "aesthetics greenwood village 80121"
+    ],
+    "highlightedServices": ["botox", "female-bhrt", "diamondglow-facial", "iv-therapy"]
+  },
+  {
+    "slug": "centennial",
+    "name": "Centennial",
+    "nameVariants": ["Centennial", "Centennial CO"],
+    "county": "Arapahoe County",
+    "state": "CO",
+    "primaryZip": "80112",
+    "zipsServed": ["80112", "80121", "80122"],
+    "driveTimeMinutes": 10,
+    "nearbyLandmarks": ["The Streets at SouthGlenn", "South Suburban Sports Complex", "Cherry Creek State Park", "Centennial Airport"],
+    "neighborhoodBlurb": "Centennial clients are a short drive from Eden Health Club, whether they are coming from SouthGlenn, the Cherry Creek State Park side, or the office corridors near Centennial Airport. Most appointments fit easily before work, after school drop-off, or between errands.",
+    "demographicHook": "Built for SouthGlenn and South Suburban Park families balancing dual-income schedules — clinical aesthetics and wellness care that fits the school run.",
+    "localKeywords": [
+      "centennial medspa",
+      "centennial botox",
+      "medical spa centennial co",
+      "wellness center centennial",
+      "aesthetics centennial 80112"
+    ],
+    "highlightedServices": ["botox", "dermal-fillers", "medical-weight-loss", "diamondglow-facial"]
+  },
+  {
+    "slug": "cherry-hills-village",
+    "name": "Cherry Hills Village",
+    "nameVariants": ["Cherry Hills", "CHV"],
+    "county": "Arapahoe County",
+    "state": "CO",
+    "primaryZip": "80113",
+    "zipsServed": ["80113", "80110", "80121"],
+    "driveTimeMinutes": 5,
+    "nearbyLandmarks": ["Cherry Hills Country Club", "Glenmoor Country Club", "Kent Denver School", "High Line Canal Trail"],
+    "neighborhoodBlurb": "Cherry Hills Village sits just west of Eden Health Club, close enough for discreet, efficient appointments without crossing town. Clients often come from the country club corridors, mature residential neighborhoods, and nearby private school routes.",
+    "demographicHook": "Cherry Hills Village's close-in choice for polished aesthetics and licensed-expert wellness.",
+    "localKeywords": [
+      "cherry hills village medspa",
+      "cherry hills botox",
+      "medical spa cherry hills village",
+      "wellness center cherry hills",
+      "aesthetics cherry hills 80113"
+    ],
+    "highlightedServices": ["botox", "dermal-fillers", "medical-weight-loss", "diamondglow-facial"]
+  },
+  {
+    "slug": "dtc",
+    "name": "Denver Tech Center",
+    "nameVariants": ["DTC", "Denver Tech Center", "Tech Center"],
+    "county": "Denver / Arapahoe County",
+    "state": "CO",
+    "primaryZip": "80237",
+    "zipsServed": ["80237", "80111"],
+    "driveTimeMinutes": 5,
+    "nearbyLandmarks": ["Belleview Station", "Fiddler's Green Amphitheatre", "Denver Marriott Tech Center", "Wallace Park"],
+    "neighborhoodBlurb": "The Denver Tech Center is minutes from Eden Health Club, making lunch-hour and between-meeting appointments practical for professionals working around Belleview, Orchard, and I-25. The clinic is close enough for efficient care without turning a workday into a commute.",
+    "demographicHook": "Discreet lunch-hour care for Tech Center professionals — injectables, hormone optimization, or recovery infusions without a long break from the desk.",
+    "localKeywords": [
+      "dtc medspa",
+      "botox dtc",
+      "medical spa denver tech center",
+      "wellness center dtc",
+      "aesthetics tech center 80237"
+    ],
+    "highlightedServices": ["botox", "dermal-fillers", "medical-weight-loss", "diamondglow-facial"]
+  },
+  {
+    "slug": "englewood",
+    "name": "Englewood",
+    "nameVariants": ["Englewood", "Englewood CO"],
+    "county": "Arapahoe County",
+    "state": "CO",
+    "primaryZip": "80113",
+    "zipsServed": ["80110", "80113"],
+    "driveTimeMinutes": 10,
+    "nearbyLandmarks": ["Swedish Medical Center", "Craig Hospital", "South Broadway", "Englewood CityCenter"],
+    "neighborhoodBlurb": "Englewood clients reach Eden Health Club quickly from the hospital district, older residential neighborhoods, and the South Broadway corridor. The clinic is close enough for practical appointments without needing to drive into central Denver.",
+    "demographicHook": "Englewood's nearby destination for licensed-expert aesthetics, hormone care, and recovery.",
+    "localKeywords": [
+      "englewood medspa",
+      "englewood botox",
+      "medical spa englewood co",
+      "wellness center englewood",
+      "aesthetics englewood 80113"
+    ],
+    "highlightedServices": ["botox", "dermal-fillers", "female-bhrt", "iv-therapy"]
+  },
+  {
+    "slug": "lone-tree",
+    "name": "Lone Tree",
+    "nameVariants": ["Lone Tree", "Lone Tree CO"],
+    "county": "Douglas County",
+    "state": "CO",
+    "primaryZip": "80124",
+    "zipsServed": ["80124", "80134"],
+    "driveTimeMinutes": 12,
+    "nearbyLandmarks": ["Park Meadows Mall", "Lone Tree Arts Center", "RidgeGate", "Sky Ridge Medical Center"],
+    "neighborhoodBlurb": "Lone Tree clients are a straight shot from Park Meadows, RidgeGate, and the Sky Ridge corridor to Eden Health Club. The drive is short enough for injectables, IV therapy, or follow-up visits between work, errands, and family schedules.",
+    "demographicHook": "Lone Tree's south metro option for polished aesthetics and performance-minded wellness.",
+    "localKeywords": [
+      "lone tree medspa",
+      "lone tree botox",
+      "medical spa lone tree co",
+      "wellness center lone tree",
+      "aesthetics lone tree 80124"
+    ],
+    "highlightedServices": ["botox", "lip-filler", "medical-weight-loss", "nad-iv-therapy"]
+  },
+  {
+    "slug": "highlands-ranch",
+    "name": "Highlands Ranch",
+    "nameVariants": ["Highlands Ranch", "HR"],
+    "county": "Douglas County",
+    "state": "CO",
+    "primaryZip": "80129",
+    "zipsServed": ["80126", "80129", "80130"],
+    "driveTimeMinutes": 15,
+    "nearbyLandmarks": ["Highlands Ranch Town Center", "Shea Stadium", "Civic Green Park", "Highlands Ranch Mansion"],
+    "neighborhoodBlurb": "Highlands Ranch has long been part of Eden Health Club's south metro referral base. Clients come from the Town Center, established neighborhoods, and family-heavy corridors for care that fits around busy household schedules.",
+    "demographicHook": "Town Center families and Shea Stadium loop residents come to Eden for steady aesthetic, hormone, and recovery care closer to home.",
+    "localKeywords": [
+      "highlands ranch medspa",
+      "highlands ranch botox",
+      "medical spa highlands ranch",
+      "wellness center highlands ranch",
+      "aesthetics highlands ranch 80129"
+    ],
+    "highlightedServices": ["botox", "medical-weight-loss", "female-bhrt", "diamondglow-facial"]
+  },
+  {
+    "slug": "littleton",
+    "name": "Littleton",
+    "nameVariants": ["Littleton", "Littleton CO"],
+    "county": "Arapahoe / Jefferson County",
+    "state": "CO",
+    "primaryZip": "80120",
+    "zipsServed": ["80120", "80121", "80122", "80123"],
+    "driveTimeMinutes": 15,
+    "nearbyLandmarks": ["Historic Downtown Littleton", "Aspen Grove", "Hudson Gardens", "Littleton Adventist Hospital"],
+    "neighborhoodBlurb": "Littleton clients reach Eden Health Club easily from historic Main Street, Aspen Grove, and the established neighborhoods west of University. The route keeps high-quality aesthetics and wellness care close to home without a downtown trip.",
+    "demographicHook": "Historic Main Street or newer Hudson Gardens and Aspen Grove subdivisions — both routes land at the south side's full-service wellness club.",
+    "localKeywords": [
+      "littleton medspa",
+      "littleton botox",
+      "medical spa littleton co",
+      "wellness center littleton",
+      "aesthetics littleton 80120"
+    ],
+    "highlightedServices": ["botox", "bbl-photofacial", "male-trt", "iv-therapy"]
+  },
+  {
+    "slug": "parker",
+    "name": "Parker",
+    "nameVariants": ["Parker", "Parker CO"],
+    "county": "Douglas County",
+    "state": "CO",
+    "primaryZip": "80134",
+    "zipsServed": ["80134", "80138"],
+    "driveTimeMinutes": 20,
+    "nearbyLandmarks": ["Downtown Parker", "Mainstreet", "Parker Adventist Hospital", "Rueter-Hess Reservoir"],
+    "neighborhoodBlurb": "Parker clients often choose Eden Health Club for the clinical depth of a south metro wellness club without the feel of a quick storefront appointment. The E-470 and Arapahoe Road routes make the drive manageable for planned care.",
+    "demographicHook": "E-470 makes Eden a practical destination for Parker families and Mainstreet-district professionals who want clinical depth over a quick storefront aesthetics stop.",
+    "localKeywords": [
+      "parker medspa",
+      "parker botox",
+      "medical spa parker co",
+      "wellness center parker",
+      "aesthetics parker 80134"
+    ],
+    "highlightedServices": ["botox", "medical-weight-loss", "male-trt", "prf-hair-restoration"]
+  },
+  {
+    "slug": "denver",
+    "name": "Denver",
+    "nameVariants": ["Denver", "South Denver", "Denver CO"],
+    "county": "Denver County",
+    "state": "CO",
+    "primaryZip": "80202",
+    "zipsServed": ["80202", "80209", "80210", "80222", "80224"],
+    "driveTimeMinutes": 20,
+    "nearbyLandmarks": ["Washington Park", "Cherry Creek", "University of Denver", "Denver Country Club"],
+    "neighborhoodBlurb": "Eden Health Club serves Denver clients who orbit the south side of the city, especially Wash Park, Cherry Creek, University, and nearby central neighborhoods. The Greenwood Village location keeps advanced aesthetics and wellness care accessible without crossing the entire metro.",
+    "demographicHook": "South Denver's destination for licensed experts, advanced credentials, and unmatched care.",
+    "localKeywords": [
+      "denver medspa",
+      "south denver botox",
+      "medical spa denver",
+      "wellness center denver",
+      "aesthetics denver 80210"
+    ],
+    "highlightedServices": ["botox", "dermal-fillers", "medical-weight-loss", "bbl-photofacial"]
+  },
+  {
+    "slug": "castle-rock",
+    "name": "Castle Rock",
+    "nameVariants": ["Castle Rock", "Castle Rock CO"],
+    "county": "Douglas County",
+    "state": "CO",
+    "primaryZip": "80108",
+    "zipsServed": ["80104", "80108", "80109"],
+    "driveTimeMinutes": 25,
+    "nearbyLandmarks": ["Outlets at Castle Rock", "Philip S. Miller Park", "The Promenade at Castle Rock", "Castle Pines"],
+    "neighborhoodBlurb": "Castle Rock clients make the drive to Eden Health Club for a deeper clinical menu than a single-service aesthetics stop. The I-25 corridor keeps Greenwood Village reachable for planned injectables, hormone care, recovery, and skin treatments.",
+    "demographicHook": "Castle Rock's south metro choice for elevated aesthetics and performance-focused wellness.",
+    "localKeywords": [
+      "castle rock medspa",
+      "castle rock botox",
+      "medical spa castle rock",
+      "wellness center castle rock",
+      "aesthetics castle rock 80108"
+    ],
+    "highlightedServices": ["botox", "female-bhrt", "male-trt", "iv-therapy"]
+  },
+  {
+    "slug": "south-aurora",
+    "name": "South Aurora",
+    "nameVariants": ["South Aurora", "Aurora South", "Southlands"],
+    "county": "Arapahoe County",
+    "state": "CO",
+    "primaryZip": "80016",
+    "zipsServed": ["80015", "80016"],
+    "driveTimeMinutes": 18,
+    "nearbyLandmarks": ["Southlands", "Cherry Creek State Park", "Buckley Space Force Base", "Aurora Reservoir"],
+    "neighborhoodBlurb": "South Aurora clients come from the Southlands corridor, 80016 neighborhoods, and the Buckley area for care that is close enough to plan around work and family life. Eden Health Club is positioned well for the southeast side without a downtown commute.",
+    "demographicHook": "Serving the Southlands corridor, 80016 households, and Buckley-adjacent professionals who want a clinical wellness home without driving into central Denver.",
+    "localKeywords": [
+      "south aurora medspa",
+      "aurora botox 80016",
+      "medical spa south aurora",
+      "wellness center aurora co",
+      "aesthetics southlands aurora"
+    ],
+    "highlightedServices": ["botox", "diamondglow-facial", "medical-weight-loss", "nad-iv-therapy"]
+  }
+]

@@ -1,0 +1,1008 @@
+[
+  {
+    "slug": "botox",
+    "name": "Botox",
+    "nameVariants": ["Botox", "Botox Cosmetic", "wrinkle relaxer", "neuromodulator", "tox", "neurotoxin"],
+    "category": "injectables",
+    "shortDescription": "FDA-approved wrinkle relaxer that smooths fine lines and prevents new ones. Results in 7–14 days, no downtime.",
+    "longDescription": "Botox is the most-studied neuromodulator on the market. At Eden Health Club, our licensed injectors use it to soften expression lines on the forehead, between the brows, and around the eyes — keeping your face mobile and natural while smoothing the lines that age you. We treat the muscle, not the symptom, so you walk out looking refreshed, not frozen.",
+    "benefits": [
+      "Smooths forehead lines, frown lines, and crow's feet",
+      "Prevents new lines from forming over time",
+      "Results in 7–14 days, lasts 3–4 months",
+      "No downtime — same-day return to work or workout",
+      "Also treats hyperhidrosis and TMJ-related jaw tension"
+    ],
+    "whoItsFor": "Anyone bothered by expression lines that linger when their face is at rest. Excellent first injectable for clients in their late 20s through 50s who want a natural, refreshed result.",
+    "howItWorks": [
+      "Quick in-office consult with one of our injectors — usually paired with treatment.",
+      "We map the muscle groups creating your lines.",
+      "Treatment takes 10–15 minutes with insulin-sized needles. Minimal discomfort.",
+      "Results begin in 3–5 days, peak at 14 days, and last 3–4 months."
+    ],
+    "treatmentDetails": {
+      "duration": "10–15 minutes",
+      "downtime": "None",
+      "painLevel": "Minimal",
+      "resultsTiming": "Visible in 3–5 days, full result at 14 days",
+      "sessionsRecommended": "Every 3–4 months"
+    },
+    "pricing": {
+      "startingAt": 14,
+      "model": "per-unit",
+      "note": "Pricing per unit. Most upper-face treatments use 20–50 units. Daxxify and Dysport also available."
+    },
+    "ctaText": "Book a Botox Consult",
+    "consultRequired": false,
+    "contraindications": [
+      "Pregnancy or breastfeeding",
+      "Active skin infection in the treatment area",
+      "Known allergy to botulinum toxin or its components",
+      "Certain neuromuscular disorders (consult your provider)"
+    ],
+    "faqs": [
+      {
+        "question": "How much Botox will I need?",
+        "answer": "Most first-time treatments use 20–40 units across the upper face. Your injector will recommend a specific dose during your visit based on your muscle activity and goals."
+      },
+      {
+        "question": "How long does Botox last?",
+        "answer": "Typically 3–4 months. With consistent treatment, many clients find their muscles become less reactive over time and treatments last longer."
+      },
+      {
+        "question": "Will Botox make me look frozen?",
+        "answer": "Not when it's dosed correctly. Eden injectors aim for a natural, refreshed result where your face still moves and expresses normally — just without deep lines at rest."
+      },
+      {
+        "question": "What's the difference between Botox, Dysport, and Daxxify?",
+        "answer": "All three are FDA-approved neuromodulators. Botox is the most established. Dysport often shows results 1–2 days sooner. Daxxify can last up to 6 months for some clients. Your injector will recommend the right product for your goals."
+      },
+      {
+        "question": "Is there any downtime?",
+        "answer": "None. You can return to work, workouts, and social plans the same day. We do recommend avoiding lying flat or vigorous exercise for 4 hours post-treatment."
+      },
+      {
+        "question": "How much does Botox cost at Eden Health Club?",
+        "answer": "Pricing starts at $14 per unit. Most upper-face treatments range from $280–$700 depending on units used. We're transparent on pricing before any treatment."
+      }
+    ],
+    "schemaType": "MedicalProcedure",
+    "targetKeywords": {
+      "primary": "botox greenwood village",
+      "secondary": ["botox near me", "best botox denver", "wrinkle relaxer greenwood village", "botox cost", "botox injector dtc"]
+    },
+    "relatedServices": ["dermal-fillers", "lip-filler", "microneedling", "diamondglow-facial"],
+    "internalPageUrl": "https://edenhealthclubs.com/injectables/botox-wrinkle-relaxers/"
+  },
+  {
+    "slug": "dermal-fillers",
+    "name": "Dermal Fillers",
+    "nameVariants": ["dermal fillers", "facial fillers", "Juvederm", "Restylane", "RHA fillers", "hyaluronic acid filler"],
+    "category": "injectables",
+    "shortDescription": "Hyaluronic acid fillers that restore volume, refine contours, and soften folds. Treatment usually takes 60 minutes.",
+    "longDescription": "Dermal fillers restore structure where volume loss, facial movement, or anatomy creates flattening, folds, or imbalance. At Eden Health Club, our trained injectors work with Juvederm, Restylane, and RHA collections to support lips, cheeks, jawline, chin, and folds with precise product selection. The goal is not more filler. It is better proportion, smoother transitions, and a result that still looks like you.",
+    "benefits": [
+      "Restores cheek, lip, chin, and jawline support",
+      "Softens folds without changing your natural expression",
+      "Uses Juvederm, Restylane, and RHA product families",
+      "Treatment plans scale from one syringe to full-face balancing",
+      "Results are visible immediately and refined as swelling settles"
+    ],
+    "whoItsFor": "Clients who notice volume loss, facial flattening, deeper folds, or asymmetry and want measured correction. Best for people who want a natural-looking result guided by facial anatomy, not trend-driven overfilling.",
+    "howItWorks": [
+      "Your injector evaluates facial structure, movement, and previous filler history.",
+      "We choose the product family and syringe plan based on tissue depth and goal.",
+      "Treatment usually takes 60 minutes for a one-syringe visit, longer for multi-syringe balancing.",
+      "You see immediate volume support, with final refinement after swelling settles."
+    ],
+    "treatmentDetails": {
+      "duration": "60–120 minutes",
+      "downtime": "Minimal; swelling or bruising can last several days",
+      "painLevel": "Minimal to moderate",
+      "resultsTiming": "Visible immediately, with final result after swelling settles",
+      "sessionsRecommended": "Maintenance varies by product, area, and metabolism"
+    },
+    "pricing": {
+      "startingAt": 650,
+      "model": "per-syringe",
+      "note": "Juvederm, Restylane, and RHA filler products range from $650–$850 per syringe. Treatment plan and final pricing depend on product selection and syringe count."
+    },
+    "ctaText": "Book a Filler Consult",
+    "consultRequired": false,
+    "contraindications": [
+      "Pregnancy or breastfeeding",
+      "Active skin infection in the treatment area",
+      "Known allergy to hyaluronic acid filler or lidocaine",
+      "Recent dental work or planned dental procedures near treatment timing",
+      "History of severe allergic reactions or bleeding disorders"
+    ],
+    "faqs": [
+      {
+        "question": "How many syringes of filler will I need?",
+        "answer": "Some focused treatments use one syringe, while full-face balancing may require several. Your injector will map the areas that need support and quote the plan before treatment."
+      },
+      {
+        "question": "Which filler products does Eden Health Club use?",
+        "answer": "Eden offers Juvederm Ultra, Volbella, Vollure, Voluma, and Volux; Restylane Contour, Defyne, Kysse, Lyft, and Refyne; and RHA 2, RHA 3, RHA 4, and RHA Redensity."
+      },
+      {
+        "question": "Will dermal fillers make me look overdone?",
+        "answer": "Not when product choice and placement are conservative. Our injectors focus on restoring proportion and soft transitions so the result reads refreshed, not obviously filled."
+      },
+      {
+        "question": "How long do dermal fillers last?",
+        "answer": "Longevity depends on the product, treatment area, and your metabolism. Areas with more movement often metabolize faster, while structural areas like cheeks or jawline may last longer."
+      },
+      {
+        "question": "Is there downtime after filler?",
+        "answer": "Expect possible swelling, tenderness, or bruising for several days. Most clients return to normal routines right away, but we recommend avoiding hard workouts and alcohol for the first 24 hours."
+      },
+      {
+        "question": "How much do dermal fillers cost at Eden Health Club?",
+        "answer": "Filler pricing starts at $650 per syringe and ranges up to $850 per syringe depending on the product selected. We review pricing before any treatment begins."
+      }
+    ],
+    "schemaType": "MedicalProcedure",
+    "targetKeywords": {
+      "primary": "dermal fillers greenwood village",
+      "secondary": ["fillers near me", "juvederm greenwood village", "restylane denver", "rha filler dtc", "dermal filler cost"]
+    },
+    "relatedServices": ["botox", "lip-filler", "diamondglow-facial", "microneedling"],
+    "internalPageUrl": "https://edenhealthclubs.com/injectables/dermal-fillers/"
+  },
+  {
+    "slug": "medical-weight-loss",
+    "name": "Medical Weight Loss",
+    "nameVariants": ["medical weight loss", "GLP-1 therapy", "medically supervised weight management", "weight loss program", "GLP-1 medications", "weight loss clinic"],
+    "category": "functional-medicine",
+    "shortDescription": "A medically supervised weight loss program combining provider-prescribed therapies, bloodwork, and ongoing monitoring.",
+    "longDescription": "Eden Health Club's medical weight loss program is built around clinical evaluation, accountability, and ongoing monitoring. Our team supports in-office and telehealth plans using provider-prescribed weight loss medications, GLP-1 therapy, and adjunct medications when clinically appropriate. Eden's program pairs clients with licensed providers for evaluation, with treatment plans coordinated through licensed compounding pharmacies when indicated. Licensed Experts. Advanced Credentials. Unmatched Care. Bloodwork and body composition data guide the plan, so progress is monitored, not guessed.",
+    "benefits": [
+      "Supports clinically supervised fat loss with medical oversight",
+      "Includes InBody body composition data during in-office consults",
+      "Offers GLP-1 therapy and other provider-prescribed options when appropriate",
+      "Telehealth and in-office follow-up options are available",
+      "Adjunct medications may support appetite, mood, and metabolic goals"
+    ],
+    "whoItsFor": "Adults who have struggled to lose weight with lifestyle changes alone and want a medically supervised plan. Best for clients ready for labs, follow-up visits, and consistent nutrition and movement support.",
+    "howItWorks": [
+      "Start with a 45-minute consultation in office or by telehealth.",
+      "We review history, goals, medications, and required bloodwork.",
+      "Your provider builds a plan that may include GLP-1 therapy or other provider-prescribed weight loss medications.",
+      "Follow-ups adjust dosing, monitor progress, and keep the plan clinically grounded."
+    ],
+    "treatmentDetails": {
+      "duration": "45-minute initial consult; 30-minute follow-ups",
+      "downtime": "None",
+      "painLevel": "Minimal for injectable protocols",
+      "resultsTiming": "Varies by medication, adherence, metabolism, and starting point",
+      "sessionsRecommended": "Ongoing monthly management while actively losing weight"
+    },
+    "pricing": {
+      "startingAt": 100,
+      "model": "consult-required",
+      "note": "Program pricing varies based on medical eligibility and treatment plan. Consultation $100; bloodwork required."
+    },
+    "ctaText": "Book a Weight Loss Consult",
+    "consultRequired": true,
+    "contraindications": [
+      "Pregnancy, breastfeeding, or trying to conceive",
+      "Personal or family history of medullary thyroid carcinoma",
+      "Multiple endocrine neoplasia syndrome type 2",
+      "History of pancreatitis or certain gallbladder conditions",
+      "Medication interactions or uncontrolled medical conditions requiring provider review"
+    ],
+    "faqs": [
+      {
+        "question": "Do I need bloodwork before medical weight loss?",
+        "answer": "Yes. Bloodwork is required so your provider can review metabolic markers, safety considerations, and whether medication support is appropriate for you."
+      },
+      {
+        "question": "What medications does Eden's program use?",
+        "answer": "Eden offers GLP-1 therapy and other provider-prescribed weight loss medications when clinically appropriate. Specific options are determined during medical consultation based on labs, history, and goals."
+      },
+      {
+        "question": "Can I do medical weight loss by telehealth?",
+        "answer": "Yes. Eden supports both in-office and telehealth consultations and follow-ups. In-office visits include access to InBody composition data when appropriate."
+      },
+      {
+        "question": "What does medical weight loss cost at Eden Health Club?",
+        "answer": "Program pricing varies based on medical eligibility and treatment plan. The initial consultation is $100, and bloodwork is required. Your provider will review program costs during the consult."
+      },
+      {
+        "question": "Is this only a GLP-1 program?",
+        "answer": "No. GLP-1 therapy is one category. Your provider may also discuss other prescribed weight loss medications, nutrition strategy, body composition tracking, and supportive tools based on your evaluation."
+      },
+      {
+        "question": "How quickly will I lose weight?",
+        "answer": "Results vary by medication, dose, nutrition, activity, sleep, and baseline health. Eden tracks progress over time so adjustments are based on data rather than guesswork."
+      },
+      {
+        "question": "Is GLP-1 therapy FDA-approved for weight loss?",
+        "answer": "Brand-name GLP-1 medications are FDA-approved for specific indications. Eden's program uses compounded GLP-1 formulations prescribed by licensed providers when clinically appropriate. Eligibility is determined through medical consultation and bloodwork. Not all candidates qualify."
+      },
+      {
+        "question": "Is a consultation required before treatment?",
+        "answer": "Yes. Every Eden client meets with a licensed provider for medical evaluation before any treatment plan is initiated. Bloodwork and individualized assessment guide all recommendations. Individual results vary and not all candidates qualify."
+      }
+    ],
+    "schemaType": "MedicalTherapy",
+    "targetKeywords": {
+      "primary": "medical weight loss greenwood village",
+      "secondary": ["weight loss clinic denver", "medical weight loss program", "glp-1 weight loss greenwood village", "weight loss injections near me", "weight loss doctor greenwood village"]
+    },
+    "relatedServices": ["peptide-therapy", "female-bhrt", "male-trt", "iv-therapy"],
+    "internalPageUrl": "https://edenhealthclubs.com/functional-medicine/medical-weight-loss/"
+  },
+  {
+    "slug": "diamondglow-facial",
+    "name": "DiamondGlow Facial",
+    "nameVariants": ["DiamondGlow", "DiamondGlow Facial", "SkinMedica DiamondGlow", "medical-grade facial", "dermal infusion facial", "skin resurfacing facial"],
+    "category": "skin",
+    "shortDescription": "60-minute SkinMedica DiamondGlow facial that exfoliates, extracts, and infuses targeted serums. $225 per treatment.",
+    "longDescription": "DiamondGlow is SkinMedica's medical-grade facial treatment, not a Hydrafacial. The device exfoliates with a diamond tip, extracts congestion, and infuses a selected Pro-Infusion serum in one 60-minute visit. Eden Health Club customizes the treatment for tone, texture, hydration, pores, or visible aging using SkinMedica serum options that support brighter, smoother, more renewed skin.",
+    "benefits": [
+      "Exfoliates, extracts, and infuses serum in one treatment",
+      "Uses SkinMedica Pro-Infusion serums for targeted support",
+      "Improves visible texture, congestion, dullness, and hydration",
+      "No meaningful downtime for most skin types",
+      "Pairs well with injectables, lasers, and ongoing skincare"
+    ],
+    "whoItsFor": "Clients who want a clinical facial with visible skin renewal but minimal downtime. Strong choice before events, between laser treatments, or as a monthly skin maintenance visit.",
+    "howItWorks": [
+      "Your provider selects a SkinMedica Pro-Infusion serum for your skin goal.",
+      "The diamond-tip handpiece exfoliates surface buildup while extracting debris.",
+      "The device infuses serum directly into freshly resurfaced skin.",
+      "Treatment takes 60 minutes and leaves skin looking cleaner, brighter, and hydrated."
+    ],
+    "treatmentDetails": {
+      "duration": "60 minutes",
+      "downtime": "None to minimal; temporary redness can occur",
+      "painLevel": "Minimal",
+      "resultsTiming": "Immediate glow, with smoother texture over the following days",
+      "sessionsRecommended": "Monthly or as part of a personalized skin plan"
+    },
+    "pricing": {
+      "startingAt": 225,
+      "model": "per-treatment",
+      "note": "DiamondGlow Facial is $225 for a 60-minute treatment. Chest add-on is available for $75."
+    },
+    "ctaText": "Book a DiamondGlow Facial",
+    "consultRequired": false,
+    "contraindications": [
+      "Active rash, infection, or open wounds in the treatment area",
+      "Recent aggressive resurfacing or sunburn",
+      "Uncontrolled inflammatory skin conditions",
+      "Recent isotretinoin use unless cleared by your provider"
+    ],
+    "faqs": [
+      {
+        "question": "Is DiamondGlow the same as Hydrafacial?",
+        "answer": "No. DiamondGlow is a SkinMedica treatment that uses a diamond-tip device with Pro-Infusion serums. Eden Health Club offers DiamondGlow, not Hydrafacial."
+      },
+      {
+        "question": "Which DiamondGlow serums are available?",
+        "answer": "Eden offers Anti-Aging/TNS, Antioxidant/Vitamin C, Brightening/Even & Correct, Clarifying/Pore Purifying, and Hydrating/HA5 Pro-Infusion serum options."
+      },
+      {
+        "question": "How long does a DiamondGlow Facial take?",
+        "answer": "The DiamondGlow Facial is a 60-minute treatment, based on Eden's service menu. A chest add-on can add time when selected."
+      },
+      {
+        "question": "Is there downtime after DiamondGlow?",
+        "answer": "Downtime is minimal. Some clients have temporary redness, but most return to work, workouts, and normal plans the same day."
+      },
+      {
+        "question": "How much does DiamondGlow cost at Eden Health Club?",
+        "answer": "DiamondGlow is $225 per treatment. A chest add-on is available for $75 when the treatment plan includes that area."
+      },
+      {
+        "question": "How often should I get DiamondGlow?",
+        "answer": "Many clients schedule DiamondGlow monthly or between more intensive treatments. Your provider can align timing with injectables, lasers, and home skincare."
+      }
+    ],
+    "schemaType": "MedicalProcedure",
+    "targetKeywords": {
+      "primary": "diamondglow facial greenwood village",
+      "secondary": ["diamondglow near me", "SkinMedica DiamondGlow Denver", "medical-grade facial dtc", "diamondglow facial cost", "facial greenwood village"]
+    },
+    "relatedServices": ["botox", "dermal-fillers", "microneedling", "bbl-photofacial"],
+    "internalPageUrl": "https://edenhealthclubs.com/skin-rejuvenation/diamond-glow-facials/"
+  },
+  {
+    "slug": "lip-filler",
+    "name": "Lip Filler",
+    "nameVariants": ["lip filler", "lip injections", "lip enhancement", "Juvederm Volbella", "Restylane Kysse", "lip hydration"],
+    "category": "injectables",
+    "shortDescription": "Natural lip enhancement using hyaluronic acid filler for shape, hydration, and proportion. Pricing starts at $650.",
+    "longDescription": "Lip filler at Eden Health Club is designed around proportion, hydration, and natural movement. Our trained injectors use products such as Juvederm Volbella, Restylane Kysse, and Skinvive when appropriate to refine border, restore volume, and soften lip lines without creating an overfilled look. Licensed Experts. Advanced Credentials. Unmatched Care. That standard guides every lip treatment from consult to placement.",
+    "benefits": [
+      "Restores lip volume while preserving natural movement",
+      "Defines border, cupid's bow, and overall shape",
+      "Improves hydration and softens fine lip lines",
+      "Uses product selection matched to your anatomy",
+      "Results are visible immediately and refine as swelling settles"
+    ],
+    "whoItsFor": "Clients who want subtle lip volume, improved symmetry, better hydration, or a more defined border. Strong fit for first-time filler clients who want enhancement, not a visibly overfilled result.",
+    "howItWorks": [
+      "Your injector reviews your lip anatomy, goals, and prior filler history.",
+      "We select the product and amount based on hydration, structure, and desired shape.",
+      "Treatment uses careful placement with topical numbing and conservative dosing.",
+      "Swelling is expected at first, with final shape settling over about two weeks."
+    ],
+    "treatmentDetails": {
+      "duration": "45-60 minutes",
+      "downtime": "Minimal; swelling or bruising can last several days",
+      "painLevel": "Minimal to moderate",
+      "resultsTiming": "Visible immediately, with final result after swelling settles",
+      "sessionsRecommended": "Maintenance typically every 6-12 months"
+    },
+    "pricing": {
+      "startingAt": 650,
+      "model": "per-syringe",
+      "note": "Lip filler starts at $650 per syringe. Your injector will recommend product and amount before treatment."
+    },
+    "ctaText": "Book a Lip Filler Consult",
+    "consultRequired": false,
+    "contraindications": [
+      "Pregnancy or breastfeeding",
+      "Active cold sore or infection near the mouth",
+      "Known allergy to hyaluronic acid filler or lidocaine",
+      "Recent dental work or planned dental procedures near treatment timing",
+      "History of severe allergic reactions or bleeding disorders"
+    ],
+    "faqs": [
+      {
+        "question": "Will lip filler look obvious?",
+        "answer": "It does not have to. Eden's trained injectors focus on lip proportion, border support, and hydration so the result looks balanced with the rest of your face."
+      },
+      {
+        "question": "What is the difference between lip filler and lip enhancement?",
+        "answer": "Lip filler is the product. Lip enhancement is the plan. Enhancement may mean hydration, shape refinement, symmetry, or volume depending on your anatomy and goals."
+      },
+      {
+        "question": "Which lip filler products does Eden use?",
+        "answer": "Common options include Juvederm Volbella and Restylane Kysse. Skinvive may be discussed for hydration-focused skin quality when it fits the treatment goal."
+      },
+      {
+        "question": "How long does lip filler last?",
+        "answer": "Most lip filler lasts 6-12 months, depending on product choice, metabolism, movement, and how much structure is being maintained."
+      },
+      {
+        "question": "How much swelling should I expect?",
+        "answer": "Swelling is common for the first few days and can make lips look larger than the final result. Final shape is usually easier to judge after about two weeks."
+      },
+      {
+        "question": "How much does lip filler cost at Eden Health Club?",
+        "answer": "Lip filler starts at $650 per syringe. Your injector will review the exact product, amount, and cost before treatment begins."
+      }
+    ],
+    "schemaType": "MedicalProcedure",
+    "targetKeywords": {
+      "primary": "lip filler greenwood village",
+      "secondary": ["lip filler near me", "lip injections denver", "natural lip filler dtc", "Restylane Kysse greenwood village", "lip filler cost"]
+    },
+    "relatedServices": ["botox", "dermal-fillers", "diamondglow-facial", "microneedling"],
+    "internalPageUrl": "https://edenhealthclubs.com/injectables/dermal-fillers/"
+  },
+  {
+    "slug": "microneedling",
+    "name": "Microneedling",
+    "nameVariants": ["microneedling", "collagen induction therapy", "skin needling", "PRP microneedling", "PRP Elevation", "microneedling facial"],
+    "category": "skin",
+    "shortDescription": "Collagen-stimulating microneedling for texture, pores, fine lines, and acne scars. Full face and neck options available.",
+    "longDescription": "Microneedling creates controlled micro-injuries that signal the skin to rebuild collagen and improve visible texture over time. At Eden Health Club, our clinical team treats the full face and neck, with chest or hand add-ons available when skin quality needs support beyond the face. Licensed Experts. Advanced Credentials. Unmatched Care. PRP Elevation can be added for clients who want platelet-rich support.",
+    "benefits": [
+      "Improves texture, pores, fine lines, and acne scarring",
+      "Stimulates collagen without heat-based laser energy",
+      "Treats full face and neck with optional add-ons",
+      "Can be upgraded with PRP Elevation support",
+      "Builds gradual skin quality improvement over a series"
+    ],
+    "whoItsFor": "Clients with uneven texture, enlarged pores, mild acne scarring, fine lines, or dull skin who want collagen stimulation with manageable downtime. Not ideal for active acne flares or untreated skin infection.",
+    "howItWorks": [
+      "Your provider evaluates skin quality, pigment risk, and treatment goals.",
+      "Topical numbing is applied before controlled microneedling passes.",
+      "We treat the planned areas and may apply PRP when PRP Elevation is selected.",
+      "Redness fades over the next few days while collagen remodeling continues."
+    ],
+    "treatmentDetails": {
+      "duration": "90 minutes",
+      "downtime": "1-3 days of redness or sensitivity",
+      "painLevel": "Minimal to moderate with numbing",
+      "resultsTiming": "Glow within days, collagen changes over 4-12 weeks",
+      "sessionsRecommended": "Series of 3 or more for texture and scarring"
+    },
+    "pricing": {
+      "startingAt": 375,
+      "model": "per-treatment",
+      "note": "Microneedling Full Face + Neck $375 (90 minutes). Optional add-ons: chest $125, hand $60. PRP-enhanced microneedling available as an upgrade."
+    },
+    "ctaText": "Book a Microneedling Consult",
+    "consultRequired": false,
+    "contraindications": [
+      "Active acne flare, rash, or skin infection",
+      "Recent isotretinoin use unless cleared by your provider",
+      "Pregnancy or breastfeeding for certain add-on protocols",
+      "History of poor wound healing or keloid scarring",
+      "Recent aggressive resurfacing or sunburn"
+    ],
+    "faqs": [
+      {
+        "question": "What does microneedling help with?",
+        "answer": "Microneedling can improve visible texture, pores, fine lines, dullness, and mild acne scarring by stimulating collagen remodeling."
+      },
+      {
+        "question": "Does Eden offer PRP with microneedling?",
+        "answer": "Yes. PRP Elevation is available as an upgrade when your provider recommends platelet-rich support for skin quality and recovery."
+      },
+      {
+        "question": "How many microneedling sessions will I need?",
+        "answer": "Many clients start with a series of three. Acne scars, deeper texture changes, and more advanced collagen goals may require additional sessions."
+      },
+      {
+        "question": "Is microneedling painful?",
+        "answer": "Topical numbing makes treatment manageable for most clients. You may feel pressure, vibration, or sensitivity in thinner areas of the face."
+      },
+      {
+        "question": "How much downtime is there after microneedling?",
+        "answer": "Expect redness and sensitivity for 1-3 days. Your provider will review skincare restrictions so the skin can recover cleanly."
+      },
+      {
+        "question": "How much does microneedling cost at Eden Health Club?",
+        "answer": "Microneedling Full Face + Neck is $375 for a 90-minute treatment. Optional add-ons are $125 for chest and $60 for hand. PRP-enhanced microneedling is available as an upgrade with separate pricing."
+      }
+    ],
+    "schemaType": "MedicalProcedure",
+    "targetKeywords": {
+      "primary": "microneedling greenwood village",
+      "secondary": ["microneedling near me", "PRP microneedling denver", "collagen induction therapy dtc", "microneedling acne scars", "microneedling cost"]
+    },
+    "relatedServices": ["diamondglow-facial", "bbl-photofacial", "botox", "dermal-fillers"],
+    "internalPageUrl": "https://edenhealthclubs.com/skin-rejuvenation/microneedling/"
+  },
+  {
+    "slug": "bbl-photofacial",
+    "name": "BBL HEROic Photofacial",
+    "nameVariants": ["BBL photofacial", "BBL HEROic", "Sciton BBL", "photofacial", "Forever Clear BBL", "BBL laser"],
+    "category": "skin",
+    "shortDescription": "Sciton BBL HEROic photofacial for sun damage, redness, pigmentation, and acne support. Pricing varies by area.",
+    "longDescription": "BBL HEROic uses broadband light to target visible pigmentation, redness, sun damage, and acne-prone skin with precision. At Eden Health Club, expert providers customize settings by skin type, treatment area, and goal, including Forever Clear BBL for acne and BBL plus Moxi when resurfacing support is appropriate. Licensed Experts. Advanced Credentials. Unmatched Care. The result is clearer tone with a clinical plan.",
+    "benefits": [
+      "Targets sun damage, brown spots, redness, and discoloration",
+      "Supports clearer skin with Forever Clear BBL protocols",
+      "Treats face, neck, chest, hands, and body areas",
+      "Can pair with Moxi for stronger renewal",
+      "Improves visible tone with limited downtime for many clients"
+    ],
+    "whoItsFor": "Clients bothered by sun damage, redness, uneven pigmentation, or acne who want light-based correction with a personalized skin plan. Best for clients willing to follow sun avoidance and pre-treatment instructions.",
+    "howItWorks": [
+      "Your provider evaluates pigment, redness, skin type, and sun exposure history.",
+      "Protective eyewear is placed and BBL settings are customized to the target.",
+      "The device delivers pulses of light across the planned treatment area.",
+      "Pigment darkens before flaking away while redness and tone improve over time."
+    ],
+    "treatmentDetails": {
+      "duration": "30-75 minutes depending on area",
+      "downtime": "Minimal to several days depending on intensity and pigment response",
+      "painLevel": "Minimal to moderate",
+      "resultsTiming": "Pigment changes over 7-14 days; tone improves over a series",
+      "sessionsRecommended": "Series of 3, then maintenance as recommended"
+    },
+    "pricing": {
+      "startingAt": 400,
+      "model": "per-treatment",
+      "note": "BBL HEROic pricing ranges from $400-$1,100 depending on treatment area and protocol. BBL plus Moxi is available as an upgrade."
+    },
+    "ctaText": "Book a BBL Consult",
+    "consultRequired": false,
+    "contraindications": [
+      "Recent sun exposure, tanning, or sunburn",
+      "Pregnancy or breastfeeding",
+      "Photosensitizing medications or conditions requiring provider review",
+      "Active infection, open wounds, or rash in the treatment area",
+      "Certain skin tones or pigment conditions requiring alternative planning"
+    ],
+    "faqs": [
+      {
+        "question": "What does BBL HEROic treat?",
+        "answer": "BBL HEROic treats visible sun damage, brown spots, redness, uneven tone, and select acne concerns using customizable broadband light settings."
+      },
+      {
+        "question": "Is BBL the same as IPL?",
+        "answer": "BBL is an advanced broadband light platform from Sciton. It is related to IPL but uses specific technology, settings, and protocols selected by the provider."
+      },
+      {
+        "question": "What is Forever Clear BBL?",
+        "answer": "Forever Clear BBL is a protocol used for acne-prone skin. Your provider will determine whether it fits your skin type and acne pattern."
+      },
+      {
+        "question": "Can BBL be combined with Moxi?",
+        "answer": "Yes. BBL plus Moxi is available when your skin plan calls for both pigment or redness correction and fractional resurfacing support."
+      },
+      {
+        "question": "How much downtime is there after BBL?",
+        "answer": "Downtime varies. Brown spots often darken before flaking, and redness may occur. Strict sun protection is required before and after treatment."
+      },
+      {
+        "question": "How much does BBL cost at Eden Health Club?",
+        "answer": "BBL HEROic ranges from $400-$1,100 depending on the area and protocol. Your provider will quote pricing during the consult."
+      }
+    ],
+    "schemaType": "MedicalProcedure",
+    "targetKeywords": {
+      "primary": "bbl photofacial greenwood village",
+      "secondary": ["BBL HEROic Denver", "Sciton BBL near me", "photofacial dtc", "BBL laser cost", "Forever Clear BBL"]
+    },
+    "relatedServices": ["microneedling", "diamondglow-facial", "botox", "dermal-fillers"],
+    "internalPageUrl": "https://edenhealthclubs.com/skin-rejuvenation/bbl-heroic-photofacial/"
+  },
+  {
+    "slug": "female-bhrt",
+    "name": "Female Bioidentical Hormone Replacement Therapy",
+    "nameVariants": ["female BHRT", "bioidentical hormones", "hormone pellets", "estrogen therapy", "testosterone pellets for women", "menopause hormone therapy"],
+    "category": "hrt",
+    "shortDescription": "Bioidentical hormone therapy for women using labs, consults, pellets, creams, troches, or tablets. Consult required.",
+    "longDescription": "Female BHRT at Eden Health Club starts with labs, symptoms, and a clinical conversation, not assumptions. Treatment is compounded bioidentical hormone therapy prescribed by licensed providers, which may include bioidentical pellets, compounded creams, troches, or tablets to support women navigating fatigue, low libido, brain fog, mood shifts, sleep disruption, or menopause-related changes. Licensed Experts. Advanced Credentials. Unmatched Care. Treatment is monitored over time so dosing stays personal.",
+    "benefits": [
+      "Supports energy, libido, sleep, mood, and clarity",
+      "Uses bloodwork before treatment planning begins",
+      "Offers pellets, creams, troches, or tablets when appropriate",
+      "Pellet placement typically lasts 3-4 months",
+      "Plans are monitored and adjusted over time"
+    ],
+    "whoItsFor": "Women with hormone-related symptoms such as fatigue, low libido, sleep disruption, mood changes, or menopausal changes who want lab-informed care. Best for clients comfortable with bloodwork and follow-up monitoring.",
+    "howItWorks": [
+      "Start with a BHRT consultation and required bloodwork.",
+      "Your provider reviews symptoms, lab markers, history, and treatment options.",
+      "If appropriate, therapy may include subcutaneous pellets or compounded options.",
+      "Follow-up labs and visits help refine dosing and track response."
+    ],
+    "treatmentDetails": {
+      "duration": "45-minute consult; pellet placement is typically 15-30 minutes",
+      "downtime": "Minimal after pellet placement",
+      "painLevel": "Minimal with local numbing for pellets",
+      "resultsTiming": "Varies; many clients notice changes over several weeks",
+      "sessionsRecommended": "Pellets every 3-4 months when prescribed"
+    },
+    "pricing": {
+      "startingAt": 375,
+      "model": "package",
+      "note": "Female BHRT pellet placement starts at $375 and typically lasts 3-4 months. BHRT consultation is $100; bloodwork is required and priced separately."
+    },
+    "ctaText": "Book a BHRT Consult",
+    "consultRequired": true,
+    "contraindications": [
+      "Pregnancy or breastfeeding",
+      "History of hormone-sensitive cancer requiring specialist review",
+      "Unexplained vaginal bleeding",
+      "Active blood clot or high clotting risk requiring provider review",
+      "Uncontrolled medical conditions or abnormal labs requiring evaluation"
+    ],
+    "faqs": [
+      {
+        "question": "Do I need bloodwork before female BHRT?",
+        "answer": "Yes. Bloodwork is required before treatment so your provider can evaluate hormone markers, safety considerations, and whether BHRT is appropriate."
+      },
+      {
+        "question": "What symptoms can female BHRT support?",
+        "answer": "BHRT may support symptoms such as fatigue, low libido, sleep disruption, mood shifts, brain fog, and menopause-related changes when hormones are part of the picture."
+      },
+      {
+        "question": "Does Eden offer hormone pellets for women?",
+        "answer": "Yes. Eden offers subcutaneous hormone pellets when clinically appropriate, along with compounded creams, troches, or tablets depending on the plan."
+      },
+      {
+        "question": "How long do female hormone pellets last?",
+        "answer": "Female BHRT pellets typically last 3-4 months. Timing can vary based on dose, metabolism, symptoms, and follow-up labs."
+      },
+      {
+        "question": "How much does female BHRT cost at Eden Health Club?",
+        "answer": "Female BHRT pellet placement starts at $375. The BHRT consultation is $100, and bloodwork is required before therapy begins."
+      },
+      {
+        "question": "Is BHRT a one-time treatment?",
+        "answer": "No. Hormone care requires monitoring. Your provider will review symptoms, labs, and timing to adjust the plan as your body responds."
+      },
+      {
+        "question": "Is a consultation required before treatment?",
+        "answer": "Yes. Every Eden client meets with a licensed provider for medical evaluation before any treatment plan is initiated. Bloodwork and individualized assessment guide all recommendations. Individual results vary and not all candidates qualify."
+      }
+    ],
+    "schemaType": "MedicalTherapy",
+    "targetKeywords": {
+      "primary": "female BHRT greenwood village",
+      "secondary": ["bioidentical hormones Denver", "hormone pellets for women", "menopause hormone therapy dtc", "BHRT near me", "female hormone therapy cost"]
+    },
+    "relatedServices": ["male-trt", "peptide-therapy", "medical-weight-loss", "iv-therapy"],
+    "internalPageUrl": "https://edenhealthclubs.com/hormone-replacement-therapy/female-bhrt-wellness/"
+  },
+  {
+    "slug": "male-trt",
+    "name": "Male Testosterone Replacement Therapy",
+    "nameVariants": ["male TRT", "testosterone replacement therapy", "testosterone pellets", "low T treatment", "testosterone injections", "men's hormone therapy"],
+    "category": "hrt",
+    "shortDescription": "Testosterone replacement options for men with low T symptoms, bloodwork, and monitored follow-up. Consult required.",
+    "longDescription": "Male TRT at Eden Health Club is built for men who want answers, not guesswork. Our clinical team reviews symptoms, bloodwork, health history, and goals to match the right product to each client. Options include FDA-approved injectable testosterone preparations and compounded testosterone preparations — prescribed by licensed providers, with the right option matched during consultation. Licensed Experts. Advanced Credentials. Unmatched Care. Treatment is monitored for energy, libido, strength, mood, and safety markers over time.",
+    "benefits": [
+      "Supports low T symptoms with lab-informed care",
+      "Offers pellets, injections, creams, or tablets when appropriate",
+      "Tracks energy, libido, mood, strength, and recovery",
+      "Uses follow-up labs to monitor safety markers",
+      "Pellet options can last 3-6 months depending on dose"
+    ],
+    "whoItsFor": "Men with symptoms such as low energy, reduced libido, decreased strength, slower recovery, mood changes, or low measured testosterone. Best for clients ready for labs, follow-up, and ongoing monitoring.",
+    "howItWorks": [
+      "Start with a BHRT consultation and required bloodwork.",
+      "Your provider reviews testosterone, safety markers, symptoms, and goals.",
+      "If appropriate, treatment may include pellets, injections, or compounded options.",
+      "Follow-up labs and visits guide dose adjustments and long-term monitoring."
+    ],
+    "treatmentDetails": {
+      "duration": "45-minute consult; pellet placement is typically 15-30 minutes",
+      "downtime": "Minimal after pellet placement",
+      "painLevel": "Minimal with local numbing for pellets",
+      "resultsTiming": "Varies; many clients notice changes over several weeks",
+      "sessionsRecommended": "Pellets every 3-6 months depending on dose"
+    },
+    "pricing": {
+      "startingAt": 500,
+      "model": "package",
+      "note": "Male TRT pellet placement starts at $500 for modified dosing lasting 3-4 months and $700 for full dosing lasting 5-6 months. BHRT consultation is $100; bloodwork is required."
+    },
+    "ctaText": "Book a TRT Consult",
+    "consultRequired": true,
+    "contraindications": [
+      "Known or suspected prostate or breast cancer",
+      "Untreated severe sleep apnea",
+      "Elevated hematocrit or abnormal labs requiring provider review",
+      "Recent cardiovascular event requiring specialist clearance",
+      "Fertility goals that may be affected by testosterone therapy"
+    ],
+    "faqs": [
+      {
+        "question": "Do I need labs before starting TRT?",
+        "answer": "Yes. Bloodwork is required before TRT so your provider can evaluate testosterone levels, blood counts, prostate markers when appropriate, and overall safety."
+      },
+      {
+        "question": "What TRT options does Eden offer?",
+        "answer": "Eden offers FDA-approved injectable testosterone preparations, compounded testosterone pellets, and compounded creams or tablets when clinically appropriate. The right option is matched during medical consultation based on labs and goals."
+      },
+      {
+        "question": "How long do testosterone pellets last?",
+        "answer": "Modified testosterone pellet dosing typically lasts 3-4 months. Full dosing typically lasts 5-6 months, depending on metabolism, dose, and response."
+      },
+      {
+        "question": "How much does male TRT cost at Eden Health Club?",
+        "answer": "Male TRT pellet placement starts at $500 for modified dosing and $700 for full dosing. The BHRT consultation is $100, and bloodwork is required."
+      },
+      {
+        "question": "Will TRT help with workouts and recovery?",
+        "answer": "TRT may support energy, strength, recovery, and body composition when low testosterone is contributing. Your provider will review whether your labs and symptoms fit."
+      },
+      {
+        "question": "Does TRT affect fertility?",
+        "answer": "It can. Testosterone therapy may suppress sperm production, so fertility goals should be discussed before starting treatment."
+      },
+      {
+        "question": "Is a consultation required before treatment?",
+        "answer": "Yes. Every Eden client meets with a licensed provider for medical evaluation before any treatment plan is initiated. Bloodwork and individualized assessment guide all recommendations. Individual results vary and not all candidates qualify."
+      }
+    ],
+    "schemaType": "MedicalTherapy",
+    "targetKeywords": {
+      "primary": "male TRT greenwood village",
+      "secondary": ["testosterone replacement Denver", "low T treatment dtc", "testosterone pellets near me", "men's hormone therapy", "TRT cost greenwood village"]
+    },
+    "relatedServices": ["female-bhrt", "peptide-therapy", "medical-weight-loss", "nad-iv-therapy"],
+    "internalPageUrl": "https://edenhealthclubs.com/hormone-replacement-therapy/male-trt-wellness/"
+  },
+  {
+    "slug": "peptide-therapy",
+    "name": "Peptide Therapy",
+    "nameVariants": ["peptide therapy", "peptide injections", "compounded peptide therapy", "growth hormone secretagogue therapy", "GHK-Cu", "wellness peptides"],
+    "category": "functional-medicine",
+    "shortDescription": "Targeted peptide protocols for performance, recovery, skin quality, and wellness goals. Consultation and labs required.",
+    "longDescription": "Peptide therapy at Eden Health Club is personalized around goals such as recovery, sleep, performance, body composition, and skin quality. Our expert providers may discuss compounded peptide therapy, growth hormone secretagogue therapy, topical GHK-Cu, and NAD+ at-home injection training when clinically appropriate. Licensed Experts. Advanced Credentials. Unmatched Care. Baseline peptide panel bloodwork — including CBC, CMP, and IGF-1 — is required before starting any peptide protocol and is repeated every 6 months while on protocol.",
+    "benefits": [
+      "Supports recovery, performance, sleep, and body composition goals",
+      "Requires baseline CBC, CMP, and IGF-1 panel for safe protocol selection",
+      "Includes compounded peptide therapy and growth hormone secretagogue options",
+      "Can complement hormone, weight loss, and recovery plans",
+      "At-home injection training is available when appropriate"
+    ],
+    "whoItsFor": "Clients interested in targeted support for recovery, performance, skin quality, sleep, or body composition after a clinical review. Best for people who want a monitored protocol rather than ordering peptides without guidance.",
+    "howItWorks": [
+      "Start with a $100 consultation to review goals, history, and medications.",
+      "Baseline Peptide Panel ($75) — CBC, CMP, IGF-1 — is required before any protocol begins.",
+      "Your provider recommends a peptide protocol only when clinically appropriate.",
+      "Follow-up labs every 6 months track response, dose timing, tolerance, and safety markers."
+    ],
+    "treatmentDetails": {
+      "duration": "45-minute consult; injection training varies by protocol",
+      "downtime": "None",
+      "painLevel": "Minimal for injectable protocols",
+      "resultsTiming": "Varies by peptide, dose, goal, and consistency",
+      "sessionsRecommended": "Protocol length varies by goal and provider recommendation"
+    },
+    "pricing": {
+      "startingAt": 100,
+      "model": "consult-required",
+      "note": "Peptide therapy starts with a $100 consultation plus a required $75 baseline Peptide Panel (CBC, CMP, IGF-1). Labs are repeated every 6 months while on protocol. Medication pricing varies by peptide, dose, pharmacy, and protocol."
+    },
+    "ctaText": "Book a Peptide Consult",
+    "consultRequired": true,
+    "contraindications": [
+      "Pregnancy or breastfeeding",
+      "Active cancer or history requiring specialist review",
+      "Abnormal labs requiring further evaluation",
+      "Medication interactions or contraindicated medical conditions",
+      "Unsupervised use of outside peptides or unclear product sourcing"
+    ],
+    "faqs": [
+      {
+        "question": "What peptides does Eden offer?",
+        "answer": "Eden may discuss compounded peptide therapy, growth hormone secretagogue therapy, topical GHK-Cu, and NAD+ injection training depending on goals, labs, and eligibility."
+      },
+      {
+        "question": "Do I need bloodwork for peptide therapy?",
+        "answer": "Yes — every Eden client starts with a baseline Peptide Panel ($75) including CBC, CMP, and IGF-1, plus a $100 consultation. Labs are repeated every 6 months while on protocol to monitor safety and adjust dosing."
+      },
+      {
+        "question": "What is a growth hormone secretagogue?",
+        "answer": "Growth hormone secretagogue therapy may be discussed for sleep, recovery, body composition, or performance goals when clinically appropriate. Eligibility is determined through medical consultation and bloodwork."
+      },
+      {
+        "question": "Can peptide therapy be combined with weight loss or TRT?",
+        "answer": "Yes, when appropriate. Peptides may complement hormone, medical weight loss, or recovery plans, but your provider will check interactions and priorities first."
+      },
+      {
+        "question": "How much does peptide therapy cost at Eden Health Club?",
+        "answer": "Peptide therapy starts with a $100 consultation plus a required $75 Peptide Panel (CBC, CMP, IGF-1). Medication costs vary by peptide, dose, pharmacy, and protocol length."
+      },
+      {
+        "question": "Does Eden teach at-home injections?",
+        "answer": "Yes. At-home injection training is available for select protocols, including NAD+ when appropriate, so dosing and technique are clear."
+      },
+      {
+        "question": "Is a consultation required before treatment?",
+        "answer": "Yes. Every Eden client meets with a licensed provider for medical evaluation before any treatment plan is initiated. Bloodwork and individualized assessment guide all recommendations. Individual results vary and not all candidates qualify."
+      }
+    ],
+    "schemaType": "MedicalTherapy",
+    "targetKeywords": {
+      "primary": "peptide therapy greenwood village",
+      "secondary": ["peptide therapy denver", "growth hormone therapy near me", "peptide injections clinic", "NAD+ therapy denver", "wellness peptides greenwood village"]
+    },
+    "relatedServices": ["medical-weight-loss", "female-bhrt", "male-trt", "nad-iv-therapy"],
+    "internalPageUrl": "https://edenhealthclubs.com/functional-medicine/peptide-injections/"
+  },
+  {
+    "slug": "prf-hair-restoration",
+    "name": "PRF Hair Restoration",
+    "nameVariants": ["PRF hair restoration", "platelet-rich fibrin hair", "PRF scalp injections", "hair restoration", "exosomes hair restoration", "scalp PRF"],
+    "category": "hair",
+    "shortDescription": "Platelet-rich fibrin scalp injections for thinning hair, with exosome upgrade and RX adjunct options available.",
+    "longDescription": "PRF hair restoration uses platelet-rich fibrin from your own blood to support areas of thinning hair through targeted scalp injections. At Eden Health Club, the clinical team may recommend a series of PRF sessions, Exosomes Hair Restoration as an upgrade, and prescription adjuncts prescribed by licensed providers when appropriate. Licensed Experts. Advanced Credentials. Unmatched Care. The plan is built around pattern, stage, and consistency.",
+    "benefits": [
+      "Uses platelet-rich fibrin drawn from your own blood",
+      "Targets thinning areas with focused scalp injections",
+      "Recommended series supports cumulative improvement",
+      "Exosome upgrade is available for stronger support",
+      "Prescription adjuncts may complement the treatment plan"
+    ],
+    "whoItsFor": "Men and women noticing early to moderate thinning who still have active follicles in the treatment area. Best for clients ready for a series and willing to pair treatment with recommended home or prescription support.",
+    "howItWorks": [
+      "Your provider evaluates thinning pattern, history, and treatment goals.",
+      "A blood draw is processed to concentrate platelet-rich fibrin.",
+      "PRF is injected into targeted scalp areas using a planned pattern.",
+      "A series of sessions and adjuncts may be recommended for best response."
+    ],
+    "treatmentDetails": {
+      "duration": "60-75 minutes",
+      "downtime": "Minimal; scalp tenderness can occur",
+      "painLevel": "Moderate",
+      "resultsTiming": "Visible changes may take 3-6 months",
+      "sessionsRecommended": "Series of 3, then maintenance as recommended"
+    },
+    "pricing": {
+      "startingAt": 900,
+      "model": "per-treatment",
+      "note": "PRF hair restoration is $900 per session, with a recommended series of 3. Exosomes Hair Restoration is available at $1,200 per session."
+    },
+    "ctaText": "Book a Hair Restoration Consult",
+    "consultRequired": false,
+    "contraindications": [
+      "Active scalp infection or open wounds",
+      "Certain platelet or bleeding disorders",
+      "Use of blood thinners requiring provider review",
+      "Medical causes of hair loss requiring evaluation first",
+      "Pregnancy or breastfeeding depending on adjunct recommendations"
+    ],
+    "faqs": [
+      {
+        "question": "How does PRF hair restoration work?",
+        "answer": "PRF is created from your own blood and injected into targeted scalp areas to support follicles and scalp signaling in areas of thinning."
+      },
+      {
+        "question": "How many PRF hair sessions will I need?",
+        "answer": "Eden typically recommends a series of three sessions, followed by maintenance when appropriate. Timing depends on pattern, stage, and response."
+      },
+      {
+        "question": "What is the difference between PRF and exosomes?",
+        "answer": "PRF uses platelet-rich fibrin from your own blood. Exosomes Hair Restoration is an upgrade option that uses a different regenerative signaling product."
+      },
+      {
+        "question": "How soon will I see hair restoration results?",
+        "answer": "Hair changes take time. Many clients evaluate early response over 3-6 months, with continued assessment after the recommended series."
+      },
+      {
+        "question": "Does Eden offer prescription support for hair loss?",
+        "answer": "Yes. Your provider may discuss prescription adjuncts prescribed by licensed providers when prescription support fits your pattern and medical history."
+      },
+      {
+        "question": "How much does PRF hair restoration cost at Eden Health Club?",
+        "answer": "PRF hair restoration is $900 per session. A series of three is commonly recommended. Exosomes Hair Restoration is $1,200 per session."
+      }
+    ],
+    "schemaType": "MedicalProcedure",
+    "targetKeywords": {
+      "primary": "PRF hair restoration greenwood village",
+      "secondary": ["PRF hair restoration Denver", "hair restoration near me", "PRF scalp injections", "exosomes hair restoration", "hair restoration cost"]
+    },
+    "relatedServices": ["peptide-therapy", "male-trt", "female-bhrt", "nad-iv-therapy"],
+    "internalPageUrl": "https://edenhealthclubs.com/hair-restoration/hair-restoration-with-prf/"
+  },
+  {
+    "slug": "iv-therapy",
+    "name": "IV Therapy",
+    "nameVariants": ["IV therapy", "IV drip", "vitamin IV", "hydration IV", "recovery IV", "wellness IV"],
+    "category": "recovery",
+    "shortDescription": "75-minute IV therapy for hydration, recovery, energy, immunity, glow, relief, and performance support. $195 default.",
+    "longDescription": "IV therapy at Eden Health Club supports hydration, recovery, and performance with curated formulas such as Eden Signature, Energize, Glow, Immunity, Recovery, Relief, and Restore. Our clinical team reviews your goals and basic health context before treatment, then monitors your infusion in a calm setting. Licensed Experts. Advanced Credentials. Unmatched Care. This is recovery support, not a generic hangover drip.",
+    "benefits": [
+      "Supports hydration, recovery, energy, immunity, and performance",
+      "Offers multiple formulas matched to your goals",
+      "75-minute monitored infusion in a clinical setting",
+      "Pairs well with fitness, travel, and recovery routines",
+      "No downtime for most clients after treatment"
+    ],
+    "whoItsFor": "Clients who want hydration, nutrient support, recovery help, or a structured wellness reset. Strong fit around travel, training, demanding work periods, or when oral hydration is not enough.",
+    "howItWorks": [
+      "Your provider reviews goals, health history, and the best IV formula.",
+      "The clinical team places the IV and starts the selected infusion.",
+      "You relax during a monitored treatment that typically lasts 75 minutes.",
+      "Most clients return to normal plans immediately after the visit."
+    ],
+    "treatmentDetails": {
+      "duration": "75 minutes",
+      "downtime": "None",
+      "painLevel": "Minimal IV placement discomfort",
+      "resultsTiming": "Varies; hydration effects may be noticed same day",
+      "sessionsRecommended": "As needed or as part of a wellness plan"
+    },
+    "pricing": {
+      "startingAt": 195,
+      "model": "per-treatment",
+      "note": "Default IV therapy pricing is $195 per session. Formula selection and add-ons may affect final pricing."
+    },
+    "ctaText": "Book IV Therapy",
+    "consultRequired": false,
+    "contraindications": [
+      "Severe kidney disease or fluid restriction",
+      "Uncontrolled heart failure or significant cardiovascular conditions",
+      "Active infection requiring higher-level medical care",
+      "Known allergy to formula ingredients",
+      "Pregnancy or breastfeeding requiring provider review"
+    ],
+    "faqs": [
+      {
+        "question": "Which IV therapy formulas does Eden offer?",
+        "answer": "Eden offers formulas such as Eden Signature, Energize, Glow, Immunity, Recovery, Relief, and Restore, with selection based on your goals."
+      },
+      {
+        "question": "How long does IV therapy take?",
+        "answer": "Most IV therapy appointments are scheduled for about 75 minutes, including setup, infusion time, and basic monitoring."
+      },
+      {
+        "question": "Is IV therapy only for hangovers?",
+        "answer": "No. Eden positions IV therapy around hydration, recovery, performance, immunity, travel, and wellness support rather than hangover care alone."
+      },
+      {
+        "question": "How often should I get IV therapy?",
+        "answer": "Frequency depends on your goals, health status, training load, travel schedule, and provider recommendation. Some clients use it occasionally; others build it into a wellness plan."
+      },
+      {
+        "question": "How much does IV therapy cost at Eden Health Club?",
+        "answer": "Default IV therapy pricing is $195 per session. Formula selection and any add-ons may affect the final price."
+      },
+      {
+        "question": "Can IV therapy be combined with NAD+?",
+        "answer": "Sometimes. NAD+ has its own dosing and tolerance considerations, so your provider will recommend whether IV therapy, NAD+, or both fit your goals."
+      }
+    ],
+    "schemaType": "MedicalTherapy",
+    "targetKeywords": {
+      "primary": "IV therapy greenwood village",
+      "secondary": ["IV drip Denver", "hydration IV near me", "vitamin IV dtc", "recovery IV therapy", "IV therapy cost"]
+    },
+    "relatedServices": ["nad-iv-therapy", "peptide-therapy", "medical-weight-loss", "female-bhrt"],
+    "internalPageUrl": "https://edenhealthclubs.com/wellness-recovery/iv-therapy/"
+  },
+  {
+    "slug": "nad-iv-therapy",
+    "name": "NAD+ IV Therapy",
+    "nameVariants": ["NAD+ IV", "NAD IV therapy", "NAD injections", "NAD+ IM", "Niagen", "cellular energy IV"],
+    "category": "recovery",
+    "shortDescription": "NAD+ IV and IM options for cellular energy, cognition, recovery, and longevity-focused wellness support.",
+    "longDescription": "NAD+ therapy supports cellular energy pathways tied to recovery, cognition, and longevity-focused wellness. At Eden Health Club, expert providers offer NAD+ IV dosing at 250mg or 500mg, NAD+ IM options from 50-150mg, and at-home injection training when appropriate. Licensed Experts. Advanced Credentials. Unmatched Care. Niagen may also be discussed as an NR alternative for select clients.",
+    "benefits": [
+      "Supports cellular energy, cognition, and recovery goals",
+      "Offers 250mg and 500mg NAD+ IV dosing",
+      "Includes IM dosing options from 50-150mg",
+      "At-home injection training is available when appropriate",
+      "Niagen may be discussed as an NR alternative"
+    ],
+    "whoItsFor": "Clients interested in longevity-focused wellness, cognitive support, recovery, or cellular energy support after provider review. Best for people who want clinically supervised dosing rather than unsupervised supplementation.",
+    "howItWorks": [
+      "Your provider reviews goals, tolerance, health history, and dosing options.",
+      "NAD+ is delivered by IV infusion or IM injection depending on the plan.",
+      "Infusion speed is adjusted for comfort because NAD+ can feel intense.",
+      "Follow-up recommendations may include repeat sessions, IM dosing, or Niagen."
+    ],
+    "treatmentDetails": {
+      "duration": "140–275 minutes depending on dose and tolerance",
+      "downtime": "None for most clients",
+      "painLevel": "Minimal to moderate depending on route and infusion tolerance",
+      "resultsTiming": "Varies; some clients notice same-day or next-day changes",
+      "sessionsRecommended": "As needed or in a provider-recommended series"
+    },
+    "pricing": {
+      "startingAt": 275,
+      "model": "per-treatment",
+      "note": "Pricing per infusion: $275 for 250mg / $450 for 500mg. Niagen (NR alternative) available separately at $400 for 250mg / $700 for 500mg, 75 minutes."
+    },
+    "ctaText": "Book NAD+ Therapy",
+    "consultRequired": false,
+    "contraindications": [
+      "Pregnancy or breastfeeding",
+      "Severe kidney disease or fluid restriction",
+      "Uncontrolled cardiovascular conditions",
+      "Known allergy or prior reaction to NAD+ ingredients",
+      "Active illness requiring higher-level medical care"
+    ],
+    "faqs": [
+      {
+        "question": "What is NAD+ therapy used for?",
+        "answer": "NAD+ therapy is used as wellness support for cellular energy, recovery, cognition, and longevity-focused goals. It is not a cure or emergency treatment."
+      },
+      {
+        "question": "Does Eden offer NAD+ IV and injections?",
+        "answer": "Yes. Eden offers NAD+ IV dosing at 250mg and 500mg, plus NAD+ IM options from 50-150mg when appropriate."
+      },
+      {
+        "question": "How long does a NAD+ IV take?",
+        "answer": "Timing depends on dose and tolerance. NAD+ can feel intense, so infusion speed may be adjusted for comfort and sessions can take longer than standard IV therapy."
+      },
+      {
+        "question": "What is Niagen?",
+        "answer": "Niagen is a nicotinamide riboside (NR) IV alternative to NAD+. Eden offers it at $400 for 250mg and $700 for 500mg as a 75-minute infusion. Your provider can explain whether it fits your goals."
+      },
+      {
+        "question": "How much does NAD+ therapy cost at Eden Health Club?",
+        "answer": "NAD+ IV is $275 for 250mg and $450 for 500mg. Niagen (NR alternative) is available at $400 for 250mg and $700 for 500mg as a 75-minute infusion. NAD+ IM dosing is available from 50-150mg with pricing based on dose."
+      },
+      {
+        "question": "Can I do NAD+ injections at home?",
+        "answer": "At-home injection training is available when your provider determines it is appropriate. Eden reviews dosing, storage, technique, and follow-up expectations."
+      }
+    ],
+    "schemaType": "MedicalTherapy",
+    "targetKeywords": {
+      "primary": "NAD IV therapy greenwood village",
+      "secondary": ["NAD+ IV Denver", "NAD injections near me", "cellular energy IV dtc", "NAD therapy cost", "Niagen alternative"]
+    },
+    "relatedServices": ["iv-therapy", "peptide-therapy", "medical-weight-loss", "prf-hair-restoration"],
+    "internalPageUrl": "https://edenhealthclubs.com/wellness-recovery/iv-therapy/"
+  }
+]
