@@ -1,0 +1,27 @@
+---
+import type { Suburb } from "../../data/types";
+
+interface Props {
+	suburb: Suburb;
+}
+
+const { suburb } = Astro.props;
+const driveText =
+	suburb.driveTimeMinutes === 0
+		? "Our home base in Greenwood Village"
+		: `${suburb.driveTimeMinutes} minutes from our Greenwood Village clinic`;
+---
+
+<section class="px-6 pb-10">
+	<div class="mx-auto max-w-3xl rounded-lg border border-slate-200 bg-slate-50 p-6">
+		<h2 class="text-2xl font-semibold text-eden-navy">{driveText}</h2>
+		<p class="mt-3 text-sm text-slate-700">Serving: {suburb.zipsServed.join(", ")}</p>
+		<div class="mt-5 flex flex-wrap gap-2">
+			{suburb.nearbyLandmarks.map((landmark) => (
+				<span class="rounded-full bg-white px-3 py-1 text-sm text-eden-navy ring-1 ring-slate-200">
+					{landmark}
+				</span>
+			))}
+		</div>
+	</div>
+</section>

@@ -1,22 +1,72 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getService, services, suburbs } from "../../data";
+import CTAStrip from "../../components/content/CTAStrip.astro";
+import FAQAccordion from "../../components/content/FAQAccordion.astro";
+import Hero from "../../components/content/Hero.astro";
+import LocalProximity from "../../components/content/LocalProximity.astro";
+import ServiceCards from "../../components/content/ServiceCards.astro";
+import TrustBar from "../../components/content/TrustBar.astro";
+import Breadcrumbs from "../../components/layout/Breadcrumbs.astro";
+import Footer from "../../components/layout/Footer.astro";
+import Header from "../../components/layout/Header.astro";
+import { suburbHubJsonLd, type BreadcrumbItem } from "../../lib/schema-org";
+import { suburbHubMeta } from "../../lib/seo";
+import { homeUrl, suburbHubUrl } from "../../lib/urls";
 
-// Suburb hub page (e.g. /locations/greenwood-village)
-// Placeholder route — Phase 3 will populate getStaticPaths from
-// src/data/suburbs.json.
 export async function getStaticPaths() {
-	return [];
+	return suburbs.map((suburb) => ({
+		params: { suburb: suburb.slug },
+		props: { suburb },
+	}));
 }
 
-const { suburb } = Astro.params;
+const { suburb } = Astro.props;
+const seo = suburbHubMeta(suburb);
+const highlightedServices = (suburb.highlightedServices ?? [])
+	.map((slug) => getService(slug))
+	.filter((service) => service !== undefined);
+const suburbFaqs = [
+	{
+		question: `Does Eden Health Club serve ${suburb.name}?`,
+		answer: `Yes. Eden serves ${suburb.name} from our Greenwood Village clinic, about ${suburb.driveTimeMinutes} minutes away.`,
+	},
+	{
+		question: "Where exactly is the clinic?",
+		answer: "Eden Health Club is located at 5990 S University Blvd in Greenwood Village, CO 80121.",
+	},
+	{
+		question: "Which services are available?",
+		answer: "Eden offers functional medicine, aesthetics, wellness and recovery, and performance-focused services. Highlighted services vary by local page, but the clinical team can help you choose the right next step.",
+	},
+];
+const breadcrumbItems: BreadcrumbItem[] = [
+	{ label: "Home", href: homeUrl() },
+	{ label: "Locations", href: null },
+	{ label: suburb.name, href: null },
+];
 ---
 
 <BaseLayout
-	title={`Coming soon — ${suburb} location page`}
-	description={`Eden Health Clubs services in ${suburb}, CO. Coming soon.`}
-	canonicalUrl={`https://landing.edenhealthclubs.com/locations/${suburb}`}
+	title={seo.title}
+	description={seo.description}
+	canonicalUrl={suburbHubUrl(suburb.slug)}
+	jsonLd={suburbHubJsonLd(suburb, breadcrumbItems)}
 >
-	<main class="flex min-h-screen items-center justify-center px-6">
-		<p class="text-eden-navy/80">Coming soon: {suburb} location page</p>
+	<Header />
+	<Breadcrumbs items={breadcrumbItems} />
+	<main>
+		<Hero variant="suburb-hub" suburb={suburb} />
+		<LocalProximity suburb={suburb} />
+		<TrustBar />
+		<CTAStrip serviceSlug="general" suburbSlug={suburb.slug} variant="primary" />
+		<ServiceCards
+			services={highlightedServices.length ? highlightedServices : services.slice(0, 6)}
+			suburbSlug={suburb.slug}
+			heading={`Services we offer near ${suburb.name}`}
+		/>
+		<FAQAccordion faqs={suburbFaqs} heading={`${suburb.name} questions`} />
+		<CTAStrip serviceSlug="general" suburbSlug={suburb.slug} variant="secondary" />
 	</main>
+	<Footer />
 </BaseLayout>

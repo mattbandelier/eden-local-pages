@@ -1,0 +1,41 @@
+---
+import { serviceHubUrl, suburbHubUrl } from "../../lib/urls";
+---
+
+<main class="bg-white px-6 py-16 sm:py-24">
+	<section class="mx-auto max-w-4xl text-center">
+		<p class="text-sm font-semibold uppercase text-eden-green">404</p>
+		<h1 class="mt-4 text-4xl font-semibold leading-tight text-eden-navy sm:text-5xl">
+			Your Sanctuary of Wellness.
+		</h1>
+		<p class="mx-auto mt-6 max-w-2xl text-base leading-8 text-slate-700 sm:text-lg">
+			We could not find that page, but the right next step is close by. Start from Eden Health Club, browse services, or find a nearby location.
+		</p>
+		<div class="mt-10 grid gap-4 sm:grid-cols-3">
+			<a
+				href="/"
+				class="rounded-lg border border-slate-200 p-5 text-left shadow-sm transition hover:border-eden-green hover:shadow-md"
+			>
+				<span class="text-sm font-semibold text-eden-green">Home</span>
+				<span class="mt-2 block text-lg font-semibold text-eden-navy">Return home</span>
+				<span class="mt-2 block text-sm leading-6 text-slate-600">Start again from the Eden landing hub.</span>
+			</a>
+			<a
+				href={serviceHubUrl("iv-therapy")}
+				class="rounded-lg border border-slate-200 p-5 text-left shadow-sm transition hover:border-eden-green hover:shadow-md"
+			>
+				<span class="text-sm font-semibold text-eden-green">Services</span>
+				<span class="mt-2 block text-lg font-semibold text-eden-navy">Browse services</span>
+				<span class="mt-2 block text-sm leading-6 text-slate-600">Explore IV Therapy and related wellness options.</span>
+			</a>
+			<a
+				href={suburbHubUrl("greenwood-village")}
+				class="rounded-lg border border-slate-200 p-5 text-left shadow-sm transition hover:border-eden-green hover:shadow-md"
+			>
+				<span class="text-sm font-semibold text-eden-green">Locations</span>
+				<span class="mt-2 block text-lg font-semibold text-eden-navy">Find your location</span>
+				<span class="mt-2 block text-sm leading-6 text-slate-600">See local pages served from Greenwood Village.</span>
+			</a>
+		</div>
+	</section>
+</main>

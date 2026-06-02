@@ -1,0 +1,15 @@
+---
+import Footer from "../components/layout/Footer.astro";
+import NotFoundContent from "../components/content/NotFoundContent.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { homeUrl } from "../lib/urls";
+
+const title = "Page Not Found | Eden Health Club";
+const description =
+	"This Eden Health Club page could not be found. Explore services, locations, or return to the homepage.";
+---
+
+<BaseLayout title={title} description={description} canonicalUrl={homeUrl()}>
+	<NotFoundContent />
+	<Footer />
+</BaseLayout>

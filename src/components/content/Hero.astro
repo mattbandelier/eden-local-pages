@@ -1,0 +1,47 @@
+---
+import type { Service, Suburb } from "../../data/types";
+
+interface Props {
+	variant: "service-hub" | "suburb-hub" | "combo";
+	service?: Service;
+	suburb?: Suburb;
+}
+
+const { variant, service, suburb } = Astro.props;
+
+if ((variant === "service-hub" || variant === "combo") && !service) {
+	throw new Error("Hero requires service for service-hub and combo variants.");
+}
+if ((variant === "suburb-hub" || variant === "combo") && !suburb) {
+	throw new Error("Hero requires suburb for suburb-hub and combo variants.");
+}
+
+const content = {
+	"service-hub": {
+		eyebrow: "Eden Health Club",
+		title: `${service?.name} in Greenwood Village`,
+		body: service?.longDescription,
+	},
+	"suburb-hub": {
+		eyebrow: "South Denver wellness",
+		title: `Eden Health Club in ${suburb?.name}`,
+		body: suburb?.neighborhoodBlurb,
+	},
+	combo: {
+		eyebrow: `${suburb?.name}, CO`,
+		title: `${service?.name} in ${suburb?.name}`,
+		body:
+			suburb?.driveTimeMinutes === 0
+				? `${service?.shortDescription} Available at Eden's S University Blvd flagship in Greenwood Village.`
+				: `${service?.shortDescription} ${suburb?.demographicHook}`,
+	},
+}[variant];
+---
+
+<section class="bg-white px-6 py-14 sm:py-20">
+	<div class="mx-auto max-w-3xl text-center">
+		<p class="text-sm font-semibold uppercase text-eden-green">{content.eyebrow}</p>
+		<h1 class="mt-4 text-4xl font-semibold leading-tight text-eden-navy sm:text-5xl">{content.title}</h1>
+		<p class="mt-6 text-base leading-8 text-slate-700 sm:text-lg">{content.body}</p>
+	</div>
+</section>

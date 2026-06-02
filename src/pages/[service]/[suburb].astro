@@ -1,22 +1,81 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getService, services, suburbs } from "../../data";
+import BenefitsList from "../../components/content/BenefitsList.astro";
+import CTAStrip from "../../components/content/CTAStrip.astro";
+import FAQAccordion from "../../components/content/FAQAccordion.astro";
+import Hero from "../../components/content/Hero.astro";
+import HowItWorks from "../../components/content/HowItWorks.astro";
+import LocalProximity from "../../components/content/LocalProximity.astro";
+import LocalAnswerBlock from "../../components/content/LocalAnswerBlock.astro";
+import PricingCard from "../../components/content/PricingCard.astro";
+import RelatedServices from "../../components/content/RelatedServices.astro";
+import TreatmentSnapshot from "../../components/content/TreatmentSnapshot.astro";
+import TrustBar from "../../components/content/TrustBar.astro";
+import Breadcrumbs from "../../components/layout/Breadcrumbs.astro";
+import Footer from "../../components/layout/Footer.astro";
+import Header from "../../components/layout/Header.astro";
+import { comboJsonLd, type BreadcrumbItem } from "../../lib/schema-org";
+import { comboMeta } from "../../lib/seo";
+import { comboUrl, homeUrl, serviceHubUrl } from "../../lib/urls";
 
-// Service x Suburb landing page (e.g. /botox/greenwood-village)
-// Placeholder route — Phase 3 will populate getStaticPaths from
-// src/data/services.json and src/data/suburbs.json.
 export async function getStaticPaths() {
-	return [];
+	return services.flatMap((service) =>
+		suburbs.map((suburb) => ({
+			params: { service: service.slug, suburb: suburb.slug },
+			props: { service, suburb },
+		})),
+	);
 }
 
-const { service, suburb } = Astro.params;
+const { service, suburb } = Astro.props;
+const seo = comboMeta(service, suburb);
+const relatedServices = service.relatedServices
+	.map((slug) => getService(slug))
+	.filter((relatedService) => relatedService !== undefined);
+const breadcrumbItems: BreadcrumbItem[] = [
+	{ label: "Home", href: homeUrl() },
+	{ label: "Services", href: serviceHubUrl(service.slug) },
+	{ label: service.name, href: serviceHubUrl(service.slug) },
+	{ label: suburb.name, href: null },
+];
 ---
 
 <BaseLayout
-	title={`Coming soon — ${service} in ${suburb}`}
-	description={`Eden Health Clubs ${service} services in ${suburb}, CO. Coming soon.`}
-	canonicalUrl={`https://landing.edenhealthclubs.com/${service}/${suburb}`}
+	title={seo.title}
+	description={seo.description}
+	canonicalUrl={comboUrl(service.slug, suburb.slug)}
+	jsonLd={comboJsonLd(service, suburb, breadcrumbItems)}
 >
-	<main class="flex min-h-screen items-center justify-center px-6">
-		<p class="text-eden-navy/80">Coming soon: {service} in {suburb}</p>
+	<Header />
+	<Breadcrumbs items={breadcrumbItems} />
+	<main>
+		<Hero variant="combo" service={service} suburb={suburb} />
+		<LocalProximity suburb={suburb} />
+		<TrustBar />
+		<CTAStrip
+			serviceSlug={service.slug}
+			suburbSlug={suburb.slug}
+			variant="primary"
+			ctaText={service.ctaText}
+			consultRequired={service.consultRequired}
+			serviceName={service.name}
+		/>
+		<LocalAnswerBlock service={service} suburb={suburb} />
+		<TreatmentSnapshot service={service} />
+		<BenefitsList benefits={service.benefits} />
+		<HowItWorks steps={service.howItWorks} />
+		<PricingCard pricing={service.pricing} consultRequired={service.consultRequired} ctaText={service.ctaText} />
+		<FAQAccordion faqs={service.faqs} />
+		<RelatedServices services={relatedServices} suburbSlug={suburb.slug} />
+		<CTAStrip
+			serviceSlug={service.slug}
+			suburbSlug={suburb.slug}
+			variant="secondary"
+			ctaText={service.ctaText}
+			consultRequired={service.consultRequired}
+			serviceName={service.name}
+		/>
 	</main>
+	<Footer />
 </BaseLayout>

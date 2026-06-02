@@ -1,0 +1,24 @@
+---
+interface Props {
+	steps: string[];
+	heading?: string;
+}
+
+const { steps, heading = "How it works" } = Astro.props;
+---
+
+<section class="bg-slate-50 px-6 py-12">
+	<div class="mx-auto max-w-3xl">
+		<h2 class="text-3xl font-semibold text-eden-navy">{heading}</h2>
+		<ol class="mt-8 space-y-6">
+			{steps.map((step, index) => (
+				<li class="flex gap-5">
+					<span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-eden-green/10 text-lg font-semibold text-eden-green">
+						{index + 1}
+					</span>
+					<p class="pt-2 text-base leading-7 text-eden-navy">{step}</p>
+				</li>
+			))}
+		</ol>
+	</div>
+</section>

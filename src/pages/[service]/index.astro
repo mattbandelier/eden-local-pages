@@ -1,22 +1,74 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getService, services } from "../../data";
+import BenefitsList from "../../components/content/BenefitsList.astro";
+import CTAStrip from "../../components/content/CTAStrip.astro";
+import FAQAccordion from "../../components/content/FAQAccordion.astro";
+import Hero from "../../components/content/Hero.astro";
+import HowItWorks from "../../components/content/HowItWorks.astro";
+import PricingCard from "../../components/content/PricingCard.astro";
+import RelatedServices from "../../components/content/RelatedServices.astro";
+import TreatmentSnapshot from "../../components/content/TreatmentSnapshot.astro";
+import TrustBar from "../../components/content/TrustBar.astro";
+import Breadcrumbs from "../../components/layout/Breadcrumbs.astro";
+import Footer from "../../components/layout/Footer.astro";
+import Header from "../../components/layout/Header.astro";
+import { serviceHubJsonLd, type BreadcrumbItem } from "../../lib/schema-org";
+import { serviceHubMeta } from "../../lib/seo";
+import { homeUrl, serviceHubUrl } from "../../lib/urls";
 
-// Service hub page (e.g. /botox)
-// Placeholder route — Phase 3 will populate getStaticPaths from
-// src/data/services.json.
 export async function getStaticPaths() {
-	return [];
+	return services.map((service) => ({
+		params: { service: service.slug },
+		props: { service },
+	}));
 }
 
-const { service } = Astro.params;
+const { service } = Astro.props;
+const seo = serviceHubMeta(service);
+const relatedServices = service.relatedServices
+	.map((slug) => getService(slug))
+	.filter((relatedService) => relatedService !== undefined);
+const breadcrumbItems: BreadcrumbItem[] = [
+	{ label: "Home", href: homeUrl() },
+	{ label: "Services", href: null },
+	{ label: service.name, href: null },
+];
 ---
 
 <BaseLayout
-	title={`Coming soon — ${service} hub page`}
-	description={`Eden Health Clubs ${service} services. Coming soon.`}
-	canonicalUrl={`https://landing.edenhealthclubs.com/${service}`}
+	title={seo.title}
+	description={seo.description}
+	canonicalUrl={serviceHubUrl(service.slug)}
+	jsonLd={serviceHubJsonLd(service, breadcrumbItems)}
 >
-	<main class="flex min-h-screen items-center justify-center px-6">
-		<p class="text-eden-navy/80">Coming soon: {service} hub page</p>
+	<Header />
+	<Breadcrumbs items={breadcrumbItems} />
+	<main>
+		<Hero variant="service-hub" service={service} />
+		<TrustBar />
+		<CTAStrip
+			serviceSlug={service.slug}
+			suburbSlug={null}
+			variant="primary"
+			ctaText={service.ctaText}
+			consultRequired={service.consultRequired}
+			serviceName={service.name}
+		/>
+		<TreatmentSnapshot service={service} />
+		<BenefitsList benefits={service.benefits} />
+		<HowItWorks steps={service.howItWorks} />
+		<PricingCard pricing={service.pricing} consultRequired={service.consultRequired} ctaText={service.ctaText} />
+		<FAQAccordion faqs={service.faqs} />
+		<RelatedServices services={relatedServices} />
+		<CTAStrip
+			serviceSlug={service.slug}
+			suburbSlug={null}
+			variant="secondary"
+			ctaText={service.ctaText}
+			consultRequired={service.consultRequired}
+			serviceName={service.name}
+		/>
 	</main>
+	<Footer />
 </BaseLayout>

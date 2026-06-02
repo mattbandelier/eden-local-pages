@@ -1,0 +1,30 @@
+---
+interface FAQ {
+	question: string;
+	answer: string;
+}
+
+interface Props {
+	faqs: FAQ[];
+	heading?: string;
+}
+
+const { faqs, heading = "Questions clients ask" } = Astro.props;
+---
+
+<section class="bg-slate-50 px-6 py-12">
+	<div class="mx-auto max-w-3xl">
+		<h2 class="text-3xl font-semibold text-eden-navy">{heading}</h2>
+		<div class="mt-8 divide-y divide-slate-200 rounded-lg border border-slate-200 bg-white">
+			{faqs.map((faq) => (
+				<details class="group p-5">
+					<summary class="flex cursor-pointer list-none items-center justify-between gap-4 text-base font-semibold text-eden-navy">
+						<span>{faq.question}</span>
+						<span class="text-eden-green transition group-open:rotate-180" aria-hidden="true">⌄</span>
+					</summary>
+					<p class="mt-4 text-sm leading-7 text-slate-700">{faq.answer}</p>
+				</details>
+			))}
+		</div>
+	</div>
+</section>

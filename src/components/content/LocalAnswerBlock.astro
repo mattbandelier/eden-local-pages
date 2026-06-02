@@ -1,0 +1,30 @@
+---
+import type { Service, Suburb } from "../../data/types";
+
+interface Props {
+	service: Service;
+	suburb: Suburb;
+}
+
+const { service, suburb } = Astro.props;
+const routeText =
+	suburb.driveTimeMinutes === 0
+		? "at Eden's Greenwood Village flagship on S University Blvd"
+		: `about ${suburb.driveTimeMinutes} minutes from ${suburb.name}`;
+const landmarkText = suburb.nearbyLandmarks.slice(0, 2).join(" and ");
+const actionText = service.consultRequired
+	? "Start with a consult so the clinical team can review fit, labs, and next steps."
+	: "Request the service and the team will confirm timing, fit, and any service-specific screening before your visit.";
+---
+
+<section class="px-6 py-10">
+	<div class="mx-auto max-w-3xl rounded-lg border border-eden-green/30 bg-eden-green/5 p-6">
+		<p class="text-sm font-semibold uppercase text-eden-green">Quick answer</p>
+		<h2 class="mt-2 text-2xl font-semibold leading-tight text-eden-navy">
+			Where can I get {service.name} near {suburb.name}?
+		</h2>
+		<p class="mt-4 text-base leading-7 text-slate-700">
+			Eden Health Club provides {service.name} {routeText}, serving clients near {landmarkText}. The visit is handled by licensed providers, with service-specific screening and transparent pricing. {actionText}
+		</p>
+	</div>
+</section>

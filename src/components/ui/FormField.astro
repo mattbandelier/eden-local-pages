@@ -1,0 +1,34 @@
+---
+interface Props {
+	label: string;
+	name: string;
+	type?: string;
+	required?: boolean;
+	autocomplete?: string;
+	inputmode?: "none" | "text" | "tel" | "url" | "email" | "numeric" | "decimal" | "search";
+}
+
+const {
+	label,
+	name,
+	type = "text",
+	required = false,
+	autocomplete,
+	inputmode,
+} = Astro.props;
+---
+
+<label class="block">
+	<span class="text-sm font-medium text-eden-navy">
+		{label}
+		{required && <span class="text-eden-green">*</span>}
+	</span>
+	<input
+		type={type}
+		name={name}
+		required={required}
+		autocomplete={autocomplete}
+		inputmode={inputmode}
+		class="mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm focus:border-eden-green focus:outline-none focus:ring-1 focus:ring-eden-green"
+	/>
+</label>

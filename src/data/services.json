@@ -700,21 +700,21 @@
   {
     "slug": "peptide-therapy",
     "name": "Peptide Therapy",
-    "nameVariants": ["peptide therapy", "peptide injections", "compounded peptide therapy", "growth hormone secretagogue therapy", "GHK-Cu", "wellness peptides"],
+    "nameVariants": ["peptide therapy", "peptide injections", "compounded peptide therapy", "wellness peptide protocols", "recovery peptide support", "performance peptide consult"],
     "category": "functional-medicine",
     "shortDescription": "Targeted peptide protocols for performance, recovery, skin quality, and wellness goals. Consultation and labs required.",
-    "longDescription": "Peptide therapy at Eden Health Club is personalized around goals such as recovery, sleep, performance, body composition, and skin quality. Our expert providers may discuss compounded peptide therapy, growth hormone secretagogue therapy, topical GHK-Cu, and NAD+ at-home injection training when clinically appropriate. Licensed Experts. Advanced Credentials. Unmatched Care. Baseline peptide panel bloodwork — including CBC, CMP, and IGF-1 — is required before starting any peptide protocol and is repeated every 6 months while on protocol.",
+    "longDescription": "Peptide therapy at Eden Health Club is personalized around goals such as recovery, sleep, performance, body composition, and skin quality. Our expert providers use medical history, goals, and lab review to determine whether a monitored peptide protocol is appropriate. Licensed Experts. Advanced Credentials. Unmatched Care. Baseline bloodwork is required before starting and is repeated on a provider-directed cadence while on protocol.",
     "benefits": [
       "Supports recovery, performance, sleep, and body composition goals",
-      "Requires baseline CBC, CMP, and IGF-1 panel for safe protocol selection",
-      "Includes compounded peptide therapy and growth hormone secretagogue options",
+      "Requires baseline labs for safe protocol selection",
+      "Uses category-based protocols matched to goals and eligibility",
       "Can complement hormone, weight loss, and recovery plans",
       "At-home injection training is available when appropriate"
     ],
     "whoItsFor": "Clients interested in targeted support for recovery, performance, skin quality, sleep, or body composition after a clinical review. Best for people who want a monitored protocol rather than ordering peptides without guidance.",
     "howItWorks": [
       "Start with a $100 consultation to review goals, history, and medications.",
-      "Baseline Peptide Panel ($75) — CBC, CMP, IGF-1 — is required before any protocol begins.",
+      "Baseline labs are required before any protocol begins.",
       "Your provider recommends a peptide protocol only when clinically appropriate.",
       "Follow-up labs every 6 months track response, dose timing, tolerance, and safety markers."
     ],
@@ -728,7 +728,7 @@
     "pricing": {
       "startingAt": 100,
       "model": "consult-required",
-      "note": "Peptide therapy starts with a $100 consultation plus a required $75 baseline Peptide Panel (CBC, CMP, IGF-1). Labs are repeated every 6 months while on protocol. Medication pricing varies by peptide, dose, pharmacy, and protocol."
+      "note": "Peptide therapy starts with a $100 consultation plus required baseline labs. Follow-up lab timing depends on the protocol and provider recommendation. Medication pricing varies by protocol, dose, pharmacy, and treatment plan."
     },
     "ctaText": "Book a Peptide Consult",
     "consultRequired": true,
@@ -742,15 +742,15 @@
     "faqs": [
       {
         "question": "What peptides does Eden offer?",
-        "answer": "Eden may discuss compounded peptide therapy, growth hormone secretagogue therapy, topical GHK-Cu, and NAD+ injection training depending on goals, labs, and eligibility."
+        "answer": "Eden may discuss category-based peptide protocols for recovery, performance, body composition, sleep, and skin-quality goals depending on medical history, labs, and eligibility."
       },
       {
         "question": "Do I need bloodwork for peptide therapy?",
-        "answer": "Yes — every Eden client starts with a baseline Peptide Panel ($75) including CBC, CMP, and IGF-1, plus a $100 consultation. Labs are repeated every 6 months while on protocol to monitor safety and adjust dosing."
+        "answer": "Yes. Every Eden client starts with a consultation and baseline labs before a peptide protocol is considered. Follow-up labs may be repeated based on the protocol, response, and provider recommendation."
       },
       {
-        "question": "What is a growth hormone secretagogue?",
-        "answer": "Growth hormone secretagogue therapy may be discussed for sleep, recovery, body composition, or performance goals when clinically appropriate. Eligibility is determined through medical consultation and bloodwork."
+        "question": "Who is a good candidate for peptide therapy?",
+        "answer": "A good candidate wants monitored support for recovery, sleep, performance, body composition, or skin quality and is willing to complete medical screening and lab review before starting."
       },
       {
         "question": "Can peptide therapy be combined with weight loss or TRT?",
@@ -758,11 +758,11 @@
       },
       {
         "question": "How much does peptide therapy cost at Eden Health Club?",
-        "answer": "Peptide therapy starts with a $100 consultation plus a required $75 Peptide Panel (CBC, CMP, IGF-1). Medication costs vary by peptide, dose, pharmacy, and protocol length."
+        "answer": "Peptide therapy starts with a $100 consultation plus required baseline labs. Medication costs vary by protocol, dose, pharmacy, and treatment-plan length."
       },
       {
         "question": "Does Eden teach at-home injections?",
-        "answer": "Yes. At-home injection training is available for select protocols, including NAD+ when appropriate, so dosing and technique are clear."
+        "answer": "Yes. At-home injection training is available for select protocols when appropriate, so dosing, storage, and technique are clear."
       },
       {
         "question": "Is a consultation required before treatment?",
@@ -772,7 +772,7 @@
     "schemaType": "MedicalTherapy",
     "targetKeywords": {
       "primary": "peptide therapy greenwood village",
-      "secondary": ["peptide therapy denver", "growth hormone therapy near me", "peptide injections clinic", "NAD+ therapy denver", "wellness peptides greenwood village"]
+      "secondary": ["peptide therapy denver", "peptide therapy near me", "peptide injections clinic", "recovery peptide consult", "wellness peptides greenwood village"]
     },
     "relatedServices": ["medical-weight-loss", "female-bhrt", "male-trt", "nad-iv-therapy"],
     "internalPageUrl": "https://edenhealthclubs.com/functional-medicine/peptide-injections/"
@@ -932,23 +932,23 @@
   {
     "slug": "nad-iv-therapy",
     "name": "NAD+ IV Therapy",
-    "nameVariants": ["NAD+ IV", "NAD IV therapy", "NAD injections", "NAD+ IM", "Niagen", "cellular energy IV"],
+    "nameVariants": ["NAD+ IV", "NAD IV therapy", "NAD injections", "NAD+ IM", "NR IV alternative", "cellular energy IV"],
     "category": "recovery",
     "shortDescription": "NAD+ IV and IM options for cellular energy, cognition, recovery, and longevity-focused wellness support.",
-    "longDescription": "NAD+ therapy supports cellular energy pathways tied to recovery, cognition, and longevity-focused wellness. At Eden Health Club, expert providers offer NAD+ IV dosing at 250mg or 500mg, NAD+ IM options from 50-150mg, and at-home injection training when appropriate. Licensed Experts. Advanced Credentials. Unmatched Care. Niagen may also be discussed as an NR alternative for select clients.",
+    "longDescription": "NAD+ therapy supports cellular energy pathways tied to recovery, cognition, and longevity-focused wellness. At Eden Health Club, expert providers review goals, health history, tolerance, and dosing options before recommending IV or injection-based support. Licensed Experts. Advanced Credentials. Unmatched Care. An NR IV alternative may also be discussed for select clients.",
     "benefits": [
       "Supports cellular energy, cognition, and recovery goals",
-      "Offers 250mg and 500mg NAD+ IV dosing",
-      "Includes IM dosing options from 50-150mg",
+      "Offers provider-directed NAD+ IV dosing options",
+      "Includes injection-based options when appropriate",
       "At-home injection training is available when appropriate",
-      "Niagen may be discussed as an NR alternative"
+      "NR IV alternatives may be discussed when appropriate"
     ],
     "whoItsFor": "Clients interested in longevity-focused wellness, cognitive support, recovery, or cellular energy support after provider review. Best for people who want clinically supervised dosing rather than unsupervised supplementation.",
     "howItWorks": [
       "Your provider reviews goals, tolerance, health history, and dosing options.",
       "NAD+ is delivered by IV infusion or IM injection depending on the plan.",
       "Infusion speed is adjusted for comfort because NAD+ can feel intense.",
-      "Follow-up recommendations may include repeat sessions, IM dosing, or Niagen."
+      "Follow-up recommendations may include repeat sessions, injection-based dosing, or an NR IV alternative."
     ],
     "treatmentDetails": {
       "duration": "140–275 minutes depending on dose and tolerance",
@@ -960,7 +960,7 @@
     "pricing": {
       "startingAt": 275,
       "model": "per-treatment",
-      "note": "Pricing per infusion: $275 for 250mg / $450 for 500mg. Niagen (NR alternative) available separately at $400 for 250mg / $700 for 500mg, 75 minutes."
+      "note": "Pricing per infusion starts at $275. Higher-dose NAD+ IV and NR IV alternatives are priced separately based on dose and visit length."
     },
     "ctaText": "Book NAD+ Therapy",
     "consultRequired": false,
@@ -978,19 +978,19 @@
       },
       {
         "question": "Does Eden offer NAD+ IV and injections?",
-        "answer": "Yes. Eden offers NAD+ IV dosing at 250mg and 500mg, plus NAD+ IM options from 50-150mg when appropriate."
+        "answer": "Yes. Eden offers NAD+ IV and injection-based options when appropriate. Your provider will recommend route and dose based on goals, tolerance, and medical review."
       },
       {
         "question": "How long does a NAD+ IV take?",
         "answer": "Timing depends on dose and tolerance. NAD+ can feel intense, so infusion speed may be adjusted for comfort and sessions can take longer than standard IV therapy."
       },
       {
-        "question": "What is Niagen?",
-        "answer": "Niagen is a nicotinamide riboside (NR) IV alternative to NAD+. Eden offers it at $400 for 250mg and $700 for 500mg as a 75-minute infusion. Your provider can explain whether it fits your goals."
+        "question": "What is an NR IV alternative?",
+        "answer": "NR is a NAD+ precursor option that may be discussed as an alternative for select clients. Your provider can explain whether NAD+ IV, injection-based support, or an NR IV alternative fits your goals."
       },
       {
         "question": "How much does NAD+ therapy cost at Eden Health Club?",
-        "answer": "NAD+ IV is $275 for 250mg and $450 for 500mg. Niagen (NR alternative) is available at $400 for 250mg and $700 for 500mg as a 75-minute infusion. NAD+ IM dosing is available from 50-150mg with pricing based on dose."
+        "answer": "NAD+ IV pricing starts at $275. Higher-dose infusions, injection-based options, and NR IV alternatives are priced separately based on dose, route, and visit length."
       },
       {
         "question": "Can I do NAD+ injections at home?",
@@ -1000,7 +1000,7 @@
     "schemaType": "MedicalTherapy",
     "targetKeywords": {
       "primary": "NAD IV therapy greenwood village",
-      "secondary": ["NAD+ IV Denver", "NAD injections near me", "cellular energy IV dtc", "NAD therapy cost", "Niagen alternative"]
+      "secondary": ["NAD+ IV Denver", "NAD injections near me", "cellular energy IV dtc", "NAD therapy cost", "NR IV alternative"]
     },
     "relatedServices": ["iv-therapy", "peptide-therapy", "medical-weight-loss", "prf-hair-restoration"],
     "internalPageUrl": "https://edenhealthclubs.com/wellness-recovery/iv-therapy/"

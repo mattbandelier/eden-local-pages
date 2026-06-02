@@ -1,0 +1,203 @@
+---
+interface Props {
+	serviceSlug: string;
+	suburbSlug: string | null;
+	heading?: string;
+	subheading?: string;
+	submitText?: string;
+}
+
+const {
+	serviceSlug,
+	suburbSlug = null,
+	heading = "Book a consult",
+	subheading = "We'll reach out within one business day.",
+	submitText = "Request a consult",
+} = Astro.props;
+---
+
+<section id="lead-form" class="rounded-lg border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+	<h2 class="text-2xl font-semibold tracking-tight text-eden-navy">{heading}</h2>
+	<p class="mt-1 text-sm text-slate-600">{subheading}</p>
+
+	<form
+		class="mt-6 space-y-4"
+		data-lead-form
+		data-service-slug={serviceSlug}
+		data-suburb-slug={suburbSlug ?? ""}
+		novalidate
+	>
+		<div class="grid gap-4 sm:grid-cols-2">
+			<label class="block">
+				<span class="text-sm font-medium text-eden-navy">First name</span>
+				<input
+					type="text"
+					name="firstName"
+					autocomplete="given-name"
+					class="mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm focus:border-eden-green focus:outline-none focus:ring-1 focus:ring-eden-green"
+				/>
+			</label>
+			<label class="block">
+				<span class="text-sm font-medium text-eden-navy">Last name</span>
+				<input
+					type="text"
+					name="lastName"
+					autocomplete="family-name"
+					class="mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm focus:border-eden-green focus:outline-none focus:ring-1 focus:ring-eden-green"
+				/>
+			</label>
+		</div>
+
+		<label class="block">
+			<span class="text-sm font-medium text-eden-navy">
+				Phone <span class="text-eden-green">*</span>
+			</span>
+			<input
+				type="tel"
+				name="phone"
+				required
+				autocomplete="tel"
+				inputmode="tel"
+				class="mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm focus:border-eden-green focus:outline-none focus:ring-1 focus:ring-eden-green"
+			/>
+		</label>
+
+		<label class="block">
+			<span class="text-sm font-medium text-eden-navy">
+				Email <span class="text-eden-green">*</span>
+			</span>
+			<input
+				type="email"
+				name="email"
+				required
+				autocomplete="email"
+				class="mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm focus:border-eden-green focus:outline-none focus:ring-1 focus:ring-eden-green"
+			/>
+		</label>
+
+		<label class="flex items-start gap-3">
+			<input
+				type="checkbox"
+				name="smsOptIn"
+				class="mt-1 h-4 w-4 rounded border-slate-300 text-eden-green focus:ring-eden-green"
+			/>
+			<span class="text-sm text-slate-700">
+				I agree to receive SMS messages from Eden Health Club. Reply STOP at any time to opt out. Message &amp; data rates may apply.
+			</span>
+		</label>
+
+		<label class="block">
+			<span class="text-sm font-medium text-eden-navy">Anything you'd like us to know</span>
+			<textarea
+				name="message"
+				rows="3"
+				class="mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm focus:border-eden-green focus:outline-none focus:ring-1 focus:ring-eden-green"
+			></textarea>
+		</label>
+
+		<div class="hidden" aria-hidden="true">
+			<label>
+				Website
+				<input type="text" name="website" tabindex="-1" autocomplete="off" />
+			</label>
+		</div>
+
+		<button
+			type="submit"
+			class="w-full rounded-md bg-eden-green px-6 py-3 text-base font-semibold text-white shadow-sm transition hover:bg-eden-green/90 focus:outline-none focus:ring-2 focus:ring-eden-green focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60"
+		>
+			{submitText}
+		</button>
+
+		<div
+			data-lead-form-success
+			hidden
+			class="rounded-md border border-eden-green bg-eden-green/5 p-4 text-sm text-eden-navy"
+		>
+			Thanks. We received your information and will reach out within one business day.
+		</div>
+
+		<div
+			data-lead-form-error
+			hidden
+			class="rounded-md border border-red-300 bg-red-50 p-4 text-sm text-red-900"
+		>
+			Something went wrong. Please try again, or call us at <a href="tel:+17206057678" class="underline">720-605-7678</a>.
+		</div>
+	</form>
+</section>
+
+<script>
+	import { trackLeadSubmit, trackLeadSubmitAttempt, trackLeadSubmitError } from "../../lib/tracking";
+
+	function getUrlParam(name: string): string | null {
+		const params = new URLSearchParams(window.location.search);
+		return params.get(name);
+	}
+
+	function initLeadForm(form: HTMLFormElement) {
+		const serviceSlug = form.dataset.serviceSlug || "";
+		const suburbSlug = form.dataset.suburbSlug || null;
+		const successEl = form.querySelector<HTMLElement>("[data-lead-form-success]");
+		const errorEl = form.querySelector<HTMLElement>("[data-lead-form-error]");
+		const submitBtn = form.querySelector<HTMLButtonElement>('button[type="submit"]');
+
+		form.addEventListener("submit", async (e) => {
+			e.preventDefault();
+			if (successEl) successEl.hidden = true;
+			if (errorEl) errorEl.hidden = true;
+			if (submitBtn) submitBtn.disabled = true;
+
+			trackLeadSubmitAttempt(serviceSlug, suburbSlug);
+
+			const fd = new FormData(form);
+			const payload = {
+				firstName: (fd.get("firstName") as string) || null,
+				lastName: (fd.get("lastName") as string) || null,
+				phone: (fd.get("phone") as string) || "",
+				email: (fd.get("email") as string) || "",
+				smsOptIn: fd.get("smsOptIn") === "on",
+				message: (fd.get("message") as string) || null,
+				service: serviceSlug,
+				suburb: suburbSlug,
+				sourcePage: window.location.pathname,
+				utmSource: getUrlParam("utm_source"),
+				utmMedium: getUrlParam("utm_medium"),
+				utmCampaign: getUrlParam("utm_campaign"),
+				utmTerm: getUrlParam("utm_term"),
+				utmContent: getUrlParam("utm_content"),
+				gclid: getUrlParam("gclid"),
+				referrer: document.referrer || null,
+				submittedAt: new Date().toISOString(),
+				website: (fd.get("website") as string) || "",
+			};
+
+			try {
+				const res = await fetch("/api/lead/", {
+					method: "POST",
+					headers: { "Content-Type": "application/json" },
+					body: JSON.stringify(payload),
+				});
+				const data = await res.json();
+				if (res.ok && data.success) {
+					trackLeadSubmit(serviceSlug, suburbSlug, payload.smsOptIn);
+					if (successEl) successEl.hidden = false;
+					form.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>("input, textarea").forEach((el) => {
+						if (el.type !== "hidden") el.value = "";
+						if (el.type === "checkbox") (el as HTMLInputElement).checked = false;
+					});
+				} else {
+					trackLeadSubmitError(serviceSlug, suburbSlug, data.error || "unknown");
+					if (errorEl) errorEl.hidden = false;
+				}
+			} catch {
+				trackLeadSubmitError(serviceSlug, suburbSlug, "network");
+				if (errorEl) errorEl.hidden = false;
+			} finally {
+				if (submitBtn) submitBtn.disabled = false;
+			}
+		});
+	}
+
+	document.querySelectorAll<HTMLFormElement>("[data-lead-form]").forEach(initLeadForm);
+</script>

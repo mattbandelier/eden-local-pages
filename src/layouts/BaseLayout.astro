@@ -1,13 +1,19 @@
 ---
 import "../styles/global.css";
+import StructuredData from "../components/seo/StructuredData.astro";
+import type { JsonLd } from "../lib/schema-org";
+import { ORIGIN } from "../lib/urls";
 
 interface Props {
 	title: string;
 	description: string;
 	canonicalUrl: string;
+	ogImage?: string;
+	jsonLd?: JsonLd[];
 }
 
-const { title, description, canonicalUrl } = Astro.props;
+const { title, description, canonicalUrl, ogImage, jsonLd = [] } = Astro.props;
+const resolvedOgImage = ogImage ?? `${ORIGIN}/og-default.svg`;
 ---
 
 <!DOCTYPE html>
@@ -25,9 +31,11 @@ const { title, description, canonicalUrl } = Astro.props;
 		<meta property="og:description" content={description} />
 		<meta property="og:type" content="website" />
 		<meta property="og:url" content={canonicalUrl} />
+		<meta property="og:image" content={resolvedOgImage} />
 
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
+		<StructuredData items={jsonLd} />
 
 		<!-- GTM container goes here in Phase 5 -->
 	</head>

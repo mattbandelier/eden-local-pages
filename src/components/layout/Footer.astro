@@ -1,0 +1,48 @@
+---
+import { services, suburbs } from "../../data";
+import { serviceHubUrl, suburbHubUrl } from "../../lib/urls";
+
+const phone = "720-605-7678";
+---
+
+<footer class="bg-eden-navy px-6 py-12 text-white">
+	<div class="mx-auto grid max-w-6xl gap-10 md:grid-cols-4">
+		<div class="md:col-span-2">
+			<p class="text-lg font-semibold">Eden Health Club</p>
+			<p class="mt-3 max-w-md text-sm leading-6 text-white/75">
+				5990 S University Blvd<br />
+				Greenwood Village, CO 80121
+			</p>
+			<a href="tel:+17206057678" class="mt-4 inline-block text-sm font-semibold text-white underline">{phone}</a>
+		</div>
+		<div>
+			<p class="text-sm font-semibold uppercase text-white">Services</p>
+			<div class="mt-4 grid gap-2">
+				{services.slice(0, 6).map((service) => (
+					<a href={serviceHubUrl(service.slug)} class="text-sm text-white/75 hover:text-white">{service.name}</a>
+				))}
+			</div>
+		</div>
+		<div>
+			<p class="text-sm font-semibold uppercase text-white">Locations</p>
+			<div class="mt-4 grid gap-2">
+				{suburbs.slice(0, 6).map((suburb) => (
+					<a href={suburbHubUrl(suburb.slug)} class="text-sm text-white/75 hover:text-white">{suburb.name}</a>
+				))}
+			</div>
+		</div>
+	</div>
+	<div class="mx-auto mt-10 max-w-6xl border-t border-white/10 pt-6">
+		<div class="flex flex-col gap-3 text-sm text-white/70 sm:flex-row sm:justify-between">
+			<p>© 2026 Eden Wellness, LLC. All Rights Reserved.</p>
+			<p>
+				<a href="https://edenhealthclubs.com/privacy-policy/" target="_blank" rel="noopener" class="hover:text-white">Privacy Policy</a>
+				/
+				<a href="https://edenhealthclubs.com/terms/" target="_blank" rel="noopener" class="hover:text-white">Terms</a>
+			</p>
+		</div>
+		<p class="mt-6 max-w-4xl text-xs leading-6 text-white/55">
+			Eden Health Club services are provided through licensed healthcare providers. Treatment plans are individualized based on medical evaluation. Eden Wellness, LLC offers general health and wellness information but is not a substitute for professional medical advice.
+		</p>
+	</div>
+</footer>

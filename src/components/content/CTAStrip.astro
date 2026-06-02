@@ -1,0 +1,62 @@
+---
+import LeadForm from "./LeadForm.astro";
+
+interface Props {
+	serviceSlug: string;
+	suburbSlug: string | null;
+	variant?: "primary" | "secondary";
+	ctaText?: string;
+	consultRequired?: boolean;
+	serviceName?: string;
+}
+
+const {
+	serviceSlug,
+	suburbSlug,
+	variant = "primary",
+	ctaText = "Request a consult",
+	consultRequired = true,
+	serviceName = "Eden",
+} = Astro.props;
+const isSecondary = variant === "secondary";
+const primaryHeading = consultRequired
+	? `Get a consult for ${serviceName}.`
+	: `Request ${serviceName}.`;
+const secondaryHeading = consultRequired
+	? "Talk with Eden about your next step."
+	: `Ready to book ${serviceName}?`;
+const formHeading = consultRequired
+	? isSecondary
+		? "Request a consult"
+		: "Book a consult"
+	: ctaText;
+const formSubheading = consultRequired
+	? isSecondary
+		? "We'll help you choose the right next step."
+		: "We'll reach out within one business day."
+	: "Share your details and our team will confirm the right timing, fit, and next available option.";
+---
+
+<section class={isSecondary ? "bg-eden-navy px-6 py-14" : "bg-slate-50 px-6 py-12"}>
+	<div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[1fr_440px] lg:items-start">
+		<div class={isSecondary ? "text-white" : "text-eden-navy"}>
+			<p class={isSecondary ? "text-sm font-semibold uppercase text-white" : "text-sm font-semibold uppercase text-eden-green"}>
+				{isSecondary ? "Ready when you are" : "Start here"}
+			</p>
+			<h2 class="mt-3 text-3xl font-semibold">
+				{isSecondary ? secondaryHeading : primaryHeading}
+			</h2>
+			<p class={isSecondary ? "mt-4 max-w-xl text-base leading-7 text-white/80" : "mt-4 max-w-xl text-base leading-7 text-slate-700"}>
+				Share a few details and our team will follow up. Prefer to call?{" "}
+				<a href="tel:+17206057678" class="font-semibold underline">720-605-7678</a>
+			</p>
+		</div>
+		<LeadForm
+			serviceSlug={serviceSlug}
+			suburbSlug={suburbSlug}
+			heading={formHeading}
+			subheading={formSubheading}
+			submitText={ctaText}
+		/>
+	</div>
+</section>

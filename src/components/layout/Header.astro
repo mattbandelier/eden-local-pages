@@ -1,0 +1,48 @@
+---
+import { services, suburbs } from "../../data";
+import { serviceHubUrl, suburbHubUrl } from "../../lib/urls";
+
+const phone = "720-605-7678";
+const phoneHref = "tel:+17206057678";
+---
+
+<header class="border-b border-slate-200 bg-white">
+	<nav class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4" aria-label="Main navigation">
+		<a href="/" class="text-lg font-semibold text-eden-navy">Eden Health Club</a>
+		<div class="hidden items-center gap-6 md:flex">
+			<a href={serviceHubUrl(services[0].slug)} class="text-sm font-medium text-eden-navy hover:text-eden-green">Services</a>
+			<a href={suburbHubUrl(suburbs[0].slug)} class="text-sm font-medium text-eden-navy hover:text-eden-green">Locations</a>
+			<a href={phoneHref} data-phone-link class="text-sm font-semibold text-eden-navy hover:text-eden-green">{phone}</a>
+			<a href="#lead-form" class="rounded-md bg-eden-green px-4 py-2 text-sm font-semibold text-white hover:bg-eden-green/90">Book a consult</a>
+		</div>
+		<details class="relative md:hidden">
+			<summary class="cursor-pointer list-none rounded-md border border-slate-200 px-3 py-2 text-sm font-semibold text-eden-navy">
+				Menu
+			</summary>
+			<div class="absolute right-0 z-20 mt-3 w-72 rounded-lg border border-slate-200 bg-white p-4 shadow-lg">
+				<p class="text-xs font-semibold uppercase text-slate-500">Services</p>
+				<div class="mt-2 grid gap-2">
+					{services.slice(0, 5).map((service) => (
+						<a href={serviceHubUrl(service.slug)} class="text-sm text-eden-navy hover:text-eden-green">{service.name}</a>
+					))}
+				</div>
+				<p class="mt-4 text-xs font-semibold uppercase text-slate-500">Locations</p>
+				<div class="mt-2 grid gap-2">
+					{suburbs.slice(0, 5).map((suburb) => (
+						<a href={suburbHubUrl(suburb.slug)} class="text-sm text-eden-navy hover:text-eden-green">{suburb.name}</a>
+					))}
+				</div>
+				<a href={phoneHref} data-phone-link class="mt-4 block text-sm font-semibold text-eden-navy">{phone}</a>
+				<a href="#lead-form" class="mt-4 block rounded-md bg-eden-green px-4 py-2 text-center text-sm font-semibold text-white">Book a consult</a>
+			</div>
+		</details>
+	</nav>
+</header>
+
+<script>
+	import { trackPhoneClick } from "../../lib/tracking";
+
+	document.querySelectorAll<HTMLAnchorElement>("[data-phone-link]").forEach((link) => {
+		link.addEventListener("click", () => trackPhoneClick(link.textContent?.trim() || "720-605-7678"));
+	});
+</script>

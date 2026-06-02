@@ -1,22 +1,45 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import "../data";
+import { services } from "../data";
+import CTAStrip from "../components/content/CTAStrip.astro";
+import PillarGrid from "../components/content/PillarGrid.astro";
+import ServiceCards from "../components/content/ServiceCards.astro";
+import TrustBar from "../components/content/TrustBar.astro";
+import Footer from "../components/layout/Footer.astro";
+import Header from "../components/layout/Header.astro";
+import { homepageJsonLd } from "../lib/schema-org";
+import { homepageMeta } from "../lib/seo";
+import { homeUrl } from "../lib/urls";
+
+const seo = homepageMeta();
 ---
 
 <BaseLayout
-	title="Eden Health Club — Coming Soon"
-	description="Functional medicine, aesthetics, recovery, and fitness, under one roof in Greenwood Village."
-	canonicalUrl="https://landing.edenhealthclubs.com/"
+	title={seo.title}
+	description={seo.description}
+	canonicalUrl={homeUrl()}
+	jsonLd={homepageJsonLd()}
 >
-	<main class="flex min-h-screen items-center justify-center px-6">
-		<div class="max-w-xl text-center">
-			<h1 class="text-3xl font-semibold tracking-tight text-eden-navy sm:text-4xl">
-				Eden Health Club — coming soon.
-			</h1>
-			<div class="mx-auto mt-6 h-px w-16 bg-eden-green" aria-hidden="true"></div>
-			<p class="mt-6 text-base leading-relaxed text-eden-navy/80 sm:text-lg">
-				Functional medicine, aesthetics, recovery, and fitness, under one roof in Greenwood Village.
-			</p>
-		</div>
+	<Header />
+	<main>
+		<section class="bg-white px-6 py-16 sm:py-20">
+			<div class="mx-auto max-w-3xl text-center">
+				<p class="text-sm font-semibold uppercase text-eden-green">Greenwood Village wellness clinic</p>
+				<h1 class="mt-4 text-4xl font-semibold leading-tight text-eden-navy sm:text-5xl">
+					Your Sanctuary of Wellness.
+				</h1>
+				<p class="mt-6 text-base leading-8 text-slate-700 sm:text-lg">
+					Functional medicine, aesthetics, recovery, and fitness under one roof in Greenwood Village. Licensed Experts. Advanced Credentials. Unmatched Care.
+				</p>
+				<a href="#lead-form" class="mt-8 inline-flex rounded-md bg-eden-green px-6 py-3 text-base font-semibold text-white shadow-sm hover:bg-eden-green/90">
+					Book a consult
+				</a>
+			</div>
+		</section>
+		<TrustBar />
+		<PillarGrid />
+		<ServiceCards services={services} heading="Popular services" limit={6} />
+		<CTAStrip serviceSlug="general" suburbSlug={null} variant="primary" />
 	</main>
+	<Footer />
 </BaseLayout>

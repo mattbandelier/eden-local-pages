@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://landing.edenhealthclubs.com/sitemap.xml

@@ -1,0 +1,18 @@
+---
+const items = [
+	"Licensed Experts. Advanced Credentials.",
+	"Greenwood Village's wellness home",
+	"Memberships available",
+];
+---
+
+<section class="border-y border-slate-200 bg-white px-6 py-5">
+	<div class="mx-auto flex max-w-6xl flex-col gap-4 sm:flex-row sm:items-center sm:justify-center sm:gap-8">
+		{items.map((item) => (
+			<div class="flex items-center gap-2 text-sm font-medium text-eden-navy">
+				<span class="h-2 w-2 rounded-full bg-eden-green" aria-hidden="true"></span>
+				<span>{item}</span>
+			</div>
+		))}
+	</div>
+</section>
