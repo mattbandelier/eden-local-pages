@@ -14,6 +14,7 @@ interface Props {
 
 const { title, description, canonicalUrl, ogImage, jsonLd = [] } = Astro.props;
 const resolvedOgImage = ogImage ?? `${ORIGIN}/og-default.svg`;
+const gtmId = import.meta.env.PUBLIC_GTM_CONTAINER_ID;
 ---
 
 <!DOCTYPE html>
@@ -37,9 +38,30 @@ const resolvedOgImage = ogImage ?? `${ORIGIN}/og-default.svg`;
 		<meta name="generator" content={Astro.generator} />
 		<StructuredData items={jsonLd} />
 
-		<!-- GTM container goes here in Phase 5 -->
+		{gtmId && (
+			<>
+				{/* GTM container */}
+				<script is:inline define:vars={{ gtmId }}>
+					(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+					new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+					j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+					'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+					})(window,document,'script','dataLayer',gtmId);
+				</script>
+			</>
+		)}
 	</head>
 	<body class="min-h-screen bg-white text-eden-navy antialiased">
+		{gtmId && (
+			<noscript>
+				<iframe
+					src={`https://www.googletagmanager.com/ns.html?id=${gtmId}`}
+					height="0"
+					width="0"
+					style="display:none;visibility:hidden"
+				></iframe>
+			</noscript>
+		)}
 		<slot />
 	</body>
 </html>
