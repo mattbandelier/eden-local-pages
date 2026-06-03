@@ -180,6 +180,13 @@ const {
 				});
 				const data = await res.json();
 				if (res.ok && data.success) {
+					if (typeof window !== "undefined") {
+						window.dataLayer = window.dataLayer || [];
+						window.dataLayer.push({
+							user_email: payload.email,
+							user_phone: payload.phone,
+						});
+					}
 					trackLeadSubmit(serviceSlug, suburbSlug, payload.smsOptIn);
 					if (successEl) successEl.hidden = false;
 					form.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>("input, textarea").forEach((el) => {
