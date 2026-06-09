@@ -22,7 +22,11 @@ interface LeadRequestBody {
 	utmTerm?: unknown;
 	utmContent?: unknown;
 	gclid?: unknown;
+	gbraid?: unknown;
+	wbraid?: unknown;
 	referrer?: unknown;
+	firstTouch?: unknown;
+	lastTouch?: unknown;
 	website?: unknown;
 }
 
@@ -42,7 +46,11 @@ interface LeadPayload {
 	utmTerm: string | null;
 	utmContent: string | null;
 	gclid: string | null;
+	gbraid: string | null;
+	wbraid: string | null;
 	referrer: string | null;
+	firstTouch: Record<string, string | null> | null;
+	lastTouch: Record<string, string | null> | null;
 	submittedAt: string;
 }
 
@@ -62,6 +70,19 @@ function normalizePhone(value: unknown): string | null {
 
 function isValidEmail(value: unknown): value is string {
 	return typeof value === "string" && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim());
+}
+
+function attributionOrNull(value: unknown): Record<string, string | null> | null {
+	if (!value || typeof value !== "object" || Array.isArray(value)) return null;
+
+	return Object.entries(value as Record<string, unknown>).reduce(
+		(acc, [key, entry]) => {
+			if (typeof entry === "string") acc[key] = entry.trim() || null;
+			if (entry === null) acc[key] = null;
+			return acc;
+		},
+		{} as Record<string, string | null>,
+	);
 }
 
 function getClientIp(request: Request, clientAddress?: string): string {
@@ -137,7 +158,11 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
 		utmTerm: stringOrNull(body.utmTerm),
 		utmContent: stringOrNull(body.utmContent),
 		gclid: stringOrNull(body.gclid),
+		gbraid: stringOrNull(body.gbraid),
+		wbraid: stringOrNull(body.wbraid),
 		referrer: stringOrNull(body.referrer),
+		firstTouch: attributionOrNull(body.firstTouch),
+		lastTouch: attributionOrNull(body.lastTouch),
 		submittedAt: new Date().toISOString(),
 	};
 

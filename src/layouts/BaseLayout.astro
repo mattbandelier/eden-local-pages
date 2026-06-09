@@ -15,6 +15,7 @@ interface Props {
 const { title, description, canonicalUrl, ogImage, jsonLd = [] } = Astro.props;
 const resolvedOgImage = ogImage ?? `${ORIGIN}/og-default.svg`;
 const gtmId = import.meta.env.PUBLIC_GTM_CONTAINER_ID;
+const clarityProjectId = import.meta.env.PUBLIC_CLARITY_PROJECT_ID;
 ---
 
 <!DOCTYPE html>
@@ -49,6 +50,15 @@ const gtmId = import.meta.env.PUBLIC_GTM_CONTAINER_ID;
 					})(window,document,'script','dataLayer',gtmId);
 				</script>
 			</>
+		)}
+		{clarityProjectId && (
+			<script is:inline define:vars={{ clarityProjectId }}>
+				(function(c,l,a,r,i,t,y){
+					c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+					t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+					y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+				})(window, document, "clarity", "script", clarityProjectId);
+			</script>
 		)}
 	</head>
 	<body class="min-h-screen bg-white text-eden-navy antialiased">

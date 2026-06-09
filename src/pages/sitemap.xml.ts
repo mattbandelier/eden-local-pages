@@ -3,12 +3,26 @@ import { comboUrl, homeUrl, serviceHubUrl, suburbHubUrl } from "../lib/urls";
 
 export const prerender = true;
 
+const today = new Date().toISOString().slice(0, 10);
+
 const urls = [
-	homeUrl(),
-	...services.map((service) => serviceHubUrl(service.slug)),
-	...suburbs.map((suburb) => suburbHubUrl(suburb.slug)),
+	{ loc: homeUrl(), priority: "1.0", changefreq: "weekly" },
+	...services.map((service) => ({
+		loc: serviceHubUrl(service.slug),
+		priority: "0.9",
+		changefreq: "weekly",
+	})),
+	...suburbs.map((suburb) => ({
+		loc: suburbHubUrl(suburb.slug),
+		priority: suburb.slug === "greenwood-village" ? "0.9" : "0.7",
+		changefreq: "monthly",
+	})),
 	...services.flatMap((service) =>
-		suburbs.map((suburb) => comboUrl(service.slug, suburb.slug)),
+		suburbs.map((suburb) => ({
+			loc: comboUrl(service.slug, suburb.slug),
+			priority: suburb.slug === "greenwood-village" ? "0.9" : "0.8",
+			changefreq: "weekly",
+		})),
 	),
 ];
 
@@ -27,7 +41,10 @@ export function GET() {
 ${urls
 	.map(
 		(url) => `	<url>
-		<loc>${escapeXml(url)}</loc>
+		<loc>${escapeXml(url.loc)}</loc>
+		<lastmod>${today}</lastmod>
+		<changefreq>${url.changefreq}</changefreq>
+		<priority>${url.priority}</priority>
 	</url>`,
 	)
 	.join("\n")}

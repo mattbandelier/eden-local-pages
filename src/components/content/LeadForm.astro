@@ -128,6 +128,7 @@ const {
 </section>
 
 <script>
+	import { getAttribution, initAttribution } from "../../lib/attribution";
 	import { trackLeadSubmit, trackLeadSubmitAttempt, trackLeadSubmitError } from "../../lib/tracking";
 
 	function getUrlParam(name: string): string | null {
@@ -136,6 +137,7 @@ const {
 	}
 
 	function initLeadForm(form: HTMLFormElement) {
+		initAttribution();
 		const serviceSlug = form.dataset.serviceSlug || "";
 		const suburbSlug = form.dataset.suburbSlug || null;
 		const successEl = form.querySelector<HTMLElement>("[data-lead-form-success]");
@@ -151,6 +153,7 @@ const {
 			trackLeadSubmitAttempt(serviceSlug, suburbSlug);
 
 			const fd = new FormData(form);
+			const attribution = getAttribution();
 			const payload = {
 				firstName: (fd.get("firstName") as string) || null,
 				lastName: (fd.get("lastName") as string) || null,
@@ -167,7 +170,11 @@ const {
 				utmTerm: getUrlParam("utm_term"),
 				utmContent: getUrlParam("utm_content"),
 				gclid: getUrlParam("gclid"),
+				gbraid: getUrlParam("gbraid"),
+				wbraid: getUrlParam("wbraid"),
 				referrer: document.referrer || null,
+				firstTouch: attribution.firstTouch,
+				lastTouch: attribution.lastTouch,
 				submittedAt: new Date().toISOString(),
 				website: (fd.get("website") as string) || "",
 			};

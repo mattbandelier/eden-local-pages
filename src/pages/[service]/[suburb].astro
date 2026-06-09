@@ -17,6 +17,7 @@ import Breadcrumbs from "../../components/layout/Breadcrumbs.astro";
 import Footer from "../../components/layout/Footer.astro";
 import Header from "../../components/layout/Header.astro";
 import { comboJsonLd, type BreadcrumbItem } from "../../lib/schema-org";
+import { combinedFaqs } from "../../lib/local-faqs";
 import { comboMeta } from "../../lib/seo";
 import { comboUrl, homeUrl, serviceHubUrl } from "../../lib/urls";
 
@@ -31,6 +32,7 @@ export async function getStaticPaths() {
 
 const { service, suburb } = Astro.props;
 const seo = comboMeta(service, suburb);
+const faqs = combinedFaqs(service, suburb);
 const relatedServices = service.relatedServices
 	.map((slug) => getService(slug))
 	.filter((relatedService) => relatedService !== undefined);
@@ -67,7 +69,7 @@ const breadcrumbItems: BreadcrumbItem[] = [
 		<BenefitsList benefits={service.benefits} />
 		<HowItWorks steps={service.howItWorks} />
 		<PricingCard pricing={service.pricing} consultRequired={service.consultRequired} ctaText={service.ctaText} />
-		<FAQAccordion faqs={service.faqs} />
+		<FAQAccordion faqs={faqs} heading={`${service.name} questions from ${suburb.name} clients`} />
 		<RelatedServices services={relatedServices} suburbSlug={suburb.slug} />
 		<MainSiteLink service={service} />
 		<CTAStrip
