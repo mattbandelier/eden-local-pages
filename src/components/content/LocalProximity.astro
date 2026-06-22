@@ -8,14 +8,17 @@ interface Props {
 const { suburb } = Astro.props;
 const driveText =
 	suburb.driveTimeMinutes === 0
-		? "Our home base in Greenwood Village"
+		? "Visit Eden at our Greenwood Village clinic"
 		: `${suburb.driveTimeMinutes} minutes from our Greenwood Village clinic`;
 ---
 
-<section class="px-6 pb-10">
-	<div class="mx-auto max-w-3xl rounded-lg border border-slate-200 bg-slate-50 p-6">
-		<h2 class="text-2xl font-semibold text-eden-navy">{driveText}</h2>
-		<p class="mt-3 text-sm text-slate-700">Serving: {suburb.zipsServed.join(", ")}</p>
+<section class="px-6 py-8">
+	<div class="mx-auto grid max-w-6xl gap-5 rounded-lg border border-eden-line bg-white p-6 shadow-sm lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+		<div>
+			<p class="text-sm font-semibold uppercase text-eden-green">One clinic, local access</p>
+			<h2 class="mt-2 text-2xl font-semibold text-eden-navy">{driveText}</h2>
+			<p class="mt-3 text-sm leading-6 text-slate-700">Common nearby ZIP codes served: {suburb.zipsServed.join(", ")}.</p>
+		</div>
 		<div class="mt-5 flex flex-wrap gap-2">
 			{suburb.nearbyLandmarks.map((landmark) => (
 				<span class="rounded-full bg-white px-3 py-1 text-sm text-eden-navy ring-1 ring-slate-200">

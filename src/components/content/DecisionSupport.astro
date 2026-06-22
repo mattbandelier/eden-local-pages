@@ -1,0 +1,50 @@
+---
+import type { Service, Suburb } from "../../data/types";
+
+interface Props {
+	service: Service;
+	suburb: Suburb;
+}
+
+const { service, suburb } = Astro.props;
+const nameVariants = service.nameVariants.slice(0, 5);
+const contraindications = service.contraindications.slice(0, 5);
+const localKeywords = [
+	service.targetKeywords.primary,
+	...service.targetKeywords.secondary.slice(0, 3),
+	...suburb.localKeywords.slice(0, 2),
+];
+const localPositioning =
+	suburb.driveTimeMinutes === 0
+		? "Eden Health Club has one clinic in Greenwood Village, serving clients from South Denver, DTC, Cherry Hills Village, Centennial, Englewood, Littleton, and Highlands Ranch."
+		: `Eden Health Club serves ${suburb.name} clients from one Greenwood Village clinic, with local access near ${suburb.nearbyLandmarks.slice(0, 2).join(" and ")}.`;
+---
+
+<section class="px-6 py-12">
+	<div class="mx-auto grid max-w-6xl gap-5 lg:grid-cols-3">
+		<article class="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
+			<p class="text-sm font-semibold uppercase text-eden-green">Search match</p>
+			<h2 class="mt-2 text-2xl font-semibold text-eden-navy">Clear language for the service you are comparing.</h2>
+			<div class="mt-5 flex flex-wrap gap-2">
+				{nameVariants.map((variant) => (
+					<span class="rounded-md bg-eden-paper px-3 py-2 text-sm font-medium text-eden-navy">{variant}</span>
+				))}
+			</div>
+		</article>
+		<article class="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
+			<p class="text-sm font-semibold uppercase text-eden-green">Clinical fit</p>
+			<h2 class="mt-2 text-2xl font-semibold text-eden-navy">When we slow down first.</h2>
+			<ul class="mt-5 space-y-3 text-sm leading-6 text-slate-700">
+				{contraindications.map((item) => <li>{item}</li>)}
+			</ul>
+		</article>
+		<article class="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
+			<p class="text-sm font-semibold uppercase text-eden-green">{suburb.name} intent</p>
+			<h2 class="mt-2 text-2xl font-semibold text-eden-navy">Local care without the guesswork.</h2>
+			<p class="mt-5 text-sm leading-6 text-slate-700">{localPositioning}</p>
+			<p class="mt-4 text-sm leading-6 text-slate-700">
+				Useful if you are comparing {service.name} near {suburb.name}, Greenwood Village, or the South Denver metro.
+			</p>
+		</article>
+	</div>
+</section>

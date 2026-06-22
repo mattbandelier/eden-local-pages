@@ -1,0 +1,307 @@
+---
+import type { Service, Suburb } from "../../data/types";
+
+interface Props {
+	service: Service;
+	suburb: Suburb;
+}
+
+interface MoneyPageContent {
+	eyebrow: string;
+	heading: string;
+	intro: string;
+	answerHeading: string;
+	answerBody: string;
+	mechanismHeading: string;
+	mechanismBody: string;
+	audienceHeading: string;
+	audienceBody: string;
+	cards: Array<{
+		title: string;
+		body: string;
+	}>;
+	whyEden: string[];
+	pairingTitle: string;
+	pairingBody: string;
+}
+
+const { service, suburb } = Astro.props;
+const localPhrase =
+	suburb.driveTimeMinutes === 0
+		? "at Eden's Greenwood Village clinic"
+		: `for ${suburb.name} clients at Eden's Greenwood Village clinic`;
+
+const contentBySlug: Record<string, MoneyPageContent> = {
+	"diamondglow-facial": {
+		eyebrow: "Medical-grade facial strategy",
+		heading: "A skin reset that does more than feel relaxing.",
+		intro:
+			"DiamondGlow is strongest when it is positioned as part of a skin plan, not a one-off spa facial. Eden uses it for clients who want visible glow, smoother texture, cleaner pores, and better serum delivery with minimal downtime.",
+		answerHeading: "What is DiamondGlow at Eden?",
+		answerBody:
+			"DiamondGlow is a SkinMedica facial that exfoliates, extracts, and infuses Pro-Infusion serums in one visit. It is commonly compared with Hydrafacial, but Eden offers DiamondGlow because it pairs well with medical-grade skincare, injectables, laser services, and monthly skin maintenance.",
+		mechanismHeading: "A facial with a clearer clinical job.",
+		mechanismBody:
+			"DiamondGlow is not trying to replace deeper resurfacing or laser work. Its job is to refresh the surface, clear congestion, infuse targeted serum, and keep skin looking maintained between larger services.",
+		audienceHeading: "For clients who want skin to look cared for, not overworked.",
+		audienceBody:
+			"Best for clients preparing for an event, maintaining results between treatments, or wanting a visible glow visit without planning around meaningful downtime.",
+		cards: [
+			{
+				title: "DiamondGlow vs Hydrafacial",
+				body:
+					"Both are popular glow treatments, but DiamondGlow uses a diamond-tip device and SkinMedica Pro-Infusion serums. Eden's page makes the distinction clear so searchers do not have to guess.",
+			},
+			{
+				title: "Built for real skin goals",
+				body:
+					"Strong fit for dullness, congestion, uneven texture, hydration support, and pre-event polish when you want a treatment with little interruption to your week.",
+			},
+			{
+				title: "Pairs with bigger plans",
+				body:
+					"DiamondGlow can sit between Botox, filler, BBL, microneedling, and home skincare so clients keep skin quality moving between larger treatments.",
+			},
+		],
+		whyEden: [
+			"SkinMedica serum options are selected around your skin goal.",
+			"Treatment timing can be coordinated with injectables, BBL, and microneedling.",
+			"Pricing and add-ons are clear before the visit starts.",
+			"One Greenwood Village clinic keeps the experience local and accountable.",
+		],
+		pairingTitle: "Best next step for glow, texture, and maintenance.",
+		pairingBody:
+			"Book DiamondGlow when you want a polished skin reset without committing to laser downtime. If your concern is deeper pigment, redness, acne scarring, or laxity, Eden can help compare BBL, microneedling, and related options.",
+	},
+	botox: {
+		eyebrow: "Natural injectable planning",
+		heading: "Botox should look measured, not obvious.",
+		intro:
+			"The highest-converting Botox page should answer the real fear behind the search: people want smoother lines, but they do not want to look frozen. Eden's positioning is conservative, anatomy-aware, and focused on natural movement.",
+		answerHeading: "What makes Eden's Botox approach different?",
+		answerBody:
+			"Eden's Botox visits focus on expression patterns, dose, muscle strength, and facial balance. The goal is a refreshed look that softens visible lines while preserving normal expression when appropriately dosed.",
+		mechanismHeading: "A wrinkle relaxer is only as good as the plan.",
+		mechanismBody:
+			"Botox works by temporarily relaxing targeted muscles that create expression lines. The strategic part is choosing dose, placement, and restraint so the face still feels like yours.",
+		audienceHeading: "For people who want refreshed, not frozen.",
+		audienceBody:
+			"Best for clients noticing forehead lines, frown lines, crow's feet, or early prevention needs who want a measured injectable plan from a local Eden provider.",
+		cards: [
+			{
+				title: "Dose mapping before treatment",
+				body:
+					"Your injector reviews forehead, frown line, crow's feet, and facial movement patterns before recommending units.",
+			},
+			{
+				title: "Realistic result timing",
+				body:
+					"Results usually begin within several days and are judged around the two-week mark. That expectation belongs above the fold for high-intent searchers.",
+			},
+			{
+				title: "Alternatives when relevant",
+				body:
+					"Eden can discuss Botox, Dysport, or Daxxify when appropriate, so clients understand the category instead of shopping a single word.",
+			},
+		],
+		whyEden: [
+			"Licensed injectors focus on facial movement and proportion.",
+			"Transparent per-unit pricing helps clients understand expected range.",
+			"Botox can be coordinated with filler, DiamondGlow, BBL, or skin plans.",
+			"One Greenwood Village clinic serves South Denver and DTC clients.",
+		],
+		pairingTitle: "Best next step for expression lines and prevention.",
+		pairingBody:
+			"Book Botox if forehead lines, frown lines, or crow's feet are the main concern. If volume, lip shape, pigment, or skin texture is the issue, Eden can route you toward filler, BBL, DiamondGlow, or microneedling instead.",
+	},
+	"lip-filler": {
+		eyebrow: "Shape-first lip enhancement",
+		heading: "Subtle lip filler starts with proportion, not volume.",
+		intro:
+			"Lip filler pages convert when they reassure first-time clients that the goal is not an overfilled look. Eden's positioning should lead with shape, hydration, symmetry, and facial balance.",
+		answerHeading: "What is Eden's lip filler approach?",
+		answerBody:
+			"Eden uses lip filler to support shape, border definition, hydration, symmetry, and volume when appropriate. The treatment plan depends on anatomy, prior filler history, swelling tolerance, and the client's desired level of enhancement.",
+		mechanismHeading: "Lip filler should solve the right problem.",
+		mechanismBody:
+			"Some lips need border support, some need hydration, some need symmetry, and some need volume. Eden's page is built around that distinction because better planning usually creates a more natural result.",
+		audienceHeading: "For first-time or subtle enhancement clients.",
+		audienceBody:
+			"Best for clients who want a polished lip shape, better proportion, or softer hydration without chasing a trend or changing the balance of the face.",
+		cards: [
+			{
+				title: "Shape and border",
+				body:
+					"Some clients need definition more than volume. Eden's page should make that distinction clear for people nervous about looking overdone.",
+			},
+			{
+				title: "Product matched to anatomy",
+				body:
+					"Product choice matters. Eden can discuss options such as Juvederm and Restylane families when clinically appropriate for the goal.",
+			},
+			{
+				title: "Swelling expectations",
+				body:
+					"Immediate volume is not the final result. Clients need clear expectations around swelling, bruising, and refinement before booking.",
+			},
+		],
+		whyEden: [
+			"Injector-led planning keeps the focus on balance, not trend volume.",
+			"Pricing starts by syringe, with recommendations reviewed before treatment.",
+			"First-time filler clients get space to discuss subtle goals.",
+			"One Greenwood Village clinic gives South Denver clients a local option.",
+		],
+		pairingTitle: "Best next step for shape, hydration, and symmetry.",
+		pairingBody:
+			"Book lip filler when you want a measured enhancement or better definition. If you are unsure whether you need filler, Botox, skincare, or resurfacing, Eden can help compare the options before treatment.",
+	},
+	"iv-therapy": {
+		eyebrow: "Wellness IV planning",
+		heading: "Choose an IV by goal, then let Eden confirm the fit.",
+		intro:
+			"IV pages work best when they stop sounding like a menu and start helping people choose: hydration, energy, recovery, immunity, glow, travel support, or performance routines.",
+		answerHeading: "What is IV Therapy at Eden?",
+		answerBody:
+			"Eden's IV Therapy is a monitored wellness infusion visit using formulas selected around the client's goals. It is not positioned as a cure or disease treatment; the focus is hydration, nutrient support, recovery routines, and provider-guided fit.",
+		mechanismHeading: "A wellness IV should start with the goal.",
+		mechanismBody:
+			"IV Therapy is easier to choose when the visit is organized around why you are booking: hydration, energy, recovery, glow, immunity support, travel, or performance rhythm.",
+		audienceHeading: "For active clients who want a structured reset.",
+		audienceBody:
+			"Best for clients balancing training, travel, demanding schedules, recovery needs, or wellness routines who want a monitored in-clinic infusion.",
+		cards: [
+			{
+				title: "Goal-based formulas",
+				body:
+					"Eden can help clients compare hydration, energy, glow, immunity, recovery, relief, and restore-style options based on what they want supported.",
+			},
+			{
+				title: "Clinical setting",
+				body:
+					"Visits are monitored in a clinical wellness environment, which separates Eden from casual drip-bar positioning.",
+			},
+			{
+				title: "Fits active lifestyles",
+				body:
+					"Useful around travel, training, demanding work periods, recovery routines, or when clients want structured wellness support.",
+			},
+		],
+		whyEden: [
+			"Formula selection is guided by goals and visit context.",
+			"IV therapy can connect with fitness, recovery, peptide, and functional medicine programs.",
+			"Clear session pricing gives clients a simple starting point.",
+			"One Greenwood Village clinic serves Denver, DTC, Littleton, and nearby suburbs.",
+		],
+		pairingTitle: "Best next step for hydration, recovery, and wellness support.",
+		pairingBody:
+			"Book IV Therapy if you want a monitored wellness infusion and help selecting the right formula. If your goals are longevity-focused or NAD-specific, Eden can compare NAD+ IV Therapy as a separate option.",
+	},
+	microneedling: {
+		eyebrow: "Collagen and texture strategy",
+		heading: "Microneedling is a series, not a quick fix.",
+		intro:
+			"Microneedling pages should educate quickly: it is for texture, pores, fine lines, acne scarring, and gradual collagen support. The conversion angle is realistic expectations and a plan.",
+		answerHeading: "What is microneedling at Eden?",
+		answerBody:
+			"Microneedling creates controlled micro-injuries to support collagen remodeling and visible skin texture improvement over time. Eden positions it as a treatment series for appropriate candidates, with PRP upgrades discussed when relevant.",
+		mechanismHeading: "Collagen work takes a plan.",
+		mechanismBody:
+			"Microneedling is not a one-night glow treatment. It is a collagen-stimulation strategy that works gradually, especially for texture, pores, fine lines, and mild scarring.",
+		audienceHeading: "For clients ready for series-based skin improvement.",
+		audienceBody:
+			"Best for clients who want a structured skin-quality plan and understand that texture changes usually build across multiple visits.",
+		cards: [
+			{
+				title: "Texture and pores",
+				body:
+					"Best fit for clients focused on uneven texture, enlarged pores, dullness, fine lines, or mild acne scarring.",
+			},
+			{
+				title: "Series-based progress",
+				body:
+					"Many clients start with a series rather than a single visit, especially for acne scars or deeper texture goals.",
+			},
+			{
+				title: "PRP upgrade path",
+				body:
+					"PRP can be discussed when platelet-rich support fits the skin goal and clinical plan.",
+			},
+		],
+		whyEden: [
+			"Provider-guided candidacy screening helps avoid poor timing during active irritation.",
+			"Pricing and add-ons are reviewed before treatment.",
+			"Microneedling can be coordinated with DiamondGlow, BBL, and skincare routines.",
+			"One Greenwood Village clinic gives South Denver clients a local skin-quality option.",
+		],
+		pairingTitle: "Best next step for gradual skin quality improvement.",
+		pairingBody:
+			"Book microneedling if texture, pores, fine lines, or acne scarring are the main concern. If you want a no-downtime glow visit first, DiamondGlow may be the lighter starting point.",
+	},
+};
+
+const content = contentBySlug[service.slug];
+---
+
+{content && (
+	<section class="bg-eden-paper px-6 py-14">
+		<div class="mx-auto max-w-6xl">
+			<div class="max-w-3xl">
+				<p class="text-sm font-semibold uppercase text-eden-green">{content.eyebrow}</p>
+				<h2 class="mt-3 text-3xl font-semibold leading-tight text-eden-navy sm:text-4xl">{content.heading}</h2>
+				<p class="mt-5 text-base leading-8 text-slate-700">{content.intro}</p>
+			</div>
+
+			<div class="mt-8 grid gap-5 lg:grid-cols-[0.95fr_1.05fr]">
+				<article class="rounded-lg bg-eden-forest p-6 text-white shadow-sm">
+					<p class="text-sm font-semibold uppercase text-eden-sage">Short answer</p>
+					<h3 class="mt-3 text-2xl font-semibold">{content.answerHeading}</h3>
+					<p class="mt-4 text-sm leading-7 text-white/78">{content.answerBody}</p>
+				</article>
+				<div class="grid gap-4 sm:grid-cols-2">
+					<article class="rounded-lg border border-eden-line bg-white p-6 shadow-sm">
+						<p class="text-sm font-semibold uppercase text-eden-green">Mechanism</p>
+						<h3 class="mt-2 text-2xl font-semibold leading-tight text-eden-navy">{content.mechanismHeading}</h3>
+						<p class="mt-4 text-sm leading-7 text-slate-700">{content.mechanismBody}</p>
+					</article>
+					<article class="rounded-lg border border-eden-line bg-white p-6 shadow-sm">
+						<p class="text-sm font-semibold uppercase text-eden-green">Best fit</p>
+						<h3 class="mt-2 text-2xl font-semibold leading-tight text-eden-navy">{content.audienceHeading}</h3>
+						<p class="mt-4 text-sm leading-7 text-slate-700">{content.audienceBody}</p>
+					</article>
+				</div>
+			</div>
+
+			<div class="mt-5 grid gap-4 md:grid-cols-3">
+				{content.cards.map((card) => (
+					<article class="rounded-lg border border-eden-line bg-white p-5 shadow-sm">
+						<h3 class="text-lg font-semibold leading-tight text-eden-navy">{card.title}</h3>
+						<p class="mt-3 text-sm leading-6 text-slate-700">{card.body}</p>
+					</article>
+				))}
+			</div>
+
+			<div class="mt-6 grid gap-5 lg:grid-cols-[0.9fr_1.1fr]">
+				<article class="rounded-lg border border-eden-line bg-white p-6 shadow-sm">
+					<p class="text-sm font-semibold uppercase text-eden-green">Why Eden</p>
+					<h3 class="mt-2 text-2xl font-semibold leading-tight text-eden-navy">Eden is not trying to be the busiest option. It is trying to be the clearest one.</h3>
+					<ul class="mt-5 space-y-3 text-sm leading-6 text-slate-700">
+						{content.whyEden.map((item) => (
+							<li>{item}</li>
+						))}
+					</ul>
+				</article>
+				<article class="rounded-lg border border-eden-line bg-white p-6 shadow-sm">
+					<p class="text-sm font-semibold uppercase text-eden-green">{suburb.name} next step</p>
+					<h3 class="mt-2 text-2xl font-semibold leading-tight text-eden-navy">{content.pairingTitle}</h3>
+					<p class="mt-4 text-sm leading-7 text-slate-700">{content.pairingBody}</p>
+					<p class="mt-4 text-sm leading-7 text-slate-700">
+						Available {localPhrase}. Request a visit and Eden will confirm the right starting point before you commit.
+					</p>
+					<a href="#lead-form" class="mt-5 inline-flex rounded-md bg-eden-sage px-5 py-3 text-sm font-semibold text-eden-forest">
+						Start with Eden
+					</a>
+				</article>
+			</div>
+		</div>
+	</section>
+)}

@@ -8,15 +8,18 @@ const { steps, heading = "How it works" } = Astro.props;
 ---
 
 <section class="bg-slate-50 px-6 py-12">
-	<div class="mx-auto max-w-3xl">
-		<h2 class="text-3xl font-semibold text-eden-navy">{heading}</h2>
-		<ol class="mt-8 space-y-6">
+	<div class="mx-auto max-w-6xl">
+		<div class="max-w-3xl">
+			<p class="text-sm font-semibold uppercase text-eden-green">How it works at Eden</p>
+			<h2 class="mt-2 text-3xl font-semibold text-eden-navy">{heading}</h2>
+		</div>
+		<ol class="mt-8 grid gap-4 md:grid-cols-2">
 			{steps.map((step, index) => (
-				<li class="flex gap-5">
-					<span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-eden-green/10 text-lg font-semibold text-eden-green">
+				<li class="flex gap-5 rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
+					<span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-eden-green/10 text-lg font-semibold text-eden-green">
 						{index + 1}
 					</span>
-					<p class="pt-2 text-base leading-7 text-eden-navy">{step}</p>
+					<p class="pt-1 text-base leading-7 text-eden-navy">{step}</p>
 				</li>
 			))}
 		</ol>

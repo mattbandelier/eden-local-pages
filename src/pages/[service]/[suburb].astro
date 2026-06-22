@@ -3,13 +3,17 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import { getService, services, suburbs } from "../../data";
 import BenefitsList from "../../components/content/BenefitsList.astro";
 import CTAStrip from "../../components/content/CTAStrip.astro";
+import DecisionSupport from "../../components/content/DecisionSupport.astro";
 import FAQAccordion from "../../components/content/FAQAccordion.astro";
 import Hero from "../../components/content/Hero.astro";
 import HowItWorks from "../../components/content/HowItWorks.astro";
 import LocalProximity from "../../components/content/LocalProximity.astro";
 import LocalAnswerBlock from "../../components/content/LocalAnswerBlock.astro";
 import MainSiteLink from "../../components/content/MainSiteLink.astro";
+import MobileActionBar from "../../components/content/MobileActionBar.astro";
+import MoneyPageLayer from "../../components/content/MoneyPageLayer.astro";
 import PricingCard from "../../components/content/PricingCard.astro";
+import PremiumHeader from "../../components/layout/PremiumHeader.astro";
 import RelatedServices from "../../components/content/RelatedServices.astro";
 import TreatmentSnapshot from "../../components/content/TreatmentSnapshot.astro";
 import TrustBar from "../../components/content/TrustBar.astro";
@@ -42,6 +46,14 @@ const breadcrumbItems: BreadcrumbItem[] = [
 	{ label: service.name, href: serviceHubUrl(service.slug) },
 	{ label: suburb.name, href: null },
 ];
+const premiumMoneyPageKeys = new Set([
+	"diamondglow-facial/greenwood-village",
+	"botox/greenwood-village",
+	"lip-filler/greenwood-village",
+	"iv-therapy/littleton",
+	"microneedling/greenwood-village",
+]);
+const isPremiumMoneyPage = premiumMoneyPageKeys.has(`${service.slug}/${suburb.slug}`);
 ---
 
 <BaseLayout
@@ -50,25 +62,31 @@ const breadcrumbItems: BreadcrumbItem[] = [
 	canonicalUrl={comboUrl(service.slug, suburb.slug)}
 	jsonLd={comboJsonLd(service, suburb, breadcrumbItems)}
 >
-	<Header />
+	{isPremiumMoneyPage ? <PremiumHeader /> : <Header />}
 	<Breadcrumbs items={breadcrumbItems} />
-	<main>
-		<Hero variant="combo" service={service} suburb={suburb} />
+	<main class="pb-20 md:pb-0">
+		<Hero variant="combo" service={service} suburb={suburb} premium={isPremiumMoneyPage} />
 		<LocalProximity suburb={suburb} />
 		<TrustBar />
-		<CTAStrip
-			serviceSlug={service.slug}
-			suburbSlug={suburb.slug}
-			variant="primary"
-			ctaText={service.ctaText}
-			consultRequired={service.consultRequired}
-			serviceName={service.name}
-		/>
+		{!isPremiumMoneyPage && (
+			<CTAStrip
+				serviceSlug={service.slug}
+				suburbSlug={suburb.slug}
+				variant="primary"
+				ctaText={service.ctaText}
+				consultRequired={service.consultRequired}
+				serviceName={service.name}
+			/>
+		)}
 		<LocalAnswerBlock service={service} suburb={suburb} />
+		{isPremiumMoneyPage && <MoneyPageLayer service={service} suburb={suburb} />}
 		<TreatmentSnapshot service={service} />
-		<BenefitsList benefits={service.benefits} />
+		<BenefitsList benefits={service.benefits} intro={service.whoItsFor} />
+		{!isPremiumMoneyPage && <DecisionSupport service={service} suburb={suburb} />}
 		<HowItWorks steps={service.howItWorks} />
-		<PricingCard pricing={service.pricing} consultRequired={service.consultRequired} ctaText={service.ctaText} />
+		<div id="pricing">
+			<PricingCard pricing={service.pricing} consultRequired={service.consultRequired} ctaText={service.ctaText} />
+		</div>
 		<FAQAccordion faqs={faqs} heading={`${service.name} questions from ${suburb.name} clients`} />
 		<RelatedServices services={relatedServices} suburbSlug={suburb.slug} />
 		<MainSiteLink service={service} />
@@ -81,5 +99,6 @@ const breadcrumbItems: BreadcrumbItem[] = [
 			serviceName={service.name}
 		/>
 	</main>
+	<MobileActionBar service={service} />
 	<Footer />
 </BaseLayout>

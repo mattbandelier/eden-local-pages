@@ -5,9 +5,10 @@ interface Props {
 	variant: "service-hub" | "suburb-hub" | "combo";
 	service?: Service;
 	suburb?: Suburb;
+	premium?: boolean;
 }
 
-const { variant, service, suburb } = Astro.props;
+const { variant, service, suburb, premium = false } = Astro.props;
 
 if ((variant === "service-hub" || variant === "combo") && !service) {
 	throw new Error("Hero requires service for service-hub and combo variants.");
@@ -32,16 +33,155 @@ const content = {
 		title: `${service?.name} in ${suburb?.name}`,
 		body:
 			suburb?.driveTimeMinutes === 0
-				? `${service?.shortDescription} Available at Eden's S University Blvd flagship in Greenwood Village.`
+				? `${service?.shortDescription} Available at Eden's Greenwood Village clinic.`
 				: `${service?.shortDescription} ${suburb?.demographicHook}`,
 	},
 }[variant];
+
+const isCombo = variant === "combo";
+const heroPanels: Record<string, { label: string; items: string[] }> = {
+	"diamondglow-facial": {
+		label: "Before you book",
+		items: [
+			"60-minute SkinMedica DiamondGlow facial",
+			"Exfoliation, extraction, and serum infusion",
+			"Transparent service-menu pricing",
+			"Minimal downtime for most clients",
+		],
+	},
+	botox: {
+		label: "Before you book",
+		items: [
+			"Natural movement is the goal",
+			"Common upper-face plans use 20-50 units",
+			"Results build over several days",
+			"Full effect is judged around 14 days",
+		],
+	},
+	"lip-filler": {
+		label: "Before you book",
+		items: [
+			"Shape, hydration, and proportion first",
+			"Product choice depends on your anatomy",
+			"Swelling and bruising are possible",
+			"Final refinement appears after swelling settles",
+		],
+	},
+	"iv-therapy": {
+		label: "Before you book",
+		items: [
+			"Choose by goal: hydration, energy, recovery, or glow",
+			"75-minute monitored wellness infusion",
+			"Formula selection is confirmed before treatment",
+			"Transparent session pricing",
+		],
+	},
+	microneedling: {
+		label: "Before you book",
+		items: [
+			"Best for texture, pores, fine lines, and mild acne scarring",
+			"Often planned as a series",
+			"PRP upgrade may be discussed when appropriate",
+			"Downtime depends on treatment depth and skin response",
+		],
+	},
+};
+const heroPanel =
+	isCombo && service
+		? heroPanels[service.slug] ?? {
+				label: "Before you book",
+				items: [
+					service.treatmentDetails.duration,
+					service.treatmentDetails.downtime,
+					service.consultRequired ? "Provider consult first" : "Fit and timing confirmed before treatment",
+					suburb?.driveTimeMinutes === 0 ? "One Greenwood Village clinic" : `Served from Eden's Greenwood Village clinic`,
+				],
+			}
+		: null;
+const proofPoints = isCombo
+	? [
+			suburb?.driveTimeMinutes === 0 ? "One Greenwood Village clinic" : `${suburb?.driveTimeMinutes} min from ${suburb?.name}`,
+			service?.consultRequired ? "Provider consult first" : "Service-specific screening",
+			"Licensed Eden team",
+		]
+	: [];
+
+const premiumHeroBodies: Record<string, string> = {
+	"diamondglow-facial": "A medical-grade SkinMedica facial for glow, texture, congestion, and serum infusion at Eden's Greenwood Village clinic.",
+	botox: "A conservative injectable visit for smoother expression lines, natural movement, and a refreshed look at Eden's Greenwood Village clinic.",
+	"lip-filler": "A shape-first lip enhancement visit focused on proportion, hydration, symmetry, and natural-looking balance.",
+	"iv-therapy": "A monitored wellness infusion visit for hydration, recovery, energy, glow, or goal-based nutrient support.",
+	microneedling: "A collagen-focused skin treatment for texture, pores, fine lines, and gradual skin-quality improvement.",
+};
+const displayBody = premium && service ? premiumHeroBodies[service.slug] ?? content.body : content.body;
 ---
 
-<section class="bg-white px-6 py-14 sm:py-20">
-	<div class="mx-auto max-w-3xl text-center">
-		<p class="text-sm font-semibold uppercase text-eden-green">{content.eyebrow}</p>
-		<h1 class="mt-4 text-4xl font-semibold leading-tight text-eden-navy sm:text-5xl">{content.title}</h1>
-		<p class="mt-6 text-base leading-8 text-slate-700 sm:text-lg">{content.body}</p>
+<section class={isCombo ? "relative max-w-full overflow-hidden bg-eden-forest px-6 py-12 text-white sm:py-16 lg:py-20" : "bg-white px-6 py-14 sm:py-20"}>
+	{premium && (
+		<img
+			src="/assets/eden-health-club-office.webp"
+			alt=""
+			width="960"
+			height="960"
+			loading="eager"
+			decoding="async"
+			class="absolute inset-0 h-full w-full object-cover"
+			aria-hidden="true"
+		/>
+	)}
+	<div class={premium ? "absolute inset-0 bg-[linear-gradient(90deg,rgba(25,79,57,0.92),rgba(25,79,57,0.70)_48%,rgba(25,79,57,0.28)),linear-gradient(180deg,rgba(25,79,57,0.10),rgba(25,79,57,0.76))]" : isCombo ? "absolute inset-0 bg-[linear-gradient(135deg,rgba(15,39,51,0.42),rgba(15,39,51,0.14)_45%,rgba(255,255,255,0.06))]" : "hidden"} aria-hidden="true"></div>
+	<div class={isCombo ? "relative mx-auto grid max-w-6xl gap-8 overflow-hidden lg:grid-cols-[1.05fr_0.95fr] lg:items-end" : "mx-auto max-w-3xl text-center"}>
+		<div class="min-w-0">
+			{premium && (
+				<a
+					href="https://www.google.com/maps/search/?api=1&query=Eden%20Health%20Club%205990%20S%20University%20Blvd%20Greenwood%20Village%20CO%2080121"
+					target="_blank"
+					rel="noopener"
+					class="mb-6 inline-flex items-center gap-3 rounded-md border border-white/20 bg-white/12 px-4 py-3 text-sm text-white shadow-sm backdrop-blur transition hover:bg-white/18"
+				>
+					<span class="font-semibold">Google Reviews</span>
+					<span class="rounded bg-eden-sage px-2 py-1 font-semibold text-eden-forest">4.9</span>
+				</a>
+			)}
+			<p class={isCombo ? "text-sm font-semibold uppercase tracking-wide text-white/75" : "text-sm font-semibold uppercase text-eden-green"}>{content.eyebrow}</p>
+			<h1 class={isCombo ? "mt-4 max-w-full break-words text-3xl font-semibold leading-tight text-white sm:text-6xl" : "mt-4 text-4xl font-semibold leading-tight text-eden-navy sm:text-5xl"}>{content.title}</h1>
+			<p class={isCombo ? "mt-6 max-w-full break-words text-base leading-8 text-white/82 sm:text-lg" : "mt-6 text-base leading-8 text-slate-700 sm:text-lg"}>{displayBody}</p>
+			{isCombo && (
+				<div class="mt-8 flex flex-col gap-3 sm:flex-row">
+					<a href="#lead-form" class="inline-flex items-center justify-center rounded-md bg-eden-sage px-6 py-3 text-base font-semibold text-eden-forest shadow-sm transition hover:bg-eden-sage/90">
+						{service?.ctaText}
+					</a>
+					<a href="#details" class="inline-flex items-center justify-center rounded-md border border-white/25 bg-white/10 px-6 py-3 text-base font-semibold text-white transition hover:bg-white/15">
+						See details
+					</a>
+				</div>
+			)}
+		</div>
+		{isCombo && !premium && (
+			<div class="min-w-0 overflow-hidden rounded-lg border border-white/15 bg-white/10 shadow-2xl backdrop-blur">
+				<img
+					src="/assets/eden-health-club-reception.webp"
+					alt="Eden Health Club front desk in Greenwood Village"
+					width="1024"
+					height="768"
+					loading="eager"
+					decoding="async"
+					class="hidden aspect-[4/3] w-full object-cover sm:block"
+				/>
+				<div class="p-5">
+					<p class="text-sm font-semibold uppercase tracking-wide text-white/70">{heroPanel?.label}</p>
+					<ul class="mt-4 grid gap-3">
+						{heroPanel?.items.map((item) => (
+							<li class="min-w-0 break-words rounded-md bg-white/10 px-4 py-3 text-sm font-medium text-white">{item}</li>
+						))}
+					</ul>
+					<div class="mt-5 grid gap-2 border-t border-white/10 pt-5">
+						{proofPoints.map((point) => (
+							<p class="text-sm text-white/78">{point}</p>
+						))}
+					</div>
+				</div>
+			</div>
+		)}
 	</div>
 </section>

@@ -4,6 +4,16 @@
  * Exposed as Tailwind theme colors so utilities like
  * bg-eden-navy, text-eden-green work everywhere. */
 @theme {
-	--color-eden-navy: #0F2733;
-	--color-eden-green: #557214;
+	--color-eden-navy: #1C2D26;
+	--color-eden-green: #256648;
+	--color-eden-forest: #194F39;
+	--color-eden-sage: #A9CE88;
+	--color-eden-paper: #F7FAF1;
+	--color-eden-line: #DCE8D6;
+}
+
+html,
+body {
+	max-width: 100%;
+	overflow-x: hidden;
 }
