@@ -67,6 +67,69 @@ const heroPanels: Record<string, { label: string; items: string[] }> = {
 			"Final refinement appears after swelling settles",
 		],
 	},
+	"dermal-fillers": {
+		label: "Before you book",
+		items: [
+			"Volume support and contour balance",
+			"Product choice depends on tissue depth",
+			"Swelling and bruising are possible",
+			"Pricing is reviewed before treatment",
+		],
+	},
+	"medical-weight-loss": {
+		label: "Before you book",
+		items: [
+			"Medical history and lab review first",
+			"Provider-guided eligibility screening",
+			"Plans are monitored over time",
+			"Program pricing depends on fit",
+		],
+	},
+	"bbl-photofacial": {
+		label: "Before you book",
+		items: [
+			"Built for visible tone and sun-damage concerns",
+			"Skin type and timing are screened first",
+			"Series planning may be recommended",
+			"Downtime varies by settings and skin response",
+		],
+	},
+	"female-bhrt": {
+		label: "Before you book",
+		items: [
+			"Lab review is required",
+			"Provider consult before treatment planning",
+			"Pellet and non-pellet options may be discussed",
+			"Follow-up keeps dosing accountable",
+		],
+	},
+	"male-trt": {
+		label: "Before you book",
+		items: [
+			"Bloodwork is required before treatment",
+			"Provider reviews safety and eligibility",
+			"Plans are monitored over time",
+			"Follow-up labs guide adjustments",
+		],
+	},
+	"peptide-therapy": {
+		label: "Before you book",
+		items: [
+			"Provider-led protocol selection",
+			"Baseline screening comes first",
+			"Goals guide the recommendation",
+			"Not every client is a candidate",
+		],
+	},
+	"prf-hair-restoration": {
+		label: "Before you book",
+		items: [
+			"Consult confirms hair-loss pattern",
+			"Series planning is common",
+			"Uses your own platelet-rich fibrin",
+			"Progress is gradual, not instant",
+		],
+	},
 	"iv-therapy": {
 		label: "Before you book",
 		items: [
@@ -74,6 +137,15 @@ const heroPanels: Record<string, { label: string; items: string[] }> = {
 			"75-minute monitored wellness infusion",
 			"Formula selection is confirmed before treatment",
 			"Transparent session pricing",
+		],
+	},
+	"nad-iv-therapy": {
+		label: "Before you book",
+		items: [
+			"Route and dose are confirmed first",
+			"Visit length depends on the plan",
+			"Commonly chosen for wellness routines",
+			"Pricing depends on dose and delivery",
 		],
 	},
 	microneedling: {
@@ -110,7 +182,15 @@ const premiumHeroBodies: Record<string, string> = {
 	"diamondglow-facial": "A medical-grade SkinMedica facial for glow, texture, congestion, and serum infusion at Eden's Greenwood Village clinic.",
 	botox: "A conservative injectable visit for smoother expression lines, natural movement, and a refreshed look at Eden's Greenwood Village clinic.",
 	"lip-filler": "A shape-first lip enhancement visit focused on proportion, hydration, symmetry, and natural-looking balance.",
+	"dermal-fillers": "A measured facial balancing visit for volume support, contour refinement, and smoother transitions without an overdone look.",
+	"medical-weight-loss": "A provider-guided weight management consult built around labs, eligibility, accountability, and a monitored plan.",
+	"bbl-photofacial": "A light-based skin visit for visible tone, redness, sun-damage concerns, and clearer skin-quality planning.",
+	"female-bhrt": "A lab-guided hormone optimization consult for women who want a clearer plan, provider oversight, and ongoing monitoring.",
+	"male-trt": "A lab-guided hormone optimization consult for men who want provider oversight, safety screening, and accountable follow-up.",
+	"peptide-therapy": "A provider-led wellness consult for recovery, performance, body composition, skin quality, and goal-based protocol planning.",
+	"prf-hair-restoration": "A scalp-focused consult and treatment path for eligible clients with early thinning or hair-density concerns.",
 	"iv-therapy": "A monitored wellness infusion visit for hydration, recovery, energy, glow, or goal-based nutrient support.",
+	"nad-iv-therapy": "A monitored NAD+ wellness visit with route, dose, visit length, and fit confirmed before you begin.",
 	microneedling: "A collagen-focused skin treatment for texture, pores, fine lines, and gradual skin-quality improvement.",
 };
 const displayBody = premium && service ? premiumHeroBodies[service.slug] ?? content.body : content.body;
