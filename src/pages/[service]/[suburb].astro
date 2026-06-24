@@ -22,6 +22,7 @@ import Footer from "../../components/layout/Footer.astro";
 import Header from "../../components/layout/Header.astro";
 import { comboJsonLd, type BreadcrumbItem } from "../../lib/schema-org";
 import { combinedFaqs } from "../../lib/local-faqs";
+import { isIndexableCombo } from "../../lib/indexing";
 import { comboMeta } from "../../lib/seo";
 import { comboUrl, homeUrl, serviceHubUrl } from "../../lib/urls";
 
@@ -46,24 +47,7 @@ const breadcrumbItems: BreadcrumbItem[] = [
 	{ label: service.name, href: serviceHubUrl(service.slug) },
 	{ label: suburb.name, href: null },
 ];
-const premiumMoneyPageKeys = new Set([
-	"diamondglow-facial/greenwood-village",
-	"botox/greenwood-village",
-	"lip-filler/greenwood-village",
-	"iv-therapy/littleton",
-	"microneedling/greenwood-village",
-	"dermal-fillers/greenwood-village",
-	"medical-weight-loss/greenwood-village",
-	"bbl-photofacial/greenwood-village",
-	"female-bhrt/greenwood-village",
-	"male-trt/greenwood-village",
-	"peptide-therapy/greenwood-village",
-	"prf-hair-restoration/greenwood-village",
-	"nad-iv-therapy/greenwood-village",
-	"botox/centennial",
-	"botox/denver",
-]);
-const isPremiumMoneyPage = premiumMoneyPageKeys.has(`${service.slug}/${suburb.slug}`);
+const isPremiumMoneyPage = isIndexableCombo(service.slug, suburb.slug);
 ---
 
 <BaseLayout
@@ -71,6 +55,7 @@ const isPremiumMoneyPage = premiumMoneyPageKeys.has(`${service.slug}/${suburb.sl
 	description={seo.description}
 	canonicalUrl={comboUrl(service.slug, suburb.slug)}
 	jsonLd={comboJsonLd(service, suburb, breadcrumbItems)}
+	noindex={!isPremiumMoneyPage}
 >
 	{isPremiumMoneyPage ? <PremiumHeader /> : <Header />}
 	<Breadcrumbs items={breadcrumbItems} />

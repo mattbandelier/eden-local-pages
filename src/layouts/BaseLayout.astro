@@ -10,9 +10,10 @@ interface Props {
 	canonicalUrl: string;
 	ogImage?: string;
 	jsonLd?: JsonLd[];
+	noindex?: boolean;
 }
 
-const { title, description, canonicalUrl, ogImage, jsonLd = [] } = Astro.props;
+const { title, description, canonicalUrl, ogImage, jsonLd = [], noindex = false } = Astro.props;
 const resolvedOgImage = ogImage ?? `${ORIGIN}/og-default.svg`;
 const gtmId = import.meta.env.PUBLIC_GTM_CONTAINER_ID;
 const clarityProjectId = import.meta.env.PUBLIC_CLARITY_PROJECT_ID;
@@ -26,6 +27,7 @@ const clarityProjectId = import.meta.env.PUBLIC_CLARITY_PROJECT_ID;
 
 		<title>{title}</title>
 		<meta name="description" content={description} />
+		{noindex && <meta name="robots" content="noindex,follow" />}
 		<link rel="canonical" href={canonicalUrl} />
 
 		<!-- Open Graph -->

@@ -1,4 +1,5 @@
 import { services, suburbs } from "../data";
+import { isIndexableCombo } from "../lib/indexing";
 import { comboUrl, homeUrl, serviceHubUrl, suburbHubUrl } from "../lib/urls";
 
 export const prerender = true;
@@ -18,11 +19,13 @@ const urls = [
 		changefreq: "monthly",
 	})),
 	...services.flatMap((service) =>
-		suburbs.map((suburb) => ({
-			loc: comboUrl(service.slug, suburb.slug),
-			priority: suburb.slug === "greenwood-village" ? "0.9" : "0.8",
-			changefreq: "weekly",
-		})),
+		suburbs
+			.filter((suburb) => isIndexableCombo(service.slug, suburb.slug))
+			.map((suburb) => ({
+				loc: comboUrl(service.slug, suburb.slug),
+				priority: suburb.slug === "greenwood-village" ? "0.9" : "0.8",
+				changefreq: "weekly",
+			})),
 	),
 ];
 
