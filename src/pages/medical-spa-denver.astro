@@ -1,0 +1,381 @@
+---
+import LeadForm from "../components/content/LeadForm.astro";
+import Footer from "../components/layout/Footer.astro";
+import PremiumHeader from "../components/layout/PremiumHeader.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { canonicalUrl, homeUrl } from "../lib/urls";
+import type { JsonLd } from "../lib/schema-org";
+
+const canonical = canonicalUrl("/medical-spa-denver");
+const title = "Medical Spa Denver | Eden Health Club";
+const description =
+	"Denver med spa services near DTC and Greenwood Village. Explore Botox, fillers, DiamondGlow, microneedling, BBL photofacial, and provider-guided aesthetic consults at Eden Health Club.";
+
+const serviceTiles = [
+	{
+		name: "Botox and wrinkle relaxers",
+		href: "/botox/greenwood-village/",
+		body: "A measured injectable plan for forehead lines, frown lines, crow's feet, and natural-looking movement.",
+	},
+	{
+		name: "Dermal fillers and lip filler",
+		href: "/dermal-fillers/greenwood-village/",
+		body: "Shape, structure, and facial balancing for clients who want refinement without an overdone look.",
+	},
+	{
+		name: "DiamondGlow facial",
+		href: "/diamondglow-facial/greenwood-village/",
+		body: "A medical-grade facial for glow, texture, congestion, and serum infusion with little downtime.",
+	},
+	{
+		name: "Microneedling and BBL photofacial",
+		href: "/microneedling/greenwood-village/",
+		body: "Skin-quality options for texture, pores, visible sun damage, tone, and gradual collagen support.",
+	},
+];
+
+const faqs = [
+	{
+		question: "Is Eden Health Club a medical spa near Denver?",
+		answer:
+			"Yes. Eden Health Club is located in Greenwood Village near DTC and serves Denver clients who want aesthetics, wellness, recovery, and fitness services in one clinic environment.",
+	},
+	{
+		question: "What med spa services does Eden offer?",
+		answer:
+			"Eden offers aesthetic services such as Botox, dermal fillers, lip filler, DiamondGlow facial, microneedling, BBL photofacial, PRF hair restoration, and related skin consults.",
+	},
+	{
+		question: "How far is Eden from Denver?",
+		answer:
+			"Eden is located at 5990 S University Blvd in Greenwood Village, close to DTC, Cherry Hills Village, Centennial, Littleton, and South Denver.",
+	},
+	{
+		question: "Should I book a consult or a specific service?",
+		answer:
+			"If you know the treatment you want, request that service. If you are comparing Botox, fillers, facials, microneedling, or light-based skin treatments, book an aesthetic consult so the team can route you correctly.",
+	},
+];
+
+const jsonLd: JsonLd[] = [
+	{
+		"@context": "https://schema.org",
+		"@type": "MedicalBusiness",
+		"@id": `${canonical}#medical-business`,
+		name: "Eden Health Club",
+		url: canonical,
+		telephone: "+17206057678",
+		address: {
+			"@type": "PostalAddress",
+			streetAddress: "5990 S University Blvd",
+			addressLocality: "Greenwood Village",
+			addressRegion: "CO",
+			postalCode: "80121",
+			addressCountry: "US",
+		},
+		geo: {
+			"@type": "GeoCoordinates",
+			latitude: 39.6088,
+			longitude: -104.9583,
+		},
+		hasMap:
+			"https://www.google.com/maps/search/?api=1&query=Eden%20Health%20Club%205990%20S%20University%20Blvd%20Greenwood%20Village%20CO%2080121",
+		priceRange: "$$",
+		medicalSpecialty: ["Dermatology", "FunctionalMedicine", "PhysicalTherapy"],
+		areaServed: [
+			{ "@type": "City", name: "Denver", addressRegion: "CO" },
+			{ "@type": "City", name: "Greenwood Village", addressRegion: "CO" },
+			{ "@type": "City", name: "Centennial", addressRegion: "CO" },
+			{ "@type": "City", name: "Littleton", addressRegion: "CO" },
+		],
+		sameAs: [
+			"https://edenhealthclubs.com/",
+			"https://www.facebook.com/edenhealthclubs",
+			"https://www.instagram.com/edenhealthclubs",
+			"https://www.tiktok.com/@edenhealthclubs",
+		],
+	},
+	{
+		"@context": "https://schema.org",
+		"@type": "Service",
+		"@id": `${canonical}#service`,
+		name: "Medical Spa Services",
+		serviceType: "Medical Spa",
+		url: canonical,
+		description,
+		provider: {
+			"@id": `${canonical}#medical-business`,
+			"@type": "MedicalBusiness",
+			name: "Eden Health Club",
+		},
+		areaServed: "Denver, Greenwood Village, DTC, Centennial, Littleton, and South Denver",
+	},
+	{
+		"@context": "https://schema.org",
+		"@type": "FAQPage",
+		"@id": `${canonical}#faq`,
+		mainEntity: faqs.map((faq) => ({
+			"@type": "Question",
+			name: faq.question,
+			acceptedAnswer: {
+				"@type": "Answer",
+				text: faq.answer,
+			},
+		})),
+	},
+	{
+		"@context": "https://schema.org",
+		"@type": "BreadcrumbList",
+		itemListElement: [
+			{ "@type": "ListItem", position: 1, name: "Home", item: homeUrl() },
+			{ "@type": "ListItem", position: 2, name: "Medical Spa Denver", item: canonical },
+		],
+	},
+];
+---
+
+<BaseLayout title={title} description={description} canonicalUrl={canonical} jsonLd={jsonLd}>
+	<PremiumHeader />
+	<main class="bg-eden-paper">
+		<section class="relative overflow-hidden bg-eden-forest text-white">
+			<div class="absolute inset-0">
+				<img
+					src="/assets/eden-health-club-reception.webp"
+					alt=""
+					class="h-full w-full object-cover opacity-28"
+					loading="eager"
+				/>
+				<div class="absolute inset-0 bg-[linear-gradient(90deg,rgba(25,79,57,0.96),rgba(25,79,57,0.82)_48%,rgba(25,79,57,0.42))]"></div>
+			</div>
+			<div class="relative mx-auto grid max-w-6xl gap-10 px-6 py-14 sm:py-18 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+				<div>
+					<p class="text-sm font-semibold uppercase tracking-normal text-eden-sage">
+						Medical spa near Denver, DTC, and Greenwood Village
+					</p>
+					<h1 class="mt-4 max-w-3xl text-4xl font-semibold leading-tight sm:text-5xl">
+						Denver med spa care for people who want polished, natural-looking results.
+					</h1>
+					<p class="mt-5 max-w-2xl text-base leading-8 text-white/86 sm:text-lg">
+						Eden brings aesthetics, skin, recovery, and wellness into one high-trust clinic near DTC. Start with a consult, compare the right treatment options, and get a plan that fits your face, skin, schedule, and goals.
+					</p>
+					<div class="mt-8 flex flex-col gap-3 sm:flex-row">
+						<a href="#lead-form" class="rounded-md bg-eden-sage px-6 py-3 text-center text-base font-semibold text-eden-forest shadow-sm">
+							Book an aesthetic consult
+						</a>
+						<a href="tel:+17206057678" data-phone-link class="rounded-md border border-white/35 px-6 py-3 text-center text-base font-semibold text-white hover:bg-white/10">
+							Call 720-605-7678
+						</a>
+					</div>
+					<div class="mt-7 grid gap-3 text-sm text-white/88 sm:grid-cols-3">
+						<div class="border-l border-eden-sage/70 pl-4">4.9 Google rating</div>
+						<div class="border-l border-eden-sage/70 pl-4">Licensed aesthetic team</div>
+						<div class="border-l border-eden-sage/70 pl-4">Minutes from Denver Tech Center</div>
+					</div>
+				</div>
+				<div class="rounded-lg border border-white/15 bg-white/95 p-5 text-eden-navy shadow-xl sm:p-6">
+					<p class="text-sm font-semibold uppercase text-eden-green">What clients are comparing</p>
+					<div class="mt-4 grid gap-3">
+						{["med spa denver", "medical spa denver", "botox denver", "diamondglow facial denver", "lip filler denver"].map((term) => (
+							<div class="rounded-md border border-eden-line bg-eden-paper px-4 py-3 text-sm font-medium">{term}</div>
+						))}
+					</div>
+					<p class="mt-5 text-sm leading-6 text-slate-700">
+						Compare the most-requested Eden aesthetic services and choose a Denver-area clinic that feels credible, convenient, natural-looking, and easy to book.
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<section class="bg-white px-6 py-8">
+			<div class="mx-auto grid max-w-6xl gap-4 text-sm text-eden-navy sm:grid-cols-4">
+				<div class="rounded-md border border-eden-line bg-eden-paper p-4">
+					<p class="font-semibold">Aesthetics</p>
+					<p class="mt-1 text-slate-700">Injectables, skin, glow, texture, and facial balancing.</p>
+				</div>
+				<div class="rounded-md border border-eden-line bg-eden-paper p-4">
+					<p class="font-semibold">Wellness</p>
+					<p class="mt-1 text-slate-700">Medical guidance when your goals go beyond the surface.</p>
+				</div>
+				<div class="rounded-md border border-eden-line bg-eden-paper p-4">
+					<p class="font-semibold">Recovery</p>
+					<p class="mt-1 text-slate-700">IV therapy, NAD, red light, sauna, and performance support.</p>
+				</div>
+				<div class="rounded-md border border-eden-line bg-eden-paper p-4">
+					<p class="font-semibold">Convenience</p>
+					<p class="mt-1 text-slate-700">One clinic near DTC for Denver, Greenwood Village, and South Denver.</p>
+				</div>
+			</div>
+		</section>
+
+		<section class="px-6 py-12 sm:py-14">
+			<div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.82fr_1.18fr] lg:items-start">
+				<div class="rounded-lg border border-eden-line bg-white p-6 shadow-sm">
+					<p class="text-sm font-semibold uppercase text-eden-green">Start here</p>
+					<h2 class="mt-3 text-2xl font-semibold leading-tight text-eden-navy">
+						Not sure whether to book Botox, filler, DiamondGlow, or skin treatment?
+					</h2>
+					<p class="mt-4 text-sm leading-6 text-slate-700">
+						That is exactly what the consult is for. Tell Eden what you are considering, what you want to avoid, and when you want to be seen. The team can route you toward the right service instead of forcing you to choose from a menu.
+					</p>
+					<div class="mt-5 grid gap-3 text-sm text-slate-700">
+						<div class="rounded-md bg-eden-paper p-3">Good fit for first-time aesthetic clients.</div>
+						<div class="rounded-md bg-eden-paper p-3">Good fit if you are comparing multiple treatments.</div>
+						<div class="rounded-md bg-eden-paper p-3">Good fit if you want natural-looking results and clear pricing.</div>
+					</div>
+				</div>
+				<LeadForm
+					serviceSlug="medical-spa"
+					suburbSlug="denver"
+					heading="Book a Denver med spa consult"
+					subheading="Share what you are considering. Eden will follow up about fit, timing, and next steps."
+					submitText="Request my consult"
+				/>
+			</div>
+		</section>
+
+		<section class="px-6 py-14 sm:py-18">
+			<div class="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+				<div>
+					<p class="text-sm font-semibold uppercase text-eden-green">Why Eden instead of a one-service med spa?</p>
+					<h2 class="mt-3 text-3xl font-semibold leading-tight text-eden-navy sm:text-4xl">
+						The consult can route you to the right service, not just the service you guessed.
+					</h2>
+					<p class="mt-5 text-base leading-8 text-slate-700">
+						Many Denver med spa searches start with one keyword: Botox, filler, facial, skin, or glow. Eden is built for the next step: compare options, understand fit, and choose the treatment path that matches the actual goal.
+					</p>
+				</div>
+				<div class="grid gap-4 sm:grid-cols-2">
+					{serviceTiles.map((tile) => (
+						<a href={tile.href} class="rounded-lg border border-eden-line bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+							<h3 class="text-lg font-semibold text-eden-navy">{tile.name}</h3>
+							<p class="mt-3 text-sm leading-6 text-slate-700">{tile.body}</p>
+							<span class="mt-5 inline-block text-sm font-semibold text-eden-green">Explore this service</span>
+						</a>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<section class="bg-white px-6 py-14 sm:py-18">
+			<div class="mx-auto grid max-w-6xl gap-10 lg:grid-cols-2 lg:items-center">
+				<div class="overflow-hidden rounded-lg border border-eden-line bg-eden-paper">
+					<img
+						src="/assets/eden-health-club-office.webp"
+						alt="Eden Health Club treatment room in Greenwood Village"
+						class="aspect-[4/3] w-full object-cover"
+						loading="lazy"
+					/>
+				</div>
+				<div>
+					<p class="text-sm font-semibold uppercase text-eden-green">Built for high-intent Denver searchers</p>
+					<h2 class="mt-3 text-3xl font-semibold leading-tight text-eden-navy sm:text-4xl">
+						A better med spa consult should reduce doubt before it asks you to choose.
+					</h2>
+					<div class="mt-6 grid gap-4">
+						<div class="rounded-md border border-eden-line bg-eden-paper p-5">
+							<p class="font-semibold text-eden-navy">Clear local answer</p>
+							<p class="mt-2 text-sm leading-6 text-slate-700">
+								Eden is in Greenwood Village near DTC, serving Denver clients who want a premium clinic close to South Denver, Cherry Hills Village, Centennial, and Littleton.
+							</p>
+						</div>
+						<div class="rounded-md border border-eden-line bg-eden-paper p-5">
+							<p class="font-semibold text-eden-navy">Clear treatment menu</p>
+							<p class="mt-2 text-sm leading-6 text-slate-700">
+								Eden connects med spa intent to Botox, fillers, DiamondGlow, microneedling, BBL photofacial, PRF hair restoration, and skin consults.
+							</p>
+						</div>
+						<div class="rounded-md border border-eden-line bg-eden-paper p-5">
+							<p class="font-semibold text-eden-navy">Clear conversion path</p>
+							<p class="mt-2 text-sm leading-6 text-slate-700">
+								Visitors can book an aesthetic consult, call directly, or drill into a specific service page if they already know what they want.
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="px-6 py-14 sm:py-18">
+			<div class="mx-auto max-w-6xl">
+				<div class="max-w-3xl">
+					<p class="text-sm font-semibold uppercase text-eden-green">Compare the options</p>
+					<h2 class="mt-3 text-3xl font-semibold leading-tight text-eden-navy sm:text-4xl">
+						If you are comparing med spa options near Denver, start with fit.
+					</h2>
+				</div>
+				<div class="mt-8 grid gap-4 md:grid-cols-3">
+					<div class="rounded-lg border border-eden-line bg-white p-6 shadow-sm">
+						<h3 class="text-lg font-semibold text-eden-navy">For expression lines</h3>
+						<p class="mt-3 text-sm leading-6 text-slate-700">Start with Botox or wrinkle relaxer planning if forehead lines, frown lines, or crow's feet are the main concern.</p>
+					</div>
+					<div class="rounded-lg border border-eden-line bg-white p-6 shadow-sm">
+						<h3 class="text-lg font-semibold text-eden-navy">For shape and volume</h3>
+						<p class="mt-3 text-sm leading-6 text-slate-700">Start with filler planning if lips, cheeks, folds, chin, jawline, or facial balancing are the concern.</p>
+					</div>
+					<div class="rounded-lg border border-eden-line bg-white p-6 shadow-sm">
+						<h3 class="text-lg font-semibold text-eden-navy">For skin quality</h3>
+						<p class="mt-3 text-sm leading-6 text-slate-700">Start with DiamondGlow, microneedling, or BBL photofacial if tone, texture, pores, glow, or visible sun damage are the concern.</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="bg-eden-forest px-6 py-12 text-white">
+			<div class="mx-auto flex max-w-6xl flex-col gap-6 md:flex-row md:items-center md:justify-between">
+				<div>
+					<p class="text-sm font-semibold uppercase text-eden-sage">Ready to compare options?</p>
+					<h2 class="mt-2 text-3xl font-semibold">Start with an Eden aesthetic consult.</h2>
+					<p class="mt-3 max-w-2xl text-sm leading-6 text-white/78">
+						Tell us what you are considering. Eden will help route you toward the right service, timing, and next step.
+					</p>
+				</div>
+				<a href="#lead-form" class="rounded-md bg-eden-sage px-6 py-3 text-center text-base font-semibold text-eden-forest">
+					Request a consult
+				</a>
+			</div>
+		</section>
+
+		<section class="px-6 py-14 sm:py-18">
+			<div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.85fr_1.15fr]">
+				<div>
+					<p class="text-sm font-semibold uppercase text-eden-green">Common questions</p>
+					<h2 class="mt-3 text-3xl font-semibold leading-tight text-eden-navy">Denver med spa questions, answered clearly.</h2>
+				</div>
+				<div class="grid gap-3">
+					{faqs.map((faq) => (
+						<details class="rounded-lg border border-eden-line bg-white p-5 shadow-sm">
+							<summary class="cursor-pointer text-base font-semibold text-eden-navy">{faq.question}</summary>
+							<p class="mt-3 text-sm leading-6 text-slate-700">{faq.answer}</p>
+						</details>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<section class="px-6 pb-16">
+			<div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
+				<div class="rounded-lg border border-eden-line bg-white p-6 shadow-sm">
+					<p class="text-sm font-semibold uppercase text-eden-green">Eden Health Club</p>
+					<h2 class="mt-3 text-2xl font-semibold text-eden-navy">5990 S University Blvd</h2>
+					<p class="mt-3 text-sm leading-6 text-slate-700">
+						Greenwood Village, CO 80121. Convenient for Denver, DTC, Cherry Hills Village, Centennial, Littleton, Lone Tree, and South Denver clients.
+					</p>
+					<a href="https://www.google.com/maps/search/?api=1&query=Eden%20Health%20Club%205990%20S%20University%20Blvd%20Greenwood%20Village%20CO%2080121" target="_blank" rel="noopener" class="mt-5 inline-block text-sm font-semibold text-eden-green">
+						Open in Google Maps
+					</a>
+				</div>
+				<div class="rounded-lg border border-eden-line bg-white p-6 shadow-sm">
+					<p class="text-sm font-semibold uppercase text-eden-green">Still comparing?</p>
+					<h2 class="mt-3 text-2xl font-semibold text-eden-navy">One consult can clarify the right next step.</h2>
+					<p class="mt-3 text-sm leading-6 text-slate-700">
+						If you are choosing between injectables, facials, microneedling, or light-based skin treatments, Eden can help you compare fit before you commit.
+					</p>
+					<a href="#lead-form" class="mt-5 inline-block rounded-md bg-eden-green px-5 py-3 text-sm font-semibold text-white">
+						Request a consult
+					</a>
+				</div>
+			</div>
+		</section>
+	</main>
+	<Footer />
+</BaseLayout>
