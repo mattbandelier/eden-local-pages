@@ -9,7 +9,7 @@ import type { JsonLd } from "../lib/schema-org";
 const canonical = canonicalUrl("/medical-spa-denver");
 const title = "Medical Spa Denver | Eden Health Club";
 const description =
-	"Denver med spa services near DTC and Greenwood Village. Explore Botox, fillers, DiamondGlow, microneedling, BBL photofacial, and provider-guided aesthetic consults at Eden Health Club.";
+	"Denver med spa services near DTC and Greenwood Village. Explore Botox, fillers, DiamondGlow, microneedling, BBL photofacial, and provider-guided med spa consults at Eden Health Club.";
 
 const serviceTiles = [
 	{
@@ -53,7 +53,7 @@ const faqs = [
 	{
 		question: "Should I book a consult or a specific service?",
 		answer:
-			"If you know the treatment you want, request that service. If you are comparing Botox, fillers, facials, microneedling, or light-based skin treatments, book an aesthetic consult so the team can route you correctly.",
+			"If you know the treatment you want, request that service. If you are comparing Botox, fillers, facials, microneedling, or light-based skin treatments, book a med spa consult so the team can route you correctly.",
 	},
 ];
 
@@ -160,7 +160,7 @@ const jsonLd: JsonLd[] = [
 					</p>
 					<div class="mt-8 flex flex-col gap-3 sm:flex-row">
 						<a href="#lead-form" class="rounded-md bg-eden-sage px-6 py-3 text-center text-base font-semibold text-eden-forest shadow-sm">
-							Book an aesthetic consult
+							Book a med spa consult
 						</a>
 						<a href="tel:+17206057678" data-phone-link class="rounded-md border border-white/35 px-6 py-3 text-center text-base font-semibold text-white hover:bg-white/10">
 							Call 720-605-7678
@@ -173,14 +173,14 @@ const jsonLd: JsonLd[] = [
 					</div>
 				</div>
 				<div class="rounded-lg border border-white/15 bg-white/95 p-5 text-eden-navy shadow-xl sm:p-6">
-					<p class="text-sm font-semibold uppercase text-eden-green">What clients are comparing</p>
+					<p class="text-sm font-semibold uppercase text-eden-green">What Denver med spa clients are looking for</p>
 					<div class="mt-4 grid gap-3">
-						{["med spa denver", "medical spa denver", "botox denver", "diamondglow facial denver", "lip filler denver"].map((term) => (
-							<div class="rounded-md border border-eden-line bg-eden-paper px-4 py-3 text-sm font-medium">{term}</div>
+						{["Natural-looking injectable results", "Skin treatments with little downtime", "Clear pricing before treatment", "A licensed team near DTC", "A consult that compares the right options"].map((goal) => (
+							<div class="rounded-md border border-eden-line bg-eden-paper px-4 py-3 text-sm font-medium">{goal}</div>
 						))}
 					</div>
 					<p class="mt-5 text-sm leading-6 text-slate-700">
-						Compare the most-requested Eden aesthetic services and choose a Denver-area clinic that feels credible, convenient, natural-looking, and easy to book.
+						Eden is built for clients comparing Denver med spa options who want polished results, clear guidance, and a clinic that feels easy to trust.
 					</p>
 				</div>
 			</div>
@@ -212,7 +212,7 @@ const jsonLd: JsonLd[] = [
 				<div class="rounded-lg border border-eden-line bg-white p-6 shadow-sm">
 					<p class="text-sm font-semibold uppercase text-eden-green">Start here</p>
 					<h2 class="mt-3 text-2xl font-semibold leading-tight text-eden-navy">
-						Not sure whether to book Botox, filler, DiamondGlow, or skin treatment?
+						Not sure whether to book Botox, filler, DiamondGlow, or another skin treatment?
 					</h2>
 					<p class="mt-4 text-sm leading-6 text-slate-700">
 						That is exactly what the consult is for. Tell Eden what you are considering, what you want to avoid, and when you want to be seen. The team can route you toward the right service instead of forcing you to choose from a menu.
@@ -241,7 +241,7 @@ const jsonLd: JsonLd[] = [
 						The consult can route you to the right service, not just the service you guessed.
 					</h2>
 					<p class="mt-5 text-base leading-8 text-slate-700">
-						Many Denver med spa searches start with one keyword: Botox, filler, facial, skin, or glow. Eden is built for the next step: compare options, understand fit, and choose the treatment path that matches the actual goal.
+						Many Denver med spa clients start with one concern: expression lines, volume, lip shape, skin texture, or glow. Eden is built for the next step: compare options, understand fit, and choose the treatment path that matches the actual goal.
 					</p>
 				</div>
 				<div class="grid gap-4 sm:grid-cols-2">
@@ -267,7 +267,7 @@ const jsonLd: JsonLd[] = [
 					/>
 				</div>
 				<div>
-					<p class="text-sm font-semibold uppercase text-eden-green">Built for high-intent Denver searchers</p>
+					<p class="text-sm font-semibold uppercase text-eden-green">Built for Denver-area clients comparing med spas</p>
 					<h2 class="mt-3 text-3xl font-semibold leading-tight text-eden-navy sm:text-4xl">
 						A better med spa consult should reduce doubt before it asks you to choose.
 					</h2>
@@ -287,7 +287,7 @@ const jsonLd: JsonLd[] = [
 						<div class="rounded-md border border-eden-line bg-eden-paper p-5">
 							<p class="font-semibold text-eden-navy">Clear conversion path</p>
 							<p class="mt-2 text-sm leading-6 text-slate-700">
-								Visitors can book an aesthetic consult, call directly, or drill into a specific service page if they already know what they want.
+								Choose a med spa consult, call directly, or open a specific service page when the treatment choice is already clear.
 							</p>
 						</div>
 					</div>
@@ -324,9 +324,9 @@ const jsonLd: JsonLd[] = [
 			<div class="mx-auto flex max-w-6xl flex-col gap-6 md:flex-row md:items-center md:justify-between">
 				<div>
 					<p class="text-sm font-semibold uppercase text-eden-sage">Ready to compare options?</p>
-					<h2 class="mt-2 text-3xl font-semibold">Start with an Eden aesthetic consult.</h2>
+					<h2 class="mt-2 text-3xl font-semibold">Start with an Eden med spa consult.</h2>
 					<p class="mt-3 max-w-2xl text-sm leading-6 text-white/78">
-						Tell us what you are considering. Eden will help route you toward the right service, timing, and next step.
+						Share what you are considering. Eden will help route you toward the right service, timing, and next step.
 					</p>
 				</div>
 				<a href="#lead-form" class="rounded-md bg-eden-sage px-6 py-3 text-center text-base font-semibold text-eden-forest">
