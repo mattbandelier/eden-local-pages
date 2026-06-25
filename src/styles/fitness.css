@@ -99,10 +99,37 @@ textarea {
 }
 
 .site-logo {
-  width: 148px;
-  height: auto;
   display: block;
-  object-fit: contain;
+}
+
+.site-logo--text {
+  display: inline-grid;
+  gap: 1px;
+  min-height: 44px;
+  color: var(--white);
+  text-decoration: none;
+}
+
+.mobile-topbar .site-logo--text {
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+}
+
+.site-logo--text span {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 0.86;
+  text-transform: lowercase;
+}
+
+.site-logo--text small {
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  text-transform: uppercase;
 }
 
 .brand-wordmark {
@@ -1373,8 +1400,12 @@ summary {
     width: calc(100% - 24px);
   }
 
-  .site-logo {
-    width: 92px;
+  .site-logo--text span {
+    font-size: 1.72rem;
+  }
+
+  .site-logo--text small {
+    font-size: 0.52rem;
   }
 
   .mobile-topbar {
@@ -1441,8 +1472,12 @@ summary {
 }
 
 @media (max-width: 380px) {
-  .site-logo {
-    width: 82px;
+  .site-logo--text span {
+    font-size: 1.56rem;
+  }
+
+  .site-logo--text small {
+    font-size: 0.48rem;
   }
 
   .hero__overlay {
