@@ -23,3 +23,15 @@ export function comboKey(serviceSlug: string, suburbSlug: string): string {
 export function isIndexableCombo(serviceSlug: string, suburbSlug: string): boolean {
 	return indexableComboKeys.has(comboKey(serviceSlug, suburbSlug));
 }
+
+export const indexableFitnessSlugs = new Set([
+	"strength-training-greenwood-village",
+	"personal-training-denver-tech-center",
+	"semi-private-training-denver-tech-center",
+	"body-composition-training-greenwood-village",
+	"glp-1-strength-training-greenwood-village",
+]);
+
+export function isIndexableFitness(slug: string): boolean {
+	return indexableFitnessSlugs.has(slug);
+}

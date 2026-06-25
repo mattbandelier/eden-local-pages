@@ -1,0 +1,28 @@
+---
+import FitnessLandingPageView from "../components/content/FitnessLandingPageView.astro";
+import { fitnessPages, getFitnessPage } from "../data/fitness-pages";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { isIndexableFitness } from "../lib/indexing";
+
+export function getStaticPaths() {
+  return fitnessPages.map((page) => ({
+    params: { slug: page.slug }
+  }));
+}
+
+const page = getFitnessPage(Astro.params.slug ?? "");
+const canonical = new URL(`/${page?.slug ?? ""}/`, Astro.site ?? "https://landing.edenhealthclubs.com").toString();
+
+if (!page) {
+  return Astro.redirect("/");
+}
+---
+
+<BaseLayout
+	title={page.title}
+	description={page.description}
+	canonicalUrl={canonical}
+	noindex={!isIndexableFitness(page.slug)}
+>
+  <FitnessLandingPageView page={page} />
+</BaseLayout>

@@ -1,5 +1,6 @@
 import { services, suburbs } from "../data";
-import { isIndexableCombo } from "../lib/indexing";
+import { fitnessPages } from "../data/fitness-pages";
+import { isIndexableCombo, isIndexableFitness } from "../lib/indexing";
 import { canonicalUrl, comboUrl, homeUrl, serviceHubUrl, suburbHubUrl } from "../lib/urls";
 
 export const prerender = true;
@@ -19,6 +20,13 @@ const urls = [
 		priority: suburb.slug === "greenwood-village" ? "0.9" : "0.7",
 		changefreq: "monthly",
 	})),
+	...fitnessPages
+		.filter((page) => isIndexableFitness(page.slug))
+		.map((page) => ({
+			loc: canonicalUrl(`/${page.slug}`),
+			priority: "0.85",
+			changefreq: "weekly",
+		})),
 	...services.flatMap((service) =>
 		suburbs
 			.filter((suburb) => isIndexableCombo(service.slug, suburb.slug))
