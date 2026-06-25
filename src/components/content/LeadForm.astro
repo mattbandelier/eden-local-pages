@@ -136,6 +136,19 @@ const {
 		return params.get(name);
 	}
 
+	function getGaClientId(): string | null {
+		const match = document.cookie.match(/(?:^|;\s*)_ga=([^;]+)/);
+		if (!match) return null;
+
+		const cookieValue = decodeURIComponent(match[1]);
+		const parts = cookieValue.split(".");
+		if (parts.length >= 4) {
+			return `${parts[parts.length - 2]}.${parts[parts.length - 1]}`;
+		}
+
+		return cookieValue || null;
+	}
+
 	function initLeadForm(form: HTMLFormElement) {
 		initAttribution();
 		const serviceSlug = form.dataset.serviceSlug || "";
@@ -172,6 +185,7 @@ const {
 				gclid: getUrlParam("gclid"),
 				gbraid: getUrlParam("gbraid"),
 				wbraid: getUrlParam("wbraid"),
+				gaClientId: getGaClientId(),
 				referrer: document.referrer || null,
 				firstTouch: attribution.firstTouch,
 				lastTouch: attribution.lastTouch,
