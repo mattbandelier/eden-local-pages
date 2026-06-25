@@ -1,0 +1,182 @@
+---
+import type { Service, Suburb } from "../../data/types";
+import LeadForm from "./LeadForm.astro";
+
+interface Props {
+	service: Service;
+	suburb: Suburb;
+}
+
+interface PremiumConversionContent {
+	eyebrow: string;
+	heading: string;
+	body: string;
+	formHeading: string;
+	formSubheading: string;
+	proof: string[];
+	fit: string[];
+	compare: string[];
+	image: {
+		src: string;
+		alt: string;
+	};
+}
+
+const { service, suburb } = Astro.props;
+
+const defaultContent: PremiumConversionContent = {
+	eyebrow: `${service.name} near ${suburb.name}`,
+	heading: `Start with a focused ${service.name} consult at Eden.`,
+	body: `Tell Eden what you are considering, what you want to avoid, and when you want to be seen. The team will help confirm whether ${service.name} is the right starting point or whether another Eden service fits better.`,
+	formHeading: `Book your ${service.name} consult`,
+	formSubheading: "Share your goal and Eden will follow up about fit, timing, and next steps.",
+	proof: ["4.9 Google rating", "Greenwood Village near DTC", "Medical wellness + aesthetics"],
+	fit: ["You want a clear recommendation before treatment", "You are comparing options near South Denver", "You want a premium clinic experience"],
+	compare: ["Pricing and fit before commitment", "Local access near DTC", "Related services under one roof"],
+	image: {
+		src: "/assets/eden-health-club-reception.webp",
+		alt: "Eden Health Club reception in Greenwood Village",
+	},
+};
+
+const contentBySlug: Record<string, Partial<PremiumConversionContent>> = {
+	botox: {
+		eyebrow: `Botox in ${suburb.name}`,
+		heading: "Smooth expression lines without losing your expression.",
+		body:
+			"Most Botox clients want the same thing: look refreshed, avoid a frozen look, and understand the unit range before they commit. Eden starts with facial movement, dose planning, and a conservative treatment conversation.",
+		formHeading: "Book a Botox consult",
+		formSubheading: "Share what you want softened. Eden will follow up about timing, fit, and expected starting range.",
+		fit: ["Forehead lines, frown lines, or crow's feet", "First-time or conservative Botox clients", "Clients comparing Botox near Denver, DTC, or Greenwood Village"],
+		compare: ["Per-unit pricing clarity", "Natural movement planning", "Pairs with filler or skin treatments when appropriate"],
+		image: {
+			src: "/assets/eden-health-club-office.webp",
+			alt: "Eden Health Club treatment room in Greenwood Village",
+		},
+	},
+	"diamondglow-facial": {
+		eyebrow: `DiamondGlow facial in ${suburb.name}`,
+		heading: "A medical-grade glow visit with a clearer skin goal.",
+		body:
+			"DiamondGlow is a strong starting point when you want visible polish, smoother texture, cleaner pores, and serum infusion without planning around meaningful downtime.",
+		formHeading: "Book a DiamondGlow facial",
+		formSubheading: "Tell Eden your skin goal and timing. The team will confirm whether DiamondGlow is the right start.",
+		fit: ["Pre-event glow and maintenance", "Congestion, dullness, texture, or hydration goals", "Clients comparing DiamondGlow, Hydrafacial, and facials near DTC"],
+		compare: ["Medical-grade facial setting", "SkinMedica serum planning", "Pairs with BBL, microneedling, Botox, or filler"],
+	},
+	"lip-filler": {
+		eyebrow: `Lip filler in ${suburb.name}`,
+		heading: "Shape, hydration, and proportion before volume.",
+		body:
+			"Lip filler should start with anatomy, symmetry, and the level of enhancement you actually want. Eden helps clients plan for natural-looking shape instead of trend-driven volume.",
+		formHeading: "Book a lip filler consult",
+		formSubheading: "Share your lip goal, prior filler history, and timing. Eden will follow up about fit and next steps.",
+		fit: ["First-time filler clients", "Shape, border, hydration, or symmetry goals", "Clients who want subtle enhancement"],
+		compare: ["Syringe planning before treatment", "Swelling expectations discussed up front", "Facial balance over trend volume"],
+		image: {
+			src: "/assets/eden-health-club-office.webp",
+			alt: "Eden Health Club treatment room in Greenwood Village",
+		},
+	},
+	"dermal-fillers": {
+		eyebrow: `Dermal fillers in ${suburb.name}`,
+		heading: "Facial balancing should look refined, not obvious.",
+		body:
+			"Eden approaches filler through facial structure, proportion, product selection, and restraint. The consult helps decide whether cheeks, folds, lips, chin, jawline, or another option fits the goal.",
+		formHeading: "Book a filler consult",
+		formSubheading: "Tell Eden what area you are considering. The team will follow up about fit, timing, and likely next steps.",
+		fit: ["Volume, folds, contour, or facial balancing", "Clients who want a conservative plan", "People comparing filler options near South Denver"],
+		compare: ["Product matched to anatomy", "Syringe plan before treatment", "Pairs with Botox or skin treatments"],
+		image: {
+			src: "/assets/eden-health-club-office.webp",
+			alt: "Eden Health Club treatment room in Greenwood Village",
+		},
+	},
+	"iv-therapy": {
+		eyebrow: `IV therapy near ${suburb.name}`,
+		heading: "Choose IV therapy by goal, not by menu confusion.",
+		body:
+			"Eden helps clients choose hydration, energy, glow, immunity, recovery, relief, or performance support based on why they are booking and what timing makes sense.",
+		formHeading: "Book IV therapy",
+		formSubheading: "Share what you want supported. Eden will follow up about formula fit and appointment timing.",
+		fit: ["Hydration, recovery, travel, or energy support", "Active clients and busy schedules", "Clients comparing IV clinics near Denver and Littleton"],
+		compare: ["Goal-based formula selection", "Clinical wellness setting", "Pairs with NAD, recovery, fitness, or functional medicine"],
+	},
+	"medical-weight-loss": {
+		eyebrow: `Medical weight loss in ${suburb.name}`,
+		heading: "A monitored plan starts with screening, labs, and fit.",
+		body:
+			"Eden's medical weight loss path is built around provider review, bloodwork, eligibility, and follow-up. The consult helps clarify whether a medical plan is appropriate before treatment decisions are made.",
+		formHeading: "Book a weight loss consult",
+		formSubheading: "Share your goals and history. Eden will follow up about screening, bloodwork, and next steps.",
+		fit: ["Adults ready for provider-guided support", "Clients who want labs and accountability", "People comparing medical weight loss near Greenwood Village"],
+		compare: ["Consult plus required bloodwork", "Plan fit before treatment", "Can connect with fitness, hormones, peptides, or recovery"],
+		image: {
+			src: "/assets/eden-health-club-office.webp",
+			alt: "Eden Health Club clinical consultation room",
+		},
+	},
+	"peptide-therapy": {
+		eyebrow: `Peptide therapy in ${suburb.name}`,
+		heading: "Provider-led peptide planning for eligible wellness goals.",
+		body:
+			"Eden keeps peptide conversations focused on screening, goals, protocol fit, and follow-up. The right next step depends on history, labs, medications, and what you are trying to support.",
+		formHeading: "Book a peptide consult",
+		formSubheading: "Share your goals and Eden will follow up about screening, labs, and protocol fit.",
+		fit: ["Recovery, body composition, sleep, skin, or performance goals", "Clients who want provider-led screening", "People comparing peptide clinics near Denver and DTC"],
+		compare: ["Goal-first consult", "Labs and history matter", "Can connect with hormones, weight loss, IV therapy, and fitness"],
+		image: {
+			src: "/assets/eden-health-club-office.webp",
+			alt: "Eden Health Club clinical consultation room",
+		},
+	},
+};
+
+const content = {
+	...defaultContent,
+	...(contentBySlug[service.slug] ?? {}),
+} satisfies PremiumConversionContent;
+---
+
+<section id="premium-start" class="bg-eden-paper px-6 py-12 sm:py-14">
+	<div class="mx-auto grid max-w-6xl gap-7 lg:grid-cols-[0.95fr_1.05fr] lg:items-stretch">
+		<div class="overflow-hidden rounded-lg border border-eden-line bg-white shadow-sm">
+			<img src={content.image.src} alt={content.image.alt} class="aspect-[4/3] w-full object-cover lg:aspect-[5/3]" loading="eager" />
+			<div class="grid gap-3 border-t border-eden-line bg-white p-5 sm:grid-cols-3">
+				{content.proof.map((item) => (
+					<div class="rounded-md bg-eden-paper p-3 text-sm font-semibold leading-5 text-eden-navy">{item}</div>
+				))}
+			</div>
+		</div>
+
+		<div class="grid gap-5 lg:grid-cols-[minmax(0,0.86fr)_minmax(340px,0.94fr)]">
+			<div class="rounded-lg border border-eden-line bg-white p-6 shadow-sm">
+				<p class="text-sm font-semibold uppercase text-eden-green">{content.eyebrow}</p>
+				<h2 class="mt-3 text-3xl font-semibold leading-tight text-eden-navy sm:text-4xl">{content.heading}</h2>
+				<p class="mt-4 text-base leading-7 text-slate-700">{content.body}</p>
+
+				<div class="mt-6 grid gap-3">
+					<p class="text-sm font-semibold uppercase text-eden-green">Good fit when</p>
+					{content.fit.map((item) => (
+						<div class="rounded-md border border-eden-line bg-eden-paper p-3 text-sm font-medium leading-6 text-eden-navy">{item}</div>
+					))}
+				</div>
+
+				<div class="mt-6 grid gap-2 text-sm leading-6 text-slate-700">
+					<p class="font-semibold text-eden-navy">Why clients choose Eden here</p>
+					{content.compare.map((item) => (
+						<p>{item}</p>
+					))}
+				</div>
+			</div>
+
+			<LeadForm
+				serviceSlug={service.slug}
+				suburbSlug={suburb.slug}
+				heading={content.formHeading}
+				subheading={content.formSubheading}
+				submitText={service.ctaText}
+			/>
+		</div>
+	</div>
+</section>

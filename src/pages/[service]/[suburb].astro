@@ -13,6 +13,7 @@ import MainSiteLink from "../../components/content/MainSiteLink.astro";
 import MobileActionBar from "../../components/content/MobileActionBar.astro";
 import MoneyPageLayer from "../../components/content/MoneyPageLayer.astro";
 import PricingCard from "../../components/content/PricingCard.astro";
+import PremiumConversionBlock from "../../components/content/PremiumConversionBlock.astro";
 import PremiumHeader from "../../components/layout/PremiumHeader.astro";
 import RelatedServices from "../../components/content/RelatedServices.astro";
 import TreatmentSnapshot from "../../components/content/TreatmentSnapshot.astro";
@@ -57,12 +58,13 @@ const isPremiumMoneyPage = isIndexableCombo(service.slug, suburb.slug);
 	jsonLd={comboJsonLd(service, suburb, breadcrumbItems)}
 	noindex={!isPremiumMoneyPage}
 >
-	{isPremiumMoneyPage ? <PremiumHeader /> : <Header />}
+	{isPremiumMoneyPage ? <PremiumHeader servicesHref="#details" /> : <Header />}
 	<Breadcrumbs items={breadcrumbItems} />
 	<main class="pb-20 md:pb-0">
 		<Hero variant="combo" service={service} suburb={suburb} premium={isPremiumMoneyPage} />
 		<LocalProximity suburb={suburb} />
 		<TrustBar />
+		{isPremiumMoneyPage && <PremiumConversionBlock service={service} suburb={suburb} />}
 		{!isPremiumMoneyPage && (
 			<CTAStrip
 				serviceSlug={service.slug}
@@ -85,14 +87,31 @@ const isPremiumMoneyPage = isIndexableCombo(service.slug, suburb.slug);
 		<FAQAccordion faqs={faqs} heading={`${service.name} questions from ${suburb.name} clients`} />
 		<RelatedServices services={relatedServices} suburbSlug={suburb.slug} />
 		<MainSiteLink service={service} />
-		<CTAStrip
-			serviceSlug={service.slug}
-			suburbSlug={suburb.slug}
-			variant="secondary"
-			ctaText={service.ctaText}
-			consultRequired={service.consultRequired}
-			serviceName={service.name}
-		/>
+		{isPremiumMoneyPage ? (
+			<section class="bg-eden-forest px-6 py-12 text-white">
+				<div class="mx-auto flex max-w-6xl flex-col gap-6 md:flex-row md:items-center md:justify-between">
+					<div>
+						<p class="text-sm font-semibold uppercase text-eden-sage">Ready when you are</p>
+						<h2 class="mt-2 text-3xl font-semibold leading-tight">Start with Eden, then choose the right next step.</h2>
+						<p class="mt-3 max-w-2xl text-sm leading-6 text-white/78">
+							Share what you are considering. Eden will follow up about fit, timing, pricing context, and whether {service.name} is the right starting point.
+						</p>
+					</div>
+					<a href="#lead-form" class="rounded-md bg-eden-sage px-6 py-3 text-center text-base font-semibold text-eden-forest">
+						{service.ctaText}
+					</a>
+				</div>
+			</section>
+		) : (
+			<CTAStrip
+				serviceSlug={service.slug}
+				suburbSlug={suburb.slug}
+				variant="secondary"
+				ctaText={service.ctaText}
+				consultRequired={service.consultRequired}
+				serviceName={service.name}
+			/>
+		)}
 	</main>
 	<MobileActionBar service={service} />
 	<Footer />
