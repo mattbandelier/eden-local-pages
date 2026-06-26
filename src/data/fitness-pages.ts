@@ -973,45 +973,129 @@ export const fitnessPages: FitnessPage[] = [
     slug: "recovery-performance-greenwood-village",
     title: "Recovery and Performance in Greenwood Village | Eden Health Club",
     description:
-      "Connect training with recovery at Eden Health Club in Greenwood Village, including IV therapy, red light, sauna, compression, peptides, and wellness injections.",
+      "Build a recovery and performance plan at Eden Health Club in Greenwood Village with training, body composition, red light, sauna, compression, IV therapy, wellness injections, and medical wellness support.",
     h1: "Recovery and Performance in Greenwood Village",
     eyebrow: "Train hard. Recover on purpose.",
     heroHeadline: "Recovery is not the break from training. It is part of the result.",
     summary:
-      "Eden connects performance training with recovery services, IV therapy, wellness injections, red light therapy, infrared sauna, compression therapy, peptides, and body composition support inside one facility.",
-    primaryCta: "Build Your Recovery Plan",
+      "Eden connects coached training, body composition, red light therapy, infrared sauna, compression, IV therapy, wellness injections, peptide therapy options, and medical wellness support inside one Greenwood Village facility.",
+    primaryCta: "Book a Recovery Assessment",
     secondaryCta: "Explore recovery services",
-    builtFor: ["Active adults", "Athletes and former athletes", "High-output professionals", "People who feel under-recovered"],
+    proof: [
+      "Greenwood Village near DTC",
+      "Recovery + training + body composition",
+      "IV, red light, sauna, compression",
+      "Medical wellness under one roof"
+    ],
+    builtFor: [
+      "Active adults who train hard but feel under-recovered",
+      "DTC professionals managing stress, travel, and long workdays",
+      "Weight-loss and body composition clients protecting strength",
+      "Former athletes who want structure without a random gym plan",
+      "Clients comparing recovery studios, gyms, and wellness clinics"
+    ],
     sections: [
       {
         eyebrow: "The bottleneck",
         title: "You do not adapt from training. You adapt from recovering.",
         body:
-          "If soreness, stress, poor sleep, travel, or dehydration keep dragging you down, the plan needs more than another hard workout. Eden treats recovery as part of performance."
+          "If soreness, stress, poor sleep, travel, dehydration, or inconsistent energy keep dragging you down, the plan needs more than another hard workout. Eden treats recovery as part of performance, then connects it to the training and wellness support that fits your goals.",
+        bullets: [
+          "Review what is slowing progress: soreness, stress, energy, sleep, travel, hydration, or consistency",
+          "Connect recovery tools with strength, conditioning, and body composition goals",
+          "Use InBody-style tracking when body composition is part of the plan",
+          "Route into medical wellness consults when symptoms, history, or goals suggest a deeper review"
+        ]
       },
       {
         eyebrow: "Recovery tools",
-        title: "IV therapy, wellness injections, red light, sauna, compression, and peptides.",
+        title: "Recovery support should be selected with a reason.",
         body:
-          "Eden's recovery ecosystem gives active clients multiple ways to support hydration, energy, soreness, mobility, and readiness, with medical oversight where appropriate."
+          "Eden's recovery ecosystem gives active clients multiple ways to support hydration, energy, soreness, mobility, readiness, and consistency, with medical oversight where appropriate. The point is not to collect services. The point is to choose the right recovery layer for the way you train and live.",
+        bullets: [
+          "Red light therapy, infrared sauna, and compression for recovery routines",
+          "IV therapy and wellness injections for eligible clients seeking hydration, energy, immunity, or performance support",
+          "Peptide therapy options when medically appropriate and provider-reviewed",
+          "Training and coaching nearby so recovery is connected to the work, not separate from it"
+        ]
       },
-      systemSection
+      {
+        eyebrow: "Local fit",
+        title: "A recovery destination for Greenwood Village, DTC, and south Denver.",
+        body:
+          "Recovery and performance searches around Greenwood Village are often coming from active adults, professionals, parents, and weight-loss clients who want a smarter plan than a single class, single treatment, or one-off recovery session. Eden gives them a place to start, measure, train, recover, and adjust."
+      },
+      systemSection,
+      {
+        eyebrow: "What to expect",
+        title: "Start with the goal, then match the recovery plan.",
+        body:
+          "The right next step depends on what you are trying to change: soreness, consistency, strength, energy, body composition, stress load, travel recovery, or overall readiness. Eden's assessment helps turn that into a practical plan instead of guesswork.",
+        bullets: [
+          "Clarify your main recovery or performance goal",
+          "Review current training, schedule, and recovery habits",
+          "Identify which Eden services may be useful now versus later",
+          "Create a practical first step that can be followed up by the team"
+        ]
+      }
+    ],
+    related: [
+      {
+        label: "Performance Lab",
+        href: "/performance-lab-greenwood-village/",
+        text: "Start with a broader assessment when you want help choosing the right path."
+      },
+      {
+        label: "IV therapy",
+        href: "/iv-therapy/greenwood-village/",
+        text: "Explore IV therapy options for hydration, energy, recovery, glow, immunity, and performance support."
+      },
+      {
+        label: "NAD IV therapy",
+        href: "/nad-iv-therapy/greenwood-village/",
+        text: "Learn about NAD IV therapy in Greenwood Village for eligible clients."
+      },
+      {
+        label: "Body composition training",
+        href: "/body-composition-training-greenwood-village/",
+        text: "Connect recovery with measurable body composition and strength goals."
+      },
+      {
+        label: "Strength training",
+        href: "/strength-training-greenwood-village/",
+        text: "Build the training side of your performance and recovery plan."
+      },
+      {
+        label: "Medical spa services",
+        href: "/medical-spa-denver/",
+        text: "Explore Eden's aesthetics, skin health, wellness, and performance environment."
+      }
     ],
     faqs: [
       {
         question: "Where can I find recovery services in Greenwood Village?",
         answer:
-          "Eden Health Club offers recovery services in Greenwood Village, including IV therapy, red light therapy, infrared sauna, compression therapy, wellness injections, and peptide therapy options."
+          "Eden Health Club offers recovery services in Greenwood Village near Denver Tech Center, including red light therapy, infrared sauna, compression therapy, IV therapy, wellness injections, peptide therapy options, and training support."
       },
       {
         question: "Can recovery services support workout performance?",
         answer:
-          "Recovery services may support hydration, muscle soreness, energy, mobility, stress, and readiness depending on the service and individual fit."
+          "Recovery services may support hydration, muscle soreness, energy, mobility, stress, and readiness depending on the service, your goals, and individual fit. Eden helps connect recovery to your training and wellness plan."
       },
       {
         question: "How is Eden different from a recovery studio?",
         answer:
-          "Eden combines recovery services with training, body composition, medical wellness, hormones, peptides, IV therapy, injections, and aesthetics under one roof."
+          "Eden combines recovery services with training, body composition, medical wellness, hormones, peptides, IV therapy, wellness injections, and aesthetics under one roof, so the recovery plan is connected to the bigger picture."
+      },
+      {
+        question: "Is this page for athletes only?",
+        answer:
+          "No. Recovery and Performance is built for active adults, busy professionals, parents, weight-loss clients, and former athletes who want more energy, better consistency, and a clearer plan."
+      },
+      {
+        question: "What areas does Eden serve for recovery and performance?",
+        answer:
+          "Eden is located at 5990 S University Blvd in Greenwood Village and serves Denver Tech Center, Cherry Hills Village, Centennial, Englewood, Littleton, Denver, and the south metro."
       }
     ]
   }),
