@@ -1291,6 +1291,131 @@ export const fitnessPages: FitnessPage[] = [
       }
     ]
   }),
+  page({
+    slug: "performance-lab-greenwood-village",
+    title: "Performance Lab in Greenwood Village | Eden Health Club",
+    description:
+      "Book a Performance Lab assessment at Eden Health Club in Greenwood Village: body composition, strength, recovery, wellness planning, and next-step guidance under one roof.",
+    h1: "Performance Lab in Greenwood Village",
+    eyebrow: "Measure. Train. Recover. Optimize.",
+    heroHeadline: "A smarter starting point for people who want their body to work better.",
+    summary:
+      "Eden's Performance Lab is a Meta-ready assessment offer for active adults, busy professionals, weight-loss clients, and wellness-minded clients who want clarity around strength, body composition, recovery, energy, and the next best step.",
+    primaryCta: "Book a Performance Assessment",
+    secondaryCta: "See what is included",
+    proof: [
+      "Greenwood Village near DTC",
+      "Body composition + coaching + recovery",
+      "Medical wellness under one roof",
+      "Built for high-intent Meta traffic"
+    ],
+    builtFor: [
+      "People who feel stuck despite working out",
+      "GLP-1 and weight-loss clients protecting muscle",
+      "Busy professionals who want energy and structure",
+      "Active adults who want recovery and performance support",
+      "Clients comparing fitness, wellness, and body composition options"
+    ],
+    sections: [
+      {
+        eyebrow: "The offer",
+        title: "Start with a snapshot of where your body is now.",
+        body:
+          "The Performance Lab page is built for people who are curious but not ready to pick a single service. Instead of asking them to choose between training, recovery, injections, IV therapy, body composition, or medical wellness, Eden gives them a better first step: an assessment that clarifies the path.",
+        bullets: [
+          "Body composition and goal review",
+          "Strength, recovery, energy, and schedule discussion",
+          "A practical next-step plan based on what the client actually wants",
+          "Routing into training, recovery, wellness, aesthetics, or medical consults when appropriate"
+        ]
+      },
+      {
+        eyebrow: "Why this works for Meta",
+        title: "Meta traffic needs a reason to stop, not a generic service menu.",
+        body:
+          "A paused Meta ad can restart with a stronger destination when the landing page matches the scroll-stopping idea: find out what your body needs next. This page gives social traffic a clear, low-friction action while still protecting Eden's clinical credibility.",
+        bullets: [
+          "Broader than a Botox, IV, or fitness-only offer",
+          "Visual enough for video or facility creative",
+          "Specific enough to convert into a lead",
+          "Flexible enough to route different client goals after the form"
+        ]
+      },
+      {
+        eyebrow: "What Eden connects",
+        title: "One assessment can point to the right combination.",
+        body:
+          "Eden can connect fitness, InBody-style body composition tracking, recovery services, IV therapy, wellness injections, hormone care, peptide therapy, medical weight loss, functional medicine, and aesthetics when those services match the client's goals and provider review.",
+        bullets: [
+          "Training and coaching for strength, body composition, and accountability",
+          "Recovery tools for soreness, stress, hydration, and readiness",
+          "Medical wellness consults when labs, symptoms, or history suggest a deeper review",
+          "Aesthetics and skin health for clients who want the outside to match the work inside"
+        ]
+      },
+      systemSection,
+      {
+        eyebrow: "Local advantage",
+        title: "A premium performance assessment near Denver Tech Center.",
+        body:
+          "Greenwood Village, DTC, Cherry Hills Village, Centennial, Englewood, Littleton, and South Denver have the exact buyer profile for this offer: people who value time, trust, measurable change, and a place that can connect multiple wellness paths without sending them all over town."
+      }
+    ],
+    related: [
+      {
+        label: "Fitness + Performance",
+        href: "https://edenhealthclubs.com/fitness-performance/",
+        text: "Explore Eden's broader fitness, coaching, and performance environment."
+      },
+      {
+        label: "InBody scans",
+        href: "https://edenhealthclubs.com/functional-medicine/inbody/",
+        text: "Use body composition data to understand muscle, fat, and progress beyond the scale."
+      },
+      {
+        label: "Recovery services",
+        href: "https://edenhealthclubs.com/wellness-recovery/",
+        text: "Support recovery with IV therapy, red light, sauna, compression, and related services."
+      },
+      {
+        label: "Medical weight loss",
+        href: "https://edenhealthclubs.com/functional-medicine/medical-weight-loss/",
+        text: "Provider-guided weight-loss support for eligible clients who want a monitored plan."
+      },
+      {
+        label: "Peptide therapy",
+        href: "https://edenhealthclubs.com/peptide-therapy/",
+        text: "Clinician-guided wellness and recovery protocols when medically appropriate."
+      },
+      {
+        label: "Medical spa services",
+        href: "/medical-spa-denver/",
+        text: "Connect performance, wellness, and aesthetics inside the Eden environment."
+      }
+    ],
+    faqs: [
+      {
+        question: "What is the Eden Performance Lab?",
+        answer:
+          "The Eden Performance Lab is a first-step assessment for clients who want help with strength, body composition, energy, recovery, wellness planning, or the right service path inside Eden Health Club."
+      },
+      {
+        question: "Is this only for athletes?",
+        answer:
+          "No. The Performance Lab is built for active adults, busy professionals, weight-loss clients, former athletes, parents, and wellness-minded clients who want their body to work better."
+      },
+      {
+        question: "What can the assessment lead to?",
+        answer:
+          "Depending on your goals, Eden may recommend training, body composition tracking, recovery services, IV therapy, wellness injections, functional medicine, medical weight loss, hormone care, peptide therapy, or aesthetics consults when appropriate."
+      },
+      {
+        question: "Where is the Performance Lab located?",
+        answer:
+          "Eden Health Club is located at 5990 S University Blvd in Greenwood Village near Denver Tech Center, serving Cherry Hills Village, Centennial, Englewood, Littleton, Denver, and the south metro."
+      }
+    ]
+  }),
   ...areaFitnessPages,
   ...priorityKeywordPages
 ];
