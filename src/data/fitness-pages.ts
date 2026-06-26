@@ -742,30 +742,103 @@ export const fitnessPages: FitnessPage[] = [
     slug: "performance-training-greenwood-village",
     title: "Performance Training in Greenwood Village | Eden Health Club",
     description:
-      "Train for strength, energy, recovery, and body optimization with performance training at Eden Health Club in Greenwood Village near DTC.",
+      "Performance training in Greenwood Village at Eden Health Club: coached strength, conditioning, mobility, recovery, body composition, and wellness support near Denver Tech Center.",
     h1: "Performance Training in Greenwood Village",
     eyebrow: "Train for the body you actually need",
-    heroHeadline: "Performance training inside a facility built to optimize everything.",
+    heroHeadline: "Strength, conditioning, recovery, and body composition inside one Greenwood Village facility.",
     summary:
-      "Eden helps active adults build strength, improve conditioning, recover faster, and track body composition inside a working fitness facility with real medical treatment available under the same roof.",
+      "Eden helps active adults, busy professionals, former athletes, and body composition clients build strength, improve conditioning, recover better, and connect training with the wellness support that can keep progress moving.",
     primaryCta: "Book a Performance Assessment",
     secondaryCta: "See how Eden works",
-    builtFor: ["Active adults", "Executives and high performers", "Athletes and former athletes", "People who want strength, energy, and recovery"],
+    proof: [
+      "Greenwood Village near DTC",
+      "Coached strength + conditioning",
+      "Recovery and body composition nearby",
+      "Built for measurable progress"
+    ],
+    builtFor: [
+      "Active adults who want stronger training without a generic gym plan",
+      "Executives and high-output professionals near DTC",
+      "Former athletes who want structure, recovery, and durability",
+      "Weight-loss and body composition clients protecting strength",
+      "People comparing personal training, performance gyms, and wellness clinics"
+    ],
     sections: [
       {
         eyebrow: "Not just athletes",
         title: "Performance is how well your body handles your life.",
         body:
-          "For some clients, performance means sport. For others, it means sharper workdays, better recovery, stronger training sessions, steadier energy, and the capacity to do more without breaking down."
+          "For some clients, performance means sport. For others, it means sharper workdays, better recovery, stronger training sessions, steadier energy, and the capacity to do more without breaking down. Eden starts with the outcome, then helps shape the training around the body you actually need.",
+        bullets: [
+          "Build strength, conditioning, mobility, and durability with coaching",
+          "Use body composition tracking when fat loss, muscle, or recomposition is part of the goal",
+          "Connect recovery support when soreness, stress, travel, or energy is limiting consistency",
+          "Route into medical wellness consults when symptoms, history, or goals need provider review"
+        ]
       },
       {
         eyebrow: "What Eden connects",
         title: "Strength, conditioning, recovery, and medical wellness in one place.",
         body:
-          "Eden's performance model can connect training with InBody scans, recovery tools, IV therapy, wellness injections, peptide therapy, hormone care, and functional medicine support.",
-        bullets: ["Strength and conditioning", "Mobility and durability", "Recovery planning", "Body composition and metabolic support"]
+          "Eden's performance model can connect training with InBody-style scans, recovery tools, IV therapy, wellness injections, peptide therapy options, hormone care, and functional medicine support when appropriate. The advantage is not more services for the sake of it. The advantage is a plan that can adapt as your goals change.",
+        bullets: [
+          "Strength and conditioning for real-world output",
+          "Mobility and durability for joints, posture, and movement quality",
+          "Recovery planning for readiness, soreness, and consistency",
+          "Body composition and metabolic support when the goal is recomposition"
+        ]
       },
-      systemSection
+      {
+        eyebrow: "Local fit",
+        title: "A smarter performance training option near Denver Tech Center.",
+        body:
+          "Greenwood Village and DTC clients often do not need a louder gym. They need efficient coaching, measurable progress, recovery that matches the workload, and a facility that understands the connection between fitness, wellness, and body composition."
+      },
+      systemSection,
+      {
+        eyebrow: "How to start",
+        title: "Start with an assessment, then build the right training lane.",
+        body:
+          "The first step is not always a class package or a trainer package. It may be a performance assessment, body composition scan, recovery plan, strength block, or wellness consult. Eden helps choose the starting point based on what you want to change.",
+        bullets: [
+          "Clarify your main goal: strength, conditioning, energy, recovery, body composition, or confidence",
+          "Review training history, schedule, injury considerations, and consistency barriers",
+          "Match the next step to the right Eden service path",
+          "Keep the plan practical enough to follow"
+        ]
+      }
+    ],
+    related: [
+      {
+        label: "Performance Lab",
+        href: "/performance-lab-greenwood-village/",
+        text: "Start here if you want a broad assessment before choosing the right path."
+      },
+      {
+        label: "Recovery + Performance",
+        href: "/recovery-performance-greenwood-village/",
+        text: "Connect training with recovery routines, IV therapy, red light, sauna, and compression."
+      },
+      {
+        label: "Strength training",
+        href: "/strength-training-greenwood-village/",
+        text: "Build the strength foundation behind performance and body composition."
+      },
+      {
+        label: "Body composition training",
+        href: "/body-composition-training-greenwood-village/",
+        text: "Use training and tracking to move beyond the scale."
+      },
+      {
+        label: "Personal training near DTC",
+        href: "/personal-training-denver-tech-center/",
+        text: "Explore focused coaching for Denver Tech Center clients."
+      },
+      {
+        label: "Medical spa services",
+        href: "/medical-spa-denver/",
+        text: "Explore Eden's broader wellness, aesthetics, and performance environment."
+      }
     ],
     faqs: [
       {
@@ -781,7 +854,17 @@ export const fitnessPages: FitnessPage[] = [
       {
         question: "How is Eden different from a performance gym?",
         answer:
-          "Eden connects training with recovery, InBody scans, medical weight loss, hormones, peptides, IV therapy, wellness injections, and aesthetics inside one facility."
+          "Eden connects training with recovery, InBody-style body composition tracking, medical weight loss, hormones, peptides, IV therapy, wellness injections, and aesthetics inside one facility."
+      },
+      {
+        question: "Is performance training useful if I am not currently in shape?",
+        answer:
+          "Yes. Performance training can be scaled to your current fitness level. The goal is to build strength, confidence, capacity, and consistency from where you are now."
+      },
+      {
+        question: "What areas does Eden serve for performance training?",
+        answer:
+          "Eden is located at 5990 S University Blvd in Greenwood Village near Denver Tech Center and serves Cherry Hills Village, Centennial, Englewood, Littleton, Denver, and the south metro."
       }
     ]
   }),

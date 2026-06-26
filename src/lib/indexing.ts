@@ -31,6 +31,7 @@ export const indexableFitnessSlugs = new Set([
 	"body-composition-training-greenwood-village",
 	"glp-1-strength-training-greenwood-village",
 	"performance-lab-greenwood-village",
+	"performance-training-greenwood-village",
 	"recovery-performance-greenwood-village",
 ]);
 
