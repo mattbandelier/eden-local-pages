@@ -116,6 +116,19 @@ textarea {
   padding: 0;
 }
 
+.mobile-topbar .site-logo--image {
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+}
+
+.site-logo--image img {
+  display: block;
+  width: 148px;
+  height: auto;
+  object-fit: contain;
+}
+
 .site-logo--text span {
   font-family: Georgia, "Times New Roman", serif;
   font-size: 2rem;
@@ -1408,6 +1421,11 @@ summary {
     font-size: 0.52rem;
   }
 
+  .site-logo--image img {
+    width: 132px;
+    height: auto;
+  }
+
   .mobile-topbar {
     width: calc(100% - 24px);
     min-height: 44px;
@@ -1478,6 +1496,11 @@ summary {
 
   .site-logo--text small {
     font-size: 0.48rem;
+  }
+
+  .site-logo--image img {
+    width: 118px;
+    height: auto;
   }
 
   .hero__overlay {
