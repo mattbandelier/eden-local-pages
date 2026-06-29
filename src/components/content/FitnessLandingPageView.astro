@@ -10,7 +10,54 @@ type Props = {
 const { page } = Astro.props;
 const canonical = new URL(`/${page.slug}/`, Astro.site ?? "https://landing.edenhealthclubs.com").toString();
 const serviceName = page.h1.replace(" in Greenwood Village", "");
+const queryName = serviceName.toLowerCase();
 const phone = "+1-720-605-7678";
+const localSearches = [
+  `${queryName} greenwood village`,
+  `${queryName} near me`,
+  `${queryName} denver tech center`,
+  `${queryName} south denver`,
+  `${queryName} cherry hills`,
+  `${queryName} centennial`
+];
+const localProofPoints = [
+  "Located at 5990 S University Blvd in Greenwood Village",
+  "Minutes from Denver Tech Center and Cherry Hills Village",
+  "Useful for clients comparing gyms, studios, recovery clinics, and wellness providers",
+  "Built around an assessment-first path instead of a generic class package"
+];
+const priorityLinks = [
+  {
+    label: "Performance Lab",
+    href: "/performance-lab-greenwood-village/",
+    text: "Start here when you want a clear baseline before choosing training, recovery, or wellness support."
+  },
+  {
+    label: "Performance Training",
+    href: "/performance-training-greenwood-village/",
+    text: "Build strength, conditioning, body composition, and recovery capacity with coached support."
+  },
+  {
+    label: "Recovery + Performance",
+    href: "/recovery-performance-greenwood-village/",
+    text: "Connect training with recovery tools, IV therapy, red light, sauna, compression, and readiness support."
+  },
+  {
+    label: "Executive Fitness",
+    href: "/executive-fitness-greenwood-village/",
+    text: "Efficient training and recovery support for busy professionals near DTC."
+  },
+  {
+    label: "Semi-Private Training",
+    href: "/semi-private-personal-training-greenwood-village/",
+    text: "Small-format coaching for clients who want structure, accountability, and more attention than a class."
+  },
+  {
+    label: "Strength Training",
+    href: "/strength-training-greenwood-village/",
+    text: "The strength foundation for body composition, longevity, medical weight loss, and performance goals."
+  }
+].filter((item) => item.href !== `/${page.slug}/`);
 const schema = {
   "@context": "https://schema.org",
   "@graph": [
@@ -150,6 +197,28 @@ const schema = {
     </p>
   </section>
 
+  <section class="local-intent-section" aria-labelledby="local-intent-heading">
+    <div class="local-intent-section__intro">
+      <p class="eyebrow">Local fit</p>
+      <h2 id="local-intent-heading">{serviceName} for Greenwood Village, DTC, and the south Denver corridor.</h2>
+      <p>
+        This page is built for people who are not just looking for a nearby option. They are comparing whether Eden is the right local place to start, how the service connects to the rest of the facility, and what the first step should be.
+      </p>
+    </div>
+    <div class="local-intent-card">
+      <h3>Search intent Eden should own</h3>
+      <div class="local-intent-card__chips">
+        {localSearches.map((term) => <span>{term}</span>)}
+      </div>
+    </div>
+    <div class="local-intent-card">
+      <h3>Why this is not a generic landing page</h3>
+      <ul>
+        {localProofPoints.map((point) => <li>{point}</li>)}
+      </ul>
+    </div>
+  </section>
+
   <section class="fitness-intake" id="consult-form">
     <div class="fitness-intake__copy">
       <p class="eyebrow">Start with the right plan</p>
@@ -222,6 +291,21 @@ const schema = {
     </div>
     <div class="fitness-related__grid">
       {page.related.map((item) => (
+        <a href={item.href}>
+          <span>{item.label}</span>
+          <p>{item.text}</p>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="fitness-related fitness-related--priority" aria-labelledby="priority-heading">
+    <div class="section-heading">
+      <p class="eyebrow">Priority Eden paths</p>
+      <h2 id="priority-heading">Related pages built for the same local client.</h2>
+    </div>
+    <div class="fitness-related__grid">
+      {priorityLinks.map((item) => (
         <a href={item.href}>
           <span>{item.label}</span>
           <p>{item.text}</p>

@@ -33,6 +33,8 @@ export const indexableFitnessSlugs = new Set([
 	"performance-lab-greenwood-village",
 	"performance-training-greenwood-village",
 	"recovery-performance-greenwood-village",
+	"executive-fitness-greenwood-village",
+	"semi-private-personal-training-greenwood-village",
 ]);
 
 export function isIndexableFitness(slug: string): boolean {

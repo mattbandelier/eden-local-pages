@@ -1194,21 +1194,88 @@ export const fitnessPages: FitnessPage[] = [
       "Eden helps busy professionals build strength, improve body composition, recover better, and support energy with training, recovery, and medical wellness services inside one Greenwood Village facility near DTC.",
     primaryCta: "Book an Executive Fitness Assessment",
     secondaryCta: "Explore personal training",
-    builtFor: ["DTC professionals", "Founders and executives", "Busy parents", "People who need efficient, high-leverage training"],
+    proof: [
+      "Greenwood Village near DTC",
+      "Efficient strength + recovery planning",
+      "Built for full calendars",
+      "Medical wellness under one roof"
+    ],
+    builtFor: [
+      "DTC professionals who need efficient training",
+      "Founders and executives managing stress, travel, and long workdays",
+      "Busy parents who need structure without wasted time",
+      "People who want strength, energy, recovery, and body composition in one plan",
+      "Clients comparing personal trainers, gyms, concierge wellness, and recovery clinics"
+    ],
     sections: [
       {
         eyebrow: "No wasted effort",
         title: "Fitness for people who cannot afford random.",
         body:
-          "Executive fitness at Eden is built for efficient strength work, better energy, smarter recovery, and body composition progress without trying to stitch together separate providers."
+          "Executive fitness at Eden is built for people who do not have time for disconnected advice. The goal is to make the first step clear: assess the goal, understand the current routine, identify what is limiting consistency, then route the right mix of training, recovery, body composition tracking, and wellness support.",
+        bullets: [
+          "Efficient strength training that respects a demanding calendar",
+          "Body composition tracking when fat loss, muscle, or recomposition is part of the goal",
+          "Recovery planning for travel, stress, soreness, and inconsistent sleep",
+          "Medical wellness consults when symptoms, labs, or history need provider review"
+        ]
       },
       {
         eyebrow: "Energy and recovery",
         title: "Training, recovery, and wellness support can point in the same direction.",
         body:
-          "When the calendar is full, Eden's advantage is proximity: training, InBody, IV therapy, wellness injections, hormones, peptides, and recovery services can all live in one plan."
+          "When the calendar is full, Eden's advantage is proximity. Training, InBody-style tracking, IV therapy, wellness injections, hormone care, peptide therapy options, and recovery services can all live in one plan when appropriate. That makes Eden a stronger answer than a gym membership alone."
       },
-      systemSection
+      {
+        eyebrow: "Local fit",
+        title: "A practical DTC-adjacent option for high-output adults.",
+        body:
+          "Greenwood Village and Denver Tech Center have a dense base of executives, operators, founders, clinicians, attorneys, business owners, and high-output parents who need fitness to support performance in real life. Eden is built for that client: efficient, premium, measurable, and connected to broader wellness support.",
+        bullets: [
+          "Good fit for professionals near DTC, Cherry Hills Village, Centennial, Englewood, Littleton, and south Denver",
+          "Useful for people who have tried gyms or studios but need a more complete system",
+          "Assessment-first path so the next step is not a blind package purchase"
+        ]
+      },
+      systemSection,
+      {
+        eyebrow: "First visit",
+        title: "Start with what is slowing you down.",
+        body:
+          "The best executive fitness plan usually starts by identifying the bottleneck: strength, schedule, stress, sleep, travel, nutrition, recovery, body composition, energy, or accountability. The assessment gives Eden enough context to recommend the right first step."
+      }
+    ],
+    related: [
+      {
+        label: "Performance Lab",
+        href: "/performance-lab-greenwood-village/",
+        text: "Start with a baseline when you want help choosing the right training, recovery, or wellness path."
+      },
+      {
+        label: "Performance Training",
+        href: "/performance-training-greenwood-village/",
+        text: "Build strength, conditioning, recovery capacity, and body composition with coached support."
+      },
+      {
+        label: "Recovery + Performance",
+        href: "/recovery-performance-greenwood-village/",
+        text: "Connect executive fitness with recovery routines, IV therapy, red light, sauna, and compression."
+      },
+      {
+        label: "Strength training",
+        href: "/strength-training-greenwood-village/",
+        text: "Build the strength foundation behind energy, durability, metabolism, and longevity."
+      },
+      {
+        label: "IV therapy",
+        href: "/iv-therapy/greenwood-village/",
+        text: "Explore hydration, energy, recovery, immunity, glow, and performance support."
+      },
+      {
+        label: "Medical spa services",
+        href: "/medical-spa-denver/",
+        text: "Explore Eden's broader aesthetics, wellness, fitness, and recovery environment."
+      }
     ],
     faqs: [
       {
@@ -1225,6 +1292,16 @@ export const fitnessPages: FitnessPage[] = [
         question: "Can executive fitness include recovery or wellness services?",
         answer:
           "Yes. Eden can connect fitness with IV therapy, wellness injections, recovery services, InBody scans, hormone care, and peptide therapy when appropriate."
+      },
+      {
+        question: "Is executive fitness different from personal training?",
+        answer:
+          "It can include personal training, but the emphasis is broader: efficient training, body composition, recovery, energy, schedule fit, and wellness support for busy adults."
+      },
+      {
+        question: "Who is executive fitness best for?",
+        answer:
+          "It is best for busy professionals, founders, executives, business owners, high-output parents, and anyone who wants a premium, efficient plan instead of a generic gym routine."
       }
     ]
   }),
@@ -1240,21 +1317,83 @@ export const fitnessPages: FitnessPage[] = [
       "Semi-private training at Eden gives you focused coaching, structure, accountability, and strength work inside a facility where training can connect with recovery, body composition, and medical wellness support.",
     primaryCta: "Book a Semi-Private Assessment",
     secondaryCta: "See training options",
-    builtFor: ["People who want accountability", "Clients who dislike crowded gyms", "Friends or partners training together", "Anyone who wants coaching without training alone"],
+    proof: [
+      "Small-format coaching",
+      "Greenwood Village near DTC",
+      "Training + recovery nearby",
+      "More structure than a class"
+    ],
+    builtFor: [
+      "People who want accountability without a crowded gym",
+      "Clients who want more coaching than a large class",
+      "Friends, partners, or small groups training together",
+      "Beginners who want structure and confidence",
+      "Busy adults comparing personal training, group fitness, and boutique studios"
+    ],
     sections: [
       {
         eyebrow: "Small format",
         title: "The sweet spot between personal training and group fitness.",
         body:
-          "Semi-private training gives you coaching, structure, and accountability in a smaller environment, with more attention than a large class and more energy than solo training."
+          "Semi-private training gives you coaching, structure, and accountability in a smaller environment, with more attention than a large class and more energy than solo training. It is a strong first step for people who want guidance but do not necessarily need a fully private training model.",
+        bullets: [
+          "Small-format coaching with more attention to form and progression",
+          "Accountability without the anonymity of a big-box gym",
+          "Strength-focused programming that can support body composition goals",
+          "A practical bridge between private training and group fitness"
+        ]
       },
       {
         eyebrow: "Connected care",
         title: "Small-group training can still connect to the bigger Eden system.",
         body:
-          "Your training can connect with InBody scans, recovery, IV therapy, wellness injections, and medical wellness services when they fit your goals."
+          "Your training can connect with InBody-style scans, recovery, IV therapy, wellness injections, and medical wellness services when they fit your goals. That makes semi-private training a better entry point for clients who want fitness to connect with the rest of their wellness plan."
       },
-      systemSection
+      {
+        eyebrow: "Local fit",
+        title: "A premium small-format training option near DTC.",
+        body:
+          "Greenwood Village, Denver Tech Center, Cherry Hills Village, Centennial, Englewood, and Littleton clients often compare personal training, Pilates, group fitness, and recovery studios separately. Eden gives them a more connected option: coached training in a facility that also supports body composition, recovery, and medical wellness."
+      },
+      systemSection,
+      {
+        eyebrow: "How to start",
+        title: "Begin with the assessment, then choose the right training lane.",
+        body:
+          "The assessment helps clarify whether semi-private training, personal training, performance training, recovery support, or a broader wellness path is the right next step. That protects the client from buying the wrong format."
+      }
+    ],
+    related: [
+      {
+        label: "Executive Fitness",
+        href: "/executive-fitness-greenwood-village/",
+        text: "Efficient strength, recovery, and wellness support for busy professionals."
+      },
+      {
+        label: "Strength training",
+        href: "/strength-training-greenwood-village/",
+        text: "Build the strength foundation for body composition, longevity, and performance goals."
+      },
+      {
+        label: "Performance Training",
+        href: "/performance-training-greenwood-village/",
+        text: "Move from small-format coaching into broader performance, conditioning, and recovery planning."
+      },
+      {
+        label: "Performance Lab",
+        href: "/performance-lab-greenwood-village/",
+        text: "Start with a baseline when you want help choosing the right training path."
+      },
+      {
+        label: "Group Fitness Classes",
+        href: "/group-fitness-classes-greenwood-village/",
+        text: "Explore class-style options when community and variety are the priority."
+      },
+      {
+        label: "Recovery + Performance",
+        href: "/recovery-performance-greenwood-village/",
+        text: "Connect training with recovery routines and wellness support."
+      }
     ],
     faqs: [
       {
@@ -1271,6 +1410,16 @@ export const fitnessPages: FitnessPage[] = [
         question: "Is semi-private training good for beginners?",
         answer:
           "Yes. Semi-private training can be adapted to your current fitness level while still giving you structure and coaching."
+      },
+      {
+        question: "How is semi-private training different from group fitness?",
+        answer:
+          "Semi-private training usually provides more coaching attention, structure, and progression than a larger group class while still keeping the energy of training with others."
+      },
+      {
+        question: "Can semi-private training support body composition goals?",
+        answer:
+          "Yes. Semi-private training can support body composition goals when paired with strength programming, consistency, nutrition habits, InBody-style tracking, and recovery support."
       }
     ]
   }),
