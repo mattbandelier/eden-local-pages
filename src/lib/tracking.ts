@@ -15,11 +15,15 @@ export function trackLeadSubmitAttempt(serviceSlug: string, suburbSlug: string |
 }
 
 export function trackLeadSubmit(serviceSlug: string, suburbSlug: string | null, smsOptIn: boolean): void {
-	pushEvent("lead_submit", {
+	const params = {
 		service_slug: serviceSlug,
 		suburb_slug: suburbSlug,
 		sms_opt_in: smsOptIn,
-	});
+	};
+
+	// GTM's published conversion trigger listens for the legacy lead_submit event.
+	pushEvent("lead_submit", params);
+	pushEvent("lead_form_success", params);
 }
 
 export function trackLeadSubmitError(serviceSlug: string, suburbSlug: string | null, errorType: string): void {
