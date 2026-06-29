@@ -2,6 +2,7 @@ export const indexableComboKeys = new Set([
 	"diamondglow-facial/greenwood-village",
 	"botox/greenwood-village",
 	"lip-filler/greenwood-village",
+	"iv-therapy/greenwood-village",
 	"iv-therapy/littleton",
 	"microneedling/greenwood-village",
 	"dermal-fillers/greenwood-village",
