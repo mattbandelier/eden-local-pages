@@ -1,6 +1,8 @@
 declare global {
 	interface Window {
 		dataLayer?: Array<Record<string, unknown>>;
+		edenAnalyticsBlocked?: boolean;
+		fbq?: (...args: unknown[]) => void;
 	}
 }
 
@@ -24,6 +26,9 @@ export function trackLeadSubmit(serviceSlug: string, suburbSlug: string | null, 
 	// GTM's published conversion trigger listens for the legacy lead_submit event.
 	pushEvent("lead_submit", params);
 	pushEvent("lead_form_success", params);
+	if (!window.edenAnalyticsBlocked && typeof window.fbq === "function") {
+		window.fbq("track", "Lead");
+	}
 }
 
 export function trackLeadSubmitError(serviceSlug: string, suburbSlug: string | null, errorType: string): void {

@@ -17,6 +17,8 @@ const { title, description, canonicalUrl, ogImage, jsonLd = [], noindex = false 
 const resolvedOgImage = ogImage ?? `${ORIGIN}/og-default.svg`;
 const gtmId = import.meta.env.PUBLIC_GTM_CONTAINER_ID;
 const clarityProjectId = import.meta.env.PUBLIC_CLARITY_PROJECT_ID;
+const callRailSwapJsUrl = import.meta.env.PUBLIC_CALLRAIL_SWAP_JS_URL;
+const metaPixelId = import.meta.env.PUBLIC_META_PIXEL_ID || "1301043457641549";
 ---
 
 <!DOCTYPE html>
@@ -47,11 +49,39 @@ const clarityProjectId = import.meta.env.PUBLIC_CLARITY_PROJECT_ID;
 				<script is:inline define:vars={{ gtmId }}>
 					(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 					new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-					j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+					j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+					var p=new URLSearchParams(w.location.search);
+					var source=(p.get('utm_source')||'').toLowerCase();
+					var medium=(p.get('utm_medium')||'').toLowerCase();
+					var ref=(d.referrer||'').toLowerCase();
+					var badSources=['theoffer','katalys','pr_campaigns','vibe-pixel','fluscheeitaway','upfluence'];
+					var badMediums=['affiliate','earned_media','ctv','influencer'];
+					var badRefs=['scamadviser.com','theoffer'];
+					var blocked=badSources.indexOf(source)>-1||badMediums.indexOf(medium)>-1||badRefs.some(function(x){return ref.indexOf(x)>-1;});
+					w.edenAnalyticsBlocked=blocked;
+					if(blocked){w[l].push({event:'eden_analytics_blocked',blocked_source:source,blocked_medium:medium});return;}
+					j.async=true;j.src=
 					'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 					})(window,document,'script','dataLayer',gtmId);
 				</script>
 			</>
+		)}
+		{metaPixelId && (
+			<script is:inline define:vars={{ metaPixelId }}>
+				(function(f,b,e,v,n,t,s){
+					if(f.edenAnalyticsBlocked) return;
+					if(f.fbq) return;
+					n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+					if(!f._fbq) f._fbq=n;
+					n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];
+					t=b.createElement(e);t.async=!0;t.src=v;
+					s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s);
+				})(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+				if(window.fbq){
+					window.fbq('init', metaPixelId);
+					window.fbq('track', 'PageView');
+				}
+			</script>
 		)}
 		{clarityProjectId && (
 			<script is:inline define:vars={{ clarityProjectId }}>
@@ -62,6 +92,7 @@ const clarityProjectId = import.meta.env.PUBLIC_CLARITY_PROJECT_ID;
 				})(window, document, "clarity", "script", clarityProjectId);
 			</script>
 		)}
+		{callRailSwapJsUrl && <script async src={callRailSwapJsUrl}></script>}
 	</head>
 	<body class="min-h-screen bg-eden-paper text-eden-navy antialiased">
 		{gtmId && (
@@ -72,6 +103,17 @@ const clarityProjectId = import.meta.env.PUBLIC_CLARITY_PROJECT_ID;
 					width="0"
 					style="display:none;visibility:hidden"
 				></iframe>
+			</noscript>
+		)}
+		{metaPixelId && (
+			<noscript>
+				<img
+					height="1"
+					width="1"
+					style="display:none"
+					src={`https://www.facebook.com/tr?id=${metaPixelId}&ev=PageView&noscript=1`}
+					alt=""
+				/>
 			</noscript>
 		)}
 		<slot />
