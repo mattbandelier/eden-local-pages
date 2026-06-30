@@ -5,7 +5,7 @@ import "../styles/fitness-v2.css";
 
 const title = "Fitness Performance | Eden Health Club";
 const description =
-  "Small-group classes that feel semi-private: progressive strength, Pilates, and performance conditioning backed by coaching, data, and recovery.";
+  "Small-group and semi-private fitness at Eden: progressive strength, Pilates, and performance conditioning backed by coaching, data, and recovery.";
 const canonical = new URL("/fitness-performance-v2/", Astro.site ?? "https://landing.edenhealthclubs.com").toString();
 
 const expect = [
@@ -43,10 +43,10 @@ const specialtyClasses = [
   ["Mat Pilates", "Low-impact strength, posture, mobility, and core control, clean movement and a stronger foundation."],
   ["Core X Restore", "Core + mobility + downshift. Build stability where it matters and release what is tight."],
   ["Restore", "Mobility, breathwork, tissue quality, and nervous system reset, perfect on high-stress weeks."],
-  ["Endure", "Aerobic engine + smart conditioning. Sustainable cardio that builds capacity without burnout."],
+  ["Prenatal Yoga", "Safe, supportive movement for pregnancy with breathwork, mobility, strength, pelvic floor awareness, and relaxation."],
+  ["Postnatal Restore & Rebuild", "A return-to-movement class for cleared postpartum moms focused on core reconnection, mobility, strength, and confidence."],
   ["Eden Remix", "Variety format, still coached and intentional. Strength + conditioning + fun programming without the chaos."],
-  ["Barre X Sculpt", "Low-impact, high-burn toning for glutes, legs, posture, and core. Small, controlled movements, big results."],
-  ["Engine X (HYROX-inspired)", "Hybrid conditioning built like an event: cardio intervals + strength stations, coached for form and paced for progress."]
+  ["Barre X Sculpt", "Low-impact, high-burn toning for glutes, legs, posture, and core. Small, controlled movements, big results."]
 ];
 
 const differences = [
@@ -54,6 +54,7 @@ const differences = [
   "Coaching-forward: form correction, scaling, and progression are the standard",
   "Progressive programming: repeatable pillars that build week over week",
   "Semi-private feel: boutique studio experience with no crowds, no chaos, no ego",
+  "Small-format coaching: semi-private training is capped at 4 people max",
   "Recovery is part of the method: better recovery means better results"
 ];
 
@@ -72,6 +73,19 @@ const nutrition = [
   "Best for: fat loss, muscle gain, energy, and a plan you can actually follow"
 ];
 
+const motherhoodPrograms = [
+  {
+    title: "Prenatal Yoga",
+    body: "A 60-minute class for women in all stages of pregnancy, built around safe movement, strength, flexibility, breathwork, and relaxation while preparing the body for labor and delivery.",
+    bullets: ["Breathwork + gentle mobility", "Strength, balance, and hip mobility", "Pelvic floor awareness", "Safe movement modifications"]
+  },
+  {
+    title: "Postnatal Restore & Rebuild",
+    body: "A 60-minute class for moms at least six weeks postpartum or cleared by their physician, focused on safely rebuilding strength and confidence after childbirth.",
+    bullets: ["Core reconnection", "Diastasis recti-safe exercise", "Pelvic floor strengthening", "Babies welcome until crawling age"]
+  }
+];
+
 const paths = [
   {
     badge: "Best for group energy",
@@ -82,13 +96,13 @@ const paths = [
   {
     badge: "Best for focused coaching",
     title: "Personal Training",
-    body: "Fully customized 1:1 or semi-private coaching for the fastest results and highest accountability.",
+    body: "Fully customized 1:1 coaching for clients who want the most individualized attention and accountability.",
     image: "https://edenhealthclubs.com/wp-content/uploads/2025/08/braintap-benefits.webp"
   },
   {
-    badge: "Best for total transformation",
-    title: "The Eden 90-Day Reset",
-    body: "Our signature transformation system combining training, nutrition, recovery, and expert guidance into one structured plan with measurable progress.",
+    badge: "Best for small-format coaching",
+    title: "Semi-Private Training",
+    body: "Coached training capped at 4 people max, more personal than a class while keeping the motivation and energy of a small group.",
     image: "https://edenhealthclubs.com/wp-content/uploads/2025/08/hair-restoration-with-exosomes-what.webp"
   },
   {
@@ -104,8 +118,9 @@ const faqs = [
   ["Do I need to be in shape to start?", "No. Everything is coach-led and scalable, beginner-friendly, still challenging."],
   ["What should I do first?", "Start with an InBody Fitness Assessment so we can build your weekly plan."],
   ["How often should I come per week?", "Most members do 2-4 Signature classes, 1-2 Specialty classes, plus 1-3 Recovery sessions depending on goals."],
-  ["Is Engine X official HYROX?", "No. Engine X is inspired by hybrid racing formats and designed as a coached, scalable performance class."],
-  ["Can I combine classes with personal training or the 90-Day Reset?", "Yes. Many members stack classes + recovery, and upgrade into PT or the 90-Day Reset for more structure."]
+  ["Do you offer semi-private training?", "Yes. Eden offers semi-private training capped at 4 people max for more coaching attention in a small-format environment."],
+  ["Do you offer prenatal or postpartum fitness?", "Yes. Eden is building prenatal yoga and postnatal restore programming with safe movement, pelvic floor awareness, core stability, and optional personal training support."],
+  ["Can I combine classes with personal training or semi-private training?", "Yes. Many members stack classes + recovery, and add personal or semi-private training for more structure."]
 ];
 ---
 
@@ -127,7 +142,7 @@ const faqs = [
       <div class="fit-hero__container">
         <div class="fit-hero__content">
           <h1>Fitness + Performance at Eden</h1>
-          <p class="fit-hero__subhead">Small-group classes that feel semi-private, progressive strength, Pilates, and performance conditioning, backed by coaching, data, and recovery.</p>
+          <p class="fit-hero__subhead">Small-group and semi-private training with progressive strength, Pilates, and performance conditioning, backed by coaching, data, and recovery.</p>
           <div class="fit-hero__bullets">
             <h2>What you can expect:</h2>
             <ul>
@@ -227,6 +242,38 @@ const faqs = [
       </div>
     </section>
 
+    <section class="fit-motherhood">
+      <div class="fit-section-head">
+        <h2>Pre & Postnatal Wellness</h2>
+        <p>A supportive wellness destination for expectant and new mothers to move safely, restore strength, improve mobility, and build community through pregnancy and postpartum recovery.</p>
+      </div>
+      <div class="fit-motherhood__grid">
+        {motherhoodPrograms.map((program) => (
+          <article>
+            <h3>{program.title}</h3>
+            <p>{program.body}</p>
+            <ul>
+              {program.bullets.map((bullet) => <li>{bullet}</li>)}
+            </ul>
+          </article>
+        ))}
+      </div>
+      <div class="fit-motherhood__details">
+        <article>
+          <h3>Personal Training Add-On</h3>
+          <p>Individualized prenatal and postpartum sessions can support pregnancy strength training, birth preparation, core rehabilitation, safe return to exercise, and functional lifting mechanics.</p>
+        </article>
+        <article>
+          <h3>Community Education</h3>
+          <p>Future workshops can include pelvic floor health, labor preparation through movement, core recovery after birth, babywearing basics, nutrition, and mindfulness for new mothers.</p>
+        </article>
+      </div>
+      <div class="fit-actions">
+        <a class="fit-btn fit-btn--primary" href="#consult-form">Ask About Motherhood Programs</a>
+        <a class="fit-btn fit-btn--light" href="#consult-form">Book Personal Training</a>
+      </div>
+    </section>
+
     <section class="fit-difference">
       <div class="fit-section-head">
         <h2>Nutrition that actually matches your training</h2>
@@ -265,8 +312,8 @@ const faqs = [
 
     <section class="fit-signature">
       <div class="fit-section-head">
-        <h2>Eden Signature Classes</h2>
-        <p>These are the pillars. Members build their week around these for the fastest progress.</p>
+        <h2>Ways to Train at Eden</h2>
+        <p>Choose the level of coaching and structure that fits your goals, from class energy to semi-private attention.</p>
       </div>
       <div class="fit-card-row">
         {paths.map((item) => (
@@ -280,9 +327,9 @@ const faqs = [
         ))}
       </div>
       <div class="fit-section-foot">
-        <p>Eden designs your progress. Our expert coaches evaluate and create your plan; our specialized classes deliver your personalized results.</p>
+        <p>Eden designs your progress. Our coaches help you choose the right mix of classes, semi-private training, nutrition, and recovery.</p>
         <div class="fit-actions">
-          <a class="fit-btn fit-btn--primary" href="#consult-form">Book a Signature Class</a>
+          <a class="fit-btn fit-btn--primary" href="#consult-form">Book Training</a>
           <a class="fit-btn fit-btn--light" href="#consult-form">Start with InBody Baseline</a>
         </div>
       </div>
