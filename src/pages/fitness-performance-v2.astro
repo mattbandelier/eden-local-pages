@@ -10,6 +10,7 @@ const canonical = new URL("/fitness-performance-v2/", Astro.site ?? "https://lan
 
 const expect = [
   "Start with an InBody baseline + Fitness Assessment",
+  "Personal training as part of your Optimize Plan",
   "Signature class system",
   "Specialty classes",
   "Recovery-forward environment"
@@ -52,6 +53,7 @@ const specialtyClasses = [
 const differences = [
   "Assessment-first: InBody + baseline so we know where you are starting",
   "Coaching-forward: form correction, scaling, and progression are the standard",
+  "Optimize Plan: personal training, classes, recovery, and nutrition mapped to your goals",
   "Progressive programming: repeatable pillars that build week over week",
   "Semi-private feel: boutique studio experience with no crowds, no chaos, no ego",
   "Small-format coaching: semi-private training is capped at 4 people max",
@@ -60,9 +62,27 @@ const differences = [
 
 const inbody = [
   "Your baseline metrics + a clear target",
-  "A simple weekly plan: what to take and how often",
+  "A simple Optimize Plan: personal training, classes, recovery, and nutrition",
   "Coaching guidance on form, intensity, and progression",
   "A recovery recommendation to improve results and consistency"
+];
+
+const optimizePlan = [
+  {
+    title: "Personal Training",
+    body: "The highest-touch part of the Optimize Plan. Your coach builds around your assessment, goals, movement history, strength needs, and accountability style.",
+    bullets: ["1:1 coaching", "Strength progression", "Movement quality", "Weekly accountability"]
+  },
+  {
+    title: "Semi-Private Training",
+    body: "Small-format training capped at 4 people max, giving you more coaching attention than a class with the energy and consistency of a group.",
+    bullets: ["4 people max", "Coach-led progressions", "Form correction", "Structured training blocks"]
+  },
+  {
+    title: "Classes + Recovery",
+    body: "Signature classes, specialty classes, nutrition, and recovery support are layered in so your plan fits your body, schedule, and goals.",
+    bullets: ["Signature classes", "Specialty classes", "Nutrition coaching", "Recovery sessions"]
+  }
 ];
 
 const nutrition = [
@@ -96,7 +116,7 @@ const paths = [
   {
     badge: "Best for focused coaching",
     title: "Personal Training",
-    body: "Fully customized 1:1 coaching for clients who want the most individualized attention and accountability.",
+    body: "A core part of the Optimize Plan: fully customized 1:1 coaching for clients who want individualized attention, progression, and accountability.",
     image: "https://edenhealthclubs.com/wp-content/uploads/2025/08/braintap-benefits.webp"
   },
   {
@@ -118,6 +138,7 @@ const faqs = [
   ["Do I need to be in shape to start?", "No. Everything is coach-led and scalable, beginner-friendly, still challenging."],
   ["What should I do first?", "Start with an InBody Fitness Assessment so we can build your weekly plan."],
   ["How often should I come per week?", "Most members do 2-4 Signature classes, 1-2 Specialty classes, plus 1-3 Recovery sessions depending on goals."],
+  ["Is personal training part of the Optimize Plan?", "Yes. Personal training is a major part of Eden's Optimize Plan, especially for clients who want individualized coaching, strength progression, movement correction, and accountability."],
   ["Do you offer semi-private training?", "Yes. Eden offers semi-private training capped at 4 people max for more coaching attention in a small-format environment."],
   ["Do you offer prenatal or postpartum fitness?", "Yes. Eden is building prenatal yoga and postnatal restore programming with safe movement, pelvic floor awareness, core stability, and optional personal training support."],
   ["Can I combine classes with personal training or semi-private training?", "Yes. Many members stack classes + recovery, and add personal or semi-private training for more structure."]
@@ -228,7 +249,7 @@ const faqs = [
     <section class="fit-difference">
       <div class="fit-section-head">
         <h2>Just start with an InBody</h2>
-        <p>Your Fitness Assessment begins with a comprehensive <strong>InBody analysis</strong>, then we map your ideal weekly plan (signature + specialty + recovery) based on your goals.</p>
+        <p>Your Fitness Assessment begins with a comprehensive <strong>InBody analysis</strong>, then we map your Optimize Plan: personal training, signature classes, specialty classes, recovery, and nutrition based on your goals.</p>
       </div>
       <div class="fit-split">
         <img src="https://edenhealthclubs.com/wp-content/uploads/2026/03/procedure-iv-therapy.webp" alt="IV therapy room" />
@@ -239,6 +260,28 @@ const faqs = [
           </ul>
           <a class="fit-btn fit-btn--primary" href="#consult-form">Book Fitness Assessment</a>
         </div>
+      </div>
+    </section>
+
+    <section class="fit-optimize">
+      <div class="fit-section-head">
+        <h2>Your Optimize Plan</h2>
+        <p>Personal training is a major part of the Eden plan. After your baseline, we help you choose the right mix of 1:1 coaching, semi-private training, classes, recovery, and nutrition.</p>
+      </div>
+      <div class="fit-optimize__grid">
+        {optimizePlan.map((item) => (
+          <article>
+            <h3>{item.title}</h3>
+            <p>{item.body}</p>
+            <ul>
+              {item.bullets.map((bullet) => <li>{bullet}</li>)}
+            </ul>
+          </article>
+        ))}
+      </div>
+      <div class="fit-actions">
+        <a class="fit-btn fit-btn--primary" href="#consult-form">Build My Optimize Plan</a>
+        <a class="fit-btn fit-btn--light" href="#consult-form">Book Personal Training</a>
       </div>
     </section>
 
