@@ -3,17 +3,59 @@ import LeadForm from "../components/content/LeadForm.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import "../styles/fitness-v2.css";
 
-const title = "Fitness Performance | Eden Health Club";
+const title = "Eden Optimize Plan | Personal Training + Fitness in Greenwood Village";
 const description =
-  "Small-group and semi-private fitness at Eden: progressive strength, Pilates, and performance conditioning backed by coaching, data, and recovery.";
+  "Build a stronger, leaner, more resilient body at Eden Health Club in Greenwood Village with an assessment-first Optimize Plan, personal training, semi-private training, classes, nutrition, and recovery.";
 const canonical = new URL("/fitness-performance-v2/", Astro.site ?? "https://landing.edenhealthclubs.com").toString();
 
 const expect = [
-  "Start with an InBody baseline + Fitness Assessment",
-  "Personal training as part of your Optimize Plan",
-  "Signature class system",
-  "Specialty classes",
-  "Recovery-forward environment"
+  "Build strength, muscle, and confidence",
+  "Improve body composition without guessing",
+  "Train with personal or semi-private coaching",
+  "Use recovery and nutrition to stay consistent",
+  "Start with an InBody baseline + Optimize Plan"
+];
+
+const outcomeCards = [
+  {
+    title: "Get stronger without feeling lost",
+    body: "Know what to do, how hard to train, and how to progress with coaching that corrects form and keeps the plan moving."
+  },
+  {
+    title: "Change body composition",
+    body: "Use InBody data, strength training, nutrition, and recovery to focus on muscle, fat loss, and real measurable progress."
+  },
+  {
+    title: "Protect muscle during weight loss",
+    body: "Support GLP-1 or medical weight-loss goals with training built to preserve strength, metabolism, and long-term results."
+  },
+  {
+    title: "Return safely after pregnancy",
+    body: "Move through prenatal and postpartum seasons with pelvic floor awareness, core reconnection, mobility, and supportive coaching."
+  },
+  {
+    title: "Recover better and show up again",
+    body: "Layer in sauna, red light, compression, mobility, and downshift work so soreness and stress do not stop consistency."
+  },
+  {
+    title: "Fit the plan into a real life",
+    body: "Choose the right mix of 1:1 training, semi-private training, classes, nutrition, and recovery around your schedule."
+  }
+];
+
+const localAnswerCards = [
+  {
+    question: "What is Eden's fitness program best for?",
+    answer: "Eden is built for people near Greenwood Village, DTC, Cherry Hills, Centennial, and South Denver who want measurable strength, body composition, recovery, and accountability, not another random gym membership."
+  },
+  {
+    question: "How is Eden different from a gym or boutique studio?",
+    answer: "Eden starts with an assessment, builds an Optimize Plan, and connects personal training, semi-private training, small-group classes, nutrition, recovery, and wellness support under one roof."
+  },
+  {
+    question: "What should I book first?",
+    answer: "Start with a Fitness Assessment and InBody baseline. From there, Eden can map the right path: personal training, semi-private training, classes, nutrition, recovery, or pre/postnatal support."
+  }
 ];
 
 const signatureClasses = [
@@ -137,9 +179,69 @@ const faqs = [
   ["Do you offer prenatal or postpartum fitness?", "Yes. Eden is building prenatal yoga and postnatal restore programming with safe movement, pelvic floor awareness, core stability, and optional personal training support."],
   ["Can I combine classes with personal training or semi-private training?", "Yes. Many members stack classes + recovery, and add personal or semi-private training for more structure."]
 ];
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": `${canonical}#webpage`,
+    name: title,
+    url: canonical,
+    description,
+    inLanguage: "en-US",
+    about: {
+      "@id": `${canonical}#service`
+    },
+    primaryImageOfPage: "https://edenhealthclubs.com/wp-content/uploads/2025/08/fitness-banner.webp"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": ["HealthClub", "LocalBusiness"],
+    "@id": `${canonical}#eden-health-club`,
+    name: "Eden Health Club",
+    url: "https://edenhealthclubs.com/",
+    telephone: "+17206057678",
+    image: "https://edenhealthclubs.com/wp-content/uploads/2025/08/fitness-banner.webp",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "5990 S University Blvd",
+      addressLocality: "Greenwood Village",
+      addressRegion: "CO",
+      postalCode: "80121",
+      addressCountry: "US"
+    },
+    areaServed: ["Greenwood Village", "Denver Tech Center", "Cherry Hills Village", "Centennial", "South Denver", "Englewood", "Littleton"],
+    priceRange: "$$"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": `${canonical}#service`,
+    name: "Eden Optimize Plan",
+    serviceType: "Assessment-first personal training, semi-private training, fitness, nutrition, and recovery plan",
+    provider: {
+      "@id": `${canonical}#eden-health-club`
+    },
+    areaServed: ["Greenwood Village", "Denver Tech Center", "Cherry Hills Village", "Centennial", "South Denver"],
+    description
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "@id": `${canonical}#faq`,
+    mainEntity: [...localAnswerCards.map((item) => [item.question, item.answer]), ...faqs].map(([question, answer]) => ({
+      "@type": "Question",
+      name: question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: answer
+      }
+    }))
+  }
+];
 ---
 
-<BaseLayout title={title} description={description} canonicalUrl={canonical}>
+<BaseLayout title={title} description={description} canonicalUrl={canonical} jsonLd={jsonLd}>
   <main class="fitness-v2" id="top">
     <section class="fit-hero" style="--hero-image: url('https://edenhealthclubs.com/wp-content/uploads/2025/08/fitness-banner.webp')">
       <header class="fit-header" aria-label="Eden Health Club">
@@ -156,8 +258,8 @@ const faqs = [
       <div class="fit-hero__overlay"></div>
       <div class="fit-hero__container">
         <div class="fit-hero__content">
-          <h1>Fitness + Performance at Eden</h1>
-          <p class="fit-hero__subhead">Small-group and semi-private training with progressive strength, Pilates, and performance conditioning, backed by coaching, data, and recovery.</p>
+          <h1>Build a stronger, leaner, more resilient body.</h1>
+          <p class="fit-hero__subhead">Eden's assessment-first Optimize Plan combines personal training, semi-private training, small-group classes, nutrition, and recovery so your fitness finally has a strategy.</p>
           <div class="fit-hero__bullets">
             <h2>What you can expect:</h2>
             <ul>
@@ -166,7 +268,7 @@ const faqs = [
           </div>
           <div class="fit-actions">
             <a class="fit-btn fit-btn--primary" href="#consult-form">Book a Fitness Assessment</a>
-            <a class="fit-btn fit-btn--ghost" href="#signature">Book a Class</a>
+            <a class="fit-btn fit-btn--ghost" href="#outcomes">See Outcomes</a>
           </div>
         </div>
         <aside class="fit-hero__form" id="consult-form" aria-label="Book your free consultation">
@@ -179,6 +281,36 @@ const faqs = [
             submitText="Book Now"
           />
         </aside>
+      </div>
+    </section>
+
+    <section class="fit-outcomes" id="outcomes">
+      <div class="fit-section-head">
+        <h2>What you actually get from the plan</h2>
+        <p>Eden is built for outcomes first. The classes, personal training, nutrition, and recovery are the tools we use to help your body change.</p>
+      </div>
+      <div class="fit-outcomes__grid">
+        {outcomeCards.map((item) => (
+          <article>
+            <h3>{item.title}</h3>
+            <p>{item.body}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="fit-answer-section" aria-labelledby="answers-heading">
+      <div class="fit-section-head">
+        <h2 id="answers-heading">The quick answer</h2>
+        <p>For people comparing gyms, personal trainers, Pilates studios, and recovery options around Greenwood Village and DTC.</p>
+      </div>
+      <div class="fit-answer-grid">
+        {localAnswerCards.map((item) => (
+          <article>
+            <h3>{item.question}</h3>
+            <p>{item.answer}</p>
+          </article>
+        ))}
       </div>
     </section>
 

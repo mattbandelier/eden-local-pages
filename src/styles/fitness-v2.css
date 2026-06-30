@@ -235,7 +235,9 @@
 .fit-challenge,
 .fit-faq,
 .fit-motherhood,
-.fit-optimize {
+.fit-optimize,
+.fit-outcomes,
+.fit-answer-section {
   width: min(1200px, calc(100% - 40px));
   margin: 0 auto;
   padding: clamp(72px, 8vw, 118px) 0;
@@ -417,6 +419,56 @@
 
 .fit-specialty > .fit-btn {
   margin-inline: auto;
+}
+
+.fit-outcomes {
+  border-bottom: 1px solid var(--fit-line);
+}
+
+.fit-outcomes__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.fit-outcomes__grid article {
+  min-height: 250px;
+  background: var(--fit-white);
+  padding: clamp(26px, 3vw, 36px);
+}
+
+.fit-outcomes__grid h3,
+.fit-answer-grid h3 {
+  margin: 0 0 14px;
+  color: var(--fit-green);
+  font-size: clamp(1.45rem, 2.4vw, 2.2rem);
+  line-height: 1.02;
+}
+
+.fit-outcomes__grid p,
+.fit-answer-grid p {
+  margin: 0;
+  color: var(--fit-muted);
+  font-size: 1.02rem;
+  line-height: 1.6;
+}
+
+.fit-answer-section {
+  width: 100%;
+  background: var(--fit-white);
+  padding-inline: max(20px, calc((100% - 1200px) / 2));
+}
+
+.fit-answer-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.fit-answer-grid article {
+  border-left: 4px solid var(--fit-sage);
+  background: var(--fit-cream);
+  padding: clamp(26px, 3vw, 36px);
 }
 
 .fit-challenge {
@@ -747,6 +799,8 @@
 
   .fit-card-row,
   .fit-spec-grid,
+  .fit-outcomes__grid,
+  .fit-answer-grid,
   .fit-steps,
   .fit-optimize__grid,
   .fit-motherhood__grid,
@@ -799,6 +853,8 @@
 
   .fit-card-row,
   .fit-spec-grid,
+  .fit-outcomes__grid,
+  .fit-answer-grid,
   .fit-steps,
   .fit-optimize__grid,
   .fit-motherhood__grid,
