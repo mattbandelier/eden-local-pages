@@ -15,6 +15,7 @@ import MoneyPageLayer from "../../components/content/MoneyPageLayer.astro";
 import PricingCard from "../../components/content/PricingCard.astro";
 import PremiumConversionBlock from "../../components/content/PremiumConversionBlock.astro";
 import PremiumHeader from "../../components/layout/PremiumHeader.astro";
+import PriorityMoneyLinks from "../../components/content/PriorityMoneyLinks.astro";
 import RelatedServices from "../../components/content/RelatedServices.astro";
 import TreatmentSnapshot from "../../components/content/TreatmentSnapshot.astro";
 import TrustBar from "../../components/content/TrustBar.astro";
@@ -85,6 +86,7 @@ const isPremiumMoneyPage = isIndexableCombo(service.slug, suburb.slug);
 			<PricingCard pricing={service.pricing} consultRequired={service.consultRequired} ctaText={service.ctaText} />
 		</div>
 		<FAQAccordion faqs={faqs} heading={`${service.name} questions from ${suburb.name} clients`} />
+		{isPremiumMoneyPage && <PriorityMoneyLinks currentPath={comboUrl(service.slug, suburb.slug).replace("https://landing.edenhealthclubs.com", "")} />}
 		<RelatedServices services={relatedServices} suburbSlug={suburb.slug} />
 		<MainSiteLink service={service} />
 		{isPremiumMoneyPage ? (
