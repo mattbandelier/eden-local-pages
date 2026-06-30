@@ -1,0 +1,319 @@
+---
+import LeadForm from "../components/content/LeadForm.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import "../styles/fitness-v2.css";
+
+const title = "Fitness Performance | Eden Health Club";
+const description =
+  "Small-group classes that feel semi-private: progressive strength, Pilates, and performance conditioning backed by coaching, data, and recovery.";
+const canonical = new URL("/fitness-performance-v2/", Astro.site ?? "https://landing.edenhealthclubs.com").toString();
+
+const expect = [
+  "Start with an InBody baseline + Fitness Assessment",
+  "Signature class system",
+  "Specialty classes",
+  "Recovery-forward environment"
+];
+
+const signatureClasses = [
+  {
+    badge: "Best for group energy",
+    title: "Small-Group Fitness",
+    body: "Signature + specialty classes with coaching and progression in a boutique environment.",
+    image: "https://edenhealthclubs.com/wp-content/uploads/2025/08/class-offerings-banner.webp"
+  },
+  {
+    badge: "Whole Body",
+    body: "Total-body strength + athletic conditioning. Efficient full-body programming that hits everything without burning you out.",
+    image: "https://edenhealthclubs.com/wp-content/uploads/2025/09/procedure-diamond-glow.webp"
+  },
+  {
+    badge: "Power",
+    body: "Strength meets performance. Heavier efforts, athletic intervals, purposeful intensity, built to increase output and confidence.",
+    image: "https://edenhealthclubs.com/wp-content/uploads/2025/09/procedure-filler-removal.webp"
+  },
+  {
+    badge: "Recovery",
+    body: "Complete 8 recovery sessions (sauna, red light, compression, BrainTap, etc.)",
+    image: "https://edenhealthclubs.com/wp-content/uploads/2025/12/procedure-bbl.webp"
+  }
+];
+
+const specialtyClasses = [
+  ["Mat Pilates", "Low-impact strength, posture, mobility, and core control, clean movement and a stronger foundation."],
+  ["Core X Restore", "Core + mobility + downshift. Build stability where it matters and release what is tight."],
+  ["Restore", "Mobility, breathwork, tissue quality, and nervous system reset, perfect on high-stress weeks."],
+  ["Endure", "Aerobic engine + smart conditioning. Sustainable cardio that builds capacity without burnout."],
+  ["Eden Remix", "Variety format, still coached and intentional. Strength + conditioning + fun programming without the chaos."],
+  ["Barre X Sculpt", "Low-impact, high-burn toning for glutes, legs, posture, and core. Small, controlled movements, big results."],
+  ["Engine X (HYROX-inspired)", "Hybrid conditioning built like an event: cardio intervals + strength stations, coached for form and paced for progress."]
+];
+
+const differences = [
+  "Assessment-first: InBody + baseline so we know where you are starting",
+  "Coaching-forward: form correction, scaling, and progression are the standard",
+  "Progressive programming: repeatable pillars that build week over week",
+  "Semi-private feel: boutique studio experience with no crowds, no chaos, no ego",
+  "Recovery is part of the method: better recovery means better results"
+];
+
+const inbody = [
+  "Your baseline metrics + a clear target",
+  "A simple weekly plan: what to take and how often",
+  "Coaching guidance on form, intensity, and progression",
+  "A recovery recommendation to improve results and consistency"
+];
+
+const nutrition = [
+  "Macro / calorie targets based on your goal and baseline",
+  "Simple meal structure with no extremes and no crash diets",
+  "Accountability check-ins and adjustments",
+  "Support for performance, recovery, and body composition",
+  "Best for: fat loss, muscle gain, energy, and a plan you can actually follow"
+];
+
+const paths = [
+  {
+    badge: "Best for group energy",
+    title: "Small-Group Fitness",
+    body: "Signature + specialty classes with coaching and progression in a boutique environment.",
+    image: "https://edenhealthclubs.com/wp-content/uploads/2025/08/class-offerings-banner.webp"
+  },
+  {
+    badge: "Best for focused coaching",
+    title: "Personal Training",
+    body: "Fully customized 1:1 or semi-private coaching for the fastest results and highest accountability.",
+    image: "https://edenhealthclubs.com/wp-content/uploads/2025/08/braintap-benefits.webp"
+  },
+  {
+    badge: "Best for total transformation",
+    title: "The Eden 90-Day Reset",
+    body: "Our signature transformation system combining training, nutrition, recovery, and expert guidance into one structured plan with measurable progress.",
+    image: "https://edenhealthclubs.com/wp-content/uploads/2025/08/hair-restoration-with-exosomes-what.webp"
+  },
+  {
+    badge: "Best for sustainable habits",
+    title: "Nutrition Coaching",
+    body: "Nutrition support that aligns with your training and lifestyle, simple, structured, and sustainable.",
+    image: "https://edenhealthclubs.com/wp-content/uploads/2025/08/male-bhrt-wellness-banner-1.webp"
+  }
+];
+
+const faqs = [
+  ["How long are classes?", "Most classes are designed to be efficient and impactful, typically around 45 minutes."],
+  ["Do I need to be in shape to start?", "No. Everything is coach-led and scalable, beginner-friendly, still challenging."],
+  ["What should I do first?", "Start with an InBody Fitness Assessment so we can build your weekly plan."],
+  ["How often should I come per week?", "Most members do 2-4 Signature classes, 1-2 Specialty classes, plus 1-3 Recovery sessions depending on goals."],
+  ["Is Engine X official HYROX?", "No. Engine X is inspired by hybrid racing formats and designed as a coached, scalable performance class."],
+  ["Can I combine classes with personal training or the 90-Day Reset?", "Yes. Many members stack classes + recovery, and upgrade into PT or the 90-Day Reset for more structure."]
+];
+---
+
+<BaseLayout title={title} description={description} canonicalUrl={canonical}>
+  <main class="fitness-v2" id="top">
+    <section class="fit-hero" style="--hero-image: url('https://edenhealthclubs.com/wp-content/uploads/2026/03/meet-the-team-banner.webp')">
+      <header class="fit-header" aria-label="Eden Health Club">
+        <a href="https://edenhealthclubs.com/" aria-label="Eden Health Club">
+          <img src="/assets/eden-health-club-logo-white-transparent-tight.png" alt="Eden Health Club" width="744" height="447" />
+        </a>
+        <nav aria-label="Fitness page navigation">
+          <a href="#signature">Classes</a>
+          <a href="#faqs">FAQs</a>
+          <a href="tel:+17206057678">720-605-7678</a>
+          <a class="fit-header__cta" href="#consult-form">Book Now</a>
+        </nav>
+      </header>
+      <div class="fit-hero__overlay"></div>
+      <div class="fit-hero__container">
+        <div class="fit-hero__content">
+          <h1>Fitness + Performance at Eden</h1>
+          <p class="fit-hero__subhead">Small-group classes that feel semi-private, progressive strength, Pilates, and performance conditioning, backed by coaching, data, and recovery.</p>
+          <div class="fit-hero__bullets">
+            <h2>What you can expect:</h2>
+            <ul>
+              {expect.map((item) => <li>{item}</li>)}
+            </ul>
+          </div>
+          <div class="fit-actions">
+            <a class="fit-btn fit-btn--primary" href="#consult-form">Book a Fitness Assessment</a>
+            <a class="fit-btn fit-btn--ghost" href="#signature">Book a Class</a>
+          </div>
+        </div>
+        <aside class="fit-hero__form" id="consult-form" aria-label="Book your free consultation">
+          <h2>Book Your Free Consultation</h2>
+          <LeadForm
+            serviceSlug="fitness-performance-v2"
+            suburbSlug="greenwood-village"
+            heading=""
+            subheading=""
+            submitText="Book Now"
+          />
+        </aside>
+      </div>
+    </section>
+
+    <section class="fit-signature" id="signature">
+      <div class="fit-section-head">
+        <h2>Eden Signature Classes</h2>
+        <p>These are the pillars. Members build their week around these for the fastest progress.</p>
+      </div>
+      <div class="fit-card-row">
+        {signatureClasses.map((item) => (
+          <article class="fit-image-card" style={`--card-image: url('${item.image}')`}>
+            <div>
+              <span>{item.badge}</span>
+              {item.title ? <h3>{item.title}</h3> : null}
+              <p>{item.body}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+      <div class="fit-section-foot">
+        <p>Eden designs your progress. Our expert coaches evaluate and create your plan; our specialized classes deliver your personalized results.</p>
+        <div class="fit-actions">
+          <a class="fit-btn fit-btn--primary" href="#consult-form">Book a Signature Class</a>
+          <a class="fit-btn fit-btn--light" href="#consult-form">Start with InBody Baseline</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="fit-difference">
+      <div class="fit-section-head">
+        <h2>What makes Eden different</h2>
+        <p>At Eden, classes are not random workouts. Our system is built for measurable progress, strength, conditioning, and recovery organized into a weekly rhythm that actually sticks.</p>
+      </div>
+      <div class="fit-split">
+        <img src="https://edenhealthclubs.com/wp-content/uploads/2026/03/procedure-facial.webp" alt="Eden treatment room" />
+        <div>
+          <h3>The Eden difference:</h3>
+          <ul>
+            {differences.map((item) => <li>{item}</li>)}
+          </ul>
+          <a class="fit-btn fit-btn--primary" href="#consult-form">Start with an InBody Baseline</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="fit-specialty">
+      <div class="fit-section-head">
+        <h2>Eden Specialty Classes</h2>
+        <p>Specialty classes rotate by season and schedule, but these are the core formats you will see supporting your signature week.</p>
+      </div>
+      <div class="fit-spec-grid">
+        {specialtyClasses.map(([name, body]) => (
+          <article>
+            <h3>{name}</h3>
+            <p>{body}</p>
+          </article>
+        ))}
+      </div>
+      <a class="fit-btn fit-btn--primary" href="#consult-form">Book a Class</a>
+    </section>
+
+    <section class="fit-difference">
+      <div class="fit-section-head">
+        <h2>Just start with an InBody</h2>
+        <p>Your Fitness Assessment begins with a comprehensive <strong>InBody analysis</strong>, then we map your ideal weekly plan (signature + specialty + recovery) based on your goals.</p>
+      </div>
+      <div class="fit-split">
+        <img src="https://edenhealthclubs.com/wp-content/uploads/2026/03/procedure-iv-therapy.webp" alt="IV therapy room" />
+        <div>
+          <h3>You will leave with:</h3>
+          <ul>
+            {inbody.map((item) => <li>{item}</li>)}
+          </ul>
+          <a class="fit-btn fit-btn--primary" href="#consult-form">Book Fitness Assessment</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="fit-difference">
+      <div class="fit-section-head">
+        <h2>Nutrition that actually matches your training</h2>
+        <p>Training is the stimulus, nutrition is the strategy. We help you simplify food, improve consistency, and build habits that support body composition, energy, and performance.</p>
+      </div>
+      <div class="fit-split fit-split--reverse">
+        <img src="https://edenhealthclubs.com/wp-content/uploads/2025/08/class-offerings-benefits.webp" alt="Fitness coaching at Eden" />
+        <div>
+          <h3>What nutrition at Eden can include:</h3>
+          <ul>
+            {nutrition.map((item) => <li>{item}</li>)}
+          </ul>
+          <div class="fit-actions">
+            <a class="fit-btn fit-btn--primary" href="#consult-form">Explore Nutrition</a>
+            <a class="fit-btn fit-btn--light" href="#consult-form">Start with InBody Baseline</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="fit-challenge">
+      <div class="fit-section-head">
+        <h2>Strength + Restore Challenge</h2>
+        <p>Want a simple win to build momentum? Complete 16 classes + 8 recovery sessions and earn your choice of an exclusive Recovery Pack or Wellness Pack.</p>
+      </div>
+      <div class="fit-steps">
+        <article><span>1</span><h3>Classes</h3><p>Any Signature class counts toward your 16.</p></article>
+        <article><span>2</span><h3>Recovery</h3><p>Complete 8 recovery sessions: sauna, red light, compression, BrainTap, and more.</p></article>
+        <article><span>3</span><h3>Rewards</h3><p>Finish the track and choose your pack.</p></article>
+      </div>
+      <div class="fit-actions">
+        <a class="fit-btn fit-btn--primary" href="#consult-form">Start the Challenge (Book InBody)</a>
+        <a class="fit-btn fit-btn--light" href="#signature">View Schedule</a>
+      </div>
+    </section>
+
+    <section class="fit-signature">
+      <div class="fit-section-head">
+        <h2>Eden Signature Classes</h2>
+        <p>These are the pillars. Members build their week around these for the fastest progress.</p>
+      </div>
+      <div class="fit-card-row">
+        {paths.map((item) => (
+          <article class="fit-image-card" style={`--card-image: url('${item.image}')`}>
+            <div>
+              <span>{item.badge}</span>
+              <h3>{item.title}</h3>
+              <p>{item.body}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+      <div class="fit-section-foot">
+        <p>Eden designs your progress. Our expert coaches evaluate and create your plan; our specialized classes deliver your personalized results.</p>
+        <div class="fit-actions">
+          <a class="fit-btn fit-btn--primary" href="#consult-form">Book a Signature Class</a>
+          <a class="fit-btn fit-btn--light" href="#consult-form">Start with InBody Baseline</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="fit-faq" id="faqs">
+      <h2>Frequently Asked Questions</h2>
+      <div class="fit-faq__list">
+        {faqs.map(([question, answer]) => (
+          <details>
+            <summary>{question}</summary>
+            <p>{answer}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+
+    <section class="fit-final" style="--final-image: url('https://edenhealthclubs.com/wp-content/uploads/2025/08/compression-therapy-banner.webp')">
+      <div class="fit-final__content">
+        <img src="https://edenhealthclubs.com/wp-content/uploads/2026/03/EHC.png" alt="Eden Health Club" />
+        <div class="fit-final__cards">
+          <article>
+            <h2>Start your journey at Eden today!</h2>
+            <a href="#consult-form">Book Now</a>
+          </article>
+          <article>
+            <p>At Eden, everything you need to look, feel, and thrive is under one roof.</p>
+            <img src="https://edenhealthclubs.com/wp-content/uploads/2026/03/EHC.png" alt="" />
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
