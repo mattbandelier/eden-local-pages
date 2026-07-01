@@ -5,6 +5,7 @@ import CTAStrip from "../../components/content/CTAStrip.astro";
 import FAQAccordion from "../../components/content/FAQAccordion.astro";
 import Hero from "../../components/content/Hero.astro";
 import LocalProximity from "../../components/content/LocalProximity.astro";
+import PriorityMoneyLinks from "../../components/content/PriorityMoneyLinks.astro";
 import ServiceCards from "../../components/content/ServiceCards.astro";
 import TrustBar from "../../components/content/TrustBar.astro";
 import Breadcrumbs from "../../components/layout/Breadcrumbs.astro";
@@ -65,6 +66,7 @@ const breadcrumbItems: BreadcrumbItem[] = [
 			suburbSlug={suburb.slug}
 			heading={`Services we offer near ${suburb.name}`}
 		/>
+		<PriorityMoneyLinks currentPath={`/locations/${suburb.slug}/`} variant="hub" />
 		<FAQAccordion faqs={suburbFaqs} heading={`${suburb.name} questions`} />
 		<CTAStrip serviceSlug="general" suburbSlug={suburb.slug} variant="secondary" />
 	</main>
