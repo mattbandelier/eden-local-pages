@@ -1,0 +1,535 @@
+---
+import LeadForm from "../components/content/LeadForm.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import "../styles/fitness-v2.css";
+
+const title = "Eden Optimize Plan | Personal Training + Fitness in Greenwood Village";
+const description =
+  "Build a stronger, leaner, more resilient body at Eden Health Club in Greenwood Village with an assessment-first Optimize Plan, personal training, semi-private training, classes, nutrition, and recovery.";
+const canonical = new URL("/fitness-performance-v2/", Astro.site ?? "https://landing.edenhealthclubs.com").toString();
+
+const expect = [
+  "Build strength, muscle, and confidence",
+  "Improve body composition without guessing",
+  "Train with personal or semi-private coaching",
+  "Use recovery and nutrition to stay consistent",
+  "Start with an InBody baseline + Optimize Plan"
+];
+
+const outcomeCards = [
+  {
+    title: "Get stronger without feeling lost",
+    body: "Know what to do, how hard to train, and how to progress with coaching that corrects form and keeps the plan moving."
+  },
+  {
+    title: "Change body composition",
+    body: "Use InBody data, strength training, nutrition, and recovery to focus on muscle, fat loss, and real measurable progress."
+  },
+  {
+    title: "Protect muscle during weight loss",
+    body: "Support GLP-1 or medical weight-loss goals with training built to preserve strength, metabolism, and long-term results."
+  },
+  {
+    title: "Return safely after pregnancy",
+    body: "Move through prenatal and postpartum seasons with pelvic floor awareness, core reconnection, mobility, and supportive coaching."
+  },
+  {
+    title: "Recover better and show up again",
+    body: "Layer in sauna, red light, compression, mobility, and downshift work so soreness and stress do not stop consistency."
+  },
+  {
+    title: "Fit the plan into a real life",
+    body: "Choose the right mix of 1:1 training, semi-private training, classes, nutrition, and recovery around your schedule."
+  }
+];
+
+const localAnswerCards = [
+  {
+    question: "What is Eden's fitness program best for?",
+    answer: "Eden is built for people near Greenwood Village, DTC, Cherry Hills, Centennial, and South Denver who want measurable strength, body composition, recovery, and accountability, not another random gym membership."
+  },
+  {
+    question: "How is Eden different from a gym or boutique studio?",
+    answer: "Eden starts with an assessment, builds an Optimize Plan, and connects personal training, semi-private training, small-group classes, nutrition, recovery, and wellness support under one roof."
+  },
+  {
+    question: "What should I book first?",
+    answer: "Start with a Fitness Assessment and InBody baseline. From there, Eden can map the right path: personal training, semi-private training, classes, nutrition, recovery, or pre/postnatal support."
+  }
+];
+
+const signatureClasses = [
+  {
+    badge: "Best for group energy",
+    title: "Small-Group Fitness",
+    body: "Signature + specialty classes with coaching and progression in a boutique environment.",
+    image: "https://edenhealthclubs.com/wp-content/uploads/2025/08/class-offerings-banner.webp"
+  },
+  {
+    badge: "Whole Body",
+    body: "Total-body strength + athletic conditioning. Efficient full-body programming that hits everything without burning you out.",
+    image: "https://edenhealthclubs.com/wp-content/uploads/2025/08/fitness-studio-benefits.webp"
+  },
+  {
+    badge: "Power",
+    body: "Strength meets performance. Heavier efforts, athletic intervals, purposeful intensity, built to increase output and confidence.",
+    image: "https://edenhealthclubs.com/wp-content/uploads/2025/08/personal-training-and-nutrition-what.webp"
+  },
+  {
+    badge: "Recovery",
+    body: "Recovery support that helps your training stick: sauna, red light, compression, BrainTap, mobility, and downshift work.",
+    image: "https://edenhealthclubs.com/wp-content/uploads/2025/08/recovery-banner.webp"
+  }
+];
+
+const specialtyClasses = [
+  ["Mat Pilates", "Low-impact strength, posture, mobility, and core control, clean movement and a stronger foundation."],
+  ["Core X Restore", "Core + mobility + downshift. Build stability where it matters and release what is tight."],
+  ["Restore", "Mobility, breathwork, tissue quality, and nervous system reset, perfect on high-stress weeks."],
+  ["Pre & Postnatal Wellness", "Safe, supportive movement for pregnancy and postpartum recovery with breathwork, mobility, pelvic floor awareness, core reconnection, and strength."],
+  ["Eden Remix", "Variety format, still coached and intentional. Strength + conditioning + fun programming without the chaos."],
+  ["Barre X Sculpt", "Low-impact, high-burn toning for glutes, legs, posture, and core. Small, controlled movements, big results."]
+];
+
+const differences = [
+  "Assessment-first: InBody + baseline so we know where you are starting",
+  "Coaching-forward: form correction, scaling, and progression are the standard",
+  "Optimize Plan: personal training, classes, recovery, and nutrition mapped to your goals",
+  "Progressive programming: repeatable pillars that build week over week",
+  "Semi-private feel: boutique studio experience with no crowds, no chaos, no ego",
+  "Small-format coaching: semi-private training is capped at 4 people max",
+  "Recovery is part of the method: better recovery means better results"
+];
+
+const inbody = [
+  "Your baseline metrics + a clear target",
+  "A simple Optimize Plan: personal training, classes, recovery, and nutrition",
+  "Coaching guidance on form, intensity, and progression",
+  "A recovery recommendation to improve results and consistency"
+];
+
+const optimizePlan = [
+  {
+    title: "Personal Training",
+    body: "The highest-touch part of the Optimize Plan. Your coach builds around your assessment, goals, movement history, strength needs, and accountability style.",
+    bullets: ["1:1 coaching", "Strength progression", "Movement quality", "Weekly accountability"]
+  },
+  {
+    title: "Semi-Private Training",
+    body: "Small-format training capped at 4 people max, giving you more coaching attention than a class with the energy and consistency of a group.",
+    bullets: ["4 people max", "Coach-led progressions", "Form correction", "Structured training blocks"]
+  },
+  {
+    title: "Classes + Recovery",
+    body: "Signature classes, specialty classes, nutrition, and recovery support are layered in so your plan fits your body, schedule, and goals.",
+    bullets: ["Signature classes", "Specialty classes", "Nutrition coaching", "Recovery sessions"]
+  }
+];
+
+const nutrition = [
+  "Macro / calorie targets based on your goal and baseline",
+  "Simple meal structure with no extremes and no crash diets",
+  "Accountability check-ins and adjustments",
+  "Support for performance, recovery, and body composition",
+  "Best for: fat loss, muscle gain, energy, and a plan you can actually follow"
+];
+
+const motherhoodPrograms = [
+  {
+    title: "Pre & Postnatal Wellness",
+    body: "A supportive class type for expectant mothers and cleared postpartum moms, built around safe movement, strength, flexibility, breathwork, pelvic floor awareness, and confidence through recovery.",
+    bullets: ["Breathwork + gentle mobility", "Strength, balance, and hip mobility", "Pelvic floor awareness", "Core reconnection and safe return to movement"]
+  }
+];
+
+const paths = [
+  {
+    badge: "Best for group energy",
+    title: "Small-Group Fitness",
+    body: "Signature + specialty classes with coaching and progression in a boutique environment.",
+    image: "https://edenhealthclubs.com/wp-content/uploads/2025/08/class-offerings-banner.webp"
+  },
+  {
+    badge: "Best for focused coaching",
+    title: "Personal Training",
+    body: "A core part of the Optimize Plan: fully customized 1:1 coaching for clients who want individualized attention, progression, and accountability.",
+    image: "https://edenhealthclubs.com/wp-content/uploads/2025/08/personal-training-and-nutrition-banner.webp"
+  },
+  {
+    badge: "Best for small-format coaching",
+    title: "Semi-Private Training",
+    body: "Coached training capped at 4 people max, more personal than a class while keeping the motivation and energy of a small group.",
+    image: "https://edenhealthclubs.com/wp-content/uploads/2025/08/fitness-studio-who-are.webp"
+  },
+  {
+    badge: "Best for sustainable habits",
+    title: "Nutrition Coaching",
+    body: "Nutrition support that aligns with your training and lifestyle, simple, structured, and sustainable.",
+    image: "https://edenhealthclubs.com/wp-content/uploads/2025/08/personal-training-and-nutrition-benefits.webp"
+  }
+];
+
+const faqs = [
+  ["How long are classes?", "Most classes are designed to be efficient and impactful, typically around 45 minutes."],
+  ["Do I need to be in shape to start?", "No. Everything is coach-led and scalable, beginner-friendly, still challenging."],
+  ["What should I do first?", "Start with an InBody Fitness Assessment so we can build your weekly plan."],
+  ["How often should I come per week?", "Most members do 2-4 Signature classes, 1-2 Specialty classes, plus 1-3 Recovery sessions depending on goals."],
+  ["Is personal training part of the Optimize Plan?", "Yes. Personal training is a major part of Eden's Optimize Plan, especially for clients who want individualized coaching, strength progression, movement correction, and accountability."],
+  ["Do you offer semi-private training?", "Yes. Eden offers semi-private training capped at 4 people max for more coaching attention in a small-format environment."],
+  ["Do you offer prenatal or postpartum fitness?", "Yes. Eden is building prenatal yoga and postnatal restore programming with safe movement, pelvic floor awareness, core stability, and optional personal training support."],
+  ["Can I combine classes with personal training or semi-private training?", "Yes. Many members stack classes + recovery, and add personal or semi-private training for more structure."]
+];
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": `${canonical}#webpage`,
+    name: title,
+    url: canonical,
+    description,
+    inLanguage: "en-US",
+    about: {
+      "@id": `${canonical}#service`
+    },
+    primaryImageOfPage: "https://edenhealthclubs.com/wp-content/uploads/2025/08/fitness-banner.webp"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": ["HealthClub", "LocalBusiness"],
+    "@id": `${canonical}#eden-health-club`,
+    name: "Eden Health Club",
+    url: "https://edenhealthclubs.com/",
+    telephone: "+17206057678",
+    image: "https://edenhealthclubs.com/wp-content/uploads/2025/08/fitness-banner.webp",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "5990 S University Blvd",
+      addressLocality: "Greenwood Village",
+      addressRegion: "CO",
+      postalCode: "80121",
+      addressCountry: "US"
+    },
+    areaServed: ["Greenwood Village", "Denver Tech Center", "Cherry Hills Village", "Centennial", "South Denver", "Englewood", "Littleton"],
+    priceRange: "$$"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": `${canonical}#service`,
+    name: "Eden Optimize Plan",
+    serviceType: "Assessment-first personal training, semi-private training, fitness, nutrition, and recovery plan",
+    provider: {
+      "@id": `${canonical}#eden-health-club`
+    },
+    areaServed: ["Greenwood Village", "Denver Tech Center", "Cherry Hills Village", "Centennial", "South Denver"],
+    description
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "@id": `${canonical}#faq`,
+    mainEntity: [...localAnswerCards.map((item) => [item.question, item.answer]), ...faqs].map(([question, answer]) => ({
+      "@type": "Question",
+      name: question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: answer
+      }
+    }))
+  }
+];
+---
+
+<BaseLayout title={title} description={description} canonicalUrl={canonical} jsonLd={jsonLd}>
+  <main class="fitness-v2" id="top">
+    <section class="fit-hero" style="--hero-image: url('https://edenhealthclubs.com/wp-content/uploads/2025/08/fitness-banner.webp')">
+      <header class="fit-header" aria-label="Eden Health Club">
+        <a href="https://edenhealthclubs.com/" aria-label="Eden Health Club">
+          <img src="/assets/eden-health-club-logo-white-transparent-tight.png" alt="Eden Health Club" width="744" height="447" />
+        </a>
+        <nav aria-label="Fitness page navigation">
+          <a href="#signature">Classes</a>
+          <a href="#faqs">FAQs</a>
+          <a href="tel:+17206057678">720-605-7678</a>
+          <a class="fit-header__cta" href="#consult-form">Book Now</a>
+        </nav>
+      </header>
+      <div class="fit-hero__overlay"></div>
+      <div class="fit-hero__container">
+        <div class="fit-hero__content">
+          <h1>Build a stronger, leaner, more resilient body.</h1>
+          <p class="fit-hero__subhead">Eden's assessment-first Optimize Plan combines personal training, semi-private training, small-group classes, nutrition, and recovery so your fitness finally has a strategy.</p>
+          <div class="fit-hero__bullets">
+            <h2>What you can expect:</h2>
+            <ul>
+              {expect.map((item) => <li>{item}</li>)}
+            </ul>
+          </div>
+          <div class="fit-actions">
+            <a class="fit-btn fit-btn--primary" href="#consult-form">Book a Fitness Assessment</a>
+            <a class="fit-btn fit-btn--ghost" href="#outcomes">See Outcomes</a>
+          </div>
+        </div>
+        <aside class="fit-hero__form" id="consult-form" aria-label="Book your free consultation">
+          <h2>Book Your Free Consultation</h2>
+          <LeadForm
+            serviceSlug="fitness-performance-v2"
+            suburbSlug="greenwood-village"
+            heading=""
+            subheading=""
+            submitText="Book Now"
+          />
+        </aside>
+      </div>
+    </section>
+
+    <section class="fit-outcomes" id="outcomes">
+      <div class="fit-section-head">
+        <h2>What you actually get from the plan</h2>
+        <p>Eden is built for outcomes first. The classes, personal training, nutrition, and recovery are the tools we use to help your body change.</p>
+      </div>
+      <div class="fit-outcomes__grid">
+        {outcomeCards.map((item) => (
+          <article>
+            <h3>{item.title}</h3>
+            <p>{item.body}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="fit-answer-section" aria-labelledby="answers-heading">
+      <div class="fit-section-head">
+        <h2 id="answers-heading">The quick answer</h2>
+        <p>For people comparing gyms, personal trainers, Pilates studios, and recovery options around Greenwood Village and DTC.</p>
+      </div>
+      <div class="fit-answer-grid">
+        {localAnswerCards.map((item) => (
+          <article>
+            <h3>{item.question}</h3>
+            <p>{item.answer}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="fit-signature" id="signature">
+      <div class="fit-section-head">
+        <h2>Eden Signature Classes</h2>
+        <p>These are the pillars. Members build their week around these for the fastest progress.</p>
+      </div>
+      <div class="fit-card-row">
+        {signatureClasses.map((item) => (
+          <article class="fit-image-card" style={`--card-image: url('${item.image}')`}>
+            <div>
+              <span>{item.badge}</span>
+              {item.title ? <h3>{item.title}</h3> : null}
+              <p>{item.body}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+      <div class="fit-section-foot">
+        <p>Eden designs your progress. Our expert coaches evaluate and create your plan; our specialized classes deliver your personalized results.</p>
+        <div class="fit-actions">
+          <a class="fit-btn fit-btn--primary" href="#consult-form">Book a Signature Class</a>
+          <a class="fit-btn fit-btn--light" href="#consult-form">Start with InBody Baseline</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="fit-difference">
+      <div class="fit-section-head">
+        <h2>What makes Eden different</h2>
+        <p>At Eden, classes are not random workouts. Our system is built for measurable progress, strength, conditioning, and recovery organized into a weekly rhythm that actually sticks.</p>
+      </div>
+      <div class="fit-split">
+        <img src="https://edenhealthclubs.com/wp-content/uploads/2025/08/fitness-studio-what.webp" alt="Fitness coaching at Eden" />
+        <div>
+          <h3>The Eden difference:</h3>
+          <ul>
+            {differences.map((item) => <li>{item}</li>)}
+          </ul>
+          <a class="fit-btn fit-btn--primary" href="#consult-form">Start with an InBody Baseline</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="fit-specialty">
+      <div class="fit-section-head">
+        <h2>Eden Specialty Classes</h2>
+        <p>Specialty classes rotate by season and schedule, but these are the core formats you will see supporting your signature week.</p>
+      </div>
+      <div class="fit-spec-grid">
+        {specialtyClasses.map(([name, body]) => (
+          <article>
+            <h3>{name}</h3>
+            <p>{body}</p>
+          </article>
+        ))}
+      </div>
+      <a class="fit-btn fit-btn--primary" href="#consult-form">Book a Class</a>
+    </section>
+
+    <section class="fit-difference">
+      <div class="fit-section-head">
+        <h2>Just start with an InBody</h2>
+        <p>Your Fitness Assessment begins with a comprehensive <strong>InBody analysis</strong>, then we map your Optimize Plan: personal training, signature classes, specialty classes, recovery, and nutrition based on your goals.</p>
+      </div>
+      <div class="fit-split">
+        <img src="https://edenhealthclubs.com/wp-content/uploads/2025/08/inbody-banner.webp" alt="InBody body composition assessment at Eden Health Club" />
+        <div>
+          <h3>You will leave with:</h3>
+          <ul>
+            {inbody.map((item) => <li>{item}</li>)}
+          </ul>
+          <a class="fit-btn fit-btn--primary" href="#consult-form">Book Fitness Assessment</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="fit-optimize">
+      <div class="fit-section-head">
+        <h2>Your Optimize Plan</h2>
+        <p>Personal training is a major part of the Eden plan. After your baseline, we help you choose the right mix of 1:1 coaching, semi-private training, classes, recovery, and nutrition.</p>
+      </div>
+      <div class="fit-optimize__grid">
+        {optimizePlan.map((item) => (
+          <article>
+            <h3>{item.title}</h3>
+            <p>{item.body}</p>
+            <ul>
+              {item.bullets.map((bullet) => <li>{bullet}</li>)}
+            </ul>
+          </article>
+        ))}
+      </div>
+      <div class="fit-actions">
+        <a class="fit-btn fit-btn--primary" href="#consult-form">Build My Optimize Plan</a>
+        <a class="fit-btn fit-btn--light" href="#consult-form">Book Personal Training</a>
+      </div>
+    </section>
+
+    <section class="fit-motherhood">
+      <div class="fit-section-head">
+        <h2>Pre & Postnatal Wellness</h2>
+        <p>A supportive wellness destination for expectant and new mothers to move safely, restore strength, improve mobility, and build community through pregnancy and postpartum recovery.</p>
+      </div>
+      <div class="fit-motherhood__grid">
+        {motherhoodPrograms.map((program) => (
+          <article>
+            <h3>{program.title}</h3>
+            <p>{program.body}</p>
+            <ul>
+              {program.bullets.map((bullet) => <li>{bullet}</li>)}
+            </ul>
+          </article>
+        ))}
+      </div>
+      <div class="fit-motherhood__details">
+        <article>
+          <h3>Personal Training Add-On</h3>
+          <p>Individualized prenatal and postpartum sessions can support pregnancy strength training, birth preparation, core rehabilitation, safe return to exercise, and functional lifting mechanics.</p>
+        </article>
+        <article>
+          <h3>Community Education</h3>
+          <p>Future workshops can include pelvic floor health, labor preparation through movement, core recovery after birth, babywearing basics, nutrition, and mindfulness for new mothers.</p>
+        </article>
+      </div>
+      <div class="fit-actions">
+        <a class="fit-btn fit-btn--primary" href="#consult-form">Ask About Motherhood Programs</a>
+        <a class="fit-btn fit-btn--light" href="#consult-form">Book Personal Training</a>
+      </div>
+    </section>
+
+    <section class="fit-difference">
+      <div class="fit-section-head">
+        <h2>Nutrition that actually matches your training</h2>
+        <p>Training is the stimulus, nutrition is the strategy. We help you simplify food, improve consistency, and build habits that support body composition, energy, and performance.</p>
+      </div>
+      <div class="fit-split fit-split--reverse">
+        <img src="https://edenhealthclubs.com/wp-content/uploads/2025/08/class-offerings-benefits.webp" alt="Fitness coaching at Eden" />
+        <div>
+          <h3>What nutrition at Eden can include:</h3>
+          <ul>
+            {nutrition.map((item) => <li>{item}</li>)}
+          </ul>
+          <div class="fit-actions">
+            <a class="fit-btn fit-btn--primary" href="#consult-form">Explore Nutrition</a>
+            <a class="fit-btn fit-btn--light" href="#consult-form">Start with InBody Baseline</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="fit-challenge">
+      <div class="fit-section-head">
+        <h2>Strength + Restore Challenge</h2>
+        <p>Want a simple win to build momentum? Complete 16 classes + 8 recovery sessions and earn your choice of an exclusive Recovery Pack or Wellness Pack.</p>
+      </div>
+      <div class="fit-steps">
+        <article><span>1</span><h3>Classes</h3><p>Any Signature class counts toward your 16.</p></article>
+        <article><span>2</span><h3>Recovery</h3><p>Layer in recovery support such as sauna, red light, compression, BrainTap, mobility, and downshift work.</p></article>
+        <article><span>3</span><h3>Rewards</h3><p>Finish the track and choose your pack.</p></article>
+      </div>
+      <div class="fit-actions">
+        <a class="fit-btn fit-btn--primary" href="#consult-form">Start the Challenge (Book InBody)</a>
+        <a class="fit-btn fit-btn--light" href="#signature">View Schedule</a>
+      </div>
+    </section>
+
+    <section class="fit-signature">
+      <div class="fit-section-head">
+        <h2>Ways to Train at Eden</h2>
+        <p>Choose the level of coaching and structure that fits your goals, from class energy to semi-private attention.</p>
+      </div>
+      <div class="fit-card-row">
+        {paths.map((item) => (
+          <article class="fit-image-card" style={`--card-image: url('${item.image}')`}>
+            <div>
+              <span>{item.badge}</span>
+              <h3>{item.title}</h3>
+              <p>{item.body}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+      <div class="fit-section-foot">
+        <p>Eden designs your progress. Our coaches help you choose the right mix of classes, semi-private training, nutrition, and recovery.</p>
+        <div class="fit-actions">
+          <a class="fit-btn fit-btn--primary" href="#consult-form">Book Training</a>
+          <a class="fit-btn fit-btn--light" href="#consult-form">Start with InBody Baseline</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="fit-faq" id="faqs">
+      <h2>Frequently Asked Questions</h2>
+      <div class="fit-faq__list">
+        {faqs.map(([question, answer]) => (
+          <details>
+            <summary>{question}</summary>
+            <p>{answer}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+
+    <section class="fit-final" style="--final-image: url('https://edenhealthclubs.com/wp-content/uploads/2025/07/home-fitness-performance.webp')">
+      <div class="fit-final__content">
+        <img src="https://edenhealthclubs.com/wp-content/uploads/2026/03/EHC.png" alt="Eden Health Club" />
+        <div class="fit-final__cards">
+          <article>
+            <h2>Start your journey at Eden today!</h2>
+            <a href="#consult-form">Book Now</a>
+          </article>
+          <article>
+            <p>At Eden, everything you need to look, feel, and thrive is under one roof.</p>
+            <img src="https://edenhealthclubs.com/wp-content/uploads/2026/03/EHC.png" alt="" />
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
