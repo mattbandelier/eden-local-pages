@@ -8,6 +8,7 @@ import Hero from "../../components/content/Hero.astro";
 import HowItWorks from "../../components/content/HowItWorks.astro";
 import MainSiteLink from "../../components/content/MainSiteLink.astro";
 import PricingCard from "../../components/content/PricingCard.astro";
+import PriorityMoneyLinks from "../../components/content/PriorityMoneyLinks.astro";
 import RelatedServices from "../../components/content/RelatedServices.astro";
 import TreatmentSnapshot from "../../components/content/TreatmentSnapshot.astro";
 import TrustBar from "../../components/content/TrustBar.astro";
@@ -62,6 +63,7 @@ const breadcrumbItems: BreadcrumbItem[] = [
 		<PricingCard pricing={service.pricing} consultRequired={service.consultRequired} ctaText={service.ctaText} />
 		<FAQAccordion faqs={service.faqs} />
 		<RelatedServices services={relatedServices} />
+		<PriorityMoneyLinks currentPath={`/${service.slug}/`} variant="hub" />
 		<MainSiteLink service={service} />
 		<CTAStrip
 			serviceSlug={service.slug}
