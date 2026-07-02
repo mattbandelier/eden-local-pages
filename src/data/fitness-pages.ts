@@ -327,6 +327,7 @@ type KeywordFitnessInput = {
   edenAngle: string;
   bullets: string[];
   builtFor: string[];
+  related?: FitnessPage["related"];
   faqs: Array<{
     question: string;
     answer: string;
@@ -345,6 +346,7 @@ function keywordFitnessPage(input: KeywordFitnessInput): FitnessPage {
     primaryCta: input.primaryCta,
     secondaryCta: "See how Eden works",
     builtFor: input.builtFor,
+    related: input.related ?? coreRelated,
     sections: [
       {
         eyebrow: "Client goal",
@@ -650,31 +652,59 @@ const priorityKeywordPages: FitnessPage[] = [
   }),
   keywordFitnessPage({
     slug: "medical-weight-loss-fitness-greenwood-village",
-    title: "Medical Weight Loss Fitness in Greenwood Village | Eden Health Club",
+    title: "Medical Weight Loss Fitness Greenwood Village | GLP-1 Strength Support | Eden",
     description:
-      "Medical weight loss fitness in Greenwood Village with strength training, InBody scans, GLP-1 muscle support, recovery, and wellness services at Eden Health Club.",
+      "Medical weight loss fitness in Greenwood Village with strength training, InBody scans, GLP-1 muscle support, recovery, group fitness, and wellness services at Eden.",
     h1: "Medical Weight Loss Fitness in Greenwood Village",
     eyebrow: "Weight loss needs strength.",
-    heroHeadline: "The missing piece in weight loss is often muscle.",
+    heroHeadline: "The missing piece in medical weight loss is often muscle, coaching, and community.",
     summary:
-      "Eden helps medical weight loss and GLP-1 clients connect weight change with strength training, InBody scans, recovery, wellness injections, IV therapy, peptides, hormones, and long-term maintenance support.",
+      "Eden helps medical weight loss and GLP-1 clients connect weight change with strength training, InBody scans, recovery, group fitness, wellness injections, IV therapy, peptides, hormones, and long-term maintenance support.",
     primaryCta: "Book a Weight Loss Fitness Assessment",
     intent:
-      "Medical weight loss searches are high-value, but the fitness layer is often underserved. People need to protect lean mass, rebuild strength, and maintain results.",
+      "Medical weight loss searches are high-value, but the fitness layer is often underserved. People need to protect lean mass, rebuild strength, maintain results, and feel guided through the body-composition phase instead of being left with medication alone.",
     edenAngle:
-      "Eden can bridge medical weight loss and fitness because training, body composition tracking, recovery, and wellness support can all live in one facility.",
+      "Eden can bridge medical weight loss and fitness because training, body composition tracking, recovery, and wellness support can all live in one facility. That gives Eden a stronger answer than a class-only studio or a medication-only path.",
     bullets: [
       "Medical weight loss fitness in Greenwood Village",
-      "GLP-1 muscle preservation",
+      "GLP-1 strength training and muscle support",
       "InBody scans for fat and lean mass",
-      "Strength and maintenance after weight loss"
+      "Group fitness and coaching for maintenance after weight loss"
     ],
     builtFor: ["Medical weight loss clients", "GLP-1 clients", "People worried about muscle loss", "Long-term maintenance goals"],
+    related: [
+      {
+        label: "GLP-1 Strength Training",
+        href: "/glp-1-strength-training-greenwood-village/",
+        text: "Strength, InBody tracking, recovery, and community support for GLP-1 and medical weight loss clients."
+      },
+      {
+        label: "Medical Weight Loss",
+        href: "/medical-weight-loss/greenwood-village/",
+        text: "Provider-guided weight loss consults near Denver and Greenwood Village."
+      },
+      {
+        label: "Body Composition Training",
+        href: "/body-composition-training-greenwood-village/",
+        text: "Train around fat mass, lean mass, and measurable body-composition progress."
+      },
+      {
+        label: "Group Fitness Classes",
+        href: "/group-fitness-classes-greenwood-village/",
+        text: "Coached group fitness inside Eden's broader wellness and recovery environment."
+      },
+      ...coreRelated
+    ],
     faqs: [
       {
         question: "Why does fitness matter during medical weight loss?",
         answer:
           "Strength training can help protect lean muscle, support metabolism, improve body composition, and create a stronger maintenance plan while weight changes."
+      },
+      {
+        question: "How is this different from a normal fitness studio?",
+        answer:
+          "A normal studio usually stops at the workout. Eden can connect strength training, group fitness, InBody scans, recovery, and medical wellness support so the plan is built around weight loss, muscle, and maintenance together."
       },
       {
         question: "Does Eden combine medical weight loss and fitness?",
