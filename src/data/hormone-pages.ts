@@ -49,13 +49,13 @@ export const hormonePages: HormonePage[] = [
 	{
 		slug: "mens-hormone-optimization",
 		kind: "paid",
-		title: "Men's Hormone Optimization Denver | Eden Health Club",
+		title: "Men's Hormone Optimization Denver | Low T Consult | Eden",
 		description:
-			"Provider-led men's hormone consults near Denver and Greenwood Village. Start with bloodwork, goals, and an Eden Blueprint plan.",
-		eyebrow: "Men's hormone optimization · Greenwood Village",
-		h1: "The edge you used to take for granted.",
+			"Provider-led men's hormone optimization, low T, and TRT consults near Denver and Greenwood Village. Start with labs, goals, and an Eden Blueprint plan.",
+		eyebrow: "Men's hormone optimization · Denver / DTC",
+		h1: "Men's hormone optimization near Denver and DTC.",
 		subhead:
-			"Start with a provider-led consult built on your bloodwork, goals, training reality, and the way you want to feel and perform.",
+			"Start with a provider-led consult for energy, strength, recovery, focus, body composition, low T questions, and whether a lab-backed plan is the right fit.",
 		primaryCta: "Book your consultation",
 		secondaryCta: "See how it works",
 		serviceSlug: "mens-hormone-optimization",
@@ -65,9 +65,9 @@ export const hormonePages: HormonePage[] = [
 		panelItems: ["Hormone markers", "Metabolic markers", "Thyroid + vitamins", "Training + recovery goals"],
 		trust: ["60 min consult", "Lab-backed", "Provider-led", "Greenwood Village"],
 		takeaways: [
-			"Eden's hormone consult starts with bloodwork and a provider review, not a one-size-fits-all product.",
+			"Eden's men's hormone consult starts with bloodwork and provider review, not a one-size-fits-all product.",
 			"The Eden Blueprint connects medical guidance with training, recovery, and follow-up.",
-			"Men near Denver, DTC, and Greenwood Village can start with a consult before deciding on a plan.",
+			"Men near Denver, DTC, and Greenwood Village can start with a consult before deciding whether TRT or another plan is appropriate.",
 		],
 		experienceTitle: "Does this sound familiar?",
 		experienceIntro:
@@ -85,7 +85,7 @@ export const hormonePages: HormonePage[] = [
 				eyebrow: "Direct answer",
 				title: "What happens at a men's hormone consult?",
 				answer:
-					"A men's hormone consult at Eden reviews your goals, health history, bloodwork needs, training routine, recovery, and follow-up path before any plan is recommended.",
+					"A men's hormone optimization consult at Eden reviews your goals, health history, low T questions, bloodwork needs, training routine, recovery, and follow-up path before any plan is recommended.",
 				body:
 					"The consult is designed to clarify fit. Your provider can discuss what to test, how results are reviewed, and how Eden connects medical guidance with training and recovery.",
 			},
@@ -103,6 +103,11 @@ export const hormonePages: HormonePage[] = [
 				question: "Do I need labs before the consult?",
 				answer:
 					"Eden can explain which baseline labs may be appropriate during the consult process. The goal is to review data before building a personalized plan.",
+			},
+			{
+				question: "Is this a low T or TRT clinic near Denver?",
+				answer:
+					"Eden offers provider-led men's hormone optimization consults near Denver and DTC. The consult can review low T questions, symptoms, labs, safety considerations, and whether TRT discussion is appropriate.",
 			},
 			{
 				question: "How soon will I feel different?",
@@ -125,13 +130,13 @@ export const hormonePages: HormonePage[] = [
 	{
 		slug: "menopause-hormone-therapy",
 		kind: "paid",
-		title: "Menopause Hormone Therapy Denver | Eden Health Club",
+		title: "Menopause Hormone Therapy Denver | Perimenopause Consult | Eden",
 		description:
-			"Provider-led menopause and perimenopause hormone consults near Denver. Review symptoms, labs, options, and an Eden Blueprint plan.",
-		eyebrow: "Menopause & perimenopause · Greenwood Village",
-		h1: "Rested, steady, and like yourself again.",
+			"Provider-led menopause and perimenopause hormone therapy consults near Denver. Review symptoms, labs, options, safety, and an Eden Blueprint plan.",
+		eyebrow: "Menopause hormone therapy · Denver / DTC",
+		h1: "Menopause hormone therapy consults near Denver.",
 		subhead:
-			"Provider-led hormone care through perimenopause, menopause, and beyond, built around your story, bloodwork, and next right step.",
+			"Provider-led care through perimenopause, menopause, and beyond, built around your symptoms, story, bloodwork, safety review, and next right step.",
 		primaryCta: "Book your consultation",
 		secondaryCta: "See the process",
 		serviceSlug: "menopause-hormone-therapy",
@@ -161,7 +166,7 @@ export const hormonePages: HormonePage[] = [
 				eyebrow: "Direct answer",
 				title: "What does Eden review during a menopause consult?",
 				answer:
-					"Eden reviews your experience, health history, timing, labs, goals, and available options so a provider can personalize next steps instead of relying on a generic plan.",
+					"Eden reviews your menopause or perimenopause experience, health history, timing, labs, goals, symptoms, and available options so a provider can personalize next steps instead of relying on a generic plan.",
 				body:
 					"The consult is meant to slow the process down in the right way. You can discuss what has changed, what you have tried, what needs to be tested, and how follow-up would work.",
 			},
@@ -179,6 +184,11 @@ export const hormonePages: HormonePage[] = [
 				question: "Is hormone care safe during menopause?",
 				answer:
 					"Safety depends on your health history, risk factors, labs, and the plan being considered. Eden's provider reviews fit before making individualized recommendations.",
+			},
+			{
+				question: "Is this for perimenopause too?",
+				answer:
+					"Yes. Eden's menopause hormone therapy consult can also be a starting point for perimenopause questions around sleep, temperature changes, mood, focus, energy, cycle changes, labs, and options.",
 			},
 			{
 				question: "Do you offer bioidentical options?",
@@ -291,11 +301,11 @@ export const hormonePages: HormonePage[] = [
 	{
 		slug: "hormone-optimization",
 		kind: "authority",
-		title: "Hormone Optimization Denver | Eden Health Club",
+		title: "Hormone Optimization Denver | Performance Medicine | Eden",
 		description:
-			"Learn Eden's hormone optimization model: provider-led care, baseline labs, training, tracking, and follow-up near Denver.",
-		eyebrow: "Performance medicine",
-		h1: "Hormone optimization, the Eden way.",
+			"Learn Eden's hormone optimization model near Denver: provider-led care, baseline labs, training, tracking, follow-up, and performance medicine support.",
+		eyebrow: "Hormone optimization · Performance medicine",
+		h1: "Hormone optimization near Denver, the Eden way.",
 		subhead:
 			"Look. Feel. Perform. Eden uses provider-led, lab-informed care as part of a larger system for training, recovery, and long-term follow-up.",
 		primaryCta: "Book a consult",
@@ -327,7 +337,7 @@ export const hormonePages: HormonePage[] = [
 				eyebrow: "Direct answer",
 				title: "What is hormone optimization?",
 				answer:
-					"Hormone optimization is a provider-led process that uses labs, health history, goals, follow-up, and lifestyle context to decide whether a personalized plan is appropriate.",
+					"Hormone optimization is a provider-led process that uses labs, health history, goals, follow-up, and lifestyle context to decide whether a personalized hormone plan is appropriate.",
 				body:
 					"At Eden, hormone optimization sits inside Performance Medicine. That means the conversation can include training, recovery, sleep, body composition, and medical wellness rather than focusing only on a single prescription.",
 			},
@@ -375,11 +385,11 @@ export const hormonePages: HormonePage[] = [
 	{
 		slug: "womens-hormone-optimization",
 		kind: "paid",
-		title: "Women's Hormone Optimization Denver | Eden Health Club",
+		title: "Women's Hormone Optimization Denver | Lab-Guided Consult | Eden",
 		description:
-			"Provider-led women's hormone optimization consults near Denver. Discuss energy, sleep, focus, mood, labs, and an Eden Blueprint plan.",
-		eyebrow: "Women's hormone optimization · Greenwood Village",
-		h1: "A clearer plan for the way you feel.",
+			"Provider-led women's hormone optimization consults near Denver. Discuss energy, sleep, focus, mood, body composition, labs, and an Eden Blueprint plan.",
+		eyebrow: "Women's hormone optimization · Denver / DTC",
+		h1: "Women's hormone optimization near Denver and DTC.",
 		subhead:
 			"Start with a provider-led consult that connects your experience, bloodwork, lifestyle, and goals before a personalized path is considered.",
 		primaryCta: "Book your consultation",

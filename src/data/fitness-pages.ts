@@ -962,37 +962,108 @@ export const fitnessPages: FitnessPage[] = [
   }),
   page({
     slug: "glp-1-strength-training-greenwood-village",
-    title: "GLP-1 Strength Training in Greenwood Village | Eden Health Club",
+    title: "GLP-1 Strength Training Greenwood Village | Muscle Support | Eden",
     description:
-      "Pair GLP-1 weight loss with strength training, InBody scans, recovery, and medical wellness support at Eden Health Club in Greenwood Village.",
+      "Pair GLP-1 weight loss with strength training, InBody scans, group fitness, recovery, and medical wellness support at Eden Health Club in Greenwood Village.",
     h1: "GLP-1 Strength Training in Greenwood Village",
-    eyebrow: "Protect muscle while the weight comes off",
-    heroHeadline: "Do not just lose weight. Protect your muscle and metabolism.",
+    eyebrow: "Medical weight loss needs strength",
+    heroHeadline: "The missing layer in weight loss: muscle, coaching, and community.",
     summary:
-      "GLP-1 medications can change the number on the scale. Eden helps you protect what matters while your body changes: muscle, strength, metabolism, energy, confidence, and long-term body composition.",
-    primaryCta: "Book a Body Composition Assessment",
-    secondaryCta: "Explore weight loss support",
-    builtFor: ["GLP-1 clients", "Medical weight loss clients", "People losing weight quickly", "Anyone who wants fat loss without getting weaker"],
+      "Eden helps GLP-1 and medical weight loss clients add the piece most programs miss: strength training, body composition tracking, recovery, accountability, and a supportive class environment built around preserving function while weight changes.",
+    primaryCta: "Book a GLP-1 Strength Assessment",
+    secondaryCta: "Compare the plan",
+    proof: [
+      "Greenwood Village near DTC",
+      "Strength + InBody + community",
+      "Medical wellness in the same facility",
+      "Built for weight-loss maintenance"
+    ],
+    builtFor: [
+      "GLP-1 clients worried about muscle loss",
+      "Medical weight loss clients who want support beyond medication",
+      "People comparing group training, boutique studios, and strength coaching",
+      "Anyone who wants fat loss without getting weaker"
+    ],
     sections: [
       {
         eyebrow: "The missing piece",
         title: "Weight loss without muscle protection is an incomplete plan.",
         body:
-          "When appetite drops and weight changes quickly, strength training and body composition tracking become essential. Eden helps clients focus on the result they actually want: less fat, more strength, better energy, and a body that can hold the outcome."
+          "When appetite drops and weight changes quickly, strength training and body composition tracking become essential. Eden helps clients focus on the result they actually want: less fat, more strength, better energy, and a body that can hold the outcome.",
+        bullets: [
+          "Strength training to support lean mass while weight changes",
+          "InBody scans to track fat mass and lean mass beyond the scale",
+          "Group fitness and coached accountability for consistency",
+          "Recovery and medical wellness support when appropriate"
+        ]
       },
       {
         eyebrow: "Track the right thing",
         title: "InBody turns the scale into a smarter conversation.",
         body:
-          "InBody scans help track lean mass, fat mass, and progress beyond weight alone. That data can guide training, recovery, protein habits, and next steps with Eden's medical wellness team."
+          "InBody scans help track lean mass, fat mass, and progress beyond weight alone. That data can guide training, recovery, protein habits, and next steps with Eden's medical wellness team.",
+        bullets: [
+          "Better conversation than pounds alone",
+          "Useful for maintenance after initial weight change",
+          "Helps decide whether the plan needs more strength, recovery, or medical follow-up"
+        ]
+      },
+      {
+        eyebrow: "The class-studio gap",
+        title: "High-energy workouts are not the same as a medical weight-loss support plan.",
+        body:
+          "Many people compare boutique group training, conditioning challenges, Pilates, yoga, and strength classes when they start losing weight. Eden's difference is that the fitness layer can connect to medical weight loss, InBody tracking, recovery, hormones, peptides, and provider guidance when appropriate.",
+        bullets: [
+          "Community and accountability without making calorie burn the only goal",
+          "Strength-first programming for muscle, function, and confidence",
+          "A safer starting point for people who need education, pacing, and measurement",
+          "A conversion bridge from medical weight loss into long-term fitness membership"
+        ]
       },
       systemSection
+    ],
+    related: [
+      {
+        label: "Medical weight loss",
+        href: "/medical-weight-loss/greenwood-village/",
+        text: "Provider-guided weight-loss support for clients who want a monitored plan."
+      },
+      {
+        label: "Body composition training",
+        href: "/body-composition-training-greenwood-village/",
+        text: "Use InBody and strength programming to track fat, muscle, and progress."
+      },
+      {
+        label: "Group fitness",
+        href: "/group-fitness-classes-greenwood-village/",
+        text: "Build consistency with classes, community, and a stronger support system."
+      },
+      {
+        label: "Strength training",
+        href: "/strength-training-greenwood-village/",
+        text: "Protect muscle, metabolism, posture, and long-term function."
+      },
+      {
+        label: "Performance Lab",
+        href: "/performance-lab-greenwood-village/",
+        text: "Start with a baseline when you are not sure which Eden path fits best."
+      },
+      {
+        label: "Hormone optimization",
+        href: "/hormone-optimization/",
+        text: "Connect weight, strength, recovery, energy, and labs when a deeper review is appropriate."
+      }
     ],
     faqs: [
       {
         question: "Why should I strength train while using GLP-1 medication?",
         answer:
           "Strength training can help protect lean muscle and support metabolism during weight loss. Eden uses training, body composition tracking, and medical wellness support to help clients pursue better long-term outcomes."
+      },
+      {
+        question: "Is this different from a normal group fitness membership?",
+        answer:
+          "Yes. Eden's GLP-1 strength training path is built around muscle preservation, InBody tracking, strength, recovery, and medical wellness support rather than only calorie burn or attendance."
       },
       {
         question: "Does Eden offer GLP-1 weight loss support?",
