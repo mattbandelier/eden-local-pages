@@ -387,6 +387,55 @@ textarea {
   font-weight: 900;
 }
 
+.fitness-image-story {
+  width: min(1120px, calc(100% - 40px));
+  margin: 0 auto;
+  padding: 54px 0 8px;
+}
+
+.fitness-image-story .section-heading {
+  max-width: 760px;
+}
+
+.fitness-image-story__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 22px;
+}
+
+.fitness-image-story article {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--white);
+}
+
+.fitness-image-story img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.fitness-image-story article div {
+  padding: 18px;
+}
+
+.fitness-image-story h3 {
+  margin: 0;
+  color: var(--green-dark);
+  font-size: 1.08rem;
+  line-height: 1.15;
+}
+
+.fitness-image-story p {
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.52;
+}
+
 .fitness-intake {
   width: min(1120px, calc(100% - 40px));
   display: grid;
@@ -1211,6 +1260,15 @@ summary {
   .local-intent-card li {
     font-size: 0.96rem;
     line-height: 1.52;
+  }
+
+  .fitness-image-story {
+    width: min(100% - 40px, 460px);
+    padding-top: 34px;
+  }
+
+  .fitness-image-story__grid {
+    grid-template-columns: 1fr;
   }
 
   .fitness-intake {

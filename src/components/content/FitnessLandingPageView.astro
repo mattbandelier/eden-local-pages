@@ -23,8 +23,36 @@ const localSearches = [
 const localProofPoints = [
   "Located at 5990 S University Blvd in Greenwood Village",
   "Minutes from Denver Tech Center and Cherry Hills Village",
-  "Useful for clients comparing gyms, studios, recovery clinics, and wellness providers",
-  "Built around an assessment-first path instead of a generic class package"
+  "Helpful if you are comparing gyms, studios, recovery clinics, and wellness providers",
+  "Starts with an assessment so the plan fits your body, goals, and current routine"
+];
+const showFitnessImagery = [
+  "glp-1-strength-training-greenwood-village",
+  "glp-1-fitness-membership-greenwood-village",
+  "medical-weight-loss-fitness-greenwood-village",
+  "strength-training-greenwood-village",
+  "group-fitness-classes-greenwood-village",
+  "body-composition-training-greenwood-village"
+].includes(page.slug);
+const fitnessImageCards = [
+  {
+    src: "/assets/fitness-strength-class.avif",
+    alt: "Eden strength class participant training on the turf",
+    label: "Strength-first training",
+    text: "Coached movement that supports lean mass, confidence, and long-term function."
+  },
+  {
+    src: "/assets/fitness-community.webp",
+    alt: "Two Eden fitness clients smiling with yoga mats",
+    label: "Community and accountability",
+    text: "A supportive class environment for consistency while your body changes."
+  },
+  {
+    src: "/assets/fitness-recovery.webp",
+    alt: "Fitness client stretching after training",
+    label: "Recovery built in",
+    text: "Training can connect with recovery, InBody tracking, and wellness support under one roof."
+  }
 ];
 const priorityLinks = [
   {
@@ -61,6 +89,11 @@ const priorityLinks = [
     label: "GLP-1 Strength Training",
     href: "/glp-1-strength-training-greenwood-village/",
     text: "Protect muscle, track body composition, and build consistency while weight changes."
+  },
+  {
+    label: "GLP-1 Fitness Membership",
+    href: "/glp-1-fitness-membership-greenwood-village/",
+    text: "A conversion-focused path for clients who want weight-loss support, training, and recovery in one place."
   },
   {
     label: "Medical Weight Loss Fitness",
@@ -209,25 +242,45 @@ const schema = {
 
   <section class="local-intent-section" aria-labelledby="local-intent-heading">
     <div class="local-intent-section__intro">
-      <p class="eyebrow">Local fit</p>
+      <p class="eyebrow">Near Greenwood Village</p>
       <h2 id="local-intent-heading">{serviceName} for Greenwood Village, DTC, and the south Denver corridor.</h2>
       <p>
-        This page is built for people who are not just looking for a nearby option. They are comparing whether Eden is the right local place to start, how the service connects to the rest of the facility, and what the first step should be.
+        If you are already losing weight, restarting fitness, or comparing local gyms and wellness clinics, Eden gives you a place to begin with coaching, measurement, recovery, and medical wellness support in the same facility.
       </p>
     </div>
     <div class="local-intent-card">
-      <h3>Search intent Eden should own</h3>
+      <h3>Common ways clients describe the goal</h3>
       <div class="local-intent-card__chips">
         {localSearches.map((term) => <span>{term}</span>)}
       </div>
     </div>
     <div class="local-intent-card">
-      <h3>Why this is not a generic landing page</h3>
+      <h3>Why Eden is different</h3>
       <ul>
         {localProofPoints.map((point) => <li>{point}</li>)}
       </ul>
     </div>
   </section>
+
+  {showFitnessImagery ? (
+    <section class="fitness-image-story" aria-labelledby="fitness-image-story-heading">
+      <div class="section-heading">
+        <p class="eyebrow">What the support looks like</p>
+        <h2 id="fitness-image-story-heading">Strength, accountability, and recovery around the weight-loss journey.</h2>
+      </div>
+      <div class="fitness-image-story__grid">
+        {fitnessImageCards.map((card) => (
+          <article>
+            <img src={card.src} alt={card.alt} loading="lazy" />
+            <div>
+              <h3>{card.label}</h3>
+              <p>{card.text}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  ) : null}
 
   <section class="fitness-intake" id="consult-form">
     <div class="fitness-intake__copy">
