@@ -1,5 +1,6 @@
 import { services, suburbs } from "../data";
 import { fitnessPages } from "../data/fitness-pages";
+import { hormonePages } from "../data/hormone-pages";
 import { isIndexableCombo, isIndexableFitness } from "../lib/indexing";
 import { canonicalUrl, comboUrl, homeUrl, serviceHubUrl, suburbHubUrl } from "../lib/urls";
 
@@ -27,6 +28,11 @@ const urls = [
 			priority: "0.85",
 			changefreq: "weekly",
 		})),
+	...hormonePages.map((page) => ({
+		loc: canonicalUrl(`/${page.slug}`),
+		priority: page.kind === "authority" ? "0.92" : "0.95",
+		changefreq: "weekly",
+	})),
 	...services.flatMap((service) =>
 		suburbs
 			.filter((suburb) => isIndexableCombo(service.slug, suburb.slug))

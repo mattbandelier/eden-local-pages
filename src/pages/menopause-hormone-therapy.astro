@@ -1,0 +1,9 @@
+---
+import HormoneLandingPageView from "../components/content/HormoneLandingPageView.astro";
+import { getHormonePage } from "../data/hormone-pages";
+
+const page = getHormonePage("menopause-hormone-therapy");
+if (!page) return Astro.redirect("/");
+---
+
+<HormoneLandingPageView page={page} />
