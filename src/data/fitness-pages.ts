@@ -1128,23 +1128,24 @@ export const fitnessPages: FitnessPage[] = [
     slug: "glp-1-fitness-membership-greenwood-village",
     title: "GLP-1 Fitness Membership Greenwood Village | Muscle Preservation | Eden",
     description:
-      "A GLP-1 fitness membership path in Greenwood Village built around muscle preservation, semi-private training, small-group fitness, InBody scans, recovery, and medical wellness support.",
+      "A fully supported GLP-1 fitness membership path in Greenwood Village built around muscle preservation, semi-private training, small-group fitness, progress check-ins, InBody scans, recovery, and medical wellness support.",
     h1: "GLP-1 Fitness Membership in Greenwood Village",
     eyebrow: "The weight-loss support most programs miss",
     heroHeadline: "Weight loss changes the number. Strength helps protect the body behind it.",
     summary:
-      "Eden's GLP-1 fitness membership path is built for clients who want medical weight loss support and a real training environment: semi-private training, strength-first classes, InBody tracking, recovery tools, accountability, and guidance around preserving muscle while weight changes.",
+      "Eden's GLP-1 fitness membership path is built for clients who want medical weight loss support and a fully supported training environment: semi-private training, strength-first classes, InBody tracking, recovery tools, progress check-ins, accountability, and guidance around preserving muscle while weight changes.",
     primaryCta: "Ask About GLP-1 Fitness Support",
     secondaryCta: "See what is included",
     proof: [
       "Muscle preservation focus",
       "Semi-private training + small-group fitness",
+      "Progress check-ins and accountability",
       "InBody body-composition tracking",
       "Recovery and medical wellness nearby"
     ],
     builtFor: [
       "GLP-1 clients who do not want to lose strength",
-      "Medical weight loss clients who need structure",
+      "Medical weight loss clients who need structure and check-ins",
       "People comparing gyms, studios, and weight-loss programs",
       "Anyone who wants a supportive maintenance plan"
     ],
@@ -1153,10 +1154,11 @@ export const fitnessPages: FitnessPage[] = [
         eyebrow: "The offer idea",
         title: "Medical weight loss works better when the fitness layer is not an afterthought.",
         body:
-          "Many weight-loss programs focus on appetite, medication eligibility, or the scale. Eden can add the piece that keeps people functional: semi-private strength training, small-group fitness, community, InBody tracking, and recovery support in the same Greenwood Village facility.",
+          "Many weight-loss programs focus on appetite, medication eligibility, or the scale. Eden can add the piece that keeps people functional: semi-private strength training, small-group fitness, community, InBody tracking, progress check-ins, and recovery support in the same Greenwood Village facility.",
         bullets: [
           "Semi-private strength training to support muscle preservation",
           "Small-group fitness and coaching for consistency",
+          "Progress check-ins so clients are not left to figure it out alone",
           "InBody scans to track fat mass and lean mass",
           "Recovery tools and medical wellness support when appropriate"
         ]
@@ -1177,12 +1179,24 @@ export const fitnessPages: FitnessPage[] = [
         eyebrow: "Not a normal gym offer",
         title: "A class-only studio cannot connect the full plan.",
         body:
-          "Clients may compare high-energy group classes, Pilates-style studios, personal training, and medical weight loss programs. Eden's advantage is the combination: medical wellness, semi-private training, small-group fitness, InBody, recovery, and a supportive club environment in one place.",
+          "Clients may compare high-energy group classes, Pilates-style studios, personal training, and medical weight loss programs. Eden's advantage is the combination: medical wellness, semi-private training, small-group fitness, InBody, recovery, progress check-ins, and a supportive club environment in one place.",
         bullets: [
           "Good fit for people who want coaching without getting lost in a large gym",
           "More complete than a standalone class package",
           "More practical than medication support with no strength plan",
           "Assessment-first so the next step fits the client's body and goals"
+        ]
+      },
+      {
+        eyebrow: "Fully supported",
+        title: "The check-ins are the difference between buying access and getting guided.",
+        body:
+          "The strongest offer is not just unlimited access. It is a supported path where clients know what to do, when to adjust, and how their body composition is changing. That makes Eden feel less like another membership and more like a guided weight-loss fitness system.",
+        bullets: [
+          "Regular progress conversations around strength, consistency, and body composition",
+          "InBody tracking to keep muscle preservation visible",
+          "Training adjustments when energy, recovery, or schedule changes",
+          "Clear next-step routing if medical wellness, hormones, peptides, or recovery support should be discussed"
         ]
       },
       systemSection
@@ -1224,12 +1238,17 @@ export const fitnessPages: FitnessPage[] = [
       {
         question: "Is this better than joining a regular gym?",
         answer:
-          "For many medical weight loss clients, the value is guidance. Eden connects semi-private training, small-group fitness, InBody tracking, recovery, and medical wellness context so the plan is more specific than a generic gym membership."
+          "For many medical weight loss clients, the value is guidance. Eden connects semi-private training, small-group fitness, progress check-ins, InBody tracking, recovery, and medical wellness context so the plan is more specific than a generic gym membership."
       },
       {
         question: "Does the membership path include semi-private training?",
         answer:
-          "Yes. The membership path can include semi-private training as part of the strength and accountability layer, along with small-group fitness, InBody tracking, recovery support, and medical wellness context when appropriate."
+          "Yes. The membership path can include semi-private training as part of the strength and accountability layer, along with small-group fitness, progress check-ins, InBody tracking, recovery support, and medical wellness context when appropriate."
+      },
+      {
+        question: "What does fully supported mean?",
+        answer:
+          "Fully supported means the client is not simply handed a membership and left alone. Eden can use check-ins, InBody tracking, coaching, recovery support, and next-step guidance to help the plan stay aligned with muscle preservation, strength, and maintenance goals."
       },
       {
         question: "Can I ask about current membership pricing?",
