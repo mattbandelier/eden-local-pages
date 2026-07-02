@@ -117,113 +117,118 @@ const schema: JsonLd[] = [
 
 <BaseLayout title={page.title} description={page.description} canonicalUrl={canonical} jsonLd={schema}>
 	<PremiumHeader servicesHref="#blueprint" pricingHref="#consult" contactHref="#lead-form" />
-	<main class="bg-[#F7F2E7] text-[#1E3A2F]">
-		<section class="relative overflow-hidden bg-[#1E3A2F] text-white">
+	<main class="bg-eden-paper text-eden-navy">
+		<section class="relative overflow-hidden bg-eden-forest text-white">
 			<div class="absolute inset-0">
-				<img src="/assets/eden-health-club-reception.webp" alt="" class="h-full w-full object-cover opacity-22" loading="eager" />
-				<div class="absolute inset-0 bg-[linear-gradient(90deg,rgba(30,58,47,0.98),rgba(30,58,47,0.86)_50%,rgba(30,58,47,0.44))]"></div>
+				<img src="/assets/eden-health-club-office.webp" alt="" class="h-full w-full object-cover opacity-28" loading="eager" />
+				<div class="absolute inset-0 bg-[linear-gradient(90deg,rgba(25,79,57,0.98),rgba(25,79,57,0.88)_54%,rgba(25,79,57,0.36))]"></div>
 			</div>
-			<div class="relative mx-auto grid max-w-6xl gap-10 px-6 py-14 sm:py-18 lg:grid-cols-[1.02fr_0.98fr] lg:items-center">
+			<div class="relative mx-auto grid max-w-6xl gap-8 px-6 py-12 sm:py-16 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
 				<div>
-					<p class="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-[#D8BD82]">{page.eyebrow}</p>
-					<h1 class="mt-5 max-w-3xl font-serif text-5xl font-semibold leading-[0.98] sm:text-6xl lg:text-7xl">{page.h1}</h1>
-					<p class="mt-6 max-w-2xl text-base leading-8 text-white/84 sm:text-lg">{page.subhead}</p>
-					<div class="mt-8 flex flex-col gap-3 sm:flex-row">
-						<a href="#lead-form" class="rounded-md bg-[#B8935A] px-6 py-3 text-center text-base font-semibold text-white shadow-sm hover:bg-[#A8824C]">
+					<p class="text-sm font-semibold uppercase tracking-normal text-eden-sage">{page.eyebrow}</p>
+					<h1 class="mt-4 max-w-3xl text-4xl font-semibold leading-tight text-white sm:text-6xl">{page.h1}</h1>
+					<p class="mt-5 max-w-2xl text-base leading-8 text-white/86 sm:text-lg">{page.subhead}</p>
+					<div class="mt-7 flex flex-col gap-3 sm:flex-row">
+						<a href="#lead-form" class="rounded-md bg-eden-sage px-6 py-3 text-center text-base font-semibold text-eden-forest shadow-sm transition hover:bg-eden-sage/90">
 							{page.primaryCta}
 						</a>
-						<a href="#blueprint" class="rounded-md border border-white/35 px-6 py-3 text-center text-base font-semibold text-white hover:bg-white/10">
+						<a href="#blueprint" class="rounded-md border border-white/35 px-6 py-3 text-center text-base font-semibold text-white transition hover:bg-white/10">
 							{page.secondaryCta}
 						</a>
 					</div>
-					<p class="mt-5 text-sm leading-6 text-white/70">
-						Eden Health Club is located at 5990 S University Blvd in Greenwood Village, minutes from DTC and South Denver.
-					</p>
-				</div>
-				<div class="rounded-lg border border-white/16 bg-[#F7F2E7]/96 p-5 text-[#1E3A2F] shadow-2xl sm:p-6">
-					<div class="flex items-center justify-between border-b border-[#1E3A2F]/15 pb-4">
-						<p class="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-[#8E5F32]">{page.panelLabel}</p>
-						<span class="rounded-full border border-[#B8935A]/35 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.14em] text-[#8E5F32]">Reviewed</span>
+					<div class="mt-6 grid gap-3 text-sm font-medium text-white/86 sm:grid-cols-3">
+						<div class="border-l border-eden-sage/70 pl-4">Provider-led consult</div>
+						<div class="border-l border-eden-sage/70 pl-4">Labs before the plan</div>
+						<div class="border-l border-eden-sage/70 pl-4">Near DTC</div>
 					</div>
-					<div class="mt-5 grid gap-3">
+				</div>
+				<div class="rounded-lg border border-white/15 bg-white/95 p-5 text-eden-navy shadow-xl sm:p-6">
+					<p class="text-sm font-semibold uppercase text-eden-green">{page.panelLabel}</p>
+					<h2 class="mt-3 text-2xl font-semibold leading-tight">Use the consult to understand the right next step.</h2>
+					<div class="mt-5 grid gap-3 sm:grid-cols-2">
 						{page.panelItems.map((item) => (
-							<div class="flex items-center justify-between rounded-md border border-[#1E3A2F]/12 bg-white/72 px-4 py-3">
-								<span class="text-sm font-semibold">{item}</span>
-								<span class="font-mono text-xs uppercase tracking-[0.14em] text-[#8E5F32]">Included</span>
+							<div class="rounded-md border border-eden-line bg-eden-paper px-4 py-3">
+								<p class="text-sm font-semibold text-eden-navy">{item}</p>
+								<p class="mt-1 text-xs leading-5 text-slate-600">Reviewed before a plan is recommended.</p>
 							</div>
 						))}
 					</div>
-					<p class="mt-5 border-t border-[#1E3A2F]/12 pt-4 text-sm leading-6 text-[#5E645A]">
-						Data is where they stop. It's where we start.
+					<p class="mt-5 rounded-md bg-eden-forest px-4 py-3 text-sm font-semibold leading-6 text-white">
+						Data is where many clinics stop. At Eden, it is where the plan starts.
 					</p>
 				</div>
 			</div>
 		</section>
 
-		<section class="border-y border-[#1E3A2F]/10 bg-white px-6 py-5">
+		<section class="border-y border-eden-line bg-white px-6 py-5">
 			<div class="mx-auto grid max-w-6xl gap-3 sm:grid-cols-4">
 				{page.trust.map((item) => (
-					<div class="rounded-md border border-[#1E3A2F]/10 bg-[#F7F2E7] px-4 py-3 font-mono text-xs font-semibold uppercase tracking-[0.13em] text-[#1E3A2F]">{item}</div>
+					<div class="rounded-md border border-eden-line bg-eden-paper px-4 py-3 text-sm font-semibold text-eden-navy">{item}</div>
 				))}
 			</div>
 		</section>
 
-		<section class="px-6 py-12 sm:py-16">
-			<div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.72fr_1.28fr]">
-				<div>
-					<p class="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-[#8E5F32]">Key takeaways</p>
-					<h2 class="mt-3 font-serif text-3xl font-semibold leading-tight text-[#1E3A2F] sm:text-4xl">What to know before you book.</h2>
-					{page.kind === "authority" && (
-						<p class="mt-4 text-sm leading-6 text-[#5E645A]">Medically reviewed by Christina Matheus, NP. Reviewed July 2, 2026.</p>
-					)}
+		<section class="px-6 py-12 sm:py-14">
+			<div class="mx-auto grid max-w-6xl gap-7 lg:grid-cols-[0.95fr_1.05fr] lg:items-stretch">
+				<div class="overflow-hidden rounded-lg border border-eden-line bg-white shadow-sm">
+					<img src="/assets/eden-health-club-office.webp" alt="Eden Health Club clinical consultation room in Greenwood Village" class="aspect-[4/3] w-full object-cover lg:aspect-[5/3]" loading="lazy" />
+					<div class="grid gap-3 border-t border-eden-line bg-white p-5 sm:grid-cols-3">
+						{page.takeaways.map((item) => (
+							<div class="rounded-md bg-eden-paper p-3 text-sm font-semibold leading-5 text-eden-navy">{item}</div>
+						))}
+					</div>
 				</div>
-				<div class="grid gap-3">
-					{page.takeaways.map((item) => (
-						<div class="rounded-lg border border-[#1E3A2F]/12 bg-white p-5 text-base leading-7 text-[#23261F] shadow-sm">{item}</div>
-					))}
+
+				<div class="grid gap-5 lg:grid-cols-[minmax(0,0.9fr)_minmax(340px,0.95fr)]">
+					<div class="rounded-lg border border-eden-line bg-white p-6 shadow-sm">
+						<p class="text-sm font-semibold uppercase text-eden-green">Good fit when</p>
+						<h2 class="mt-3 text-3xl font-semibold leading-tight text-eden-navy sm:text-4xl">{page.experienceTitle}</h2>
+						<p class="mt-4 text-base leading-7 text-slate-700">{page.experienceIntro}</p>
+						<div class="mt-6 grid gap-3">
+							{page.experiences.map((item) => (
+								<div class="rounded-md border border-eden-line bg-eden-paper p-3 text-sm font-medium leading-6 text-eden-navy">{item}</div>
+							))}
+						</div>
+						{page.kind === "authority" && (
+							<p class="mt-5 text-sm leading-6 text-slate-600">Medically reviewed by Christina Matheus, NP. Reviewed July 2, 2026.</p>
+						)}
+					</div>
+
+					<LeadForm
+						serviceSlug={page.serviceSlug}
+						suburbSlug="greenwood-village"
+						heading={page.formHeading}
+						subheading={page.formSubheading}
+						submitText={page.primaryCta}
+					/>
 				</div>
 			</div>
 		</section>
 
-		<section class="bg-white px-6 py-12 sm:py-16">
-			<div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
-				<div>
-					<p class="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-[#8E5F32]">Experience check</p>
-					<h2 class="mt-3 font-serif text-4xl font-semibold leading-tight text-[#1E3A2F]">{page.experienceTitle}</h2>
-					<p class="mt-4 text-base leading-7 text-[#5E645A]">{page.experienceIntro}</p>
-				</div>
-				<div class="grid gap-3 sm:grid-cols-2">
-					{page.experiences.map((item) => (
-						<div class="rounded-lg border border-[#1E3A2F]/12 bg-[#F7F2E7] p-5 text-sm font-medium leading-6 text-[#23261F]">{item}</div>
-					))}
-				</div>
-			</div>
-		</section>
-
-		<section id="blueprint" class="px-6 py-12 sm:py-16">
+		<section id="blueprint" class="bg-white px-6 py-12 sm:py-16">
 			<div class="mx-auto max-w-6xl">
 				<div class="max-w-3xl">
-					<p class="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-[#8E5F32]">The Eden Blueprint</p>
-					<h2 class="mt-3 font-serif text-4xl font-semibold leading-tight text-[#1E3A2F]">Test. Treat. Train. Track. Optimize.</h2>
-					<p class="mt-4 text-base leading-8 text-[#5E645A]">{page.blueprintIntro}</p>
+					<p class="text-sm font-semibold uppercase text-eden-green">How Eden works</p>
+					<h2 class="mt-3 text-3xl font-semibold leading-tight text-eden-navy sm:text-4xl">Test. Treat. Train. Track. Optimize.</h2>
+					<p class="mt-4 text-base leading-8 text-slate-700">{page.blueprintIntro}</p>
 				</div>
-				<div class="mt-8 grid gap-3 md:grid-cols-5">
+				<div class="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
 					{blueprint.map((item) => (
-						<div class={`rounded-lg border p-5 ${item.label === "Train" ? "border-[#B8935A] bg-white shadow-md" : "border-[#1E3A2F]/12 bg-white/70"}`}>
-							<p class="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-[#8E5F32]">{item.step}</p>
-							<h3 class="mt-3 text-xl font-semibold text-[#1E3A2F]">{item.label}</h3>
-							<p class="mt-2 text-sm leading-6 text-[#5E645A]">{item.body}</p>
+						<div class={`rounded-lg border p-5 ${item.label === "Train" ? "border-eden-green bg-eden-paper shadow-sm" : "border-eden-line bg-white"}`}>
+							<p class="text-xs font-semibold uppercase tracking-normal text-eden-green">{item.step}</p>
+							<h3 class="mt-2 text-xl font-semibold text-eden-navy">{item.label}</h3>
+							<p class="mt-2 text-sm leading-6 text-slate-700">{item.body}</p>
 						</div>
 					))}
 				</div>
 			</div>
 		</section>
 
-		<section class="bg-[#1E3A2F] px-6 py-12 text-white sm:py-16">
+		<section class="bg-eden-forest px-6 py-12 text-white sm:py-16">
 			<div class="mx-auto max-w-6xl">
 				<div class="max-w-3xl">
-					<p class="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-[#D8BD82]">Why Eden</p>
-					<h2 class="mt-3 font-serif text-4xl font-semibold leading-tight">Provider-led performance medicine, not a treat-and-forget clinic.</h2>
+					<p class="text-sm font-semibold uppercase text-eden-sage">Why Eden</p>
+					<h2 class="mt-3 text-3xl font-semibold leading-tight sm:text-4xl">Provider-led hormone care connected to the rest of your life.</h2>
 				</div>
 				<div class="mt-8 grid gap-4 md:grid-cols-3">
 					{page.whyEden.map((item) => (
@@ -236,17 +241,17 @@ const schema: JsonLd[] = [
 			</div>
 		</section>
 
-		<section class="bg-white px-6 py-12 sm:py-16">
-			<div class="mx-auto grid max-w-6xl gap-5">
+		<section class="px-6 py-12 sm:py-16">
+			<div class="mx-auto grid max-w-6xl gap-5 lg:grid-cols-2">
 				{page.authoritySections.map((section) => (
-					<article class="rounded-lg border border-[#1E3A2F]/12 bg-[#F7F2E7] p-6 sm:p-8">
-						<p class="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-[#8E5F32]">{section.eyebrow}</p>
-						<h2 class="mt-3 font-serif text-3xl font-semibold leading-tight text-[#1E3A2F]">{section.title}</h2>
-						<p class="mt-4 rounded-md border border-[#B8935A]/28 bg-white p-4 text-base font-medium leading-7 text-[#23261F]">{section.answer}</p>
-						<p class="mt-4 text-base leading-8 text-[#5E645A]">{section.body}</p>
+					<article class="rounded-lg border border-eden-line bg-white p-6 shadow-sm sm:p-7">
+						<p class="text-sm font-semibold uppercase text-eden-green">{section.eyebrow}</p>
+						<h2 class="mt-3 text-2xl font-semibold leading-tight text-eden-navy">{section.title}</h2>
+						<p class="mt-4 rounded-md border border-eden-line bg-eden-paper p-4 text-base font-semibold leading-7 text-eden-navy">{section.answer}</p>
+						<p class="mt-4 text-base leading-8 text-slate-700">{section.body}</p>
 						{section.bullets && (
 							<ul class="mt-5 grid gap-2 sm:grid-cols-2">
-								{section.bullets.map((bullet) => <li class="rounded-md bg-white px-4 py-3 text-sm font-semibold text-[#1E3A2F]">{bullet}</li>)}
+								{section.bullets.map((bullet) => <li class="rounded-md bg-eden-paper px-4 py-3 text-sm font-semibold text-eden-navy">{bullet}</li>)}
 							</ul>
 						)}
 					</article>
@@ -254,40 +259,40 @@ const schema: JsonLd[] = [
 			</div>
 		</section>
 
-		<section id="consult" class="px-6 py-12 sm:py-16">
-			<div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.82fr_1.18fr] lg:items-start">
+		<section id="consult" class="bg-white px-6 py-12 sm:py-16">
+			<div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.86fr_1.14fr] lg:items-start">
 				<div>
-					<p class="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-[#8E5F32]">Start here</p>
-					<h2 class="mt-3 font-serif text-4xl font-semibold leading-tight text-[#1E3A2F]">Request the consult. Eden will help route the right next step.</h2>
-					<p class="mt-4 text-base leading-8 text-[#5E645A]">
+					<p class="text-sm font-semibold uppercase text-eden-green">Start here</p>
+					<h2 class="mt-3 text-3xl font-semibold leading-tight text-eden-navy sm:text-4xl">Request the consult. Eden will help route the right next step.</h2>
+					<p class="mt-4 text-base leading-8 text-slate-700">
 						This is a consult request, not a treatment commitment. Eden will follow up about fit, timing, baseline labs, and what makes sense for your goals.
 					</p>
-					{page.offerLine && <p class="mt-5 rounded-md border border-[#B8935A]/28 bg-white p-4 text-sm font-semibold text-[#1E3A2F]">{page.offerLine}</p>}
-					<a href={phoneHref} data-phone-link class="mt-5 inline-block text-sm font-semibold text-[#8E5F32] underline underline-offset-4">Call {phone}</a>
+					{page.offerLine && <p class="mt-5 rounded-md border border-eden-line bg-eden-paper p-4 text-sm font-semibold text-eden-navy">{page.offerLine}</p>}
+					<a href={phoneHref} data-phone-link class="mt-5 inline-block text-sm font-semibold text-eden-green underline underline-offset-4">Call {phone}</a>
 				</div>
 				<LeadForm serviceSlug={page.serviceSlug} suburbSlug="greenwood-village" heading={page.formHeading} subheading={page.formSubheading} submitText={page.primaryCta} />
 			</div>
 		</section>
 
-		<section class="bg-white px-6 py-12 sm:py-16" aria-labelledby="hormone-faq-heading">
+		<section class="px-6 py-12 sm:py-16" aria-labelledby="hormone-faq-heading">
 			<div class="mx-auto max-w-4xl">
-				<p class="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-[#8E5F32]">FAQ</p>
-				<h2 id="hormone-faq-heading" class="mt-3 font-serif text-4xl font-semibold leading-tight text-[#1E3A2F]">Questions people ask before booking.</h2>
+				<p class="text-sm font-semibold uppercase text-eden-green">FAQ</p>
+				<h2 id="hormone-faq-heading" class="mt-3 text-3xl font-semibold leading-tight text-eden-navy sm:text-4xl">Questions people ask before booking.</h2>
 				<div class="mt-8 grid gap-4">
 					{page.faqs.map((faq) => (
-						<details class="rounded-lg border border-[#1E3A2F]/12 bg-[#F7F2E7] p-5">
-							<summary class="cursor-pointer text-base font-semibold text-[#1E3A2F]">{faq.question}</summary>
-							<p class="mt-3 text-sm leading-7 text-[#5E645A]">{faq.answer}</p>
+						<details class="rounded-lg border border-eden-line bg-white p-5 shadow-sm">
+							<summary class="cursor-pointer text-base font-semibold text-eden-navy">{faq.question}</summary>
+							<p class="mt-3 text-sm leading-7 text-slate-700">{faq.answer}</p>
 						</details>
 					))}
 				</div>
 			</div>
 		</section>
 
-		<div class="fixed inset-x-0 bottom-0 z-40 border-t border-[#1E3A2F]/10 bg-white/96 px-4 py-3 shadow-2xl backdrop-blur md:hidden">
+		<div class="fixed inset-x-0 bottom-0 z-40 border-t border-eden-line bg-white/96 px-4 py-3 shadow-2xl backdrop-blur md:hidden">
 			<div class="mx-auto flex max-w-md items-center gap-3">
-				<p class="min-w-0 flex-1 text-xs font-semibold leading-5 text-[#1E3A2F]">Provider-led consult near DTC.</p>
-				<a href="#lead-form" class="shrink-0 rounded-md bg-[#B8935A] px-4 py-2 text-sm font-semibold text-white">{page.primaryCta}</a>
+				<p class="min-w-0 flex-1 text-xs font-semibold leading-5 text-eden-navy">Provider-led consult near DTC.</p>
+				<a href="#lead-form" class="shrink-0 rounded-md bg-eden-sage px-4 py-2 text-sm font-semibold text-eden-forest">{page.primaryCta}</a>
 			</div>
 		</div>
 	</main>
