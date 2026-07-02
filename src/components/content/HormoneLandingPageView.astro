@@ -15,6 +15,14 @@ const { page } = Astro.props;
 const canonical = canonicalUrl(`/${page.slug}`);
 const phone = "720-605-7678";
 const phoneHref = "tel:+17206057678";
+const pageImageSrc =
+	page.slug === "mens-hormone-optimization"
+		? "/assets/mens-hormone-optimization.webp"
+		: "/assets/eden-health-club-office.webp";
+const pageImageAlt =
+	page.slug === "mens-hormone-optimization"
+		? "Man in a premium Eden Health Club wellness consultation for men's hormone optimization"
+		: "Eden Health Club clinical consultation room in Greenwood Village";
 const blueprint = [
 	{ step: "01", label: "Test", body: "Clarify the baseline with the right lab context and health history." },
 	{ step: "02", label: "Treat", body: "Build a provider-led plan only when fit is clear." },
@@ -120,7 +128,7 @@ const schema: JsonLd[] = [
 	<main class="bg-eden-paper text-eden-navy">
 		<section class="relative overflow-hidden bg-eden-forest text-white">
 			<div class="absolute inset-0">
-				<img src="/assets/eden-health-club-office.webp" alt="" class="h-full w-full object-cover opacity-28" loading="eager" />
+				<img src={pageImageSrc} alt="" class="h-full w-full object-cover opacity-28" loading="eager" />
 				<div class="absolute inset-0 bg-[linear-gradient(90deg,rgba(25,79,57,0.98),rgba(25,79,57,0.88)_54%,rgba(25,79,57,0.36))]"></div>
 			</div>
 			<div class="relative mx-auto grid max-w-6xl gap-8 px-6 py-12 sm:py-16 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
@@ -171,7 +179,7 @@ const schema: JsonLd[] = [
 		<section class="px-6 py-12 sm:py-14">
 			<div class="mx-auto grid max-w-6xl gap-7 lg:grid-cols-[0.95fr_1.05fr] lg:items-stretch">
 				<div class="overflow-hidden rounded-lg border border-eden-line bg-white shadow-sm">
-					<img src="/assets/eden-health-club-office.webp" alt="Eden Health Club clinical consultation room in Greenwood Village" class="aspect-[4/3] w-full object-cover lg:aspect-[5/3]" loading="lazy" />
+					<img src={pageImageSrc} alt={pageImageAlt} class="aspect-[4/3] w-full object-cover lg:aspect-[5/3]" loading="lazy" />
 					<div class="grid gap-3 border-t border-eden-line bg-white p-5 sm:grid-cols-3">
 						{page.takeaways.map((item) => (
 							<div class="rounded-md bg-eden-paper p-3 text-sm font-semibold leading-5 text-eden-navy">{item}</div>
