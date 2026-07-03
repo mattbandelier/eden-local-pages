@@ -1264,9 +1264,9 @@ export const fitnessPages: FitnessPage[] = [
       "A premium longevity and performance membership in Greenwood Village combining semi-private training, small-group fitness, recovery, biomarker testing, InBody tracking, progress check-ins, and medical-wellness guidance.",
     h1: "Elevate Membership in Greenwood Village",
     eyebrow: "For members who want an edge",
-    heroHeadline: "Training, recovery, biomarkers, and medical-wellness guidance for members who want more.",
+    heroHeadline: "Be part of something built for strength, recovery, and your next edge.",
     summary:
-      "Elevate is the premium Eden path for members who want an edge: semi-private training, small-group fitness, unlimited recovery access, InBody tracking, progress check-ins, biomarker testing and lab work when appropriate, and provider-guided medical-wellness direction for strength, energy, body composition, and longevity.",
+      "Elevate is the premium Eden path for members who want an edge inside Your Sanctuary of Wellness: semi-private training, small-group fitness, unlimited recovery access, InBody tracking, progress check-ins, biomarker testing and lab work when appropriate, and provider-guided medical-wellness direction for strength, energy, body composition, and longevity.",
     primaryCta: "Ask About Elevate",
     secondaryCta: "See what is included",
     proof: [
@@ -1275,7 +1275,8 @@ export const fitnessPages: FitnessPage[] = [
       "Biomarker testing and InBody tracking",
       "Longevity and performance support",
       "Member medical-wellness benefits",
-      "Progress check-ins and accountability"
+      "Progress check-ins and accountability",
+      "Your Sanctuary of Wellness"
     ],
     builtFor: [
       "Members who want an edge in strength, energy, and body composition",
@@ -1287,14 +1288,26 @@ export const fitnessPages: FitnessPage[] = [
     sections: [
       {
         eyebrow: "The premium path",
-        title: "This is not a gym membership. It is a longevity and performance support system.",
+        title: "This is not a gym membership. It is a place to belong and a system to move you forward.",
         body:
-          "Elevate is for members who want the whole Eden advantage in one guided path: training, recovery, measurement, biomarker context, progress check-ins, and access to medical-wellness guidance when appropriate. It is built for people who want to stay strong, capable, lean, energized, and proactive without piecing everything together alone.",
+          "Elevate is for members who want the whole Eden advantage in one guided path: training, recovery, measurement, biomarker context, progress check-ins, and access to medical-wellness guidance when appropriate. It is built for people who want to belong to a premium wellness environment while staying strong, capable, lean, energized, and proactive without piecing everything together alone.",
         bullets: [
           "Semi-private training for coaching, progression, and form",
           "Small-group fitness for consistency, energy, and community",
           "Unlimited recovery access to support training readiness",
           "Progress check-ins so the plan keeps moving"
+        ]
+      },
+      {
+        eyebrow: "Belong here",
+        title: "Your Sanctuary of Wellness, built for members who want more.",
+        body:
+          "The strongest membership is not only access to services. It is the feeling that your training, recovery, measurements, and wellness conversations all belong in one place. Elevate gives Greenwood Village members a premium home base for the body, energy, and confidence they want to keep building.",
+        bullets: [
+          "A premium Eden membership identity, not a disconnected service bundle",
+          "Community, coaching, and accountability without a crowded-gym feel",
+          "Recovery and wellness support around the same goals",
+          "A clear next step for members who want to invest in themselves"
         ]
       },
       {
