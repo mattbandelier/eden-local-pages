@@ -32,6 +32,7 @@ export const indexableFitnessSlugs = new Set([
 	"body-composition-training-greenwood-village",
 	"glp-1-strength-training-greenwood-village",
 	"glp-1-fitness-membership-greenwood-village",
+	"elevate-membership-greenwood-village",
 	"group-fitness-classes-greenwood-village",
 	"medical-weight-loss-fitness-greenwood-village",
 	"fitness-performance-denver-tech-center",
