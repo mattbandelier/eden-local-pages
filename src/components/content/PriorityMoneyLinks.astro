@@ -62,6 +62,30 @@ const moneyPages = [
 		group: "Wellness",
 	},
 	{
+		label: "GLP-1 strength training",
+		href: "/glp-1-strength-training-greenwood-village/",
+		intent: "Muscle preservation, InBody tracking, recovery, and strength support around weight loss.",
+		group: "Fitness",
+	},
+	{
+		label: "Perform Membership",
+		href: "/glp-1-fitness-membership-greenwood-village/",
+		intent: "Supported membership path for weight-loss clients who need strength, check-ins, and recovery.",
+		group: "Fitness",
+	},
+	{
+		label: "Elevate Membership",
+		href: "/elevate-membership-greenwood-village/",
+		intent: "Premium fitness, recovery, body composition, biomarker context, and wellness guidance.",
+		group: "Fitness",
+	},
+	{
+		label: "Performance Lab",
+		href: "/performance-lab-greenwood-village/",
+		intent: "Baseline assessment for training, recovery, body composition, and performance direction.",
+		group: "Fitness",
+	},
+	{
 		label: "Hormone optimization",
 		href: "/hormone-optimization/",
 		intent: "Provider-led hormone evaluation connected to labs, training, recovery, and follow-up.",
@@ -121,7 +145,7 @@ const visiblePages = moneyPages.filter((page) => page.href !== currentPath);
 const featuredPages =
 	variant === "hub"
 		? visiblePages
-		: visiblePages.filter((page) => ["Injectables", "Skin", "Wellness", "Hormones"].includes(page.group)).slice(0, 10);
+		: visiblePages.filter((page) => ["Injectables", "Skin", "Wellness", "Fitness", "Hormones"].includes(page.group)).slice(0, 12);
 ---
 
 <section class="bg-white px-6 py-14 sm:py-16" aria-labelledby="priority-money-links-heading">

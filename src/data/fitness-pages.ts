@@ -229,7 +229,7 @@ const areaFitnessPages: FitnessPage[] = [
     titleArea: "near Cherry Hills Village",
     descriptionArea: "near Cherry Hills Village",
     localAngle:
-      "Cherry Hills Village is a premium wellness market where the right buyer is not looking for the cheapest class. They are looking for strength, longevity, body composition, recovery, aesthetics, and a high-trust environment.",
+      "Cherry Hills Village is a premium wellness market where the right buyer is not shopping for a basic class pass. They are looking for strength, longevity, body composition, recovery, aesthetics, and a high-trust environment.",
     driveAngle:
       "Eden is close enough for Cherry Hills Village clients who want one polished Greenwood Village destination for fitness, recovery, body composition, aesthetics, and medical wellness support.",
     audience: [
@@ -905,7 +905,7 @@ export const fitnessPages: FitnessPage[] = [
       "Build strength, mobility, body composition, and recovery capacity with longevity training at Eden Health Club in Greenwood Village.",
     h1: "Longevity Training in Greenwood Village",
     eyebrow: "Train for healthspan",
-    heroHeadline: "A stronger body is an anti-aging strategy.",
+    heroHeadline: "A stronger body is a healthy-aging strategy.",
     summary:
       "Longevity training at Eden focuses on strength, muscle, mobility, balance, recovery, body composition, and medical wellness support so you can keep doing what you love for longer.",
     primaryCta: "Book a Longevity Assessment",
@@ -956,7 +956,7 @@ export const fitnessPages: FitnessPage[] = [
       "Eden connects strength training with body composition, recovery, hormone care, peptides, IV therapy, wellness injections, and aesthetics so healthy aging is not limited to what happens in the mirror.",
     primaryCta: "Book a Healthy Aging Fitness Assessment",
     secondaryCta: "Explore body composition",
-    builtFor: ["Women and men over 40", "Clients focused on muscle and metabolism", "Aesthetics clients who want the body to match", "People who want to look, feel, and function younger"],
+    builtFor: ["Women and men over 40", "Clients focused on muscle and metabolism", "Aesthetics clients who want the body to match", "People who want to look, feel, and function stronger"],
     sections: [
       {
         eyebrow: "The deeper layer",
@@ -1060,6 +1060,30 @@ export const fitnessPages: FitnessPage[] = [
           "Strength-first programming for muscle, function, and confidence",
           "A safer starting point for people who need education, pacing, and measurement",
           "A conversion bridge from medical weight loss into long-term fitness membership"
+        ]
+      },
+      {
+        eyebrow: "Companion fitness",
+        title: "The strongest weight-loss plan has a fitness layer, not just a medication conversation.",
+        body:
+          "The market is moving toward the same conclusion: clients using medical weight loss need structured movement, body-composition tracking, nutrition and behavior support, recovery, and coaching so weight loss can become a durable health outcome. Eden's advantage is that this companion layer already lives inside one Greenwood Village facility.",
+        bullets: [
+          "Strength training to support lean mass, function, posture, and confidence",
+          "InBody tracking so progress is not judged by scale weight alone",
+          "Recovery support and check-ins to make consistency easier",
+          "A discreet path that feels like fitness and wellness support, not a public weight-loss label"
+        ]
+      },
+      {
+        eyebrow: "Referral-ready",
+        title: "A practical next step when a provider wants the client moving safely.",
+        body:
+          "Eden's role is not to replace clinical care. It is to give local clients a place to train, measure body composition, recover, and build accountability while their medical provider manages medication decisions and clinical oversight.",
+        bullets: [
+          "Provider-informed fitness support without making medical claims",
+          "A simple local option for clients who need strength, not another generic gym pass",
+          "Useful for PCPs, wellness providers, and weight-loss programs looking for a movement layer",
+          "Built around assessment, measurement, and follow-up instead of a one-size-fits-all class"
         ]
       },
       systemSection
@@ -1197,6 +1221,30 @@ export const fitnessPages: FitnessPage[] = [
           "InBody tracking to keep muscle preservation visible",
           "Training adjustments when energy, recovery, or schedule changes",
           "Clear next-step routing if medical wellness, hormones, peptides, or recovery support should be discussed"
+        ]
+      },
+      {
+        eyebrow: "Discreet by design",
+        title: "Support for weight-loss clients without making the membership feel like a label.",
+        body:
+          "Many clients do not want to join something that announces they are using medication or working through a weight-loss protocol. Perform is positioned as a strength, recovery, body-composition, and accountability membership that can support medical weight-loss clients while still feeling like a confident fitness and wellness investment.",
+        bullets: [
+          "Semi-private training and small-group structure without a crowded-gym feel",
+          "Body-composition check-ins that keep lean mass visible",
+          "Recovery access and habit support for consistency",
+          "Easy routing into medical wellness when a deeper consult is appropriate"
+        ]
+      },
+      {
+        eyebrow: "Companion program",
+        title: "The opportunity is not GLP-1 versus fitness. It is GLP-1 plus the right fitness system.",
+        body:
+          "The winning position is simple: medical weight loss can change appetite and weight, but clients still need muscle, movement, education, recovery, and a place to stay consistent. Eden can own that local companion-fitness lane for Greenwood Village, DTC, Cherry Hills, Centennial, and South Denver.",
+        bullets: [
+          "Strength and semi-private coaching for clients who want more than cardio",
+          "Progress check-ins that make the plan feel supported",
+          "InBody scans to connect the conversation to measurable body composition",
+          "A membership path that can continue after the initial weight-loss phase"
         ]
       },
       systemSection
