@@ -999,7 +999,7 @@ export const fitnessPages: FitnessPage[] = [
     eyebrow: "Medical weight loss needs strength",
     heroHeadline: "The missing layer in weight loss: preserve muscle, protect function, and build the body you want to keep.",
     summary:
-      "Eden helps GLP-1 and medical weight loss clients add the piece most programs miss: strength training, body composition tracking, recovery, accountability, and a supportive class environment built around preserving muscle and function while weight changes.",
+      "Eden helps GLP-1 and medical weight loss clients add the piece most programs miss: strength training, body composition tracking, recovery, accountability, and a supportive class environment guided by fitness professionals and supported by Eden's medical-wellness team.",
     primaryCta: "Book a GLP-1 Strength Assessment",
     secondaryCta: "Compare the plan",
     proof: [
@@ -1066,7 +1066,7 @@ export const fitnessPages: FitnessPage[] = [
         eyebrow: "Companion fitness",
         title: "The strongest weight-loss plan has a fitness layer, not just a medication conversation.",
         body:
-          "The market is moving toward the same conclusion: clients using medical weight loss need structured movement, body-composition tracking, nutrition and behavior support, recovery, and coaching so weight loss can become a durable health outcome. Eden's advantage is that this companion layer already lives inside one Greenwood Village facility.",
+          "The market is moving toward the same conclusion: clients using medical weight loss need structured movement, body-composition tracking, nutrition and behavior support, recovery, and coaching so weight loss can become a durable health outcome. Eden's advantage is that this companion layer already lives inside one Greenwood Village facility, with fitness guidance connected to medical-wellness support when appropriate.",
         bullets: [
           "Strength training to support lean mass, function, posture, and confidence",
           "InBody tracking so progress is not judged by scale weight alone",
@@ -1078,7 +1078,7 @@ export const fitnessPages: FitnessPage[] = [
         eyebrow: "Referral-ready",
         title: "A practical next step when a provider wants the client moving safely.",
         body:
-          "Eden's role is not to replace clinical care. It is to give local clients a place to train, measure body composition, recover, and build accountability while their medical provider manages medication decisions and clinical oversight.",
+          "Eden's role is not to replace clinical care. It is to give local clients a medically supported place to train, measure body composition, recover, and build accountability while the appropriate provider manages medication decisions and clinical oversight.",
         bullets: [
           "Provider-informed fitness support without making medical claims",
           "A simple local option for clients who need strength, not another generic gym pass",
@@ -1157,7 +1157,7 @@ export const fitnessPages: FitnessPage[] = [
     eyebrow: "The weight-loss support most programs miss",
     heroHeadline: "Weight loss changes the number. Strength helps protect the body behind it.",
     summary:
-      "Eden's Perform Membership path is built for clients who want medical weight loss support and a fully supported training environment: semi-private training, strength-first classes, InBody tracking, recovery tools, progress check-ins, accountability, and guidance around preserving muscle while weight changes.",
+      "Eden's Perform Membership path is built for clients who want medical weight loss support and a fully supported training environment: semi-private training, strength-first classes, InBody tracking, recovery tools, progress check-ins, accountability, and guidance from fitness professionals with medical-wellness support nearby.",
     primaryCta: "Ask About GLP-1 Fitness Support",
     secondaryCta: "See what is included",
     proof: [
@@ -1239,7 +1239,7 @@ export const fitnessPages: FitnessPage[] = [
         eyebrow: "Companion program",
         title: "The opportunity is not GLP-1 versus fitness. It is GLP-1 plus the right fitness system.",
         body:
-          "The winning position is simple: medical weight loss can change appetite and weight, but clients still need muscle, movement, education, recovery, and a place to stay consistent. Eden can own that local companion-fitness lane for Greenwood Village, DTC, Cherry Hills, Centennial, and South Denver.",
+          "The winning position is simple: medical weight loss can change appetite and weight, but clients still need muscle, movement, education, recovery, and a place to stay consistent. Eden can own that local companion-fitness lane for Greenwood Village, DTC, Cherry Hills, Centennial, and South Denver because the fitness layer can be guided by coaches and supported by medical professionals in the same ecosystem.",
         bullets: [
           "Strength and semi-private coaching for clients who want more than cardio",
           "Progress check-ins that make the plan feel supported",
