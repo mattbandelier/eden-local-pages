@@ -137,6 +137,11 @@ function customField(id: string, value: string | null): { id: string; field_valu
 	return { id, field_value: value };
 }
 
+function optionalCustomField(id: string | undefined, value: string | null): { id: string; field_value: string } | null {
+	if (!id) return null;
+	return customField(id, value);
+}
+
 async function postLeadWebhook(webhookUrl: string | undefined, payload: LeadPayload): Promise<boolean> {
 	if (!webhookUrl) return false;
 	const response = await fetch(webhookUrl, {
@@ -167,6 +172,9 @@ async function upsertGhlContact(payload: LeadPayload): Promise<boolean> {
 		customField(GHL_CUSTOM_FIELD_IDS.gclid, payload.gclid),
 		customField(GHL_CUSTOM_FIELD_IDS.gbraid, payload.gbraid),
 		customField(GHL_CUSTOM_FIELD_IDS.wbraid, payload.wbraid),
+		optionalCustomField(import.meta.env.GHL_FIELD_SERVICE_SLUG, payload.service),
+		optionalCustomField(import.meta.env.GHL_FIELD_SUBURB_SLUG, payload.suburb),
+		optionalCustomField(import.meta.env.GHL_FIELD_LEAD_MESSAGE, payload.message),
 	].filter((field): field is { id: string; field_value: string } => Boolean(field));
 
 	const response = await fetch("https://services.leadconnectorhq.com/contacts/upsert", {

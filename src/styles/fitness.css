@@ -436,6 +436,110 @@ textarea {
   line-height: 1.52;
 }
 
+.membership-comparison {
+  width: min(1120px, calc(100% - 40px));
+  margin: 0 auto;
+  padding: 54px 0 8px;
+}
+
+.membership-comparison .section-heading {
+  max-width: 840px;
+}
+
+.membership-comparison__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.membership-comparison article {
+  min-height: 230px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid rgba(40, 96, 82, 0.22);
+  border-radius: 8px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(247, 250, 241, 0.96)),
+    var(--white);
+  padding: 22px;
+}
+
+.membership-comparison h3 {
+  margin: 0;
+  color: var(--green-dark);
+  font-size: 1.18rem;
+  line-height: 1.14;
+}
+
+.membership-comparison p {
+  margin: 20px 0 0;
+  color: var(--muted);
+  line-height: 1.52;
+}
+
+.offer-path-section {
+  width: min(1120px, calc(100% - 40px));
+  margin: 0 auto;
+  padding: 54px 0 0;
+}
+
+.offer-path-section .section-heading {
+  max-width: 780px;
+}
+
+.offer-path-section__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.offer-path-section__grid a {
+  min-height: 240px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid rgba(169, 206, 136, 0.72);
+  border-radius: 8px;
+  background: var(--green-dark);
+  color: var(--white);
+  padding: 24px;
+  text-decoration: none;
+  transition: transform 160ms ease, border-color 160ms ease;
+}
+
+.offer-path-section__grid a:hover,
+.offer-path-section__grid a:focus-visible {
+  border-color: var(--white);
+  outline: none;
+  transform: translateY(-2px);
+}
+
+.offer-path-section__grid span {
+  width: fit-content;
+  border-radius: 999px;
+  background: var(--sage);
+  padding: 7px 10px;
+  color: var(--green-dark);
+  font-size: 0.74rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.offer-path-section__grid h3 {
+  margin: 28px 0 0;
+  font-size: 1.32rem;
+  line-height: 1.1;
+}
+
+.offer-path-section__grid p {
+  margin: 18px 0 0;
+  color: rgba(255, 255, 255, 0.78);
+  line-height: 1.54;
+}
+
 .fitness-intake {
   width: min(1120px, calc(100% - 40px));
   display: grid;
@@ -1271,6 +1375,40 @@ summary {
     grid-template-columns: 1fr;
   }
 
+  .membership-comparison {
+    width: min(100% - 40px, 460px);
+    padding-top: 34px;
+  }
+
+  .membership-comparison__grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .membership-comparison article {
+    min-height: auto;
+    padding: 18px;
+  }
+
+  .offer-path-section {
+    width: min(100% - 40px, 460px);
+    padding-top: 34px;
+  }
+
+  .offer-path-section__grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .offer-path-section__grid a {
+    min-height: 0;
+    padding: 18px;
+  }
+
+  .offer-path-section__grid h3 {
+    margin-top: 22px;
+  }
+
   .fitness-intake {
     width: min(100% - 40px, 460px);
     grid-template-columns: 1fr;
@@ -1323,7 +1461,7 @@ summary {
   }
 
   .hero.fitness-hero {
-    min-height: min(780px, 94svh);
+    min-height: min(760px, 92svh);
   }
 
   .eden-action-bar {
@@ -1358,7 +1496,7 @@ summary {
 
   .hero__overlay {
     width: min(100% - 40px, 460px);
-    padding: 86px 0 54px;
+    padding: 96px 0 54px;
   }
 
   .hero h1,
@@ -1372,7 +1510,7 @@ summary {
   .dashboard-hero p {
     margin-top: 16px;
     font-size: 0.97rem;
-    line-height: 1.46;
+    line-height: 1.5;
   }
 
   .hero__expect {
@@ -1569,6 +1707,8 @@ summary {
 @media (max-width: 430px) {
   .hero__overlay,
   .local-intent-section,
+  .membership-comparison,
+  .offer-path-section,
   .fitness-intake,
   .fitness-built,
   .fitness-related,
@@ -1606,16 +1746,21 @@ summary {
   }
 
   .hero__overlay {
-    padding-top: 112px;
+    padding-top: 104px;
     padding-bottom: 48px;
   }
 
   .hero h1 {
-    font-size: clamp(2.04rem, 9.4vw, 2.78rem);
+    font-size: 2.36rem;
   }
 
   .hero__summary {
-    font-size: 0.94rem;
+    font-size: 0.95rem;
+  }
+
+  .fitness-hero__line {
+    font-size: 1.18rem;
+    line-height: 1.1;
   }
 
   .hero__expect h3 {
@@ -1683,7 +1828,7 @@ summary {
   }
 
   .hero h1 {
-    font-size: clamp(1.92rem, 9vw, 2.42rem);
+    font-size: 2.02rem;
   }
 
   .hero__summary {

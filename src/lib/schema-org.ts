@@ -120,6 +120,10 @@ export function serviceJsonLd(service: Service, url: string, suburb?: Suburb): J
 }
 
 export function faqPageJsonLd(service: Service, url: string, faqs: FAQ[] = service.faqs): JsonLd {
+	return faqItemsJsonLd(url, faqs);
+}
+
+export function faqItemsJsonLd(url: string, faqs: FAQ[]): JsonLd {
 	return {
 		"@context": "https://schema.org",
 		"@type": "FAQPage",

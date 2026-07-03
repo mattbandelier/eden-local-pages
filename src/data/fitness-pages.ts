@@ -652,7 +652,7 @@ const priorityKeywordPages: FitnessPage[] = [
   }),
   keywordFitnessPage({
     slug: "medical-weight-loss-fitness-greenwood-village",
-    title: "Medical Weight Loss Fitness Greenwood Village | GLP-1 Strength Support | Eden",
+    title: "Medical Weight Loss Fitness Greenwood Village | Eden",
     description:
       "Medical weight loss fitness in Greenwood Village with strength training, InBody scans, GLP-1 muscle support, recovery, group fitness, and wellness services at Eden.",
     h1: "Medical Weight Loss Fitness in Greenwood Village",
@@ -725,7 +725,7 @@ export const fitnessPages: FitnessPage[] = [
     slug: "strength-training-greenwood-village",
     title: "Strength Training in Greenwood Village | Eden Health Club",
     description:
-      "Build muscle, protect metabolism, and improve body composition with strength training at Eden Health Club in Greenwood Village, where fitness connects with recovery and medical wellness.",
+      "Build muscle, protect metabolism, and improve body composition with strength training at Eden Health Club in Greenwood Village.",
     h1: "Strength Training in Greenwood Village",
     eyebrow: "Strength. Recovery. Optimization.",
     heroHeadline: "Real medical treatment inside a working fitness facility.",
@@ -772,7 +772,7 @@ export const fitnessPages: FitnessPage[] = [
     slug: "performance-training-greenwood-village",
     title: "Performance Training in Greenwood Village | Eden Health Club",
     description:
-      "Performance training in Greenwood Village at Eden Health Club: coached strength, conditioning, mobility, recovery, body composition, and wellness support near Denver Tech Center.",
+      "Performance training in Greenwood Village: coached strength, conditioning, mobility, recovery, body composition, and wellness support near DTC.",
     h1: "Performance Training in Greenwood Village",
     eyebrow: "Train for the body you actually need",
     heroHeadline: "Strength, conditioning, recovery, and body composition inside one Greenwood Village facility.",
@@ -1126,9 +1126,9 @@ export const fitnessPages: FitnessPage[] = [
   }),
   page({
     slug: "glp-1-fitness-membership-greenwood-village",
-    title: "Perform Membership Greenwood Village | GLP-1 Muscle Preservation | Eden",
+    title: "Perform Membership Greenwood Village | GLP-1 Fitness Support | Eden",
     description:
-      "A fully supported Perform Membership path in Greenwood Village built around muscle preservation, semi-private training, small-group fitness, progress check-ins, InBody scans, recovery, and medical wellness support.",
+      "A Perform Membership path in Greenwood Village built around muscle preservation, semi-private training, small-group fitness, InBody scans, recovery, and check-ins.",
     h1: "Perform Membership in Greenwood Village",
     eyebrow: "The weight-loss support most programs miss",
     heroHeadline: "Weight loss changes the number. Strength helps protect the body behind it.",
@@ -1259,14 +1259,14 @@ export const fitnessPages: FitnessPage[] = [
   }),
   page({
     slug: "elevate-membership-greenwood-village",
-    title: "Elevate Membership Greenwood Village | Biomarkers + Training | Eden",
+    title: "Elevate Membership Greenwood Village | Fitness + Recovery | Eden",
     description:
-      "A premium longevity and performance membership in Greenwood Village combining semi-private training, small-group fitness, recovery, biomarker testing, InBody tracking, progress check-ins, and medical-wellness guidance.",
+      "Premium fitness, recovery, and longevity membership in Greenwood Village near DTC with semi-private training, recovery access, biomarker testing, InBody, and check-ins.",
     h1: "Elevate Membership in Greenwood Village",
     eyebrow: "For members who want an edge",
-    heroHeadline: "Be part of something built for strength, recovery, and your next edge.",
+    heroHeadline: "Be part of something built for strength, recovery, longevity, and your next edge.",
     summary:
-      "Elevate is the premium Eden path for members who want an edge inside Your Sanctuary of Wellness: semi-private training, small-group fitness, unlimited recovery access, InBody tracking, progress check-ins, biomarker testing and lab work when appropriate, and provider-guided medical-wellness direction for strength, energy, body composition, and longevity.",
+      "Elevate is Eden's premium membership path for people who want more than a gym near DTC. Inside Your Sanctuary of Wellness, members can connect semi-private training, small-group fitness, unlimited recovery access, InBody tracking, progress check-ins, biomarker testing and lab work when appropriate, and provider-guided medical-wellness direction for strength, energy, body composition, and longevity.",
     primaryCta: "Ask About Elevate",
     secondaryCta: "See what is included",
     proof: [
@@ -1283,36 +1283,39 @@ export const fitnessPages: FitnessPage[] = [
       "Adults who want to stay strong, capable, and proactive as they age",
       "Executives, active adults, athletes, and former athletes",
       "Clients who want fitness, recovery, and medical wellness connected",
-      "People comparing premium gyms, training studios, and longevity clinics"
+      "People comparing premium gyms, private training, boutique studios, and longevity clinics",
+      "Greenwood Village, DTC, Cherry Hills, Centennial, and South Denver clients who value guidance"
     ],
     sections: [
       {
         eyebrow: "The premium path",
-        title: "This is not a gym membership. It is a place to belong and a system to move you forward.",
+        title: "This is not a basic gym membership. It is a place to belong and a system to move you forward.",
         body:
-          "Elevate is for members who want the whole Eden advantage in one guided path: training, recovery, measurement, biomarker context, progress check-ins, and access to medical-wellness guidance when appropriate. It is built for people who want to belong to a premium wellness environment while staying strong, capable, lean, energized, and proactive without piecing everything together alone.",
+          "Elevate is for members who want the whole Eden advantage in one guided path: training, recovery, measurement, biomarker context, progress check-ins, and access to medical-wellness guidance when appropriate. It is built for people who want a premium wellness environment while staying strong, capable, energized, and proactive without piecing everything together across separate providers.",
         bullets: [
           "Semi-private training for coaching, progression, and form",
           "Small-group fitness for consistency, energy, and community",
           "Unlimited recovery access to support training readiness",
-          "Progress check-ins so the plan keeps moving"
+          "Progress check-ins so the plan keeps moving",
+          "A single Greenwood Village home base near DTC for training, recovery, and wellness"
         ]
       },
       {
         eyebrow: "Belong here",
-        title: "Your Sanctuary of Wellness, built for members who want more.",
+        title: "Your Sanctuary of Wellness, built for members who want more than access.",
         body:
-          "The strongest membership is not only access to services. It is the feeling that your training, recovery, measurements, and wellness conversations all belong in one place. Elevate gives Greenwood Village members a premium home base for the body, energy, and confidence they want to keep building.",
+          "The strongest membership is not only access to services. It is the feeling that your training, recovery, measurements, and wellness conversations all belong in one place. Elevate gives Greenwood Village members a premium home base for the body, energy, community, and confidence they want to keep building.",
         bullets: [
           "A premium Eden membership identity, not a disconnected service bundle",
           "Community, coaching, and accountability without a crowded-gym feel",
           "Recovery and wellness support around the same goals",
-          "A clear next step for members who want to invest in themselves"
+          "A clear next step for members who want to invest in themselves",
+          "A stronger experience for people comparing luxury gyms, private trainers, recovery studios, and wellness clinics"
         ]
       },
       {
         eyebrow: "Aging stronger",
-        title: "The goal is not just looking better. It is keeping your edge.",
+        title: "The goal is not just looking better. It is keeping your edge longer.",
         body:
           "For many Eden members, the real goal is strength that shows up in daily life: carrying muscle, moving well, recovering faster, keeping energy, and feeling confident in the body they are building. Elevate is positioned for the client who wants a premium plan with measurement, coaching, and medical-wellness context.",
         bullets: [
@@ -1324,7 +1327,7 @@ export const fitnessPages: FitnessPage[] = [
       },
       {
         eyebrow: "Measurement",
-        title: "Biomarkers and body composition make the plan smarter.",
+        title: "Biomarkers and body composition help make the plan smarter.",
         body:
           "High-output clients do not want guesswork. Eden can connect InBody tracking, biomarker testing, lab work when appropriate, and provider-guided conversations so training decisions are informed by more than how someone feels on a random Tuesday.",
         bullets: [
@@ -1336,7 +1339,7 @@ export const fitnessPages: FitnessPage[] = [
       },
       {
         eyebrow: "Recovery included",
-        title: "Train hard, then recover like recovery is part of the program.",
+        title: "Train with intent, then recover like recovery is part of the program.",
         body:
           "Most programs sell workouts and leave recovery to chance. Eden can connect training with recovery tools so clients have a practical way to support readiness, soreness, stress load, and consistency.",
         bullets: [
@@ -1348,14 +1351,26 @@ export const fitnessPages: FitnessPage[] = [
       },
       {
         eyebrow: "Medical-wellness benefits",
-        title: "Member benefits can support deeper optimization conversations.",
+        title: "Member benefits can support deeper wellness conversations.",
         body:
-          "For eligible clients, Eden can route conversations around hormone optimization, peptides, medical weight loss, IV therapy, wellness injections, and recovery support through the appropriate licensed-provider pathway. The page stays focused on access, guidance, and member value rather than making prescription-product promises.",
+          "For eligible clients, Eden can route conversations around hormone optimization, medical weight loss, IV therapy, wellness injections, recovery support, and other medical-wellness goals through the appropriate licensed-provider pathway. The page stays focused on access, guidance, and member value rather than making treatment promises.",
         bullets: [
           "Provider-guided conversations when medical wellness is part of the goal",
           "Member benefits for appropriate Eden wellness services",
           "Clear routing instead of disconnected providers",
           "Built for clients who want premium support, not bargain fitness"
+        ]
+      },
+      {
+        eyebrow: "Local advantage",
+        title: "A premium membership near DTC for people who want convenience without compromise.",
+        body:
+          "Greenwood Village, Denver Tech Center, Cherry Hills Village, Centennial, Englewood, Littleton, and South Denver clients have plenty of places to work out. Elevate is designed for the person who wants the club, the coaching, the recovery, the measurement, and the wellness direction connected before the day gets too busy.",
+        bullets: [
+          "Useful for busy professionals who need efficient, guided next steps",
+          "Strong fit for members who value privacy, consistency, and premium support",
+          "Local enough for weekday use, polished enough to feel like a true wellness investment",
+          "Built to answer high-intent searches for premium fitness, recovery, longevity, and wellness membership near Greenwood Village"
         ]
       },
       systemSection
@@ -1392,7 +1407,12 @@ export const fitnessPages: FitnessPage[] = [
       {
         question: "Who is Elevate for?",
         answer:
-          "Elevate is built for members who want an edge: active adults, high-output clients, executives, athletes, former athletes, and wellness-minded clients who want training, recovery, measurement, and medical-wellness guidance connected in one premium path."
+          "Elevate is built for members who want an edge: active adults, high-output clients, executives, athletes, former athletes, and wellness-minded clients who want training, recovery, measurement, biomarker context, and medical-wellness guidance connected in one premium path."
+      },
+      {
+        question: "Is Elevate a good premium fitness membership near Greenwood Village or DTC?",
+        answer:
+          "Yes. Elevate is designed for Greenwood Village, Denver Tech Center, Cherry Hills Village, Centennial, and South Denver clients who want more than basic gym access. It connects semi-private training, small-group fitness, recovery, InBody tracking, progress check-ins, and wellness guidance in one membership path."
       },
       {
         question: "Does it include semi-private training?",
@@ -1408,6 +1428,11 @@ export const fitnessPages: FitnessPage[] = [
         question: "Does this include medical treatment?",
         answer:
           "Medical services, prescriptions, and treatment plans are reviewed separately by licensed providers. This page explains the membership and support system that can connect clients to the right Eden pathway."
+      },
+      {
+        question: "How is Elevate different from a luxury gym, boutique studio, or recovery membership?",
+        answer:
+          "Elevate is built to connect the pieces. Instead of buying a gym membership, a class pack, recovery access, and separate wellness guidance, members can start with one Eden path that brings training, recovery, measurement, and next-step support together."
       },
       {
         question: "How is this different from the Perform Membership?",
@@ -1466,7 +1491,7 @@ export const fitnessPages: FitnessPage[] = [
     slug: "recovery-performance-greenwood-village",
     title: "Recovery and Performance in Greenwood Village | Eden Health Club",
     description:
-      "Build a recovery and performance plan at Eden Health Club in Greenwood Village with training, body composition, red light, sauna, compression, IV therapy, wellness injections, and medical wellness support.",
+      "Build a recovery and performance plan in Greenwood Village with training, body composition, red light, sauna, compression, IV therapy, and wellness support.",
     h1: "Recovery and Performance in Greenwood Village",
     eyebrow: "Train hard. Recover on purpose.",
     heroHeadline: "Recovery is not the break from training. It is part of the result.",
@@ -2021,7 +2046,7 @@ export const fitnessPages: FitnessPage[] = [
     slug: "performance-lab-greenwood-village",
     title: "Performance Lab in Greenwood Village | Eden Health Club",
     description:
-      "Book a Performance Lab assessment at Eden Health Club in Greenwood Village: body composition, strength, recovery, wellness planning, and next-step guidance under one roof.",
+      "Book a Performance Lab assessment in Greenwood Village: body composition, strength, recovery, wellness planning, and next-step guidance at Eden.",
     h1: "Performance Lab in Greenwood Village",
     eyebrow: "Measure. Train. Recover. Optimize.",
     heroHeadline: "Start with a real baseline before you choose the next plan.",

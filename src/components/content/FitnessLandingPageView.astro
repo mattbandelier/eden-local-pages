@@ -12,6 +12,7 @@ const canonical = new URL(`/${page.slug}/`, Astro.site ?? "https://landing.edenh
 const serviceName = page.h1.replace(" in Greenwood Village", "");
 const queryName = serviceName.toLowerCase();
 const phone = "+1-720-605-7678";
+const isElevate = page.slug === "elevate-membership-greenwood-village";
 const localSearches = [
   `${queryName} greenwood village`,
   `${queryName} near me`,
@@ -23,7 +24,9 @@ const localSearches = [
 const localProofPoints = [
   "Located at 5990 S University Blvd in Greenwood Village",
   "Minutes from Denver Tech Center and Cherry Hills Village",
-  "Helpful if you are comparing gyms, studios, recovery clinics, and wellness providers",
+  isElevate
+    ? "Helpful if you are comparing premium gyms, recovery studios, longevity clinics, and private coaching"
+    : "Helpful if you are comparing gyms, studios, recovery clinics, and wellness providers",
   "Starts with an assessment so the plan fits your body, goals, and current routine"
 ];
 const showFitnessImagery = [
@@ -55,6 +58,70 @@ const fitnessImageCards = [
     text: "Training can connect with recovery, InBody tracking, and wellness support under one roof."
   }
 ];
+const imageStoryHeading = isElevate
+  ? "Training, recovery, and wellness support inside one premium membership."
+  : "Strength, accountability, and recovery around the weight-loss journey.";
+const localIntentIntro = isElevate
+  ? "If you are comparing premium fitness, recovery, longevity, body-composition, and wellness options near DTC, Elevate gives you one guided place to train, recover, measure progress, and keep moving forward."
+  : "If you are already losing weight, restarting fitness, or comparing local gyms and wellness clinics, Eden gives you a place to begin with coaching, measurement, recovery, and medical wellness support in the same facility.";
+const intakeCopy = isElevate
+  ? {
+      eyebrow: "Membership fit",
+      heading: "Tell Eden where you want the edge. The team will help map the right membership path.",
+      body:
+        "The first step is not choosing a random class package. It is understanding whether Elevate is the right fit for your training, recovery, body composition, biomarker testing, progress check-ins, and provider-guided wellness conversations.",
+      proof: ["Premium membership fit", "Training + recovery + measurement", "Private next-step guidance"],
+      formHeading: "Ask about Elevate",
+      formSubheading: "Share your goals and Eden will follow up with membership fit, next steps, and current availability."
+    }
+  : {
+      eyebrow: "Start with the right plan",
+      heading: "Tell Eden what you want to change. The team will help route the next step.",
+      body:
+        "The first decision is not always class versus trainer. It may be strength, InBody tracking, recovery, GLP-1 muscle support, body composition, or medical wellness. Start here and Eden will help clarify the path.",
+      proof: ["Fitness + medical wellness", "Body composition tracking", "Recovery under one roof"],
+      formHeading: "Book the assessment",
+      formSubheading: "Share your goal and Eden will follow up with the best next step."
+    };
+const comparisonCards = isElevate
+  ? [
+      {
+        title: "A premium gym alone",
+        body: "You can train anywhere. Elevate is built for coaching, measurement, recovery, and wellness context in the same environment."
+      },
+      {
+        title: "A boutique class pack",
+        body: "Classes create momentum. Eden adds semi-private coaching, check-ins, body-composition tracking, and a broader support system."
+      },
+      {
+        title: "A separate recovery studio",
+        body: "Recovery works better when it connects back to training, readiness, stress load, and the bigger plan."
+      },
+      {
+        title: "A standalone longevity clinic",
+        body: "Lab context matters, but the daily plan still needs movement, strength, consistency, and a place to belong."
+      }
+    ]
+  : [];
+const offerPathCards = isElevate
+  ? [
+      {
+        title: "Ask if Elevate is the right fit",
+        body: "Best when you want the premium membership path: training, recovery, body composition, biomarker context, and guided next steps.",
+        cta: "Start with Elevate"
+      },
+      {
+        title: "Start with a baseline",
+        body: "Best when you want InBody, current goals, recovery needs, and wellness questions organized before choosing the plan.",
+        cta: "Book the baseline"
+      },
+      {
+        title: "Compare Perform vs Elevate",
+        body: "Best when weight-loss support, muscle preservation, recovery access, and premium optimization are all on the table.",
+        cta: "Compare options"
+      }
+    ]
+  : [];
 const priorityLinks = [
   {
     label: "Performance Lab",
@@ -251,7 +318,7 @@ const schema = {
       <p class="eyebrow">Near Greenwood Village</p>
       <h2 id="local-intent-heading">{serviceName} for Greenwood Village, DTC, and the south Denver corridor.</h2>
       <p>
-        If you are already losing weight, restarting fitness, or comparing local gyms and wellness clinics, Eden gives you a place to begin with coaching, measurement, recovery, and medical wellness support in the same facility.
+        {localIntentIntro}
       </p>
     </div>
     <div class="local-intent-card">
@@ -272,7 +339,7 @@ const schema = {
     <section class="fitness-image-story" aria-labelledby="fitness-image-story-heading">
       <div class="section-heading">
         <p class="eyebrow">What the support looks like</p>
-        <h2 id="fitness-image-story-heading">Strength, accountability, and recovery around the weight-loss journey.</h2>
+        <h2 id="fitness-image-story-heading">{imageStoryHeading}</h2>
       </div>
       <div class="fitness-image-story__grid">
         {fitnessImageCards.map((card) => (
@@ -288,24 +355,57 @@ const schema = {
     </section>
   ) : null}
 
+  {isElevate ? (
+    <section class="membership-comparison" aria-labelledby="membership-comparison-heading">
+      <div class="section-heading">
+        <p class="eyebrow">Why Elevate wins</p>
+        <h2 id="membership-comparison-heading">One premium wellness home instead of four disconnected memberships.</h2>
+      </div>
+      <div class="membership-comparison__grid">
+        {comparisonCards.map((card) => (
+          <article>
+            <h3>{card.title}</h3>
+            <p>{card.body}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+  ) : null}
+
+  {offerPathCards.length ? (
+    <section class="offer-path-section" aria-labelledby="offer-path-heading">
+      <div class="section-heading">
+        <p class="eyebrow">Start here</p>
+        <h2 id="offer-path-heading">Three smart ways to enter the Elevate conversation.</h2>
+      </div>
+      <div class="offer-path-section__grid">
+        {offerPathCards.map((card) => (
+          <a href="#consult-form">
+            <span>{card.cta}</span>
+            <h3>{card.title}</h3>
+            <p>{card.body}</p>
+          </a>
+        ))}
+      </div>
+    </section>
+  ) : null}
+
   <section class="fitness-intake" id="consult-form">
     <div class="fitness-intake__copy">
-      <p class="eyebrow">Start with the right plan</p>
-      <h2>Tell Eden what you want to change. The team will help route the next step.</h2>
+      <p class="eyebrow">{intakeCopy.eyebrow}</p>
+      <h2>{intakeCopy.heading}</h2>
       <p>
-        The first decision is not always class versus trainer. It may be strength, InBody tracking, recovery, GLP-1 muscle support, body composition, or medical wellness. Start here and Eden will help clarify the path.
+        {intakeCopy.body}
       </p>
       <div class="fitness-intake__proof">
-        <span>Fitness + medical wellness</span>
-        <span>Body composition tracking</span>
-        <span>Recovery under one roof</span>
+        {intakeCopy.proof.map((item) => <span>{item}</span>)}
       </div>
     </div>
     <LeadForm
       serviceSlug={page.slug}
       suburbSlug="greenwood-village"
-      heading="Book the assessment"
-      subheading="Share your goal and Eden will follow up with the best next step."
+      heading={intakeCopy.formHeading}
+      subheading={intakeCopy.formSubheading}
       submitText={page.primaryCta}
     />
   </section>
@@ -323,7 +423,7 @@ const schema = {
         <li><strong>Fitness:</strong> strength, personal training, semi-private training, and group fitness.</li>
         <li><strong>Measurement:</strong> InBody scans and body composition tracking.</li>
         <li><strong>Recovery:</strong> IV therapy, wellness injections, red light, sauna, compression, and peptide options.</li>
-        <li><strong>Medical wellness:</strong> hormones, medical weight loss, peptides, functional medicine, and aesthetics.</li>
+        <li><strong>Medical wellness:</strong> hormones, medical weight loss, functional medicine, and aesthetics.</li>
       </ul>
     </div>
   </section>
