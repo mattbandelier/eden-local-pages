@@ -62,6 +62,18 @@ const moneyPages = [
 		group: "Wellness",
 	},
 	{
+		label: "Medical weight loss Denver",
+		href: "/medical-weight-loss/denver/",
+		intent: "Denver search path for provider-guided weight-loss screening, labs, monitoring, and follow-up.",
+		group: "Wellness",
+	},
+	{
+		label: "Red light therapy Denver",
+		href: "/red-light-therapy-denver/",
+		intent: "Recovery, readiness, sauna, compression, IV therapy, and performance support near DTC.",
+		group: "Recovery",
+	},
+	{
 		label: "Strength training",
 		href: "/strength-training-greenwood-village/",
 		intent: "Coached strength for body composition, longevity, medical weight loss support, and performance.",
@@ -146,6 +158,18 @@ const moneyPages = [
 		group: "Hormones",
 	},
 	{
+		label: "TRT Denver",
+		href: "/male-trt/denver/",
+		intent: "Denver path for men comparing low T symptoms, labs, provider review, and follow-up.",
+		group: "Hormones",
+	},
+	{
+		label: "Women's hormones Denver",
+		href: "/female-bhrt/denver/",
+		intent: "Denver path for lab-guided hormone evaluation, symptoms, life stage, and provider review.",
+		group: "Hormones",
+	},
+	{
 		label: "Peptide therapy",
 		href: "/peptide-therapy/greenwood-village/",
 		intent: "Provider-led protocol fit for recovery, performance, sleep, skin, or body composition goals.",
@@ -165,8 +189,9 @@ const featuredPages =
 		? visiblePages
 		: [
 				...visiblePages.filter((page) => ["Injectables", "Skin"].includes(page.group)).slice(0, 5),
-				...visiblePages.filter((page) => page.group === "Wellness").slice(0, 3),
+				...visiblePages.filter((page) => page.group === "Wellness").slice(0, 4),
 				...visiblePages.filter((page) => page.group === "Fitness").slice(0, 6),
+				...visiblePages.filter((page) => page.group === "Recovery").slice(0, 2),
 				...visiblePages.filter((page) => page.group === "Hormones").slice(0, 4),
 			];
 ---

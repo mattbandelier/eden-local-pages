@@ -373,6 +373,79 @@ function keywordFitnessPage(input: KeywordFitnessInput): FitnessPage {
 
 const priorityKeywordPages: FitnessPage[] = [
   keywordFitnessPage({
+    slug: "red-light-therapy-denver",
+    title: "Red Light Therapy Denver | Recovery + Performance | Eden",
+    description:
+      "Red light therapy near Denver for recovery routines, training support, wellness, and performance planning at Eden Health Club in Greenwood Village near DTC.",
+    h1: "Red Light Therapy near Denver and DTC",
+    eyebrow: "Recovery. Readiness. Consistency.",
+    heroHeadline: "Red light therapy belongs inside a smarter recovery plan.",
+    summary:
+      "Eden helps Denver, DTC, and south-metro clients connect red light therapy with recovery routines, strength training, IV therapy, sauna, compression, body composition, and medical wellness support inside one Greenwood Village facility.",
+    primaryCta: "Book a Recovery Assessment",
+    intent:
+      "People searching red light therapy near Denver are usually comparing recovery studios, wellness clinics, gyms, and med spas. The real intent is not just a single session. It is soreness, readiness, skin health, energy, consistency, and finding a local place that can support the bigger plan.",
+    edenAngle:
+      "Eden is stronger than a standalone red light studio because recovery can connect with training, body composition tracking, IV therapy, wellness injections, sauna, compression, hormones, medical weight loss, and performance coaching when appropriate.",
+    bullets: [
+      "Red light therapy near Denver and DTC",
+      "Recovery support inside a working fitness and wellness facility",
+      "Useful for active adults, weight-loss clients, and performance-minded members",
+      "Connects with sauna, compression, IV therapy, strength, and body composition"
+    ],
+    builtFor: [
+      "Denver clients comparing red light therapy near me",
+      "Active adults who want recovery support",
+      "Weight-loss and GLP-1 clients protecting strength",
+      "People comparing recovery studios, gyms, and wellness clinics"
+    ],
+    related: [
+      {
+        label: "Recovery + Performance",
+        href: "/recovery-performance-greenwood-village/",
+        text: "Build a broader recovery plan with red light, sauna, compression, IV therapy, and training support."
+      },
+      {
+        label: "Performance Lab",
+        href: "/performance-lab-greenwood-village/",
+        text: "Start with an assessment when you want help choosing the right training, recovery, or wellness path."
+      },
+      {
+        label: "Strength Training",
+        href: "/strength-training-greenwood-village/",
+        text: "Connect recovery to the strength work that supports body composition, longevity, and performance."
+      },
+      {
+        label: "IV Therapy",
+        href: "/iv-therapy/greenwood-village/",
+        text: "Explore IV therapy options for hydration, recovery, energy, immunity, glow, and performance support."
+      },
+      ...coreRelated
+    ],
+    faqs: [
+      {
+        question: "Where can I find red light therapy near Denver?",
+        answer:
+          "Eden Health Club offers red light therapy support in Greenwood Village near Denver Tech Center, serving Denver, Cherry Hills Village, Centennial, Englewood, Littleton, and the south metro."
+      },
+      {
+        question: "Is red light therapy part of recovery at Eden?",
+        answer:
+          "Yes. Red light therapy can be part of a recovery routine that may also include sauna, compression, IV therapy, strength training, body composition tracking, and wellness support."
+      },
+      {
+        question: "How is Eden different from a red light studio?",
+        answer:
+          "A standalone studio usually stops at one modality. Eden can connect red light therapy with training, recovery, medical wellness, body composition, and performance planning under one roof."
+      },
+      {
+        question: "Can red light therapy support fitness or weight-loss goals?",
+        answer:
+          "Red light therapy may be used as part of a broader recovery and consistency routine. Eden pairs recovery conversations with training, body composition, and wellness support when appropriate."
+      }
+    ]
+  }),
+  keywordFitnessPage({
     slug: "personal-training-denver-tech-center",
     title: "Personal Training near Denver Tech Center | Eden Health Club",
     description:
