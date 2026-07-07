@@ -70,6 +70,38 @@ const hormonePaths = [
 		body: "For the big-picture Eden Blueprint: test, treat, train, track, and optimize.",
 	},
 ].filter((item) => item.href !== `/${page.slug}/`);
+const crossSystemPaths = [
+	{
+		label: "GLP-1 strength training",
+		href: "/glp-1-strength-training-greenwood-village/",
+		body: "For clients who want strength, muscle preservation, and body-composition support around weight loss.",
+	},
+	{
+		label: "Perform Membership",
+		href: "/glp-1-fitness-membership-greenwood-village/",
+		body: "For a supported fitness path with semi-private training, recovery access, and progress check-ins.",
+	},
+	{
+		label: "Elevate Membership",
+		href: "/elevate-membership-greenwood-village/",
+		body: "For members who want premium training, recovery, biomarker context, and wellness guidance together.",
+	},
+	{
+		label: "Medical weight loss fitness",
+		href: "/medical-weight-loss-fitness-greenwood-village/",
+		body: "For bridging weight-loss care into strength, InBody tracking, recovery, and long-term maintenance.",
+	},
+	{
+		label: "Medical weight loss",
+		href: "/medical-weight-loss/greenwood-village/",
+		body: "For provider-guided screening, follow-up, and local medical weight-loss support in Greenwood Village.",
+	},
+	{
+		label: "Strength training",
+		href: "/strength-training-greenwood-village/",
+		body: "For coached strength that supports body composition, longevity, recovery, and performance goals.",
+	},
+];
 const blueprint = [
 	{ step: "01", label: "Test", body: "Clarify the baseline with the right lab context and health history." },
 	{ step: "02", label: "Treat", body: "Build a provider-led plan only when fit is clear." },
@@ -366,6 +398,29 @@ const schema: JsonLd[] = [
 							<h3 class="text-lg font-semibold text-eden-navy">{item.label}</h3>
 							<p class="mt-3 text-sm leading-6 text-slate-700">{item.body}</p>
 							<span class="mt-5 inline-block text-sm font-semibold text-eden-green">Open guide</span>
+						</a>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<section class="bg-white px-6 py-12 sm:py-16" aria-labelledby="cross-system-paths-heading">
+			<div class="mx-auto max-w-6xl">
+				<div class="max-w-3xl">
+					<p class="text-sm font-semibold uppercase text-eden-green">Connect the bigger plan</p>
+					<h2 id="cross-system-paths-heading" class="mt-3 text-3xl font-semibold leading-tight text-eden-navy sm:text-4xl">
+						Hormones, weight loss, strength, and recovery work better when they are not treated as separate silos.
+					</h2>
+					<p class="mt-4 text-base leading-8 text-slate-700">
+						These Eden pages help clients compare the next best step when the goal is energy, body composition, muscle, recovery, or a more supported membership path near Greenwood Village and DTC.
+					</p>
+				</div>
+				<div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+					{crossSystemPaths.map((item) => (
+						<a href={item.href} class="rounded-lg border border-eden-line bg-eden-paper p-5 transition hover:-translate-y-0.5 hover:border-eden-green hover:bg-white hover:shadow-sm">
+							<h3 class="text-lg font-semibold text-eden-navy">{item.label}</h3>
+							<p class="mt-3 text-sm leading-6 text-slate-700">{item.body}</p>
+							<span class="mt-5 inline-block text-sm font-semibold text-eden-green">Explore path</span>
 						</a>
 					))}
 				</div>

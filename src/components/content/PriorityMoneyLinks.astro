@@ -62,6 +62,18 @@ const moneyPages = [
 		group: "Wellness",
 	},
 	{
+		label: "Strength training",
+		href: "/strength-training-greenwood-village/",
+		intent: "Coached strength for body composition, longevity, medical weight loss support, and performance.",
+		group: "Fitness",
+	},
+	{
+		label: "Group fitness classes",
+		href: "/group-fitness-classes-greenwood-village/",
+		intent: "Small-format coaching, community, and accountability inside Eden's wellness facility.",
+		group: "Fitness",
+	},
+	{
 		label: "GLP-1 strength training",
 		href: "/glp-1-strength-training-greenwood-village/",
 		intent: "Muscle preservation, InBody tracking, recovery, and strength support around weight loss.",
@@ -77,6 +89,12 @@ const moneyPages = [
 		label: "Elevate Membership",
 		href: "/elevate-membership-greenwood-village/",
 		intent: "Premium fitness, recovery, body composition, biomarker context, and wellness guidance.",
+		group: "Fitness",
+	},
+	{
+		label: "Medical weight loss fitness",
+		href: "/medical-weight-loss-fitness-greenwood-village/",
+		intent: "Bridge medical weight loss into strength, InBody tracking, recovery, and long-term maintenance.",
 		group: "Fitness",
 	},
 	{
@@ -145,7 +163,12 @@ const visiblePages = moneyPages.filter((page) => page.href !== currentPath);
 const featuredPages =
 	variant === "hub"
 		? visiblePages
-		: visiblePages.filter((page) => ["Injectables", "Skin", "Wellness", "Fitness", "Hormones"].includes(page.group)).slice(0, 12);
+		: [
+				...visiblePages.filter((page) => ["Injectables", "Skin"].includes(page.group)).slice(0, 5),
+				...visiblePages.filter((page) => page.group === "Wellness").slice(0, 3),
+				...visiblePages.filter((page) => page.group === "Fitness").slice(0, 6),
+				...visiblePages.filter((page) => page.group === "Hormones").slice(0, 4),
+			];
 ---
 
 <section class="bg-white px-6 py-14 sm:py-16" aria-labelledby="priority-money-links-heading">
