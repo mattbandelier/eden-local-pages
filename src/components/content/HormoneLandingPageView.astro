@@ -1,5 +1,6 @@
 ---
 import type { HormonePage } from "../../data/hormone-pages";
+import DenverDemandCluster from "./DenverDemandCluster.astro";
 import LeadForm from "./LeadForm.astro";
 import Footer from "../layout/Footer.astro";
 import PremiumHeader from "../layout/PremiumHeader.astro";
@@ -426,6 +427,8 @@ const schema: JsonLd[] = [
 				</div>
 			</div>
 		</section>
+
+		<DenverDemandCluster currentPath={`/${page.slug}/`} theme="paper" />
 
 		<section class="px-6 py-12 sm:py-16" aria-labelledby="hormone-faq-heading">
 			<div class="mx-auto max-w-4xl">

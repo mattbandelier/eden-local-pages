@@ -1,0 +1,103 @@
+---
+interface Props {
+	currentPath?: string;
+	theme?: "light" | "paper" | "forest";
+}
+
+const { currentPath = "", theme = "paper" } = Astro.props;
+
+const demandPages = [
+	{
+		label: "Medical Spa Denver",
+		href: "/medical-spa-denver/",
+		intent: "Aesthetics, skin, injectables, and consult routing near DTC.",
+		tag: "Aesthetics",
+	},
+	{
+		label: "Botox Denver",
+		href: "/botox/denver/",
+		intent: "High-intent wrinkle relaxer search path for Denver clients.",
+		tag: "Injectables",
+	},
+	{
+		label: "Medical Weight Loss Denver",
+		href: "/medical-weight-loss/denver/",
+		intent: "Provider-guided screening, labs, eligibility, monitoring, and follow-up.",
+		tag: "Weight loss",
+	},
+	{
+		label: "Red Light Therapy Denver",
+		href: "/red-light-therapy-denver/",
+		intent: "Recovery, readiness, sauna, compression, IV therapy, and performance support.",
+		tag: "Recovery",
+	},
+	{
+		label: "TRT Denver",
+		href: "/male-trt/denver/",
+		intent: "Lab-guided low T consult path for symptoms, safety review, and follow-up.",
+		tag: "Hormones",
+	},
+	{
+		label: "Men's Hormone Optimization",
+		href: "/mens-hormone-optimization/",
+		intent: "Authority page for energy, recovery, focus, training, and hormone fit.",
+		tag: "Hormones",
+	},
+	{
+		label: "Perform Membership",
+		href: "/glp-1-fitness-membership-greenwood-village/",
+		intent: "Semi-private training, progress check-ins, recovery, and body composition.",
+		tag: "Membership",
+	},
+	{
+		label: "Elevate Membership",
+		href: "/elevate-membership-greenwood-village/",
+		intent: "Premium training, recovery, biomarker context, and wellness guidance.",
+		tag: "Membership",
+	},
+].filter((page) => page.href !== currentPath);
+
+const sectionClass =
+	theme === "forest"
+		? "bg-eden-forest px-6 py-12 text-white sm:py-16"
+		: theme === "light"
+			? "bg-white px-6 py-12 sm:py-16"
+			: "bg-eden-paper px-6 py-12 sm:py-16";
+const cardClass =
+	theme === "forest"
+		? "rounded-lg border border-white/15 bg-white/8 p-5 transition hover:-translate-y-0.5 hover:bg-white/12"
+		: "rounded-lg border border-eden-line bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-eden-green hover:shadow-md";
+const eyebrowClass = theme === "forest" ? "text-sm font-semibold uppercase text-eden-sage" : "text-sm font-semibold uppercase text-eden-green";
+const headingClass = theme === "forest" ? "mt-3 text-3xl font-semibold leading-tight text-white sm:text-4xl" : "mt-3 text-3xl font-semibold leading-tight text-eden-navy sm:text-4xl";
+const bodyClass = theme === "forest" ? "mt-4 text-base leading-8 text-white/78" : "mt-4 text-base leading-8 text-slate-700";
+const cardHeadingClass = theme === "forest" ? "text-lg font-semibold text-white" : "text-lg font-semibold text-eden-navy";
+const cardBodyClass = theme === "forest" ? "mt-3 text-sm leading-6 text-white/74" : "mt-3 text-sm leading-6 text-slate-700";
+const tagClass = theme === "forest" ? "rounded-full bg-white/12 px-3 py-1 text-xs font-semibold text-eden-sage" : "rounded-full bg-eden-paper px-3 py-1 text-xs font-semibold text-eden-green";
+const linkClass = theme === "forest" ? "mt-5 inline-block text-sm font-semibold text-eden-sage" : "mt-5 inline-block text-sm font-semibold text-eden-green";
+---
+
+<section class={sectionClass} aria-labelledby="denver-demand-cluster-heading">
+	<div class="mx-auto max-w-6xl">
+		<div class="max-w-3xl">
+			<p class={eyebrowClass}>Denver demand paths</p>
+			<h2 id="denver-demand-cluster-heading" class={headingClass}>
+				Related Eden paths near Denver.
+			</h2>
+			<p class={bodyClass}>
+				Explore the services and memberships people compare most when looking for aesthetics, hormones, weight loss, recovery, and performance support near Greenwood Village, DTC, and Denver.
+			</p>
+		</div>
+		<div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+			{demandPages.map((page) => (
+				<a href={page.href} class={cardClass}>
+					<div class="flex items-start justify-between gap-4">
+						<h3 class={cardHeadingClass}>{page.label}</h3>
+						<span class={tagClass}>{page.tag}</span>
+					</div>
+					<p class={cardBodyClass}>{page.intent}</p>
+					<span class={linkClass}>Explore</span>
+				</a>
+			))}
+		</div>
+	</div>
+</section>

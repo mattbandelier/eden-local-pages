@@ -2,6 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { services } from "../data";
 import CTAStrip from "../components/content/CTAStrip.astro";
+import DenverDemandCluster from "../components/content/DenverDemandCluster.astro";
 import PillarGrid from "../components/content/PillarGrid.astro";
 import PriorityMoneyLinks from "../components/content/PriorityMoneyLinks.astro";
 import ServiceCards from "../components/content/ServiceCards.astro";
@@ -103,6 +104,7 @@ const seo = homepageMeta();
 				</div>
 			</div>
 		</section>
+		<DenverDemandCluster currentPath="/" theme="light" />
 		<PillarGrid />
 		<ServiceCards services={services} heading="Popular services" limit={6} />
 		<PriorityMoneyLinks currentPath="/" variant="hub" />

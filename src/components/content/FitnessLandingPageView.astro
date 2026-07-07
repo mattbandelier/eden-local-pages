@@ -1,5 +1,6 @@
 ---
 import type { FitnessPage } from "../../data/fitness-pages";
+import DenverDemandCluster from "./DenverDemandCluster.astro";
 import LeadForm from "./LeadForm.astro";
 import "../../styles/fitness.css";
 
@@ -482,6 +483,8 @@ const schema = {
       ))}
     </div>
   </section>
+
+  <DenverDemandCluster currentPath={`/${page.slug}/`} theme="light" />
 
   <section class="split-section fitness-bottom-cta">
     <div>
