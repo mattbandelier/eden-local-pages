@@ -1,0 +1,373 @@
+---
+import DenverDemandCluster from "../components/content/DenverDemandCluster.astro";
+import LeadForm from "../components/content/LeadForm.astro";
+import Footer from "../components/layout/Footer.astro";
+import PremiumHeader from "../components/layout/PremiumHeader.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { canonicalUrl, homeUrl } from "../lib/urls";
+import type { JsonLd } from "../lib/schema-org";
+
+const canonical = canonicalUrl("/longevity");
+const title = "Longevity Clinic Denver | Open Now in Greenwood Village | Eden";
+const description =
+	"Longevity, hormone optimization, peptides, NAD+ IV, biomarker testing, medical weight loss, recovery, and training support at Eden Health Club near Denver and DTC.";
+
+const services = [
+	{
+		name: "Hormone optimization",
+		href: "/mens-hormone-optimization/",
+		body: "TRT, HRT, and hormone consult paths start with goals, health history, labs, and provider review.",
+	},
+	{
+		name: "Peptides",
+		href: "/peptide-therapy/denver/",
+		body: "A provider-guided peptide therapy conversation for qualified clients focused on wellness, recovery, and performance goals.",
+	},
+	{
+		name: "NAD+ and IV therapy",
+		href: "/nad-iv-therapy/denver/",
+		body: "NAD+ IV, IV therapy, and monitored wellness infusions for clients comparing cellular energy and recovery support.",
+	},
+	{
+		name: "Medical weight loss",
+		href: "/medical-weight-loss/denver/",
+		body: "Eligibility, lab review, body composition, and follow-up support for clients exploring medical weight loss options.",
+	},
+	{
+		name: "Biomarker testing",
+		href: "#lead-form",
+		body: "A data-informed starting point for understanding hormones, metabolic markers, recovery, and next-step priorities.",
+	},
+	{
+		name: "Training and recovery",
+		href: "/elevate-membership-greenwood-village/",
+		body: "Semi-private training, InBody tracking, red light, sauna, compression, and recovery support under one roof.",
+	},
+];
+
+const loop = [
+	{
+		step: "Test",
+		body: "Start with goals, intake, labs, biomarkers, and body-composition context when appropriate.",
+	},
+	{
+		step: "Treat",
+		body: "Review options with a licensed provider and move forward only when there is a clear fit.",
+	},
+	{
+		step: "Train",
+		body: "Connect the plan to strength, muscle, conditioning, and habits that support long-term progress.",
+	},
+	{
+		step: "Track",
+		body: "Use follow-up, InBody, symptom context, and labs where appropriate to avoid guesswork.",
+	},
+	{
+		step: "Optimize",
+		body: "Adjust the plan over time around performance, recovery, energy, body composition, and safety.",
+	},
+];
+
+const faqs = [
+	{
+		question: "Is Eden's longevity clinic open now?",
+		answer:
+			"Yes. Eden Health Club is open now in Greenwood Village at 5990 S University Blvd, minutes from Denver Tech Center, Cherry Hills Village, Centennial, Littleton, and South Denver.",
+	},
+	{
+		question: "What does a longevity consult include?",
+		answer:
+			"A consult starts with your goals, health history, current routines, and what you want to improve. The team can discuss labs, biomarkers, hormone questions, medical weight loss, peptides, NAD+ IV, training, and recovery support when relevant.",
+	},
+	{
+		question: "Do I need labs before starting?",
+		answer:
+			"Some services require labs before a provider can make recommendations. Eden uses labs and biomarkers when they are clinically appropriate so decisions are based on data, safety, and fit.",
+	},
+	{
+		question: "How fast can I be seen?",
+		answer:
+			"Same-week appointments may be available depending on schedule and service fit. Submit the consult form or call 720-605-7678 and Eden will help route the right next step.",
+	},
+	{
+		question: "What makes Eden different from a single-service longevity studio?",
+		answer:
+			"Eden combines medical wellness, aesthetics, recovery, and training in one local facility. That means the plan can connect labs and provider guidance with the daily habits that support strength, recovery, body composition, and consistency.",
+	},
+	{
+		question: "What does it cost to start?",
+		answer:
+			"Pricing depends on the service path, medical eligibility, labs, and recommended plan. A consult is the clearest way to understand the right starting point and the costs that apply to your goals.",
+	},
+];
+
+const jsonLd: JsonLd[] = [
+	{
+		"@context": "https://schema.org",
+		"@type": "MedicalBusiness",
+		"@id": `${canonical}#medical-business`,
+		name: "Eden Health Club",
+		url: canonical,
+		telephone: "+17206057678",
+		address: {
+			"@type": "PostalAddress",
+			streetAddress: "5990 S University Blvd",
+			addressLocality: "Greenwood Village",
+			addressRegion: "CO",
+			postalCode: "80121",
+			addressCountry: "US",
+		},
+		geo: {
+			"@type": "GeoCoordinates",
+			latitude: 39.6088,
+			longitude: -104.9583,
+		},
+		hasMap:
+			"https://www.google.com/maps/search/?api=1&query=Eden%20Health%20Club%205990%20S%20University%20Blvd%20Greenwood%20Village%20CO%2080121",
+		priceRange: "$$",
+		medicalSpecialty: ["FunctionalMedicine", "SportsMedicine", "Dermatology"],
+		areaServed: [
+			{ "@type": "City", name: "Denver", addressRegion: "CO" },
+			{ "@type": "City", name: "Greenwood Village", addressRegion: "CO" },
+			{ "@type": "City", name: "Centennial", addressRegion: "CO" },
+			{ "@type": "City", name: "Littleton", addressRegion: "CO" },
+		],
+		sameAs: [
+			"https://edenhealthclubs.com/",
+			"https://www.facebook.com/edenhealthclubs",
+			"https://www.instagram.com/edenhealthclubs",
+			"https://www.tiktok.com/@edenhealthclubs",
+		],
+	},
+	{
+		"@context": "https://schema.org",
+		"@type": "Service",
+		"@id": `${canonical}#service`,
+		name: "Longevity and Hormone Care",
+		serviceType: "Longevity Clinic",
+		url: canonical,
+		description,
+		provider: {
+			"@id": `${canonical}#medical-business`,
+			"@type": "MedicalBusiness",
+			name: "Eden Health Club",
+		},
+		areaServed: "Denver, Greenwood Village, Denver Tech Center, Cherry Hills Village, Centennial, Littleton, and South Denver",
+	},
+	{
+		"@context": "https://schema.org",
+		"@type": "FAQPage",
+		"@id": `${canonical}#faq`,
+		mainEntity: faqs.map((faq) => ({
+			"@type": "Question",
+			name: faq.question,
+			acceptedAnswer: {
+				"@type": "Answer",
+				text: faq.answer,
+			},
+		})),
+	},
+	{
+		"@context": "https://schema.org",
+		"@type": "BreadcrumbList",
+		itemListElement: [
+			{ "@type": "ListItem", position: 1, name: "Home", item: homeUrl() },
+			{ "@type": "ListItem", position: 2, name: "Longevity Clinic Denver", item: canonical },
+		],
+	},
+];
+---
+
+<BaseLayout title={title} description={description} canonicalUrl={canonical} jsonLd={jsonLd}>
+	<PremiumHeader servicesHref="#services" pricingHref="#lead-form" contactHref="#lead-form" />
+	<main class="bg-eden-paper">
+		<section class="relative overflow-hidden bg-eden-forest text-white">
+			<div class="absolute inset-0">
+				<img src="/assets/eden-health-club-office.webp" alt="" class="h-full w-full object-cover opacity-28" loading="eager" />
+				<div class="absolute inset-0 bg-[linear-gradient(90deg,rgba(25,79,57,0.98),rgba(25,79,57,0.86)_48%,rgba(25,79,57,0.46))]"></div>
+			</div>
+			<div class="relative mx-auto grid max-w-6xl gap-10 px-6 py-14 sm:py-20 lg:grid-cols-[1.06fr_0.94fr] lg:items-center">
+				<div>
+					<p class="text-sm font-semibold uppercase tracking-normal text-eden-sage">Longevity clinic near Denver and DTC</p>
+					<h1 class="mt-4 max-w-3xl text-4xl font-semibold leading-tight sm:text-5xl lg:text-6xl">
+						Longevity &amp; hormone care in Greenwood Village. Open now.
+					</h1>
+					<p class="mt-5 max-w-2xl text-base leading-8 text-white/86 sm:text-lg">
+						Skip the waitlist. Eden brings physician-led clinical guidance, biomarker testing, hormone optimization, peptides, NAD+ IV, medical weight loss, training, and recovery support into one local facility near Denver Tech Center.
+					</p>
+					<div class="mt-8 flex flex-col gap-3 sm:flex-row">
+						<a href="#lead-form" class="rounded-md bg-eden-sage px-6 py-3 text-center text-base font-semibold text-eden-forest shadow-sm">
+							Book your consult
+						</a>
+						<a href="tel:+17206057678" data-phone-link class="rounded-md border border-white/35 px-6 py-3 text-center text-base font-semibold text-white hover:bg-white/10">
+							Call 720-605-7678
+						</a>
+					</div>
+					<div class="mt-7 grid gap-3 text-sm text-white/88 sm:grid-cols-4">
+						<div class="border-l border-eden-sage/70 pl-4">Physician-led model</div>
+						<div class="border-l border-eden-sage/70 pl-4">Locally owned</div>
+						<div class="border-l border-eden-sage/70 pl-4">Same-week appointments</div>
+						<div class="border-l border-eden-sage/70 pl-4">Biomarker-guided</div>
+					</div>
+				</div>
+				<div class="rounded-lg border border-white/15 bg-white/95 p-5 text-eden-navy shadow-xl sm:p-6">
+					<p class="text-sm font-semibold uppercase text-eden-green">Look. Feel. Perform.</p>
+					<h2 class="mt-3 text-2xl font-semibold leading-tight">A local longevity team with the facility to support the plan.</h2>
+					<div class="mt-5 grid gap-3">
+						{["Hormones + HRT/TRT consults", "Peptides + NAD+ IV therapy", "Biomarker testing and follow-up", "Medical weight loss support", "Training, recovery, and aesthetics"].map((item) => (
+							<div class="rounded-md border border-eden-line bg-eden-paper px-4 py-3 text-sm font-medium">{item}</div>
+						))}
+					</div>
+					<p class="mt-5 text-sm leading-6 text-slate-700">
+						Built for clients comparing longevity clinics, performance medicine, hormone care, and recovery options near Denver.
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<section class="bg-white px-6 py-8">
+			<div class="mx-auto grid max-w-6xl gap-4 text-sm text-eden-navy sm:grid-cols-4">
+				{["Physician-led", "Locally owned", "Same-week consult path", "Biomarker-guided"].map((item) => (
+					<div class="rounded-md border border-eden-line bg-eden-paper p-4 font-semibold">{item}</div>
+				))}
+			</div>
+		</section>
+
+		<section id="services" class="px-6 py-12 sm:py-16">
+			<div class="mx-auto max-w-6xl">
+				<div class="max-w-3xl">
+					<p class="text-sm font-semibold uppercase text-eden-green">What you can start here</p>
+					<h2 class="mt-3 text-3xl font-semibold leading-tight text-eden-navy sm:text-4xl">
+						The services people search for when they want longevity care near Denver.
+					</h2>
+					<p class="mt-4 text-base leading-8 text-slate-700">
+						This page is built for high-intent searches like longevity clinic near me, biomarker testing, hormone optimization, peptide therapy, NAD+ IV therapy, and medical weight loss near Denver.
+					</p>
+				</div>
+				<div class="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+					{services.map((service) => (
+						<a href={service.href} class="rounded-lg border border-eden-line bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-eden-green hover:shadow-md">
+							<h3 class="text-xl font-semibold text-eden-navy">{service.name}</h3>
+							<p class="mt-3 text-sm leading-6 text-slate-700">{service.body}</p>
+							<span class="mt-5 inline-block text-sm font-semibold text-eden-green">Learn more</span>
+						</a>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<section class="bg-white px-6 py-12 sm:py-16">
+			<div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.92fr_1.08fr] lg:items-start">
+				<div>
+					<p class="text-sm font-semibold uppercase text-eden-green">Why Eden</p>
+					<h2 class="mt-3 text-3xl font-semibold leading-tight text-eden-navy sm:text-4xl">
+						More than a longevity box.
+					</h2>
+					<p class="mt-4 text-base leading-8 text-slate-700">
+						Eden is not only a consult page or a single-modality studio. It is a local wellness facility where provider guidance can connect with the pieces that actually shape daily outcomes: training, recovery, body composition, aesthetics, and follow-up.
+					</p>
+				</div>
+				<div class="grid gap-4">
+					{[
+						["Local clinical guidance", "Work with a nearby Eden team instead of a disconnected, one-off path."],
+						["Owner-operated facility", "Eden is built around a real Greenwood Village location, not only a national concept."],
+						["Aesthetics + fitness + hormones", "One roof for the services people often compare separately."],
+						["Training attached to the plan", "Strength, recovery, and body composition support matter when the goal is long-term progress."],
+					].map(([title, body]) => (
+						<div class="rounded-lg border border-eden-line bg-eden-paper p-5">
+							<h3 class="text-lg font-semibold text-eden-navy">{title}</h3>
+							<p class="mt-2 text-sm leading-6 text-slate-700">{body}</p>
+						</div>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<section class="bg-eden-forest px-6 py-12 text-white sm:py-16">
+			<div class="mx-auto max-w-6xl">
+				<div class="max-w-3xl">
+					<p class="text-sm font-semibold uppercase text-eden-sage">The Eden loop</p>
+					<h2 class="mt-3 text-3xl font-semibold leading-tight sm:text-4xl">Test. Treat. Train. Track. Optimize.</h2>
+					<p class="mt-4 text-base leading-8 text-white/78">
+						The advantage is not a single appointment. It is a connected path that turns goals into data, care, habits, follow-up, and refinement.
+					</p>
+				</div>
+				<div class="mt-8 grid gap-4 md:grid-cols-5">
+					{loop.map((item, index) => (
+						<div class="rounded-lg border border-white/15 bg-white/8 p-5">
+							<div class="flex h-9 w-9 items-center justify-center rounded-full bg-eden-sage text-sm font-semibold text-eden-forest">{index + 1}</div>
+							<h3 class="mt-4 text-xl font-semibold">{item.step}</h3>
+							<p class="mt-3 text-sm leading-6 text-white/74">{item.body}</p>
+						</div>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<section class="px-6 py-12 sm:py-16">
+			<div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.92fr_1.08fr] lg:items-start">
+				<div>
+					<p class="text-sm font-semibold uppercase text-eden-green">Local fit</p>
+					<h2 class="mt-3 text-3xl font-semibold leading-tight text-eden-navy sm:text-4xl">
+						Built for Greenwood Village, DTC, and the south Denver corridor.
+					</h2>
+					<p class="mt-4 text-base leading-8 text-slate-700">
+						Eden Health Club is located at 5990 S University Blvd in Greenwood Village, close to Denver Tech Center, Cherry Hills Village, Centennial, Englewood, Littleton, Highlands Ranch, and South Denver.
+					</p>
+					<div class="mt-6 grid gap-3 text-sm sm:grid-cols-2">
+						{["Greenwood Village", "Denver Tech Center", "Cherry Hills Village", "Centennial", "Littleton", "South Denver"].map((area) => (
+							<div class="rounded-md border border-eden-line bg-white px-4 py-3 font-medium text-eden-navy">{area}</div>
+						))}
+					</div>
+				</div>
+				<LeadForm
+					serviceSlug="longevity"
+					suburbSlug="greenwood-village"
+					heading="Book a longevity consult"
+					subheading="Tell us where you want to start. Eden will follow up with the right next step."
+					submitText="Request my consult"
+				/>
+			</div>
+		</section>
+
+		<DenverDemandCluster currentPath="/longevity/" theme="light" />
+
+		<section class="bg-white px-6 py-12 sm:py-16" aria-labelledby="longevity-faq-heading">
+			<div class="mx-auto max-w-4xl">
+				<p class="text-sm font-semibold uppercase text-eden-green">FAQ</p>
+				<h2 id="longevity-faq-heading" class="mt-3 text-3xl font-semibold leading-tight text-eden-navy sm:text-4xl">
+					Questions people ask before booking.
+				</h2>
+				<div class="mt-8 divide-y divide-eden-line rounded-lg border border-eden-line bg-eden-paper">
+					{faqs.map((faq) => (
+						<details class="group p-5">
+							<summary class="cursor-pointer list-none text-lg font-semibold text-eden-navy">
+								{faq.question}
+							</summary>
+							<p class="mt-3 text-sm leading-7 text-slate-700">{faq.answer}</p>
+						</details>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<section class="bg-eden-forest px-6 py-10 text-white">
+			<div class="mx-auto flex max-w-6xl flex-col gap-5 md:flex-row md:items-center md:justify-between">
+				<div>
+					<p class="text-sm font-semibold uppercase text-eden-sage">Open now near DTC</p>
+					<h2 class="mt-2 text-3xl font-semibold">Start with the consult. Build the plan from there.</h2>
+				</div>
+				<a href="#lead-form" class="rounded-md bg-eden-sage px-6 py-3 text-center text-base font-semibold text-eden-forest">
+					Book your consult
+				</a>
+			</div>
+		</section>
+	</main>
+	<div class="fixed inset-x-0 bottom-0 z-40 border-t border-eden-line bg-white/96 p-3 shadow-lg backdrop-blur md:hidden">
+		<div class="mx-auto flex max-w-md gap-2">
+			<a href="#lead-form" class="flex-1 rounded-md bg-eden-green px-4 py-3 text-center text-sm font-semibold text-white">Book consult</a>
+			<a href="tel:+17206057678" data-phone-link class="rounded-md border border-eden-line px-4 py-3 text-center text-sm font-semibold text-eden-navy">Call</a>
+		</div>
+	</div>
+	<Footer />
+</BaseLayout>

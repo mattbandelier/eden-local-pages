@@ -10,6 +10,7 @@ const today = new Date().toISOString().slice(0, 10);
 
 const urls = [
 	{ loc: homeUrl(), priority: "1.0", changefreq: "weekly" },
+	{ loc: canonicalUrl("/longevity"), priority: "0.97", changefreq: "weekly" },
 	{ loc: canonicalUrl("/medical-spa-denver"), priority: "0.95", changefreq: "weekly" },
 	...services.map((service) => ({
 		loc: serviceHubUrl(service.slug),
