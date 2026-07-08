@@ -76,6 +76,44 @@ const comparisonRows = [
 	["Best fit", "People who want a plan they can actually live with week to week", "People only shopping for a single modality"],
 ];
 
+const firstConsult = [
+	{
+		title: "Clarify the goal",
+		body: "Start with what you want to change: energy, strength, body composition, recovery, confidence, or long-term wellness.",
+	},
+	{
+		title: "Review the data",
+		body: "Discuss labs, biomarkers, health history, InBody context, and what information is still needed before any recommendation.",
+	},
+	{
+		title: "Choose the right path",
+		body: "Compare whether hormones, peptides, NAD+ IV, medical weight loss, recovery, training, aesthetics, or a membership path fits best.",
+	},
+	{
+		title: "Map next steps",
+		body: "Leave with a clear route for pricing, timing, provider review, follow-up, and what to do first.",
+	},
+];
+
+const localSignals = [
+	{
+		area: "Greenwood Village",
+		body: "Eden's home base at 5990 S University Blvd for clients who want a local, in-person longevity clinic.",
+	},
+	{
+		area: "Denver Tech Center",
+		body: "A practical option for executives, founders, and professionals who want care close to work and home.",
+	},
+	{
+		area: "Cherry Hills Village",
+		body: "Nearby for clients comparing premium wellness, hormones, recovery, aesthetics, and performance support.",
+	},
+	{
+		area: "Centennial and Littleton",
+		body: "Convenient for south-metro clients looking for an integrated alternative to scattered single-service appointments.",
+	},
+];
+
 const loop = [
 	{
 		step: "Test",
@@ -380,7 +418,11 @@ const jsonLd: JsonLd[] = [
 			</div>
 		</section>
 
-		<section class="bg-eden-forest px-6 py-12 text-white sm:py-16">
+		<section class="relative overflow-hidden bg-eden-forest px-6 py-12 text-white sm:py-16">
+			<div class="absolute inset-y-0 right-0 hidden w-1/2 lg:block">
+				<img src="/assets/fitness-recovery.webp" alt="" class="h-full w-full object-cover opacity-28" loading="lazy" />
+				<div class="absolute inset-0 bg-gradient-to-r from-eden-forest via-eden-forest/75 to-eden-forest/20"></div>
+			</div>
 			<div class="mx-auto max-w-6xl">
 				<div class="max-w-3xl">
 					<p class="text-sm font-semibold uppercase text-eden-sage">The Eden loop</p>
@@ -389,14 +431,39 @@ const jsonLd: JsonLd[] = [
 						The advantage is not a single appointment. It is a connected path that turns goals into data, care, habits, follow-up, and refinement.
 					</p>
 				</div>
-				<div class="mt-8 grid gap-4 md:grid-cols-5">
+				<div class="relative mt-8 grid gap-4 md:grid-cols-5">
 					{loop.map((item, index) => (
-						<div class="rounded-lg border border-white/15 bg-white/8 p-5">
+						<div class="rounded-lg border border-white/15 bg-white/10 p-5 backdrop-blur">
 							<div class="flex h-9 w-9 items-center justify-center rounded-full bg-eden-sage text-sm font-semibold text-eden-forest">{index + 1}</div>
 							<h3 class="mt-4 text-xl font-semibold">{item.step}</h3>
 							<p class="mt-3 text-sm leading-6 text-white/74">{item.body}</p>
 						</div>
 					))}
+				</div>
+			</div>
+		</section>
+
+		<section class="bg-white px-6 py-12 sm:py-16">
+			<div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+				<div class="overflow-hidden rounded-lg">
+					<img src="/assets/eden-health-club-office.webp" alt="" class="h-full min-h-80 w-full object-cover" loading="lazy" />
+				</div>
+				<div>
+					<p class="text-sm font-semibold uppercase text-eden-green">First consult</p>
+					<h2 class="mt-3 text-3xl font-semibold leading-tight text-eden-navy sm:text-4xl">
+						A premium start should feel clear, not overwhelming.
+					</h2>
+					<p class="mt-4 text-base leading-8 text-slate-700">
+						The first step is not guessing which treatment to buy. It is understanding what you want, what data matters, and which Eden path is the right starting point.
+					</p>
+					<div class="mt-6 grid gap-3 sm:grid-cols-2">
+						{firstConsult.map((item) => (
+							<div class="rounded-lg border border-eden-line bg-eden-paper p-5">
+								<h3 class="text-lg font-semibold text-eden-navy">{item.title}</h3>
+								<p class="mt-2 text-sm leading-6 text-slate-700">{item.body}</p>
+							</div>
+						))}
+					</div>
 				</div>
 			</div>
 		</section>
@@ -411,9 +478,12 @@ const jsonLd: JsonLd[] = [
 					<p class="mt-4 text-base leading-8 text-slate-700">
 						Eden Health Club is located at 5990 S University Blvd in Greenwood Village, close to Denver Tech Center, Cherry Hills Village, Centennial, Englewood, Littleton, Highlands Ranch, and South Denver.
 					</p>
-					<div class="mt-6 grid gap-3 text-sm sm:grid-cols-2">
-						{["Greenwood Village", "Denver Tech Center", "Cherry Hills Village", "Centennial", "Littleton", "South Denver"].map((area) => (
-							<div class="rounded-md border border-eden-line bg-white px-4 py-3 font-medium text-eden-navy">{area}</div>
+					<div class="mt-6 grid gap-3 text-sm">
+						{localSignals.map((item) => (
+							<div class="rounded-lg border border-eden-line bg-white p-4">
+								<p class="font-semibold text-eden-navy">{item.area}</p>
+								<p class="mt-1 leading-6 text-slate-700">{item.body}</p>
+							</div>
 						))}
 					</div>
 				</div>
