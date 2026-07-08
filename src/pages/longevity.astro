@@ -16,33 +16,64 @@ const services = [
 	{
 		name: "Hormone optimization",
 		href: "/mens-hormone-optimization/",
+		tag: "Labs + provider review",
 		body: "TRT, HRT, and hormone consult paths start with goals, health history, labs, and provider review.",
 	},
 	{
 		name: "Peptides",
 		href: "/peptide-therapy/denver/",
+		tag: "Qualified clients only",
 		body: "A provider-guided peptide therapy conversation for qualified clients focused on wellness, recovery, and performance goals.",
 	},
 	{
 		name: "NAD+ and IV therapy",
 		href: "/nad-iv-therapy/denver/",
+		tag: "Cellular energy support",
 		body: "NAD+ IV, IV therapy, and monitored wellness infusions for clients comparing cellular energy and recovery support.",
 	},
 	{
 		name: "Medical weight loss",
 		href: "/medical-weight-loss/denver/",
+		tag: "Eligibility + follow-up",
 		body: "Eligibility, lab review, body composition, and follow-up support for clients exploring medical weight loss options.",
 	},
 	{
 		name: "Biomarker testing",
 		href: "#lead-form",
+		tag: "Data before guesswork",
 		body: "A data-informed starting point for understanding hormones, metabolic markers, recovery, and next-step priorities.",
 	},
 	{
 		name: "Training and recovery",
 		href: "/elevate-membership-greenwood-village/",
+		tag: "Daily habits connected",
 		body: "Semi-private training, InBody tracking, red light, sauna, compression, and recovery support under one roof.",
 	},
+];
+
+const proofPoints = [
+	{
+		kicker: "Open now",
+		title: "No waitlist",
+		body: "A real Greenwood Village facility ready for consults, training, recovery, and follow-up.",
+	},
+	{
+		kicker: "Clinical path",
+		title: "Provider-guided",
+		body: "Labs, goals, eligibility, and safety context come before recommendations.",
+	},
+	{
+		kicker: "Under one roof",
+		title: "Clinic + fitness + recovery",
+		body: "Hormones, peptides, NAD+, medical weight loss, aesthetics, strength, and recovery can connect.",
+	},
+];
+
+const comparisonRows = [
+	["Care model", "Local Eden team and provider-guided consult path", "Generic single-lane wellness membership"],
+	["What happens after labs", "Training, recovery, body composition, and follow-up can be built into the plan", "Data without the daily environment to act on it"],
+	["Facility advantage", "Medical wellness, aesthetics, recovery, and fitness in one Greenwood Village location", "Separate vendors for the pieces that should work together"],
+	["Best fit", "People who want a plan they can actually live with week to week", "People only shopping for a single modality"],
 ];
 
 const loop = [
@@ -183,17 +214,35 @@ const jsonLd: JsonLd[] = [
 	<main class="bg-eden-paper">
 		<section class="relative overflow-hidden bg-eden-forest text-white">
 			<div class="absolute inset-0">
-				<img src="/assets/eden-health-club-office.webp" alt="" class="h-full w-full object-cover opacity-28" loading="eager" />
-				<div class="absolute inset-0 bg-[linear-gradient(90deg,rgba(25,79,57,0.98),rgba(25,79,57,0.86)_48%,rgba(25,79,57,0.46))]"></div>
+				<img src="/assets/eden-health-club-reception.webp" alt="" class="h-full w-full object-cover opacity-30" loading="eager" />
+				<video
+					class="absolute inset-0 hidden h-full w-full object-cover opacity-32 md:block"
+					autoplay
+					muted
+					loop
+					playsinline
+					preload="none"
+					poster="/assets/eden-health-club-reception.webp"
+					aria-hidden="true"
+				>
+					<source src="https://edenhealthclubs.com/wp-content/uploads/2025/07/edenhealth-hero-video.mp4" type="video/mp4" />
+				</video>
+				<div class="absolute inset-0 bg-[linear-gradient(90deg,rgba(28,45,38,0.98),rgba(25,79,57,0.9)_46%,rgba(25,79,57,0.48))]"></div>
 			</div>
-			<div class="relative mx-auto grid max-w-6xl gap-10 px-6 py-14 sm:py-20 lg:grid-cols-[1.06fr_0.94fr] lg:items-center">
+			<div class="relative mx-auto grid min-h-[calc(100vh-64px)] max-w-6xl gap-10 px-6 py-12 sm:py-16 lg:grid-cols-[1.02fr_0.98fr] lg:items-center">
 				<div>
+					<img
+						src="/assets/eden-health-club-logo-white-transparent-tight.png"
+						alt="Eden Health Club"
+						class="mb-8 h-auto w-36 sm:w-44"
+						loading="eager"
+					/>
 					<p class="text-sm font-semibold uppercase tracking-normal text-eden-sage">Longevity clinic near Denver and DTC</p>
 					<h1 class="mt-4 max-w-3xl text-4xl font-semibold leading-tight sm:text-5xl lg:text-6xl">
-						Longevity &amp; hormone care in Greenwood Village. Open now.
+						The local longevity team already open in Greenwood Village.
 					</h1>
 					<p class="mt-5 max-w-2xl text-base leading-8 text-white/86 sm:text-lg">
-						Skip the waitlist. Eden brings physician-led clinical guidance, biomarker testing, hormone optimization, peptides, NAD+ IV, medical weight loss, training, and recovery support into one local facility near Denver Tech Center.
+						Physician-led clinical guidance, biomarker testing, hormone optimization, peptides, NAD+ IV, medical weight loss, training, recovery, and aesthetics in one Eden facility near Denver Tech Center.
 					</p>
 					<div class="mt-8 flex flex-col gap-3 sm:flex-row">
 						<a href="#lead-form" class="rounded-md bg-eden-sage px-6 py-3 text-center text-base font-semibold text-eden-forest shadow-sm">
@@ -203,53 +252,83 @@ const jsonLd: JsonLd[] = [
 							Call 720-605-7678
 						</a>
 					</div>
-					<div class="mt-7 grid gap-3 text-sm text-white/88 sm:grid-cols-4">
-						<div class="border-l border-eden-sage/70 pl-4">Physician-led model</div>
-						<div class="border-l border-eden-sage/70 pl-4">Locally owned</div>
-						<div class="border-l border-eden-sage/70 pl-4">Same-week appointments</div>
-						<div class="border-l border-eden-sage/70 pl-4">Biomarker-guided</div>
-					</div>
-				</div>
-				<div class="rounded-lg border border-white/15 bg-white/95 p-5 text-eden-navy shadow-xl sm:p-6">
-					<p class="text-sm font-semibold uppercase text-eden-green">Look. Feel. Perform.</p>
-					<h2 class="mt-3 text-2xl font-semibold leading-tight">A local longevity team with the facility to support the plan.</h2>
-					<div class="mt-5 grid gap-3">
-						{["Hormones + HRT/TRT consults", "Peptides + NAD+ IV therapy", "Biomarker testing and follow-up", "Medical weight loss support", "Training, recovery, and aesthetics"].map((item) => (
-							<div class="rounded-md border border-eden-line bg-eden-paper px-4 py-3 text-sm font-medium">{item}</div>
+					<div class="mt-8 grid gap-3 text-sm text-white/88 sm:grid-cols-3">
+						{proofPoints.map((point) => (
+							<div class="rounded-lg border border-white/15 bg-white/8 p-4 backdrop-blur">
+								<p class="text-xs font-semibold uppercase text-eden-sage">{point.kicker}</p>
+								<p class="mt-2 text-lg font-semibold text-white">{point.title}</p>
+								<p class="mt-2 leading-6 text-white/72">{point.body}</p>
+							</div>
 						))}
 					</div>
-					<p class="mt-5 text-sm leading-6 text-slate-700">
-						Built for clients comparing longevity clinics, performance medicine, hormone care, and recovery options near Denver.
-					</p>
+				</div>
+				<div class="relative">
+					<div class="overflow-hidden rounded-lg border border-white/15 bg-white/10 p-3 shadow-2xl backdrop-blur">
+						<div class="grid gap-3 sm:grid-cols-[0.82fr_1.18fr]">
+							<div class="overflow-hidden rounded-md">
+								<img src="/assets/mens-hormone-optimization.webp" alt="" class="h-full min-h-72 w-full object-cover" loading="eager" />
+							</div>
+							<div class="grid gap-3">
+								<div class="overflow-hidden rounded-md">
+									<img src="/assets/fitness-recovery.webp" alt="" class="h-40 w-full object-cover sm:h-full" loading="lazy" />
+								</div>
+								<div class="grid grid-cols-2 gap-3">
+									<div class="rounded-md bg-white p-4 text-eden-navy">
+										<p class="text-xs font-semibold uppercase text-eden-green">Framework</p>
+										<p class="mt-2 text-lg font-semibold">Test. Treat. Train. Track. Optimize.</p>
+									</div>
+									<div class="rounded-md bg-eden-sage p-4 text-eden-forest">
+										<p class="text-xs font-semibold uppercase">Location</p>
+										<p class="mt-2 text-lg font-semibold">5990 S University Blvd</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="absolute -bottom-5 left-5 right-5 rounded-lg border border-eden-line bg-white p-5 text-eden-navy shadow-xl">
+						<p class="text-sm font-semibold uppercase text-eden-green">Look. Feel. Perform.</p>
+						<p class="mt-2 text-xl font-semibold leading-tight">Clinical strategy plus the facility to execute it.</p>
+					</div>
 				</div>
 			</div>
 		</section>
 
-		<section class="bg-white px-6 py-8">
+		<section class="bg-white px-6 py-10">
 			<div class="mx-auto grid max-w-6xl gap-4 text-sm text-eden-navy sm:grid-cols-4">
-				{["Physician-led", "Locally owned", "Same-week consult path", "Biomarker-guided"].map((item) => (
-					<div class="rounded-md border border-eden-line bg-eden-paper p-4 font-semibold">{item}</div>
+				{[
+					["Diagnostics", "Labs, intake, goals, and biomarker context."],
+					["Protocols", "Provider-guided options matched to fit."],
+					["Recovery", "IV therapy, red light, sauna, and compression."],
+					["Performance", "Strength, body composition, and follow-up."],
+				].map(([title, body]) => (
+					<div class="rounded-lg border border-eden-line bg-eden-paper p-5">
+						<p class="text-base font-semibold">{title}</p>
+						<p class="mt-2 leading-6 text-slate-700">{body}</p>
+					</div>
 				))}
 			</div>
 		</section>
 
 		<section id="services" class="px-6 py-12 sm:py-16">
 			<div class="mx-auto max-w-6xl">
-				<div class="max-w-3xl">
+				<div class="grid gap-8 lg:grid-cols-[0.82fr_1.18fr] lg:items-end">
+					<div>
 					<p class="text-sm font-semibold uppercase text-eden-green">What you can start here</p>
 					<h2 class="mt-3 text-3xl font-semibold leading-tight text-eden-navy sm:text-4xl">
 						The services people search for when they want longevity care near Denver.
 					</h2>
+					</div>
 					<p class="mt-4 text-base leading-8 text-slate-700">
-						This page is built for high-intent searches like longevity clinic near me, biomarker testing, hormone optimization, peptide therapy, NAD+ IV therapy, and medical weight loss near Denver.
+						People searching for longevity clinic near me, biomarker testing, hormone optimization, peptide therapy, NAD+ IV therapy, and medical weight loss near Denver are usually not looking for one isolated service. They are looking for a credible starting point.
 					</p>
 				</div>
 				<div class="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
 					{services.map((service) => (
-						<a href={service.href} class="rounded-lg border border-eden-line bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-eden-green hover:shadow-md">
+						<a href={service.href} class="group rounded-lg border border-eden-line bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-eden-green hover:shadow-md">
+							<p class="text-xs font-semibold uppercase text-eden-green">{service.tag}</p>
 							<h3 class="text-xl font-semibold text-eden-navy">{service.name}</h3>
 							<p class="mt-3 text-sm leading-6 text-slate-700">{service.body}</p>
-							<span class="mt-5 inline-block text-sm font-semibold text-eden-green">Learn more</span>
+							<span class="mt-5 inline-block text-sm font-semibold text-eden-green group-hover:text-eden-navy">Learn more</span>
 						</a>
 					))}
 				</div>
@@ -257,28 +336,46 @@ const jsonLd: JsonLd[] = [
 		</section>
 
 		<section class="bg-white px-6 py-12 sm:py-16">
-			<div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.92fr_1.08fr] lg:items-start">
-				<div>
+			<div class="mx-auto max-w-6xl">
+				<div class="grid gap-8 lg:grid-cols-[0.82fr_1.18fr] lg:items-start">
+					<div>
 					<p class="text-sm font-semibold uppercase text-eden-green">Why Eden</p>
 					<h2 class="mt-3 text-3xl font-semibold leading-tight text-eden-navy sm:text-4xl">
-						More than a longevity box.
+						The difference is what happens after the consult.
 					</h2>
 					<p class="mt-4 text-base leading-8 text-slate-700">
-						Eden is not only a consult page or a single-modality studio. It is a local wellness facility where provider guidance can connect with the pieces that actually shape daily outcomes: training, recovery, body composition, aesthetics, and follow-up.
+						A premium longevity plan should not live in a vacuum. Eden is a local wellness facility where provider guidance can connect with the pieces that shape daily outcomes: training, recovery, body composition, aesthetics, and follow-up.
 					</p>
-				</div>
-				<div class="grid gap-4">
-					{[
-						["Local clinical guidance", "Work with a nearby Eden team instead of a disconnected, one-off path."],
-						["Owner-operated facility", "Eden is built around a real Greenwood Village location, not only a national concept."],
-						["Aesthetics + fitness + hormones", "One roof for the services people often compare separately."],
-						["Training attached to the plan", "Strength, recovery, and body composition support matter when the goal is long-term progress."],
-					].map(([title, body]) => (
-						<div class="rounded-lg border border-eden-line bg-eden-paper p-5">
-							<h3 class="text-lg font-semibold text-eden-navy">{title}</h3>
-							<p class="mt-2 text-sm leading-6 text-slate-700">{body}</p>
+					</div>
+					<div class="hidden overflow-hidden rounded-lg border border-eden-line bg-eden-paper shadow-sm md:block">
+						<div class="grid grid-cols-[0.72fr_1fr_1fr] bg-eden-forest text-sm font-semibold text-white">
+							<div class="p-4">Decision point</div>
+							<div class="border-l border-white/10 p-4">Eden model</div>
+							<div class="border-l border-white/10 p-4">Single-lane model</div>
 						</div>
-					))}
+						{comparisonRows.map(([label, eden, other]) => (
+							<div class="grid grid-cols-[0.72fr_1fr_1fr] border-t border-eden-line text-sm">
+								<div class="bg-white p-4 font-semibold text-eden-navy">{label}</div>
+								<div class="border-l border-eden-line p-4 leading-6 text-slate-700">{eden}</div>
+								<div class="border-l border-eden-line p-4 leading-6 text-slate-600">{other}</div>
+							</div>
+						))}
+					</div>
+					<div class="grid gap-4 md:hidden">
+						{comparisonRows.map(([label, eden, other]) => (
+							<div class="rounded-lg border border-eden-line bg-eden-paper p-5">
+								<p class="text-sm font-semibold uppercase text-eden-green">{label}</p>
+								<div class="mt-4 rounded-md bg-white p-4">
+									<p class="text-sm font-semibold text-eden-navy">Eden model</p>
+									<p class="mt-2 text-sm leading-6 text-slate-700">{eden}</p>
+								</div>
+								<div class="mt-3 rounded-md border border-eden-line p-4">
+									<p class="text-sm font-semibold text-eden-navy">Single-lane model</p>
+									<p class="mt-2 text-sm leading-6 text-slate-600">{other}</p>
+								</div>
+							</div>
+						))}
+					</div>
 				</div>
 			</div>
 		</section>
