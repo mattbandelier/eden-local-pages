@@ -194,12 +194,19 @@ const premiumHeroBodies: Record<string, string> = {
 	microneedling: "A collagen-focused skin treatment for texture, pores, fine lines, and gradual skin-quality improvement.",
 };
 const displayBody = premium && service ? premiumHeroBodies[service.slug] ?? content.body : content.body;
+const premiumHeroImages: Record<string, string> = {
+	"male-trt": "/assets/mens-hormone-optimization.webp",
+	"medical-weight-loss": "/assets/fitness-recovery.webp",
+	"peptide-therapy": "/assets/mens-hormone-optimization.webp",
+	"female-bhrt": "/assets/eden-health-club-reception.webp",
+};
+const heroImage = premium && service ? premiumHeroImages[service.slug] ?? "/assets/eden-health-club-office.webp" : "/assets/eden-health-club-office.webp";
 ---
 
 <section class={isCombo ? "relative max-w-full overflow-hidden bg-eden-forest px-6 py-12 text-white sm:py-16 lg:py-20" : "bg-white px-6 py-14 sm:py-20"}>
 	{premium && (
 		<img
-			src="/assets/eden-health-club-office.webp"
+			src={heroImage}
 			alt=""
 			width="960"
 			height="960"
