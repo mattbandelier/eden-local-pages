@@ -8,9 +8,9 @@ import { canonicalUrl, homeUrl } from "../lib/urls";
 import type { JsonLd } from "../lib/schema-org";
 
 const canonical = canonicalUrl("/peptide-biomarker-consult-denver");
-const title = "$299 Peptide + Biomarker Consult Denver | Eden Health Club";
+const title = "$299 Peptide Starter Program Denver | Eden Health Club";
 const description =
-	"Start with a $299 peptide and biomarker consult near Denver: labwork or biomarker review, provider guidance, and a personalized wellness plan at Eden Health Club in Greenwood Village.";
+	"Start with the $299 Peptide Starter Program near Denver: provider consult, biomarker or lab review, personalized plan, and first-month wellness protocol support if clinically appropriate.";
 
 const offerIncludes = [
 	{
@@ -22,20 +22,20 @@ const offerIncludes = [
 		body: "Use data to guide the conversation around energy, recovery, body composition, sleep, performance, and wellness fit.",
 	},
 	{
-		title: "Peptide option discussion",
-		body: "If clinically appropriate, your provider can discuss peptide options, pricing, timing, and whether they fit your goals.",
+		title: "First-month program support",
+		body: "If a provider determines a peptide path is clinically appropriate, first-month wellness protocol support can be included in the starter program.",
 	},
 	{
 		title: "Eden plan routing",
-		body: "Connect the consult to training, recovery, InBody, hormone optimization, medical weight loss, IV therapy, or membership support when relevant.",
+		body: "Connect the program to training, recovery, InBody, hormone optimization, medical weight loss, IV therapy, or membership support when relevant.",
 	},
 ];
 
 const proofPoints = [
 	{
 		kicker: "$299 start",
-		title: "Consult + biomarkers",
-		body: "A clear first step before choosing a protocol.",
+		title: "Starter program + biomarkers",
+		body: "A clear first month for qualified clients.",
 	},
 	{
 		kicker: "Provider-led",
@@ -51,8 +51,8 @@ const proofPoints = [
 
 const intentGroups = [
 	{
-		label: "Peptide consult Denver",
-		body: "For people comparing clinics and wanting a provider-guided conversation before starting anything.",
+		label: "Peptide starter program Denver",
+		body: "For people comparing clinics and wanting a provider-guided first step with biomarker context.",
 	},
 	{
 		label: "Biomarker testing Denver",
@@ -69,8 +69,8 @@ const intentGroups = [
 ];
 
 const comparisonRows = [
-	["First step", "A $299 consult with labwork or biomarker review", "A treatment menu with no clear starting point"],
-	["Peptide path", "Discussed only when clinically appropriate after screening", "Promoted before goals, history, and data are reviewed"],
+	["First step", "A $299 starter program with consult, biomarker review, and first-month wellness protocol support if clinically appropriate", "A treatment menu with no clear starting point"],
+	["Peptide path", "Included only when clinically appropriate after provider screening", "Promoted before goals, history, and data are reviewed"],
 	["Execution", "Medical wellness, training, recovery, InBody, and follow-up in one facility", "Separate vendors for labs, coaching, recovery, and care"],
 	["Best fit", "Clients who want clarity, data, and a premium local plan", "People shopping only for the lowest price"],
 ];
@@ -86,18 +86,18 @@ const pathway = [
 	},
 	{
 		step: "Provider review",
-		body: "Discuss eligibility, safety context, goals, and whether peptide options or another Eden path may fit.",
+		body: "Discuss eligibility, safety context, goals, and whether the peptide starter path or another Eden path may fit.",
 	},
 	{
 		step: "Plan",
-		body: "Leave with a clearer next step for pricing, timing, follow-up, training, recovery, or membership support.",
+		body: "Leave with clear timing, follow-up, training, recovery, and membership support options.",
 	},
 ];
 
 const localSignals = [
 	{
 		area: "Greenwood Village",
-		body: "Eden is located at 5990 S University Blvd for clients who want an in-person peptide and biomarker consult near DTC.",
+		body: "Eden is located at 5990 S University Blvd for clients who want an in-person peptide starter program near DTC.",
 	},
 	{
 		area: "Denver Tech Center",
@@ -109,23 +109,23 @@ const localSignals = [
 	},
 	{
 		area: "Centennial and Littleton",
-		body: "Convenient for south Denver clients comparing peptide consults, labs, recovery, hormones, and medical wellness options.",
+		body: "Convenient for south Denver clients comparing peptide programs, labs, recovery, hormones, and medical wellness options.",
 	},
 ];
 
 const faqs = [
 	{
-		question: "What is included in the $299 Peptide + Biomarker Starter Consult?",
+		question: "What is included in the $299 Peptide Starter Program?",
 		answer:
-			"The starter consult is designed as a clear first step. It includes a provider-guided conversation, labwork or biomarker review where appropriate, goal review, and a personalized wellness plan. If clinically appropriate, your provider can discuss peptide options, pricing, and next steps.",
+			"The starter program is designed as a clear first step. It includes a provider-guided consult, labwork or biomarker review where appropriate, goal review, a personalized wellness plan, and first-month wellness protocol support if a provider determines it is clinically appropriate.",
 	},
 	{
-		question: "Does the $299 price include peptide treatment?",
+		question: "Does the $299 program include first-month protocol support?",
 		answer:
-			"No. The offer is a consult and biomarker-based starting point, not a promise of treatment. Peptide options depend on provider review, health history, labs, eligibility, and fit.",
+			"Yes, when a provider determines the peptide starter path is clinically appropriate after reviewing your goals, history, and biomarker or lab context, first-month wellness protocol support can be included. It is not a guaranteed prescription; if it is not the right fit, Eden will help route the next best option.",
 	},
 	{
-		question: "Who is this consult best for?",
+		question: "Who is this starter program best for?",
 		answer:
 			"It is best for adults comparing peptide therapy, biomarker testing, longevity clinics, functional medicine, recovery, energy, body composition, or performance wellness near Denver and Greenwood Village.",
 	},
@@ -186,8 +186,8 @@ const jsonLd: JsonLd[] = [
 		"@context": "https://schema.org",
 		"@type": "Service",
 		"@id": `${canonical}#service`,
-		name: "$299 Peptide + Biomarker Starter Consult",
-		serviceType: "Peptide and Biomarker Consult",
+		name: "$299 Peptide Starter Program",
+		serviceType: "Peptide Starter Program",
 		url: canonical,
 		description,
 		offers: {
@@ -221,14 +221,14 @@ const jsonLd: JsonLd[] = [
 		"@type": "BreadcrumbList",
 		itemListElement: [
 			{ "@type": "ListItem", position: 1, name: "Home", item: homeUrl() },
-			{ "@type": "ListItem", position: 2, name: "Peptide + Biomarker Consult Denver", item: canonical },
+			{ "@type": "ListItem", position: 2, name: "Peptide Starter Program Denver", item: canonical },
 		],
 	},
 ];
 ---
 
 <BaseLayout title={title} description={description} canonicalUrl={canonical} jsonLd={jsonLd}>
-	<PremiumHeader servicesHref="#offer" pricingHref="#lead-form" contactHref="#lead-form" />
+	<PremiumHeader servicesHref="#offer" pricingHref="#lead-form" contactHref="#lead-form" ctaLabel="Start Program" />
 	<main class="bg-eden-paper">
 		<section class="relative overflow-hidden bg-eden-forest text-white">
 			<div class="absolute inset-0">
@@ -255,16 +255,16 @@ const jsonLd: JsonLd[] = [
 						class="mb-8 h-auto w-36 sm:w-44"
 						loading="eager"
 					/>
-					<p class="text-sm font-semibold uppercase tracking-normal text-eden-sage">Peptide and biomarker consult near Denver</p>
+					<p class="text-sm font-semibold uppercase tracking-normal text-eden-sage">Peptide starter program near Denver</p>
 					<h1 class="mt-4 max-w-3xl text-4xl font-semibold leading-tight sm:text-5xl lg:text-6xl">
-						Start with the $299 Peptide + Biomarker Starter Consult.
+						Start with the $299 Peptide Starter Program.
 					</h1>
 					<p class="mt-5 max-w-2xl text-base leading-8 text-white/86 sm:text-lg">
-						Labwork or biomarker review, provider guidance, and a personalized wellness plan for energy, recovery, body composition, performance, and longevity-minded goals near Denver Tech Center.
+						Provider consult, biomarker or lab review, personalized wellness plan, and first-month wellness protocol support if clinically appropriate for energy, recovery, body composition, performance, and longevity-minded goals near Denver Tech Center.
 					</p>
 					<div class="mt-8 flex flex-col gap-3 sm:flex-row">
 						<a href="#lead-form" class="rounded-md bg-eden-sage px-6 py-3 text-center text-base font-semibold text-eden-forest shadow-sm">
-							Start with the $299 consult
+							Start the $299 program
 						</a>
 						<a href="tel:+17206057678" data-phone-link class="rounded-md border border-white/35 px-6 py-3 text-center text-base font-semibold text-white hover:bg-white/10">
 							Call 720-605-7678
@@ -293,7 +293,7 @@ const jsonLd: JsonLd[] = [
 								<div class="grid grid-cols-2 gap-3">
 									<div class="rounded-md bg-white p-4 text-eden-navy">
 										<p class="text-xs font-semibold uppercase text-eden-green">Offer</p>
-										<p class="mt-2 text-lg font-semibold">$299 consult + biomarkers.</p>
+										<p class="mt-2 text-lg font-semibold">$299 starter program.</p>
 									</div>
 									<div class="rounded-md bg-eden-sage p-4 text-eden-forest">
 										<p class="text-xs font-semibold uppercase">Fit first</p>
@@ -316,10 +316,10 @@ const jsonLd: JsonLd[] = [
 				<div>
 					<p class="text-sm font-semibold uppercase text-eden-green">The offer</p>
 					<h2 class="mt-3 text-3xl font-semibold leading-tight text-eden-navy sm:text-4xl">
-						A clear first step before choosing a protocol.
+						A clear first month before guessing at a protocol.
 					</h2>
 					<p class="mt-4 text-base leading-8 text-slate-700">
-						This page is built for people searching peptide therapy Denver, biomarker testing Denver, longevity clinic near me, and performance wellness near DTC. The promise is not a one-size-fits-all treatment. The promise is a smarter start.
+						This page is built for people searching peptide therapy Denver, biomarker testing Denver, longevity clinic near me, and performance wellness near DTC. The promise is not a one-size-fits-all plan. The promise is a smarter, provider-reviewed start.
 					</p>
 				</div>
 				<div class="grid gap-4 sm:grid-cols-2">
@@ -339,11 +339,11 @@ const jsonLd: JsonLd[] = [
 					<div>
 						<p class="text-sm font-semibold uppercase text-eden-green">Search intent Eden should own</p>
 						<h2 class="mt-3 text-3xl font-semibold leading-tight text-eden-navy sm:text-4xl">
-							People are not just searching for a vial. They are searching for confidence.
+							People are not just searching for a product. They are searching for confidence.
 						</h2>
 					</div>
 					<p class="text-base leading-8 text-slate-700">
-						The winning page has to answer the real question behind the search: who can evaluate me, what data matters, what does it cost to start, and what happens after the consult?
+						The winning page has to answer the real question behind the search: who can evaluate me, what data matters, what does it cost to start, and what happens after the first month?
 					</p>
 				</div>
 				<div class="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
@@ -364,7 +364,7 @@ const jsonLd: JsonLd[] = [
 					<div>
 						<p class="text-sm font-semibold uppercase text-eden-green">Why Eden</p>
 						<h2 class="mt-3 text-3xl font-semibold leading-tight text-eden-navy sm:text-4xl">
-							The differentiator is the system after the consult.
+							The differentiator is the system after the first month.
 						</h2>
 						<p class="mt-4 text-base leading-8 text-slate-700">
 							Competitors can talk about peptides, labs, and protocols. Eden can connect the plan to training, recovery, InBody tracking, medical wellness, and a local facility people can actually use.
@@ -410,7 +410,7 @@ const jsonLd: JsonLd[] = [
 			</div>
 			<div class="relative mx-auto max-w-6xl">
 				<div class="max-w-3xl">
-					<p class="text-sm font-semibold uppercase text-eden-sage">How the consult works</p>
+					<p class="text-sm font-semibold uppercase text-eden-sage">How the program starts</p>
 					<h2 class="mt-3 text-3xl font-semibold leading-tight sm:text-4xl">Intake. Biomarkers. Provider review. Plan.</h2>
 					<p class="mt-4 text-base leading-8 text-white/78">
 						The page is built to convert because the offer is concrete, the first step is affordable, and the next action is easy to understand.
@@ -436,7 +436,7 @@ const jsonLd: JsonLd[] = [
 						Built for Denver, DTC, Greenwood Village, and the south-metro wellness buyer.
 					</h2>
 					<p class="mt-4 text-base leading-8 text-slate-700">
-						Eden Health Club is located at 5990 S University Blvd in Greenwood Village. This page is intentionally built for high-intent Denver-area searches around peptide consults, biomarker testing, longevity care, medical wellness, and performance support.
+						Eden Health Club is located at 5990 S University Blvd in Greenwood Village. This page is intentionally built for high-intent Denver-area searches around peptide starter programs, biomarker testing, longevity care, medical wellness, and performance support.
 					</p>
 					<div class="mt-6 grid gap-3 text-sm">
 						{localSignals.map((item) => (
@@ -448,11 +448,11 @@ const jsonLd: JsonLd[] = [
 					</div>
 				</div>
 				<LeadForm
-					serviceSlug="peptide-biomarker-consult"
+					serviceSlug="peptide-starter-program"
 					suburbSlug="greenwood-village"
-					heading="Start the $299 consult"
-					subheading="Tell Eden what you want to improve. The team will follow up about labwork, biomarker review, fit, and next steps."
-					submitText="Request my $299 consult"
+					heading="Start the $299 program"
+					subheading="Tell Eden what you want to improve. The team will follow up about labwork, biomarker review, fit, first-month wellness protocol support if clinically appropriate, and next steps."
+					submitText="Request my $299 program"
 				/>
 			</div>
 		</section>
@@ -481,18 +481,18 @@ const jsonLd: JsonLd[] = [
 		<section class="bg-eden-forest px-6 py-10 text-white">
 			<div class="mx-auto flex max-w-6xl flex-col gap-5 md:flex-row md:items-center md:justify-between">
 				<div>
-					<p class="text-sm font-semibold uppercase text-eden-sage">$299 starter consult</p>
+					<p class="text-sm font-semibold uppercase text-eden-sage">$299 peptide starter program</p>
 					<h2 class="mt-2 text-3xl font-semibold">Start with data. Decide with a provider.</h2>
 				</div>
 				<a href="#lead-form" class="rounded-md bg-eden-sage px-6 py-3 text-center text-base font-semibold text-eden-forest">
-					Request my consult
+					Request my program
 				</a>
 			</div>
 		</section>
 	</main>
 	<div class="fixed inset-x-0 bottom-0 z-40 border-t border-eden-line bg-white/96 p-3 shadow-lg backdrop-blur md:hidden">
 		<div class="mx-auto flex max-w-md gap-2">
-			<a href="#lead-form" class="flex-1 rounded-md bg-eden-green px-4 py-3 text-center text-sm font-semibold text-white">$299 consult</a>
+			<a href="#lead-form" class="flex-1 rounded-md bg-eden-green px-4 py-3 text-center text-sm font-semibold text-white">$299 program</a>
 			<a href="tel:+17206057678" data-phone-link class="rounded-md border border-eden-line px-4 py-3 text-center text-sm font-semibold text-eden-navy">Call</a>
 		</div>
 	</div>

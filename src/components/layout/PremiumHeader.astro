@@ -3,9 +3,10 @@ interface Props {
 	servicesHref?: string;
 	pricingHref?: string;
 	contactHref?: string;
+	ctaLabel?: string;
 }
 
-const { servicesHref = "https://edenhealthclubs.com/services/", pricingHref = "#pricing", contactHref = "#lead-form" } = Astro.props;
+const { servicesHref = "https://edenhealthclubs.com/services/", pricingHref = "#pricing", contactHref = "#lead-form", ctaLabel = "Book a Consult" } = Astro.props;
 const phone = "720-605-7678";
 const phoneHref = "tel:+17206057678";
 ---
@@ -20,7 +21,7 @@ const phoneHref = "tel:+17206057678";
 		</nav>
 		<div class="flex items-center gap-3">
 			<a href={phoneHref} data-phone-link class="hidden font-semibold text-white sm:inline">{phone}</a>
-			<a href="#lead-form" class="rounded-md bg-eden-sage px-4 py-2 text-sm font-semibold text-eden-forest">Book a Consult</a>
+			<a href="#lead-form" class="rounded-md bg-eden-sage px-4 py-2 text-sm font-semibold text-eden-forest">{ctaLabel}</a>
 		</div>
 	</div>
 </header>
