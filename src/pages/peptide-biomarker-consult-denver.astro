@@ -1,0 +1,500 @@
+---
+import DenverDemandCluster from "../components/content/DenverDemandCluster.astro";
+import LeadForm from "../components/content/LeadForm.astro";
+import Footer from "../components/layout/Footer.astro";
+import PremiumHeader from "../components/layout/PremiumHeader.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { canonicalUrl, homeUrl } from "../lib/urls";
+import type { JsonLd } from "../lib/schema-org";
+
+const canonical = canonicalUrl("/peptide-biomarker-consult-denver");
+const title = "$299 Peptide + Biomarker Consult Denver | Eden Health Club";
+const description =
+	"Start with a $299 peptide and biomarker consult near Denver: labwork or biomarker review, provider guidance, and a personalized wellness plan at Eden Health Club in Greenwood Village.";
+
+const offerIncludes = [
+	{
+		title: "Provider consult",
+		body: "Review your goals, health history, current routines, and what you want to improve before discussing any next step.",
+	},
+	{
+		title: "Labwork or biomarker review",
+		body: "Use data to guide the conversation around energy, recovery, body composition, sleep, performance, and wellness fit.",
+	},
+	{
+		title: "Peptide option discussion",
+		body: "If clinically appropriate, your provider can discuss peptide options, pricing, timing, and whether they fit your goals.",
+	},
+	{
+		title: "Eden plan routing",
+		body: "Connect the consult to training, recovery, InBody, hormone optimization, medical weight loss, IV therapy, or membership support when relevant.",
+	},
+];
+
+const proofPoints = [
+	{
+		kicker: "$299 start",
+		title: "Consult + biomarkers",
+		body: "A clear first step before choosing a protocol.",
+	},
+	{
+		kicker: "Provider-led",
+		title: "Screening first",
+		body: "Eligibility, history, and fit come before recommendations.",
+	},
+	{
+		kicker: "Near DTC",
+		title: "Greenwood Village",
+		body: "Medical wellness, training, and recovery in one Eden facility.",
+	},
+];
+
+const intentGroups = [
+	{
+		label: "Peptide consult Denver",
+		body: "For people comparing clinics and wanting a provider-guided conversation before starting anything.",
+	},
+	{
+		label: "Biomarker testing Denver",
+		body: "For clients who want data around hormones, metabolism, recovery, body composition, and wellness direction.",
+	},
+	{
+		label: "Longevity clinic near me",
+		body: "For Denver and DTC searchers looking for a credible local starting point instead of a remote-only plan.",
+	},
+	{
+		label: "Performance wellness clinic",
+		body: "For active adults who want energy, strength, recovery, body composition, and follow-up connected.",
+	},
+];
+
+const comparisonRows = [
+	["First step", "A $299 consult with labwork or biomarker review", "A treatment menu with no clear starting point"],
+	["Peptide path", "Discussed only when clinically appropriate after screening", "Promoted before goals, history, and data are reviewed"],
+	["Execution", "Medical wellness, training, recovery, InBody, and follow-up in one facility", "Separate vendors for labs, coaching, recovery, and care"],
+	["Best fit", "Clients who want clarity, data, and a premium local plan", "People shopping only for the lowest price"],
+];
+
+const pathway = [
+	{
+		step: "Intake",
+		body: "Tell Eden what you want to improve: energy, recovery, body composition, sleep, performance, or long-term wellness.",
+	},
+	{
+		step: "Biomarkers",
+		body: "Complete labwork or review relevant biomarker context so the conversation is grounded in data.",
+	},
+	{
+		step: "Provider review",
+		body: "Discuss eligibility, safety context, goals, and whether peptide options or another Eden path may fit.",
+	},
+	{
+		step: "Plan",
+		body: "Leave with a clearer next step for pricing, timing, follow-up, training, recovery, or membership support.",
+	},
+];
+
+const localSignals = [
+	{
+		area: "Greenwood Village",
+		body: "Eden is located at 5990 S University Blvd for clients who want an in-person peptide and biomarker consult near DTC.",
+	},
+	{
+		area: "Denver Tech Center",
+		body: "A practical option for professionals comparing longevity, biomarker testing, functional medicine, and performance wellness near work.",
+	},
+	{
+		area: "Cherry Hills Village",
+		body: "Close to premium wellness clients looking for a polished alternative to scattered single-service clinics.",
+	},
+	{
+		area: "Centennial and Littleton",
+		body: "Convenient for south Denver clients comparing peptide consults, labs, recovery, hormones, and medical wellness options.",
+	},
+];
+
+const faqs = [
+	{
+		question: "What is included in the $299 Peptide + Biomarker Starter Consult?",
+		answer:
+			"The starter consult is designed as a clear first step. It includes a provider-guided conversation, labwork or biomarker review where appropriate, goal review, and a personalized wellness plan. If clinically appropriate, your provider can discuss peptide options, pricing, and next steps.",
+	},
+	{
+		question: "Does the $299 price include peptide treatment?",
+		answer:
+			"No. The offer is a consult and biomarker-based starting point, not a promise of treatment. Peptide options depend on provider review, health history, labs, eligibility, and fit.",
+	},
+	{
+		question: "Who is this consult best for?",
+		answer:
+			"It is best for adults comparing peptide therapy, biomarker testing, longevity clinics, functional medicine, recovery, energy, body composition, or performance wellness near Denver and Greenwood Village.",
+	},
+	{
+		question: "Why start with biomarkers before peptides?",
+		answer:
+			"Biomarkers help make the conversation more specific. They can give context around hormones, metabolic health, recovery, inflammation, body composition, and what information is still needed before a provider recommends a plan.",
+	},
+	{
+		question: "Can Eden connect the consult to training and recovery?",
+		answer:
+			"Yes. Eden is different because medical wellness sits inside a working health club. Clients can connect provider guidance with InBody tracking, semi-private training, recovery tools, IV therapy, medical weight loss, hormone optimization, or membership support when relevant.",
+	},
+	{
+		question: "Is Eden close to Denver?",
+		answer:
+			"Yes. Eden Health Club is in Greenwood Village at 5990 S University Blvd, minutes from Denver Tech Center and convenient for Cherry Hills Village, Centennial, Englewood, Littleton, Highlands Ranch, and south Denver.",
+	},
+];
+
+const jsonLd: JsonLd[] = [
+	{
+		"@context": "https://schema.org",
+		"@type": "MedicalBusiness",
+		"@id": `${canonical}#medical-business`,
+		name: "Eden Health Club",
+		url: canonical,
+		telephone: "+17206057678",
+		address: {
+			"@type": "PostalAddress",
+			streetAddress: "5990 S University Blvd",
+			addressLocality: "Greenwood Village",
+			addressRegion: "CO",
+			postalCode: "80121",
+			addressCountry: "US",
+		},
+		geo: {
+			"@type": "GeoCoordinates",
+			latitude: 39.6088,
+			longitude: -104.9583,
+		},
+		priceRange: "$$",
+		medicalSpecialty: ["FunctionalMedicine", "SportsMedicine"],
+		areaServed: [
+			{ "@type": "City", name: "Denver", addressRegion: "CO" },
+			{ "@type": "City", name: "Greenwood Village", addressRegion: "CO" },
+			{ "@type": "City", name: "Centennial", addressRegion: "CO" },
+			{ "@type": "City", name: "Littleton", addressRegion: "CO" },
+		],
+		sameAs: [
+			"https://edenhealthclubs.com/",
+			"https://www.facebook.com/edenhealthclubs",
+			"https://www.instagram.com/edenhealthclubs",
+			"https://www.tiktok.com/@edenhealthclubs",
+		],
+	},
+	{
+		"@context": "https://schema.org",
+		"@type": "Service",
+		"@id": `${canonical}#service`,
+		name: "$299 Peptide + Biomarker Starter Consult",
+		serviceType: "Peptide and Biomarker Consult",
+		url: canonical,
+		description,
+		offers: {
+			"@type": "Offer",
+			price: "299",
+			priceCurrency: "USD",
+			availability: "https://schema.org/InStock",
+		},
+		provider: {
+			"@id": `${canonical}#medical-business`,
+			"@type": "MedicalBusiness",
+			name: "Eden Health Club",
+		},
+		areaServed: "Denver, Greenwood Village, Denver Tech Center, Cherry Hills Village, Centennial, Littleton, and South Denver",
+	},
+	{
+		"@context": "https://schema.org",
+		"@type": "FAQPage",
+		"@id": `${canonical}#faq`,
+		mainEntity: faqs.map((faq) => ({
+			"@type": "Question",
+			name: faq.question,
+			acceptedAnswer: {
+				"@type": "Answer",
+				text: faq.answer,
+			},
+		})),
+	},
+	{
+		"@context": "https://schema.org",
+		"@type": "BreadcrumbList",
+		itemListElement: [
+			{ "@type": "ListItem", position: 1, name: "Home", item: homeUrl() },
+			{ "@type": "ListItem", position: 2, name: "Peptide + Biomarker Consult Denver", item: canonical },
+		],
+	},
+];
+---
+
+<BaseLayout title={title} description={description} canonicalUrl={canonical} jsonLd={jsonLd}>
+	<PremiumHeader servicesHref="#offer" pricingHref="#lead-form" contactHref="#lead-form" />
+	<main class="bg-eden-paper">
+		<section class="relative overflow-hidden bg-eden-forest text-white">
+			<div class="absolute inset-0">
+				<img src="/assets/eden-health-club-reception.webp" alt="" class="h-full w-full object-cover opacity-28" loading="eager" />
+				<video
+					class="absolute inset-0 hidden h-full w-full object-cover opacity-30 md:block"
+					autoplay
+					muted
+					loop
+					playsinline
+					preload="none"
+					poster="/assets/eden-health-club-reception.webp"
+					aria-hidden="true"
+				>
+					<source src="https://edenhealthclubs.com/wp-content/uploads/2025/07/edenhealth-hero-video.mp4" type="video/mp4" />
+				</video>
+				<div class="absolute inset-0 bg-[linear-gradient(90deg,rgba(28,45,38,0.98),rgba(25,79,57,0.9)_46%,rgba(25,79,57,0.52))]"></div>
+			</div>
+			<div class="relative mx-auto grid min-h-[calc(100vh-64px)] max-w-6xl gap-10 px-6 py-12 sm:py-16 lg:grid-cols-[1.02fr_0.98fr] lg:items-center">
+				<div>
+					<img
+						src="/assets/eden-health-club-logo-white-transparent-tight.png"
+						alt="Eden Health Club"
+						class="mb-8 h-auto w-36 sm:w-44"
+						loading="eager"
+					/>
+					<p class="text-sm font-semibold uppercase tracking-normal text-eden-sage">Peptide and biomarker consult near Denver</p>
+					<h1 class="mt-4 max-w-3xl text-4xl font-semibold leading-tight sm:text-5xl lg:text-6xl">
+						Start with the $299 Peptide + Biomarker Starter Consult.
+					</h1>
+					<p class="mt-5 max-w-2xl text-base leading-8 text-white/86 sm:text-lg">
+						Labwork or biomarker review, provider guidance, and a personalized wellness plan for energy, recovery, body composition, performance, and longevity-minded goals near Denver Tech Center.
+					</p>
+					<div class="mt-8 flex flex-col gap-3 sm:flex-row">
+						<a href="#lead-form" class="rounded-md bg-eden-sage px-6 py-3 text-center text-base font-semibold text-eden-forest shadow-sm">
+							Start with the $299 consult
+						</a>
+						<a href="tel:+17206057678" data-phone-link class="rounded-md border border-white/35 px-6 py-3 text-center text-base font-semibold text-white hover:bg-white/10">
+							Call 720-605-7678
+						</a>
+					</div>
+					<div class="mt-8 grid gap-3 text-sm text-white/88 sm:grid-cols-3">
+						{proofPoints.map((point) => (
+							<div class="rounded-lg border border-white/15 bg-white/8 p-4 backdrop-blur">
+								<p class="text-xs font-semibold uppercase text-eden-sage">{point.kicker}</p>
+								<p class="mt-2 text-lg font-semibold text-white">{point.title}</p>
+								<p class="mt-2 leading-6 text-white/72">{point.body}</p>
+							</div>
+						))}
+					</div>
+				</div>
+				<div class="relative">
+					<div class="overflow-hidden rounded-lg border border-white/15 bg-white/10 p-3 shadow-2xl backdrop-blur">
+						<div class="grid gap-3 sm:grid-cols-[0.86fr_1.14fr]">
+							<div class="overflow-hidden rounded-md">
+								<img src="/assets/mens-hormone-optimization.webp" alt="" class="h-full min-h-72 w-full object-cover object-center" loading="eager" />
+							</div>
+							<div class="grid gap-3">
+								<div class="overflow-hidden rounded-md">
+									<img src="/assets/fitness-recovery.webp" alt="" class="h-40 w-full object-cover sm:h-full" loading="lazy" />
+								</div>
+								<div class="grid grid-cols-2 gap-3">
+									<div class="rounded-md bg-white p-4 text-eden-navy">
+										<p class="text-xs font-semibold uppercase text-eden-green">Offer</p>
+										<p class="mt-2 text-lg font-semibold">$299 consult + biomarkers.</p>
+									</div>
+									<div class="rounded-md bg-eden-sage p-4 text-eden-forest">
+										<p class="text-xs font-semibold uppercase">Fit first</p>
+										<p class="mt-2 text-lg font-semibold">Peptide options if appropriate.</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="mt-3 rounded-md border border-eden-line bg-white p-5 text-eden-navy shadow-sm">
+							<p class="text-sm font-semibold uppercase text-eden-green">Data before protocols</p>
+							<p class="mt-2 text-xl font-semibold leading-tight">A premium starting point for people comparing peptide therapy, biomarker testing, and longevity care near Denver.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section id="offer" class="bg-white px-6 py-12 sm:py-16">
+			<div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.82fr_1.18fr] lg:items-start">
+				<div>
+					<p class="text-sm font-semibold uppercase text-eden-green">The offer</p>
+					<h2 class="mt-3 text-3xl font-semibold leading-tight text-eden-navy sm:text-4xl">
+						A clear first step before choosing a protocol.
+					</h2>
+					<p class="mt-4 text-base leading-8 text-slate-700">
+						This page is built for people searching peptide therapy Denver, biomarker testing Denver, longevity clinic near me, and performance wellness near DTC. The promise is not a one-size-fits-all treatment. The promise is a smarter start.
+					</p>
+				</div>
+				<div class="grid gap-4 sm:grid-cols-2">
+					{offerIncludes.map((item) => (
+						<div class="rounded-lg border border-eden-line bg-eden-paper p-5 shadow-sm">
+							<h3 class="text-xl font-semibold text-eden-navy">{item.title}</h3>
+							<p class="mt-3 text-sm leading-6 text-slate-700">{item.body}</p>
+						</div>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<section class="px-6 py-12 sm:py-16">
+			<div class="mx-auto max-w-6xl">
+				<div class="grid gap-8 lg:grid-cols-[0.82fr_1.18fr] lg:items-end">
+					<div>
+						<p class="text-sm font-semibold uppercase text-eden-green">Search intent Eden should own</p>
+						<h2 class="mt-3 text-3xl font-semibold leading-tight text-eden-navy sm:text-4xl">
+							People are not just searching for a vial. They are searching for confidence.
+						</h2>
+					</div>
+					<p class="text-base leading-8 text-slate-700">
+						The winning page has to answer the real question behind the search: who can evaluate me, what data matters, what does it cost to start, and what happens after the consult?
+					</p>
+				</div>
+				<div class="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+					{intentGroups.map((item) => (
+						<div class="rounded-lg border border-eden-line bg-white p-5 shadow-sm">
+							<p class="text-xs font-semibold uppercase text-eden-green">Intent path</p>
+							<h3 class="mt-2 text-xl font-semibold text-eden-navy">{item.label}</h3>
+							<p class="mt-3 text-sm leading-6 text-slate-700">{item.body}</p>
+						</div>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<section class="bg-white px-6 py-12 sm:py-16">
+			<div class="mx-auto max-w-6xl">
+				<div class="grid gap-8 lg:grid-cols-[0.82fr_1.18fr] lg:items-start">
+					<div>
+						<p class="text-sm font-semibold uppercase text-eden-green">Why Eden</p>
+						<h2 class="mt-3 text-3xl font-semibold leading-tight text-eden-navy sm:text-4xl">
+							The differentiator is the system after the consult.
+						</h2>
+						<p class="mt-4 text-base leading-8 text-slate-700">
+							Competitors can talk about peptides, labs, and protocols. Eden can connect the plan to training, recovery, InBody tracking, medical wellness, and a local facility people can actually use.
+						</p>
+					</div>
+					<div class="hidden overflow-hidden rounded-lg border border-eden-line bg-eden-paper shadow-sm md:block">
+						<div class="grid grid-cols-[0.72fr_1fr_1fr] bg-eden-forest text-sm font-semibold text-white">
+							<div class="p-4">Decision point</div>
+							<div class="border-l border-white/10 p-4">Eden offer</div>
+							<div class="border-l border-white/10 p-4">Generic peptide page</div>
+						</div>
+						{comparisonRows.map(([label, eden, other]) => (
+							<div class="grid grid-cols-[0.72fr_1fr_1fr] border-t border-eden-line text-sm">
+								<div class="bg-white p-4 font-semibold text-eden-navy">{label}</div>
+								<div class="border-l border-eden-line p-4 leading-6 text-slate-700">{eden}</div>
+								<div class="border-l border-eden-line p-4 leading-6 text-slate-600">{other}</div>
+							</div>
+						))}
+					</div>
+					<div class="grid gap-4 md:hidden">
+						{comparisonRows.map(([label, eden, other]) => (
+							<div class="rounded-lg border border-eden-line bg-eden-paper p-5">
+								<p class="text-sm font-semibold uppercase text-eden-green">{label}</p>
+								<div class="mt-4 rounded-md bg-white p-4">
+									<p class="text-sm font-semibold text-eden-navy">Eden offer</p>
+									<p class="mt-2 text-sm leading-6 text-slate-700">{eden}</p>
+								</div>
+								<div class="mt-3 rounded-md border border-eden-line p-4">
+									<p class="text-sm font-semibold text-eden-navy">Generic peptide page</p>
+									<p class="mt-2 text-sm leading-6 text-slate-600">{other}</p>
+								</div>
+							</div>
+						))}
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="relative overflow-hidden bg-eden-forest px-6 py-12 text-white sm:py-16">
+			<div class="absolute inset-y-0 right-0 hidden w-1/2 lg:block">
+				<img src="/assets/fitness-strength-class.avif" alt="" class="h-full w-full object-cover opacity-24" loading="lazy" />
+				<div class="absolute inset-0 bg-gradient-to-r from-eden-forest via-eden-forest/78 to-eden-forest/20"></div>
+			</div>
+			<div class="relative mx-auto max-w-6xl">
+				<div class="max-w-3xl">
+					<p class="text-sm font-semibold uppercase text-eden-sage">How the consult works</p>
+					<h2 class="mt-3 text-3xl font-semibold leading-tight sm:text-4xl">Intake. Biomarkers. Provider review. Plan.</h2>
+					<p class="mt-4 text-base leading-8 text-white/78">
+						The page is built to convert because the offer is concrete, the first step is affordable, and the next action is easy to understand.
+					</p>
+				</div>
+				<div class="relative mt-8 grid gap-4 md:grid-cols-4">
+					{pathway.map((item, index) => (
+						<div class="rounded-lg border border-white/15 bg-white/10 p-5 backdrop-blur">
+							<div class="flex h-9 w-9 items-center justify-center rounded-full bg-eden-sage text-sm font-semibold text-eden-forest">{index + 1}</div>
+							<h3 class="mt-4 text-xl font-semibold">{item.step}</h3>
+							<p class="mt-3 text-sm leading-6 text-white/74">{item.body}</p>
+						</div>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<section class="px-6 py-12 sm:py-16">
+			<div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.92fr_1.08fr] lg:items-start">
+				<div>
+					<p class="text-sm font-semibold uppercase text-eden-green">Local fit</p>
+					<h2 class="mt-3 text-3xl font-semibold leading-tight text-eden-navy sm:text-4xl">
+						Built for Denver, DTC, Greenwood Village, and the south-metro wellness buyer.
+					</h2>
+					<p class="mt-4 text-base leading-8 text-slate-700">
+						Eden Health Club is located at 5990 S University Blvd in Greenwood Village. This page is intentionally built for high-intent Denver-area searches around peptide consults, biomarker testing, longevity care, medical wellness, and performance support.
+					</p>
+					<div class="mt-6 grid gap-3 text-sm">
+						{localSignals.map((item) => (
+							<div class="rounded-lg border border-eden-line bg-white p-4">
+								<p class="font-semibold text-eden-navy">{item.area}</p>
+								<p class="mt-1 leading-6 text-slate-700">{item.body}</p>
+							</div>
+						))}
+					</div>
+				</div>
+				<LeadForm
+					serviceSlug="peptide-biomarker-consult"
+					suburbSlug="greenwood-village"
+					heading="Start the $299 consult"
+					subheading="Tell Eden what you want to improve. The team will follow up about labwork, biomarker review, fit, and next steps."
+					submitText="Request my $299 consult"
+				/>
+			</div>
+		</section>
+
+		<DenverDemandCluster currentPath="/peptide-biomarker-consult-denver/" theme="light" />
+
+		<section class="bg-white px-6 py-12 sm:py-16" aria-labelledby="peptide-biomarker-faq-heading">
+			<div class="mx-auto max-w-4xl">
+				<p class="text-sm font-semibold uppercase text-eden-green">FAQ</p>
+				<h2 id="peptide-biomarker-faq-heading" class="mt-3 text-3xl font-semibold leading-tight text-eden-navy sm:text-4xl">
+					Questions people ask before booking.
+				</h2>
+				<div class="mt-8 divide-y divide-eden-line rounded-lg border border-eden-line bg-eden-paper">
+					{faqs.map((faq) => (
+						<details class="group p-5">
+							<summary class="cursor-pointer list-none text-lg font-semibold text-eden-navy">
+								{faq.question}
+							</summary>
+							<p class="mt-3 text-sm leading-7 text-slate-700">{faq.answer}</p>
+						</details>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<section class="bg-eden-forest px-6 py-10 text-white">
+			<div class="mx-auto flex max-w-6xl flex-col gap-5 md:flex-row md:items-center md:justify-between">
+				<div>
+					<p class="text-sm font-semibold uppercase text-eden-sage">$299 starter consult</p>
+					<h2 class="mt-2 text-3xl font-semibold">Start with data. Decide with a provider.</h2>
+				</div>
+				<a href="#lead-form" class="rounded-md bg-eden-sage px-6 py-3 text-center text-base font-semibold text-eden-forest">
+					Request my consult
+				</a>
+			</div>
+		</section>
+	</main>
+	<div class="fixed inset-x-0 bottom-0 z-40 border-t border-eden-line bg-white/96 p-3 shadow-lg backdrop-blur md:hidden">
+		<div class="mx-auto flex max-w-md gap-2">
+			<a href="#lead-form" class="flex-1 rounded-md bg-eden-green px-4 py-3 text-center text-sm font-semibold text-white">$299 consult</a>
+			<a href="tel:+17206057678" data-phone-link class="rounded-md border border-eden-line px-4 py-3 text-center text-sm font-semibold text-eden-navy">Call</a>
+		</div>
+	</div>
+	<Footer />
+</BaseLayout>
