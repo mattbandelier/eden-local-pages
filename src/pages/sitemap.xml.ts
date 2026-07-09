@@ -11,6 +11,7 @@ const today = new Date().toISOString().slice(0, 10);
 const urls = [
 	{ loc: homeUrl(), priority: "1.0", changefreq: "weekly" },
 	{ loc: canonicalUrl("/longevity-baseline-visit"), priority: "0.98", changefreq: "weekly" },
+	{ loc: canonicalUrl("/longevity-fb"), priority: "0.5", changefreq: "monthly" },
 	{ loc: canonicalUrl("/longevity"), priority: "0.97", changefreq: "weekly" },
 	{ loc: canonicalUrl("/peptide-biomarker-consult-denver"), priority: "0.96", changefreq: "weekly" },
 	{ loc: canonicalUrl("/medical-spa-denver"), priority: "0.95", changefreq: "weekly" },

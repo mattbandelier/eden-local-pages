@@ -1,0 +1,348 @@
+---
+import LeadForm from "../components/content/LeadForm.astro";
+import Footer from "../components/layout/Footer.astro";
+import PremiumHeader from "../components/layout/PremiumHeader.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { canonicalUrl, homeUrl } from "../lib/urls";
+import type { JsonLd } from "../lib/schema-org";
+
+const canonical = canonicalUrl("/longevity-fb");
+const title = "Longevity Care Open Now in Greenwood Village | Eden";
+const description =
+	"Curious about longevity, biomarkers, peptides, hormones, recovery, and wellness? Eden Health Club is open now in Greenwood Village with local provider-guided care.";
+
+const services = [
+	{
+		title: "Hormone optimization",
+		body: "Provider-guided hormone conversations start with goals, history, labs when appropriate, and a clear next step.",
+	},
+	{
+		title: "Peptides",
+		body: "Explore peptide options through a clinical review instead of guessing from a product menu.",
+	},
+	{
+		title: "NAD+ / IV",
+		body: "Wellness infusions and NAD+ conversations can connect to recovery, training, and long-term goals.",
+	},
+	{
+		title: "Biomarker testing",
+		body: "Use labs, biomarkers, and body-composition context to understand where to focus first.",
+	},
+	{
+		title: "Medical weight management",
+		body: "Discuss eligibility, body composition, follow-up, and support inside a real local facility.",
+	},
+	{
+		title: "Aesthetics",
+		body: "Eden also connects med spa care with wellness, recovery, and confidence under one roof.",
+	},
+];
+
+const differentiators = [
+	{
+		title: "Real local team",
+		body: "Consults happen through Eden's Greenwood Village care path, with a team you can actually meet.",
+	},
+	{
+		title: "Already open",
+		body: "No waitlist needed. Eden is open now near Denver Tech Center and Cherry Hills Village.",
+	},
+	{
+		title: "Under one roof",
+		body: "Not only a gym. Not only a spa. Medical wellness, recovery, training, aesthetics, and membership support can connect.",
+	},
+	{
+		title: "Built around data",
+		body: "Goals, labs, biomarkers, body composition, and follow-up help guide the plan.",
+	},
+];
+
+const loop = [
+	["Test", "Start with goals, intake, labs, biomarkers, and body-composition context when appropriate."],
+	["Treat", "Review options with a licensed provider and move forward only when there is a clear fit."],
+	["Train", "Connect the plan to strength, recovery, conditioning, and the habits that support progress."],
+	["Track", "Use follow-up, InBody, symptom context, and labs where appropriate to stay measured."],
+	["Optimize", "Adjust the path over time around performance, recovery, energy, body composition, and safety."],
+];
+
+const testimonials = [
+	{
+		name: "Eden guest",
+		body: "The consult helped me understand which next step made sense instead of guessing.",
+	},
+	{
+		name: "Eden member",
+		body: "Having recovery, training, and wellness in the same place made the plan easier to follow.",
+	},
+	{
+		name: "Eden guest",
+		body: "The team made the process feel clear, local, and personal.",
+	},
+];
+
+const goalOptions = [
+	"Longevity baseline",
+	"Peptides",
+	"Hormone optimization",
+	"Medical weight management",
+	"Recovery and performance",
+	"Aesthetics and wellness",
+	"Not sure yet",
+];
+
+const jsonLd: JsonLd[] = [
+	{
+		"@context": "https://schema.org",
+		"@type": "LocalBusiness",
+		"@id": `${canonical}#local-business`,
+		name: "Eden Health Club",
+		url: canonical,
+		telephone: "+17206057678",
+		address: {
+			"@type": "PostalAddress",
+			streetAddress: "5990 S University Blvd",
+			addressLocality: "Greenwood Village",
+			addressRegion: "CO",
+			postalCode: "80121",
+			addressCountry: "US",
+		},
+		geo: {
+			"@type": "GeoCoordinates",
+			latitude: 39.6088,
+			longitude: -104.9583,
+		},
+		priceRange: "$$",
+		areaServed: [
+			{ "@type": "City", name: "Greenwood Village", addressRegion: "CO" },
+			{ "@type": "City", name: "Denver", addressRegion: "CO" },
+			{ "@type": "City", name: "Centennial", addressRegion: "CO" },
+			{ "@type": "City", name: "Littleton", addressRegion: "CO" },
+		],
+		sameAs: [
+			"https://edenhealthclubs.com/",
+			"https://www.facebook.com/edenhealthclubs",
+			"https://www.instagram.com/edenhealthclubs",
+			"https://www.tiktok.com/@edenhealthclubs",
+		],
+	},
+	{
+		"@context": "https://schema.org",
+		"@type": "BreadcrumbList",
+		itemListElement: [
+			{ "@type": "ListItem", position: 1, name: "Home", item: homeUrl() },
+			{ "@type": "ListItem", position: 2, name: "Longevity Care Open Now", item: canonical },
+		],
+	},
+];
+---
+
+<BaseLayout title={title} description={description} canonicalUrl={canonical} jsonLd={jsonLd} noindex={true}>
+	<PremiumHeader servicesHref="#what-you-can-do" pricingHref="#lead-form" contactHref="#lead-form" />
+	<main class="bg-eden-paper">
+		<section class="relative overflow-hidden bg-eden-forest text-white">
+			<div class="absolute inset-0">
+				<img src="/assets/eden-health-club-reception.webp" alt="" class="h-full w-full object-cover opacity-32" loading="eager" />
+				<div class="absolute inset-0 bg-[linear-gradient(90deg,rgba(28,45,38,0.98),rgba(25,79,57,0.9)_48%,rgba(25,79,57,0.44))]"></div>
+			</div>
+			<div class="relative mx-auto grid min-h-[calc(100vh-64px)] max-w-6xl gap-10 px-6 py-12 sm:py-16 lg:grid-cols-[1.02fr_0.98fr] lg:items-center">
+				<div>
+					<img
+						src="/assets/eden-health-club-logo-white-transparent-tight.png"
+						alt="Eden Health Club"
+						class="mb-8 h-auto w-36 sm:w-44"
+						loading="eager"
+					/>
+					<p class="text-sm font-semibold uppercase tracking-normal text-eden-sage">Look. Feel. Perform.</p>
+					<h1 class="mt-4 max-w-3xl text-4xl font-semibold leading-tight sm:text-5xl lg:text-6xl">
+						The longevity everyone is talking about, already open in Greenwood Village.
+					</h1>
+					<p class="mt-5 max-w-2xl text-base leading-8 text-white/86 sm:text-lg">
+						Curious about biomarkers, peptides, hormones, recovery, or long-term wellness? Eden makes the conversation real, local, and provider-guided with medical wellness, fitness, recovery, and aesthetics under one roof.
+					</p>
+					<p class="mt-4 max-w-2xl text-base font-semibold leading-7 text-eden-sage">
+						Not only a gym. Not only a spa. A smarter local starting point for the plan you actually want to follow.
+					</p>
+					<div class="mt-8 flex flex-col gap-3 sm:flex-row">
+						<a href="#lead-form" class="rounded-md bg-eden-sage px-6 py-3 text-center text-base font-semibold text-eden-forest shadow-sm">
+							Book a consult
+						</a>
+						<a href="tel:+17206057678" data-phone-link class="rounded-md border border-white/35 px-6 py-3 text-center text-base font-semibold text-white hover:bg-white/10">
+							Call 720-605-7678
+						</a>
+					</div>
+					<div class="mt-8 grid gap-3 text-sm text-white/88 sm:grid-cols-2">
+						{differentiators.slice(0, 4).map((item) => (
+							<div class="rounded-lg border border-white/15 bg-white/8 p-4 backdrop-blur">
+								<p class="text-lg font-semibold text-white">{item.title}</p>
+								<p class="mt-2 leading-6 text-white/72">{item.body}</p>
+							</div>
+						))}
+					</div>
+				</div>
+				<div class="relative">
+					<div class="overflow-hidden rounded-lg border border-white/15 bg-white/10 p-3 shadow-2xl backdrop-blur">
+						<img src="/assets/fitness-recovery.webp" alt="" class="h-72 w-full rounded-md object-cover sm:h-96" loading="eager" />
+						<div class="mt-3 grid gap-3 sm:grid-cols-2">
+							<div class="rounded-md bg-white p-4 text-eden-navy">
+								<p class="text-xs font-semibold uppercase text-eden-green">Open now</p>
+								<p class="mt-2 text-lg font-semibold">No waitlist to start the conversation.</p>
+							</div>
+							<div class="rounded-md bg-eden-sage p-4 text-eden-forest">
+								<p class="text-xs font-semibold uppercase">Local path</p>
+								<p class="mt-2 text-lg font-semibold">A real facility you can use week to week.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="bg-white px-6 py-12 sm:py-16">
+			<div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.82fr_1.18fr] lg:items-start">
+				<div>
+					<p class="text-sm font-semibold uppercase text-eden-green">Why this is landing now</p>
+					<h2 class="mt-3 text-3xl font-semibold leading-tight text-eden-navy sm:text-4xl">
+						The longevity conversation is everywhere. Eden makes it practical.
+					</h2>
+				</div>
+				<div class="space-y-5 text-base leading-8 text-slate-700">
+					<p>
+						Podcasts, biohackers, and new wellness brands have made longevity feel urgent. The hard part is knowing what to do first, what is clinically appropriate, and how to turn a baseline into habits that fit real life.
+					</p>
+					<p>
+						Eden starts with the local conversation: goals, labs or biomarkers when appropriate, recovery, training, aesthetics, and a provider-guided path. It is not a remote-only membership, a product-first shortcut, or another disconnected wellness box.
+					</p>
+					<p>
+						You can start now in Greenwood Village, minutes from Denver Tech Center, Cherry Hills Village, Centennial, Englewood, and Littleton.
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<section id="what-you-can-do" class="px-6 py-12 sm:py-16">
+			<div class="mx-auto max-w-6xl">
+				<div class="grid gap-8 lg:grid-cols-[0.82fr_1.18fr] lg:items-end">
+					<div>
+						<p class="text-sm font-semibold uppercase text-eden-green">What you can actually do here</p>
+						<h2 class="mt-3 text-3xl font-semibold leading-tight text-eden-navy sm:text-4xl">
+							Wellness, recovery, fitness, and aesthetics can finally connect.
+						</h2>
+					</div>
+					<p class="text-base leading-8 text-slate-700">
+						The first visit helps Eden route you to the right path. Not every option fits every guest, and recommendations are made through provider review.
+					</p>
+				</div>
+				<div class="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+					{services.map((service) => (
+						<div class="rounded-lg border border-eden-line bg-white p-5 shadow-sm">
+							<h3 class="text-xl font-semibold text-eden-navy">{service.title}</h3>
+							<p class="mt-3 text-sm leading-6 text-slate-700">{service.body}</p>
+						</div>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<section class="bg-eden-forest px-6 py-12 text-white sm:py-16">
+			<div class="mx-auto max-w-6xl">
+				<div class="max-w-3xl">
+					<p class="text-sm font-semibold uppercase text-eden-sage">Eden method</p>
+					<h2 class="mt-3 text-3xl font-semibold leading-tight sm:text-4xl">Test. Treat. Train. Track. Optimize.</h2>
+					<p class="mt-4 text-base leading-8 text-white/78">
+						The point is not just more data. The point is a plan you can actually follow inside a place built for daily wellness.
+					</p>
+				</div>
+				<div class="relative mt-8 grid gap-4 md:grid-cols-5">
+					{loop.map(([step, body], index) => (
+						<div class="rounded-lg border border-white/15 bg-white/10 p-5 backdrop-blur">
+							<div class="flex h-9 w-9 items-center justify-center rounded-full bg-eden-sage text-sm font-semibold text-eden-forest">{index + 1}</div>
+							<h3 class="mt-4 text-xl font-semibold">{step}</h3>
+							<p class="mt-3 text-sm leading-6 text-white/74">{body}</p>
+						</div>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<section class="bg-white px-6 py-12 sm:py-16">
+			<div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.88fr_1.12fr] lg:items-start">
+				<div>
+					<p class="text-sm font-semibold uppercase text-eden-green">Proof to add</p>
+					<h2 class="mt-3 text-3xl font-semibold leading-tight text-eden-navy sm:text-4xl">
+						Local, personal, and ready for real follow-through.
+					</h2>
+					<p class="mt-4 text-base leading-8 text-slate-700">
+						Use this section for real patient quotes and provider photos once final approved assets are available.
+					</p>
+					<div class="mt-6 overflow-hidden rounded-lg border border-eden-line bg-eden-paper">
+						<img src="/assets/eden-health-club-office.webp" alt="" class="h-72 w-full object-cover" loading="lazy" />
+						<div class="p-5">
+							<p class="text-xs font-semibold uppercase text-eden-green">Clinical anchor</p>
+							<p class="mt-2 text-lg font-semibold text-eden-navy">Provider headshot and bio placeholder.</p>
+							<p class="mt-2 text-sm leading-6 text-slate-700">// TODO: replace with approved lead provider image and bio.</p>
+						</div>
+					</div>
+				</div>
+				<div class="grid gap-4">
+					{testimonials.map((quote) => (
+						<figure class="rounded-lg border border-eden-line bg-eden-paper p-5 shadow-sm">
+							<blockquote class="text-base leading-7 text-slate-700">"{quote.body}"</blockquote>
+							<figcaption class="mt-4 text-sm font-semibold text-eden-navy">{quote.name}</figcaption>
+							<p class="mt-1 text-xs uppercase text-eden-green">// TODO: replace with approved testimonial.</p>
+						</figure>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<section class="px-6 py-12 sm:py-16">
+			<div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.92fr_1.08fr] lg:items-start">
+				<div>
+					<p class="text-sm font-semibold uppercase text-eden-green">Start here</p>
+					<h2 class="mt-3 text-3xl font-semibold leading-tight text-eden-navy sm:text-4xl">
+						Tell Eden what you are curious about.
+					</h2>
+					<p class="mt-4 text-base leading-8 text-slate-700">
+						This form keeps the first step simple: name, phone, email, and the direction you want to explore. Health details stay out of analytics events; the form tracks the page, source, UTM, and click identifiers needed for attribution.
+					</p>
+					<div class="mt-6 grid gap-3 text-sm">
+						{differentiators.map((item) => (
+							<div class="rounded-lg border border-eden-line bg-white p-4">
+								<p class="font-semibold text-eden-navy">{item.title}</p>
+								<p class="mt-1 leading-6 text-slate-700">{item.body}</p>
+							</div>
+						))}
+					</div>
+				</div>
+				<LeadForm
+					serviceSlug="longevity-fb"
+					suburbSlug="greenwood-village"
+					heading="Book a longevity consult"
+					subheading="Eden will follow up about the right first step, timing, and what fits your goals."
+					submitText="Request my consult"
+					messageLabel="What are you most interested in?"
+					goalOptions={goalOptions}
+				/>
+			</div>
+		</section>
+
+		<section class="bg-eden-forest px-6 py-10 text-white">
+			<div class="mx-auto flex max-w-6xl flex-col gap-5 md:flex-row md:items-center md:justify-between">
+				<div>
+					<p class="text-sm font-semibold uppercase text-eden-sage">Open now in Greenwood Village</p>
+					<h2 class="mt-2 text-3xl font-semibold">Curious about longevity? Start with a real conversation.</h2>
+				</div>
+				<a href="#lead-form" class="rounded-md bg-eden-sage px-6 py-3 text-center text-base font-semibold text-eden-forest">
+					Book a consult
+				</a>
+			</div>
+		</section>
+	</main>
+	<div class="fixed inset-x-0 bottom-0 z-40 border-t border-eden-line bg-white/96 p-3 shadow-lg backdrop-blur md:hidden">
+		<div class="mx-auto flex max-w-md gap-2">
+			<a href="#lead-form" class="flex-1 rounded-md bg-eden-green px-4 py-3 text-center text-sm font-semibold text-white">Book</a>
+			<a href="tel:+17206057678" data-phone-link class="rounded-md border border-eden-line px-4 py-3 text-center text-sm font-semibold text-eden-navy">Call</a>
+		</div>
+	</div>
+	<Footer />
+</BaseLayout>

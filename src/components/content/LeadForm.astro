@@ -5,6 +5,8 @@ interface Props {
 	heading?: string;
 	subheading?: string;
 	submitText?: string;
+	messageLabel?: string;
+	goalOptions?: string[];
 }
 
 const {
@@ -13,6 +15,8 @@ const {
 	heading = "Book a consult",
 	subheading = "We'll reach out within one business day.",
 	submitText = "Request a consult",
+	messageLabel = "Anything you'd like us to know",
+	goalOptions = [],
 } = Astro.props;
 ---
 
@@ -87,12 +91,24 @@ const {
 		</label>
 
 		<label class="block">
-			<span class="text-sm font-medium text-eden-navy">Anything you'd like us to know</span>
-			<textarea
-				name="message"
-				rows="3"
-				class="mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm focus:border-eden-green focus:outline-none focus:ring-1 focus:ring-eden-green"
-			></textarea>
+			<span class="text-sm font-medium text-eden-navy">{messageLabel}</span>
+			{goalOptions.length ? (
+				<select
+					name="message"
+					class="mt-1 block w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm focus:border-eden-green focus:outline-none focus:ring-1 focus:ring-eden-green"
+				>
+					<option value="">Choose one</option>
+					{goalOptions.map((option) => (
+						<option value={option}>{option}</option>
+					))}
+				</select>
+			) : (
+				<textarea
+					name="message"
+					rows="3"
+					class="mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm focus:border-eden-green focus:outline-none focus:ring-1 focus:ring-eden-green"
+				></textarea>
+			)}
 		</label>
 
 		<div class="hidden" aria-hidden="true">
@@ -210,7 +226,7 @@ const {
 					}
 					trackLeadSubmit(serviceSlug, suburbSlug, payload.smsOptIn);
 					if (successEl) successEl.hidden = false;
-					form.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>("input, textarea").forEach((el) => {
+					form.querySelectorAll<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>("input, textarea, select").forEach((el) => {
 						if (el.type !== "hidden") el.value = "";
 						if (el.type === "checkbox") (el as HTMLInputElement).checked = false;
 					});
