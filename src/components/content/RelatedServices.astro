@@ -1,5 +1,6 @@
 ---
 import type { Service } from "../../data/types";
+import { isIndexableCombo } from "../../lib/indexing";
 import { comboUrl, serviceHubUrl } from "../../lib/urls";
 
 interface Props {
@@ -8,6 +9,14 @@ interface Props {
 }
 
 const { services, suburbSlug = null } = Astro.props;
+
+function relatedHref(service: Service): string {
+	if (suburbSlug && isIndexableCombo(service.slug, suburbSlug)) {
+		return comboUrl(service.slug, suburbSlug);
+	}
+
+	return serviceHubUrl(service.slug);
+}
 ---
 
 <section class="px-6 py-12">
@@ -16,7 +25,7 @@ const { services, suburbSlug = null } = Astro.props;
 		<div class="mt-8 flex gap-4 overflow-x-auto pb-4">
 			{services.slice(0, 4).map((service) => (
 				<a
-					href={suburbSlug ? comboUrl(service.slug, suburbSlug) : serviceHubUrl(service.slug)}
+					href={relatedHref(service)}
 					class="min-w-72 rounded-lg border border-slate-200 bg-white p-5 shadow-sm transition hover:border-eden-green"
 				>
 					<h3 class="text-lg font-semibold text-eden-navy">{service.name}</h3>
