@@ -39,6 +39,10 @@ interface LeadRequestBody {
 	gclid?: unknown;
 	gbraid?: unknown;
 	wbraid?: unknown;
+	fbclid?: unknown;
+	gclsrc?: unknown;
+	gadSource?: unknown;
+	gadCampaignId?: unknown;
 	gaClientId?: unknown;
 	referrer?: unknown;
 	firstTouch?: unknown;
@@ -64,6 +68,10 @@ interface LeadPayload {
 	gclid: string | null;
 	gbraid: string | null;
 	wbraid: string | null;
+	fbclid: string | null;
+	gclsrc: string | null;
+	gadSource: string | null;
+	gadCampaignId: string | null;
 	gaClientId: string | null;
 	referrer: string | null;
 	firstTouch: Record<string, string | null> | null;
@@ -172,6 +180,10 @@ async function upsertGhlContact(payload: LeadPayload): Promise<boolean> {
 		customField(GHL_CUSTOM_FIELD_IDS.gclid, payload.gclid),
 		customField(GHL_CUSTOM_FIELD_IDS.gbraid, payload.gbraid),
 		customField(GHL_CUSTOM_FIELD_IDS.wbraid, payload.wbraid),
+		optionalCustomField(import.meta.env.GHL_FIELD_FBCLID, payload.fbclid),
+		optionalCustomField(import.meta.env.GHL_FIELD_GCLSRC, payload.gclsrc),
+		optionalCustomField(import.meta.env.GHL_FIELD_GAD_SOURCE, payload.gadSource),
+		optionalCustomField(import.meta.env.GHL_FIELD_GAD_CAMPAIGN_ID, payload.gadCampaignId),
 		optionalCustomField(import.meta.env.GHL_FIELD_SERVICE_SLUG, payload.service),
 		optionalCustomField(import.meta.env.GHL_FIELD_SUBURB_SLUG, payload.suburb),
 		optionalCustomField(import.meta.env.GHL_FIELD_LEAD_MESSAGE, payload.message),
@@ -245,6 +257,10 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
 		gclid: stringOrNull(body.gclid),
 		gbraid: stringOrNull(body.gbraid),
 		wbraid: stringOrNull(body.wbraid),
+		fbclid: stringOrNull(body.fbclid),
+		gclsrc: stringOrNull(body.gclsrc),
+		gadSource: stringOrNull(body.gadSource),
+		gadCampaignId: stringOrNull(body.gadCampaignId),
 		gaClientId: stringOrNull(body.gaClientId),
 		referrer: stringOrNull(body.referrer),
 		firstTouch: attributionOrNull(body.firstTouch),

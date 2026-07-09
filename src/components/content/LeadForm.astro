@@ -116,6 +116,19 @@ const {
 				Website
 				<input type="text" name="website" tabindex="-1" autocomplete="off" />
 			</label>
+			<input type="hidden" name="sourcePage" data-attribution-field="sourcePage" />
+			<input type="hidden" name="utmSource" data-attribution-field="utmSource" />
+			<input type="hidden" name="utmMedium" data-attribution-field="utmMedium" />
+			<input type="hidden" name="utmCampaign" data-attribution-field="utmCampaign" />
+			<input type="hidden" name="utmTerm" data-attribution-field="utmTerm" />
+			<input type="hidden" name="utmContent" data-attribution-field="utmContent" />
+			<input type="hidden" name="gclid" data-attribution-field="gclid" />
+			<input type="hidden" name="gbraid" data-attribution-field="gbraid" />
+			<input type="hidden" name="wbraid" data-attribution-field="wbraid" />
+			<input type="hidden" name="fbclid" data-attribution-field="fbclid" />
+			<input type="hidden" name="gclsrc" data-attribution-field="gclsrc" />
+			<input type="hidden" name="gadSource" data-attribution-field="gadSource" />
+			<input type="hidden" name="gadCampaignId" data-attribution-field="gadCampaignId" />
 		</div>
 
 		<button
@@ -147,9 +160,44 @@ const {
 	import { getAttribution, initAttribution } from "../../lib/attribution";
 	import { trackLeadSubmit, trackLeadSubmitAttempt, trackLeadSubmitError } from "../../lib/tracking";
 
-	function getUrlParam(name: string): string | null {
+	type AttributionSnapshot = ReturnType<typeof getAttribution>;
+
+	const ATTRIBUTION_FIELD_MAP = {
+		utmSource: "utm_source",
+		utmMedium: "utm_medium",
+		utmCampaign: "utm_campaign",
+		utmTerm: "utm_term",
+		utmContent: "utm_content",
+		gclid: "gclid",
+		gbraid: "gbraid",
+		wbraid: "wbraid",
+		fbclid: "fbclid",
+		gclsrc: "gclsrc",
+		gadSource: "gad_source",
+		gadCampaignId: "gad_campaignid",
+	} as const;
+
+	function currentPage(): string {
+		return `${window.location.origin}${window.location.pathname}${window.location.search}${window.location.hash}`;
+	}
+
+	function attributionValue(attribution: AttributionSnapshot, key: keyof typeof ATTRIBUTION_FIELD_MAP): string | null {
+		const paramName = ATTRIBUTION_FIELD_MAP[key];
 		const params = new URLSearchParams(window.location.search);
-		return params.get(name);
+		return params.get(paramName) || attribution.lastTouch[paramName] || attribution.firstTouch[paramName] || null;
+	}
+
+	function syncHiddenAttributionFields(form: HTMLFormElement, attribution: AttributionSnapshot): void {
+		form.querySelectorAll<HTMLInputElement>("[data-attribution-field]").forEach((input) => {
+			const field = input.dataset.attributionField || "";
+			if (field === "sourcePage") {
+				input.value = currentPage();
+				return;
+			}
+			if (field in ATTRIBUTION_FIELD_MAP) {
+				input.value = attributionValue(attribution, field as keyof typeof ATTRIBUTION_FIELD_MAP) || "";
+			}
+		});
 	}
 
 	function getGaClientId(): string | null {
@@ -181,8 +229,9 @@ const {
 
 			trackLeadSubmitAttempt(serviceSlug, suburbSlug);
 
-			const fd = new FormData(form);
 			const attribution = getAttribution();
+			syncHiddenAttributionFields(form, attribution);
+			const fd = new FormData(form);
 			const payload = {
 				firstName: (fd.get("firstName") as string) || null,
 				lastName: (fd.get("lastName") as string) || null,
@@ -192,15 +241,19 @@ const {
 				message: (fd.get("message") as string) || null,
 				service: serviceSlug,
 				suburb: suburbSlug,
-				sourcePage: window.location.pathname,
-				utmSource: getUrlParam("utm_source"),
-				utmMedium: getUrlParam("utm_medium"),
-				utmCampaign: getUrlParam("utm_campaign"),
-				utmTerm: getUrlParam("utm_term"),
-				utmContent: getUrlParam("utm_content"),
-				gclid: getUrlParam("gclid"),
-				gbraid: getUrlParam("gbraid"),
-				wbraid: getUrlParam("wbraid"),
+				sourcePage: currentPage(),
+				utmSource: attributionValue(attribution, "utmSource"),
+				utmMedium: attributionValue(attribution, "utmMedium"),
+				utmCampaign: attributionValue(attribution, "utmCampaign"),
+				utmTerm: attributionValue(attribution, "utmTerm"),
+				utmContent: attributionValue(attribution, "utmContent"),
+				gclid: attributionValue(attribution, "gclid"),
+				gbraid: attributionValue(attribution, "gbraid"),
+				wbraid: attributionValue(attribution, "wbraid"),
+				fbclid: attributionValue(attribution, "fbclid"),
+				gclsrc: attributionValue(attribution, "gclsrc"),
+				gadSource: attributionValue(attribution, "gadSource"),
+				gadCampaignId: attributionValue(attribution, "gadCampaignId"),
 				gaClientId: getGaClientId(),
 				referrer: document.referrer || null,
 				firstTouch: attribution.firstTouch,
