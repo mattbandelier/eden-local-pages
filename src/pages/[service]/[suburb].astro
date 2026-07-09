@@ -15,6 +15,7 @@ import MoneyPageLayer from "../../components/content/MoneyPageLayer.astro";
 import PricingCard from "../../components/content/PricingCard.astro";
 import PremiumConversionBlock from "../../components/content/PremiumConversionBlock.astro";
 import PremiumHeader from "../../components/layout/PremiumHeader.astro";
+import PremiumStickyConsult from "../../components/content/PremiumStickyConsult.astro";
 import PriorityMoneyLinks from "../../components/content/PriorityMoneyLinks.astro";
 import RelatedServices from "../../components/content/RelatedServices.astro";
 import TreatmentSnapshot from "../../components/content/TreatmentSnapshot.astro";
@@ -115,6 +116,7 @@ const isPremiumMoneyPage = isIndexableCombo(service.slug, suburb.slug);
 			/>
 		)}
 	</main>
+	{isPremiumMoneyPage && <PremiumStickyConsult service={service} />}
 	<MobileActionBar service={service} />
 	<Footer />
 </BaseLayout>

@@ -201,49 +201,130 @@ const premiumHeroImages: Record<string, string> = {
 	"female-bhrt": "/assets/eden-health-club-reception.webp",
 };
 const heroImage = premium && service ? premiumHeroImages[service.slug] ?? "/assets/eden-health-club-office.webp" : "/assets/eden-health-club-office.webp";
+const sectionClass =
+	premium && isCombo
+		? "relative max-w-full overflow-hidden bg-eden-forest text-white"
+		: isCombo
+			? "relative max-w-full overflow-hidden bg-eden-forest px-6 py-12 text-white sm:py-16 lg:py-20"
+			: "bg-white px-6 py-14 sm:py-20";
+const heroShellClass =
+	premium && isCombo
+		? "relative mx-auto grid min-h-[calc(86vh-64px)] max-w-6xl gap-10 px-6 py-12 sm:py-16 lg:grid-cols-[1.02fr_0.98fr] lg:items-center"
+		: isCombo
+			? "relative mx-auto grid max-w-6xl gap-8 overflow-hidden lg:grid-cols-[1.05fr_0.95fr] lg:items-end"
+			: "mx-auto max-w-3xl text-center";
+const premiumHighlights = [
+	{
+		title: "Open now",
+		body: "A local Greenwood Village team, not a waitlist or remote-only promise.",
+	},
+	{
+		title: "Under one roof",
+		body: "Medical wellness, recovery, training, body composition, and follow-up can connect.",
+	},
+	{
+		title: "Provider-guided",
+		body: "Labs, history, eligibility, and goals shape the next step when appropriate.",
+	},
+	{
+		title: "Built to continue",
+		body: "The consult can route into a real weekly path inside Eden.",
+	},
+];
 ---
 
-<section class={isCombo ? "relative max-w-full overflow-hidden bg-eden-forest px-6 py-12 text-white sm:py-16 lg:py-20" : "bg-white px-6 py-14 sm:py-20"}>
+<section class={sectionClass}>
 	{premium && (
-		<img
-			src={heroImage}
-			alt=""
-			width="960"
-			height="960"
-			loading="eager"
-			decoding="async"
-			class="absolute inset-0 h-full w-full object-cover"
-			aria-hidden="true"
-		/>
+		<>
+			<img
+				src={heroImage}
+				alt=""
+				width="960"
+				height="960"
+				loading="eager"
+				decoding="async"
+				class="absolute inset-0 h-full w-full object-cover opacity-45"
+				aria-hidden="true"
+			/>
+			<video
+				class="absolute inset-0 hidden h-full w-full object-cover opacity-24 md:block"
+				autoplay
+				muted
+				loop
+				playsinline
+				preload="none"
+				poster={heroImage}
+				aria-hidden="true"
+			>
+				<source src="https://edenhealthclubs.com/wp-content/uploads/2025/07/edenhealth-hero-video.mp4" type="video/mp4" />
+			</video>
+		</>
 	)}
-	<div class={premium ? "absolute inset-0 bg-[linear-gradient(90deg,rgba(25,79,57,0.92),rgba(25,79,57,0.70)_48%,rgba(25,79,57,0.28)),linear-gradient(180deg,rgba(25,79,57,0.10),rgba(25,79,57,0.76))]" : isCombo ? "absolute inset-0 bg-[linear-gradient(135deg,rgba(15,39,51,0.42),rgba(15,39,51,0.14)_45%,rgba(255,255,255,0.06))]" : "hidden"} aria-hidden="true"></div>
-	<div class={isCombo ? "relative mx-auto grid max-w-6xl gap-8 overflow-hidden lg:grid-cols-[1.05fr_0.95fr] lg:items-end" : "mx-auto max-w-3xl text-center"}>
+	<div class={premium ? "absolute inset-0 bg-[linear-gradient(90deg,rgba(28,45,38,0.98),rgba(25,79,57,0.90)_48%,rgba(25,79,57,0.44)),linear-gradient(180deg,rgba(25,79,57,0.08),rgba(25,79,57,0.78))]" : isCombo ? "absolute inset-0 bg-[linear-gradient(135deg,rgba(15,39,51,0.42),rgba(15,39,51,0.14)_45%,rgba(255,255,255,0.06))]" : "hidden"} aria-hidden="true"></div>
+	<div class={heroShellClass}>
 		<div class="min-w-0">
 			{premium && (
-				<a
-					href="https://www.google.com/maps/search/?api=1&query=Eden%20Health%20Club%205990%20S%20University%20Blvd%20Greenwood%20Village%20CO%2080121"
-					target="_blank"
-					rel="noopener"
-					class="mb-6 inline-flex items-center gap-3 rounded-md border border-white/20 bg-white/12 px-4 py-3 text-sm text-white shadow-sm backdrop-blur transition hover:bg-white/18"
-				>
-					<span class="font-semibold">Google Reviews</span>
-					<span class="rounded bg-eden-sage px-2 py-1 font-semibold text-eden-forest">4.9</span>
-				</a>
+				<img
+					src="/assets/eden-health-club-logo-white-transparent-tight.png"
+					alt="Eden Health Club"
+					class="mb-8 h-auto w-36 sm:w-44"
+					loading="eager"
+				/>
 			)}
-			<p class={isCombo ? "text-sm font-semibold uppercase tracking-wide text-white/75" : "text-sm font-semibold uppercase text-eden-green"}>{content.eyebrow}</p>
-			<h1 class={isCombo ? "mt-4 max-w-full break-words text-3xl font-semibold leading-tight text-white sm:text-6xl" : "mt-4 text-4xl font-semibold leading-tight text-eden-navy sm:text-5xl"}>{content.title}</h1>
+			<p class={premium ? "text-sm font-semibold uppercase tracking-normal text-eden-sage" : isCombo ? "text-sm font-semibold uppercase tracking-wide text-white/75" : "text-sm font-semibold uppercase text-eden-green"}>{premium ? "Look. Feel. Perform." : content.eyebrow}</p>
+			<h1 class={premium ? "mt-4 max-w-3xl break-words text-4xl font-semibold leading-tight text-white sm:text-5xl lg:text-6xl" : isCombo ? "mt-4 max-w-full break-words text-3xl font-semibold leading-tight text-white sm:text-6xl" : "mt-4 text-4xl font-semibold leading-tight text-eden-navy sm:text-5xl"}>{content.title}</h1>
 			<p class={isCombo ? "mt-6 max-w-full break-words text-base leading-8 text-white/82 sm:text-lg" : "mt-6 text-base leading-8 text-slate-700 sm:text-lg"}>{displayBody}</p>
+			{premium && (
+				<p class="mt-4 max-w-2xl text-base font-semibold leading-7 text-eden-sage">
+					Open now near DTC with medical wellness, body composition, recovery, and training under one roof.
+				</p>
+			)}
 			{isCombo && (
 				<div class="mt-8 flex flex-col gap-3 sm:flex-row">
 					<a href="#lead-form" class="inline-flex items-center justify-center rounded-md bg-eden-sage px-6 py-3 text-base font-semibold text-eden-forest shadow-sm transition hover:bg-eden-sage/90">
 						{service?.ctaText}
 					</a>
-					<a href="#details" class="inline-flex items-center justify-center rounded-md border border-white/25 bg-white/10 px-6 py-3 text-base font-semibold text-white transition hover:bg-white/15">
-						See details
+					<a href={premium ? "tel:+17206057678" : "#details"} data-phone-link={premium ? true : undefined} class="inline-flex items-center justify-center rounded-md border border-white/25 bg-white/10 px-6 py-3 text-base font-semibold text-white transition hover:bg-white/15">
+						{premium ? "Call 720-605-7678" : "See details"}
 					</a>
 				</div>
 			)}
+			{premium && (
+				<div class="mt-8 grid gap-3 text-sm text-white/90 sm:grid-cols-2">
+					{premiumHighlights.map((item) => (
+						<div class="rounded-lg border border-white/15 bg-white/10 p-4 shadow-sm backdrop-blur">
+							<p class="text-lg font-semibold text-white">{item.title}</p>
+							<p class="mt-2 leading-6 text-white/75">{item.body}</p>
+						</div>
+					))}
+				</div>
+			)}
 		</div>
+		{isCombo && premium && (
+			<div class="relative min-w-0">
+				<div class="overflow-hidden rounded-lg border border-white/15 bg-white/10 p-3 shadow-2xl backdrop-blur">
+					<img src={heroImage} alt="" class="h-72 w-full rounded-md object-cover sm:h-96" loading="eager" />
+					<div class="mt-3 grid gap-3 sm:grid-cols-2">
+						<div class="rounded-md bg-white p-4 text-eden-navy">
+							<p class="text-xs font-semibold uppercase text-eden-green">Local path</p>
+							<p class="mt-2 text-lg font-semibold">A real facility you can use week to week.</p>
+						</div>
+						<div class="rounded-md bg-eden-sage p-4 text-eden-forest">
+							<p class="text-xs font-semibold uppercase">Start clear</p>
+							<p class="mt-2 text-lg font-semibold">Goals, fit, and next steps before guessing.</p>
+						</div>
+					</div>
+					<div class="mt-3 rounded-md border border-white/10 bg-white/10 p-4">
+						<p class="text-xs font-semibold uppercase text-eden-sage">{heroPanel?.label}</p>
+						<div class="mt-3 grid gap-2">
+							{heroPanel?.items.slice(0, 4).map((item) => (
+								<p class="rounded-md bg-white/10 px-3 py-2 text-sm font-medium leading-5 text-white/86">{item}</p>
+							))}
+						</div>
+					</div>
+				</div>
+			</div>
+		)}
 		{isCombo && !premium && (
 			<div class="min-w-0 overflow-hidden rounded-lg border border-white/15 bg-white/10 shadow-2xl backdrop-blur">
 				<img
