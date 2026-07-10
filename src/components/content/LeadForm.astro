@@ -7,6 +7,9 @@ interface Props {
 	submitText?: string;
 	messageLabel?: string;
 	goalOptions?: string[];
+	compact?: boolean;
+	underButtonText?: string;
+	hiddenMessage?: string;
 }
 
 const {
@@ -17,6 +20,9 @@ const {
 	submitText = "Request a consult",
 	messageLabel = "Anything you'd like us to know",
 	goalOptions = [],
+	compact = false,
+	underButtonText = "",
+	hiddenMessage = "",
 } = Astro.props;
 ---
 
@@ -31,26 +37,39 @@ const {
 		data-suburb-slug={suburbSlug ?? ""}
 		novalidate
 	>
-		<div class="grid gap-4 sm:grid-cols-2">
+		{compact ? (
 			<label class="block">
-				<span class="text-sm font-medium text-eden-navy">First name</span>
+				<span class="text-sm font-medium text-eden-navy">Name</span>
 				<input
 					type="text"
-					name="firstName"
-					autocomplete="given-name"
-					class="mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm focus:border-eden-green focus:outline-none focus:ring-1 focus:ring-eden-green"
+					name="fullName"
+					required
+					autocomplete="name"
+					class="mt-1 block w-full rounded-md border border-slate-300 px-3 py-3 text-base focus:border-eden-green focus:outline-none focus:ring-1 focus:ring-eden-green"
 				/>
 			</label>
-			<label class="block">
-				<span class="text-sm font-medium text-eden-navy">Last name</span>
-				<input
-					type="text"
-					name="lastName"
-					autocomplete="family-name"
-					class="mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm focus:border-eden-green focus:outline-none focus:ring-1 focus:ring-eden-green"
-				/>
-			</label>
-		</div>
+		) : (
+			<div class="grid gap-4 sm:grid-cols-2">
+				<label class="block">
+					<span class="text-sm font-medium text-eden-navy">First name</span>
+					<input
+						type="text"
+						name="firstName"
+						autocomplete="given-name"
+						class="mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm focus:border-eden-green focus:outline-none focus:ring-1 focus:ring-eden-green"
+					/>
+				</label>
+				<label class="block">
+					<span class="text-sm font-medium text-eden-navy">Last name</span>
+					<input
+						type="text"
+						name="lastName"
+						autocomplete="family-name"
+						class="mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm focus:border-eden-green focus:outline-none focus:ring-1 focus:ring-eden-green"
+					/>
+				</label>
+			</div>
+		)}
 
 		<label class="block">
 			<span class="text-sm font-medium text-eden-navy">
@@ -62,7 +81,10 @@ const {
 				required
 				autocomplete="tel"
 				inputmode="tel"
-				class="mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm focus:border-eden-green focus:outline-none focus:ring-1 focus:ring-eden-green"
+				class:list={[
+					"mt-1 block w-full rounded-md border border-slate-300 px-3 focus:border-eden-green focus:outline-none focus:ring-1 focus:ring-eden-green",
+					compact ? "py-3 text-base" : "py-2 text-sm",
+				]}
 			/>
 		</label>
 
@@ -75,41 +97,48 @@ const {
 				name="email"
 				required
 				autocomplete="email"
-				class="mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm focus:border-eden-green focus:outline-none focus:ring-1 focus:ring-eden-green"
+				class:list={[
+					"mt-1 block w-full rounded-md border border-slate-300 px-3 focus:border-eden-green focus:outline-none focus:ring-1 focus:ring-eden-green",
+					compact ? "py-3 text-base" : "py-2 text-sm",
+				]}
 			/>
 		</label>
 
-		<label class="flex items-start gap-3">
-			<input
-				type="checkbox"
-				name="smsOptIn"
-				class="mt-1 h-4 w-4 rounded border-slate-300 text-eden-green focus:ring-eden-green"
-			/>
-			<span class="text-sm text-slate-700">
-				I agree to receive SMS messages from Eden Health Club. Reply STOP at any time to opt out. Message &amp; data rates may apply.
-			</span>
-		</label>
+		{!compact && (
+			<label class="flex items-start gap-3">
+				<input
+					type="checkbox"
+					name="smsOptIn"
+					class="mt-1 h-4 w-4 rounded border-slate-300 text-eden-green focus:ring-eden-green"
+				/>
+				<span class="text-sm text-slate-700">
+					I agree to receive SMS messages from Eden Health Club. Reply STOP at any time to opt out. Message &amp; data rates may apply.
+				</span>
+			</label>
+		)}
 
-		<label class="block">
-			<span class="text-sm font-medium text-eden-navy">{messageLabel}</span>
-			{goalOptions.length ? (
-				<select
-					name="message"
-					class="mt-1 block w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm focus:border-eden-green focus:outline-none focus:ring-1 focus:ring-eden-green"
-				>
-					<option value="">Choose one</option>
-					{goalOptions.map((option) => (
-						<option value={option}>{option}</option>
-					))}
-				</select>
-			) : (
-				<textarea
-					name="message"
-					rows="3"
-					class="mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm focus:border-eden-green focus:outline-none focus:ring-1 focus:ring-eden-green"
-				></textarea>
-			)}
-		</label>
+		{!compact && (
+			<label class="block">
+				<span class="text-sm font-medium text-eden-navy">{messageLabel}</span>
+				{goalOptions.length ? (
+					<select
+						name="message"
+						class="mt-1 block w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm focus:border-eden-green focus:outline-none focus:ring-1 focus:ring-eden-green"
+					>
+						<option value="">Choose one</option>
+						{goalOptions.map((option) => (
+							<option value={option}>{option}</option>
+						))}
+					</select>
+				) : (
+					<textarea
+						name="message"
+						rows="3"
+						class="mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm focus:border-eden-green focus:outline-none focus:ring-1 focus:ring-eden-green"
+					></textarea>
+				)}
+			</label>
+		)}
 
 		<div class="hidden" aria-hidden="true">
 			<label>
@@ -129,6 +158,7 @@ const {
 			<input type="hidden" name="gclsrc" data-attribution-field="gclsrc" />
 			<input type="hidden" name="gadSource" data-attribution-field="gadSource" />
 			<input type="hidden" name="gadCampaignId" data-attribution-field="gadCampaignId" />
+			{hiddenMessage && <input type="hidden" name="message" value={hiddenMessage} />}
 		</div>
 
 		<button
@@ -137,6 +167,8 @@ const {
 		>
 			{submitText}
 		</button>
+
+		{underButtonText && <p class="text-center text-sm font-semibold text-slate-600">{underButtonText}</p>}
 
 		<div
 			data-lead-form-success
@@ -151,7 +183,7 @@ const {
 			hidden
 			class="rounded-md border border-red-300 bg-red-50 p-4 text-sm text-red-900"
 		>
-			Something went wrong. Please try again, or call us at <a href="tel:+17206057678" class="underline">720-605-7678</a>.
+			{compact ? "Something went wrong. Please try again." : <span>Something went wrong. Please try again, or call us at <a href="tel:+17206057678" class="underline">720-605-7678</a>.</span>}
 		</div>
 	</form>
 </section>
@@ -232,9 +264,11 @@ const {
 			const attribution = getAttribution();
 			syncHiddenAttributionFields(form, attribution);
 			const fd = new FormData(form);
+			const fullName = ((fd.get("fullName") as string) || "").trim();
+			const [derivedFirstName, ...derivedLastNameParts] = fullName.split(/\s+/).filter(Boolean);
 			const payload = {
-				firstName: (fd.get("firstName") as string) || null,
-				lastName: (fd.get("lastName") as string) || null,
+				firstName: (fd.get("firstName") as string) || derivedFirstName || null,
+				lastName: (fd.get("lastName") as string) || derivedLastNameParts.join(" ") || null,
 				phone: (fd.get("phone") as string) || "",
 				email: (fd.get("email") as string) || "",
 				smsOptIn: fd.get("smsOptIn") === "on",

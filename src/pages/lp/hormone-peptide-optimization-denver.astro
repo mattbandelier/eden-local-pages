@@ -1,162 +1,52 @@
 ---
 import LeadForm from "../../components/content/LeadForm.astro";
-import Footer from "../../components/layout/Footer.astro";
-import PremiumHeader from "../../components/layout/PremiumHeader.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import { canonicalUrl, homeUrl } from "../../lib/urls";
+import { canonicalUrl } from "../../lib/urls";
 import type { JsonLd } from "../../lib/schema-org";
 
 const canonical = canonicalUrl("/lp/hormone-peptide-optimization-denver");
-const title = "$299 Longevity Starter Denver | Hormone, Peptide & HRT Consults | Eden";
+const title = "$299 Longevity Baseline Starter | Eden Health Club Greenwood Village";
 const description =
-	"Start with Eden's $299 Longevity Optimization Starter near Denver: private consult, lab or biomarker review, hormone replacement therapy, peptide therapy, TRT, and longevity planning when appropriate.";
+	"Claim Eden's $299 Longevity Baseline Starter in Greenwood Village: biomarkers, InBody body composition, clinician-guided plan, and a clear next step.";
 
-const proofPoints = [
+const planSteps = [
 	{
-		kicker: "$299 start",
-		title: "Consult + baseline review",
-		body: "A concrete first step before choosing any protocol.",
+		step: "1",
+		title: "Measure",
+		body: "Start with biomarkers and an InBody body-composition baseline so the plan is built from real inputs.",
 	},
 	{
-		kicker: "Clinician-guided",
-		title: "Eligibility first",
-		body: "Goals, history, labs, and fit come before recommendations.",
+		step: "2",
+		title: "Map",
+		body: "Review your goals with Eden's clinician-guided team and choose the most logical starting path.",
 	},
 	{
-		kicker: "Inside Eden",
-		title: "Premium club setting",
-		body: "Wellness, recovery, fitness, and aesthetics under one roof.",
+		step: "3",
+		title: "Move",
+		body: "Turn the plan into action with Eden membership, recovery, training, and optimization support when appropriate.",
 	},
 ];
 
-const searchMatches = [
-	"Hormone Specialist Denver",
-	"Hormone Replacement Therapy Denver",
-	"HRT Near Me",
-	"Peptide Therapy Denver",
-	"Peptide Therapy Near Me",
-	"Peptide Injections",
-	"Medical Peptide Therapy",
-	"Peptide Clinic Denver",
-	"TRT Denver",
-	"Medical Weight Loss Denver",
-	"Longevity Clinic Denver",
-	"Health Optimization Denver",
+const valueStack = [
+	"Biomarker review or lab direction",
+	"InBody body-composition baseline",
+	"Clinician-guided optimization plan",
+	"Recovery and training pathway",
+	"Membership options with ongoing support",
 ];
 
-const offerIncludes = [
+const proofTiles = [
 	{
-		title: "Private longevity consultation",
-		body: "Review your goals, health history, current routines, and what you want to improve before deciding on the right next step.",
+		label: "Open now",
+		value: "South Denver / DTC",
 	},
 	{
-		title: "Lab or biomarker review",
-		body: "Use available data, and determine what else may be needed, so the conversation is grounded in context instead of guesswork.",
+		label: "Eden ecosystem",
+		value: "127,000+ members served",
 	},
 	{
-		title: "Hormone + peptide pathway discussion",
-		body: "Discuss hormone optimization, hormone replacement therapy, HRT, TRT, peptide therapy, medical peptide therapy, medical weight management, recovery, and wellness support when clinically appropriate.",
-	},
-	{
-		title: "First-month wellness credit",
-		body: "If a provider determines a protocol is appropriate, a first-month wellness protocol credit can be applied to the next step.",
-	},
-];
-
-const lanes = [
-	{
-		label: "Hormone optimization",
-		body: "For people comparing hormone specialists, hormone replacement therapy Denver, HRT near me, TRT consults, labs, and provider-guided wellness planning near DTC.",
-	},
-	{
-		label: "Peptide therapy",
-		body: "For people searching peptide therapy Denver, peptide therapy near me, peptide injections, peptide clinic Denver, peptide doctors, or peptides Denver who want screening, education, and a safer clinical starting point.",
-	},
-	{
-		label: "Medical weight management",
-		body: "For people exploring medical weight loss Denver, GLP-1 support Denver, weight-loss clinic options, body-composition context, and follow-up inside a real facility.",
-	},
-	{
-		label: "Longevity club",
-		body: "For adults comparing longevity clinic Denver, longevity clinic near me, health optimization Denver, biomarkers, recovery, fitness, aesthetics, and wellness support in one premium environment.",
-	},
-];
-
-const differentiators = [
-	["First step", "$299 starter visit with consult, lab or biomarker review, and eligibility discussion", "A menu of protocols before anyone understands fit"],
-	["Environment", "Greenwood Village health club with recovery, fitness, aesthetics, and wellness in one location", "A single-service clinic or remote-only program"],
-	["Clinical path", "Provider review determines whether hormones, peptides, weight management, or another path makes sense", "Medication-first messaging that can skip the why"],
-	["Follow-through", "Eden One and Elevate can connect ongoing care, credits, training, recovery, bloodwork rhythm, and support", "A one-off visit with no day-to-day system"],
-];
-
-const process = [
-	{
-		step: "Start",
-		body: "Book the $299 starter visit and tell Eden what you want to improve.",
-	},
-	{
-		step: "Review",
-		body: "Discuss goals, history, labs or biomarkers, body-composition context, and eligibility.",
-	},
-	{
-		step: "Plan",
-		body: "Compare the paths that may fit: hormones, peptides, medical weight management, recovery, training, or membership.",
-	},
-	{
-		step: "Follow",
-		body: "Move into the right next step with clear pricing, timing, and follow-up support.",
-	},
-];
-
-const localSignals = [
-	{
-		area: "Greenwood Village",
-		body: "Eden's home base at 5990 S University Blvd for clients who want in-person longevity care close to home.",
-	},
-	{
-		area: "Denver Tech Center",
-		body: "Convenient for executives, founders, and professionals comparing premium wellness options near work.",
-	},
-	{
-		area: "Cherry Hills Village",
-		body: "A polished local option for clients comparing premium hormone, peptide, recovery, and wellness care.",
-	},
-	{
-		area: "Centennial, Englewood, Lone Tree, and Highlands Ranch",
-		body: "Built for the south-metro buyer who wants a high-trust alternative to scattered single-service appointments.",
-	},
-];
-
-const faqs = [
-	{
-		question: "What is the $299 Longevity Optimization Starter?",
-		answer:
-			"It is a private first visit designed for people exploring longevity, hormone optimization, peptides, medical weight management, recovery, and wellness planning. It includes a consultation, lab or biomarker review when appropriate, and a first-month wellness protocol credit if a provider determines a next step is clinically appropriate.",
-	},
-	{
-		question: "Does the $299 starter include peptides or hormone treatment?",
-		answer:
-			"No. The starter visit does not guarantee medication, peptide therapy, hormone therapy, GLP-1 support, or any specific protocol. Eligibility and recommendations are determined by provider review.",
-	},
-	{
-		question: "Why start with labs or biomarkers?",
-		answer:
-			"Hormones, peptides, medical weight management, and wellness protocols should be matched to the person. Labs, biomarkers, health history, goals, and provider review help Eden avoid guesswork.",
-	},
-	{
-		question: "What happens after the starter visit?",
-		answer:
-			"If an ongoing plan makes sense, Eden can help you compare options such as Eden One, Elevate, member pricing, monthly credits, bloodwork rhythm, injection support, training, recovery, or other wellness support.",
-	},
-	{
-		question: "Is Eden an online peptide clinic?",
-		answer:
-			"No. Eden is an in-person health club and medical wellness environment in Greenwood Village. The starter visit is built around review, fit, and follow-through, not remote product shopping.",
-	},
-	{
-		question: "Where is Eden located?",
-		answer:
-			"Eden Health Club is located at 5990 S University Blvd in Greenwood Village, close to Denver Tech Center, Cherry Hills Village, Centennial, Englewood, Littleton, Lone Tree, Highlands Ranch, and South Denver.",
+		label: "One facility",
+		value: "Medical + fitness + recovery",
 	},
 ];
 
@@ -164,7 +54,7 @@ const jsonLd: JsonLd[] = [
 	{
 		"@context": "https://schema.org",
 		"@type": "MedicalBusiness",
-		"@id": `${canonical}#medical-business`,
+		"@id": `${canonical}#business`,
 		name: "Eden Health Club",
 		url: canonical,
 		telephone: "+17206057678",
@@ -176,376 +66,197 @@ const jsonLd: JsonLd[] = [
 			postalCode: "80121",
 			addressCountry: "US",
 		},
-		geo: {
-			"@type": "GeoCoordinates",
-			latitude: 39.6088,
-			longitude: -104.9583,
-		},
 		priceRange: "$$",
-		medicalSpecialty: ["FunctionalMedicine", "SportsMedicine"],
-		areaServed: [
-			{ "@type": "City", name: "Denver", addressRegion: "CO" },
-			{ "@type": "City", name: "Greenwood Village", addressRegion: "CO" },
-			{ "@type": "City", name: "Centennial", addressRegion: "CO" },
-			{ "@type": "City", name: "Littleton", addressRegion: "CO" },
-		],
-		sameAs: [
-			"https://edenhealthclubs.com/",
-			"https://www.facebook.com/edenhealthclubs",
-			"https://www.instagram.com/edenhealthclubs",
-			"https://www.tiktok.com/@edenhealthclubs",
-		],
+		areaServed: "Greenwood Village, Denver Tech Center, Cherry Hills Village, Centennial, Littleton, Englewood, and South Denver",
 	},
 	{
 		"@context": "https://schema.org",
 		"@type": "Service",
-		"@id": `${canonical}#service`,
-		name: "$299 Longevity Optimization Starter",
-		serviceType: "Longevity consultation and wellness planning",
+		"@id": `${canonical}#offer`,
+		name: "$299 Longevity Baseline Starter",
+		serviceType: "Longevity baseline visit and optimization planning",
 		url: canonical,
 		description,
+		provider: { "@id": `${canonical}#business` },
 		offers: {
 			"@type": "Offer",
 			price: "299",
 			priceCurrency: "USD",
 			availability: "https://schema.org/InStock",
 		},
-		provider: {
-			"@id": `${canonical}#medical-business`,
-			"@type": "MedicalBusiness",
-			name: "Eden Health Club",
-		},
-		areaServed:
-			"Denver, Greenwood Village, Denver Tech Center, Cherry Hills Village, Centennial, Englewood, Littleton, Lone Tree, Highlands Ranch, and South Denver",
-	},
-	{
-		"@context": "https://schema.org",
-		"@type": "FAQPage",
-		"@id": `${canonical}#faq`,
-		mainEntity: faqs.map((faq) => ({
-			"@type": "Question",
-			name: faq.question,
-			acceptedAnswer: {
-				"@type": "Answer",
-				text: faq.answer,
-			},
-		})),
-	},
-	{
-		"@context": "https://schema.org",
-		"@type": "BreadcrumbList",
-		itemListElement: [
-			{ "@type": "ListItem", position: 1, name: "Home", item: homeUrl() },
-			{ "@type": "ListItem", position: 2, name: "Longevity Optimization Starter", item: canonical },
-		],
 	},
 ];
 ---
 
-<BaseLayout title={title} description={description} canonicalUrl={canonical} jsonLd={jsonLd} noindex={true}>
-	<PremiumHeader servicesHref="#offer" pricingHref="#lead-form" contactHref="#lead-form" ctaLabel="$299 Starter" />
-	<main class="bg-eden-paper">
-		<section class="relative overflow-hidden bg-eden-forest text-white">
+<BaseLayout
+	title={title}
+	description={description}
+	canonicalUrl={canonical}
+	jsonLd={jsonLd}
+	noindex={true}
+	preloadImages={["/assets/eden-health-club-reception.webp", "/assets/eden-health-club-logo-white-transparent-tight.png"]}
+>
+	<main class="min-h-screen overflow-hidden bg-[#061710] pb-28 text-white sm:pb-0">
+		<section class="relative min-h-[100svh] overflow-hidden px-5 py-5 sm:px-8 lg:px-12">
 			<div class="absolute inset-0">
-				<img src="/assets/eden-health-club-reception.webp" alt="" class="h-full w-full object-cover opacity-30" loading="eager" />
-				<video
-					class="absolute inset-0 hidden h-full w-full object-cover opacity-28 md:block"
-					autoplay
-					muted
-					loop
-					playsinline
-					preload="none"
-					poster="/assets/eden-health-club-reception.webp"
-					aria-hidden="true"
-				>
-					<source src="https://edenhealthclubs.com/wp-content/uploads/2025/07/edenhealth-hero-video.mp4" type="video/mp4" />
-				</video>
-				<div class="absolute inset-0 bg-[linear-gradient(90deg,rgba(28,45,38,0.98),rgba(25,79,57,0.9)_48%,rgba(25,79,57,0.48))]"></div>
+				<img src="/assets/eden-health-club-reception.webp" alt="" class="h-full w-full object-cover opacity-34" loading="eager" fetchpriority="high" decoding="async" width="1388" height="1000" />
+				<div class="absolute inset-0 bg-[linear-gradient(90deg,rgba(3,18,12,0.98)_0%,rgba(3,18,12,0.92)_38%,rgba(3,18,12,0.62)_67%,rgba(3,18,12,0.35)_100%)]"></div>
+				<div class="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#061710] to-transparent"></div>
 			</div>
-			<div class="relative mx-auto grid min-h-[calc(100vh-64px)] max-w-6xl gap-10 px-6 py-12 sm:py-16 lg:grid-cols-[1.02fr_0.98fr] lg:items-center">
-				<div>
-					<img
-						src="/assets/eden-health-club-logo-white-transparent-tight.png"
-						alt="Eden Health Club"
-						class="mb-8 h-auto w-36 sm:w-44"
-						loading="eager"
-					/>
-					<p class="text-sm font-semibold uppercase tracking-normal text-eden-sage">Premium longevity care in Greenwood Village</p>
-					<h1 class="mt-4 max-w-3xl text-4xl font-semibold leading-tight sm:text-5xl lg:text-6xl">
-						Start your hormone, peptide, and longevity plan for $299.
+
+			<div class="relative mx-auto grid min-h-[calc(100svh-40px)] max-w-7xl items-center gap-8 lg:grid-cols-[1.03fr_0.97fr]">
+				<div class="max-w-2xl">
+					<img src="/assets/eden-health-club-logo-white-transparent-tight.png" alt="Eden Health Club" class="h-20 w-auto sm:h-24" loading="eager" fetchpriority="high" decoding="async" width="744" height="447" />
+					<p class="mt-6 text-sm font-black uppercase tracking-normal text-[#d8bf78] sm:text-base">Open now in South Denver / DTC</p>
+					<h1 class="mt-3 text-[3.7rem] font-black uppercase leading-[0.86] tracking-normal text-white sm:text-7xl lg:text-8xl">
+						$299<br />Longevity Baseline
 					</h1>
-					<p class="mt-5 max-w-2xl text-base leading-8 text-white/86 sm:text-lg">
-						Begin with a private consultation, baseline lab or biomarker review, and a first-month wellness protocol credit if clinically appropriate.
+					<p class="mt-7 max-w-xl text-2xl font-black leading-tight text-white sm:text-3xl">
+						Clinician-guided optimization, built from biomarkers and body composition.
 					</p>
-					<div class="mt-8 flex flex-col gap-3 sm:flex-row">
-						<a href="#lead-form" class="rounded-md bg-eden-sage px-6 py-3 text-center text-base font-semibold text-eden-forest shadow-sm">
-							Book my $299 starter visit
+
+					<div class="mt-5 grid max-w-xl grid-cols-2 gap-3">
+						{planSteps.map((item) => (
+							<div class="border border-white/30 bg-white/8 p-4 backdrop-blur-sm">
+								<p class="text-lg font-black uppercase tracking-normal text-white">{item.title}</p>
+								<p class="mt-1 text-sm font-semibold leading-snug text-white/78">{item.title === "Measure" ? "Biomarkers + InBody" : item.title === "Map" ? "Clinician-guided plan" : "Membership + recovery"}</p>
+							</div>
+						))}
+						<div class="border border-white/30 bg-white/8 p-4 backdrop-blur-sm">
+							<p class="text-lg font-black uppercase tracking-normal text-white">Support</p>
+							<p class="mt-1 text-sm font-semibold leading-snug text-white/78">Training + next steps</p>
+						</div>
+					</div>
+
+					<div class="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
+						<a href="#lead-form" class="inline-flex items-center justify-center rounded-full bg-[#f4eedf] px-7 py-4 text-base font-black text-[#063322] transition hover:bg-white">
+							Claim My Baseline Slot
 						</a>
-						<a href="tel:+17206057678" data-phone-link class="rounded-md border border-white/35 px-6 py-3 text-center text-base font-semibold text-white hover:bg-white/10">
-							Call 720-605-7678
-						</a>
-					</div>
-					<p class="mt-5 max-w-2xl text-xs leading-6 text-white/62">
-						Eligibility, labs, therapies, and protocol recommendations are determined by provider review. Results vary. Not all guests will qualify for peptide therapy, hormone therapy, GLP-1 support, or any specific protocol.
-					</p>
-					<div class="mt-6 max-w-3xl">
-						<p class="text-xs font-semibold uppercase text-eden-sage">Built for high-intent Denver searches</p>
-						<div class="mt-3 flex flex-wrap gap-2">
-							{searchMatches.map((term) => (
-								<span class="rounded-full border border-white/15 bg-white/10 px-3 py-2 text-xs font-semibold text-white">{term}</span>
-							))}
-						</div>
-					</div>
-					<div class="mt-8 grid gap-3 text-sm text-white/88 sm:grid-cols-3">
-						{proofPoints.map((point) => (
-							<div class="rounded-lg border border-white/15 bg-white/8 p-4 backdrop-blur">
-								<p class="text-xs font-semibold uppercase text-eden-sage">{point.kicker}</p>
-								<p class="mt-2 text-lg font-semibold text-white">{point.title}</p>
-								<p class="mt-2 leading-6 text-white/72">{point.body}</p>
-							</div>
-						))}
+						<p class="text-sm font-bold leading-5 text-white/72">Tap and our team will text or call to schedule.</p>
 					</div>
 				</div>
-				<div class="relative">
-					<div class="overflow-hidden rounded-lg border border-white/15 bg-white/10 p-3 shadow-2xl backdrop-blur">
-						<div class="grid gap-3 sm:grid-cols-[0.88fr_1.12fr]">
-							<div class="overflow-hidden rounded-md">
-								<img src="/assets/mens-hormone-optimization.webp" alt="" class="h-full min-h-72 w-full object-cover object-center" loading="eager" />
-							</div>
-							<div class="grid gap-3">
-								<div class="overflow-hidden rounded-md">
-									<img src="/assets/fitness-recovery.webp" alt="" class="h-40 w-full object-cover sm:h-full" loading="lazy" />
-								</div>
-								<div class="grid grid-cols-2 gap-3">
-									<div class="rounded-md bg-white p-4 text-eden-navy">
-										<p class="text-xs font-semibold uppercase text-eden-green">Offer</p>
-										<p class="mt-2 text-lg font-semibold">$299 starter visit.</p>
-									</div>
-									<div class="rounded-md bg-eden-sage p-4 text-eden-forest">
-										<p class="text-xs font-semibold uppercase">Fit first</p>
-										<p class="mt-2 text-lg font-semibold">Protocols only if appropriate.</p>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="mt-3 rounded-md border border-eden-line bg-white p-5 text-eden-navy shadow-sm">
-							<p class="text-sm font-semibold uppercase text-eden-green">Data before protocols</p>
-							<p class="mt-2 text-xl font-semibold leading-tight">
-								A premium starting point for adults comparing hormones, peptides, medical weight management, and longevity care near Denver.
-							</p>
-						</div>
+
+				<div class="relative hidden min-h-[650px] lg:block">
+					<div class="absolute right-0 top-12 h-[560px] w-[82%] overflow-hidden border border-white/14 bg-white/8">
+						<img src="/assets/mens-hormone-optimization.webp" alt="" class="h-full w-full object-cover object-center" loading="eager" fetchpriority="high" decoding="async" width="1024" height="1536" />
+						<div class="absolute inset-0 bg-gradient-to-t from-[#061710]/55 via-transparent to-transparent"></div>
+					</div>
+					<div class="absolute bottom-16 left-0 w-[56%] border border-[#d8bf78]/70 bg-[#061710]/82 p-5 shadow-2xl backdrop-blur-md">
+						<p class="text-xs font-black uppercase tracking-normal text-[#d8bf78]">Eden Health Ecosystem</p>
+						<p class="mt-2 text-3xl font-black leading-none text-white">127,000+ members served</p>
+						<p class="mt-3 text-sm font-semibold leading-5 text-white/76">A real facility for medical wellness, recovery, body composition, and follow-through.</p>
 					</div>
 				</div>
 			</div>
 		</section>
 
-		<section id="offer" class="bg-white px-6 py-12 sm:py-16">
-			<div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.82fr_1.18fr] lg:items-start">
+		<section class="relative bg-[#f6f0e4] px-5 py-10 text-[#082317] sm:px-8 sm:py-14 lg:px-12">
+			<div class="mx-auto grid max-w-7xl gap-5 md:grid-cols-3">
+				{proofTiles.map((tile) => (
+					<div class="border border-[#082317]/14 bg-white p-5">
+						<p class="text-xs font-black uppercase tracking-normal text-[#8b6d2c]">{tile.label}</p>
+						<p class="mt-2 text-2xl font-black leading-tight">{tile.value}</p>
+					</div>
+				))}
+			</div>
+		</section>
+
+		<section class="bg-[#f6f0e4] px-5 py-10 text-[#082317] sm:px-8 sm:py-16 lg:px-12">
+			<div class="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.9fr_1.1fr]">
 				<div>
-					<p class="text-sm font-semibold uppercase text-eden-green">$299 Longevity Optimization Starter</p>
-					<h2 class="mt-3 text-3xl font-semibold leading-tight text-eden-navy sm:text-4xl">
-						A smarter first step before choosing a protocol.
-					</h2>
-					<p class="mt-4 text-base leading-8 text-slate-700">
-						Peptides, hormones, hormone replacement therapy, TRT, GLP-1 support, and longevity protocols should not start with a product. They should start with goals, history, labs when appropriate, and provider review.
+					<p class="text-sm font-black uppercase tracking-normal text-[#8b6d2c]">The Eden 3-Step Baseline Plan</p>
+					<h2 class="mt-3 text-4xl font-black leading-none tracking-normal sm:text-5xl">A smarter first step before you choose a program.</h2>
+					<p class="mt-5 text-lg font-semibold leading-7 text-[#294237]">
+						Most people are guessing between labs, peptides, hormones, training, recovery, and membership. Eden starts with a baseline, then routes you to the next best step.
 					</p>
 				</div>
-				<div class="grid gap-4 sm:grid-cols-2">
-					{offerIncludes.map((item) => (
-						<div class="rounded-lg border border-eden-line bg-eden-paper p-5 shadow-sm">
-							<h3 class="text-xl font-semibold text-eden-navy">{item.title}</h3>
-							<p class="mt-3 text-sm leading-6 text-slate-700">{item.body}</p>
-						</div>
-					))}
-				</div>
-			</div>
-		</section>
 
-		<section class="px-6 py-12 sm:py-16">
-			<div class="mx-auto max-w-6xl">
-				<div class="grid gap-8 lg:grid-cols-[0.82fr_1.18fr] lg:items-end">
-					<div>
-						<p class="text-sm font-semibold uppercase text-eden-green">Search intent Eden should own</p>
-						<h2 class="mt-3 text-3xl font-semibold leading-tight text-eden-navy sm:text-4xl">
-							One page for the highest-value longevity demand lanes.
-						</h2>
-					</div>
-					<p class="text-base leading-8 text-slate-700">
-						This paid page is built for the searches Eden is already proving it can convert: hormone specialists, hormone replacement therapy Denver, peptide therapy Denver, peptide therapy near me, peptide injections, GLP-1 support, medical weight management, TRT Denver, and longevity clinic demand around South Denver.
-					</p>
-				</div>
-				<div class="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-					{lanes.map((item) => (
-						<div class="rounded-lg border border-eden-line bg-white p-5 shadow-sm">
-							<p class="text-xs font-semibold uppercase text-eden-green">Intent lane</p>
-							<h3 class="mt-2 text-xl font-semibold text-eden-navy">{item.label}</h3>
-							<p class="mt-3 text-sm leading-6 text-slate-700">{item.body}</p>
-						</div>
-					))}
-				</div>
-			</div>
-		</section>
-
-		<section class="bg-white px-6 py-12 sm:py-16">
-			<div class="mx-auto max-w-6xl">
-				<div class="grid gap-8 lg:grid-cols-[0.82fr_1.18fr] lg:items-start">
-					<div>
-						<p class="text-sm font-semibold uppercase text-eden-green">Why Eden</p>
-						<h2 class="mt-3 text-3xl font-semibold leading-tight text-eden-navy sm:text-4xl">
-							The advantage is what happens after the review.
-						</h2>
-						<p class="mt-4 text-base leading-8 text-slate-700">
-							Online clinics can sell access. Single-service clinics can sell one modality. Eden can connect provider-guided wellness with recovery, training, InBody, aesthetics, and a premium local facility.
-						</p>
-					</div>
-					<div class="hidden overflow-hidden rounded-lg border border-eden-line bg-eden-paper shadow-sm md:block">
-						<div class="grid grid-cols-[0.72fr_1fr_1fr] bg-eden-forest text-sm font-semibold text-white">
-							<div class="p-4">Decision point</div>
-							<div class="border-l border-white/10 p-4">Eden path</div>
-							<div class="border-l border-white/10 p-4">Generic alternative</div>
-						</div>
-						{differentiators.map(([label, eden, other]) => (
-							<div class="grid grid-cols-[0.72fr_1fr_1fr] border-t border-eden-line text-sm">
-								<div class="bg-white p-4 font-semibold text-eden-navy">{label}</div>
-								<div class="border-l border-eden-line p-4 leading-6 text-slate-700">{eden}</div>
-								<div class="border-l border-eden-line p-4 leading-6 text-slate-600">{other}</div>
+				<div class="grid gap-4">
+					{planSteps.map((item) => (
+						<div class="grid gap-4 border border-[#082317]/14 bg-white p-5 sm:grid-cols-[72px_1fr]">
+							<div class="flex h-14 w-14 items-center justify-center rounded-full bg-[#082317] text-2xl font-black text-[#f4eedf]">{item.step}</div>
+							<div>
+								<h3 class="text-2xl font-black">{item.title}</h3>
+								<p class="mt-2 text-base font-semibold leading-6 text-[#345145]">{item.body}</p>
 							</div>
-						))}
-					</div>
-					<div class="grid gap-4 md:hidden">
-						{differentiators.map(([label, eden, other]) => (
-							<div class="rounded-lg border border-eden-line bg-eden-paper p-5">
-								<p class="text-sm font-semibold uppercase text-eden-green">{label}</p>
-								<div class="mt-4 rounded-md bg-white p-4">
-									<p class="text-sm font-semibold text-eden-navy">Eden path</p>
-									<p class="mt-2 text-sm leading-6 text-slate-700">{eden}</p>
-								</div>
-								<div class="mt-3 rounded-md border border-eden-line p-4">
-									<p class="text-sm font-semibold text-eden-navy">Generic alternative</p>
-									<p class="mt-2 text-sm leading-6 text-slate-600">{other}</p>
-								</div>
-							</div>
-						))}
-					</div>
-				</div>
-			</div>
-		</section>
-
-		<section class="relative overflow-hidden bg-eden-forest px-6 py-12 text-white sm:py-16">
-			<div class="absolute inset-y-0 right-0 hidden w-1/2 lg:block">
-				<img src="/assets/fitness-strength-class.avif" alt="" class="h-full w-full object-cover opacity-24" loading="lazy" />
-				<div class="absolute inset-0 bg-gradient-to-r from-eden-forest via-eden-forest/78 to-eden-forest/20"></div>
-			</div>
-			<div class="relative mx-auto max-w-6xl">
-				<div class="max-w-3xl">
-					<p class="text-sm font-semibold uppercase text-eden-sage">How it works</p>
-					<h2 class="mt-3 text-3xl font-semibold leading-tight sm:text-4xl">Start. Review. Plan. Follow.</h2>
-					<p class="mt-4 text-base leading-8 text-white/78">
-						The offer is intentionally simple: a paid, serious first step that filters out low-intent shoppers and gives qualified guests a clear path into Eden's ongoing wellness system.
-					</p>
-				</div>
-				<div class="relative mt-8 grid gap-4 md:grid-cols-4">
-					{process.map((item, index) => (
-						<div class="rounded-lg border border-white/15 bg-white/10 p-5 backdrop-blur">
-							<div class="flex h-9 w-9 items-center justify-center rounded-full bg-eden-sage text-sm font-semibold text-eden-forest">{index + 1}</div>
-							<h3 class="mt-4 text-xl font-semibold">{item.step}</h3>
-							<p class="mt-3 text-sm leading-6 text-white/74">{item.body}</p>
 						</div>
 					))}
 				</div>
 			</div>
 		</section>
 
-		<section class="px-6 py-12 sm:py-16">
-			<div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.92fr_1.08fr] lg:items-start">
+		<section class="bg-[#061710] px-5 py-10 sm:px-8 sm:py-16 lg:px-12">
+			<div class="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
 				<div>
-					<p class="text-sm font-semibold uppercase text-eden-green">Local premium fit</p>
-					<h2 class="mt-3 text-3xl font-semibold leading-tight text-eden-navy sm:text-4xl">
-						Built for Greenwood Village, DTC, Cherry Hills, and the south Denver wellness buyer.
-					</h2>
-					<p class="mt-4 text-base leading-8 text-slate-700">
-						Eden Health Club is located at 5990 S University Blvd in Greenwood Village. This page is built for paid search traffic that wants an in-person alternative to remote peptide access, peptide clinic shopping, scattered hormone clinics, or generic wellness programs.
-					</p>
-					<div class="mt-6 grid gap-3 text-sm">
-						{localSignals.map((item) => (
-							<div class="rounded-lg border border-eden-line bg-white p-4">
-								<p class="font-semibold text-eden-navy">{item.area}</p>
-								<p class="mt-1 leading-6 text-slate-700">{item.body}</p>
+					<p class="text-sm font-black uppercase tracking-normal text-[#d8bf78]">$299 full-price starter</p>
+					<h2 class="mt-3 text-4xl font-black leading-none tracking-normal sm:text-5xl">What your Baseline Starter includes.</h2>
+					<div class="mt-7 grid gap-3 sm:grid-cols-2">
+						{valueStack.map((item) => (
+							<div class="border border-white/16 bg-white/8 p-4">
+								<p class="text-lg font-black leading-tight text-white">{item}</p>
 							</div>
 						))}
 					</div>
+					<p class="mt-5 max-w-2xl text-sm font-semibold leading-6 text-white/70">
+						The starter visit does not guarantee treatment, medication, or a specific protocol. Recommendations depend on goals, history, labs or biomarkers, and clinician review.
+					</p>
+				</div>
+
+				<div class="overflow-hidden border border-white/14 bg-white/8">
+					<img src="/assets/fitness-recovery.webp" alt="" class="h-80 w-full object-cover" loading="lazy" />
+					<div class="p-5">
+						<p class="text-xs font-black uppercase tracking-normal text-[#d8bf78]">Why Eden is different</p>
+						<p class="mt-2 text-2xl font-black leading-tight">Medical wellness inside a working fitness and recovery facility.</p>
+						<p class="mt-3 text-base font-semibold leading-6 text-white/72">That means the plan can connect to real daily execution, not just a one-time consult.</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="bg-[#f6f0e4] px-5 py-10 text-[#082317] sm:px-8 sm:py-16 lg:px-12">
+			<div class="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.92fr_1.08fr] lg:items-start">
+				<div>
+					<p class="text-sm font-black uppercase tracking-normal text-[#8b6d2c]">Claim your baseline</p>
+					<h2 class="mt-3 text-4xl font-black leading-none tracking-normal sm:text-5xl">$299 Longevity Baseline Starter</h2>
+					<p class="mt-5 text-lg font-semibold leading-7 text-[#294237]">
+						Leave your info and Eden will text or call to schedule the right visit time.
+					</p>
 				</div>
 				<LeadForm
-					serviceSlug="longevity-optimization-starter-299"
+					serviceSlug="longevity-baseline-starter-299"
 					suburbSlug="greenwood-village"
-					heading="Book the $299 starter visit"
-					subheading="Tell Eden what you want to explore. The team will follow up about fit, labs or biomarker review, and next steps."
-					submitText="Request my $299 starter visit"
+					heading="$299 Longevity Baseline Starter"
+					subheading="Biomarkers, InBody body composition, and a clinician-guided plan in Greenwood Village."
+					submitText="Claim My Baseline Slot"
+					compact={true}
+					underButtonText="Tap and our team will text or call to schedule."
+					hiddenMessage="$299 Longevity Baseline Starter claimed: biomarkers, InBody body composition, clinician-guided plan, and Eden membership/recovery/training next-step discussion."
 				/>
 			</div>
 		</section>
-
-		<section class="bg-white px-6 py-12 sm:py-16" aria-labelledby="longevity-starter-faq-heading">
-			<div class="mx-auto max-w-4xl">
-				<p class="text-sm font-semibold uppercase text-eden-green">FAQ</p>
-				<h2 id="longevity-starter-faq-heading" class="mt-3 text-3xl font-semibold leading-tight text-eden-navy sm:text-4xl">
-					Questions before booking.
-				</h2>
-				<div class="mt-8 divide-y divide-eden-line rounded-lg border border-eden-line bg-eden-paper">
-					{faqs.map((faq) => (
-						<details class="group p-5">
-							<summary class="cursor-pointer list-none text-lg font-semibold text-eden-navy">
-								{faq.question}
-							</summary>
-							<p class="mt-3 text-sm leading-7 text-slate-700">{faq.answer}</p>
-						</details>
-					))}
-				</div>
-			</div>
-		</section>
-
-		<section class="bg-eden-forest px-6 py-10 text-white">
-			<div class="mx-auto flex max-w-6xl flex-col gap-5 md:flex-row md:items-center md:justify-between">
-				<div>
-					<p class="text-sm font-semibold uppercase text-eden-sage">$299 Longevity Optimization Starter</p>
-					<h2 class="mt-2 text-3xl font-semibold">Start with a real baseline. Move with a plan.</h2>
-				</div>
-				<a href="#lead-form" class="rounded-md bg-eden-sage px-6 py-3 text-center text-base font-semibold text-eden-forest">
-					Book my starter visit
-				</a>
-			</div>
-		</section>
 	</main>
-	<div
-		data-longevity-starter-sticky
-		class="pointer-events-none fixed bottom-5 right-5 z-40 hidden max-w-xs translate-y-3 rounded-lg border border-white/20 bg-eden-forest/95 p-3 text-white opacity-0 shadow-2xl backdrop-blur transition duration-200 md:block"
-	>
-		<p class="text-xs font-semibold uppercase text-eden-sage">$299 Longevity Optimization Starter</p>
-		<p class="mt-1 text-sm leading-5 text-white/82">Private consult, lab or biomarker review, and a wellness credit if clinically appropriate.</p>
-		<a href="#lead-form" class="mt-3 block rounded-md bg-eden-sage px-4 py-3 text-center text-sm font-semibold text-eden-forest">
-			Book my $299 starter visit
-		</a>
-	</div>
-	<div class="fixed inset-x-0 bottom-0 z-40 border-t border-eden-line bg-white/96 p-3 shadow-lg backdrop-blur md:hidden">
-		<div class="mx-auto flex max-w-md gap-2">
-			<a href="#lead-form" class="flex-1 rounded-md bg-eden-green px-4 py-3 text-center text-sm font-semibold text-white">$299 starter</a>
-			<a href="tel:+17206057678" data-phone-link class="rounded-md border border-eden-line px-4 py-3 text-center text-sm font-semibold text-eden-navy">Call</a>
+
+	<div data-sticky-claim class="pointer-events-none fixed inset-x-0 bottom-0 z-50 translate-y-6 border-t border-white/12 bg-[#061710]/96 p-3 text-white opacity-0 shadow-2xl backdrop-blur transition duration-300 sm:hidden">
+		<div class="mx-auto flex max-w-md items-center gap-3">
+			<div class="min-w-0 flex-1">
+				<p class="text-xs font-black uppercase tracking-normal text-[#d8bf78]">$299 Baseline Starter</p>
+				<p class="truncate text-sm font-bold text-white/78">Biomarkers + InBody + plan</p>
+			</div>
+			<a href="#lead-form" class="shrink-0 rounded-full bg-[#f4eedf] px-4 py-3 text-sm font-black text-[#063322]">Claim Slot</a>
 		</div>
 	</div>
-	<Footer />
+
+	<script>
+		const stickyClaim = document.querySelector<HTMLElement>("[data-sticky-claim]");
+		const syncStickyClaim = () => {
+			if (!stickyClaim) return;
+			const shouldShow = window.scrollY > window.innerHeight * 0.65;
+			stickyClaim.classList.toggle("pointer-events-none", !shouldShow);
+			stickyClaim.classList.toggle("translate-y-6", !shouldShow);
+			stickyClaim.classList.toggle("opacity-0", !shouldShow);
+		};
+		syncStickyClaim();
+		window.addEventListener("scroll", syncStickyClaim, { passive: true });
+		window.addEventListener("resize", syncStickyClaim);
+	</script>
 </BaseLayout>
-
-<script>
-	const starterSticky = document.querySelector<HTMLElement>("[data-longevity-starter-sticky]");
-	const updateStarterSticky = () => {
-		if (!starterSticky) return;
-		const shouldShow = window.scrollY > window.innerHeight * 0.55;
-		starterSticky.classList.toggle("opacity-0", !shouldShow);
-		starterSticky.classList.toggle("translate-y-3", !shouldShow);
-		starterSticky.classList.toggle("pointer-events-none", !shouldShow);
-	};
-
-	updateStarterSticky();
-	window.addEventListener("scroll", updateStarterSticky, { passive: true });
-	window.addEventListener("resize", updateStarterSticky);
-</script>

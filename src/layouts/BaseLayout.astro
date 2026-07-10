@@ -11,14 +11,16 @@ interface Props {
 	ogImage?: string;
 	jsonLd?: JsonLd[];
 	noindex?: boolean;
+	preloadImages?: string[];
 }
 
-const { title, description, canonicalUrl, ogImage, jsonLd = [], noindex = false } = Astro.props;
+const { title, description, canonicalUrl, ogImage, jsonLd = [], noindex = false, preloadImages = [] } = Astro.props;
 const resolvedOgImage = ogImage ?? `${ORIGIN}/og-default.svg`;
 const gtmId = import.meta.env.PUBLIC_GTM_CONTAINER_ID;
 const clarityProjectId = import.meta.env.PUBLIC_CLARITY_PROJECT_ID;
 const callRailSwapJsUrl = import.meta.env.PUBLIC_CALLRAIL_SWAP_JS_URL;
 const metaPixelId = import.meta.env.PUBLIC_META_PIXEL_ID || "1301043457641549";
+const uniquePreloadImages = [...new Set(preloadImages)].filter(Boolean).slice(0, 3);
 ---
 
 <!DOCTYPE html>
@@ -40,6 +42,9 @@ const metaPixelId = import.meta.env.PUBLIC_META_PIXEL_ID || "1301043457641549";
 		<meta property="og:image" content={resolvedOgImage} />
 
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		{uniquePreloadImages.map((href) => (
+			<link rel="preload" as="image" href={href} fetchpriority="high" />
+		))}
 		<meta name="generator" content={Astro.generator} />
 		<StructuredData items={jsonLd} />
 
@@ -117,5 +122,30 @@ const metaPixelId = import.meta.env.PUBLIC_META_PIXEL_ID || "1301043457641549";
 			</noscript>
 		)}
 		<slot />
+		<script is:inline>
+			(function () {
+				var loadHeroVideos = function () {
+					if (!window.matchMedia("(min-width: 768px)").matches) return;
+					if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+					document.querySelectorAll("video[data-deferred-hero-video]").forEach(function (video) {
+						var source = video.querySelector("source[data-src]");
+						if (!source || source.src) return;
+						source.src = source.getAttribute("data-src") || "";
+						video.load();
+						var playPromise = video.play();
+						if (playPromise && playPromise.catch) playPromise.catch(function () {});
+					});
+				};
+				if ("requestIdleCallback" in window) {
+					window.addEventListener("load", function () {
+						window.requestIdleCallback(loadHeroVideos, { timeout: 1800 });
+					});
+				} else {
+					window.addEventListener("load", function () {
+						window.setTimeout(loadHeroVideos, 900);
+					});
+				}
+			})();
+		</script>
 	</body>
 </html>

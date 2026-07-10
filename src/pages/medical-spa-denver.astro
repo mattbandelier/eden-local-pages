@@ -137,7 +137,13 @@ const jsonLd: JsonLd[] = [
 ];
 ---
 
-<BaseLayout title={title} description={description} canonicalUrl={canonical} jsonLd={jsonLd}>
+<BaseLayout
+	title={title}
+	description={description}
+	canonicalUrl={canonical}
+	jsonLd={jsonLd}
+	preloadImages={["/assets/eden-health-club-reception.webp", "/assets/eden-health-club-logo-white-transparent-tight.png"]}
+>
 	<PremiumHeader servicesHref="#services" pricingHref="#pricing" />
 	<main class="bg-eden-paper">
 		<section class="relative overflow-hidden bg-eden-forest text-white">
@@ -147,9 +153,14 @@ const jsonLd: JsonLd[] = [
 					alt=""
 					class="h-full w-full object-cover opacity-28"
 					loading="eager"
+					fetchpriority="high"
+					decoding="async"
+					width="1388"
+					height="1000"
 				/>
 				<video
 					class="absolute inset-0 hidden h-full w-full object-cover opacity-32 md:block"
+					data-deferred-hero-video
 					autoplay
 					muted
 					loop
@@ -158,7 +169,7 @@ const jsonLd: JsonLd[] = [
 					poster="/assets/eden-health-club-reception.webp"
 					aria-hidden="true"
 				>
-					<source src="https://edenhealthclubs.com/wp-content/uploads/2025/07/edenhealth-hero-video.mp4" type="video/mp4" />
+					<source data-src="https://edenhealthclubs.com/wp-content/uploads/2025/07/edenhealth-hero-video.mp4" type="video/mp4" />
 				</video>
 				<div class="absolute inset-0 bg-[linear-gradient(90deg,rgba(25,79,57,0.96),rgba(25,79,57,0.82)_48%,rgba(25,79,57,0.42))]"></div>
 			</div>

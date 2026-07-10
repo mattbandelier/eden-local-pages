@@ -144,14 +144,22 @@ const jsonLd: JsonLd[] = [
 ];
 ---
 
-<BaseLayout title={title} description={description} canonicalUrl={canonical} jsonLd={jsonLd} noindex={true}>
+<BaseLayout
+	title={title}
+	description={description}
+	canonicalUrl={canonical}
+	jsonLd={jsonLd}
+	noindex={true}
+	preloadImages={["/assets/eden-health-club-reception.webp", "/assets/eden-health-club-logo-white-transparent-tight.png"]}
+>
 	<PremiumHeader servicesHref="#what-you-can-do" pricingHref="#lead-form" contactHref="#lead-form" ctaLabel="Start My Baseline" />
 	<main class="bg-eden-paper">
 		<section class="relative overflow-hidden bg-eden-forest text-white">
 			<div class="absolute inset-0">
-				<img src="/assets/eden-health-club-reception.webp" alt="" class="h-full w-full object-cover opacity-30" loading="eager" />
+				<img src="/assets/eden-health-club-reception.webp" alt="" class="h-full w-full object-cover opacity-30" loading="eager" fetchpriority="high" decoding="async" width="1388" height="1000" />
 				<video
 					class="absolute inset-0 hidden h-full w-full object-cover opacity-28 md:block"
+					data-deferred-hero-video
 					autoplay
 					muted
 					loop
@@ -160,7 +168,7 @@ const jsonLd: JsonLd[] = [
 					poster="/assets/eden-health-club-reception.webp"
 					aria-hidden="true"
 				>
-					<source src="https://edenhealthclubs.com/wp-content/uploads/2025/07/edenhealth-hero-video.mp4" type="video/mp4" />
+					<source data-src="https://edenhealthclubs.com/wp-content/uploads/2025/07/edenhealth-hero-video.mp4" type="video/mp4" />
 				</video>
 				<div class="absolute inset-0 bg-[linear-gradient(90deg,rgba(28,45,38,0.98),rgba(25,79,57,0.9)_48%,rgba(25,79,57,0.44))]"></div>
 			</div>
@@ -171,6 +179,10 @@ const jsonLd: JsonLd[] = [
 						alt="Eden Health Club"
 						class="mb-8 h-auto w-36 sm:w-44"
 						loading="eager"
+						fetchpriority="high"
+						decoding="async"
+						width="744"
+						height="447"
 					/>
 					<p class="text-sm font-semibold uppercase tracking-normal text-eden-sage">Look. Feel. Perform.</p>
 					<h1 class="mt-4 max-w-3xl text-4xl font-semibold leading-tight sm:text-5xl lg:text-6xl">
@@ -201,7 +213,7 @@ const jsonLd: JsonLd[] = [
 				</div>
 				<div class="relative">
 					<div class="overflow-hidden rounded-lg border border-white/15 bg-white/10 p-3 shadow-2xl backdrop-blur">
-						<img src="/assets/fitness-recovery.webp" alt="" class="h-72 w-full rounded-md object-cover sm:h-96" loading="eager" />
+						<img src="/assets/fitness-recovery.webp" alt="" class="h-72 w-full rounded-md object-cover sm:h-96" loading="eager" fetchpriority="high" decoding="async" width="1000" height="697" />
 						<div class="mt-3 grid gap-3 sm:grid-cols-2">
 							<div class="rounded-md bg-white p-4 text-eden-navy">
 								<p class="text-xs font-semibold uppercase text-eden-green">Open now</p>

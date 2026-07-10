@@ -242,12 +242,14 @@ const premiumHighlights = [
 				width="960"
 				height="960"
 				loading="eager"
+				fetchpriority="high"
 				decoding="async"
 				class="absolute inset-0 h-full w-full object-cover opacity-45"
 				aria-hidden="true"
 			/>
 			<video
 				class="absolute inset-0 hidden h-full w-full object-cover opacity-24 md:block"
+				data-deferred-hero-video
 				autoplay
 				muted
 				loop
@@ -256,7 +258,7 @@ const premiumHighlights = [
 				poster={heroImage}
 				aria-hidden="true"
 			>
-				<source src="https://edenhealthclubs.com/wp-content/uploads/2025/07/edenhealth-hero-video.mp4" type="video/mp4" />
+				<source data-src="https://edenhealthclubs.com/wp-content/uploads/2025/07/edenhealth-hero-video.mp4" type="video/mp4" />
 			</video>
 		</>
 	)}
@@ -269,6 +271,7 @@ const premiumHighlights = [
 					alt="Eden Health Club"
 					class="mb-8 h-auto w-36 sm:w-44"
 					loading="eager"
+					fetchpriority="high"
 				/>
 			)}
 			<p class={premium ? "text-sm font-semibold uppercase tracking-normal text-eden-sage" : isCombo ? "text-sm font-semibold uppercase tracking-wide text-white/75" : "text-sm font-semibold uppercase text-eden-green"}>{premium ? "Look. Feel. Perform." : content.eyebrow}</p>
@@ -303,7 +306,7 @@ const premiumHighlights = [
 		{isCombo && premium && (
 			<div class="relative min-w-0">
 				<div class="overflow-hidden rounded-lg border border-white/15 bg-white/10 p-3 shadow-2xl backdrop-blur">
-					<img src={heroImage} alt="" class="h-72 w-full rounded-md object-cover sm:h-96" loading="eager" />
+					<img src={heroImage} alt="" class="h-72 w-full rounded-md object-cover sm:h-96" loading="eager" fetchpriority="high" decoding="async" width="960" height="960" />
 					<div class="mt-3 grid gap-3 sm:grid-cols-2">
 						<div class="rounded-md bg-white p-4 text-eden-navy">
 							<p class="text-xs font-semibold uppercase text-eden-green">Local path</p>
@@ -333,6 +336,7 @@ const premiumHighlights = [
 					width="1024"
 					height="768"
 					loading="eager"
+					fetchpriority="high"
 					decoding="async"
 					class="hidden aspect-[4/3] w-full object-cover sm:block"
 				/>

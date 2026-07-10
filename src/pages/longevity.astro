@@ -254,14 +254,21 @@ const jsonLd: JsonLd[] = [
 ];
 ---
 
-<BaseLayout title={title} description={description} canonicalUrl={canonical} jsonLd={jsonLd}>
+<BaseLayout
+	title={title}
+	description={description}
+	canonicalUrl={canonical}
+	jsonLd={jsonLd}
+	preloadImages={["/assets/eden-health-club-reception.webp", "/assets/eden-health-club-logo-white-transparent-tight.png"]}
+>
 	<PremiumHeader servicesHref="#services" pricingHref="#lead-form" contactHref="#lead-form" />
 	<main class="bg-eden-paper">
 		<section class="relative overflow-hidden bg-eden-forest text-white">
 			<div class="absolute inset-0">
-				<img src="/assets/eden-health-club-reception.webp" alt="" class="h-full w-full object-cover opacity-30" loading="eager" />
+				<img src="/assets/eden-health-club-reception.webp" alt="" class="h-full w-full object-cover opacity-30" loading="eager" fetchpriority="high" decoding="async" width="1388" height="1000" />
 				<video
 					class="absolute inset-0 hidden h-full w-full object-cover opacity-32 md:block"
+					data-deferred-hero-video
 					autoplay
 					muted
 					loop
@@ -270,7 +277,7 @@ const jsonLd: JsonLd[] = [
 					poster="/assets/eden-health-club-reception.webp"
 					aria-hidden="true"
 				>
-					<source src="https://edenhealthclubs.com/wp-content/uploads/2025/07/edenhealth-hero-video.mp4" type="video/mp4" />
+					<source data-src="https://edenhealthclubs.com/wp-content/uploads/2025/07/edenhealth-hero-video.mp4" type="video/mp4" />
 				</video>
 				<div class="absolute inset-0 bg-[linear-gradient(90deg,rgba(28,45,38,0.98),rgba(25,79,57,0.9)_46%,rgba(25,79,57,0.48))]"></div>
 			</div>
@@ -281,6 +288,10 @@ const jsonLd: JsonLd[] = [
 						alt="Eden Health Club"
 						class="mb-8 h-auto w-36 sm:w-44"
 						loading="eager"
+						fetchpriority="high"
+						decoding="async"
+						width="744"
+						height="447"
 					/>
 					<p class="text-sm font-semibold uppercase tracking-normal text-eden-sage">Longevity clinic near Denver and DTC</p>
 					<h1 class="mt-4 max-w-3xl text-4xl font-semibold leading-tight sm:text-5xl lg:text-6xl">
