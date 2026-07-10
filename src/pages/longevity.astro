@@ -1,4 +1,5 @@
 ---
+import AuthoritySignalPanel from "../components/content/AuthoritySignalPanel.astro";
 import DenverDemandCluster from "../components/content/DenverDemandCluster.astro";
 import LeadForm from "../components/content/LeadForm.astro";
 import Footer from "../components/layout/Footer.astro";
@@ -504,6 +505,21 @@ const jsonLd: JsonLd[] = [
 		</section>
 
 		<DenverDemandCluster currentPath="/longevity/" theme="light" />
+
+		<AuthoritySignalPanel
+			theme="paper"
+			heading="A longevity page should prove Eden is a real Denver-area authority."
+			intro="This page connects the search demand for longevity clinic Denver, biomarker testing, hormone optimization, peptides, NAD+ IV therapy, medical weight loss, recovery, and training to Eden's actual Greenwood Village facility."
+			primaryIntent="People comparing longevity clinics, functional medicine, biomarkers, hormones, peptides, recovery, and premium wellness near Denver and DTC."
+			geoIntent="Greenwood Village, Denver Tech Center, Cherry Hills Village, Centennial, Littleton, Englewood, Lone Tree, Highlands Ranch, and South Denver."
+			aeoAnswer="Eden Health Club is a Greenwood Village longevity clinic near Denver that connects provider-guided care with biomarkers, hormones, peptides, medical weight loss, recovery, training, and follow-up."
+			links={[
+				{ label: "Eden Health Club", href: "https://edenhealthclubs.com/", body: "Main brand site confirming Eden's facility, service mix, and Greenwood Village presence." },
+				{ label: "Functional medicine", href: "https://edenhealthclubs.com/functional-medicine/", body: "Main-site authority path for labs, weight loss, wellness consults, and provider-led planning." },
+				{ label: "Hormone therapy", href: "https://edenhealthclubs.com/hormone-replacement-therapy/", body: "Main-site authority path for hormone questions, low T, BHRT, labs, and monitoring." },
+				{ label: "Fitness and recovery", href: "https://edenhealthclubs.com/fitness-performance/", body: "Main-site proof that Eden can connect longevity care to strength, body composition, and recovery." },
+			]}
+		/>
 
 		<section class="bg-white px-6 py-12 sm:py-16" aria-labelledby="longevity-faq-heading">
 			<div class="mx-auto max-w-4xl">

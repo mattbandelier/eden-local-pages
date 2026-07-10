@@ -1,5 +1,6 @@
 ---
 import type { HormonePage } from "../../data/hormone-pages";
+import AuthoritySignalPanel from "./AuthoritySignalPanel.astro";
 import DenverDemandCluster from "./DenverDemandCluster.astro";
 import LeadForm from "./LeadForm.astro";
 import Footer from "../layout/Footer.astro";
@@ -434,6 +435,21 @@ const schema: JsonLd[] = [
 		</section>
 
 		<DenverDemandCluster currentPath={`/${page.slug}/`} theme="paper" />
+
+		<AuthoritySignalPanel
+			theme="light"
+			heading="Hormone pages need lab context, provider authority, and local proof."
+			intro="This page connects hormone search intent to Eden's real Greenwood Village facility, provider-led review, labs when appropriate, strength, recovery, body composition, and follow-up."
+			primaryIntent="People comparing hormone optimization, low T questions, TRT, BHRT, menopause support, energy, recovery, sleep, body composition, and lab-backed wellness near Denver."
+			geoIntent="Greenwood Village, Denver Tech Center, Cherry Hills Village, Centennial, Littleton, Englewood, Lone Tree, Highlands Ranch, and South Denver."
+			aeoAnswer="Eden Health Club offers provider-led hormone optimization consults near Denver and DTC, with goals review, labs when appropriate, clinical fit, and follow-up connected to training and recovery."
+			links={[
+				{ label: "Hormone therapy", href: "https://edenhealthclubs.com/hormone-replacement-therapy/", body: "Main-site authority for Eden's hormone replacement therapy and wellness approach." },
+				{ label: "Functional medicine", href: "https://edenhealthclubs.com/functional-medicine/", body: "Main-site authority for labs, medical wellness, and provider-led care." },
+				{ label: "Fitness and performance", href: "https://edenhealthclubs.com/fitness-performance/", body: "Main-site proof that Eden connects hormone care to strength, recovery, and body composition." },
+				{ label: "Main Eden website", href: "https://edenhealthclubs.com/", body: "Brand authority for Eden Health Club and the Greenwood Village facility." },
+			]}
+		/>
 
 		<section class="px-6 py-12 sm:py-16" aria-labelledby="hormone-faq-heading">
 			<div class="mx-auto max-w-4xl">

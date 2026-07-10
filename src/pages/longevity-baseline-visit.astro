@@ -1,4 +1,5 @@
 ---
+import AuthoritySignalPanel from "../components/content/AuthoritySignalPanel.astro";
 import LeadForm from "../components/content/LeadForm.astro";
 import Footer from "../components/layout/Footer.astro";
 import PremiumHeader from "../components/layout/PremiumHeader.astro";
@@ -473,6 +474,21 @@ const jsonLd: JsonLd[] = [
 				</div>
 			</div>
 		</section>
+
+		<AuthoritySignalPanel
+			theme="light"
+			heading="The baseline visit gives Google and clients a clear first step."
+			intro="Instead of asking a client to choose between dozens of services, this page positions Eden's baseline visit as the front door into body composition, recovery, training, labs, medical wellness, and membership support."
+			primaryIntent="People comparing longevity baseline visits, biomarker testing, body composition scans, wellness assessments, and health optimization near Denver."
+			geoIntent="Greenwood Village, Denver Tech Center, Cherry Hills Village, Centennial, Littleton, Englewood, Lone Tree, and South Denver."
+			aeoAnswer="A Longevity Baseline Visit at Eden Health Club helps clients near Denver start with body composition context, goals review, recovery and training discussion, and provider-guided next steps."
+			links={[
+				{ label: "Main Eden website", href: "https://edenhealthclubs.com/", body: "Brand authority for Eden Health Club and the Greenwood Village facility." },
+				{ label: "InBody", href: "https://edenhealthclubs.com/functional-medicine/inbody/", body: "Main-site context for body composition, tracking, and measurement." },
+				{ label: "Functional medicine", href: "https://edenhealthclubs.com/functional-medicine/", body: "Main-site authority for wellness planning, labs, and provider-guided next steps." },
+				{ label: "Wellness recovery", href: "https://edenhealthclubs.com/wellness-recovery/", body: "Main-site authority for recovery tools that support the baseline plan." },
+			]}
+		/>
 
 		<section class="bg-eden-forest px-6 py-10 text-white">
 			<div class="mx-auto flex max-w-6xl flex-col gap-5 md:flex-row md:items-center md:justify-between">

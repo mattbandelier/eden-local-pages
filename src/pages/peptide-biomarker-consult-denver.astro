@@ -1,4 +1,5 @@
 ---
+import AuthoritySignalPanel from "../components/content/AuthoritySignalPanel.astro";
 import DenverDemandCluster from "../components/content/DenverDemandCluster.astro";
 import LeadForm from "../components/content/LeadForm.astro";
 import Footer from "../components/layout/Footer.astro";
@@ -458,6 +459,21 @@ const jsonLd: JsonLd[] = [
 		</section>
 
 		<DenverDemandCluster currentPath="/peptide-biomarker-consult-denver/" theme="light" />
+
+		<AuthoritySignalPanel
+			theme="paper"
+			heading="The $299 peptide offer is tied to Eden's real clinical and performance ecosystem."
+			intro="This page is built to avoid the thin peptide-page trap. It connects the offer to Eden's real location, provider-guided review, labs or biomarker context, recovery, training, weight-loss support, and follow-up."
+			primaryIntent="People searching peptide therapy Denver, peptide starter program, biomarker testing Denver, longevity clinic near me, performance wellness, recovery, energy, sleep, and body-composition support."
+			geoIntent="Denver, Greenwood Village, Denver Tech Center, Cherry Hills Village, Centennial, Littleton, Englewood, Highlands Ranch, and South Denver."
+			aeoAnswer="Eden's $299 Peptide Starter Program near Denver includes a provider consult, labwork or biomarker review when appropriate, personalized wellness planning, and the first month of peptide support if prescribed."
+			links={[
+				{ label: "Main Eden website", href: "https://edenhealthclubs.com/", body: "Entity confirmation for Eden Health Club, the Greenwood Village facility, and the broader wellness brand." },
+				{ label: "Peptide therapy", href: "https://edenhealthclubs.com/peptide-therapy/", body: "Main-site authority path for peptide therapy context and Eden's provider-guided positioning." },
+				{ label: "Functional medicine", href: "https://edenhealthclubs.com/functional-medicine/", body: "Main-site authority for labs, medical wellness, weight loss, and provider-led review." },
+				{ label: "Fitness and performance", href: "https://edenhealthclubs.com/fitness-performance/", body: "Main-site proof that Eden connects optimization care to strength, recovery, and body composition." },
+			]}
+		/>
 
 		<section class="bg-white px-6 py-12 sm:py-16" aria-labelledby="peptide-biomarker-faq-heading">
 			<div class="mx-auto max-w-4xl">

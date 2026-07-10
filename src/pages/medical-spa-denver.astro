@@ -1,4 +1,5 @@
 ---
+import AuthoritySignalPanel from "../components/content/AuthoritySignalPanel.astro";
 import LeadForm from "../components/content/LeadForm.astro";
 import DenverDemandCluster from "../components/content/DenverDemandCluster.astro";
 import PriorityMoneyLinks from "../components/content/PriorityMoneyLinks.astro";
@@ -352,6 +353,21 @@ const jsonLd: JsonLd[] = [
 		</section>
 
 		<PriorityMoneyLinks currentPath="/medical-spa-denver/" variant="hub" />
+
+		<AuthoritySignalPanel
+			theme="paper"
+			heading="A Denver med spa page needs brand authority, local proof, and clear routing."
+			intro="This page connects med spa Denver demand to Eden's real Greenwood Village facility, licensed aesthetic team, main-site treatment pages, Google Maps presence, and the specific pages clients compare before booking."
+			primaryIntent="People searching med spa Denver, medical spa Greenwood Village, Botox Denver, fillers, DiamondGlow, microneedling, BBL photofacial, and aesthetic consults near DTC."
+			geoIntent="Greenwood Village, Denver, Denver Tech Center, Cherry Hills Village, Centennial, Littleton, Englewood, Lone Tree, and South Denver."
+			aeoAnswer="Eden Health Club is a medical spa near Denver and DTC offering aesthetic consult routing for Botox, fillers, lip filler, DiamondGlow, microneedling, BBL photofacial, and skin treatments in Greenwood Village."
+			links={[
+				{ label: "Main Eden website", href: "https://edenhealthclubs.com/", body: "Brand authority for Eden Health Club, the facility, and the broader wellness ecosystem." },
+				{ label: "Botox wrinkle relaxers", href: "https://edenhealthclubs.com/injectables/botox-wrinkle-relaxers/", body: "Main-site authority path for wrinkle relaxer treatment context." },
+				{ label: "Dermal fillers", href: "https://edenhealthclubs.com/injectables/dermal-fillers/", body: "Main-site authority path for facial balancing, volume support, and filler planning." },
+				{ label: "Skin rejuvenation", href: "https://edenhealthclubs.com/skin-rejuvenation/", body: "Main-site authority path for DiamondGlow, microneedling, BBL, and skin-quality services." },
+			]}
+		/>
 
 		<section class="px-6 py-14 sm:py-18">
 			<div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.85fr_1.15fr]">
