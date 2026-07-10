@@ -1,12 +1,19 @@
 ---
 interface Props {
 	servicesHref?: string;
+	servicesLabel?: string;
 	pricingHref?: string;
 	contactHref?: string;
 	ctaLabel?: string;
 }
 
-const { servicesHref = "https://edenhealthclubs.com/services/", pricingHref = "#pricing", contactHref = "#lead-form", ctaLabel = "Book a Consult" } = Astro.props;
+const {
+	servicesHref = "https://edenhealthclubs.com/services/",
+	servicesLabel = "Services",
+	pricingHref = "#pricing",
+	contactHref = "#lead-form",
+	ctaLabel = "Book a Consult",
+} = Astro.props;
 const phone = "720-605-7678";
 const phoneHref = "tel:+17206057678";
 ---
@@ -15,7 +22,7 @@ const phoneHref = "tel:+17206057678";
 	<div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-3 text-sm">
 		<a href="/" class="font-semibold tracking-normal">Eden Health Club</a>
 		<nav class="hidden items-center gap-6 md:flex" aria-label="Premium landing page navigation">
-			<a href={servicesHref} class="text-white/80 hover:text-white">Services</a>
+			<a href={servicesHref} class="text-white/80 hover:text-white">{servicesLabel}</a>
 			<a href={contactHref} class="text-white/80 hover:text-white">Contact Us</a>
 			<a href={pricingHref} class="text-white/80 hover:text-white">Get Pricing</a>
 		</nav>

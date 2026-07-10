@@ -44,17 +44,19 @@ const faqs = combinedFaqs(service, suburb);
 const relatedServices = service.relatedServices
 	.map((slug) => getService(slug))
 	.filter((relatedService) => relatedService !== undefined);
+const isPremiumMoneyPage = isIndexableCombo(service.slug, suburb.slug);
+const wellnessPaidSlugs = ["male-trt", "medical-weight-loss", "peptide-therapy", "female-bhrt"];
+const isWellnessPaidPage = isPremiumMoneyPage && wellnessPaidSlugs.includes(service.slug);
 const breadcrumbItems: BreadcrumbItem[] = [
 	{ label: "Home", href: homeUrl() },
-	{ label: "Services", href: serviceHubUrl(service.slug) },
+	{ label: isWellnessPaidPage ? "Programs" : "Services", href: serviceHubUrl(service.slug) },
 	{ label: service.name, href: serviceHubUrl(service.slug) },
 	{ label: suburb.name, href: null },
 ];
-const isPremiumMoneyPage = isIndexableCombo(service.slug, suburb.slug);
 const premiumHeroImages: Record<string, string> = {
 	"male-trt": "/assets/mens-hormone-optimization.webp",
 	"medical-weight-loss": "/assets/fitness-recovery.webp",
-	"peptide-therapy": "/assets/mens-hormone-optimization.webp",
+	"peptide-therapy": "/assets/eden-health-club-reception.webp",
 	"female-bhrt": "/assets/eden-health-club-reception.webp",
 };
 const preloadImages = isPremiumMoneyPage
@@ -73,7 +75,7 @@ const preloadImages = isPremiumMoneyPage
 	noindex={!isPremiumMoneyPage}
 	preloadImages={preloadImages}
 >
-	{isPremiumMoneyPage ? <PremiumHeader servicesHref="#details" /> : <Header />}
+	{isPremiumMoneyPage ? <PremiumHeader servicesHref="#details" servicesLabel={isWellnessPaidPage ? "Programs" : "Services"} /> : <Header />}
 	<Breadcrumbs items={breadcrumbItems} />
 	<main class="pb-20 md:pb-0">
 		<Hero variant="combo" service={service} suburb={suburb} premium={isPremiumMoneyPage} />
@@ -100,9 +102,14 @@ const preloadImages = isPremiumMoneyPage
 			<PricingCard pricing={service.pricing} consultRequired={service.consultRequired} ctaText={service.ctaText} />
 		</div>
 		<FAQAccordion faqs={faqs} heading={`${service.name} questions from ${suburb.name} clients`} />
-		{isPremiumMoneyPage && <PriorityMoneyLinks currentPath={comboUrl(service.slug, suburb.slug).replace("https://landing.edenhealthclubs.com", "")} />}
-		<RelatedServices services={relatedServices} suburbSlug={suburb.slug} />
-		<MainSiteLink service={service} />
+		{isPremiumMoneyPage && (
+			<PriorityMoneyLinks
+				currentPath={comboUrl(service.slug, suburb.slug).replace("https://landing.edenhealthclubs.com", "")}
+				variant={isWellnessPaidPage ? "wellness" : "combo"}
+			/>
+		)}
+		<RelatedServices services={relatedServices} suburbSlug={suburb.slug} heading={isWellnessPaidPage ? "Related wellness paths" : "Related services"} />
+		<MainSiteLink service={service} label={isWellnessPaidPage ? "program" : "service"} />
 		{isPremiumMoneyPage ? (
 			<section class="bg-eden-forest px-6 py-12 text-white">
 				<div class="mx-auto flex max-w-6xl flex-col gap-6 md:flex-row md:items-center md:justify-between">
@@ -131,5 +138,5 @@ const preloadImages = isPremiumMoneyPage
 	</main>
 	{isPremiumMoneyPage && <PremiumStickyConsult service={service} />}
 	<MobileActionBar service={service} />
-	<Footer />
+	<Footer variant={isWellnessPaidPage ? "wellness" : "default"} />
 </BaseLayout>

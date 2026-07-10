@@ -6,9 +6,10 @@ import { comboUrl, serviceHubUrl } from "../../lib/urls";
 interface Props {
 	services: Service[];
 	suburbSlug?: string | null;
+	heading?: string;
 }
 
-const { services, suburbSlug = null } = Astro.props;
+const { services, suburbSlug = null, heading = "Related services" } = Astro.props;
 
 function relatedHref(service: Service): string {
 	if (suburbSlug && isIndexableCombo(service.slug, suburbSlug)) {
@@ -21,7 +22,7 @@ function relatedHref(service: Service): string {
 
 <section class="px-6 py-12">
 	<div class="mx-auto max-w-6xl">
-		<h2 class="text-3xl font-semibold text-eden-navy">Related services</h2>
+		<h2 class="text-3xl font-semibold text-eden-navy">{heading}</h2>
 		<div class="mt-8 flex gap-4 overflow-x-auto pb-4">
 			{services.slice(0, 4).map((service) => (
 				<a

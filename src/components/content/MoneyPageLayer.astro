@@ -34,17 +34,32 @@ const localRoute =
 	suburb.driveTimeMinutes === 0
 		? "Eden's flagship clinic is located in Greenwood Village on S University Blvd."
 		: `${suburb.name} clients are typically about ${suburb.driveTimeMinutes} minutes from Eden's Greenwood Village clinic.`;
+const wellnessServiceSlugs = new Set(["medical-weight-loss", "female-bhrt", "male-trt", "peptide-therapy", "iv-therapy", "nad-iv-therapy"]);
+const isWellnessService = wellnessServiceSlugs.has(service.slug);
+const wellnessGeoTerms = [
+	service.targetKeywords.primary,
+	...service.targetKeywords.secondary.slice(0, 4),
+	`${suburb.name} wellness clinic`,
+	`${suburb.name} longevity clinic`,
+	`south Denver ${service.targetKeywords.primary}`,
+].filter(Boolean);
 const localIntentTerms = [
 	service.targetKeywords.primary,
 	...service.targetKeywords.secondary.slice(0, 4),
 	...suburb.localKeywords.slice(0, 3),
 ].filter(Boolean);
+const displayedLocalIntentTerms = isWellnessService ? wellnessGeoTerms : localIntentTerms;
 const localProof = [
 	`Primary area: ${suburb.name}, ${suburb.state}`,
 	`Nearby reference points: ${suburb.nearbyLandmarks.slice(0, 2).join(" and ")}`,
 	`ZIP context: ${suburb.zipsServed.slice(0, 3).join(", ")}`,
 	"Assessment-first routing before treatment commitment",
 ];
+const localBlurb = isWellnessService
+	? suburb.driveTimeMinutes === 0
+		? "Eden's Greenwood Village location is built for clients comparing provider-guided wellness, hormones, peptides, medical weight loss, recovery, body composition, and ongoing follow-up in one premium local facility."
+		: `${suburb.name} clients use Eden's Greenwood Village location for provider-guided wellness, hormone optimization, peptide consults, weight-management support, recovery, body composition, and follow-up without crossing the entire metro.`
+	: suburb.neighborhoodBlurb;
 
 const contentBySlug: Record<string, MoneyPageContent> = {
 	"diamondglow-facial": {
@@ -601,10 +616,10 @@ const content = contentBySlug[service.slug];
 						Why this page deserves to exist for {suburb.name}.
 					</h3>
 					<p class="mt-4 text-sm leading-7 text-slate-700">
-						{localRoute} {suburb.neighborhoodBlurb} This page is written for clients comparing local availability, fit, pricing context, and whether Eden is the right first step for {service.name}.
+						{localRoute} {localBlurb} This page is written for clients comparing local availability, fit, pricing context, and whether Eden is the right first step for {service.name}.
 					</p>
 					<div class="mt-5 flex flex-wrap gap-2">
-						{localIntentTerms.map((term) => (
+						{displayedLocalIntentTerms.map((term) => (
 							<span class="rounded-full border border-eden-line bg-eden-paper px-3 py-2 text-xs font-semibold text-eden-navy">{term}</span>
 						))}
 					</div>

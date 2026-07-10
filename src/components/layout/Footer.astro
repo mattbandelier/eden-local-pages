@@ -2,7 +2,54 @@
 import { services, suburbs } from "../../data";
 import { serviceHubUrl, suburbHubUrl } from "../../lib/urls";
 
+interface Props {
+	variant?: "default" | "wellness";
+}
+
+const { variant = "default" } = Astro.props;
 const phone = "720-605-7678";
+const defaultServiceLinks = services.slice(0, 6).map((service) => ({
+	label: service.name,
+	href: serviceHubUrl(service.slug),
+}));
+const wellnessServiceLinks = [
+	{ label: "Hormone Optimization", href: "/hormone-optimization/" },
+	{ label: "Peptide Therapy Denver", href: "/peptide-therapy/denver/" },
+	{ label: "TRT Denver", href: "/male-trt/denver/" },
+	{ label: "Medical Weight Loss Denver", href: "/medical-weight-loss/denver/" },
+	{ label: "NAD+ IV Therapy", href: "/nad-iv-therapy/greenwood-village/" },
+	{ label: "IV Therapy", href: "/iv-therapy/greenwood-village/" },
+];
+const footerServiceLinks = variant === "wellness" ? wellnessServiceLinks : defaultServiceLinks;
+const demandPathLinks =
+	variant === "wellness"
+		? [
+				{ label: "Longevity Clinic Denver", href: "/longevity/" },
+				{ label: "Longevity Baseline Visit", href: "/longevity-baseline-visit/" },
+				{ label: "$299 Peptide Starter", href: "/peptide-biomarker-consult-denver/" },
+				{ label: "Peptide Therapy Denver", href: "/peptide-therapy/denver/" },
+				{ label: "TRT Denver", href: "/male-trt/denver/" },
+				{ label: "Men's Hormone Optimization", href: "/mens-hormone-optimization/" },
+				{ label: "Women's Hormone Optimization", href: "/womens-hormone-optimization/" },
+				{ label: "Medical Weight Loss Denver", href: "/medical-weight-loss/denver/" },
+				{ label: "Hormone Therapy Cost", href: "/hormone-therapy-cost/" },
+				{ label: "Red Light Therapy Denver", href: "/red-light-therapy-denver/" },
+				{ label: "Perform Membership", href: "/glp-1-fitness-membership-greenwood-village/" },
+				{ label: "Elevate Membership", href: "/elevate-membership-greenwood-village/" },
+			]
+		: [
+				{ label: "Longevity Clinic Denver", href: "/longevity/" },
+				{ label: "Longevity Baseline Visit", href: "/longevity-baseline-visit/" },
+				{ label: "$299 Peptide Starter", href: "/peptide-biomarker-consult-denver/" },
+				{ label: "Medical Spa Denver", href: "/medical-spa-denver/" },
+				{ label: "Botox Denver", href: "/botox/denver/" },
+				{ label: "Medical Weight Loss Denver", href: "/medical-weight-loss/denver/" },
+				{ label: "Red Light Therapy Denver", href: "/red-light-therapy-denver/" },
+				{ label: "TRT Denver", href: "/male-trt/denver/" },
+				{ label: "Men's Hormone Optimization", href: "/mens-hormone-optimization/" },
+				{ label: "Perform Membership", href: "/glp-1-fitness-membership-greenwood-village/" },
+				{ label: "Elevate Membership", href: "/elevate-membership-greenwood-village/" },
+			];
 ---
 
 <footer class="bg-eden-navy px-6 py-12 text-white">
@@ -24,10 +71,10 @@ const phone = "720-605-7678";
 			<a href="tel:+17206057678" class="mt-4 inline-block text-sm font-semibold text-white underline">{phone}</a>
 		</div>
 		<div>
-			<p class="text-sm font-semibold uppercase text-white">Services</p>
+			<p class="text-sm font-semibold uppercase text-white">{variant === "wellness" ? "Wellness programs" : "Services"}</p>
 			<div class="mt-4 grid gap-2">
-				{services.slice(0, 6).map((service) => (
-					<a href={serviceHubUrl(service.slug)} class="text-sm text-white/75 hover:text-white">{service.name}</a>
+				{footerServiceLinks.map((link) => (
+					<a href={link.href} class="text-sm text-white/75 hover:text-white">{link.label}</a>
 				))}
 			</div>
 		</div>
@@ -41,19 +88,11 @@ const phone = "720-605-7678";
 		</div>
 	</div>
 	<div class="mx-auto mt-8 max-w-6xl border-t border-white/10 pt-6">
-		<p class="text-sm font-semibold uppercase text-white">Denver demand paths</p>
+		<p class="text-sm font-semibold uppercase text-white">{variant === "wellness" ? "Denver wellness demand paths" : "Denver demand paths"}</p>
 		<div class="mt-4 flex flex-wrap gap-x-5 gap-y-2">
-			<a href="/longevity/" class="text-sm text-white/75 hover:text-white">Longevity Clinic Denver</a>
-			<a href="/longevity-baseline-visit/" class="text-sm text-white/75 hover:text-white">Longevity Baseline Visit</a>
-			<a href="/peptide-biomarker-consult-denver/" class="text-sm text-white/75 hover:text-white">$299 Peptide Starter</a>
-			<a href="/medical-spa-denver/" class="text-sm text-white/75 hover:text-white">Medical Spa Denver</a>
-			<a href="/botox/denver/" class="text-sm text-white/75 hover:text-white">Botox Denver</a>
-			<a href="/medical-weight-loss/denver/" class="text-sm text-white/75 hover:text-white">Medical Weight Loss Denver</a>
-			<a href="/red-light-therapy-denver/" class="text-sm text-white/75 hover:text-white">Red Light Therapy Denver</a>
-			<a href="/male-trt/denver/" class="text-sm text-white/75 hover:text-white">TRT Denver</a>
-			<a href="/mens-hormone-optimization/" class="text-sm text-white/75 hover:text-white">Men's Hormone Optimization</a>
-			<a href="/glp-1-fitness-membership-greenwood-village/" class="text-sm text-white/75 hover:text-white">Perform Membership</a>
-			<a href="/elevate-membership-greenwood-village/" class="text-sm text-white/75 hover:text-white">Elevate Membership</a>
+			{demandPathLinks.map((link) => (
+				<a href={link.href} class="text-sm text-white/75 hover:text-white">{link.label}</a>
+			))}
 		</div>
 	</div>
 	<div class="mx-auto mt-10 max-w-6xl border-t border-white/10 pt-6">

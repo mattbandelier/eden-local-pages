@@ -25,7 +25,7 @@ const proofPoints = [
 	{
 		kicker: "Inside Eden",
 		title: "Premium club setting",
-		body: "Wellness, recovery, fitness, and aesthetics under one roof.",
+		body: "Clinical wellness, recovery, training, and body-composition support under one roof.",
 	},
 ];
 
@@ -78,13 +78,13 @@ const lanes = [
 	},
 	{
 		label: "Longevity club",
-		body: "For adults comparing longevity clinic Denver, longevity clinic near me, health optimization Denver, biomarkers, recovery, fitness, aesthetics, and wellness support in one premium environment.",
+		body: "For adults comparing longevity clinic Denver, longevity clinic near me, health optimization Denver, biomarkers, recovery, fitness, and wellness support in one premium environment.",
 	},
 ];
 
 const differentiators = [
 	["First step", "$299 starter visit with consult, lab or biomarker review, and eligibility discussion", "A menu of protocols before anyone understands fit"],
-	["Environment", "Greenwood Village health club with recovery, fitness, aesthetics, and wellness in one location", "A single-service clinic or remote-only program"],
+	["Environment", "Greenwood Village health club with recovery, training, body composition, and clinical wellness in one location", "A single-service clinic or remote-only program"],
 	["Clinical path", "Provider review determines whether hormones, peptides, weight management, or another path makes sense", "Medication-first messaging that can skip the why"],
 	["Follow-through", "Eden One and Elevate can connect ongoing care, credits, training, recovery, bloodwork rhythm, and support", "A one-off visit with no day-to-day system"],
 ];
@@ -248,12 +248,12 @@ const jsonLd: JsonLd[] = [
 	canonicalUrl={canonical}
 	jsonLd={jsonLd}
 	noindex={true}
-	preloadImages={["/assets/eden-health-club-reception.webp", "/assets/eden-health-club-logo-white-transparent-tight.png", "/assets/mens-hormone-optimization.webp"]}
+	preloadImages={["/assets/eden-health-club-reception.webp", "/assets/eden-health-club-logo-white-transparent-tight.png"]}
 >
-	<PremiumHeader servicesHref="#offer" pricingHref="#lead-form" contactHref="#lead-form" ctaLabel="$299 Starter" />
+	<PremiumHeader servicesHref="#offer" servicesLabel="Programs" pricingHref="#lead-form" contactHref="#lead-form" ctaLabel="$299 Starter" />
 	<main class="bg-eden-paper">
 		<section class="relative overflow-hidden bg-eden-forest text-white">
-			<div class="absolute inset-0">
+			<div class="absolute inset-x-0 top-0 h-[760px] md:inset-0 md:h-auto">
 				<img src="/assets/eden-health-club-reception.webp" alt="" class="h-full w-full object-cover opacity-30" loading="eager" fetchpriority="high" decoding="async" width="1388" height="1000" />
 				<video
 					class="absolute inset-0 hidden h-full w-full object-cover opacity-28 md:block"
@@ -284,7 +284,7 @@ const jsonLd: JsonLd[] = [
 					/>
 					<p class="text-sm font-semibold uppercase tracking-normal text-eden-sage">Premium longevity care in Greenwood Village</p>
 					<h1 class="mt-4 max-w-3xl text-4xl font-semibold leading-tight sm:text-5xl lg:text-6xl">
-						Start your hormone, peptide, and longevity plan for $299.
+						Hormone + peptide optimization in Denver starts with a $299 baseline visit.
 					</h1>
 					<p class="mt-5 max-w-2xl text-base leading-8 text-white/86 sm:text-lg">
 						Begin with a private consultation, baseline lab or biomarker review, and a first-month wellness protocol credit if clinically appropriate.
@@ -322,11 +322,11 @@ const jsonLd: JsonLd[] = [
 					<div class="overflow-hidden rounded-lg border border-white/15 bg-white/10 p-3 shadow-2xl backdrop-blur">
 						<div class="grid gap-3 sm:grid-cols-[0.88fr_1.12fr]">
 							<div class="overflow-hidden rounded-md">
-								<img src="/assets/mens-hormone-optimization.webp" alt="" class="h-full min-h-72 w-full object-cover object-center" loading="eager" fetchpriority="high" decoding="async" width="1024" height="1536" />
+								<img src="/assets/eden-health-club-office.webp" alt="" class="h-full min-h-72 w-full object-cover object-center" loading="lazy" decoding="async" width="960" height="960" />
 							</div>
 							<div class="grid gap-3">
 								<div class="overflow-hidden rounded-md">
-									<img src="/assets/fitness-recovery.webp" alt="" class="h-40 w-full object-cover sm:h-full" loading="lazy" />
+									<img src="/assets/fitness-strength-class.avif" alt="" class="h-40 w-full object-cover sm:h-full" loading="lazy" />
 								</div>
 								<div class="grid grid-cols-2 gap-3">
 									<div class="rounded-md bg-white p-4 text-eden-navy">
@@ -407,7 +407,7 @@ const jsonLd: JsonLd[] = [
 							The advantage is what happens after the review.
 						</h2>
 						<p class="mt-4 text-base leading-8 text-slate-700">
-							Online clinics can sell access. Single-service clinics can sell one modality. Eden can connect provider-guided wellness with recovery, training, InBody, aesthetics, and a premium local facility.
+							Online clinics can sell access. Single-service clinics can sell one modality. Eden can connect provider-guided wellness with recovery, training, InBody, labs, and a premium local facility.
 						</p>
 					</div>
 					<div class="hidden overflow-hidden rounded-lg border border-eden-line bg-eden-paper shadow-sm md:block">
@@ -544,7 +544,7 @@ const jsonLd: JsonLd[] = [
 			<a href="tel:+17206057678" data-phone-link class="rounded-md border border-eden-line px-4 py-3 text-center text-sm font-semibold text-eden-navy">Call</a>
 		</div>
 	</div>
-	<Footer />
+	<Footer variant="wellness" />
 </BaseLayout>
 
 <script>
