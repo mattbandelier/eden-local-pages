@@ -1,0 +1,14 @@
+{
+  "redirects": [
+    {
+      "source": "/longevity/denver",
+      "destination": "/longevity/",
+      "permanent": true
+    },
+    {
+      "source": "/longevity/denver/",
+      "destination": "/longevity/",
+      "permanent": true
+    }
+  ]
+}
