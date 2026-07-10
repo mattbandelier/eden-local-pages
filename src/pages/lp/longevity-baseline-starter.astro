@@ -169,15 +169,23 @@ const jsonLd: JsonLd[] = [
 					</div>
 				</div>
 
-				<div class="relative hidden min-h-[650px] lg:block">
+				<div class="relative min-h-[610px] lg:min-h-[650px]">
 					<div class="absolute right-0 top-12 h-[560px] w-[82%] overflow-hidden border border-white/14 bg-white/8">
 						<img src="/assets/mens-hormone-optimization.webp" alt="" class="h-full w-full object-cover object-center" loading="eager" fetchpriority="high" decoding="async" width="1024" height="1536" />
-						<div class="absolute inset-0 bg-gradient-to-t from-[#061710]/55 via-transparent to-transparent"></div>
+						<div class="absolute inset-0 bg-[#061710]/42"></div>
+						<div class="absolute inset-0 bg-gradient-to-t from-[#061710]/82 via-[#061710]/18 to-[#061710]/20"></div>
 					</div>
-					<div class="absolute bottom-16 left-0 w-[56%] border border-[#d8bf78]/70 bg-[#061710]/82 p-5 shadow-2xl backdrop-blur-md">
-						<p class="text-xs font-black uppercase tracking-normal text-[#d8bf78]">Eden Health Ecosystem</p>
-						<p class="mt-2 text-3xl font-black leading-none text-white">127,000+ members served</p>
-						<p class="mt-3 text-sm font-semibold leading-5 text-white/76">A real facility for medical wellness, recovery, body composition, and follow-through.</p>
+					<div class="absolute inset-x-0 bottom-6 z-10 mx-auto max-w-md lg:bottom-8 lg:left-0 lg:mx-0">
+						<LeadForm
+							serviceSlug="longevity-baseline-starter-299"
+							suburbSlug="greenwood-village"
+							heading="$299 Longevity Baseline Starter"
+							subheading="Biomarkers, InBody body composition, and a clinician-guided plan in Greenwood Village."
+							submitText="Claim My Baseline Slot"
+							compact={true}
+							underButtonText="Tap and our team will text or call to schedule."
+							hiddenMessage="$299 Longevity Baseline Starter claimed: biomarkers, InBody body composition, clinician-guided plan, and Eden membership/recovery/training next-step discussion."
+						/>
 					</div>
 				</div>
 			</div>
@@ -271,24 +279,17 @@ const jsonLd: JsonLd[] = [
 		</section>
 
 		<section class="bg-[#f6f0e4] px-5 py-10 text-[#082317] sm:px-8 sm:py-16 lg:px-12">
-			<div class="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.92fr_1.08fr] lg:items-start">
-				<div>
+			<div class="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[1fr_0.8fr] lg:items-center">
+				<div class="max-w-3xl">
 					<p class="text-sm font-black uppercase tracking-normal text-[#8b6d2c]">Claim your baseline</p>
 					<h2 class="mt-3 text-4xl font-black leading-none tracking-normal sm:text-5xl">$299 Longevity Baseline Starter</h2>
 					<p class="mt-5 text-lg font-semibold leading-7 text-[#294237]">
-						Leave your info and Eden will text or call to schedule the right visit time.
+						Use the secure form above. Eden will text or call to schedule the right visit time.
 					</p>
 				</div>
-				<LeadForm
-					serviceSlug="longevity-baseline-starter-299"
-					suburbSlug="greenwood-village"
-					heading="$299 Longevity Baseline Starter"
-					subheading="Biomarkers, InBody body composition, and a clinician-guided plan in Greenwood Village."
-					submitText="Claim My Baseline Slot"
-					compact={true}
-					underButtonText="Tap and our team will text or call to schedule."
-					hiddenMessage="$299 Longevity Baseline Starter claimed: biomarkers, InBody body composition, clinician-guided plan, and Eden membership/recovery/training next-step discussion."
-				/>
+				<a href="#lead-form" class="inline-flex items-center justify-center rounded-full bg-[#082317] px-7 py-4 text-base font-black text-[#f4eedf] transition hover:bg-[#123d2d]">
+					Claim My Baseline Slot
+				</a>
 			</div>
 		</section>
 	</main>
