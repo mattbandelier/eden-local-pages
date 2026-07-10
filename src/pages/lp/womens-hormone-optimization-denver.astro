@@ -1,0 +1,326 @@
+---
+import LeadForm from "../../components/content/LeadForm.astro";
+import Footer from "../../components/layout/Footer.astro";
+import PremiumHeader from "../../components/layout/PremiumHeader.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { canonicalUrl, homeUrl } from "../../lib/urls";
+import type { JsonLd } from "../../lib/schema-org";
+
+const canonical = canonicalUrl("/lp/womens-hormone-optimization-denver");
+const title = "Women's Hormone Optimization Denver | BHRT, Menopause & Labs | Eden";
+const description =
+	"Provider-led women's hormone optimization near Denver and DTC. Discuss BHRT, menopause, perimenopause, sleep, mood, energy, libido, body composition, labs, and next steps.";
+
+const searchMatches = [
+	"Women's Hormone Optimization Denver",
+	"BHRT Denver",
+	"Bioidentical Hormones Denver",
+	"Menopause Hormone Therapy",
+	"Perimenopause Hormone Support",
+	"Hormone Pellets For Women",
+	"Female Hormone Therapy",
+	"HRT Consults",
+];
+
+const proofPoints = [
+	{
+		kicker: "Labs first",
+		title: "Provider review before treatment",
+		body: "Symptoms, health history, and lab context shape the conversation.",
+	},
+	{
+		kicker: "Women's path",
+		title: "Built for midlife + performance",
+		body: "Sleep, mood, energy, libido, body composition, recovery, and life stage belong in one review.",
+	},
+	{
+		kicker: "Inside Eden",
+		title: "Wellness, fitness, and recovery together",
+		body: "Hormone conversations can connect to training, recovery, peptides, and medical weight support when appropriate.",
+	},
+];
+
+const includes = [
+	{
+		title: "Women's hormone consult",
+		body: "Talk through symptoms, goals, life stage, cycle or menopause context, prior labs, current medications, and what feels different.",
+	},
+	{
+		title: "Lab-guided next step",
+		body: "Confirm what bloodwork is available, what may still be needed, and whether BHRT, menopause support, or another path is appropriate.",
+	},
+	{
+		title: "Treatment-fit conversation",
+		body: "Discuss options only after provider review, including BHRT, hormone pellets, creams, troches, tablets, or non-hormone support when appropriate.",
+	},
+	{
+		title: "Whole-system support",
+		body: "Connect hormones with strength, recovery, medical weight support, peptides, sleep, stress, and follow-up when the bigger picture matters.",
+	},
+];
+
+const lanes = [
+	["BHRT + bioidentical hormones", "For women comparing bioidentical hormone replacement therapy, hormone pellets, or female hormone therapy near Denver."],
+	["Menopause + perimenopause", "For women navigating hot flashes, sleep changes, mood shifts, body-composition changes, or changing recovery."],
+	["Energy, sleep, libido, mood", "For women who feel like multiple symptoms are connected and want a provider-led review before guessing."],
+	["Body composition + performance", "For women who want hormones, strength, recovery, peptides, or medical weight support evaluated as one plan."],
+];
+
+const faqs = [
+	{
+		question: "Is this page for women's hormones or TRT?",
+		answer:
+			"This page is for women's hormone optimization, BHRT, menopause, perimenopause, and female hormone therapy questions. Male TRT traffic should use Eden's TRT Denver page instead.",
+	},
+	{
+		question: "Do I need labs before women's hormone treatment?",
+		answer:
+			"Yes. Bloodwork and provider review are required before any treatment plan is recommended. The consult helps determine what labs are already useful and what may still be needed.",
+	},
+	{
+		question: "Does Eden offer BHRT or hormone pellets for women?",
+		answer:
+			"Eden can discuss BHRT and hormone pellet options for women when clinically appropriate. Eligibility, product, dose, and follow-up are determined after provider review.",
+	},
+	{
+		question: "Is this only for menopause?",
+		answer:
+			"No. Menopause and perimenopause are major reasons women seek care, but the consult can also review energy, sleep, libido, mood, recovery, body composition, and performance goals.",
+	},
+];
+
+const jsonLd: JsonLd[] = [
+	{
+		"@context": "https://schema.org",
+		"@type": "MedicalBusiness",
+		"@id": `${canonical}#medical-business`,
+		name: "Eden Health Club",
+		url: canonical,
+		telephone: "+17206057678",
+		address: {
+			"@type": "PostalAddress",
+			streetAddress: "5990 S University Blvd",
+			addressLocality: "Greenwood Village",
+			addressRegion: "CO",
+			postalCode: "80121",
+			addressCountry: "US",
+		},
+		areaServed: "Denver, Greenwood Village, Denver Tech Center, Cherry Hills Village, Centennial, Englewood, Littleton, Lone Tree, Highlands Ranch, and South Denver",
+	},
+	{
+		"@context": "https://schema.org",
+		"@type": "Service",
+		"@id": `${canonical}#service`,
+		name: "Women's Hormone Optimization Consult",
+		serviceType: "Women's hormone optimization and BHRT consultation",
+		url: canonical,
+		description,
+		provider: {
+			"@id": `${canonical}#medical-business`,
+			"@type": "MedicalBusiness",
+			name: "Eden Health Club",
+		},
+	},
+	{
+		"@context": "https://schema.org",
+		"@type": "FAQPage",
+		"@id": `${canonical}#faq`,
+		mainEntity: faqs.map((faq) => ({
+			"@type": "Question",
+			name: faq.question,
+			acceptedAnswer: {
+				"@type": "Answer",
+				text: faq.answer,
+			},
+		})),
+	},
+	{
+		"@context": "https://schema.org",
+		"@type": "BreadcrumbList",
+		itemListElement: [
+			{ "@type": "ListItem", position: 1, name: "Home", item: homeUrl() },
+			{ "@type": "ListItem", position: 2, name: "Women's Hormone Optimization", item: canonical },
+		],
+	},
+];
+---
+
+<BaseLayout
+	title={title}
+	description={description}
+	canonicalUrl={canonical}
+	jsonLd={jsonLd}
+	noindex={true}
+	preloadImages={["/assets/eden-health-club-reception.webp", "/assets/fitness-recovery.webp", "/assets/eden-health-club-logo-white-transparent-tight.png"]}
+>
+	<PremiumHeader servicesHref="#fit" servicesLabel="Programs" pricingHref="#lead-form" contactHref="#lead-form" ctaLabel="Hormone Consult" />
+	<main class="bg-eden-paper">
+		<section class="relative overflow-hidden bg-eden-forest text-white">
+			<div class="absolute inset-0">
+				<img src="/assets/eden-health-club-reception.webp" alt="" class="h-full w-full object-cover opacity-30" loading="eager" fetchpriority="high" decoding="async" width="1388" height="1000" />
+				<div class="absolute inset-0 bg-[linear-gradient(90deg,rgba(28,45,38,0.98),rgba(25,79,57,0.9)_50%,rgba(25,79,57,0.46))]"></div>
+			</div>
+			<div class="relative mx-auto grid min-h-[calc(100vh-64px)] max-w-6xl gap-10 px-6 py-12 sm:py-16 lg:grid-cols-[1.02fr_0.98fr] lg:items-center">
+				<div>
+					<img src="/assets/eden-health-club-logo-white-transparent-tight.png" alt="Eden Health Club" class="mb-8 h-auto w-36 sm:w-44" loading="eager" fetchpriority="high" decoding="async" width="744" height="447" />
+					<p class="text-sm font-semibold uppercase tracking-normal text-eden-sage">Women's hormone care near Denver / DTC</p>
+					<h1 class="mt-4 max-w-3xl text-4xl font-semibold leading-tight sm:text-5xl lg:text-6xl">
+						Women's hormone optimization starts with labs, symptoms, and a provider review.
+					</h1>
+					<p class="mt-5 max-w-2xl text-base leading-8 text-white/86 sm:text-lg">
+						For women comparing BHRT, menopause support, perimenopause care, hormone pellets, sleep, mood, energy, libido, body composition, and recovery near South Denver.
+					</p>
+					<div class="mt-8 flex flex-col gap-3 sm:flex-row">
+						<a href="#lead-form" class="rounded-md bg-eden-sage px-6 py-3 text-center text-base font-semibold text-eden-forest shadow-sm">
+							Request a women's hormone consult
+						</a>
+						<a href="tel:+17206057678" data-phone-link class="rounded-md border border-white/35 px-6 py-3 text-center text-base font-semibold text-white hover:bg-white/10">
+							Call 720-605-7678
+						</a>
+					</div>
+					<p class="mt-5 max-w-2xl text-xs leading-6 text-white/62">
+						Eligibility, labs, therapies, prescriptions, and protocols are determined by provider review. Results vary. No treatment is guaranteed from a consult.
+					</p>
+					<div class="mt-6 max-w-3xl">
+						<p class="text-xs font-semibold uppercase text-eden-sage">Good fit if you're comparing</p>
+						<div class="mt-3 flex flex-wrap gap-2">
+							{searchMatches.map((term) => (
+								<span class="rounded-full border border-white/15 bg-white/10 px-3 py-2 text-xs font-semibold text-white">{term}</span>
+							))}
+						</div>
+					</div>
+				</div>
+				<div class="overflow-hidden rounded-lg border border-white/15 bg-white/10 p-3 shadow-2xl backdrop-blur">
+					<img src="/assets/fitness-recovery.webp" alt="" class="h-72 w-full rounded-md object-cover sm:h-96" loading="eager" fetchpriority="high" decoding="async" width="1000" height="697" />
+					<div class="mt-3 grid gap-3 sm:grid-cols-2">
+						<div class="rounded-md bg-white p-4 text-eden-navy">
+							<p class="text-xs font-semibold uppercase text-eden-green">Start clear</p>
+							<p class="mt-2 text-lg font-semibold">Symptoms + labs before treatment.</p>
+						</div>
+						<div class="rounded-md bg-eden-sage p-4 text-eden-forest">
+							<p class="text-xs font-semibold uppercase">Whole picture</p>
+							<p class="mt-2 text-lg font-semibold">Hormones, recovery, weight, and performance.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section id="fit" class="bg-white px-6 py-12 sm:py-16">
+			<div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.82fr_1.18fr] lg:items-start">
+				<div>
+					<p class="text-sm font-semibold uppercase text-eden-green">Women's hormone care</p>
+					<h2 class="mt-3 text-3xl font-semibold leading-tight text-eden-navy sm:text-4xl">
+						A women-specific path for hormone questions.
+					</h2>
+					<p class="mt-4 text-base leading-8 text-slate-700">
+						Women comparing BHRT, menopause hormone therapy, hormone pellets, or female hormone therapy need a conversation that feels clinical, empathetic, and specific to their life stage.
+					</p>
+				</div>
+				<div class="grid gap-4 sm:grid-cols-2">
+					{includes.map((item) => (
+						<div class="rounded-lg border border-eden-line bg-eden-paper p-5 shadow-sm">
+							<h3 class="text-xl font-semibold text-eden-navy">{item.title}</h3>
+							<p class="mt-3 text-sm leading-6 text-slate-700">{item.body}</p>
+						</div>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<section class="px-6 py-12 sm:py-16">
+			<div class="mx-auto max-w-6xl">
+				<div class="grid gap-8 lg:grid-cols-[0.82fr_1.18fr] lg:items-end">
+					<div>
+						<p class="text-sm font-semibold uppercase text-eden-green">What women compare</p>
+						<h2 class="mt-3 text-3xl font-semibold leading-tight text-eden-navy sm:text-4xl">
+							Women are often comparing symptoms, not just services.
+						</h2>
+					</div>
+					<p class="text-base leading-8 text-slate-700">
+						The page is built for the questions women actually bring to search: why sleep, mood, weight, energy, libido, recovery, and focus feel connected, and whether hormone care should be part of the answer.
+					</p>
+				</div>
+				<div class="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+					{lanes.map(([title, body]) => (
+						<div class="rounded-lg border border-eden-line bg-white p-5 shadow-sm">
+							<p class="text-xs font-semibold uppercase text-eden-green">Intent lane</p>
+							<h3 class="mt-2 text-xl font-semibold text-eden-navy">{title}</h3>
+							<p class="mt-3 text-sm leading-6 text-slate-700">{body}</p>
+						</div>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<section class="bg-eden-forest px-6 py-12 text-white sm:py-16">
+			<div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.88fr_1.12fr] lg:items-start">
+				<div>
+					<p class="text-sm font-semibold uppercase text-eden-sage">Why Eden</p>
+					<h2 class="mt-3 text-3xl font-semibold leading-tight sm:text-4xl">Clinical enough to be trusted. Premium enough to feel like Eden.</h2>
+					<p class="mt-4 text-base leading-8 text-white/78">
+						The buyer is not looking for a one-size-fits-all supplement script. She wants a private conversation, medical screening, clear labs, and a team that can connect hormones to strength, recovery, body composition, and ongoing support.
+					</p>
+				</div>
+				<div class="grid gap-3 sm:grid-cols-3">
+					{proofPoints.map((point) => (
+						<div class="rounded-lg border border-white/15 bg-white/10 p-5 backdrop-blur">
+							<p class="text-xs font-semibold uppercase text-eden-sage">{point.kicker}</p>
+							<h3 class="mt-3 text-xl font-semibold">{point.title}</h3>
+							<p class="mt-3 text-sm leading-6 text-white/74">{point.body}</p>
+						</div>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<section class="px-6 py-12 sm:py-16">
+			<div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.92fr_1.08fr] lg:items-start">
+				<div>
+					<p class="text-sm font-semibold uppercase text-eden-green">Where to start</p>
+					<h2 class="mt-3 text-3xl font-semibold leading-tight text-eden-navy sm:text-4xl">
+						Start here for women's hormone optimization.
+					</h2>
+					<p class="mt-4 text-base leading-8 text-slate-700">
+						If you're comparing BHRT, menopause or perimenopause support, hormone pellets for women, female hormone therapy, or lab-guided hormone care, this consult is the clean first step.
+					</p>
+				</div>
+				<LeadForm
+					serviceSlug="womens-hormone-optimization-paid"
+					suburbSlug="greenwood-village"
+					heading="Request a women's hormone consult"
+					subheading="Tell Eden what you want to review. The team will follow up about symptoms, labs, provider review, and next steps."
+					submitText="Request my hormone consult"
+					messageLabel="What are you hoping to improve?"
+					goalOptions={["Sleep or fatigue", "Mood or focus", "Menopause or perimenopause changes", "Libido or recovery", "Body composition or weight", "BHRT or hormone pellets", "Not sure yet"]}
+				/>
+			</div>
+		</section>
+
+		<section class="bg-white px-6 py-12 sm:py-16" aria-labelledby="womens-hormone-faq-heading">
+			<div class="mx-auto max-w-4xl">
+				<p class="text-sm font-semibold uppercase text-eden-green">FAQ</p>
+				<h2 id="womens-hormone-faq-heading" class="mt-3 text-3xl font-semibold leading-tight text-eden-navy sm:text-4xl">
+					Questions before booking.
+				</h2>
+				<div class="mt-8 divide-y divide-eden-line rounded-lg border border-eden-line bg-eden-paper">
+					{faqs.map((faq) => (
+						<details class="group p-5">
+							<summary class="cursor-pointer list-none text-lg font-semibold text-eden-navy">
+								{faq.question}
+							</summary>
+							<p class="mt-3 text-sm leading-7 text-slate-700">{faq.answer}</p>
+						</details>
+					))}
+				</div>
+			</div>
+		</section>
+	</main>
+	<div class="fixed inset-x-0 bottom-0 z-40 border-t border-eden-line bg-white/96 p-3 shadow-lg backdrop-blur md:hidden">
+		<div class="mx-auto flex max-w-md gap-2">
+			<a href="#lead-form" class="flex-1 rounded-md bg-eden-green px-4 py-3 text-center text-sm font-semibold text-white">Hormone consult</a>
+			<a href="tel:+17206057678" data-phone-link class="rounded-md border border-eden-line px-4 py-3 text-center text-sm font-semibold text-eden-navy">Call</a>
+		</div>
+	</div>
+	<Footer variant="wellness" />
+</BaseLayout>
