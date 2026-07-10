@@ -197,10 +197,11 @@ const displayBody = premium && service ? premiumHeroBodies[service.slug] ?? cont
 const premiumHeroImages: Record<string, string> = {
 	"male-trt": "/assets/mens-hormone-optimization.webp",
 	"medical-weight-loss": "/assets/fitness-recovery.webp",
-	"peptide-therapy": "/assets/eden-health-club-reception.webp",
-	"female-bhrt": "/assets/eden-health-club-reception.webp",
+	"peptide-therapy": "/assets/mens-hormone-optimization.webp",
+	"female-bhrt": "/assets/fitness-recovery.webp",
 };
 const heroImage = premium && service ? premiumHeroImages[service.slug] ?? "/assets/eden-health-club-office.webp" : "/assets/eden-health-club-office.webp";
+const heroBackgroundImage = premium ? "/assets/eden-health-club-reception.webp" : heroImage;
 const sectionClass =
 	premium && isCombo
 		? "relative max-w-full overflow-hidden bg-eden-forest text-white"
@@ -237,7 +238,7 @@ const premiumHighlights = [
 	{premium && (
 		<>
 			<img
-				src={heroImage}
+				src={heroBackgroundImage}
 				alt=""
 				width="960"
 				height="960"
@@ -255,7 +256,7 @@ const premiumHighlights = [
 				loop
 				playsinline
 				preload="none"
-				poster={heroImage}
+				poster={heroBackgroundImage}
 				aria-hidden="true"
 			>
 				<source data-src="https://edenhealthclubs.com/wp-content/uploads/2025/07/edenhealth-hero-video.mp4" type="video/mp4" />

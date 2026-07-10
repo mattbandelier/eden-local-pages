@@ -56,11 +56,12 @@ const breadcrumbItems: BreadcrumbItem[] = [
 const premiumHeroImages: Record<string, string> = {
 	"male-trt": "/assets/mens-hormone-optimization.webp",
 	"medical-weight-loss": "/assets/fitness-recovery.webp",
-	"peptide-therapy": "/assets/eden-health-club-reception.webp",
-	"female-bhrt": "/assets/eden-health-club-reception.webp",
+	"peptide-therapy": "/assets/mens-hormone-optimization.webp",
+	"female-bhrt": "/assets/fitness-recovery.webp",
 };
 const preloadImages = isPremiumMoneyPage
 	? [
+			"/assets/eden-health-club-reception.webp",
 			premiumHeroImages[service.slug] ?? "/assets/eden-health-club-office.webp",
 			"/assets/eden-health-club-logo-white-transparent-tight.png",
 		]
