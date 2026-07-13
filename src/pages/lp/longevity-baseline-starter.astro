@@ -7,30 +7,32 @@ import type { JsonLd } from "../../lib/schema-org";
 const canonical = canonicalUrl("/lp/longevity-baseline-starter");
 const title = "$299 Longevity Baseline Starter | Eden Health Club Greenwood Village";
 const description =
-	"Claim Eden's $299 Longevity Baseline Starter in Greenwood Village: biomarkers, InBody body composition, clinician-guided plan, and a clear next step.";
+	"Claim Eden's $299 Longevity Baseline Starter in Greenwood Village: lab work, InBody body composition, a clinician-guided plan, and up to $299 toward the first month of eligible treatment.";
 
 const planSteps = [
 	{
 		step: "1",
 		title: "Measure",
-		body: "Start with biomarkers and an InBody body-composition baseline so the plan is built from real inputs.",
+		body: "Start with lab work and an InBody body-composition baseline so the plan is built from real inputs.",
 	},
 	{
 		step: "2",
 		title: "Map",
-		body: "Review your goals with Eden's clinician-guided team and choose the most logical starting path.",
+		body: "Review your results and goals with Eden's clinician-guided team, including whether hormone or peptide support may be appropriate.",
 	},
 	{
 		step: "3",
 		title: "Move",
-		body: "Turn the plan into action with Eden membership, recovery, training, and optimization support when appropriate.",
+		body: "Turn the plan into action with eligible treatment, membership, recovery, training, and optimization support when appropriate.",
 	},
 ];
 
 const valueStack = [
-	"Biomarker review or lab direction",
+	"Lab work and results review",
 	"InBody body-composition baseline",
 	"Clinician-guided optimization plan",
+	"Up to $299 toward the first month of eligible treatment*",
+	"Hormone or peptide pathways when clinically appropriate",
 	"Recovery and training pathway",
 	"Membership options with ongoing support",
 ];
@@ -145,20 +147,11 @@ const jsonLd: JsonLd[] = [
 						$299<br />Longevity Baseline
 					</h1>
 					<p class="mt-7 max-w-xl text-2xl font-black leading-tight text-white sm:text-3xl">
-						Clinician-guided optimization, built from biomarkers and body composition.
+						Clinician-guided optimization, built from lab work and body composition.
 					</p>
-
-					<div class="mt-5 grid max-w-xl grid-cols-2 gap-3">
-						{planSteps.map((item) => (
-							<div class="border border-white/30 bg-white/8 p-4 backdrop-blur-sm">
-								<p class="text-lg font-black uppercase tracking-normal text-white">{item.title}</p>
-								<p class="mt-1 text-sm font-semibold leading-snug text-white/78">{item.title === "Measure" ? "Biomarkers + InBody" : item.title === "Map" ? "Clinician-guided plan" : "Membership + recovery"}</p>
-							</div>
-						))}
-						<div class="border border-white/30 bg-white/8 p-4 backdrop-blur-sm">
-							<p class="text-lg font-black uppercase tracking-normal text-white">Support</p>
-							<p class="mt-1 text-sm font-semibold leading-snug text-white/78">Training + next steps</p>
-						</div>
+					<div class="mt-5 max-w-xl border-l-4 border-[#d8bf78] bg-[#061710]/72 px-4 py-3 backdrop-blur-sm">
+						<p class="text-lg font-black uppercase leading-tight text-white">First month of eligible treatment included*</p>
+						<p class="mt-1 text-sm font-bold leading-5 text-white/76">Up to $299 credit after clinician review. Eligibility and restrictions apply.</p>
 					</div>
 
 					<div class="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
@@ -166,6 +159,19 @@ const jsonLd: JsonLd[] = [
 							Claim My Baseline Slot
 						</a>
 						<p class="text-sm font-bold leading-5 text-white/72">Tap and our team will text or call to schedule.</p>
+					</div>
+
+					<div class="mt-5 grid max-w-xl grid-cols-2 gap-3">
+						{planSteps.map((item) => (
+							<div class="border border-white/30 bg-white/8 p-4 backdrop-blur-sm">
+								<p class="text-lg font-black uppercase tracking-normal text-white">{item.title}</p>
+								<p class="mt-1 text-sm font-semibold leading-snug text-white/78">{item.title === "Measure" ? "Lab work + InBody" : item.title === "Map" ? "Clinician-guided plan" : "Treatment + support"}</p>
+							</div>
+						))}
+						<div class="border border-white/30 bg-white/8 p-4 backdrop-blur-sm">
+							<p class="text-lg font-black uppercase tracking-normal text-white">Support</p>
+							<p class="mt-1 text-sm font-semibold leading-snug text-white/78">Training + next steps</p>
+						</div>
 					</div>
 				</div>
 
@@ -180,11 +186,11 @@ const jsonLd: JsonLd[] = [
 							serviceSlug="longevity-baseline-starter-299"
 							suburbSlug="greenwood-village"
 							heading="$299 Longevity Baseline Starter"
-							subheading="Biomarkers, InBody body composition, and a clinician-guided plan in Greenwood Village."
+							subheading="Lab work, InBody body composition, a clinician-guided plan, and up to $299 toward the first month of eligible treatment.*"
 							submitText="Claim My Baseline Slot"
 							compact={true}
-							underButtonText="Tap and our team will text or call to schedule."
-							hiddenMessage="$299 Longevity Baseline Starter claimed: biomarkers, InBody body composition, clinician-guided plan, and Eden membership/recovery/training next-step discussion."
+							underButtonText="Tap and our team will text or call to schedule. *Eligibility and restrictions apply."
+							hiddenMessage="$299 Longevity Baseline Starter claimed: lab work, InBody body composition, clinician-guided plan, and up to $299 toward the first month of eligible treatment after clinician review."
 						/>
 					</div>
 				</div>
@@ -208,7 +214,7 @@ const jsonLd: JsonLd[] = [
 					<p class="text-sm font-black uppercase tracking-normal text-[#8b6d2c]">The Eden 3-Step Baseline Plan</p>
 					<h2 class="mt-3 text-4xl font-black leading-none tracking-normal sm:text-5xl">A smarter first step before you choose a program.</h2>
 					<p class="mt-5 text-lg font-semibold leading-7 text-[#294237]">
-						Most people are guessing between labs, peptides, hormones, training, recovery, and membership. Eden starts with a baseline, then routes you to the next best step.
+						Most people are guessing between lab work, peptide support, hormone optimization, training, recovery, and membership. Eden starts with a baseline, then routes you to the next best step.
 					</p>
 				</div>
 
@@ -239,7 +245,7 @@ const jsonLd: JsonLd[] = [
 						))}
 					</div>
 					<p class="mt-5 max-w-2xl text-sm font-semibold leading-6 text-white/70">
-						The starter visit does not guarantee treatment, medication, or a specific protocol. Recommendations depend on goals, history, labs or biomarkers, and clinician review.
+						*Treatment credit is limited to $299 and applies only toward an eligible treatment selected after clinician review. It has no cash value. Treatment, medication, and specific protocols are not guaranteed; recommendations depend on goals, health history, lab work, and clinical eligibility.
 					</p>
 				</div>
 
@@ -284,7 +290,7 @@ const jsonLd: JsonLd[] = [
 					<p class="text-sm font-black uppercase tracking-normal text-[#8b6d2c]">Claim your baseline</p>
 					<h2 class="mt-3 text-4xl font-black leading-none tracking-normal sm:text-5xl">$299 Longevity Baseline Starter</h2>
 					<p class="mt-5 text-lg font-semibold leading-7 text-[#294237]">
-						Use the secure form above. Eden will text or call to schedule the right visit time.
+						Start with lab work, InBody, and your clinician-guided plan. If eligible, receive up to $299 toward your first month of treatment. Eden will text or call to schedule the right visit time.
 					</p>
 				</div>
 				<a href="#lead-form" class="inline-flex items-center justify-center rounded-full bg-[#082317] px-7 py-4 text-base font-black text-[#f4eedf] transition hover:bg-[#123d2d]">
@@ -298,7 +304,7 @@ const jsonLd: JsonLd[] = [
 		<div class="mx-auto flex max-w-md items-center gap-3">
 			<div class="min-w-0 flex-1">
 				<p class="text-xs font-black uppercase tracking-normal text-[#d8bf78]">$299 Baseline Starter</p>
-				<p class="truncate text-sm font-bold text-white/78">Biomarkers + InBody + plan</p>
+				<p class="truncate text-sm font-bold text-white/78">Lab work + InBody + plan</p>
 			</div>
 			<a href="#lead-form" class="shrink-0 rounded-full bg-[#f4eedf] px-4 py-3 text-sm font-black text-[#063322]">Claim Slot</a>
 		</div>
