@@ -7,6 +7,9 @@ const MAX_REQUESTS_PER_WINDOW = 5;
 const rateLimit = new Map<string, { count: number; resetAt: number }>();
 const BASELINE_WORKFLOW_KEY = "longevity_baseline_14_day_followup";
 const BASELINE_META_TAG = "baseline_lead_meta";
+const PEPTIDE_WORKFLOW_KEY = "peptide_299_therapy";
+const PEPTIDE_LEAD_TAG = "peptide_299_lead";
+const PEPTIDE_WORKFLOW_ID = "2fa02d3f-f4e2-4f63-89ea-3a3eae9610e1";
 const GHL_CUSTOM_FIELD_IDS = {
 	gaClientId: "W2uCfvAUkIwckXY7kQXD",
 	sourcePage: "6z1DrlIUeDmxQN2O9U9z",
@@ -173,6 +176,26 @@ function shouldApplyBaselineLeadTag(payload: LeadPayload): boolean {
 	return payload.workflowKey === BASELINE_WORKFLOW_KEY || payload.message?.includes(`WORKFLOW_KEY: ${BASELINE_WORKFLOW_KEY}`) === true;
 }
 
+function tagsForLeadPayload(payload: LeadPayload): string[] {
+	const tags = new Set<string>();
+
+	if (shouldApplyBaselineLeadTag(payload)) tags.add(BASELINE_META_TAG);
+	if (shouldApplyPeptideWorkflow(payload)) {
+		tags.add(PEPTIDE_LEAD_TAG);
+	}
+
+	return [...tags];
+}
+
+function shouldApplyPeptideWorkflow(payload: LeadPayload): boolean {
+	return payload.workflowKey === PEPTIDE_WORKFLOW_KEY || payload.message?.includes(`WORKFLOW_KEY: ${PEPTIDE_WORKFLOW_KEY}`) === true;
+}
+
+function workflowIdForLeadPayload(payload: LeadPayload): string | null {
+	if (shouldApplyPeptideWorkflow(payload)) return PEPTIDE_WORKFLOW_ID;
+	return null;
+}
+
 function ghlContactIdFromResponse(data: unknown): string | null {
 	if (!data || typeof data !== "object") return null;
 	const record = data as Record<string, unknown>;
@@ -195,6 +218,20 @@ async function addGhlContactTags(token: string, contactId: string, tags: string[
 			version: "2021-07-28",
 		},
 		body: JSON.stringify({ tags }),
+	});
+
+	return response.ok;
+}
+
+async function addGhlContactToWorkflow(token: string, contactId: string, workflowId: string): Promise<boolean> {
+	const response = await fetch(`https://services.leadconnectorhq.com/contacts/${contactId}/workflow/${workflowId}`, {
+		method: "POST",
+		headers: {
+			accept: "application/json",
+			authorization: `Bearer ${token}`,
+			"content-type": "application/json",
+			version: "2021-07-28",
+		},
 	});
 
 	return response.ok;
@@ -251,13 +288,25 @@ async function upsertGhlContact(payload: LeadPayload): Promise<boolean> {
 	});
 
 	if (!response.ok) return false;
-	if (!shouldApplyBaselineLeadTag(payload)) return true;
+	const tags = tagsForLeadPayload(payload);
+	const workflowId = workflowIdForLeadPayload(payload);
+	if (!tags.length && !workflowId) return true;
 
 	const responseData = await response.json().catch(() => null);
 	const contactId = ghlContactIdFromResponse(responseData);
 	if (!contactId) return false;
 
-	return addGhlContactTags(token, contactId, [BASELINE_META_TAG]);
+	if (tags.length) {
+		const tagsAdded = await addGhlContactTags(token, contactId, tags);
+		if (!tagsAdded) return false;
+	}
+
+	if (workflowId) {
+		const workflowAdded = await addGhlContactToWorkflow(token, contactId, workflowId);
+		if (!workflowAdded) return false;
+	}
+
+	return true;
 }
 
 export const POST: APIRoute = async ({ request, clientAddress }) => {
