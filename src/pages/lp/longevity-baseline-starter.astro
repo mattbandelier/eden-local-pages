@@ -7,7 +7,7 @@ import type { JsonLd } from "../../lib/schema-org";
 const canonical = canonicalUrl("/lp/longevity-baseline-starter");
 const title = "$299 Longevity Baseline Starter | Eden Health Club Greenwood Village";
 const description =
-	"Claim Eden's $299 Longevity Baseline Starter in Greenwood Village: lab work, InBody body composition, a clinician-guided plan, and up to $299 toward the first month of eligible treatment.";
+	"Claim Eden's $299 Longevity Baseline Starter in Greenwood Village: lab work, InBody body composition, a clinician-guided plan, and up to $299 toward your first month of eligible treatment.";
 
 const planSteps = [
 	{
@@ -18,7 +18,7 @@ const planSteps = [
 	{
 		step: "2",
 		title: "Map",
-		body: "Review your results and goals with Eden's clinician-guided team, including whether hormone or peptide support may be appropriate.",
+		body: "Review your results and goals with Eden's clinician-guided team, including whether hormone, peptide, or metabolic support may be appropriate.",
 	},
 	{
 		step: "3",
@@ -31,8 +31,8 @@ const valueStack = [
 	"Lab work and results review",
 	"InBody body-composition baseline",
 	"Clinician-guided optimization plan",
-	"Up to $299 toward the first month of eligible treatment*",
-	"Hormone or peptide pathways when clinically appropriate",
+	"Up to $299 toward your first month of eligible treatment*",
+	"Hormone, peptide, and metabolic pathways when clinically appropriate",
 	"Recovery and training pathway",
 	"Membership options with ongoing support",
 ];
@@ -76,7 +76,7 @@ const trustLinks = [
 	{
 		label: "Medical Weight Loss Denver",
 		href: "/medical-weight-loss/denver/",
-		body: "Provider-guided weight-loss, body-composition, and GLP-1 support lane.",
+		body: "Provider-guided weight-loss, body-composition, and metabolic support lane.",
 	},
 	{
 		label: "Medical Spa Denver",
@@ -150,13 +150,13 @@ const jsonLd: JsonLd[] = [
 						Clinician-guided optimization, built from lab work and body composition.
 					</p>
 					<div class="mt-5 max-w-xl border-l-4 border-[#d8bf78] bg-[#061710]/72 px-4 py-3 backdrop-blur-sm">
-						<p class="text-lg font-black uppercase leading-tight text-white">First month of eligible treatment included*</p>
-						<p class="mt-1 text-sm font-bold leading-5 text-white/76">Up to $299 credit after clinician review. Eligibility and restrictions apply.</p>
+						<p class="text-lg font-black uppercase leading-tight text-white">Up to $299 toward your first month*</p>
+						<p class="mt-1 text-sm font-bold leading-5 text-white/76">Eligible treatment credit after clinician review. Restrictions apply.</p>
 					</div>
 
 					<div class="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
 						<a href="#lead-form" class="inline-flex items-center justify-center rounded-full bg-[#f4eedf] px-7 py-4 text-base font-black text-[#063322] transition hover:bg-white">
-							Claim My Baseline Slot
+							Claim My $299 Baseline
 						</a>
 						<p class="text-sm font-bold leading-5 text-white/72">Tap and our team will text or call to schedule.</p>
 					</div>
@@ -186,11 +186,11 @@ const jsonLd: JsonLd[] = [
 							serviceSlug="longevity-baseline-starter-299"
 							suburbSlug="greenwood-village"
 							heading="$299 Longevity Baseline Starter"
-							subheading="Lab work, InBody body composition, a clinician-guided plan, and up to $299 toward the first month of eligible treatment.*"
-							submitText="Claim My Baseline Slot"
+							subheading="Lab work, InBody body composition, a clinician-guided plan, and up to $299 toward your first month of eligible treatment.*"
+							submitText="Claim My $299 Baseline"
 							compact={true}
 							underButtonText="Tap and our team will text or call to schedule. *Eligibility and restrictions apply."
-							hiddenMessage="WORKFLOW_KEY: longevity_baseline_14_day_followup. $299 Longevity Baseline Starter claimed: lab work, InBody body composition, clinician-guided plan, and up to $299 toward the first month of eligible treatment after clinician review."
+							hiddenMessage="WORKFLOW_KEY: longevity_baseline_14_day_followup. $299 Longevity Baseline Starter claimed: lab work, InBody body composition, clinician-guided plan, and up to $299 toward your first month of eligible treatment after clinician review."
 							workflowKey="longevity_baseline_14_day_followup"
 							offerName="$299 Longevity Baseline Starter"
 							offerValue="lab_work_inbody_clinician_plan_299_treatment_credit"
@@ -213,13 +213,13 @@ const jsonLd: JsonLd[] = [
 
 		<section class="bg-[#f6f0e4] px-5 py-10 text-[#082317] sm:px-8 sm:py-16 lg:px-12">
 			<div class="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.9fr_1.1fr]">
-				<div>
-					<p class="text-sm font-black uppercase tracking-normal text-[#8b6d2c]">The Eden 3-Step Baseline Plan</p>
-					<h2 class="mt-3 text-4xl font-black leading-none tracking-normal sm:text-5xl">A smarter first step before you choose a program.</h2>
-					<p class="mt-5 text-lg font-semibold leading-7 text-[#294237]">
-						Most people are guessing between lab work, peptide support, hormone optimization, training, recovery, and membership. Eden starts with a baseline, then routes you to the next best step.
-					</p>
-				</div>
+					<div>
+						<p class="text-sm font-black uppercase tracking-normal text-[#8b6d2c]">The Eden 3-Step Baseline Plan</p>
+						<h2 class="mt-3 text-4xl font-black leading-none tracking-normal sm:text-5xl">A smarter first step before you choose a program.</h2>
+						<p class="mt-5 text-lg font-semibold leading-7 text-[#294237]">
+							Most people are guessing between lab work, peptide support, hormone optimization, metabolic support, training, recovery, and membership. Eden starts with a baseline, then routes you to the next best step.
+						</p>
+					</div>
 
 				<div class="grid gap-4">
 					{planSteps.map((item) => (
@@ -246,11 +246,11 @@ const jsonLd: JsonLd[] = [
 								<p class="text-lg font-black leading-tight text-white">{item}</p>
 							</div>
 						))}
+						</div>
+						<p class="mt-5 max-w-2xl text-sm font-semibold leading-6 text-white/70">
+							*Treatment credit is limited to $299 and applies only toward your first month of eligible treatment selected after clinician review. It has no cash value. Treatment, medication, and specific protocols are not guaranteed; recommendations depend on goals, health history, lab work, and clinical eligibility.
+						</p>
 					</div>
-					<p class="mt-5 max-w-2xl text-sm font-semibold leading-6 text-white/70">
-						*Treatment credit is limited to $299 and applies only toward an eligible treatment selected after clinician review. It has no cash value. Treatment, medication, and specific protocols are not guaranteed; recommendations depend on goals, health history, lab work, and clinical eligibility.
-					</p>
-				</div>
 
 				<div class="overflow-hidden border border-white/14 bg-white/8">
 					<img src="/assets/fitness-recovery.webp" alt="" class="h-80 w-full object-cover" loading="lazy" />
@@ -293,11 +293,11 @@ const jsonLd: JsonLd[] = [
 					<p class="text-sm font-black uppercase tracking-normal text-[#8b6d2c]">Claim your baseline</p>
 					<h2 class="mt-3 text-4xl font-black leading-none tracking-normal sm:text-5xl">$299 Longevity Baseline Starter</h2>
 					<p class="mt-5 text-lg font-semibold leading-7 text-[#294237]">
-						Start with lab work, InBody, and your clinician-guided plan. If eligible, receive up to $299 toward your first month of treatment. Eden will text or call to schedule the right visit time.
+						Start with lab work, InBody, and your clinician-guided plan. If eligible, receive up to $299 toward your first month of treatment after clinician review. Eden will text or call to schedule the right visit time.
 					</p>
 				</div>
 				<a href="#lead-form" class="inline-flex items-center justify-center rounded-full bg-[#082317] px-7 py-4 text-base font-black text-[#f4eedf] transition hover:bg-[#123d2d]">
-					Claim My Baseline Slot
+					Claim My $299 Baseline
 				</a>
 			</div>
 		</section>
@@ -305,13 +305,13 @@ const jsonLd: JsonLd[] = [
 
 	<div data-sticky-claim class="pointer-events-none fixed inset-x-0 bottom-0 z-50 translate-y-6 border-t border-white/12 bg-[#061710]/96 p-3 text-white opacity-0 shadow-2xl backdrop-blur transition duration-300 sm:hidden">
 		<div class="mx-auto flex max-w-md items-center gap-3">
-			<div class="min-w-0 flex-1">
-				<p class="text-xs font-black uppercase tracking-normal text-[#d8bf78]">$299 Baseline Starter</p>
-				<p class="truncate text-sm font-bold text-white/78">Lab work + InBody + plan</p>
+				<div class="min-w-0 flex-1">
+					<p class="text-xs font-black uppercase tracking-normal text-[#d8bf78]">$299 Baseline Starter</p>
+					<p class="truncate text-sm font-bold text-white/78">Lab work + InBody + plan</p>
+				</div>
+				<a href="#lead-form" class="shrink-0 rounded-full bg-[#f4eedf] px-4 py-3 text-sm font-black text-[#063322]">Claim Baseline</a>
 			</div>
-			<a href="#lead-form" class="shrink-0 rounded-full bg-[#f4eedf] px-4 py-3 text-sm font-black text-[#063322]">Claim Slot</a>
 		</div>
-	</div>
 
 	<script>
 		const stickyClaim = document.querySelector<HTMLElement>("[data-sticky-claim]");
