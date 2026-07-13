@@ -5,6 +5,8 @@ export const prerender = false;
 const WINDOW_MS = 60_000;
 const MAX_REQUESTS_PER_WINDOW = 5;
 const rateLimit = new Map<string, { count: number; resetAt: number }>();
+const BASELINE_WORKFLOW_KEY = "longevity_baseline_14_day_followup";
+const BASELINE_META_TAG = "baseline_lead_meta";
 const GHL_CUSTOM_FIELD_IDS = {
 	gaClientId: "W2uCfvAUkIwckXY7kQXD",
 	sourcePage: "6z1DrlIUeDmxQN2O9U9z",
@@ -167,6 +169,37 @@ async function postLeadWebhook(webhookUrl: string | undefined, payload: LeadPayl
 	return response.ok;
 }
 
+function shouldApplyBaselineLeadTag(payload: LeadPayload): boolean {
+	return payload.workflowKey === BASELINE_WORKFLOW_KEY || payload.message?.includes(`WORKFLOW_KEY: ${BASELINE_WORKFLOW_KEY}`) === true;
+}
+
+function ghlContactIdFromResponse(data: unknown): string | null {
+	if (!data || typeof data !== "object") return null;
+	const record = data as Record<string, unknown>;
+	if (typeof record.contactId === "string") return record.contactId;
+	if (typeof record.id === "string") return record.id;
+	const contact = record.contact;
+	if (contact && typeof contact === "object" && typeof (contact as Record<string, unknown>).id === "string") {
+		return (contact as Record<string, string>).id;
+	}
+	return null;
+}
+
+async function addGhlContactTags(token: string, contactId: string, tags: string[]): Promise<boolean> {
+	const response = await fetch(`https://services.leadconnectorhq.com/contacts/${contactId}/tags`, {
+		method: "POST",
+		headers: {
+			accept: "application/json",
+			authorization: `Bearer ${token}`,
+			"content-type": "application/json",
+			version: "2021-07-28",
+		},
+		body: JSON.stringify({ tags }),
+	});
+
+	return response.ok;
+}
+
 async function upsertGhlContact(payload: LeadPayload): Promise<boolean> {
 	const token = import.meta.env.GHL_PRIVATE_INTEGRATION_TOKEN;
 	const locationId = import.meta.env.GHL_LOCATION_ID;
@@ -217,7 +250,14 @@ async function upsertGhlContact(payload: LeadPayload): Promise<boolean> {
 		}),
 	});
 
-	return response.ok;
+	if (!response.ok) return false;
+	if (!shouldApplyBaselineLeadTag(payload)) return true;
+
+	const responseData = await response.json().catch(() => null);
+	const contactId = ghlContactIdFromResponse(responseData);
+	if (!contactId) return false;
+
+	return addGhlContactTags(token, contactId, [BASELINE_META_TAG]);
 }
 
 export const POST: APIRoute = async ({ request, clientAddress }) => {
