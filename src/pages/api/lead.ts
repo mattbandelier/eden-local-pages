@@ -369,8 +369,12 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
 		submittedAt: new Date().toISOString(),
 	};
 
-	const [webhookOk, directGhlOk] = await Promise.all([postLeadWebhook(webhookUrl, payload), upsertGhlContact(payload)]);
 	const directGhlRequired = shouldApplyBaselineLeadTag(payload) || shouldApplyPeptideWorkflow(payload);
+	const [webhookOk, directGhlOk] = await Promise.all([
+		directGhlRequired ? Promise.resolve(false) : postLeadWebhook(webhookUrl, payload),
+		upsertGhlContact(payload),
+	]);
+
 	if (directGhlRequired && !directGhlOk) {
 		return jsonResponse({ success: false, error: "Lead delivery failed." }, 502);
 	}
