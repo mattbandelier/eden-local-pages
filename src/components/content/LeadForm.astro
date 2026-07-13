@@ -10,6 +10,9 @@ interface Props {
 	compact?: boolean;
 	underButtonText?: string;
 	hiddenMessage?: string;
+	workflowKey?: string;
+	offerName?: string;
+	offerValue?: string;
 }
 
 const {
@@ -23,6 +26,9 @@ const {
 	compact = false,
 	underButtonText = "",
 	hiddenMessage = "",
+	workflowKey = "",
+	offerName = "",
+	offerValue = "",
 } = Astro.props;
 ---
 
@@ -158,6 +164,9 @@ const {
 			<input type="hidden" name="gclsrc" data-attribution-field="gclsrc" />
 			<input type="hidden" name="gadSource" data-attribution-field="gadSource" />
 			<input type="hidden" name="gadCampaignId" data-attribution-field="gadCampaignId" />
+			{workflowKey && <input type="hidden" name="workflowKey" value={workflowKey} />}
+			{offerName && <input type="hidden" name="offerName" value={offerName} />}
+			{offerValue && <input type="hidden" name="offerValue" value={offerValue} />}
 			{hiddenMessage && <input type="hidden" name="message" value={hiddenMessage} />}
 		</div>
 
@@ -288,6 +297,9 @@ const {
 				gclsrc: attributionValue(attribution, "gclsrc"),
 				gadSource: attributionValue(attribution, "gadSource"),
 				gadCampaignId: attributionValue(attribution, "gadCampaignId"),
+				workflowKey: (fd.get("workflowKey") as string) || null,
+				offerName: (fd.get("offerName") as string) || null,
+				offerValue: (fd.get("offerValue") as string) || null,
 				gaClientId: getGaClientId(),
 				referrer: document.referrer || null,
 				firstTouch: attribution.firstTouch,

@@ -43,6 +43,9 @@ interface LeadRequestBody {
 	gclsrc?: unknown;
 	gadSource?: unknown;
 	gadCampaignId?: unknown;
+	workflowKey?: unknown;
+	offerName?: unknown;
+	offerValue?: unknown;
 	gaClientId?: unknown;
 	referrer?: unknown;
 	firstTouch?: unknown;
@@ -72,6 +75,9 @@ interface LeadPayload {
 	gclsrc: string | null;
 	gadSource: string | null;
 	gadCampaignId: string | null;
+	workflowKey: string | null;
+	offerName: string | null;
+	offerValue: string | null;
 	gaClientId: string | null;
 	referrer: string | null;
 	firstTouch: Record<string, string | null> | null;
@@ -187,6 +193,9 @@ async function upsertGhlContact(payload: LeadPayload): Promise<boolean> {
 		optionalCustomField(import.meta.env.GHL_FIELD_SERVICE_SLUG, payload.service),
 		optionalCustomField(import.meta.env.GHL_FIELD_SUBURB_SLUG, payload.suburb),
 		optionalCustomField(import.meta.env.GHL_FIELD_LEAD_MESSAGE, payload.message),
+		optionalCustomField(import.meta.env.GHL_FIELD_WORKFLOW_KEY, payload.workflowKey),
+		optionalCustomField(import.meta.env.GHL_FIELD_OFFER_NAME, payload.offerName),
+		optionalCustomField(import.meta.env.GHL_FIELD_OFFER_VALUE, payload.offerValue),
 	].filter((field): field is { id: string; field_value: string } => Boolean(field));
 
 	const response = await fetch("https://services.leadconnectorhq.com/contacts/upsert", {
@@ -261,6 +270,9 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
 		gclsrc: stringOrNull(body.gclsrc),
 		gadSource: stringOrNull(body.gadSource),
 		gadCampaignId: stringOrNull(body.gadCampaignId),
+		workflowKey: stringOrNull(body.workflowKey),
+		offerName: stringOrNull(body.offerName),
+		offerValue: stringOrNull(body.offerValue),
 		gaClientId: stringOrNull(body.gaClientId),
 		referrer: stringOrNull(body.referrer),
 		firstTouch: attributionOrNull(body.firstTouch),
