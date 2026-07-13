@@ -167,7 +167,7 @@ const {
 			{workflowKey && <input type="hidden" name="workflowKey" value={workflowKey} />}
 			{offerName && <input type="hidden" name="offerName" value={offerName} />}
 			{offerValue && <input type="hidden" name="offerValue" value={offerValue} />}
-			{hiddenMessage && <input type="hidden" name="message" value={hiddenMessage} />}
+			{hiddenMessage && <input type="hidden" name="hiddenMessage" value={hiddenMessage} />}
 		</div>
 
 		<button
@@ -254,6 +254,17 @@ const {
 		return cookieValue || null;
 	}
 
+	function combinedMessage(fd: FormData): string | null {
+		const visibleMessage = ((fd.get("message") as string) || "").trim();
+		const hiddenContext = ((fd.get("hiddenMessage") as string) || "").trim();
+
+		if (visibleMessage && hiddenContext) {
+			return `${visibleMessage}\n\n${hiddenContext}`;
+		}
+
+		return visibleMessage || hiddenContext || null;
+	}
+
 	function initLeadForm(form: HTMLFormElement) {
 		initAttribution();
 		const serviceSlug = form.dataset.serviceSlug || "";
@@ -281,7 +292,7 @@ const {
 				phone: (fd.get("phone") as string) || "",
 				email: (fd.get("email") as string) || "",
 				smsOptIn: fd.get("smsOptIn") === "on",
-				message: (fd.get("message") as string) || null,
+				message: combinedMessage(fd),
 				service: serviceSlug,
 				suburb: suburbSlug,
 				sourcePage: currentPage(),
