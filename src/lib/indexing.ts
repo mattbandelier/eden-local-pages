@@ -19,6 +19,15 @@ export const indexableComboKeys = new Set([
 	"nad-iv-therapy/greenwood-village",
 	"botox/centennial",
 	"botox/denver",
+	"bbl-photofacial/cherry-hills-village",
+	"bbl-photofacial/littleton",
+	"bbl-photofacial/south-aurora",
+	"diamondglow-facial/highlands-ranch",
+	"dermal-fillers/highlands-ranch",
+	"medical-weight-loss/lone-tree",
+	"nad-iv-therapy/lone-tree",
+	"prf-hair-restoration/englewood",
+	"prf-hair-restoration/lone-tree",
 ]);
 
 export function comboKey(serviceSlug: string, suburbSlug: string): string {
