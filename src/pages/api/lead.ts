@@ -10,6 +10,47 @@ const BASELINE_META_TAG = "baseline_lead_meta";
 const PEPTIDE_WORKFLOW_KEY = "peptide_299_therapy";
 const PEPTIDE_LEAD_TAG = "peptide_299_lead";
 const PEPTIDE_WORKFLOW_ID = "2fa02d3f-f4e2-4f63-89ea-3a3eae9610e1";
+const MED_SPA_WORKFLOW_ID = "b496b143-dacc-4b7f-8112-239dd040b360";
+const IW_WORKFLOW_ID = "672c856a-bafe-47a2-9c7f-d23b071127a8";
+const STARTER_BASELINE_SERVICE_SLUGS = new Set([
+	"longevity-baseline-visit",
+	"longevity-baseline-starter",
+	"longevity-baseline-starter-299",
+	"longevity-fb",
+	"peptide-biomarker-consult-denver",
+	"peptide-optimization-starter-299",
+	"peptide-starter-program",
+]);
+const MED_SPA_SERVICE_SLUGS = new Set([
+	"medical-spa",
+	"botox",
+	"dermal-fillers",
+	"lip-filler",
+	"diamondglow-facial",
+	"microneedling",
+	"bbl-photofacial",
+	"prf-hair-restoration",
+]);
+const IW_SERVICE_SLUGS = new Set([
+	"female-bhrt",
+	"male-trt",
+	"peptide-therapy",
+	"medical-weight-loss",
+	"iv-therapy",
+	"nad-iv-therapy",
+	"longevity",
+	"hormone-optimization",
+	"hormone-therapy-cost",
+	"womens-hormone-optimization",
+	"womens-hormone-optimization-paid",
+	"mens-hormone-optimization",
+	"menopause-hormone-therapy",
+	"medical-weight-loss-fitness-greenwood-village",
+	"glp-1-strength-training-greenwood-village",
+	"glp-1-fitness-membership-greenwood-village",
+	"perimenopause-fitness-greenwood-village",
+	"red-light-therapy-denver",
+]);
 const GHL_CUSTOM_FIELD_IDS = {
 	gaClientId: "W2uCfvAUkIwckXY7kQXD",
 	sourcePage: "6z1DrlIUeDmxQN2O9U9z",
@@ -191,8 +232,19 @@ function shouldApplyPeptideWorkflow(payload: LeadPayload): boolean {
 	return payload.workflowKey === PEPTIDE_WORKFLOW_KEY || payload.message?.includes(`WORKFLOW_KEY: ${PEPTIDE_WORKFLOW_KEY}`) === true;
 }
 
+function normalizedServiceSlug(payload: LeadPayload): string {
+	return payload.service?.trim().toLowerCase() ?? "";
+}
+
 function workflowIdForLeadPayload(payload: LeadPayload): string | null {
 	if (shouldApplyPeptideWorkflow(payload)) return PEPTIDE_WORKFLOW_ID;
+	if (shouldApplyBaselineLeadTag(payload)) return PEPTIDE_WORKFLOW_ID;
+
+	const serviceSlug = normalizedServiceSlug(payload);
+	if (STARTER_BASELINE_SERVICE_SLUGS.has(serviceSlug)) return PEPTIDE_WORKFLOW_ID;
+	if (MED_SPA_SERVICE_SLUGS.has(serviceSlug)) return MED_SPA_WORKFLOW_ID;
+	if (IW_SERVICE_SLUGS.has(serviceSlug)) return IW_WORKFLOW_ID;
+
 	return null;
 }
 
@@ -369,7 +421,8 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
 		submittedAt: new Date().toISOString(),
 	};
 
-	const directGhlRequired = shouldApplyBaselineLeadTag(payload) || shouldApplyPeptideWorkflow(payload);
+	const workflowId = workflowIdForLeadPayload(payload);
+	const directGhlRequired = Boolean(workflowId);
 	const [webhookOk, directGhlOk] = await Promise.all([
 		directGhlRequired ? Promise.resolve(false) : postLeadWebhook(webhookUrl, payload),
 		upsertGhlContact(payload),
