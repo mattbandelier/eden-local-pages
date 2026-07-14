@@ -22,7 +22,7 @@ const STARTER_BASELINE_SERVICE_SLUGS = new Set([
 	"peptide-optimization-starter-299",
 	"peptide-starter-program",
 ]);
-const HAIR_RESTORATION_SERVICE_SLUGS = new Set(["prf-hair-restoration"]);
+const HAIR_RESTORATION_SERVICE_SLUGS = new Set(["prf-hair-restoration", "hair-loss-consult"]);
 const MED_SPA_SERVICE_SLUGS = new Set([
 	"medical-spa",
 	"botox",

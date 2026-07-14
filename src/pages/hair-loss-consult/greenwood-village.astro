@@ -1,0 +1,292 @@
+---
+import LeadForm from "../../components/content/LeadForm.astro";
+import PremiumHeader from "../../components/layout/PremiumHeader.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { ORIGIN } from "../../lib/urls";
+import type { JsonLd } from "../../lib/schema-org";
+
+const canonical = `${ORIGIN}/hair-loss-consult/greenwood-village/`;
+const title = "$27 Hair Loss Consultation in Greenwood Village | Eden Health Club";
+const description =
+	"Private $27 hair loss consultation near DTC. Review thinning, shedding, hairline, crown density, candidacy, timeline, and next steps with Eden Health Club.";
+const heroImage = "/assets/hair-consult-clinic-hero.jpg";
+const consultImage = "/assets/hair-consult-private-room.jpg";
+
+const checkpoints = [
+	"Thinning or shedding timeline",
+	"Hairline and crown-density review",
+	"Health history and goals",
+	"Candidacy before commitment",
+];
+
+const visitSteps = [
+	{
+		title: "Start with the pattern",
+		body: "Your provider reviews when changes started, where they show up, what has shifted recently, and what you want to understand first.",
+	},
+	{
+		title: "Review fit and timing",
+		body: "You get a candid conversation about whether a clinic-based next step makes sense now, later, or not at all.",
+	},
+	{
+		title: "Leave with next steps",
+		body: "Pricing, timing, expectations, and follow-up are reviewed before any commitment is made.",
+	},
+];
+
+const faqs = [
+	{
+		question: "What happens during the $27 hair loss consultation?",
+		answer:
+			"A local provider reviews your concerns, timeline, goals, and candidacy, then explains realistic next steps before you commit to anything.",
+	},
+	{
+		question: "Is this a telehealth app?",
+		answer: "No. Eden is a real Greenwood Village clinic near DTC, with private in-person consultations and local follow-up.",
+	},
+	{
+		question: "Can I ask about non-surgical options?",
+		answer: "Yes. The visit is designed to review non-surgical options privately and help you understand fit, expectations, and pricing.",
+	},
+];
+
+const jsonLd: JsonLd[] = [
+	{
+		"@context": "https://schema.org",
+		"@type": "MedicalClinic",
+		name: "Eden Health Club",
+		url: canonical,
+		telephone: "+17206057678",
+		address: {
+			"@type": "PostalAddress",
+			streetAddress: "5990 S University Blvd",
+			addressLocality: "Greenwood Village",
+			addressRegion: "CO",
+			postalCode: "80121",
+			addressCountry: "US",
+		},
+	},
+	{
+		"@context": "https://schema.org",
+		"@type": "Service",
+		name: "$27 Hair Loss Consultation",
+		areaServed: "Greenwood Village and Denver Tech Center",
+		provider: {
+			"@type": "MedicalClinic",
+			name: "Eden Health Club",
+		},
+	},
+	{
+		"@context": "https://schema.org",
+		"@type": "FAQPage",
+		mainEntity: faqs.map((faq) => ({
+			"@type": "Question",
+			name: faq.question,
+			acceptedAnswer: {
+				"@type": "Answer",
+				text: faq.answer,
+			},
+		})),
+	},
+];
+---
+
+<BaseLayout
+	title={title}
+	description={description}
+	canonicalUrl={canonical}
+	jsonLd={jsonLd}
+	noindex={true}
+	preloadImages={[heroImage, consultImage]}
+>
+	<PremiumHeader servicesHref="#evaluation" servicesLabel="Evaluation" pricingHref="#pricing" contactHref="#lead-form" ctaLabel="$27 Consult" />
+	<main class="bg-eden-paper">
+		<section class="relative overflow-hidden bg-eden-forest text-white">
+			<div class="absolute inset-0">
+				<img
+					src={heroImage}
+					alt=""
+					class="h-full w-full object-cover opacity-38"
+					loading="eager"
+					fetchpriority="high"
+					decoding="async"
+					width="1200"
+					height="800"
+				/>
+				<div class="absolute inset-0 bg-[linear-gradient(90deg,rgba(24,47,39,0.98),rgba(25,79,57,0.9)_52%,rgba(25,79,57,0.36))]"></div>
+			</div>
+			<div class="relative mx-auto grid max-w-6xl gap-10 px-6 py-14 sm:py-18 lg:grid-cols-[1.02fr_0.98fr] lg:items-center">
+				<div>
+					<p class="text-sm font-semibold uppercase tracking-normal text-eden-sage">Greenwood Village near DTC</p>
+					<h1 class="mt-4 max-w-3xl text-4xl font-semibold leading-tight sm:text-5xl">
+						$27 hair loss consultation for men who want clear answers.
+					</h1>
+					<p class="mt-5 max-w-2xl text-base leading-8 text-white/86 sm:text-lg">
+						Meet with a local Eden provider to review thinning, shedding, receding hairline, widening part, crown-density changes, timeline, and realistic next steps before committing to treatment.
+					</p>
+					<div class="mt-8 flex flex-col gap-3 sm:flex-row">
+						<a href="#lead-form" class="rounded-md bg-eden-sage px-6 py-3 text-center text-base font-semibold text-eden-forest shadow-sm">
+							Book the $27 consult
+						</a>
+						<a href="tel:+17206057678" data-phone-link class="rounded-md border border-white/35 px-6 py-3 text-center text-base font-semibold text-white hover:bg-white/10">
+							Call 720-605-7678
+						</a>
+					</div>
+					<div class="mt-7 grid gap-3 text-sm text-white/88 sm:grid-cols-3">
+						<div class="border-l border-eden-sage/70 pl-4">Private in-person visit</div>
+						<div class="border-l border-eden-sage/70 pl-4">Real clinic, not a pill app</div>
+						<div class="border-l border-eden-sage/70 pl-4">Transparent next steps</div>
+					</div>
+				</div>
+				<div class="rounded-lg border border-white/15 bg-white/95 p-5 text-eden-navy shadow-xl sm:p-6">
+					<p class="text-sm font-semibold uppercase text-eden-green">What the visit covers</p>
+					<div class="mt-4 grid gap-3">
+						{checkpoints.map((item) => (
+							<div class="rounded-md border border-eden-line bg-eden-paper px-4 py-3 text-sm font-medium">{item}</div>
+						))}
+					</div>
+					<div id="pricing" class="mt-5 rounded-md bg-eden-forest p-5 text-white">
+						<p class="text-sm font-semibold uppercase text-eden-sage">Consult price</p>
+						<p class="mt-2 text-4xl font-semibold">$27</p>
+						<p class="mt-2 text-sm leading-6 text-white/78">Pricing and candidacy are reviewed before any treatment commitment.</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section id="evaluation" class="bg-white px-6 py-12 sm:py-16">
+			<div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.86fr_1.14fr] lg:items-start">
+				<div>
+					<p class="text-sm font-semibold uppercase text-eden-green">Provider-led evaluation</p>
+					<h2 class="mt-3 text-3xl font-semibold leading-tight text-eden-navy sm:text-4xl">
+						A private consult before you decide what comes next.
+					</h2>
+					<p class="mt-4 text-base leading-8 text-slate-700">
+						Hair changes can feel urgent. The first step should be simple: understand the pattern, review your goals, and get a clear plan from a real local clinic.
+					</p>
+				</div>
+				<div class="grid gap-4 sm:grid-cols-3">
+					{visitSteps.map((step) => (
+						<div class="rounded-lg border border-eden-line bg-eden-paper p-5 shadow-sm">
+							<h3 class="text-lg font-semibold text-eden-navy">{step.title}</h3>
+							<p class="mt-3 text-sm leading-6 text-slate-700">{step.body}</p>
+						</div>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<section class="px-6 py-12 sm:py-16">
+			<div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[1fr_0.82fr] lg:items-center">
+				<div class="overflow-hidden rounded-lg border border-eden-line bg-white shadow-sm">
+					<img
+						src={consultImage}
+						alt="Private consultation room at Eden Health Club"
+						class="h-80 w-full object-cover sm:h-[30rem]"
+						loading="lazy"
+						decoding="async"
+						width="1200"
+						height="800"
+					/>
+				</div>
+				<div>
+					<p class="text-sm font-semibold uppercase text-eden-green">Not app-first. Not rushed.</p>
+					<h2 class="mt-3 text-3xl font-semibold leading-tight text-eden-navy sm:text-4xl">
+						Realistic expectations before treatment commitment.
+					</h2>
+					<p class="mt-4 text-base leading-8 text-slate-700">
+						Your consult is built around fit, timing, and clarity. A provider reviews what you are noticing, what has changed, and whether non-surgical options should be discussed further.
+					</p>
+					<div class="mt-6 grid gap-3">
+						{["No commitment before the consult", "Private visit minutes from DTC", "Clear pricing before next steps"].map((item) => (
+							<div class="rounded-md border border-eden-line bg-white px-4 py-3 text-sm font-semibold text-eden-navy shadow-sm">{item}</div>
+						))}
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="bg-white px-6 py-12 sm:py-16">
+			<div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+				<div>
+					<p class="text-sm font-semibold uppercase text-eden-green">Questions</p>
+					<h2 class="mt-3 text-3xl font-semibold leading-tight text-eden-navy">What people ask before booking.</h2>
+				</div>
+				<div class="divide-y divide-slate-200 rounded-lg border border-slate-200 bg-white">
+					{faqs.map((faq) => (
+						<details class="group p-5">
+							<summary class="flex cursor-pointer list-none items-center justify-between gap-4 text-base font-semibold text-eden-navy">
+								<span>{faq.question}</span>
+								<span class="text-eden-green transition group-open:rotate-180" aria-hidden="true">⌄</span>
+							</summary>
+							<p class="mt-4 text-sm leading-7 text-slate-700">{faq.answer}</p>
+						</details>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<section class="bg-slate-50 px-6 py-12 sm:py-16">
+			<div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[1fr_440px] lg:items-start">
+				<div>
+					<p class="text-sm font-semibold uppercase text-eden-green">Start here</p>
+					<h2 class="mt-3 text-3xl font-semibold leading-tight text-eden-navy">Book your $27 hair loss consultation.</h2>
+					<p class="mt-4 max-w-2xl text-base leading-8 text-slate-700">
+						Eden Health Club is located at 5990 S University Blvd in Greenwood Village. Share your details and our team will follow up about fit, timing, and available consult times.
+					</p>
+					<p class="mt-4 text-base font-semibold text-eden-navy">
+						Prefer to call? <a href="tel:+17206057678" data-phone-link class="underline">720-605-7678</a>
+					</p>
+				</div>
+				<LeadForm
+					serviceSlug="hair-loss-consult"
+					suburbSlug="greenwood-village"
+					heading="$27 Hair Loss Consult"
+					subheading="Share your details and Eden's team will confirm the right next step."
+					submitText="Request the $27 consult"
+					messageLabel="What are you noticing?"
+					goalOptions={["Thinning", "Shedding", "Receding hairline", "Crown density", "Not sure yet"]}
+					underButtonText="Private in-person consult near DTC."
+					hiddenMessage="SOURCE_LANE: src_google_medspa_hair_loss_consult"
+					offerName="$27 Hair Loss Consultation"
+					offerValue="provider_guided_hair_loss_consult"
+				/>
+			</div>
+		</section>
+	</main>
+
+	<footer class="bg-eden-navy px-6 py-10 text-white">
+		<div class="mx-auto grid max-w-6xl gap-8 md:grid-cols-[1.2fr_0.8fr_0.8fr]">
+			<div>
+				<p class="text-lg font-semibold">Eden Health Club</p>
+				<p class="mt-3 max-w-md text-sm leading-6 text-white/75">
+					5990 S University Blvd<br />
+					Greenwood Village, CO 80121
+				</p>
+				<a href="tel:+17206057678" data-phone-link class="mt-4 inline-block text-sm font-semibold text-white underline">720-605-7678</a>
+			</div>
+			<div>
+				<p class="text-sm font-semibold uppercase text-white">Visit</p>
+				<div class="mt-4 grid gap-2">
+					<a href="#evaluation" class="text-sm text-white/75 hover:text-white">Evaluation</a>
+					<a href="#pricing" class="text-sm text-white/75 hover:text-white">$27 Consult</a>
+					<a href="#lead-form" class="text-sm text-white/75 hover:text-white">Book Consult</a>
+				</div>
+			</div>
+			<div>
+				<p class="text-sm font-semibold uppercase text-white">Location</p>
+				<p class="mt-4 text-sm leading-6 text-white/75">Greenwood Village<br />Minutes from Denver Tech Center</p>
+			</div>
+		</div>
+		<div class="mx-auto mt-8 max-w-6xl border-t border-white/10 pt-6">
+			<div class="flex flex-col gap-3 text-sm text-white/70 sm:flex-row sm:justify-between">
+				<p>© 2026 Eden Wellness, LLC. All Rights Reserved.</p>
+				<p>
+					<a href="https://edenhealthclubs.com/privacy-policy/" target="_blank" rel="noopener" class="hover:text-white">Privacy Policy</a>
+					/
+					<a href="https://edenhealthclubs.com/terms/" target="_blank" rel="noopener" class="hover:text-white">Terms</a>
+				</p>
+			</div>
+		</div>
+	</footer>
+</BaseLayout>
