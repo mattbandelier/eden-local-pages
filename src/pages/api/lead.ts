@@ -10,6 +10,7 @@ const BASELINE_META_TAG = "baseline_lead_meta";
 const PEPTIDE_WORKFLOW_KEY = "peptide_299_therapy";
 const PEPTIDE_LEAD_TAG = "peptide_299_lead";
 const PEPTIDE_WORKFLOW_ID = "2fa02d3f-f4e2-4f63-89ea-3a3eae9610e1";
+const HAIR_RESTORATION_WORKFLOW_ID = "69ce52fb-8bd9-429e-994c-a2d033e43437";
 const MED_SPA_WORKFLOW_ID = "b496b143-dacc-4b7f-8112-239dd040b360";
 const IW_WORKFLOW_ID = "672c856a-bafe-47a2-9c7f-d23b071127a8";
 const STARTER_BASELINE_SERVICE_SLUGS = new Set([
@@ -21,6 +22,7 @@ const STARTER_BASELINE_SERVICE_SLUGS = new Set([
 	"peptide-optimization-starter-299",
 	"peptide-starter-program",
 ]);
+const HAIR_RESTORATION_SERVICE_SLUGS = new Set(["prf-hair-restoration"]);
 const MED_SPA_SERVICE_SLUGS = new Set([
 	"medical-spa",
 	"botox",
@@ -29,7 +31,6 @@ const MED_SPA_SERVICE_SLUGS = new Set([
 	"diamondglow-facial",
 	"microneedling",
 	"bbl-photofacial",
-	"prf-hair-restoration",
 ]);
 const IW_SERVICE_SLUGS = new Set([
 	"female-bhrt",
@@ -242,6 +243,7 @@ function workflowIdForLeadPayload(payload: LeadPayload): string | null {
 
 	const serviceSlug = normalizedServiceSlug(payload);
 	if (STARTER_BASELINE_SERVICE_SLUGS.has(serviceSlug)) return PEPTIDE_WORKFLOW_ID;
+	if (HAIR_RESTORATION_SERVICE_SLUGS.has(serviceSlug)) return HAIR_RESTORATION_WORKFLOW_ID;
 	if (MED_SPA_SERVICE_SLUGS.has(serviceSlug)) return MED_SPA_WORKFLOW_ID;
 	if (IW_SERVICE_SLUGS.has(serviceSlug)) return IW_WORKFLOW_ID;
 
