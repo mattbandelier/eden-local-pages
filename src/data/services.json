@@ -782,16 +782,17 @@
     "name": "PRF Hair Restoration",
     "nameVariants": ["PRF hair restoration", "PRP hair restoration", "platelet-rich fibrin hair", "PRF scalp injections", "hair restoration", "non-surgical hair restoration", "exosomes hair restoration", "scalp PRF"],
     "category": "hair",
-    "shortDescription": "Provider-guided PRF and exosome hair restoration consults for early thinning, shedding, and density concerns near Denver.",
-    "longDescription": "PRF hair restoration at Eden Health Club is built for men and women who want a premium, non-surgical starting point for thinning hair. The clinical team reviews hair-loss pattern, timing, health context, hormones or medications when relevant, and realistic series expectations before recommending PRF scalp injections, an exosome upgrade, or prescription adjuncts when appropriate. Licensed Experts. Advanced Credentials. Unmatched Care. The plan is built around candidacy, consistency, and follow-up.",
+    "shortDescription": "Provider-guided PRF and exosome hair restoration consults for men with early thinning, shedding, and density concerns near Denver.",
+    "longDescription": "PRF hair restoration at Eden Health Club is built for men, and for women when appropriate, who want a premium, non-surgical starting point for thinning hair. PRF stands for platelet-rich fibrin: a concentrated preparation made from your own blood and used in targeted scalp injections. The clinical team reviews hair-loss pattern, timing, health context, hormones or medications when relevant, and realistic series expectations before recommending PRF scalp injections, an exosome upgrade, or prescription adjuncts when appropriate. Licensed Experts. Advanced Credentials. Unmatched Care. The plan is built around candidacy, consistency, and follow-up.",
     "benefits": [
       "Private consult for hair-loss pattern, timing, and candidacy",
-      "Uses platelet-rich fibrin drawn from your own blood",
+      "Explains PRF clearly: your blood draw, platelet-rich fibrin, targeted scalp injections",
       "Targets thinning or density-concern areas with focused scalp injections",
+      "Helps eligible clients support thicker-looking density and reduced shedding over time",
       "Series planning and maintenance expectations reviewed up front",
       "Exosome upgrade and prescription adjuncts may be discussed when appropriate"
     ],
-    "whoItsFor": "Men and women noticing early to moderate thinning, shedding, or density changes who still have active follicles in the treatment area. Best for clients who want a non-surgical, provider-guided plan and understand that visible hair improvement is gradual and usually series-based.",
+    "whoItsFor": "Men noticing early to moderate thinning, shedding, or density changes who still have active follicles in the treatment area. Women can also be candidates depending on pattern and health context. Best for clients who want a non-surgical, provider-guided plan and understand that visible hair improvement is gradual and usually series-based.",
     "howItWorks": [
       "Start with a private consult to review hair-loss pattern, timing, health history, medications, and goals.",
       "If PRF is appropriate, a blood draw is processed to concentrate platelet-rich fibrin.",
@@ -821,24 +822,32 @@
     ],
     "faqs": [
       {
-      "question": "How does PRF hair restoration work?",
-      "answer": "PRF is created from your own blood and injected into targeted scalp areas as part of a series-based plan for eligible thinning or density concerns."
+        "question": "How does PRF hair restoration work?",
+        "answer": "PRF stands for platelet-rich fibrin. Your blood is drawn and processed to concentrate platelet-rich fibrin, then injected into targeted scalp areas as part of a series-based plan for eligible thinning or density concerns."
       },
       {
-      "question": "How many PRF hair sessions will I need?",
-      "answer": "Eden commonly recommends a series of three sessions, followed by maintenance when appropriate. Timing depends on pattern, stage, health context, and response."
+        "question": "How many PRF hair sessions will I need?",
+        "answer": "Eden commonly recommends a series of three sessions, followed by maintenance when appropriate. Timing depends on pattern, stage, health context, and response."
       },
       {
-      "question": "What is the difference between PRF and exosomes?",
-      "answer": "PRF uses platelet-rich fibrin from your own blood. Exosomes Hair Restoration is an upgrade option that may be discussed when a stronger regenerative support path fits the client and treatment plan."
+        "question": "How is PRF different from PRP?",
+        "answer": "Both PRF and PRP use components from your own blood. PRF is processed to preserve a fibrin matrix, which is why Eden positions it as a series-based, longer-window support option rather than a quick one-time fix."
+      },
+      {
+        "question": "What outcomes should I expect from PRF hair restoration?",
+        "answer": "Outcomes vary. For eligible clients, the goal is to support scalp and follicle signaling, improve the appearance of density over time, and reduce the feeling that hair is actively slipping away. Hair changes are usually judged over 3-6 months, not days."
+      },
+      {
+        "question": "What is the difference between PRF and exosomes?",
+        "answer": "PRF uses platelet-rich fibrin from your own blood. Exosomes Hair Restoration is an upgrade option that may be discussed when a stronger regenerative support path fits the client and treatment plan."
       },
       {
         "question": "How soon will I see hair restoration results?",
         "answer": "Hair changes take time. Many clients evaluate early response over 3-6 months, with continued assessment after the recommended series."
       },
       {
-      "question": "Does Eden offer prescription support for hair loss?",
-      "answer": "Yes. Your provider may discuss prescription adjuncts when prescription support fits your pattern, medical history, goals, and safety context."
+        "question": "Does Eden offer prescription support for hair loss?",
+        "answer": "Yes. Your provider may discuss prescription adjuncts when prescription support fits your pattern, medical history, goals, and safety context."
       },
       {
         "question": "How much does PRF hair restoration cost at Eden Health Club?",
