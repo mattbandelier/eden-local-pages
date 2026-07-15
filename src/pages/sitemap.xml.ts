@@ -13,6 +13,8 @@ const urls = [
 	{ loc: canonicalUrl("/longevity-baseline-visit"), priority: "0.98", changefreq: "weekly" },
 	{ loc: canonicalUrl("/longevity"), priority: "0.97", changefreq: "weekly" },
 	{ loc: canonicalUrl("/peptide-biomarker-consult-denver"), priority: "0.96", changefreq: "weekly" },
+	{ loc: canonicalUrl("/lp/hormone-peptide-optimization-denver"), priority: "0.96", changefreq: "weekly" },
+	{ loc: canonicalUrl("/lp/longevity-baseline-starter"), priority: "0.96", changefreq: "weekly" },
 	{ loc: canonicalUrl("/medical-spa-denver"), priority: "0.95", changefreq: "weekly" },
 	...services.map((service) => ({
 		loc: serviceHubUrl(service.slug),
