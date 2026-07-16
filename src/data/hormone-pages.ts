@@ -112,7 +112,7 @@ export const hormonePages: HormonePage[] = [
 			{
 				question: "How soon will I feel different?",
 				answer:
-					"Timing varies by person, baseline labs, goals, and the plan recommended by the provider. Eden avoids guarantees and focuses on follow-up, tracking, and adjustments when appropriate.",
+					"Timing varies by person, baseline labs, goals, and the plan recommended by the provider. Eden avoids fixed promises and focuses on follow-up, tracking, and adjustments when appropriate.",
 			},
 			{
 				question: "Is this only about medication?",

@@ -6,16 +6,22 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import { canonicalUrl, homeUrl } from "../../lib/urls";
 import type { JsonLd } from "../../lib/schema-org";
 
+const PROVIDER_VERIFIED = false;
+// TODO: PROVIDER_VERIFIED - confirm named provider, credentials, photo, and bio link before publishing a provider-name trust block.
+// TODO: CONFIRM whether the hormone/HRT $299 starter also includes the first month's medication before changing /lp/hormone-peptide-optimization-denver/.
+// TODO: CONFIRM membership / contract / insurance terms before adding "no membership required" or similar copy.
+// TODO: CONFIRM peptide sourcing, testing, pharmacy, 503A/503B, or pharmaceutical-grade claims before adding any supply-chain language.
+
 const canonical = canonicalUrl("/lp/peptide-optimization-denver");
 const title = "Peptide Optimization Denver | $299 Peptide Starter | Eden";
 const description =
-	"Start with Eden's $299 Peptide Starter near Denver: consult, lab or biomarker review, and first-month peptide or wellness protocol credit if clinically appropriate.";
+	"Start with Eden's $299 Peptide Starter near Denver: consultation, lab work, and your first month's vial of the peptide your provider prescribes.";
 
 const proofPoints = [
 	{
 		kicker: "$299 peptide starter",
-		title: "Consult + lab review",
-		body: "A concrete first step with first-month peptide or wellness protocol credit if clinically appropriate.",
+		title: "Consult + labs + vial",
+		body: "One clear first step: private provider consultation, lab work, and your first month's vial as prescribed.",
 	},
 	{
 		kicker: "Clinician-guided",
@@ -29,78 +35,112 @@ const proofPoints = [
 	},
 ];
 
-const searchMatches = [
-	"Peptide Therapy Denver",
-	"Peptide Therapy Near Me",
-	"Peptide Injections",
-	"Medical Peptide Therapy",
-	"Peptide Clinic Denver",
-	"Peptides Denver",
-	"Hormone Optimization",
-	"HRT Consults",
-	"TRT Denver",
-	"Medical Weight Loss Denver",
-	"Longevity Clinic Denver",
-	"Health Optimization Denver",
-];
-
 const offerIncludes = [
 	{
 		title: "Private peptide consultation",
-		body: "Review your goals, health history, current routines, and why you are considering peptide therapy before deciding on the right next step.",
+		body: "Meet with Eden's clinical team to review goals, health history, current routines, and why you are considering peptide therapy.",
 	},
 	{
-		title: "Lab or biomarker review",
-		body: "Use available data, and determine what else may be needed, so peptide planning is grounded in context instead of guesswork.",
+		title: "Lab work",
+		body: "Your $299 starter includes lab work so the peptide conversation starts with clinical context, not guesswork.",
 	},
 	{
-		title: "Peptide pathway discussion",
-		body: "Discuss peptide therapy, medical peptide therapy, peptide injections, recovery, body composition, sleep, skin quality, and wellness support when clinically appropriate.",
+		title: "First month's vial",
+		body: "Your first month's vial is included when your provider prescribes a peptide after lab review.",
 	},
 	{
-		title: "First-month peptide credit",
-		body: "If a provider determines a peptide protocol is appropriate, a first-month peptide or wellness protocol credit can be applied to the next step.",
+		title: "Clinical decision first",
+		body: "Which peptide, and whether peptide therapy is appropriate for you at all, depends on your labs and your provider's clinical review.",
+	},
+];
+
+const pricingIncludes = [
+	"Private consultation with a licensed provider",
+	"Lab work",
+	"Your first month's vial, as prescribed",
+];
+
+const compoundCategories = [
+	{
+		category: "Recovery & Tissue",
+		compounds: [
+			["BPC-157", "a peptide commonly discussed for recovery support. Prescribed after lab review."],
+			["TB-500", "a peptide patients ask about for recovery and tissue-support conversations."],
+			["KPV", "a peptide commonly discussed in wellness and recovery planning."],
+		],
+	},
+	{
+		category: "Growth Hormone Support",
+		compounds: [
+			["Sermorelin", "a peptide patients ask about for growth-hormone support conversations."],
+			["CJC-1295", "a peptide commonly discussed in provider-guided hormone and performance planning."],
+			["Ipamorelin", "a peptide patients ask about when comparing growth-hormone support options."],
+			["Tesamorelin", "a peptide discussed in specific provider-reviewed metabolic-health contexts."],
+		],
+	},
+	{
+		category: "Longevity & Cellular",
+		compounds: [
+			["NAD+", "a molecule patients ask about for cellular-health and longevity-minded planning."],
+			["MOTS-c", "a peptide commonly discussed in cellular-health and performance conversations."],
+			["Epitalon", "a peptide patients ask about in longevity and sleep-rhythm conversations."],
+			["Glutathione", "an antioxidant patients ask about in wellness and recovery planning."],
+		],
+	},
+	{
+		category: "Skin & Collagen",
+		compounds: [
+			["GHK-Cu", "a peptide patients ask about for skin-quality and collagen-support conversations."],
+		],
+	},
+	{
+		category: "Cognitive & Sleep",
+		compounds: [
+			["Semax", "a peptide patients ask about for cognitive-support conversations."],
+			["DSIP", "a peptide commonly discussed in sleep and recovery conversations."],
+			["Emideltide", "a peptide patients ask about for provider-reviewed cognitive and wellness planning."],
+		],
 	},
 ];
 
 const lanes = [
 	{
-		label: "Hormone optimization",
-		body: "For people comparing hormone specialists, hormone replacement therapy Denver, HRT near me, TRT consults, labs, and provider-guided wellness planning near DTC.",
-	},
-	{
 		label: "Peptide therapy",
-		body: "For people searching peptide therapy Denver, peptide therapy near me, peptide injections, peptide clinic Denver, peptide doctors, or peptides Denver who want screening, education, and a safer clinical starting point.",
+		body: "For people searching peptide therapy Denver, peptide therapy near me, peptide injections, peptide clinic Denver, or peptide doctors who want an in-person clinical starting point.",
 	},
 	{
-		label: "Medical weight management",
-		body: "For people exploring medical weight loss Denver, GLP-1 support Denver, weight-loss clinic options, body-composition context, and follow-up inside a real facility.",
+		label: "Recovery support",
+		body: "For adults asking about peptides commonly discussed for recovery, tissue support, training, and follow-through inside a real facility.",
 	},
 	{
-		label: "Longevity club",
-		body: "For adults comparing longevity clinic Denver, longevity clinic near me, health optimization Denver, biomarkers, recovery, fitness, and wellness support in one premium environment.",
+		label: "Body composition",
+		body: "For people comparing peptide conversations with lab work, metabolic context, body-composition support, and provider guidance.",
+	},
+	{
+		label: "Longevity support",
+		body: "For adults comparing peptide therapy, biomarkers, recovery, sleep, skin quality, and premium wellness support near DTC.",
 	},
 ];
 
 const differentiators = [
-	["First step", "$299 Peptide Starter with consult, lab or biomarker review, and first-month protocol credit if clinically appropriate", "A menu of protocols before anyone understands fit"],
+	["First step", "$299 Peptide Starter with consult, labs, and your first month's vial as prescribed", "A menu of protocols before anyone understands fit"],
 	["Environment", "Greenwood Village health club with recovery, training, body composition, and clinical wellness in one location", "A single-service clinic or remote-only program"],
-	["Clinical path", "Provider review determines whether hormones, peptides, weight management, or another path makes sense", "Medication-first messaging that can skip the why"],
+	["Clinical path", "Provider review determines which peptide, if any, is appropriate after labs and health-history review", "Medication-first messaging that can skip the why"],
 	["Follow-through", "Eden One and Elevate can connect ongoing care, credits, training, recovery, bloodwork rhythm, and support", "A one-off visit with no day-to-day system"],
 ];
 
 const process = [
 	{
 		step: "Start",
-		body: "Request the $299 Peptide Starter and tell Eden what you want to improve.",
+		body: "Book the $299 Peptide Starter and tell Eden what you want to improve.",
 	},
 	{
 		step: "Review",
-		body: "Discuss goals, history, labs or biomarkers, body-composition context, and eligibility.",
+		body: "Discuss goals, health history, lab work, body-composition context, and eligibility.",
 	},
 	{
 		step: "Plan",
-		body: "Compare whether peptide therapy is the right first program, and whether hormones, medical weight management, recovery, training, or membership should support it.",
+		body: "Review which peptide your provider prescribes, or whether another path is more appropriate.",
 	},
 	{
 		step: "Follow",
@@ -131,22 +171,22 @@ const faqs = [
 	{
 		question: "What is the $299 Peptide Starter?",
 		answer:
-			"It is a private first visit designed for people exploring peptide therapy, peptide injections, recovery, body composition, skin quality, sleep, and longevity-minded wellness planning. It includes a consultation, lab or biomarker review when appropriate, and a first-month peptide or wellness protocol credit if a provider determines a next step is clinically appropriate.",
+			"It is a private first visit designed for people exploring peptide therapy, peptide injections, recovery, body composition, skin quality, sleep, and longevity-minded wellness planning. It includes your consultation, your lab work, and your first month's vial of the peptide your provider prescribes.",
 	},
 	{
-		question: "Does the $299 starter include peptide treatment?",
+		question: "Does the $299 include the peptide itself?",
 		answer:
-			"The starter does not guarantee medication, a vial, peptide therapy, hormone therapy, GLP-1 support, or any specific protocol. Eligibility and recommendations are determined by provider review. If a peptide protocol is clinically appropriate, the starter can support the first-month next step.",
+			"Yes. The $299 covers your consultation, your lab work, and your first month's supply of the peptide your provider prescribes. Which peptide, and whether peptide therapy is appropriate for you at all, depends on your labs and your provider's clinical review.",
 	},
 	{
-		question: "Why start with labs or biomarkers?",
+		question: "Why start with labs?",
 		answer:
 			"Peptide therapy should be matched to the person. Labs, biomarkers, health history, goals, and provider review help Eden avoid guesswork before recommending any protocol.",
 	},
 	{
 		question: "What happens after the starter visit?",
 		answer:
-			"If an ongoing peptide program makes sense, Eden can help you compare options such as member pricing, monthly credits, bloodwork rhythm, injection support when appropriate, training, recovery, Eden One, Elevate, or other wellness support.",
+			"If an ongoing peptide program makes sense, Eden can help you compare timing, follow-up, bloodwork rhythm, injection support when appropriate, training, recovery, Eden One, Elevate, or other wellness support.",
 	},
 	{
 		question: "Is Eden an online peptide clinic?",
@@ -201,7 +241,7 @@ const jsonLd: JsonLd[] = [
 		"@type": "Service",
 		"@id": `${canonical}#service`,
 		name: "$299 Peptide Starter",
-		serviceType: "Peptide consultation, lab or biomarker review, and wellness planning",
+		serviceType: "Peptide consultation, lab work, and first month's vial as prescribed",
 		url: canonical,
 		description,
 		offers: {
@@ -250,7 +290,7 @@ const jsonLd: JsonLd[] = [
 	noindex={true}
 	preloadImages={["/assets/eden-health-club-reception.webp", "/assets/eden-health-club-logo-white-transparent-tight.png"]}
 >
-	<PremiumHeader servicesHref="#offer" servicesLabel="Programs" pricingHref="#lead-form" contactHref="#lead-form" ctaLabel="$299 Peptide Starter" />
+	<PremiumHeader servicesHref="#offer" servicesLabel="Programs" pricingHref="#lead-form" contactHref="#lead-form" ctaLabel="Book my $299 peptide start" />
 	<main class="bg-eden-paper">
 		<section class="relative overflow-hidden bg-eden-forest text-white">
 			<div class="absolute inset-x-0 top-0 h-[760px] md:inset-0 md:h-auto">
@@ -284,30 +324,22 @@ const jsonLd: JsonLd[] = [
 					/>
 					<p class="text-sm font-semibold uppercase tracking-normal text-eden-sage">Premium longevity care in Greenwood Village</p>
 					<h1 class="mt-4 max-w-3xl text-4xl font-semibold leading-tight sm:text-5xl lg:text-6xl">
-						Peptide optimization in Denver starts with the $299 Peptide Starter.
+						Peptide therapy in Denver. $299 covers the consult, the labs, and your first month's vial — as prescribed.
 					</h1>
 					<p class="mt-5 max-w-2xl text-base leading-8 text-white/86 sm:text-lg">
-						Begin with a private peptide consultation, baseline lab or biomarker review, and a first-month peptide or wellness protocol credit if clinically appropriate.
+						Start with a private consultation with a licensed provider, your lab work, and your first month's vial of the peptide your provider prescribes.
 					</p>
 					<div class="mt-8 flex flex-col gap-3 sm:flex-row">
 						<a href="#lead-form" class="rounded-md bg-eden-sage px-6 py-3 text-center text-base font-semibold text-eden-forest shadow-sm">
-							Check fit for the $299 Peptide Starter
+							Book my $299 peptide start
 						</a>
 						<a href="tel:+17206057678" data-phone-link class="rounded-md border border-white/35 px-6 py-3 text-center text-base font-semibold text-white hover:bg-white/10">
 							Call 720-605-7678
 						</a>
 					</div>
 					<p class="mt-5 max-w-2xl text-xs leading-6 text-white/62">
-						Eligibility, labs, therapies, and protocol recommendations are determined by provider review. Results vary. Not all guests will qualify for peptide therapy, hormone therapy, GLP-1 support, or any specific protocol.
+						Which peptide, and whether peptide therapy is appropriate for you at all, depends on your labs and your provider's clinical review.
 					</p>
-					<div class="mt-6 max-w-3xl">
-						<p class="text-xs font-semibold uppercase text-eden-sage">Best for people comparing</p>
-						<div class="mt-3 flex flex-wrap gap-2">
-							{searchMatches.map((term) => (
-								<span class="rounded-full border border-white/15 bg-white/10 px-3 py-2 text-xs font-semibold text-white">{term}</span>
-							))}
-						</div>
-					</div>
 					<div class="mt-8 grid gap-3 text-sm text-white/88 sm:grid-cols-3">
 						{proofPoints.map((point) => (
 							<div class="rounded-lg border border-white/15 bg-white/8 p-4 backdrop-blur">
@@ -332,6 +364,7 @@ const jsonLd: JsonLd[] = [
 									<div class="rounded-md bg-white p-4 text-eden-navy">
 										<p class="text-xs font-semibold uppercase text-eden-green">Offer</p>
 										<p class="mt-2 text-lg font-semibold">$299 Peptide Starter.</p>
+										<p class="mt-2 text-xs leading-5 text-slate-600">Consult + labs + first month's vial.</p>
 									</div>
 									<div class="rounded-md bg-eden-sage p-4 text-eden-forest">
 										<p class="text-xs font-semibold uppercase">Fit first</p>
@@ -356,11 +389,22 @@ const jsonLd: JsonLd[] = [
 				<div>
 					<p class="text-sm font-semibold uppercase text-eden-green">$299 Peptide Starter</p>
 					<h2 class="mt-3 text-3xl font-semibold leading-tight text-eden-navy sm:text-4xl">
-						A smarter first step before choosing a peptide protocol.
+						$299 — everything you need to start.
 					</h2>
 					<p class="mt-4 text-base leading-8 text-slate-700">
-						Peptide therapy should not start with a product. It should start with goals, history, labs when appropriate, and provider review. Hormones, TRT, GLP-1 support, and longevity planning can be discussed when they are part of the bigger picture.
+						$299 — everything you need to start. A private consultation with a licensed provider, your lab work, and your first month's vial of the peptide your provider prescribes. One price.
 					</p>
+					<div class="mt-6 rounded-lg border border-eden-line bg-eden-paper p-5 shadow-sm">
+						<p class="text-sm font-semibold uppercase text-eden-green">$299 — Peptide Starter</p>
+						<ul class="mt-4 grid gap-3 text-sm leading-6 text-slate-700">
+							{pricingIncludes.map((item) => (
+								<li class="flex gap-3">
+									<span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-eden-green"></span>
+									<span>{item}</span>
+								</li>
+							))}
+						</ul>
+					</div>
 				</div>
 				<div class="grid gap-4 sm:grid-cols-2">
 					{offerIncludes.map((item) => (
@@ -377,13 +421,44 @@ const jsonLd: JsonLd[] = [
 			<div class="mx-auto max-w-6xl">
 				<div class="grid gap-8 lg:grid-cols-[0.82fr_1.18fr] lg:items-end">
 					<div>
-						<p class="text-sm font-semibold uppercase text-eden-green">Best for people comparing</p>
+						<p class="text-sm font-semibold uppercase text-eden-green">Compound menu</p>
+						<h2 class="mt-3 text-3xl font-semibold leading-tight text-eden-navy sm:text-4xl">
+							Peptide options people ask about, reviewed clinically.
+						</h2>
+					</div>
+					<p class="text-base leading-8 text-slate-700">
+						This menu is educational. Eden's clinical team reviews labs, health history, goals, and fit before any prescription decision.
+					</p>
+				</div>
+				<div class="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+					{compoundCategories.map((group) => (
+						<div class="rounded-lg border border-eden-line bg-white p-5 shadow-sm">
+							<p class="text-xs font-semibold uppercase text-eden-green">{group.category}</p>
+							<div class="mt-4 grid gap-3">
+								{group.compounds.map(([name, body]) => (
+									<div class="rounded-md bg-eden-paper p-4">
+										<h3 class="text-base font-semibold text-eden-navy">{name}</h3>
+										<p class="mt-2 text-sm leading-6 text-slate-700">{body}</p>
+									</div>
+								))}
+							</div>
+						</div>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<section class="px-6 py-12 sm:py-16">
+			<div class="mx-auto max-w-6xl">
+				<div class="grid gap-8 lg:grid-cols-[0.82fr_1.18fr] lg:items-end">
+					<div>
+						<p class="text-sm font-semibold uppercase text-eden-green">Clinical fit</p>
 						<h2 class="mt-3 text-3xl font-semibold leading-tight text-eden-navy sm:text-4xl">
 							One peptide-first starting point before choosing a protocol.
 						</h2>
 					</div>
 					<p class="text-base leading-8 text-slate-700">
-						This visit is built for people actively comparing peptide therapy, peptide injections, peptide clinics, recovery, body composition, skin quality, and longevity-minded wellness support. Adjacent hormone, medical weight management, TRT, and longevity context stays present because qualified buyers often compare those paths together.
+						This visit is built for people actively comparing peptide therapy, peptide injections, peptide clinics, recovery, body composition, skin quality, and longevity-minded wellness support.
 					</p>
 				</div>
 				<div class="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
@@ -451,9 +526,9 @@ const jsonLd: JsonLd[] = [
 			<div class="relative mx-auto max-w-6xl">
 				<div class="max-w-3xl">
 					<p class="text-sm font-semibold uppercase text-eden-sage">How it works</p>
-					<h2 class="mt-3 text-3xl font-semibold leading-tight sm:text-4xl">Start. Review. Plan. Follow.</h2>
+						<h2 class="mt-3 text-3xl font-semibold leading-tight sm:text-4xl">Start. Review. Plan. Follow.</h2>
 					<p class="mt-4 text-base leading-8 text-white/78">
-						The offer is intentionally simple: a peptide-first paid step that filters out low-intent shoppers and gives qualified guests a clear path into Eden's ongoing wellness system.
+						Start with one visit, one price, and clinical review before choosing the peptide path that fits.
 					</p>
 				</div>
 				<div class="relative mt-8 grid gap-4 md:grid-cols-4">
@@ -464,6 +539,22 @@ const jsonLd: JsonLd[] = [
 							<p class="mt-3 text-sm leading-6 text-white/74">{item.body}</p>
 						</div>
 					))}
+				</div>
+			</div>
+		</section>
+
+		<section class="bg-white px-6 py-12 sm:py-16">
+			<div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.82fr_1.18fr] lg:items-start">
+				<div>
+					<p class="text-sm font-semibold uppercase text-eden-green">Clinical team</p>
+					<h2 class="mt-3 text-3xl font-semibold leading-tight text-eden-navy sm:text-4xl">
+						Reviewed by Eden's clinical team.
+					</h2>
+				</div>
+				<div class="rounded-lg border border-eden-line bg-eden-paper p-6 shadow-sm">
+					<p class="text-base leading-8 text-slate-700">
+						Eden's clinical team reviews your goals, lab work, medical history, and fit before a peptide is prescribed. Provider naming is pending verification, so this page does not publish a provider name or board-certification claim yet.
+					</p>
 				</div>
 			</div>
 		</section>
@@ -491,12 +582,12 @@ const jsonLd: JsonLd[] = [
 					serviceSlug="peptide-optimization-starter-299"
 					suburbSlug="greenwood-village"
 					heading="Request the $299 Peptide Starter"
-					subheading="Tell Eden what you want to explore. The team will follow up about fit, labs or biomarker review, and peptide next steps."
-					submitText="Request my $299 Peptide Starter"
-					hiddenMessage="WORKFLOW_KEY: peptide_299_therapy. SOURCE_LANE: src_google_iw_peptide_variant. $299 Peptide Starter requested from the Google Ads peptide-intent variant page: consult, lab or biomarker review when appropriate, peptide therapy planning, and first-month peptide support if prescribed and clinically appropriate."
+					subheading="Tell Eden what you want to explore. The team will follow up about fit, lab work, and the peptide your provider may prescribe."
+					submitText="Book my $299 peptide start"
+					hiddenMessage="WORKFLOW_KEY: peptide_299_therapy. SOURCE_LANE: src_google_iw_peptide_variant. $299 Peptide Starter requested from the Google Ads peptide-intent variant page: consultation, lab work, and first month's vial of the peptide the provider prescribes."
 					workflowKey="peptide_299_therapy"
 					offerName="$299 Peptide Starter"
-					offerValue="consult_lab_or_biomarker_review_peptide_plan_first_month_if_prescribed"
+					offerValue="consult_labs_first_month_vial_as_prescribed"
 				/>
 			</div>
 		</section>
@@ -527,7 +618,7 @@ const jsonLd: JsonLd[] = [
 					<h2 class="mt-2 text-3xl font-semibold">Start with peptide fit. Move with a plan.</h2>
 				</div>
 				<a href="#lead-form" class="rounded-md bg-eden-sage px-6 py-3 text-center text-base font-semibold text-eden-forest">
-					Check fit for the Peptide Starter
+					Book my $299 peptide start
 				</a>
 			</div>
 		</section>
@@ -537,16 +628,21 @@ const jsonLd: JsonLd[] = [
 		class="pointer-events-none fixed bottom-5 right-5 z-40 hidden max-w-xs translate-y-3 rounded-lg border border-white/20 bg-eden-forest/95 p-3 text-white opacity-0 shadow-2xl backdrop-blur transition duration-200 md:block"
 	>
 		<p class="text-xs font-semibold uppercase text-eden-sage">$299 Peptide Starter</p>
-		<p class="mt-1 text-sm leading-5 text-white/82">Private peptide consult, lab or biomarker review, and a protocol credit if clinically appropriate.</p>
+		<p class="mt-1 text-sm leading-5 text-white/82">Private consult, lab work, and your first month's vial as prescribed.</p>
 		<a href="#lead-form" class="mt-3 block rounded-md bg-eden-sage px-4 py-3 text-center text-sm font-semibold text-eden-forest">
-			Request my $299 Peptide Starter
+			Book my $299 peptide start
 		</a>
 	</div>
 	<div class="fixed inset-x-0 bottom-0 z-40 border-t border-eden-line bg-white/96 p-3 shadow-lg backdrop-blur md:hidden">
 		<div class="mx-auto flex max-w-md gap-2">
-			<a href="#lead-form" class="flex-1 rounded-md bg-eden-green px-4 py-3 text-center text-sm font-semibold text-white">$299 Peptide Starter</a>
+			<a href="#lead-form" class="flex-1 rounded-md bg-eden-green px-4 py-3 text-center text-sm font-semibold text-white">Book my $299 peptide start</a>
 			<a href="tel:+17206057678" data-phone-link class="rounded-md border border-eden-line px-4 py-3 text-center text-sm font-semibold text-eden-navy">Call</a>
 		</div>
+	</div>
+	<div class="bg-eden-navy px-6 py-5 text-white">
+		<p class="mx-auto max-w-6xl text-xs leading-6 text-white/62">
+			Some peptides are not FDA-approved, and individual results are not guaranteed. This page is for general educational purposes and is not medical advice.
+		</p>
 	</div>
 	<Footer variant="wellness" />
 </BaseLayout>
