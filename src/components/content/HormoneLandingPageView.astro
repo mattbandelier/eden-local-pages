@@ -1,6 +1,7 @@
 ---
 import type { HormonePage } from "../../data/hormone-pages";
 import LeadForm from "./LeadForm.astro";
+import BookingCTA from "./BookingCTA.astro";
 import Footer from "../layout/Footer.astro";
 import PremiumHeader from "../layout/PremiumHeader.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
@@ -129,10 +130,14 @@ const schema: JsonLd[] = [
 					<h1 class="mt-5 max-w-3xl font-serif text-5xl font-semibold leading-[0.98] sm:text-6xl lg:text-7xl">{page.h1}</h1>
 					<p class="mt-6 max-w-2xl text-base leading-8 text-white/84 sm:text-lg">{page.subhead}</p>
 					<div class="mt-8 flex flex-col gap-3 sm:flex-row">
-						<a href="#lead-form" class="rounded-md bg-[#B8935A] px-6 py-3 text-center text-base font-semibold text-white shadow-sm hover:bg-[#A8824C]">
-							{page.primaryCta}
-						</a>
-						<a href="#blueprint" class="rounded-md border border-white/35 px-6 py-3 text-center text-base font-semibold text-white hover:bg-white/10">
+						<BookingCTA
+							serviceSlug={page.serviceSlug}
+							serviceName={page.h1}
+							serviceCategory="Wellness / HRT"
+							label={page.primaryCta}
+							class="rounded-md bg-[#B8935A] px-6 py-3 text-center text-base font-semibold text-white shadow-sm transition hover:bg-[#A8824C]"
+						/>
+						<a href="#blueprint" class="rounded-md border border-white/35 px-6 py-3 text-center text-base font-semibold text-white transition hover:bg-white/10">
 							{page.secondaryCta}
 						</a>
 					</div>
@@ -287,7 +292,13 @@ const schema: JsonLd[] = [
 		<div class="fixed inset-x-0 bottom-0 z-40 border-t border-[#1E3A2F]/10 bg-white/96 px-4 py-3 shadow-2xl backdrop-blur md:hidden">
 			<div class="mx-auto flex max-w-md items-center gap-3">
 				<p class="min-w-0 flex-1 text-xs font-semibold leading-5 text-[#1E3A2F]">Provider-led consult near DTC.</p>
-				<a href="#lead-form" class="shrink-0 rounded-md bg-[#B8935A] px-4 py-2 text-sm font-semibold text-white">{page.primaryCta}</a>
+				<BookingCTA
+					serviceSlug={page.serviceSlug}
+					serviceName={page.h1}
+					serviceCategory="Wellness / HRT"
+					label={page.primaryCta}
+					class="shrink-0 rounded-md bg-[#B8935A] px-4 py-2 text-sm font-semibold text-white hover:bg-[#A8824C]"
+				/>
 			</div>
 		</div>
 	</main>

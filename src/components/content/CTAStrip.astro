@@ -1,5 +1,6 @@
 ---
 import LeadForm from "./LeadForm.astro";
+import BookingCTA from "./BookingCTA.astro";
 
 interface Props {
 	serviceSlug: string;
@@ -46,8 +47,15 @@ const formSubheading = consultRequired
 			<h2 class="mt-3 text-3xl font-semibold">
 				{isSecondary ? secondaryHeading : primaryHeading}
 			</h2>
+			<BookingCTA
+				serviceSlug={serviceSlug}
+				serviceName={serviceName}
+				serviceCategory={serviceSlug}
+				label={ctaText}
+				class={isSecondary ? "mt-6 inline-flex rounded-md bg-eden-sage px-5 py-3 text-sm font-semibold text-eden-forest hover:bg-eden-sage/90" : "mt-6 inline-flex rounded-md bg-eden-green px-5 py-3 text-sm font-semibold text-white hover:bg-eden-forest"}
+			/>
 			<p class={isSecondary ? "mt-4 max-w-xl text-base leading-7 text-white/80" : "mt-4 max-w-xl text-base leading-7 text-slate-700"}>
-				Share a few details and our team will follow up. Prefer to call?{" "}
+				Prefer to ask a question first? Share a few details and our team will follow up. Prefer to call?{" "}
 				<a href="tel:+17206057678" class="font-semibold underline">720-605-7678</a>
 			</p>
 		</div>

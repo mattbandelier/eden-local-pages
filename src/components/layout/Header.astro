@@ -1,6 +1,7 @@
 ---
 import { services, suburbs } from "../../data";
 import { serviceHubUrl, suburbHubUrl } from "../../lib/urls";
+import BookingCTA from "../content/BookingCTA.astro";
 
 const phone = "720-605-7678";
 const phoneHref = "tel:+17206057678";
@@ -13,7 +14,7 @@ const phoneHref = "tel:+17206057678";
 			<a href={serviceHubUrl(services[0].slug)} class="text-sm font-medium text-eden-navy hover:text-eden-green">Services</a>
 			<a href={suburbHubUrl(suburbs[0].slug)} class="text-sm font-medium text-eden-navy hover:text-eden-green">Locations</a>
 			<a href={phoneHref} data-phone-link class="text-sm font-semibold text-eden-navy hover:text-eden-green">{phone}</a>
-			<a href="#lead-form" class="rounded-md bg-eden-green px-4 py-2 text-sm font-semibold text-white hover:bg-eden-green/90">Book a consult</a>
+			<BookingCTA serviceSlug="general" serviceName="Eden booking" serviceCategory="General" label="Book a consult" class="rounded-md bg-eden-green px-4 py-2 text-sm font-semibold text-white hover:bg-eden-forest" />
 		</div>
 		<details class="relative md:hidden">
 			<summary class="cursor-pointer list-none rounded-md border border-slate-200 px-3 py-2 text-sm font-semibold text-eden-navy">
@@ -33,7 +34,7 @@ const phoneHref = "tel:+17206057678";
 					))}
 				</div>
 				<a href={phoneHref} data-phone-link class="mt-4 block text-sm font-semibold text-eden-navy">{phone}</a>
-				<a href="#lead-form" class="mt-4 block rounded-md bg-eden-green px-4 py-2 text-center text-sm font-semibold text-white">Book a consult</a>
+				<BookingCTA serviceSlug="general" serviceName="Eden booking" serviceCategory="General" label="Book a consult" class="mt-4 block rounded-md bg-eden-green px-4 py-2 text-center text-sm font-semibold text-white" />
 			</div>
 		</details>
 	</nav>

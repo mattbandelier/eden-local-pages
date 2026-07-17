@@ -43,3 +43,18 @@ export function trackLeadSubmitError(serviceSlug: string, suburbSlug: string | n
 export function trackPhoneClick(phoneNumber: string): void {
 	pushEvent("phone_click", { phone_number: phoneNumber, page_path: window.location.pathname });
 }
+
+export function trackBookingClick(params: {
+	serviceSlug: string;
+	serviceName: string;
+	category: string;
+	destination: string;
+}): void {
+	pushEvent("booking_click", {
+		service_slug: params.serviceSlug,
+		service_name: params.serviceName,
+		booking_category: params.category,
+		booking_destination: params.destination,
+		page_path: window.location.pathname,
+	});
+}

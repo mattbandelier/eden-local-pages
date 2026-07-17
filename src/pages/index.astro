@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import BookingCTA from "../components/content/BookingCTA.astro";
 import { services } from "../data";
 import CTAStrip from "../components/content/CTAStrip.astro";
 import PillarGrid from "../components/content/PillarGrid.astro";
@@ -32,9 +33,7 @@ const seo = homepageMeta();
 				<p class="mt-6 text-base leading-8 text-slate-700 sm:text-lg">
 					Functional medicine, aesthetics, recovery, and fitness under one roof in Greenwood Village. Licensed Experts. Advanced Credentials. Unmatched Care.
 				</p>
-				<a href="#lead-form" class="mt-8 inline-flex rounded-md bg-eden-green px-6 py-3 text-base font-semibold text-white shadow-sm hover:bg-eden-green/90">
-					Book a consult
-				</a>
+				<BookingCTA serviceSlug="general" serviceName="Eden Health Club consultation" serviceCategory="general" label="Book a consult" class="mt-8 inline-flex rounded-md bg-eden-green px-6 py-3 text-base font-semibold text-white shadow-sm hover:bg-eden-green/90" />
 			</div>
 		</section>
 		<TrustBar />

@@ -1,5 +1,6 @@
 ---
 import LeadForm from "../components/content/LeadForm.astro";
+import BookingCTA from "../components/content/BookingCTA.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import "../styles/fitness-v2.css";
 
@@ -252,7 +253,7 @@ const jsonLd = [
           <a href="#signature">Classes</a>
           <a href="#faqs">FAQs</a>
           <a href="tel:+17206057678">720-605-7678</a>
-          <a class="fit-header__cta" href="#consult-form">Book Now</a>
+          <BookingCTA serviceSlug="fitness" serviceName="Fitness Consultation" serviceCategory="Fitness" label="Book Now" class="fit-header__cta" />
         </nav>
       </header>
       <div class="fit-hero__overlay"></div>
@@ -267,7 +268,7 @@ const jsonLd = [
             </ul>
           </div>
           <div class="fit-actions">
-            <a class="fit-btn fit-btn--primary" href="#consult-form">Book a Fitness Assessment</a>
+            <BookingCTA serviceSlug="fitness" serviceName="Fitness Consultation" serviceCategory="Fitness" label="Book a Fitness Assessment" class="fit-btn fit-btn--primary" />
             <a class="fit-btn fit-btn--ghost" href="#outcomes">See Outcomes</a>
           </div>
         </div>
@@ -333,8 +334,8 @@ const jsonLd = [
       <div class="fit-section-foot">
         <p>Eden designs your progress. Our expert coaches evaluate and create your plan; our specialized classes deliver your personalized results.</p>
         <div class="fit-actions">
-          <a class="fit-btn fit-btn--primary" href="#consult-form">Book a Signature Class</a>
-          <a class="fit-btn fit-btn--light" href="#consult-form">Start with InBody Baseline</a>
+          <BookingCTA serviceSlug="fitness" serviceName="Fitness Consultation" serviceCategory="Fitness" label="Book a Signature Class" class="fit-btn fit-btn--primary" />
+          <BookingCTA serviceSlug="fitness" serviceName="Fitness Consultation" serviceCategory="Fitness" label="Start with InBody Baseline" class="fit-btn fit-btn--light" />
         </div>
       </div>
     </section>
@@ -351,7 +352,7 @@ const jsonLd = [
           <ul>
             {differences.map((item) => <li>{item}</li>)}
           </ul>
-          <a class="fit-btn fit-btn--primary" href="#consult-form">Start with an InBody Baseline</a>
+          <BookingCTA serviceSlug="fitness" serviceName="Fitness Consultation" serviceCategory="Fitness" label="Start with an InBody Baseline" class="fit-btn fit-btn--primary" />
         </div>
       </div>
     </section>
@@ -369,7 +370,7 @@ const jsonLd = [
           </article>
         ))}
       </div>
-      <a class="fit-btn fit-btn--primary" href="#consult-form">Book a Class</a>
+      <BookingCTA serviceSlug="fitness" serviceName="Fitness Consultation" serviceCategory="Fitness" label="Book a Class" class="fit-btn fit-btn--primary" />
     </section>
 
     <section class="fit-difference">
@@ -384,7 +385,7 @@ const jsonLd = [
           <ul>
             {inbody.map((item) => <li>{item}</li>)}
           </ul>
-          <a class="fit-btn fit-btn--primary" href="#consult-form">Book Fitness Assessment</a>
+          <BookingCTA serviceSlug="fitness" serviceName="Fitness Consultation" serviceCategory="Fitness" label="Book Fitness Assessment" class="fit-btn fit-btn--primary" />
         </div>
       </div>
     </section>
@@ -406,8 +407,8 @@ const jsonLd = [
         ))}
       </div>
       <div class="fit-actions">
-        <a class="fit-btn fit-btn--primary" href="#consult-form">Build My Optimize Plan</a>
-        <a class="fit-btn fit-btn--light" href="#consult-form">Book Personal Training</a>
+        <BookingCTA serviceSlug="fitness" serviceName="Fitness Consultation" serviceCategory="Fitness" label="Build My Optimize Plan" class="fit-btn fit-btn--primary" />
+        <BookingCTA serviceSlug="fitness" serviceName="Fitness Consultation" serviceCategory="Fitness" label="Book Personal Training" class="fit-btn fit-btn--light" />
       </div>
     </section>
 
@@ -438,8 +439,8 @@ const jsonLd = [
         </article>
       </div>
       <div class="fit-actions">
-        <a class="fit-btn fit-btn--primary" href="#consult-form">Ask About Motherhood Programs</a>
-        <a class="fit-btn fit-btn--light" href="#consult-form">Book Personal Training</a>
+          <BookingCTA serviceSlug="fitness" serviceName="Fitness Consultation" serviceCategory="Fitness" label="Ask About Motherhood Programs" class="fit-btn fit-btn--primary" />
+          <BookingCTA serviceSlug="fitness" serviceName="Fitness Consultation" serviceCategory="Fitness" label="Book Personal Training" class="fit-btn fit-btn--light" />
       </div>
     </section>
 
@@ -456,8 +457,8 @@ const jsonLd = [
             {nutrition.map((item) => <li>{item}</li>)}
           </ul>
           <div class="fit-actions">
-            <a class="fit-btn fit-btn--primary" href="#consult-form">Explore Nutrition</a>
-            <a class="fit-btn fit-btn--light" href="#consult-form">Start with InBody Baseline</a>
+            <BookingCTA serviceSlug="fitness" serviceName="Fitness Consultation" serviceCategory="Fitness" label="Explore Nutrition" class="fit-btn fit-btn--primary" />
+            <BookingCTA serviceSlug="fitness" serviceName="Fitness Consultation" serviceCategory="Fitness" label="Start with InBody Baseline" class="fit-btn fit-btn--light" />
           </div>
         </div>
       </div>
@@ -474,7 +475,7 @@ const jsonLd = [
         <article><span>3</span><h3>Rewards</h3><p>Finish the track and choose your pack.</p></article>
       </div>
       <div class="fit-actions">
-        <a class="fit-btn fit-btn--primary" href="#consult-form">Start the Challenge (Book InBody)</a>
+        <BookingCTA serviceSlug="fitness" serviceName="Fitness Consultation" serviceCategory="Fitness" label="Start the Challenge (Book InBody)" class="fit-btn fit-btn--primary" />
         <a class="fit-btn fit-btn--light" href="#signature">View Schedule</a>
       </div>
     </section>
@@ -498,8 +499,8 @@ const jsonLd = [
       <div class="fit-section-foot">
         <p>Eden designs your progress. Our coaches help you choose the right mix of classes, semi-private training, nutrition, and recovery.</p>
         <div class="fit-actions">
-          <a class="fit-btn fit-btn--primary" href="#consult-form">Book Training</a>
-          <a class="fit-btn fit-btn--light" href="#consult-form">Start with InBody Baseline</a>
+          <BookingCTA serviceSlug="fitness" serviceName="Fitness Consultation" serviceCategory="Fitness" label="Book Training" class="fit-btn fit-btn--primary" />
+          <BookingCTA serviceSlug="fitness" serviceName="Fitness Consultation" serviceCategory="Fitness" label="Start with InBody Baseline" class="fit-btn fit-btn--light" />
         </div>
       </div>
     </section>
@@ -522,7 +523,7 @@ const jsonLd = [
         <div class="fit-final__cards">
           <article>
             <h2>Start your journey at Eden today!</h2>
-            <a href="#consult-form">Book Now</a>
+            <BookingCTA serviceSlug="fitness" serviceName="Fitness Consultation" serviceCategory="Fitness" label="Book Now" />
           </article>
           <article>
             <p>At Eden, everything you need to look, feel, and thrive is under one roof.</p>

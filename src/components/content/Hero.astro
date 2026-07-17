@@ -1,5 +1,6 @@
 ---
 import type { Service, Suburb } from "../../data/types";
+import BookingCTA from "./BookingCTA.astro";
 
 interface Props {
 	variant: "service-hub" | "suburb-hub" | "combo";
@@ -226,14 +227,22 @@ const displayBody = premium && service ? premiumHeroBodies[service.slug] ?? cont
 			<p class={isCombo ? "text-sm font-semibold uppercase tracking-wide text-white/75" : "text-sm font-semibold uppercase text-eden-green"}>{content.eyebrow}</p>
 			<h1 class={isCombo ? "mt-4 max-w-full break-words text-3xl font-semibold leading-tight text-white sm:text-6xl" : "mt-4 text-4xl font-semibold leading-tight text-eden-navy sm:text-5xl"}>{content.title}</h1>
 			<p class={isCombo ? "mt-6 max-w-full break-words text-base leading-8 text-white/82 sm:text-lg" : "mt-6 text-base leading-8 text-slate-700 sm:text-lg"}>{displayBody}</p>
-			{isCombo && (
+			{service && (isCombo || variant === "service-hub") && (
 				<div class="mt-8 flex flex-col gap-3 sm:flex-row">
-					<a href="#lead-form" class="inline-flex items-center justify-center rounded-md bg-eden-sage px-6 py-3 text-base font-semibold text-eden-forest shadow-sm transition hover:bg-eden-sage/90">
-						{service?.ctaText}
-					</a>
-					<a href="#details" class="inline-flex items-center justify-center rounded-md border border-white/25 bg-white/10 px-6 py-3 text-base font-semibold text-white transition hover:bg-white/15">
-						See details
-					</a>
+					<BookingCTA
+						serviceSlug={service.slug}
+						serviceName={service.name}
+						serviceCategory={service.category}
+						label={service.ctaText}
+						class={isCombo
+							? "inline-flex items-center justify-center rounded-md bg-eden-sage px-6 py-3 text-base font-semibold text-eden-forest shadow-sm transition hover:bg-eden-sage/90"
+							: "inline-flex items-center justify-center rounded-md bg-eden-green px-6 py-3 text-base font-semibold text-white shadow-sm transition hover:bg-eden-green/90"}
+					/>
+					{isCombo && (
+						<a href="#details" class="inline-flex items-center justify-center rounded-md border border-white/25 bg-white/10 px-6 py-3 text-base font-semibold text-white transition hover:bg-white/15">
+							See details
+						</a>
+					)}
 				</div>
 			)}
 		</div>
