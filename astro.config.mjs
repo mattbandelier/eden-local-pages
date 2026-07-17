@@ -9,5 +9,8 @@ export default defineConfig({
   trailingSlash: 'always',
   vite: {
     plugins: [tailwindcss()],
+    server: {
+      allowedHosts: ['book.edenhealthclubs.com'],
+    },
   },
 });

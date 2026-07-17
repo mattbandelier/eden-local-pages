@@ -11,9 +11,10 @@ interface Props {
 	ogImage?: string;
 	jsonLd?: JsonLd[];
 	noindex?: boolean;
+	brandFonts?: boolean;
 }
 
-const { title, description, canonicalUrl, ogImage, jsonLd = [], noindex = false } = Astro.props;
+const { title, description, canonicalUrl, ogImage, jsonLd = [], noindex = false, brandFonts = false } = Astro.props;
 const resolvedOgImage = ogImage ?? `${ORIGIN}/og-default.svg`;
 const gtmId = import.meta.env.PUBLIC_GTM_CONTAINER_ID;
 const clarityProjectId = import.meta.env.PUBLIC_CLARITY_PROJECT_ID;
@@ -40,59 +41,89 @@ const metaPixelId = import.meta.env.PUBLIC_META_PIXEL_ID || "1301043457641549";
 		<meta property="og:image" content={resolvedOgImage} />
 
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		{brandFonts && (
+			<>
+				<link rel="preconnect" href="https://fonts.googleapis.com" />
+				<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+				<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" />
+			</>
+		)}
 		<meta name="generator" content={Astro.generator} />
 		<StructuredData items={jsonLd} />
 
 		{gtmId && (
 			<>
-				{/* GTM container */}
+				{/* Queue analytics immediately, then load the non-critical container after first paint. */}
 				<script is:inline define:vars={{ gtmId }}>
-					(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-					new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-					j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+					(function(w,d,s,l,i){
+					w[l]=w[l]||[];
+					w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
 					var p=new URLSearchParams(w.location.search);
 					var source=(p.get('utm_source')||'').toLowerCase();
 					var medium=(p.get('utm_medium')||'').toLowerCase();
+					var campaign=(p.get('utm_campaign')||'').toLowerCase();
 					var ref=(d.referrer||'').toLowerCase();
-					var badSources=['theoffer','katalys','pr_campaigns','vibe-pixel','fluscheeitaway','upfluence'];
+					var badTerms=['theoffer','katalys','pr_campaigns','vibe-pixel','fluscheeitaway','upfluence','scamadviser','serpapi','anythingneat','furilia','affiliate','lowcarbdashian'];
 					var badMediums=['affiliate','earned_media','ctv','influencer'];
-					var badRefs=['scamadviser.com','theoffer'];
-					var blocked=badSources.indexOf(source)>-1||badMediums.indexOf(medium)>-1||badRefs.some(function(x){return ref.indexOf(x)>-1;});
+					var blocked=badMediums.indexOf(medium)>-1||badTerms.some(function(x){
+						return source.indexOf(x)>-1||medium.indexOf(x)>-1||campaign.indexOf(x)>-1||ref.indexOf(x)>-1;
+					});
 					w.edenAnalyticsBlocked=blocked;
 					if(blocked){w[l].push({event:'eden_analytics_blocked',blocked_source:source,blocked_medium:medium});return;}
-					j.async=true;j.src=
-					'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+					function load(){
+						var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+						j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+						f.parentNode.insertBefore(j,f);
+					}
+					if('requestIdleCallback' in w){w.requestIdleCallback(load,{timeout:1800});}
+					else {w.addEventListener('load',function(){w.setTimeout(load,0);},{once:true});}
 					})(window,document,'script','dataLayer',gtmId);
 				</script>
 			</>
 		)}
 		{metaPixelId && (
 			<script is:inline define:vars={{ metaPixelId }}>
-				(function(f,b,e,v,n,t,s){
-					if(f.edenAnalyticsBlocked) return;
-					if(f.fbq) return;
-					n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-					if(!f._fbq) f._fbq=n;
-					n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];
-					t=b.createElement(e);t.async=!0;t.src=v;
-					s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s);
-				})(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
-				if(window.fbq){
-					window.fbq('init', metaPixelId);
-					window.fbq('track', 'PageView');
-				}
+				(function(w,d,id){
+					function load(){
+						if(w.edenAnalyticsBlocked||w.fbq) return;
+						var n=w.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+						if(!w._fbq) w._fbq=n;
+						n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];
+						var t=d.createElement('script');t.async=!0;t.src='https://connect.facebook.net/en_US/fbevents.js';
+						var s=d.getElementsByTagName('script')[0];s.parentNode.insertBefore(t,s);
+						n('init',id);n('track','PageView');
+					}
+					if('requestIdleCallback' in w){w.requestIdleCallback(load,{timeout:2200});}
+					else {w.addEventListener('load',function(){w.setTimeout(load,0);},{once:true});}
+				})(window,document,metaPixelId);
 			</script>
 		)}
 		{clarityProjectId && (
 			<script is:inline define:vars={{ clarityProjectId }}>
-				(function(c,l,a,r,i,t,y){
-					c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-					t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-					y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-				})(window, document, "clarity", "script", clarityProjectId);
+				(function(w,d,id){
+					function load(){
+						if(w.edenAnalyticsBlocked) return;
+						w.clarity=w.clarity||function(){(w.clarity.q=w.clarity.q||[]).push(arguments)};
+						var t=d.createElement('script');t.async=1;t.src='https://www.clarity.ms/tag/'+id;
+						var y=d.getElementsByTagName('script')[0];y.parentNode.insertBefore(t,y);
+					}
+					if('requestIdleCallback' in w){w.requestIdleCallback(load,{timeout:2500});}
+					else {w.addEventListener('load',function(){w.setTimeout(load,0);},{once:true});}
+				})(window,document,clarityProjectId);
 			</script>
 		)}
-		{callRailSwapJsUrl && <script async src={callRailSwapJsUrl}></script>}
+		{callRailSwapJsUrl && (
+			<script is:inline define:vars={{ callRailSwapJsUrl }}>
+				(function(w,d,url){
+					function load(){
+						if(w.edenAnalyticsBlocked) return;
+						var cr=d.createElement('script');cr.async=true;cr.src=url;d.head.appendChild(cr);
+					}
+					if('requestIdleCallback' in w){w.requestIdleCallback(load,{timeout:3000});}
+					else {w.addEventListener('load',function(){w.setTimeout(load,0);},{once:true});}
+				})(window,document,callRailSwapJsUrl);
+			</script>
+		)}
 	</head>
 	<body class="min-h-screen bg-eden-paper text-eden-navy antialiased">
 		{gtmId && (
