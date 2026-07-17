@@ -60,49 +60,6 @@ const pricingIncludes = [
 	"Your first month's vial, as prescribed",
 ];
 
-const compoundCategories = [
-	{
-		category: "Recovery & Tissue",
-		compounds: [
-			["BPC-157", "a peptide commonly discussed for recovery support. Prescribed after lab review."],
-			["TB-500", "a peptide patients ask about for recovery and tissue-support conversations."],
-			["KPV", "a peptide commonly discussed in wellness and recovery planning."],
-		],
-	},
-	{
-		category: "Growth Hormone Support",
-		compounds: [
-			["Sermorelin", "a peptide patients ask about for growth-hormone support conversations."],
-			["CJC-1295", "a peptide commonly discussed in provider-guided hormone and performance planning."],
-			["Ipamorelin", "a peptide patients ask about when comparing growth-hormone support options."],
-			["Tesamorelin", "a peptide discussed in specific provider-reviewed metabolic-health contexts."],
-		],
-	},
-	{
-		category: "Longevity & Cellular",
-		compounds: [
-			["NAD+", "a molecule patients ask about for cellular-health and longevity-minded planning."],
-			["MOTS-c", "a peptide commonly discussed in cellular-health and performance conversations."],
-			["Epitalon", "a peptide patients ask about in longevity and sleep-rhythm conversations."],
-			["Glutathione", "an antioxidant patients ask about in wellness and recovery planning."],
-		],
-	},
-	{
-		category: "Skin & Collagen",
-		compounds: [
-			["GHK-Cu", "a peptide patients ask about for skin-quality and collagen-support conversations."],
-		],
-	},
-	{
-		category: "Cognitive & Sleep",
-		compounds: [
-			["Semax", "a peptide patients ask about for cognitive-support conversations."],
-			["DSIP", "a peptide commonly discussed in sleep and recovery conversations."],
-			["Emideltide", "a peptide patients ask about for provider-reviewed cognitive and wellness planning."],
-		],
-	},
-];
-
 const lanes = [
 	{
 		label: "Peptide therapy",
@@ -417,38 +374,7 @@ const jsonLd: JsonLd[] = [
 			</div>
 		</section>
 
-		<section class="px-6 py-12 sm:py-16">
-			<div class="mx-auto max-w-6xl">
-				<div class="grid gap-8 lg:grid-cols-[0.82fr_1.18fr] lg:items-end">
-					<div>
-						<p class="text-sm font-semibold uppercase text-eden-green">Compound menu</p>
-						<h2 class="mt-3 text-3xl font-semibold leading-tight text-eden-navy sm:text-4xl">
-							Peptide options people ask about, reviewed clinically.
-						</h2>
-					</div>
-					<p class="text-base leading-8 text-slate-700">
-						This menu is educational. Eden's clinical team reviews labs, health history, goals, and fit before any prescription decision.
-					</p>
-				</div>
-				<div class="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-					{compoundCategories.map((group) => (
-						<div class="rounded-lg border border-eden-line bg-white p-5 shadow-sm">
-							<p class="text-xs font-semibold uppercase text-eden-green">{group.category}</p>
-							<div class="mt-4 grid gap-3">
-								{group.compounds.map(([name, body]) => (
-									<div class="rounded-md bg-eden-paper p-4">
-										<h3 class="text-base font-semibold text-eden-navy">{name}</h3>
-										<p class="mt-2 text-sm leading-6 text-slate-700">{body}</p>
-									</div>
-								))}
-							</div>
-						</div>
-					))}
-				</div>
-			</div>
-		</section>
-
-		<section class="px-6 py-12 sm:py-16">
+		<section id="clinical-fit" class="px-6 py-12 sm:py-16">
 			<div class="mx-auto max-w-6xl">
 				<div class="grid gap-8 lg:grid-cols-[0.82fr_1.18fr] lg:items-end">
 					<div>
@@ -473,7 +399,7 @@ const jsonLd: JsonLd[] = [
 			</div>
 		</section>
 
-		<section class="bg-white px-6 py-12 sm:py-16">
+		<section id="why-eden" class="bg-white px-6 py-12 sm:py-16">
 			<div class="mx-auto max-w-6xl">
 				<div class="grid gap-8 lg:grid-cols-[0.82fr_1.18fr] lg:items-start">
 					<div>
@@ -518,7 +444,7 @@ const jsonLd: JsonLd[] = [
 			</div>
 		</section>
 
-		<section class="relative overflow-hidden bg-eden-forest px-6 py-12 text-white sm:py-16">
+		<section id="how-it-works" class="relative overflow-hidden bg-eden-forest px-6 py-12 text-white sm:py-16">
 			<div class="absolute inset-y-0 right-0 hidden w-1/2 lg:block">
 				<img src="/assets/eden-health-club-reception.webp" alt="" class="h-full w-full object-cover opacity-24" loading="lazy" width="1388" height="1000" />
 				<div class="absolute inset-0 bg-gradient-to-r from-eden-forest via-eden-forest/78 to-eden-forest/20"></div>
