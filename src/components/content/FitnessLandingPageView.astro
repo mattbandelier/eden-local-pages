@@ -1,6 +1,7 @@
 ---
 import type { FitnessPage } from "../../data/fitness-pages";
 import LeadForm from "./LeadForm.astro";
+import BookingCTA from "./BookingCTA.astro";
 import "../../styles/fitness.css";
 
 type Props = {
@@ -170,7 +171,7 @@ const schema = {
       <a class="site-logo site-logo--image" href="https://edenhealthclubs.com/" target="_blank" rel="noopener" aria-label="Eden Health Club">
         <img src="/assets/eden-health-club-logo-white-transparent-tight.png" alt="Eden Health Club" width="744" height="447" />
       </a>
-      <a href="#consult-form">Book</a>
+      <BookingCTA serviceSlug="fitness" serviceName="Fitness Consultation" serviceCategory="Fitness" label="Book" class="mobile-topbar__book" />
     </nav>
     <div class="hero__overlay fitness-hero__overlay">
       <p class="eyebrow">{page.eyebrow}</p>
@@ -178,7 +179,7 @@ const schema = {
       <p class="fitness-hero__line">{page.heroHeadline}</p>
       <p class="hero__summary">{page.summary}</p>
       <div class="hero__actions" aria-label="Primary actions">
-        <a class="button button--primary" href="#consult-form">{page.primaryCta}</a>
+        <BookingCTA serviceSlug="fitness" serviceName="Fitness Consultation" serviceCategory="Fitness" label={page.primaryCta} class="button button--primary" />
         <a class="button button--secondary" href="#system">{page.secondaryCta}</a>
       </div>
       <p class="hero__credibility">
@@ -322,7 +323,7 @@ const schema = {
         If you already know what you want, request it. If you are still comparing training, recovery, body composition, or wellness support, the assessment helps Eden route you toward the right next step.
       </p>
     </div>
-    <a class="button button--primary" href="#consult-form">{page.primaryCta}</a>
+    <BookingCTA serviceSlug="fitness" serviceName="Fitness Consultation" serviceCategory="Fitness" label={page.primaryCta} class="button button--primary" />
   </section>
 
   <section class="faq-section">
@@ -349,9 +350,6 @@ const schema = {
       <span>Visit</span>
       <strong>Map</strong>
     </a>
-    <a href="#consult-form">
-      <span>Book</span>
-      <strong>Assessment</strong>
-    </a>
+    <BookingCTA serviceSlug="fitness" serviceName="Fitness Consultation" serviceCategory="Fitness" label="Assessment" class="fitness-booking-action" />
   </div>
 </main>

@@ -60,7 +60,7 @@ const breadcrumbItems: BreadcrumbItem[] = [
 		<TreatmentSnapshot service={service} />
 		<BenefitsList benefits={service.benefits} />
 		<HowItWorks steps={service.howItWorks} />
-		<PricingCard pricing={service.pricing} consultRequired={service.consultRequired} ctaText={service.ctaText} />
+		<PricingCard pricing={service.pricing} consultRequired={service.consultRequired} ctaText={service.ctaText} serviceSlug={service.slug} serviceName={service.name} serviceCategory={service.category} />
 		<FAQAccordion faqs={service.faqs} />
 		<RelatedServices services={relatedServices} />
 		<PriorityMoneyLinks currentPath={`/${service.slug}/`} variant="hub" />

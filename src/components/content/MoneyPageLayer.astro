@@ -1,5 +1,6 @@
 ---
 import type { Service, Suburb } from "../../data/types";
+import BookingCTA from "./BookingCTA.astro";
 
 interface Props {
 	service: Service;
@@ -666,9 +667,13 @@ const content = contentBySlug[service.slug];
 					<p class="mt-4 text-sm leading-7 text-slate-700">
 						Available {localPhrase}. Request a visit and Eden will confirm the right starting point before you commit.
 					</p>
-					<a href="#lead-form" class="mt-5 inline-flex rounded-md bg-eden-sage px-5 py-3 text-sm font-semibold text-eden-forest">
-						Start with Eden
-					</a>
+					<BookingCTA
+						serviceSlug={service.slug}
+						serviceName={service.name}
+						serviceCategory={service.category}
+						label="Start with Eden"
+						class="mt-5 inline-flex rounded-md bg-eden-sage px-5 py-3 text-sm font-semibold text-eden-forest"
+					/>
 				</article>
 			</div>
 		</div>

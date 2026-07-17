@@ -1,5 +1,6 @@
 ---
 import type { Service } from "../../data/types";
+import BookingCTA from "./BookingCTA.astro";
 
 interface Props {
 	service: Service;
@@ -16,10 +17,11 @@ const { service } = Astro.props;
 	>
 		Call
 	</a>
-	<a
-		href="#lead-form"
-		class="ml-2 rounded-md bg-eden-sage px-4 py-3 text-center text-sm font-semibold text-eden-forest"
-	>
-		{service.consultRequired ? "Consult" : "Book"}
-	</a>
+	<BookingCTA
+		serviceSlug={service.slug}
+		serviceName={service.name}
+		serviceCategory={service.category}
+		label={service.consultRequired ? "Consult" : "Book"}
+		class="ml-2 rounded-md bg-eden-sage px-4 py-3 text-center text-sm font-semibold text-eden-forest hover:bg-eden-sage/90"
+	/>
 </nav>

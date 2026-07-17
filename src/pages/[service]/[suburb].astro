@@ -20,6 +20,7 @@ import RelatedServices from "../../components/content/RelatedServices.astro";
 import TreatmentSnapshot from "../../components/content/TreatmentSnapshot.astro";
 import TrustBar from "../../components/content/TrustBar.astro";
 import Breadcrumbs from "../../components/layout/Breadcrumbs.astro";
+import BookingCTA from "../../components/content/BookingCTA.astro";
 import Footer from "../../components/layout/Footer.astro";
 import Header from "../../components/layout/Header.astro";
 import { comboJsonLd, type BreadcrumbItem } from "../../lib/schema-org";
@@ -83,7 +84,7 @@ const isPremiumMoneyPage = isIndexableCombo(service.slug, suburb.slug);
 		{!isPremiumMoneyPage && <DecisionSupport service={service} suburb={suburb} />}
 		<HowItWorks steps={service.howItWorks} />
 		<div id="pricing">
-			<PricingCard pricing={service.pricing} consultRequired={service.consultRequired} ctaText={service.ctaText} />
+			<PricingCard pricing={service.pricing} consultRequired={service.consultRequired} ctaText={service.ctaText} serviceSlug={service.slug} serviceName={service.name} serviceCategory={service.category} />
 		</div>
 		<FAQAccordion faqs={faqs} heading={`${service.name} questions from ${suburb.name} clients`} />
 		{isPremiumMoneyPage && <PriorityMoneyLinks currentPath={comboUrl(service.slug, suburb.slug).replace("https://landing.edenhealthclubs.com", "")} />}
@@ -99,9 +100,13 @@ const isPremiumMoneyPage = isIndexableCombo(service.slug, suburb.slug);
 							Share what you are considering. Eden will follow up about fit, timing, pricing context, and whether {service.name} is the right starting point.
 						</p>
 					</div>
-					<a href="#lead-form" class="rounded-md bg-eden-sage px-6 py-3 text-center text-base font-semibold text-eden-forest">
-						{service.ctaText}
-					</a>
+					<BookingCTA
+						serviceSlug={service.slug}
+						serviceName={service.name}
+						serviceCategory={service.category}
+						label={service.ctaText}
+						class="rounded-md bg-eden-sage px-6 py-3 text-center text-base font-semibold text-eden-forest hover:bg-eden-sage/90"
+					/>
 				</div>
 			</section>
 		) : (
