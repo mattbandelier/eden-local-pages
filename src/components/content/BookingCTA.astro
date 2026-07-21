@@ -1,0 +1,51 @@
+---
+import { bookingUrlForService, trackedBookingUrl } from "../../lib/booking";
+
+interface Props {
+	serviceSlug: string;
+	serviceName: string;
+	serviceCategory: string;
+	label?: string;
+	href?: string;
+	class?: string;
+}
+
+const {
+	serviceSlug,
+	serviceName,
+	serviceCategory,
+	label = "Book now",
+	href = trackedBookingUrl(serviceSlug) || bookingUrlForService(serviceSlug),
+	class: className = "inline-flex rounded-md bg-eden-sage px-5 py-3 text-sm font-semibold text-eden-forest hover:bg-eden-sage/90",
+} = Astro.props;
+---
+
+<a
+	href={href}
+	class={className}
+	data-booking-cta
+	data-service-slug={serviceSlug}
+	data-service-name={serviceName}
+	data-booking-category={serviceCategory}
+>
+	{label}
+</a>
+
+<script>
+	import { appendAttributionParams } from "../../lib/booking-attribution";
+	import { trackBookingClick } from "../../lib/tracking";
+
+	document.querySelectorAll<HTMLAnchorElement>("[data-booking-cta]").forEach((link) => {
+		if (link.dataset.bookingBound === "true") return;
+		link.dataset.bookingBound = "true";
+		link.addEventListener("click", () => {
+			link.href = appendAttributionParams(link.href);
+			trackBookingClick({
+				serviceSlug: link.dataset.serviceSlug || "unknown",
+				serviceName: link.dataset.serviceName || "Eden booking",
+				category: link.dataset.bookingCategory || "unknown",
+				destination: link.href,
+			});
+		});
+	});
+</script>

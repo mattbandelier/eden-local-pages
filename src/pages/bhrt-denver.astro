@@ -1,0 +1,15 @@
+---
+import PaidAdLandingPageView from "../components/content/PaidAdLandingPageView.astro";
+import { getPaidAdPage } from "../data/paid-ad-pages";
+
+export const prerender = false;
+
+// DRAFT/DISABLED: {{CLINICAL_REVIEW}} and Google Ads policy approval are required before enabling.
+if (import.meta.env.PUBLIC_ENABLE_HORMONE_AD_PAGES !== "true") {
+	return Astro.redirect("/404/", 302);
+}
+
+const page = getPaidAdPage("bhrt-denver");
+---
+
+<PaidAdLandingPageView page={page} />

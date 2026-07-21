@@ -3,6 +3,7 @@ declare global {
 		dataLayer?: Array<Record<string, unknown>>;
 		edenAnalyticsBlocked?: boolean;
 		fbq?: (...args: unknown[]) => void;
+		gtag?: (...args: unknown[]) => void;
 	}
 }
 
@@ -40,6 +41,71 @@ export function trackLeadSubmitError(serviceSlug: string, suburbSlug: string | n
 
 export function trackPhoneClick(phoneNumber: string): void {
 	pushEvent("phone_click", { phone_number: phoneNumber, page_path: window.location.pathname });
+}
+
+type BookingClick = {
+	serviceSlug: string;
+	serviceName: string;
+	category: string;
+	destination: string;
+};
+
+export function trackBookingClick(booking: BookingClick): void {
+	if (typeof window === "undefined") return;
+
+	const eventId = typeof crypto?.randomUUID === "function"
+		? crypto.randomUUID()
+		: `booking-${Date.now()}-${Math.random().toString(36).slice(2)}`;
+	const params = {
+		service_slug: booking.serviceSlug,
+		service_name: booking.serviceName,
+		service_category: booking.category,
+		page_path: window.location.pathname,
+		destination: booking.destination,
+		event_id: eventId,
+	};
+
+	pushEvent("booking_click", params);
+	pushEvent("google_ads_booking_conversion", params);
+
+	const googleAdsSendTo = import.meta.env.PUBLIC_GOOGLE_ADS_BOOKING_SEND_TO;
+	if (googleAdsSendTo && typeof window.gtag === "function") {
+		window.gtag("event", "conversion", {
+			send_to: googleAdsSendTo,
+			transaction_id: eventId,
+			event_callback: () => undefined,
+		});
+	}
+
+	if (!window.edenAnalyticsBlocked && typeof window.fbq === "function") {
+		window.fbq("trackCustom", "BookingClick", {
+			service_slug: booking.serviceSlug,
+			service_name: booking.serviceName,
+			service_category: booking.category,
+			page_path: window.location.pathname,
+		}, { eventID: eventId });
+	}
+
+	void fetch("/api/booking-event/", {
+		method: "POST",
+		headers: { "content-type": "application/json" },
+		body: JSON.stringify({
+			eventId,
+			serviceSlug: booking.serviceSlug,
+			serviceName: booking.serviceName,
+			category: booking.category,
+			sourceUrl: `${window.location.origin}${window.location.pathname}`,
+			fbp: readCookie("_fbp"),
+			fbc: readCookie("_fbc"),
+		}),
+		keepalive: true,
+	}).catch(() => undefined);
+}
+
+function readCookie(name: string): string | null {
+	const prefix = `${name}=`;
+	const value = document.cookie.split(";").map((item) => item.trim()).find((item) => item.startsWith(prefix));
+	return value ? decodeURIComponent(value.slice(prefix.length)) : null;
 }
 
 function leadParams(serviceSlug: string, suburbSlug: string | null): Record<string, unknown> {

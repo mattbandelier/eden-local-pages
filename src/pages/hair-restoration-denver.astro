@@ -1,0 +1,8 @@
+---
+import PaidAdLandingPageView from "../components/content/PaidAdLandingPageView.astro";
+import { getPaidAdPage } from "../data/paid-ad-pages";
+
+const page = getPaidAdPage("hair-restoration-denver");
+---
+
+<PaidAdLandingPageView page={page} />
