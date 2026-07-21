@@ -1,0 +1,241 @@
+---
+import type { OrganicPeptidePage } from "../../data/organic-peptide-pages";
+import { canonicalUrl, ORIGIN } from "../../lib/urls";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../layout/Breadcrumbs.astro";
+import Footer from "../layout/Footer.astro";
+import Header from "../layout/Header.astro";
+import BookingCTA from "./BookingCTA.astro";
+
+interface Props {
+	page: OrganicPeptidePage;
+}
+
+const { page } = Astro.props;
+const canonical = canonicalUrl(`/${page.slug}`);
+const booking = {
+	serviceSlug: "peptide-therapy",
+	serviceName: "Peptide Therapy Consultation",
+	serviceCategory: "Peptide Therapy",
+	label: "Book a Consult",
+};
+const lightCta = "inline-flex min-h-12 items-center justify-center rounded-md bg-eden-sage px-6 py-3 text-center text-base font-semibold text-eden-forest shadow-sm transition hover:bg-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-eden-forest";
+const darkCta = "inline-flex min-h-12 items-center justify-center rounded-md bg-eden-green px-6 py-3 text-center text-base font-semibold text-white shadow-sm transition hover:bg-eden-forest focus:outline-none focus:ring-2 focus:ring-eden-green focus:ring-offset-2";
+const relatedPages = [
+	{ slug: "peptide-injections-cost", label: "Peptide Therapy Cost" },
+	{ slug: "peptides-for-joint-pain", label: "Peptides for Joint Pain" },
+	{ slug: "peptide-therapy-denver", label: "Peptide Therapy in Denver" },
+].filter((item) => item.slug !== page.slug);
+const jsonLd = [
+	{
+		"@context": "https://schema.org",
+		"@type": "MedicalBusiness",
+		"@id": `${canonical}#medical-business`,
+		name: "Eden Health Club",
+		url: canonical,
+		telephone: "+17206057678",
+		image: `${ORIGIN}${page.heroImage}`,
+		priceRange: "$$",
+		address: {
+			"@type": "PostalAddress",
+			streetAddress: "5990 S University Blvd",
+			addressLocality: "Greenwood Village",
+			addressRegion: "CO",
+			postalCode: "80121",
+			addressCountry: "US",
+		},
+		aggregateRating: {
+			"@type": "AggregateRating",
+			ratingValue: "4.9",
+			reviewCount: "122",
+		},
+		areaServed: ["Greenwood Village", "Denver", "Denver Tech Center"],
+	},
+	{
+		"@context": "https://schema.org",
+		"@type": "Service",
+		"@id": `${canonical}#service`,
+		name: page.h1,
+		serviceType: "Peptide therapy consultation",
+		description: page.description,
+		url: canonical,
+		provider: { "@id": `${canonical}#medical-business` },
+		areaServed: "Denver metro",
+		...(page.pricing ? {
+			offers: {
+				"@type": "Offer",
+				price: "299",
+				priceCurrency: "USD",
+				description: page.pricing.includes,
+			},
+		} : {}),
+	},
+	{
+		"@context": "https://schema.org",
+		"@type": "FAQPage",
+		"@id": `${canonical}#faq`,
+		mainEntity: page.faqs.map((faq) => ({
+			"@type": "Question",
+			name: faq.question,
+			acceptedAnswer: { "@type": "Answer", text: faq.answer },
+		})),
+	},
+];
+---
+
+<BaseLayout
+	title={page.title}
+	description={page.description}
+	canonicalUrl={canonical}
+	ogImage={`${ORIGIN}${page.heroImage}`}
+	jsonLd={jsonLd}
+	noindex={!page.indexable}
+	preloadImages={[page.heroImage]}
+>
+	<Header
+		bookingServiceSlug={booking.serviceSlug}
+		bookingServiceName={booking.serviceName}
+		bookingServiceCategory={booking.serviceCategory}
+		ctaLabel={booking.label}
+		singleConversion={true}
+	/>
+	<div class="hidden sm:block">
+		<Breadcrumbs items={[
+			{ label: "Home", href: canonicalUrl("/") },
+			{ label: "Peptide Therapy", href: "https://edenhealthclubs.com/peptide-therapy/" },
+			{ label: page.h1, href: null },
+		]} />
+	</div>
+
+	<main class="bg-white pb-20 text-eden-navy md:pb-0">
+		<section class="relative flex min-h-[min(68svh,680px)] items-center overflow-hidden bg-eden-forest px-5 py-12 text-white sm:px-6 sm:py-16">
+			<img
+				src={page.heroImage}
+				alt={page.heroAlt}
+				width="1600"
+				height="1067"
+				fetchpriority="high"
+				decoding="async"
+				class="absolute inset-0 h-full w-full object-cover"
+			/>
+			<div class="absolute inset-0 bg-eden-forest/82"></div>
+			<div class="relative mx-auto w-full max-w-6xl">
+				<div class="max-w-3xl">
+					<p class="text-sm font-semibold uppercase text-eden-sage">{page.heroKicker}</p>
+					<h1 class="mt-4 break-words text-4xl font-semibold leading-tight text-white sm:text-5xl lg:text-6xl">{page.h1}</h1>
+					<!-- {{CLINICAL_REVIEW}}: Approve all clinical, efficacy, investigational, and eligibility language supplied by this page config. -->
+					<p class="mt-5 max-w-2xl text-lg leading-8 text-white/90">{page.heroLead}</p>
+					{page.pricing && (
+						<div class="mt-5 border-l-2 border-eden-sage pl-4">
+							<p class="text-2xl font-semibold text-white">{page.pricing.start}</p>
+							<p class="mt-1 text-sm leading-6 text-white/80">{page.pricing.includes}</p>
+						</div>
+					)}
+					<div class="mt-7 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
+						<BookingCTA {...booking} class={lightCta} />
+						<p class="text-sm font-semibold text-white/85">4.9 stars / 122+ reviews · Greenwood Village</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="bg-white px-5 py-14 sm:px-6 sm:py-18" aria-labelledby={`${page.slug}-answer`}>
+			<div class="mx-auto max-w-6xl">
+				<p class="text-sm font-semibold uppercase text-eden-green">The short answer</p>
+				<h2 id={`${page.slug}-answer`} class="mt-3 max-w-3xl text-3xl font-semibold leading-tight sm:text-4xl">{page.answerTitle}</h2>
+				<!-- {{CLINICAL_REVIEW}}: Evidence and outcome language requires approval before publication. -->
+				<p class="mt-5 max-w-3xl text-base leading-8 text-slate-700">{page.answerBody}</p>
+				<div class="mt-8 grid gap-4 md:grid-cols-3">
+					{page.considerations.map((item) => (
+						<article class="rounded-md border border-eden-line bg-eden-paper p-6">
+							<h3 class="text-lg font-semibold">{item.title}</h3>
+							<p class="mt-3 text-sm leading-7 text-slate-700">{item.body}</p>
+						</article>
+					))}
+				</div>
+			</div>
+		</section>
+
+		{page.pricing && (
+			<section class="bg-eden-paper px-5 py-14 sm:px-6 sm:py-18" aria-labelledby={`${page.slug}-pricing`}>
+				<div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
+					<div class="rounded-md bg-eden-forest p-7 text-white sm:p-8">
+						<p class="text-sm font-semibold uppercase text-eden-sage">Published starting price</p>
+						<h2 id={`${page.slug}-pricing`} class="mt-3 text-4xl font-semibold">{page.pricing.start}</h2>
+						<p class="mt-4 text-base leading-8 text-white/85">{page.pricing.includes}</p>
+						<BookingCTA {...booking} class={`${lightCta} mt-6 w-full sm:w-auto`} />
+					</div>
+					<div>
+						<p class="text-sm font-semibold uppercase text-eden-green">Honest ongoing range</p>
+						<p class="mt-3 text-2xl font-semibold leading-9">{page.pricing.ongoing}</p>
+						<p class="mt-5 text-base leading-8 text-slate-700">{page.pricing.note}</p>
+						<p class="mt-4 text-sm leading-7 text-slate-600">Eden intentionally does not publish a shoppable per-peptide menu. Medical eligibility and provider review come before any prescription decision.</p>
+					</div>
+				</div>
+			</section>
+		)}
+
+		<section class="bg-eden-forest px-5 py-14 text-white sm:px-6 sm:py-18" aria-labelledby={`${page.slug}-regulatory`}>
+			<div class="mx-auto max-w-4xl">
+				<p class="text-sm font-semibold uppercase text-eden-sage">Clinical and regulatory context</p>
+				<h2 id={`${page.slug}-regulatory`} class="mt-3 text-3xl font-semibold leading-tight sm:text-4xl">{page.regulatoryTitle}</h2>
+				<!-- {{CLINICAL_REVIEW}}: Revalidate compound status and regulatory wording immediately before publishing. -->
+				<p class="mt-5 text-base leading-8 text-white/85">{page.regulatoryBody}</p>
+			</div>
+		</section>
+
+		<section class="bg-eden-paper px-5 py-14 sm:px-6 sm:py-18" aria-labelledby={`${page.slug}-faq`}>
+			<div class="mx-auto max-w-3xl">
+				<p class="text-sm font-semibold uppercase text-eden-green">FAQ</p>
+				<h2 id={`${page.slug}-faq`} class="mt-3 text-3xl font-semibold leading-tight sm:text-4xl">Questions people ask before booking</h2>
+				<!-- {{CLINICAL_REVIEW}}: FAQ answers contain medical and regulatory statements requiring approval. -->
+				<div class="mt-8 divide-y divide-eden-line rounded-md border border-eden-line bg-white">
+					{page.faqs.map((faq) => (
+						<details class="group p-5">
+							<summary class="flex cursor-pointer list-none items-center justify-between gap-4 text-base font-semibold">
+								<span>{faq.question}</span>
+								<span class="text-eden-green transition group-open:rotate-45" aria-hidden="true">+</span>
+							</summary>
+							<p class="mt-4 text-sm leading-7 text-slate-700">{faq.answer}</p>
+						</details>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<section class="bg-white px-5 py-14 sm:px-6 sm:py-18" aria-labelledby={`${page.slug}-related`}>
+			<div class="mx-auto max-w-6xl">
+				<p class="text-sm font-semibold uppercase text-eden-green">Continue researching</p>
+				<h2 id={`${page.slug}-related`} class="mt-3 text-3xl font-semibold leading-tight sm:text-4xl">Peptide therapy resources</h2>
+				<div class="mt-8 grid gap-4 md:grid-cols-3">
+					{relatedPages.map((item) => (
+						<a href={`/${item.slug}/`} class="rounded-md border border-eden-line bg-eden-paper p-6 transition hover:border-eden-green hover:bg-white">
+							<h3 class="text-lg font-semibold">{item.label}</h3>
+							<p class="mt-3 text-sm leading-7 text-slate-700">Read Eden's focused guide.</p>
+						</a>
+					))}
+					<a href="https://edenhealthclubs.com/peptide-therapy/" class="rounded-md border border-eden-line bg-eden-paper p-6 transition hover:border-eden-green hover:bg-white">
+						<h3 class="text-lg font-semibold">Main Peptide Therapy Hub</h3>
+						<p class="mt-3 text-sm leading-7 text-slate-700">Visit Eden's primary peptide therapy resource.</p>
+					</a>
+				</div>
+			</div>
+		</section>
+
+		<section class="bg-eden-forest px-5 py-14 text-white sm:px-6 sm:py-16">
+			<div class="mx-auto flex max-w-6xl flex-col items-start justify-between gap-7 md:flex-row md:items-center">
+				<div>
+					<p class="text-sm font-semibold uppercase text-eden-sage">Eden Health Club · Greenwood Village</p>
+					<h2 class="mt-3 max-w-2xl text-3xl font-semibold leading-tight sm:text-4xl">Start with a provider conversation, not a product menu.</h2>
+				</div>
+				<BookingCTA {...booking} class={`${lightCta} w-full md:w-auto`} />
+			</div>
+		</section>
+	</main>
+
+	<Footer />
+
+	<div class="fixed inset-x-0 bottom-0 z-40 border-t border-eden-line bg-white p-3 shadow-[0_-4px_16px_rgba(28,45,38,0.12)] md:hidden">
+		<BookingCTA {...booking} class={`${darkCta} w-full`} />
+	</div>
+</BaseLayout>
