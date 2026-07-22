@@ -26,4 +26,4 @@ The hormone aliases (`/mens-hormone-optimization/`, `/menopause-hormone-therapy/
 
 The same mapping applies to Greenwood Village combination pages such as `/botox/greenwood-village/`. The category IDs are centralized in `src/lib/booking.ts` so future Zenoti category changes have one update point.
 
-Booking CTAs preserve Google and Meta attribution parameters. GTM receives `booking_click` and `google_ads_booking_conversion`. Set `PUBLIC_GOOGLE_ADS_BOOKING_SEND_TO` to the approved Google Ads `AW-.../...` destination to additionally fire the direct `gtag` conversion event. The Meta `BookingClick` CAPI stub forwards only when `META_CAPI_ACCESS_TOKEN` and `META_PIXEL_ID` (or `PUBLIC_META_PIXEL_ID`) are configured.
+Booking CTAs preserve Google and Meta attribution parameters. GTM receives `booking_click` and `google_ads_booking_conversion`. Set `PUBLIC_GOOGLE_ADS_BOOKING_SEND_TO` to the approved Google Ads conversion destination in Vercel to additionally fire the direct `gtag` conversion event. The Meta `BookingClick` CAPI stub forwards only when `META_CAPI_ACCESS_TOKEN` and `META_PIXEL_ID` (or `PUBLIC_META_PIXEL_ID`) are configured.

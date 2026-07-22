@@ -246,8 +246,8 @@ Tag 6 — Google Ads Conversion Tracking (lead_submit = primary conversion)
 
 Tag Type: Google Ads Conversion Tracking
 Name: Google Ads — Conversion: Lead Form Submit
-Conversion ID: 17041568244 (just the number — no AW- prefix in this field)
-Conversion Label: GJA8CIb8xLgcEPTjhr4_
+Conversion ID: supply the approved value through the protected deployment configuration
+Conversion Label: supply the approved value through the protected deployment configuration
 Conversion Value: leave blank (or 0 — per ADR, no value in v1)
 Conversion Currency Code: leave blank
 Order ID: leave blank
@@ -389,6 +389,6 @@ aggregateRating schema once a real review feed exists
 | GTM container ID | GTM-5ZZLQFMN |
 | GA4 Measurement ID | G-80TZN3GM35 |
 | Google Ads account customer ID | 876-346-6047 |
-| Google Ads Conversion ID | AW-17041568244 |
-| Google Ads Conversion Label | GJA8CIb8xLgcEPTjhr4_ |
+| Google Ads conversion destination | Vercel env var `PUBLIC_GOOGLE_ADS_BOOKING_SEND_TO` |
+| Google Ads conversion label | Included in Vercel env var `PUBLIC_GOOGLE_ADS_BOOKING_SEND_TO` |
 | Google Ads conversion action name | Landing - Lead Form Submit |

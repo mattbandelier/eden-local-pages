@@ -31,7 +31,7 @@ Eden Health Club is **not a medspa** — it's a four-pillar wellness brand: **Fu
 **Don't say:**
 
 - "NP-led medspa" — the user has explicitly rejected this framing  
-- Any specific physician name in commercial copy (no "Dr. [Name]" references); no "physician-led" framing when it implies a specific named physician — use "clinical team," "licensed experts," or "expert providers" instead  
+- Any specific physician name in commercial copy (no "Dr. [Name]" references); avoid framing that implies control by a named physician — use "provider-led," "in-person," or "clinical team" instead
 - **Prescription drug names of any kind** in landing copy until LegitScript certification is obtained. Specifically: semaglutide, tirzepatide, Sermorelin, TB-500, BPC-157; GLP-1 brand names Ozempic / Wegovy / Mounjaro / Zepbound; specific compounded product names like Bi-Est, Testosterone Cypionate, Hair Force One; and any specific compounded medication product or pharmacy product name. Use category and treatment-class language only ("GLP-1 therapy," "compounded peptide therapy," "compounded bioidentical hormones," "FDA-approved injectable testosterone preparations")  
 - **"FDA-approved" claims** applied to any compounded medication (compounded bioidentical hormones, compounded GLP-1, compounded peptides) — frame as "compounded ... prescribed by licensed providers" instead  
 - **Specific weight-loss outcome promises** ("lose X pounds in Y weeks") — use non-specific outcome language only  

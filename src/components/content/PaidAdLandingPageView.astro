@@ -37,11 +37,6 @@ const jsonLd = [
 			postalCode: "80121",
 			addressCountry: "US",
 		},
-		aggregateRating: {
-			"@type": "AggregateRating",
-			ratingValue: "4.9",
-			reviewCount: "122",
-		},
 		areaServed: ["Greenwood Village", "Denver", "Denver Tech Center"],
 	},
 	{
@@ -96,9 +91,8 @@ const jsonLd = [
 					<p class="mt-5 max-w-2xl text-lg leading-8 text-white/90">{page.subhead}</p>
 					<div class="mt-7 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
 						<BookingCTA {...booking} class={primaryCtaClass} />
-						<div class="flex items-center gap-3 rounded-md border border-white/25 bg-eden-forest/70 px-4 py-3" aria-label="Rated 4.9 out of 5 from more than 122 reviews">
-							<span class="text-lg text-eden-sage" aria-hidden="true">★★★★★</span>
-							<span class="text-sm font-semibold">4.9 stars / 122+ reviews</span>
+						<div class="rounded-md border border-white/25 bg-eden-forest/70 px-4 py-3">
+							<span class="text-sm font-semibold">Provider-led care, in person</span>
 						</div>
 					</div>
 				</div>
@@ -128,10 +122,10 @@ const jsonLd = [
 				<h2 id={`${page.slug}-why`} class="mt-3 text-3xl font-semibold leading-tight sm:text-4xl">Local care, accountable providers</h2>
 				<div class="mt-8 grid gap-x-8 gap-y-6 sm:grid-cols-2 lg:grid-cols-4">
 					{[
-						["Physician-led", "Clinical oversight supports thoughtful evaluation and treatment planning."],
-						["Licensed providers", "Meet with a qualified local provider who can assess candidacy and risks."],
+						["Provider-led", "Meet with an Eden provider to discuss your goals, candidacy, risks, and alternatives."],
+						["In-person care", "Your consultation takes place face to face, not through an online-only service."],
 						["Greenwood Village", "Visit Eden near DTC at 5990 S University Blvd, serving the Denver metro."],
-						["Not a franchise", "Your plan is built by Eden's local team, not handed down from a national script."],
+						["Private health-club setting", "Discuss your plan in Eden's private, local health-club setting."],
 					].map(([title, body]) => (
 						<div class="border-l-2 border-eden-green pl-5">
 							<h3 class="text-lg font-semibold">{title}</h3>
@@ -196,12 +190,11 @@ const jsonLd = [
 			</div>
 		</section>
 
-		<section class="bg-white px-5 py-14 sm:px-6 sm:py-18" aria-labelledby={`${page.slug}-reviews`}>
+		<section class="bg-white px-5 py-14 sm:px-6 sm:py-18" aria-labelledby={`${page.slug}-local-care`}>
 			<div class="mx-auto max-w-6xl text-center">
-				<p class="text-sm font-semibold uppercase text-eden-green">Local trust</p>
-				<h2 id={`${page.slug}-reviews`} class="mt-3 text-4xl font-semibold">4.9 out of 5</h2>
-				<p class="mt-3 text-lg font-semibold text-eden-green" aria-hidden="true">★★★★★</p>
-				<p class="mx-auto mt-4 max-w-2xl text-base leading-8 text-slate-700">Based on 122+ reviews. Eden Health Club is a local, physician-led practice in Greenwood Village, not a franchise. Individual experiences vary.</p>
+				<p class="text-sm font-semibold uppercase text-eden-green">Local, in-person care</p>
+				<h2 id={`${page.slug}-local-care`} class="mt-3 text-4xl font-semibold">Meet your provider in Greenwood Village</h2>
+				<p class="mx-auto mt-4 max-w-2xl text-base leading-8 text-slate-700">Eden offers provider-led consultations in a private health-club setting near DTC. Review your goals, options, and next steps face to face before you decide.</p>
 			</div>
 		</section>
 
