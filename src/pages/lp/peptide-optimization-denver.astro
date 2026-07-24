@@ -15,13 +15,13 @@ const PROVIDER_VERIFIED = false;
 const canonical = canonicalUrl("/lp/peptide-optimization-denver");
 const title = "Peptide Optimization Denver | $299 Peptide Starter | Eden";
 const description =
-	"Start with Eden's $299 Peptide Starter near Denver: consultation, lab work, and your first month's vial of the peptide your provider prescribes.";
+	"Start with Eden's $299 Peptide Starter near Denver: an in-person provider consultation, baseline lab work, and a personalized next-step plan.";
 
 const proofPoints = [
 	{
 		kicker: "$299 peptide starter",
-		title: "Consult + labs + vial",
-		body: "One clear first step: private provider consultation, lab work, and your first month's vial as prescribed.",
+		title: "Consult + labs + plan",
+		body: "One clear first step: an in-person provider consultation, baseline lab work, and a personalized next-step plan.",
 	},
 	{
 		kicker: "Clinician-guided",
@@ -45,19 +45,19 @@ const offerIncludes = [
 		body: "Your $299 starter includes lab work so the peptide conversation starts with clinical context, not guesswork.",
 	},
 	{
-		title: "First month's vial",
-		body: "Your first month's vial is included when your provider prescribes a peptide after lab review.",
+		title: "Personalized health roadmap",
+		body: "Leave with a provider-guided roadmap shaped by your goals, health history, and baseline lab results.",
 	},
 	{
-		title: "Clinical decision first",
-		body: "Which peptide, and whether peptide therapy is appropriate for you at all, depends on your labs and your provider's clinical review.",
+		title: "Clear next steps",
+		body: "Understand what the clinical team recommends next, what is optional, and what any additional care would cost before moving forward.",
 	},
 ];
 
 const pricingIncludes = [
 	"Private consultation with a licensed provider",
-	"Lab work",
-	"Your first month's vial, as prescribed",
+	"Baseline lab work",
+	"Personalized next-step plan",
 ];
 
 const lanes = [
@@ -80,9 +80,9 @@ const lanes = [
 ];
 
 const differentiators = [
-	["First step", "$299 Peptide Starter with consult, labs, and your first month's vial as prescribed", "A menu of protocols before anyone understands fit"],
+	["First step", "$299 Peptide Starter with an in-person consultation, baseline labs, and a personalized plan", "A menu of options before anyone understands fit"],
 	["Environment", "Greenwood Village health club with recovery, training, body composition, and clinical wellness in one location", "A single-service clinic or remote-only program"],
-	["Clinical path", "Provider review determines which peptide, if any, is appropriate after labs and health-history review", "Medication-first messaging that can skip the why"],
+	["Clinical path", "Provider review connects your goals, labs, and health history to the right next step", "Product-first messaging that can skip the why"],
 	["Follow-through", "Eden One and Elevate can connect ongoing care, credits, training, recovery, bloodwork rhythm, and support", "A one-off visit with no day-to-day system"],
 ];
 
@@ -97,7 +97,7 @@ const process = [
 	},
 	{
 		step: "Plan",
-		body: "Review which peptide your provider prescribes, or whether another path is more appropriate.",
+		body: "Receive a personalized roadmap and review whether another path is more appropriate.",
 	},
 	{
 		step: "Follow",
@@ -128,12 +128,12 @@ const faqs = [
 	{
 		question: "What is the $299 Peptide Starter?",
 		answer:
-			"It is a private first visit designed for people exploring peptide therapy, peptide injections, recovery, body composition, skin quality, sleep, and longevity-minded wellness planning. It includes your consultation, your lab work, and your first month's vial of the peptide your provider prescribes.",
+			"It is an in-person first visit designed for people exploring peptide therapy, recovery, body composition, sleep, and longevity-minded wellness planning. It includes a private provider consultation, baseline lab work, and a personalized next-step plan.",
 	},
 	{
-		question: "Does the $299 include the peptide itself?",
+		question: "Does the $299 include treatment?",
 		answer:
-			"Yes. The $299 covers your consultation, your lab work, and your first month's supply of the peptide your provider prescribes. Which peptide, and whether peptide therapy is appropriate for you at all, depends on your labs and your provider's clinical review.",
+			"No. The $299 covers the consultation, baseline lab work, and personalized plan. Any additional service is separate and depends on clinical eligibility and provider review.",
 	},
 	{
 		question: "Why start with labs?",
@@ -143,7 +143,7 @@ const faqs = [
 	{
 		question: "What happens after the starter visit?",
 		answer:
-			"If an ongoing peptide program makes sense, Eden can help you compare timing, follow-up, bloodwork rhythm, injection support when appropriate, training, recovery, Eden One, Elevate, or other wellness support.",
+			"Eden reviews the findings and explains the recommended next steps. Any additional service is optional, priced separately, and discussed before you move forward.",
 	},
 	{
 		question: "Is Eden an online peptide clinic?",
@@ -198,7 +198,7 @@ const jsonLd: JsonLd[] = [
 		"@type": "Service",
 		"@id": `${canonical}#service`,
 		name: "$299 Peptide Starter",
-		serviceType: "Peptide consultation, lab work, and first month's vial as prescribed",
+		serviceType: "In-person peptide consultation, baseline lab work, and personalized wellness planning",
 		url: canonical,
 		description,
 		offers: {
@@ -281,10 +281,10 @@ const jsonLd: JsonLd[] = [
 					/>
 					<p class="text-sm font-semibold uppercase tracking-normal text-eden-sage">Premium longevity care in Greenwood Village</p>
 					<h1 class="mt-4 max-w-3xl text-4xl font-semibold leading-tight sm:text-5xl lg:text-6xl">
-						Peptide therapy in Denver. $299 covers the consult, the labs, and your first month's vial — as prescribed.
+						Peptide therapy in Denver. Start with a $299 consult, baseline labs, and personalized plan.
 					</h1>
 					<p class="mt-5 max-w-2xl text-base leading-8 text-white/86 sm:text-lg">
-						Start with a private consultation with a licensed provider, your lab work, and your first month's vial of the peptide your provider prescribes.
+						Get an in-person provider consultation, baseline lab work, and a clear roadmap before deciding what comes next.
 					</p>
 					<div class="mt-8 flex flex-col gap-3 sm:flex-row">
 						<a href="#lead-form" class="rounded-md bg-eden-sage px-6 py-3 text-center text-base font-semibold text-eden-forest shadow-sm">
@@ -321,7 +321,7 @@ const jsonLd: JsonLd[] = [
 									<div class="rounded-md bg-white p-4 text-eden-navy">
 										<p class="text-xs font-semibold uppercase text-eden-green">Offer</p>
 										<p class="mt-2 text-lg font-semibold">$299 Peptide Starter.</p>
-										<p class="mt-2 text-xs leading-5 text-slate-600">Consult + labs + first month's vial.</p>
+										<p class="mt-2 text-xs leading-5 text-slate-600">Consult + baseline labs + personalized plan.</p>
 									</div>
 									<div class="rounded-md bg-eden-sage p-4 text-eden-forest">
 										<p class="text-xs font-semibold uppercase">Fit first</p>
@@ -346,10 +346,10 @@ const jsonLd: JsonLd[] = [
 				<div>
 					<p class="text-sm font-semibold uppercase text-eden-green">$299 Peptide Starter</p>
 					<h2 class="mt-3 text-3xl font-semibold leading-tight text-eden-navy sm:text-4xl">
-						$299 — everything you need to start.
+						Know where to start for $299.
 					</h2>
 					<p class="mt-4 text-base leading-8 text-slate-700">
-						$299 — everything you need to start. A private consultation with a licensed provider, your lab work, and your first month's vial of the peptide your provider prescribes. One price.
+						One clear first step: a private consultation with a licensed provider, baseline lab work, and a personalized next-step plan. No treatment purchase is included or required.
 					</p>
 					<div class="mt-6 rounded-lg border border-eden-line bg-eden-paper p-5 shadow-sm">
 						<p class="text-sm font-semibold uppercase text-eden-green">$299 — Peptide Starter</p>
@@ -479,7 +479,7 @@ const jsonLd: JsonLd[] = [
 				</div>
 				<div class="rounded-lg border border-eden-line bg-eden-paper p-6 shadow-sm">
 					<p class="text-base leading-8 text-slate-700">
-						Eden's clinical team reviews your goals, lab work, medical history, and fit before a peptide is prescribed. Provider naming is pending verification, so this page does not publish a provider name or board-certification claim yet.
+						Eden's clinical team reviews your goals, lab work, medical history, and fit before recommending next steps. Provider naming is pending verification, so this page does not publish a provider name or board-certification claim yet.
 					</p>
 				</div>
 			</div>
@@ -508,12 +508,12 @@ const jsonLd: JsonLd[] = [
 					serviceSlug="peptide-optimization-starter-299"
 					suburbSlug="greenwood-village"
 					heading="Request the $299 Peptide Starter"
-					subheading="Tell Eden what you want to explore. The team will follow up about fit, lab work, and the peptide your provider may prescribe."
+					subheading="Tell Eden what you want to explore. The team will follow up about your consultation, baseline lab work, and personalized next-step plan."
 					submitText="Book my $299 peptide start"
-					hiddenMessage="WORKFLOW_KEY: peptide_299_therapy. SOURCE_LANE: src_google_iw_peptide_variant. $299 Peptide Starter requested from the Google Ads peptide-intent variant page: consultation, lab work, and first month's vial of the peptide the provider prescribes."
+					hiddenMessage="WORKFLOW_KEY: peptide_299_therapy. SOURCE_LANE: src_google_iw_peptide_variant. $299 Peptide Starter requested from the Google Ads peptide-intent variant page: in-person consultation, baseline lab work, and personalized next-step plan. Treatment is not included."
 					workflowKey="peptide_299_therapy"
 					offerName="$299 Peptide Starter"
-					offerValue="consult_labs_first_month_vial_as_prescribed"
+					offerValue="consult_baseline_labs_personalized_plan"
 				/>
 			</div>
 		</section>
@@ -554,7 +554,7 @@ const jsonLd: JsonLd[] = [
 		class="pointer-events-none fixed bottom-5 right-5 z-40 hidden max-w-xs translate-y-3 rounded-lg border border-white/20 bg-eden-forest/95 p-3 text-white opacity-0 shadow-2xl backdrop-blur transition duration-200 md:block"
 	>
 		<p class="text-xs font-semibold uppercase text-eden-sage">$299 Peptide Starter</p>
-		<p class="mt-1 text-sm leading-5 text-white/82">Private consult, lab work, and your first month's vial as prescribed.</p>
+		<p class="mt-1 text-sm leading-5 text-white/82">In-person consult, baseline lab work, and a personalized next-step plan.</p>
 		<a href="#lead-form" class="mt-3 block rounded-md bg-eden-sage px-4 py-3 text-center text-sm font-semibold text-eden-forest">
 			Book my $299 peptide start
 		</a>
@@ -567,7 +567,7 @@ const jsonLd: JsonLd[] = [
 	</div>
 	<div class="bg-eden-navy px-6 py-5 text-white">
 		<p class="mx-auto max-w-6xl text-xs leading-6 text-white/62">
-			Some peptides are not FDA-approved, and individual results are not guaranteed. This page is for general educational purposes and is not medical advice.
+			Eligibility and recommendations depend on provider review. Individual results are not guaranteed. This page is for general educational purposes and is not medical advice.
 		</p>
 	</div>
 	<Footer variant="wellness" />
