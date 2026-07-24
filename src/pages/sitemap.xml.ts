@@ -1,6 +1,7 @@
 import { services, suburbs } from "../data";
 import { fitnessPages } from "../data/fitness-pages";
 import { hormonePages } from "../data/hormone-pages";
+import { organicPeptidePages } from "../data/organic-peptide-pages";
 import { isIndexableCombo, isIndexableFitness } from "../lib/indexing";
 import { canonicalUrl, comboUrl, homeUrl, serviceHubUrl, suburbHubUrl } from "../lib/urls";
 
@@ -16,6 +17,13 @@ const urls = [
 	{ loc: canonicalUrl("/lp/hormone-peptide-optimization-denver"), priority: "0.96", changefreq: "weekly" },
 	{ loc: canonicalUrl("/lp/longevity-baseline-starter"), priority: "0.96", changefreq: "weekly" },
 	{ loc: canonicalUrl("/medical-spa-denver"), priority: "0.95", changefreq: "weekly" },
+	...Object.values(organicPeptidePages)
+		.filter((page) => page.indexable)
+		.map((page) => ({
+			loc: canonicalUrl(`/${page.slug}`),
+			priority: "0.9",
+			changefreq: "monthly",
+		})),
 	...services.map((service) => ({
 		loc: serviceHubUrl(service.slug),
 		priority: "0.9",

@@ -1,6 +1,23 @@
 ---
 import { services, suburbs } from "../../data";
 import { serviceHubUrl, suburbHubUrl } from "../../lib/urls";
+import BookingCTA from "../content/BookingCTA.astro";
+
+interface Props {
+	bookingServiceSlug?: string;
+	bookingServiceName?: string;
+	bookingServiceCategory?: string;
+	ctaLabel?: string;
+	singleConversion?: boolean;
+}
+
+const {
+	bookingServiceSlug,
+	bookingServiceName = "Eden consultation",
+	bookingServiceCategory = "Wellness",
+	ctaLabel = "Book a Consult",
+	singleConversion = false,
+} = Astro.props;
 
 const phone = "720-605-7678";
 const phoneHref = "tel:+17206057678";
@@ -12,8 +29,18 @@ const phoneHref = "tel:+17206057678";
 		<div class="hidden items-center gap-6 md:flex">
 			<a href={serviceHubUrl(services[0].slug)} class="text-sm font-medium text-eden-navy hover:text-eden-green">Services</a>
 			<a href={suburbHubUrl(suburbs[0].slug)} class="text-sm font-medium text-eden-navy hover:text-eden-green">Locations</a>
-			<a href={phoneHref} data-phone-link class="text-sm font-semibold text-eden-navy hover:text-eden-green">{phone}</a>
-			<a href="#lead-form" class="rounded-md bg-eden-green px-4 py-2 text-sm font-semibold text-white hover:bg-eden-green/90">Book a consult</a>
+			{singleConversion
+				? <span class="text-sm font-semibold text-eden-navy">{phone}</span>
+				: <a href={phoneHref} data-phone-link class="text-sm font-semibold text-eden-navy hover:text-eden-green">{phone}</a>}
+			{bookingServiceSlug
+				? <BookingCTA
+					serviceSlug={bookingServiceSlug}
+					serviceName={bookingServiceName}
+					serviceCategory={bookingServiceCategory}
+					label={ctaLabel}
+					class="inline-flex min-h-10 items-center justify-center rounded-md bg-eden-green px-4 py-2 text-sm font-semibold text-white hover:bg-eden-green/90"
+				/>
+				: <a href="#lead-form" class="rounded-md bg-eden-green px-4 py-2 text-sm font-semibold text-white hover:bg-eden-green/90">Book a consult</a>}
 		</div>
 		<details class="relative md:hidden">
 			<summary class="cursor-pointer list-none rounded-md border border-slate-200 px-3 py-2 text-sm font-semibold text-eden-navy">
@@ -32,8 +59,18 @@ const phoneHref = "tel:+17206057678";
 						<a href={suburbHubUrl(suburb.slug)} class="text-sm text-eden-navy hover:text-eden-green">{suburb.name}</a>
 					))}
 				</div>
-				<a href={phoneHref} data-phone-link class="mt-4 block text-sm font-semibold text-eden-navy">{phone}</a>
-				<a href="#lead-form" class="mt-4 block rounded-md bg-eden-green px-4 py-2 text-center text-sm font-semibold text-white">Book a consult</a>
+				{singleConversion
+					? <p class="mt-4 text-sm font-semibold text-eden-navy">{phone}</p>
+					: <a href={phoneHref} data-phone-link class="mt-4 block text-sm font-semibold text-eden-navy">{phone}</a>}
+				{bookingServiceSlug
+					? <BookingCTA
+						serviceSlug={bookingServiceSlug}
+						serviceName={bookingServiceName}
+						serviceCategory={bookingServiceCategory}
+						label={ctaLabel}
+						class="mt-4 flex min-h-10 items-center justify-center rounded-md bg-eden-green px-4 py-2 text-center text-sm font-semibold text-white"
+					/>
+					: <a href="#lead-form" class="mt-4 block rounded-md bg-eden-green px-4 py-2 text-center text-sm font-semibold text-white">Book a consult</a>}
 			</div>
 		</details>
 	</nav>

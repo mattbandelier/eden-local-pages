@@ -1,0 +1,9 @@
+---
+import OrganicPeptidePageView from "../components/content/OrganicPeptidePageView.astro";
+import { getOrganicPeptidePage } from "../data/organic-peptide-pages";
+
+// TODO(WP_HUB): Keep noindex and sitemap-excluded until the WordPress /peptide-therapy/ hub decision confirms index vs canonical.
+const page = getOrganicPeptidePage("peptide-therapy-denver");
+---
+
+<OrganicPeptidePageView page={page} />

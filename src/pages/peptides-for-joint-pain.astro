@@ -1,0 +1,8 @@
+---
+import OrganicPeptidePageView from "../components/content/OrganicPeptidePageView.astro";
+import { getOrganicPeptidePage } from "../data/organic-peptide-pages";
+
+const page = getOrganicPeptidePage("peptides-for-joint-pain");
+---
+
+<OrganicPeptidePageView page={page} />
