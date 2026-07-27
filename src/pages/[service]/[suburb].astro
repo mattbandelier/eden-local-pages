@@ -22,6 +22,7 @@ import TreatmentSnapshot from "../../components/content/TreatmentSnapshot.astro"
 import TrustBar from "../../components/content/TrustBar.astro";
 import Breadcrumbs from "../../components/layout/Breadcrumbs.astro";
 import Footer from "../../components/layout/Footer.astro";
+import PaidServiceFooter from "../../components/layout/PaidServiceFooter.astro";
 import Header from "../../components/layout/Header.astro";
 import { comboJsonLd, type BreadcrumbItem } from "../../lib/schema-org";
 import { combinedFaqs } from "../../lib/local-faqs";
@@ -47,6 +48,8 @@ const relatedServices = service.relatedServices
 const isPremiumMoneyPage = isIndexableCombo(service.slug, suburb.slug);
 const wellnessPaidSlugs = ["male-trt", "medical-weight-loss", "peptide-therapy", "female-bhrt"];
 const isWellnessPaidPage = isPremiumMoneyPage && wellnessPaidSlugs.includes(service.slug);
+const policySeparatedSlugs = ["male-trt", "medical-weight-loss", "female-bhrt"];
+const isPolicySeparatedPaidPage = isPremiumMoneyPage && policySeparatedSlugs.includes(service.slug);
 const breadcrumbItems: BreadcrumbItem[] = [
 	{ label: "Home", href: homeUrl() },
 	{ label: isWellnessPaidPage ? "Programs" : "Services", href: serviceHubUrl(service.slug) },
@@ -67,18 +70,27 @@ const preloadImages = isPremiumMoneyPage
 			"/assets/eden-health-club-logo-white-transparent-tight.png",
 		]
 	: [];
+const pageJsonLd = isPolicySeparatedPaidPage
+	? comboJsonLd(service, suburb, breadcrumbItems).filter((item) => item["@type"] !== "BreadcrumbList")
+	: comboJsonLd(service, suburb, breadcrumbItems);
 ---
 
 <BaseLayout
 	title={seo.title}
 	description={seo.description}
 	canonicalUrl={comboUrl(service.slug, suburb.slug)}
-	jsonLd={comboJsonLd(service, suburb, breadcrumbItems)}
+	jsonLd={pageJsonLd}
 	noindex={!isPremiumMoneyPage}
 	preloadImages={preloadImages}
 >
-	{isPremiumMoneyPage ? <PremiumHeader servicesHref="#details" servicesLabel={isWellnessPaidPage ? "Programs" : "Services"} /> : <Header />}
-	<Breadcrumbs items={breadcrumbItems} />
+	{isPremiumMoneyPage ? (
+		<PremiumHeader
+			brandHref={isPolicySeparatedPaidPage ? null : "/"}
+			servicesHref="#details"
+			servicesLabel={isWellnessPaidPage ? "Program" : "Services"}
+		/>
+	) : <Header />}
+	{!isPolicySeparatedPaidPage && <Breadcrumbs items={breadcrumbItems} />}
 	<main class="pb-20 md:pb-0">
 		<Hero variant="combo" service={service} suburb={suburb} premium={isPremiumMoneyPage} />
 		<LocalProximity suburb={suburb} />
@@ -95,7 +107,13 @@ const preloadImages = isPremiumMoneyPage
 			/>
 		)}
 		<LocalAnswerBlock service={service} suburb={suburb} />
-		{isPremiumMoneyPage && <MoneyPageLayer service={service} suburb={suburb} />}
+		{isPremiumMoneyPage && (
+			<MoneyPageLayer
+				service={service}
+				suburb={suburb}
+				showRelatedLinks={!isPolicySeparatedPaidPage}
+			/>
+		)}
 		<TreatmentSnapshot service={service} />
 		<BenefitsList benefits={service.benefits} intro={service.whoItsFor} />
 		{!isPremiumMoneyPage && <DecisionSupport service={service} suburb={suburb} />}
@@ -104,14 +122,16 @@ const preloadImages = isPremiumMoneyPage
 			<PricingCard pricing={service.pricing} consultRequired={service.consultRequired} ctaText={service.ctaText} />
 		</div>
 		<FAQAccordion faqs={faqs} heading={`${service.name} questions from ${suburb.name} clients`} />
-		{isPremiumMoneyPage && (
+		{isPremiumMoneyPage && !isPolicySeparatedPaidPage && (
 			<PriorityMoneyLinks
 				currentPath={comboUrl(service.slug, suburb.slug).replace("https://landing.edenhealthclubs.com", "")}
 				variant={isWellnessPaidPage ? "wellness" : "combo"}
 			/>
 		)}
-		<RelatedServices services={relatedServices} suburbSlug={suburb.slug} heading={isWellnessPaidPage ? "Related wellness paths" : "Related services"} />
-		<MainSiteLink service={service} label={isWellnessPaidPage ? "program" : "service"} />
+		{!isPolicySeparatedPaidPage && (
+			<RelatedServices services={relatedServices} suburbSlug={suburb.slug} heading={isWellnessPaidPage ? "Related wellness paths" : "Related services"} />
+		)}
+		{!isPolicySeparatedPaidPage && <MainSiteLink service={service} label={isWellnessPaidPage ? "program" : "service"} />}
 		{isPremiumMoneyPage ? (
 			<section class="bg-eden-forest px-6 py-12 text-white">
 				<div class="mx-auto flex max-w-6xl flex-col gap-6 md:flex-row md:items-center md:justify-between">
@@ -140,5 +160,5 @@ const preloadImages = isPremiumMoneyPage
 	</main>
 	{isPremiumMoneyPage && <PremiumStickyConsult service={service} />}
 	<MobileActionBar service={service} />
-	<Footer variant={isWellnessPaidPage ? "wellness" : "default"} />
+	{isPolicySeparatedPaidPage ? <PaidServiceFooter /> : <Footer variant={isWellnessPaidPage ? "wellness" : "default"} />}
 </BaseLayout>

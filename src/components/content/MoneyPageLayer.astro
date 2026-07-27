@@ -4,6 +4,7 @@ import type { Service, Suburb } from "../../data/types";
 interface Props {
 	service: Service;
 	suburb: Suburb;
+	showRelatedLinks?: boolean;
 }
 
 interface MoneyPageContent {
@@ -25,7 +26,7 @@ interface MoneyPageContent {
 	pairingBody: string;
 }
 
-const { service, suburb } = Astro.props;
+const { service, suburb, showRelatedLinks = true } = Astro.props;
 const localPhrase =
 	suburb.driveTimeMinutes === 0
 		? "at Eden's Greenwood Village clinic"
@@ -36,6 +37,7 @@ const localRoute =
 		: `${suburb.name} clients are typically about ${suburb.driveTimeMinutes} minutes from Eden's Greenwood Village clinic.`;
 const wellnessServiceSlugs = new Set(["medical-weight-loss", "female-bhrt", "male-trt", "peptide-therapy", "iv-therapy", "nad-iv-therapy"]);
 const isWellnessService = wellnessServiceSlugs.has(service.slug);
+const isPeptideService = service.slug === "peptide-therapy";
 const wellnessGeoTerms = [
 	service.targetKeywords.primary,
 	...service.targetKeywords.secondary.slice(0, 4),
@@ -57,8 +59,12 @@ const localProof = [
 ];
 const localBlurb = isWellnessService
 	? suburb.driveTimeMinutes === 0
-		? "Eden's Greenwood Village location is built for clients comparing provider-guided wellness, hormones, peptides, medical weight loss, recovery, body composition, and ongoing follow-up in one premium local facility."
-		: `${suburb.name} clients use Eden's Greenwood Village location for provider-guided wellness, hormone optimization, peptide consults, weight-management support, recovery, body composition, and follow-up without crossing the entire metro.`
+		? isPeptideService
+			? "Eden's Greenwood Village location provides provider-guided peptide consultations, recovery, body-composition context, and ongoing follow-up in one premium local facility."
+			: "Eden's Greenwood Village location provides provider-guided wellness, hormone care, medical weight management, recovery, body-composition context, and ongoing follow-up in one premium local facility."
+		: isPeptideService
+			? `${suburb.name} clients use Eden's Greenwood Village location for provider-guided peptide consultations, recovery, body-composition context, and follow-up without crossing the entire metro.`
+			: `${suburb.name} clients use Eden's Greenwood Village location for provider-guided wellness, hormone care, weight-management support, recovery, body-composition context, and follow-up without crossing the entire metro.`
 	: suburb.neighborhoodBlurb;
 
 const contentBySlug: Record<string, MoneyPageContent> = {
@@ -342,7 +348,7 @@ const contentBySlug: Record<string, MoneyPageContent> = {
 		whyEden: [
 			"Provider review and bloodwork are required before treatment planning.",
 			"Plans are individualized instead of sold as a fixed package.",
-			"Weight management can connect with hormone, peptide, IV, and fitness support when appropriate.",
+			"Weight management can connect with hormone, IV, nutrition, and fitness support when appropriate.",
 			"One Greenwood Village clinic anchors the program with local accountability.",
 		],
 		pairingTitle: "Best next step for medically supervised weight management.",
@@ -424,7 +430,7 @@ const contentBySlug: Record<string, MoneyPageContent> = {
 		whyEden: [
 			"Female hormone care is provider-led and lab-guided.",
 			"Treatment planning happens after screening, not before.",
-			"Hormone optimization can connect with weight, peptide, IV, and fitness goals when appropriate.",
+			"Hormone optimization can connect with weight, IV, recovery, and fitness goals when appropriate.",
 			"One Greenwood Village clinic keeps follow-up local and consistent.",
 		],
 		pairingTitle: "Best next step for female hormone evaluation.",
@@ -465,7 +471,7 @@ const contentBySlug: Record<string, MoneyPageContent> = {
 		whyEden: [
 			"Men's hormone care is lab-guided and provider-led.",
 			"Plans are built after screening instead of sold before evaluation.",
-			"TRT conversations can connect with weight, recovery, fitness, and peptide support when appropriate.",
+			"TRT conversations can connect with weight, recovery, and fitness support when appropriate.",
 			"One Greenwood Village clinic keeps follow-up convenient for South Denver clients.",
 		],
 		pairingTitle: "Best next step for men's hormone evaluation.",
@@ -681,7 +687,7 @@ const content = contentBySlug[service.slug];
 					<p class="mt-4 text-sm leading-7 text-slate-700">
 						Available {localPhrase}. Request a visit and Eden will confirm the right starting point before you commit.
 					</p>
-					{service.slug === "medical-weight-loss" && (
+					{showRelatedLinks && service.slug === "medical-weight-loss" && (
 						<a href="/glp-1-strength-training-greenwood-village/" class="mt-4 block text-sm font-semibold leading-6 text-eden-green underline underline-offset-4">
 							See GLP-1 strength training and muscle support
 						</a>
