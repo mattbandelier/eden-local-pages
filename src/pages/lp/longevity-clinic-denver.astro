@@ -1,0 +1,335 @@
+---
+import LeadForm from "../../components/content/LeadForm.astro";
+import PaidServiceFooter from "../../components/layout/PaidServiceFooter.astro";
+import PremiumHeader from "../../components/layout/PremiumHeader.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { canonicalUrl, homeUrl } from "../../lib/urls";
+import type { JsonLd } from "../../lib/schema-org";
+
+const canonical = canonicalUrl("/lp/longevity-clinic-denver");
+const title = "Longevity Clinic Denver | $299 Health Baseline Near DTC | Eden";
+const description =
+	"Start with Eden's $299 Longevity Baseline in Greenwood Village: lab work, InBody body composition, provider review, and a clear health-optimization plan.";
+
+const included = [
+	{
+		title: "Lab work + review",
+		body: "Start with real inputs and a provider-led review instead of another generic wellness checklist.",
+	},
+	{
+		title: "InBody baseline",
+		body: "Capture body-composition measurements that make progress easier to understand over time.",
+	},
+	{
+		title: "Your health roadmap",
+		body: "Connect goals, routines, lab context, and body composition into one practical next-step plan.",
+	},
+	{
+		title: "Up to $299 forward",
+		body: "If you continue, up to $299 may be applied toward the first month of an eligible ongoing plan.",
+	},
+];
+
+const visitSteps = [
+	{
+		number: "01",
+		title: "Measure",
+		body: "Complete the agreed lab work and body-composition baseline so the conversation starts with useful context.",
+	},
+	{
+		number: "02",
+		title: "Understand",
+		body: "Review what you want to improve, what the baseline shows, and where your current approach may need more structure.",
+	},
+	{
+		number: "03",
+		title: "Plan",
+		body: "Leave with clear priorities, recommended next steps, and a decision about whether ongoing support fits.",
+	},
+];
+
+const reasons = [
+	"Energy and recovery feel harder to predict",
+	"Body composition has stopped responding",
+	"You want useful lab context, not a data dump",
+	"You are comparing longevity or wellness clinics",
+	"You want fitness, recovery, and health planning connected",
+	"You want clarity before committing to a program",
+];
+
+const faqs = [
+	{
+		question: "What is included in the $299 Longevity Baseline?",
+		answer:
+			"The visit includes agreed lab work, an InBody body-composition baseline, provider review, and a personalized health-optimization roadmap. If you continue, up to $299 may be applied toward the first month of an eligible ongoing plan.",
+	},
+	{
+		question: "Is Eden a longevity clinic near Denver Tech Center?",
+		answer:
+			"Yes. Eden is a single Greenwood Village location near Denver Tech Center, combining private health consultations with fitness and recovery in one setting.",
+	},
+	{
+		question: "Do I need to know which program I want before booking?",
+		answer:
+			"No. The point of the baseline is to organize your goals and health context before you choose an ongoing path.",
+	},
+	{
+		question: "Does the baseline guarantee a specific plan or result?",
+		answer:
+			"No. Recommendations and eligibility depend on provider review, health history, and the information available at the visit. Results vary.",
+	},
+];
+
+const jsonLd: JsonLd[] = [
+	{
+		"@context": "https://schema.org",
+		"@type": "MedicalBusiness",
+		"@id": `${canonical}#medical-business`,
+		name: "Eden Health Club",
+		url: canonical,
+		telephone: "+17206057678",
+		address: {
+			"@type": "PostalAddress",
+			streetAddress: "5990 S University Blvd",
+			addressLocality: "Greenwood Village",
+			addressRegion: "CO",
+			postalCode: "80121",
+			addressCountry: "US",
+		},
+		areaServed: "Greenwood Village, Denver Tech Center, Cherry Hills Village, Centennial, Englewood, Littleton, Lone Tree, Highlands Ranch, and South Denver",
+	},
+	{
+		"@context": "https://schema.org",
+		"@type": "Service",
+		"@id": `${canonical}#service`,
+		name: "$299 Longevity Baseline",
+		serviceType: "Longevity baseline and health optimization planning",
+		url: canonical,
+		description,
+		provider: {
+			"@id": `${canonical}#medical-business`,
+			"@type": "MedicalBusiness",
+			name: "Eden Health Club",
+		},
+		offers: {
+			"@type": "Offer",
+			price: "299",
+			priceCurrency: "USD",
+			availability: "https://schema.org/InStock",
+		},
+	},
+	{
+		"@context": "https://schema.org",
+		"@type": "FAQPage",
+		"@id": `${canonical}#faq`,
+		mainEntity: faqs.map((faq) => ({
+			"@type": "Question",
+			name: faq.question,
+			acceptedAnswer: {
+				"@type": "Answer",
+				text: faq.answer,
+			},
+		})),
+	},
+	{
+		"@context": "https://schema.org",
+		"@type": "BreadcrumbList",
+		itemListElement: [
+			{ "@type": "ListItem", position: 1, name: "Home", item: homeUrl() },
+			{ "@type": "ListItem", position: 2, name: "Longevity Clinic Denver", item: canonical },
+		],
+	},
+];
+---
+
+<BaseLayout
+	title={title}
+	description={description}
+	canonicalUrl={canonical}
+	jsonLd={jsonLd}
+	noindex={true}
+	preloadImages={["/assets/eden-health-club-reception.webp", "/assets/longevity-baseline-clinic-hero.jpg", "/assets/eden-health-club-logo-white-transparent-tight.png"]}
+>
+	<PremiumHeader brandHref={null} servicesHref="#baseline" servicesLabel="Baseline" pricingHref="#lead-form" pricingLabel="$299 Visit" contactHref="#lead-form" ctaLabel="Start" />
+	<main class="bg-eden-paper">
+		<section class="relative overflow-hidden bg-eden-forest text-white">
+			<div class="absolute inset-0">
+				<img src="/assets/eden-health-club-reception.webp" alt="" class="h-full w-full object-cover opacity-20" loading="eager" fetchpriority="high" decoding="async" width="1388" height="1000" />
+				<div class="absolute inset-0 bg-[linear-gradient(90deg,rgba(15,35,29,0.99),rgba(18,68,50,0.95)_52%,rgba(18,68,50,0.76))]"></div>
+			</div>
+			<div class="relative mx-auto grid min-h-[calc(100vh-64px)] max-w-6xl gap-10 px-6 py-12 sm:py-16 lg:grid-cols-[1.02fr_0.98fr] lg:items-center">
+				<div>
+					<img src="/assets/eden-health-club-logo-white-transparent-tight.png" alt="Eden Health Club" class="mb-8 h-auto w-36 sm:w-44" loading="eager" fetchpriority="high" decoding="async" width="744" height="447" />
+					<p class="text-sm font-semibold uppercase tracking-normal text-eden-sage">$299 longevity baseline in Greenwood Village</p>
+					<h1 class="mt-4 max-w-3xl text-4xl font-semibold leading-tight sm:text-5xl lg:text-6xl">
+						Know your baseline. Build from there.
+					</h1>
+					<p class="mt-5 max-w-2xl text-base leading-8 text-white/86 sm:text-lg">
+						A provider-led starting point that turns lab context, body composition, and your goals into one clear health-optimization roadmap.
+					</p>
+					<div class="mt-8 flex flex-col gap-3 sm:flex-row">
+						<a href="#lead-form" class="rounded-md bg-eden-sage px-6 py-3 text-center text-base font-semibold text-eden-forest shadow-sm">
+							Request My $299 Baseline
+						</a>
+						<a href="tel:+17206057678" data-phone-link class="rounded-md border border-white/35 px-6 py-3 text-center text-base font-semibold text-white hover:bg-white/10">
+							Call 720-605-7678
+						</a>
+					</div>
+					<p class="mt-5 max-w-2xl text-xs leading-6 text-white/62">
+						Recommendations and eligibility depend on provider review. Results vary. Restrictions apply to any forward credit.
+					</p>
+					<div class="mt-7 grid max-w-2xl gap-3 text-sm sm:grid-cols-3">
+						<div class="rounded-lg border border-white/15 bg-white/8 p-4 backdrop-blur">
+							<p class="text-xs font-semibold uppercase text-eden-sage">Measure</p>
+							<p class="mt-2 text-lg font-semibold">Labs + InBody</p>
+						</div>
+						<div class="rounded-lg border border-white/15 bg-white/8 p-4 backdrop-blur">
+							<p class="text-xs font-semibold uppercase text-eden-sage">Understand</p>
+							<p class="mt-2 text-lg font-semibold">Provider review</p>
+						</div>
+						<div class="rounded-lg border border-white/15 bg-white/8 p-4 backdrop-blur">
+							<p class="text-xs font-semibold uppercase text-eden-sage">Plan</p>
+							<p class="mt-2 text-lg font-semibold">Clear next steps</p>
+						</div>
+					</div>
+				</div>
+				<div class="overflow-hidden rounded-lg border border-white/15 bg-white/10 p-3 shadow-2xl backdrop-blur">
+					<img src="/assets/longevity-baseline-clinic-hero.jpg" alt="Adult patient reviewing a health baseline with a provider" class="h-[28rem] w-full rounded-md object-cover object-center" loading="eager" fetchpriority="high" decoding="async" width="1440" height="960" />
+					<div class="mt-3 rounded-md bg-white p-5 text-eden-navy">
+						<p class="text-xs font-semibold uppercase text-eden-green">Clarity before commitment</p>
+						<p class="mt-2 text-xl font-semibold leading-tight">
+							One visit to understand the starting point and decide what deserves attention next.
+						</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="border-b border-eden-line bg-white px-6 py-12 sm:py-16">
+			<div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.92fr_1.08fr] lg:items-start">
+				<div class="max-w-xl">
+					<p class="text-sm font-semibold uppercase text-eden-green">Your $299 starting point</p>
+					<h2 class="mt-3 text-3xl font-semibold leading-tight text-eden-navy sm:text-4xl">
+						Stop collecting disconnected answers.
+					</h2>
+					<p class="mt-4 text-base leading-8 text-slate-700">
+						Most wellness plans start by selling the plan. Eden starts by understanding the person, the baseline, and the decision that actually needs to be made.
+					</p>
+					<div class="mt-6 border-l-2 border-eden-green pl-5 text-sm leading-7 text-slate-700">
+						Private and in person at Eden's single Greenwood Village location, minutes from Denver Tech Center.
+					</div>
+				</div>
+				<LeadForm
+					serviceSlug="longevity-baseline-starter-299"
+					suburbSlug="greenwood-village"
+					heading="Request your $299 Longevity Baseline"
+					subheading="Tell Eden what you want to understand or improve. The team will follow up with scheduling details and what to expect."
+					submitText="Request My Baseline"
+					messageLabel="What would you like your baseline to clarify?"
+					goalOptions={["Energy and recovery", "Body composition", "Performance and strength", "Lab context", "Long-term health planning", "Not sure yet"]}
+					workflowKey="longevity_baseline_14_day_followup"
+					offerName="$299 Longevity Baseline"
+					offerValue="labs_inbody_provider_roadmap_299_forward_credit"
+					hiddenMessage="WORKFLOW_KEY: longevity_baseline_14_day_followup. $299 Longevity Baseline request: lab work, InBody body composition, provider review, and health-optimization roadmap."
+					underButtonText="Private. In person. One Greenwood Village location."
+				/>
+			</div>
+		</section>
+
+		<section id="baseline" class="px-6 py-12 sm:py-16">
+			<div class="mx-auto max-w-6xl">
+				<div class="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
+					<div>
+						<p class="text-sm font-semibold uppercase text-eden-green">What is included</p>
+						<h2 class="mt-3 text-3xl font-semibold leading-tight text-eden-navy sm:text-4xl">
+							A baseline built to lead somewhere useful.
+						</h2>
+					</div>
+					<p class="text-base leading-8 text-slate-700">
+						The visit is designed to produce a decision-ready roadmap, not just another folder of numbers.
+					</p>
+				</div>
+				<div class="mt-8 grid gap-4 sm:grid-cols-2">
+					{included.map((item) => (
+						<div class="rounded-lg border border-eden-line bg-white p-6 shadow-sm">
+							<h3 class="text-xl font-semibold text-eden-navy">{item.title}</h3>
+							<p class="mt-3 text-sm leading-6 text-slate-700">{item.body}</p>
+						</div>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<section class="bg-eden-forest px-6 py-12 text-white sm:py-16">
+			<div class="mx-auto max-w-6xl">
+				<p class="text-sm font-semibold uppercase text-eden-sage">The Eden baseline</p>
+				<h2 class="mt-3 max-w-3xl text-3xl font-semibold leading-tight sm:text-4xl">
+					Measure. Understand. Plan.
+				</h2>
+				<div class="mt-8 grid gap-4 md:grid-cols-3">
+					{visitSteps.map((step) => (
+						<div class="rounded-lg border border-white/15 bg-white/8 p-6 backdrop-blur">
+							<p class="text-sm font-semibold text-eden-sage">{step.number}</p>
+							<h3 class="mt-4 text-xl font-semibold">{step.title}</h3>
+							<p class="mt-3 text-sm leading-6 text-white/72">{step.body}</p>
+						</div>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<section class="bg-white px-6 py-12 sm:py-16">
+			<div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.82fr_1.18fr] lg:items-start">
+				<div>
+					<p class="text-sm font-semibold uppercase text-eden-green">Why people start</p>
+					<h2 class="mt-3 text-3xl font-semibold leading-tight text-eden-navy sm:text-4xl">
+						For the moment when “I should probably do something” needs a real next step.
+					</h2>
+				</div>
+				<div class="grid gap-3 sm:grid-cols-2">
+					{reasons.map((reason) => (
+						<div class="rounded-lg border border-eden-line bg-eden-paper p-5 text-sm font-semibold leading-6 text-eden-navy">
+							{reason}
+						</div>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<section class="px-6 py-12 sm:py-16" aria-labelledby="longevity-faq-heading">
+			<div class="mx-auto max-w-4xl">
+				<p class="text-sm font-semibold uppercase text-eden-green">FAQ</p>
+				<h2 id="longevity-faq-heading" class="mt-3 text-3xl font-semibold leading-tight text-eden-navy sm:text-4xl">
+					Questions before starting.
+				</h2>
+				<div class="mt-8 divide-y divide-eden-line border-y border-eden-line">
+					{faqs.map((faq) => (
+						<details class="group py-5">
+							<summary class="cursor-pointer list-none pr-8 text-lg font-semibold text-eden-navy">
+								{faq.question}
+							</summary>
+							<p class="mt-3 max-w-3xl text-sm leading-7 text-slate-700">{faq.answer}</p>
+						</details>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<section class="bg-white px-6 py-12 sm:py-16">
+			<div class="mx-auto flex max-w-6xl flex-col gap-6 rounded-lg bg-eden-sage p-8 text-eden-forest sm:p-10 lg:flex-row lg:items-center lg:justify-between">
+				<div class="max-w-3xl">
+					<p class="text-sm font-semibold uppercase">Longevity clinic near Denver Tech Center</p>
+					<h2 class="mt-3 text-3xl font-semibold leading-tight sm:text-4xl">Start with the baseline. Keep the next decision yours.</h2>
+				</div>
+				<a href="#lead-form" class="rounded-md bg-eden-forest px-6 py-3 text-center text-base font-semibold text-white">
+					Request My $299 Baseline
+				</a>
+			</div>
+		</section>
+	</main>
+
+	<PaidServiceFooter
+		serviceName="Longevity Clinic Denver"
+		disclaimer="Recommendations and eligibility depend on provider review. Results vary. Restrictions apply to any forward credit."
+	/>
+</BaseLayout>
