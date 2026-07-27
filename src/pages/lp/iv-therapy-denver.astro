@@ -29,20 +29,35 @@ const visitSteps = [
 	},
 ];
 
-const servicePaths = [
+const ivMenu = [
 	{
-		title: "IV hydration",
-		body: "For people looking for an in-person IV hydration or vitamin-drip visit near Denver Tech Center.",
+		kicker: "Everyday hydration",
+		title: "Hydration IV",
+		body: "A straightforward in-person option for people looking to replenish fluids after travel, training, or a demanding week.",
 	},
 	{
-		title: "Wellness IV options",
-		body: "Ask what is available, what it costs, and which options may fit your goals after provider review.",
+		kicker: "Training + travel",
+		title: "Recovery IV",
+		body: "Start with your recovery goal, recent activity, and health context. The team confirms the available option before scheduling.",
 	},
 	{
-		title: "B12 support",
-		body: "Discuss B12 injection availability and whether an in-person visit or additional evaluation is appropriate.",
+		kicker: "Energy + focus",
+		title: "Wellness IV",
+		body: "A provider-guided conversation for guests who want an in-person wellness visit without choosing ingredients on their own.",
 	},
 	{
+		kicker: "Weekly offer",
+		title: "Wellness Wednesday",
+		body: "Select IV visits are $129 on Wednesdays. Qualifying options and appointment availability are confirmed by the Eden team.",
+		price: "$129",
+	},
+	{
+		kicker: "Simple support",
+		title: "B12 Visit",
+		body: "Ask about B12 availability and whether a focused visit or additional evaluation is the more appropriate next step.",
+	},
+	{
+		kicker: "Clinical request",
 		title: "Iron-infusion questions",
 		body: "Eden can review your request and explain whether the service is available or a different clinical path is needed.",
 	},
@@ -234,23 +249,47 @@ const jsonLd: JsonLd[] = [
 		</section>
 
 		<section class="bg-eden-forest px-6 py-12 text-white sm:py-16">
-			<div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
-				<div>
-					<p class="text-sm font-semibold uppercase text-eden-sage">Common requests</p>
-					<h2 class="mt-3 text-3xl font-semibold leading-tight sm:text-4xl">
-						One local team for the IV questions people actually search.
-					</h2>
-					<p class="mt-4 text-base leading-8 text-white/76">
-						You do not need to know the exact option before reaching out. Start with the result you want from the visit and let Eden clarify the right next step.
+			<div class="mx-auto max-w-6xl">
+				<div class="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
+					<div>
+						<p class="text-sm font-semibold uppercase text-eden-sage">IV visit menu</p>
+						<h2 class="mt-3 text-3xl font-semibold leading-tight sm:text-4xl">
+							Choose by goal. Confirm the details with Eden.
+						</h2>
+					</div>
+					<p class="text-base leading-8 text-white/76">
+						You do not need to diagnose yourself or select ingredients from a list. Start with the kind of visit you want, then let the team confirm fit, availability, and clear pricing before you book.
 					</p>
 				</div>
-				<div class="grid gap-4 sm:grid-cols-2">
-					{servicePaths.map((path) => (
-						<div class="rounded-lg border border-white/15 bg-white/8 p-5 backdrop-blur">
-							<h3 class="text-xl font-semibold">{path.title}</h3>
-							<p class="mt-3 text-sm leading-6 text-white/72">{path.body}</p>
+				<div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+					{ivMenu.map((item) => (
+						<div class="flex min-h-56 flex-col rounded-lg border border-white/15 bg-white/8 p-5 backdrop-blur">
+							<div class="flex min-h-8 items-start justify-between gap-4">
+								<p class="text-xs font-semibold uppercase text-eden-sage">{item.kicker}</p>
+								{item.price && (
+									<span class="rounded-md bg-eden-sage px-3 py-1 text-sm font-semibold text-eden-forest">
+										{item.price}
+									</span>
+								)}
+							</div>
+							<h3 class="mt-4 text-xl font-semibold">{item.title}</h3>
+							<p class="mt-3 text-sm leading-6 text-white/72">{item.body}</p>
+							<a href="#lead-form" class="mt-auto pt-5 text-sm font-semibold text-eden-sage underline underline-offset-4">
+								Ask about this visit
+							</a>
 						</div>
 					))}
+				</div>
+				<div class="mt-8 grid gap-5 rounded-lg border border-white/15 bg-white/6 p-6 md:grid-cols-[1fr_auto] md:items-center">
+					<div>
+						<p class="text-sm font-semibold uppercase text-eden-sage">Not sure which one fits?</p>
+						<p class="mt-2 max-w-3xl text-base leading-7 text-white/78">
+							Tell Eden what you want help with and any timing or health considerations. The team will route you to the right conversation before taking payment or confirming treatment.
+						</p>
+					</div>
+					<a href="#lead-form" class="rounded-md bg-eden-sage px-6 py-3 text-center text-base font-semibold text-eden-forest">
+						Help Me Choose
+					</a>
 				</div>
 			</div>
 		</section>
