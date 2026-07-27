@@ -3,7 +3,7 @@ import LeadForm from "../../components/content/LeadForm.astro";
 import PaidServiceFooter from "../../components/layout/PaidServiceFooter.astro";
 import PremiumHeader from "../../components/layout/PremiumHeader.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import { canonicalUrl, homeUrl } from "../../lib/urls";
+import { canonicalUrl } from "../../lib/urls";
 import type { JsonLd } from "../../lib/schema-org";
 
 const canonical = canonicalUrl("/lp/womens-hormone-optimization-denver");
@@ -123,14 +123,6 @@ const jsonLd: JsonLd[] = [
 			},
 		})),
 	},
-	{
-		"@context": "https://schema.org",
-		"@type": "BreadcrumbList",
-		itemListElement: [
-			{ "@type": "ListItem", position: 1, name: "Home", item: homeUrl() },
-			{ "@type": "ListItem", position: 2, name: "Women's Hormone Optimization", item: canonical },
-		],
-	},
 ];
 ---
 
@@ -147,19 +139,6 @@ const jsonLd: JsonLd[] = [
 		<section class="relative overflow-hidden bg-eden-forest text-white">
 			<div class="absolute inset-0">
 				<img src="/assets/eden-health-club-reception.webp" alt="" class="h-full w-full object-cover opacity-30" loading="eager" fetchpriority="high" decoding="async" width="1388" height="1000" />
-				<video
-					class="absolute inset-0 hidden h-full w-full object-cover opacity-24 md:block"
-					data-deferred-hero-video
-					autoplay
-					muted
-					loop
-					playsinline
-					preload="none"
-					poster="/assets/eden-health-club-reception.webp"
-					aria-hidden="true"
-				>
-					<source data-src="https://edenhealthclubs.com/wp-content/uploads/2025/07/edenhealth-hero-video.mp4" type="video/mp4" />
-				</video>
 				<div class="absolute inset-0 bg-[linear-gradient(90deg,rgba(28,45,38,0.98),rgba(25,79,57,0.9)_48%,rgba(25,79,57,0.48))]"></div>
 			</div>
 			<div class="relative mx-auto grid min-h-[calc(100vh-64px)] max-w-6xl gap-10 px-6 py-12 sm:py-16 lg:grid-cols-[1.02fr_0.98fr] lg:items-center">
