@@ -193,9 +193,13 @@ function compactJson(value: Record<string, string | null> | null): string | null
 	return JSON.stringify(value);
 }
 
-function customField(id: string, value: string | null): { id: string; field_value: string } | null {
-	if (!value) return null;
-	return { id, field_value: value };
+function customField(
+	id: string,
+	value: string | null,
+	includeEmpty = false,
+): { id: string; field_value: string } | null {
+	if (!value && !includeEmpty) return null;
+	return { id, field_value: value || "" };
 }
 
 function optionalCustomField(id: string | undefined, value: string | null): { id: string; field_value: string } | null {
@@ -309,9 +313,9 @@ async function upsertGhlContact(payload: LeadPayload): Promise<boolean> {
 		customField(GHL_CUSTOM_FIELD_IDS.utmCampaign, payload.utmCampaign),
 		customField(GHL_CUSTOM_FIELD_IDS.utmTerm, payload.utmTerm),
 		customField(GHL_CUSTOM_FIELD_IDS.utmContent, payload.utmContent),
-		customField(GHL_CUSTOM_FIELD_IDS.gclid, payload.gclid),
-		customField(GHL_CUSTOM_FIELD_IDS.gbraid, payload.gbraid),
-		customField(GHL_CUSTOM_FIELD_IDS.wbraid, payload.wbraid),
+		customField(GHL_CUSTOM_FIELD_IDS.gclid, payload.gclid, true),
+		customField(GHL_CUSTOM_FIELD_IDS.gbraid, payload.gbraid, true),
+		customField(GHL_CUSTOM_FIELD_IDS.wbraid, payload.wbraid, true),
 		optionalCustomField(import.meta.env.GHL_FIELD_FBCLID, payload.fbclid),
 		optionalCustomField(import.meta.env.GHL_FIELD_GCLSRC, payload.gclsrc),
 		optionalCustomField(import.meta.env.GHL_FIELD_GAD_SOURCE, payload.gadSource),
