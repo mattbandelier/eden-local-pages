@@ -134,6 +134,7 @@ const serviceIntentFaqs: Record<string, FAQ[]> = {
 export function localizedServiceFaqs(service: Service, suburb: Suburb): FAQ[] {
 	const wellnessServiceSlugs = new Set(["medical-weight-loss", "female-bhrt", "male-trt", "peptide-therapy", "iv-therapy", "nad-iv-therapy"]);
 	const isWellnessService = wellnessServiceSlugs.has(service.slug);
+	const isPeptideService = service.slug === "peptide-therapy";
 	const locationPhrase =
 		suburb.slug === "greenwood-village"
 			? "in Greenwood Village"
@@ -158,7 +159,9 @@ export function localizedServiceFaqs(service: Service, suburb: Suburb): FAQ[] {
 				suburb.driveTimeMinutes === 0
 					? `Yes. Eden Health Club is in Greenwood Village near DTC, Cherry Hills Village, Centennial, and South Denver.`
 					: isWellnessService
-						? `Yes. Eden Health Club is a convenient option for ${suburb.name} clients looking for provider-guided wellness, hormones, peptides, weight-management support, recovery, and performance services in the south Denver area.`
+						? isPeptideService
+							? `Yes. Eden Health Club is a convenient option for ${suburb.name} clients looking for provider-guided peptide consultations, recovery, body-composition context, and wellness support in the south Denver area.`
+							: `Yes. Eden Health Club is a convenient option for ${suburb.name} clients looking for provider-guided wellness, hormone care, weight-management support, recovery, and performance services in the south Denver area.`
 						: `Yes. Eden Health Club is a convenient option for ${suburb.name} clients looking for medical spa, wellness, recovery, and performance services in the south Denver area.`,
 		},
 	];

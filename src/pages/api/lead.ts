@@ -237,7 +237,9 @@ function normalizedServiceSlug(payload: LeadPayload): string {
 	return payload.service?.trim().toLowerCase() ?? "";
 }
 
-function workflowIdForLeadPayload(payload: LeadPayload): string | null {
+export function workflowIdForLeadPayload(
+	payload: Pick<LeadPayload, "workflowKey" | "message" | "service">,
+): string | null {
 	if (shouldApplyPeptideWorkflow(payload)) return PEPTIDE_WORKFLOW_ID;
 	if (shouldApplyBaselineLeadTag(payload)) return PEPTIDE_WORKFLOW_ID;
 

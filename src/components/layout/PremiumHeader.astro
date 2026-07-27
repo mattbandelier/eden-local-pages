@@ -1,5 +1,6 @@
 ---
 interface Props {
+	brandHref?: string | null;
 	servicesHref?: string;
 	servicesLabel?: string;
 	pricingHref?: string;
@@ -9,6 +10,7 @@ interface Props {
 }
 
 const {
+	brandHref = "/",
 	servicesHref = "https://edenhealthclubs.com/services/",
 	servicesLabel = "Services",
 	pricingHref = "#pricing",
@@ -22,7 +24,11 @@ const phoneHref = "tel:+17206057678";
 
 <header class="border-b border-white/10 bg-eden-forest text-white">
 	<div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-3 text-sm">
-		<a href="/" class="font-semibold tracking-normal">Eden Health Club</a>
+		{brandHref ? (
+			<a href={brandHref} class="font-semibold tracking-normal">Eden Health Club</a>
+		) : (
+			<span class="font-semibold tracking-normal">Eden Health Club</span>
+		)}
 		<nav class="hidden items-center gap-6 md:flex" aria-label="Premium landing page navigation">
 			<a href={servicesHref} class="text-white/80 hover:text-white">{servicesLabel}</a>
 			<a href={contactHref} class="text-white/80 hover:text-white">Contact Us</a>
