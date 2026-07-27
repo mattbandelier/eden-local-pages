@@ -1,0 +1,102 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { canonicalUrl } from "../lib/urls";
+
+const canonical = canonicalUrl("/paid-privacy");
+---
+
+<BaseLayout
+	title="Privacy Policy | Eden Health Club"
+	description="Privacy policy for Eden Health Club paid landing pages."
+	canonicalUrl={canonical}
+	noindex={true}
+>
+	<header class="border-b border-white/10 bg-eden-forest text-white">
+		<div class="mx-auto flex max-w-4xl items-center justify-between px-6 py-4">
+			<span class="font-semibold">Eden Health Club</span>
+			<a href="tel:+17206057678" class="text-sm font-semibold">720-605-7678</a>
+		</div>
+	</header>
+	<main class="bg-white px-6 py-12 text-slate-700 sm:py-16">
+		<article class="mx-auto max-w-4xl">
+			<p class="text-sm font-semibold uppercase text-eden-green">Eden Wellness, LLC</p>
+			<h1 class="mt-3 text-4xl font-semibold text-eden-navy">Privacy Policy</h1>
+			<p class="mt-5 leading-7">
+				This privacy policy applies to information collected through Eden Health Club websites and landing pages. It explains what information may be collected, how it may be used and shared, the choices available to you, the security procedures in place, and how you can correct inaccuracies.
+			</p>
+
+			<div class="mt-10 space-y-10">
+				<section>
+					<h2 class="text-2xl font-semibold text-eden-navy">Cookies</h2>
+					<p class="mt-3 leading-7">
+						Our websites use cookies. By using our websites and agreeing to this policy, you consent to our use of cookies in accordance with this policy.
+					</p>
+				</section>
+
+				<section>
+					<h2 class="text-2xl font-semibold text-eden-navy">Information collection, use, and sharing</h2>
+					<p class="mt-3 leading-7">We are the owners of the information collected on our sites. We may collect, store, and use:</p>
+					<ul class="mt-4 list-disc space-y-2 pl-6 leading-7">
+						<li>Information about your device and visits, including IP address, approximate location, browser, operating system, referral source, page views, and navigation.</li>
+						<li>Information about transactions and purchases made through our sites.</li>
+						<li>Information you provide when registering, requesting information, booking, subscribing, or submitting a form.</li>
+						<li>Any other information you choose to send to us.</li>
+					</ul>
+					<p class="mt-4 leading-7">
+						We use your information to respond to the reason you contacted us. We may share information with a third party when needed to fulfill your request or help us operate our websites and services. Unless you ask us not to, we may contact you by email about specials, products, or services.
+					</p>
+				</section>
+
+				<section>
+					<h2 class="text-2xl font-semibold text-eden-navy">Messaging terms and consent</h2>
+					<p class="mt-3 leading-7">
+						You may agree to receive informational messages, including appointment reminders and account notifications, from Eden Wellness, LLC. Message frequency varies. Message and data rates may apply. Reply HELP for help or STOP to opt out.
+					</p>
+					<p class="mt-3 leading-7">
+						Mobile information will not be shared or sold to third parties or affiliates for marketing or promotional purposes. Text-messaging originator opt-in data and consent will not be shared with third parties.
+					</p>
+				</section>
+
+				<section>
+					<h2 class="text-2xl font-semibold text-eden-navy">Your access and control</h2>
+					<p class="mt-3 leading-7">
+						You may opt out of future contacts at any time. You may contact us to see what data we have about you, change or correct it, ask us to delete it, or express a concern about how it is used.
+					</p>
+				</section>
+
+				<section>
+					<h2 class="text-2xl font-semibold text-eden-navy">Security</h2>
+					<p class="mt-3 leading-7">
+						We take reasonable technical and organizational precautions to prevent loss, misuse, or alteration of personal information. Access is limited to people who need the information to perform a specific job.
+					</p>
+				</section>
+
+				<section>
+					<h2 class="text-2xl font-semibold text-eden-navy">Orders, service providers, and disclosures</h2>
+					<p class="mt-3 leading-7">
+						When orders are accepted, contact and payment information may be requested for billing and fulfillment. We may use service providers for shipping, payment processing, website operations, and other specific services. We may also disclose information when required by law, in legal proceedings, to protect legal rights, in connection with a business transaction, or when otherwise reasonably necessary for the purposes described in this policy.
+					</p>
+				</section>
+
+				<section>
+					<h2 class="text-2xl font-semibold text-eden-navy">Updates and contact</h2>
+					<p class="mt-3 leading-7">
+						This policy may change, and updates will be posted on this page. Effective January 1, 2014.
+					</p>
+					<p class="mt-3 leading-7">
+						Eden Wellness, LLC<br />
+						5990 S University Blvd<br />
+						Greenwood Village, CO 80121<br />
+						<a href="tel:+17206057678" class="font-semibold text-eden-green">720-605-7678</a>
+					</p>
+				</section>
+			</div>
+		</article>
+	</main>
+	<footer class="bg-eden-forest px-6 py-8 text-sm text-white/72">
+		<div class="mx-auto flex max-w-4xl gap-4">
+			<a href="/paid-privacy/" class="font-semibold text-white">Privacy</a>
+			<a href="/paid-terms/" class="font-semibold text-white">Terms</a>
+		</div>
+	</footer>
+</BaseLayout>
