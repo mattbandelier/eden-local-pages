@@ -1,0 +1,302 @@
+---
+import LeadForm from "../../components/content/LeadForm.astro";
+import PaidServiceFooter from "../../components/layout/PaidServiceFooter.astro";
+import PremiumHeader from "../../components/layout/PremiumHeader.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { canonicalUrl, homeUrl } from "../../lib/urls";
+import type { JsonLd } from "../../lib/schema-org";
+
+const canonical = canonicalUrl("/lp/iv-therapy-denver");
+const title = "IV Therapy Denver | IV Hydration Near DTC | Eden Health Club";
+const description =
+	"Request an IV therapy consultation at Eden Health Club in Greenwood Village near Denver Tech Center. Explore IV hydration, vitamin drips, B12 support, and provider-guided options.";
+
+const visitSteps = [
+	{
+		number: "01",
+		title: "Start with your goal",
+		body: "Tell the team what brings you in, what you have tried, and what kind of support you are looking for.",
+	},
+	{
+		number: "02",
+		title: "Review the right option",
+		body: "Eden reviews available IV hydration, wellness infusion, injection, and referral options before you book.",
+	},
+	{
+		number: "03",
+		title: "Visit in person",
+		body: "Receive care in a private Greenwood Village setting with clear pricing and next-step guidance.",
+	},
+];
+
+const servicePaths = [
+	{
+		title: "IV hydration",
+		body: "For people looking for an in-person IV hydration or vitamin-drip visit near Denver Tech Center.",
+	},
+	{
+		title: "Wellness IV options",
+		body: "Ask what is available, what it costs, and which options may fit your goals after provider review.",
+	},
+	{
+		title: "B12 support",
+		body: "Discuss B12 injection availability and whether an in-person visit or additional evaluation is appropriate.",
+	},
+	{
+		title: "Iron-infusion questions",
+		body: "Eden can review your request and explain whether the service is available or a different clinical path is needed.",
+	},
+];
+
+const faqs = [
+	{
+		question: "How do I choose an IV option?",
+		answer:
+			"Start with a consultation request. Eden will ask about your goal, health context, and what you are looking for before confirming the most appropriate visit.",
+	},
+	{
+		question: "Does Eden offer IV therapy near Denver Tech Center?",
+		answer:
+			"Yes. Eden is located in Greenwood Village near Denver Tech Center and offers in-person IV hydration and wellness visits by appointment.",
+	},
+	{
+		question: "Can I ask about B12 shots or an iron infusion?",
+		answer:
+			"Yes. Submit the form with the service you are seeking. Availability and appropriateness are confirmed by the Eden team before treatment.",
+	},
+	{
+		question: "What does an IV visit cost?",
+		answer:
+			"Pricing depends on the selected service. Ask about current Wellness Wednesday options and receive clear pricing before you book.",
+	},
+];
+
+const jsonLd: JsonLd[] = [
+	{
+		"@context": "https://schema.org",
+		"@type": "MedicalBusiness",
+		"@id": `${canonical}#medical-business`,
+		name: "Eden Health Club",
+		url: canonical,
+		telephone: "+17206057678",
+		address: {
+			"@type": "PostalAddress",
+			streetAddress: "5990 S University Blvd",
+			addressLocality: "Greenwood Village",
+			addressRegion: "CO",
+			postalCode: "80121",
+			addressCountry: "US",
+		},
+		areaServed: "Greenwood Village, Denver Tech Center, Cherry Hills Village, Centennial, Englewood, Littleton, Lone Tree, Highlands Ranch, and South Denver",
+	},
+	{
+		"@context": "https://schema.org",
+		"@type": "Service",
+		"@id": `${canonical}#service`,
+		name: "IV Therapy Consultation",
+		serviceType: "IV hydration and wellness consultation",
+		url: canonical,
+		description,
+		provider: {
+			"@id": `${canonical}#medical-business`,
+			"@type": "MedicalBusiness",
+			name: "Eden Health Club",
+		},
+	},
+	{
+		"@context": "https://schema.org",
+		"@type": "FAQPage",
+		"@id": `${canonical}#faq`,
+		mainEntity: faqs.map((faq) => ({
+			"@type": "Question",
+			name: faq.question,
+			acceptedAnswer: {
+				"@type": "Answer",
+				text: faq.answer,
+			},
+		})),
+	},
+	{
+		"@context": "https://schema.org",
+		"@type": "BreadcrumbList",
+		itemListElement: [
+			{ "@type": "ListItem", position: 1, name: "Home", item: homeUrl() },
+			{ "@type": "ListItem", position: 2, name: "IV Therapy Denver", item: canonical },
+		],
+	},
+];
+---
+
+<BaseLayout
+	title={title}
+	description={description}
+	canonicalUrl={canonical}
+	jsonLd={jsonLd}
+	noindex={true}
+	preloadImages={["/assets/eden-health-club-reception.webp", "/assets/iv-therapy-clinic-hero.jpg", "/assets/eden-health-club-logo-white-transparent-tight.png"]}
+>
+	<PremiumHeader brandHref={null} servicesHref="#visit" servicesLabel="IV Visit" pricingHref="#lead-form" pricingLabel="Pricing" contactHref="#lead-form" ctaLabel="Book IV" />
+	<main class="bg-eden-paper">
+		<section class="relative overflow-hidden bg-eden-forest text-white">
+			<div class="absolute inset-0">
+				<img src="/assets/eden-health-club-reception.webp" alt="" class="h-full w-full object-cover opacity-20" loading="eager" fetchpriority="high" decoding="async" width="1388" height="1000" />
+				<div class="absolute inset-0 bg-[linear-gradient(90deg,rgba(15,35,29,0.99),rgba(18,68,50,0.95)_52%,rgba(18,68,50,0.76))]"></div>
+			</div>
+			<div class="relative mx-auto grid min-h-[calc(100vh-64px)] max-w-6xl gap-10 px-6 py-12 sm:py-16 lg:grid-cols-[1.02fr_0.98fr] lg:items-center">
+				<div>
+					<img src="/assets/eden-health-club-logo-white-transparent-tight.png" alt="Eden Health Club" class="mb-8 h-auto w-36 sm:w-44" loading="eager" fetchpriority="high" decoding="async" width="744" height="447" />
+					<p class="text-sm font-semibold uppercase tracking-normal text-eden-sage">IV therapy in Greenwood Village near DTC</p>
+					<h1 class="mt-4 max-w-3xl text-4xl font-semibold leading-tight sm:text-5xl lg:text-6xl">
+						IV care without the guesswork.
+					</h1>
+					<p class="mt-5 max-w-2xl text-base leading-8 text-white/86 sm:text-lg">
+						Start with a private conversation about your goals, then choose an IV hydration or wellness option with clear guidance and pricing.
+					</p>
+					<div class="mt-8 flex flex-col gap-3 sm:flex-row">
+						<a href="#lead-form" class="rounded-md bg-eden-sage px-6 py-3 text-center text-base font-semibold text-eden-forest shadow-sm">
+							Request My IV Visit
+						</a>
+						<a href="tel:+17206057678" data-phone-link class="rounded-md border border-white/35 px-6 py-3 text-center text-base font-semibold text-white hover:bg-white/10">
+							Call 720-605-7678
+						</a>
+					</div>
+					<p class="mt-5 max-w-2xl text-xs leading-6 text-white/62">
+						Availability, ingredients, and appropriateness are confirmed before treatment. Results vary.
+					</p>
+					<div class="mt-7 grid max-w-2xl gap-3 text-sm sm:grid-cols-3">
+						<div class="rounded-lg border border-white/15 bg-white/8 p-4 backdrop-blur">
+							<p class="text-xs font-semibold uppercase text-eden-sage">Local</p>
+							<p class="mt-2 text-lg font-semibold">Minutes from DTC</p>
+						</div>
+						<div class="rounded-lg border border-white/15 bg-white/8 p-4 backdrop-blur">
+							<p class="text-xs font-semibold uppercase text-eden-sage">Private</p>
+							<p class="mt-2 text-lg font-semibold">In-person care</p>
+						</div>
+						<div class="rounded-lg border border-white/15 bg-white/8 p-4 backdrop-blur">
+							<p class="text-xs font-semibold uppercase text-eden-sage">Clear</p>
+							<p class="mt-2 text-lg font-semibold">Pricing before booking</p>
+						</div>
+					</div>
+				</div>
+				<div class="overflow-hidden rounded-lg border border-white/15 bg-white/10 p-3 shadow-2xl backdrop-blur">
+					<img src="/assets/iv-therapy-clinic-hero.jpg" alt="Adult patient meeting with a provider during an IV hydration visit" class="h-[28rem] w-full rounded-md object-cover object-center" loading="eager" fetchpriority="high" decoding="async" width="1440" height="960" />
+					<div class="mt-3 rounded-md bg-white p-5 text-eden-navy">
+						<p class="text-xs font-semibold uppercase text-eden-green">A better first step</p>
+						<p class="mt-2 text-xl font-semibold leading-tight">
+							Tell us what you are looking for. We will help you book the right IV or wellness visit.
+						</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="border-b border-eden-line bg-white px-6 py-12 sm:py-16">
+			<div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.92fr_1.08fr] lg:items-start">
+				<div class="max-w-xl">
+					<p class="text-sm font-semibold uppercase text-eden-green">Request an IV visit</p>
+					<h2 class="mt-3 text-3xl font-semibold leading-tight text-eden-navy sm:text-4xl">
+						One request. A clear answer on fit, availability, and price.
+					</h2>
+					<p class="mt-4 text-base leading-8 text-slate-700">
+						Whether you searched for IV hydration, a vitamin drip, B12 support, or an iron-infusion appointment, the team will review the request before scheduling.
+					</p>
+					<div class="mt-6 border-l-2 border-eden-green pl-5 text-sm leading-7 text-slate-700">
+						Private and in person at Eden's single Greenwood Village location near Denver Tech Center.
+					</div>
+				</div>
+				<LeadForm
+					serviceSlug="iv-therapy"
+					suburbSlug="greenwood-village"
+					heading="Request an IV therapy visit"
+					subheading="Tell Eden what you are looking for. The team will follow up about fit, availability, and current pricing."
+					submitText="Request My IV Visit"
+					messageLabel="What are you looking for?"
+					goalOptions={["IV hydration", "Vitamin drip", "B12 support", "Iron-infusion question", "Wellness Wednesday option", "Not sure yet"]}
+					offerName="IV Therapy Consultation"
+					underButtonText="Private. In person. One Greenwood Village location."
+				/>
+			</div>
+		</section>
+
+		<section id="visit" class="px-6 py-12 sm:py-16">
+			<div class="mx-auto max-w-6xl">
+				<p class="text-sm font-semibold uppercase text-eden-green">The Eden visit</p>
+				<div class="mt-3 grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
+					<h2 class="text-3xl font-semibold leading-tight text-eden-navy sm:text-4xl">
+						Designed to make the next step simple.
+					</h2>
+					<p class="text-base leading-8 text-slate-700">
+						Good IV care starts before the appointment. Eden confirms what you need, whether the requested service is available, and what the visit will cost.
+					</p>
+				</div>
+				<div class="mt-8 grid gap-4 md:grid-cols-3">
+					{visitSteps.map((step) => (
+						<div class="rounded-lg border border-eden-line bg-white p-6 shadow-sm">
+							<p class="text-sm font-semibold text-eden-green">{step.number}</p>
+							<h3 class="mt-4 text-xl font-semibold text-eden-navy">{step.title}</h3>
+							<p class="mt-3 text-sm leading-6 text-slate-700">{step.body}</p>
+						</div>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<section class="bg-eden-forest px-6 py-12 text-white sm:py-16">
+			<div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
+				<div>
+					<p class="text-sm font-semibold uppercase text-eden-sage">Common requests</p>
+					<h2 class="mt-3 text-3xl font-semibold leading-tight sm:text-4xl">
+						One local team for the IV questions people actually search.
+					</h2>
+					<p class="mt-4 text-base leading-8 text-white/76">
+						You do not need to know the exact option before reaching out. Start with the result you want from the visit and let Eden clarify the right next step.
+					</p>
+				</div>
+				<div class="grid gap-4 sm:grid-cols-2">
+					{servicePaths.map((path) => (
+						<div class="rounded-lg border border-white/15 bg-white/8 p-5 backdrop-blur">
+							<h3 class="text-xl font-semibold">{path.title}</h3>
+							<p class="mt-3 text-sm leading-6 text-white/72">{path.body}</p>
+						</div>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<section class="bg-white px-6 py-12 sm:py-16" aria-labelledby="iv-faq-heading">
+			<div class="mx-auto max-w-4xl">
+				<p class="text-sm font-semibold uppercase text-eden-green">FAQ</p>
+				<h2 id="iv-faq-heading" class="mt-3 text-3xl font-semibold leading-tight text-eden-navy sm:text-4xl">
+					Questions before your visit.
+				</h2>
+				<div class="mt-8 divide-y divide-eden-line border-y border-eden-line">
+					{faqs.map((faq) => (
+						<details class="group py-5">
+							<summary class="cursor-pointer list-none pr-8 text-lg font-semibold text-eden-navy">
+								{faq.question}
+							</summary>
+							<p class="mt-3 max-w-3xl text-sm leading-7 text-slate-700">{faq.answer}</p>
+						</details>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<section class="px-6 py-12 sm:py-16">
+			<div class="mx-auto flex max-w-6xl flex-col gap-6 rounded-lg bg-eden-sage p-8 text-eden-forest sm:p-10 lg:flex-row lg:items-center lg:justify-between">
+				<div class="max-w-3xl">
+					<p class="text-sm font-semibold uppercase">IV therapy near Denver Tech Center</p>
+					<h2 class="mt-3 text-3xl font-semibold leading-tight sm:text-4xl">Ask the question. Get the right visit.</h2>
+				</div>
+				<a href="#lead-form" class="rounded-md bg-eden-forest px-6 py-3 text-center text-base font-semibold text-white">
+					Request My IV Visit
+				</a>
+			</div>
+		</section>
+	</main>
+
+	<PaidServiceFooter
+		serviceName="IV Therapy Denver"
+		disclaimer="Availability, ingredients, pricing, and appropriateness are confirmed before treatment. Results vary."
+	/>
+</BaseLayout>
