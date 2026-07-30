@@ -311,7 +311,20 @@ async function addGhlContactToWorkflow(token: string, contactId: string, workflo
 		},
 	});
 
-	return response.ok;
+	const responseBody = await response.json().catch(() => null);
+	const reportedSuccess =
+		!responseBody ||
+		typeof responseBody !== "object" ||
+		!("succeeded" in responseBody) ||
+		(responseBody as { succeeded?: unknown }).succeeded !== false;
+
+	console.info("GHL workflow enrollment", {
+		workflowId,
+		status: response.status,
+		reportedSuccess,
+	});
+
+	return response.ok && reportedSuccess;
 }
 
 async function removeGhlContactFromWorkflow(token: string, contactId: string, workflowId: string): Promise<boolean> {
