@@ -285,6 +285,21 @@ async function addGhlContactTags(token: string, contactId: string, tags: string[
 	return response.ok;
 }
 
+async function removeGhlContactTags(token: string, contactId: string, tags: string[]): Promise<boolean> {
+	const response = await fetch(`https://services.leadconnectorhq.com/contacts/${contactId}/tags`, {
+		method: "DELETE",
+		headers: {
+			accept: "application/json",
+			authorization: `Bearer ${token}`,
+			"content-type": "application/json",
+			version: "2021-07-28",
+		},
+		body: JSON.stringify({ tags }),
+	});
+
+	return response.ok;
+}
+
 async function addGhlContactToWorkflow(token: string, contactId: string, workflowId: string): Promise<boolean> {
 	const response = await fetch(`https://services.leadconnectorhq.com/contacts/${contactId}/workflow/${workflowId}`, {
 		method: "POST",
@@ -292,6 +307,19 @@ async function addGhlContactToWorkflow(token: string, contactId: string, workflo
 			accept: "application/json",
 			authorization: `Bearer ${token}`,
 			"content-type": "application/json",
+			version: "2021-07-28",
+		},
+	});
+
+	return response.ok;
+}
+
+async function removeGhlContactFromWorkflow(token: string, contactId: string, workflowId: string): Promise<boolean> {
+	const response = await fetch(`https://services.leadconnectorhq.com/contacts/${contactId}/workflow/${workflowId}`, {
+		method: "DELETE",
+		headers: {
+			accept: "application/json",
+			authorization: `Bearer ${token}`,
 			version: "2021-07-28",
 		},
 	});
@@ -357,6 +385,16 @@ async function upsertGhlContact(payload: LeadPayload): Promise<boolean> {
 	const responseData = await response.json().catch(() => null);
 	const contactId = ghlContactIdFromResponse(responseData);
 	if (!contactId) return false;
+	const isBaselineLead = shouldApplyBaselineLeadTag(payload);
+
+	// A baseline request is a new acquisition lane, never a peptide follow-up.
+	// Cleanup is intentionally best-effort so a stale enrollment cannot prevent a valid lead from reaching Eden.
+	if (isBaselineLead) {
+		await Promise.allSettled([
+			removeGhlContactFromWorkflow(token, contactId, PEPTIDE_WORKFLOW_ID),
+			removeGhlContactTags(token, contactId, [PEPTIDE_LEAD_TAG]),
+		]);
+	}
 
 	if (tags.length) {
 		const tagsAdded = await addGhlContactTags(token, contactId, tags);
