@@ -18,7 +18,7 @@ const planSteps = [
 	{
 		step: "2",
 		title: "Map",
-		body: "Review your results and goals with Eden's clinician-guided team, including whether hormone, peptide, or metabolic support may be appropriate.",
+		body: "Review your results and goals with Eden's clinician-guided team, then leave with clear next steps.",
 	},
 	{
 		step: "3",
@@ -32,7 +32,7 @@ const valueStack = [
 	"InBody body-composition baseline",
 	"Clinician-guided optimization plan",
 	"Up to $299 toward your first month of eligible treatment*",
-	"Hormone, peptide, and metabolic pathways when clinically appropriate",
+	"Clear next-step recommendations after clinician review",
 	"Recovery and training pathway",
 	"Membership options with ongoing support",
 ];
@@ -62,26 +62,6 @@ const trustLinks = [
 		label: "Longevity Clinic Denver",
 		href: "/longevity/",
 		body: "Eden's broader longevity positioning for South Denver and DTC.",
-	},
-	{
-		label: "Peptide Therapy Denver",
-		href: "/peptide-therapy/denver/",
-		body: "Clinician-guided peptide consult path with screening-first language.",
-	},
-	{
-		label: "TRT Denver",
-		href: "/male-trt/denver/",
-		body: "Men's hormone and testosterone consult page for high-intent TRT searchers.",
-	},
-	{
-		label: "Medical Weight Loss Denver",
-		href: "/medical-weight-loss/denver/",
-		body: "Provider-guided weight-loss, body-composition, and metabolic support lane.",
-	},
-	{
-		label: "Medical Spa Denver",
-		href: "/medical-spa-denver/",
-		body: "Aesthetics and wellness proof that Eden is more than a single-service clinic.",
 	},
 ];
 
@@ -129,6 +109,7 @@ const jsonLd: JsonLd[] = [
 	canonicalUrl={canonical}
 	jsonLd={jsonLd}
 	preloadImages={["/assets/eden-health-club-reception.webp", "/assets/eden-health-club-logo-white-transparent-tight.png"]}
+	metaPixelId="1380235093120832"
 >
 	<main class="min-h-screen overflow-hidden bg-[#061710] pb-28 text-white sm:pb-0">
 		<section class="relative min-h-[100svh] overflow-hidden px-5 py-5 sm:px-8 lg:px-12">
@@ -176,7 +157,7 @@ const jsonLd: JsonLd[] = [
 
 				<div class="relative min-h-[610px] lg:min-h-[650px]">
 					<div class="absolute right-0 top-12 h-[560px] w-[82%] overflow-hidden border border-white/14 bg-white/8">
-						<img src="/assets/mens-hormone-optimization.webp" alt="" class="h-full w-full object-cover object-center" loading="eager" fetchpriority="high" decoding="async" width="1024" height="1536" />
+						<img src="/assets/longevity-baseline-clinic-hero.jpg" alt="" class="h-full w-full object-cover object-center" loading="eager" fetchpriority="high" decoding="async" width="1024" height="1536" />
 						<div class="absolute inset-0 bg-[#061710]/42"></div>
 						<div class="absolute inset-0 bg-gradient-to-t from-[#061710]/82 via-[#061710]/18 to-[#061710]/20"></div>
 					</div>
@@ -189,8 +170,8 @@ const jsonLd: JsonLd[] = [
 							submitText="Claim My $299 Baseline"
 							compact={true}
 							underButtonText="Tap and our team will text or call to schedule. *Eligibility and restrictions apply."
-							hiddenMessage="WORKFLOW_KEY: peptide_299_therapy. $299 Longevity Baseline Starter claimed: lab work, InBody body composition, clinician-guided plan, and up to $299 toward your first month of eligible treatment after clinician review."
-							workflowKey="peptide_299_therapy"
+							hiddenMessage="WORKFLOW_KEY: longevity_baseline_299. $299 Longevity Baseline Starter claimed: lab work, InBody body composition, clinician-guided plan, and up to $299 toward eligible first-month treatment after clinician review."
+							workflowKey="longevity_baseline_299"
 							offerName="$299 Longevity Baseline Starter"
 							offerValue="lab_work_inbody_clinician_plan_299_treatment_credit"
 						/>
@@ -216,7 +197,7 @@ const jsonLd: JsonLd[] = [
 						<p class="text-sm font-black uppercase tracking-normal text-[#8b6d2c]">The Eden 3-Step Baseline Plan</p>
 						<h2 class="mt-3 text-4xl font-black leading-none tracking-normal sm:text-5xl">A smarter first step before you choose a program.</h2>
 						<p class="mt-5 text-lg font-semibold leading-7 text-[#294237]">
-							Most people are guessing between lab work, peptide support, hormone optimization, metabolic support, training, recovery, and membership. Eden starts with a baseline, then routes you to the next best step.
+							Most people are guessing between training, recovery, body composition, and wellness support. Eden starts with a baseline, then routes you to the next best step.
 						</p>
 					</div>
 

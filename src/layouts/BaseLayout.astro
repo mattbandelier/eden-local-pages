@@ -12,14 +12,15 @@ interface Props {
 	jsonLd?: JsonLd[];
 	noindex?: boolean;
 	preloadImages?: string[];
+	metaPixelId?: string;
 }
 
-const { title, description, canonicalUrl, ogImage, jsonLd = [], noindex = false, preloadImages = [] } = Astro.props;
+const { title, description, canonicalUrl, ogImage, jsonLd = [], noindex = false, preloadImages = [], metaPixelId: pageMetaPixelId } = Astro.props;
 const resolvedOgImage = ogImage ?? `${ORIGIN}/og-default.svg`;
 const gtmId = import.meta.env.PUBLIC_GTM_CONTAINER_ID;
 const clarityProjectId = import.meta.env.PUBLIC_CLARITY_PROJECT_ID;
 const callRailSwapJsUrl = import.meta.env.PUBLIC_CALLRAIL_SWAP_JS_URL;
-const metaPixelId = import.meta.env.PUBLIC_META_PIXEL_ID || "1301043457641549";
+const metaPixelId = pageMetaPixelId || import.meta.env.PUBLIC_META_PIXEL_ID || "1301043457641549";
 const uniquePreloadImages = [...new Set(preloadImages)].filter(Boolean).slice(0, 3);
 ---
 

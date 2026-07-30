@@ -5,11 +5,13 @@ export const prerender = false;
 const WINDOW_MS = 60_000;
 const MAX_REQUESTS_PER_WINDOW = 5;
 const rateLimit = new Map<string, { count: number; resetAt: number }>();
-const BASELINE_WORKFLOW_KEY = "longevity_baseline_14_day_followup";
+const BASELINE_WORKFLOW_KEY = "longevity_baseline_299";
 const BASELINE_META_TAG = "baseline_lead_meta";
+const BASELINE_WORKFLOW_ID = import.meta.env.GHL_WORKFLOW_ID_LONGEVITY_BASELINE || "2fa02d3f-f4e2-4f63-89ea-3a3eae9610e1";
 const PEPTIDE_WORKFLOW_KEY = "peptide_299_therapy";
 const PEPTIDE_LEAD_TAG = "peptide_299_lead";
-const PEPTIDE_WORKFLOW_ID = "2fa02d3f-f4e2-4f63-89ea-3a3eae9610e1";
+// Keep the two $299 offers isolated even when a direct GHL enrollment is used.
+const PEPTIDE_WORKFLOW_ID = "a9f9adfe-efd1-4cb0-bbcc-6eebc1b0181b";
 const HAIR_RESTORATION_WORKFLOW_ID = "69ce52fb-8bd9-429e-994c-a2d033e43437";
 const MED_SPA_WORKFLOW_ID = "b496b143-dacc-4b7f-8112-239dd040b360";
 const IW_WORKFLOW_ID = "672c856a-bafe-47a2-9c7f-d23b071127a8";
@@ -245,7 +247,7 @@ export function workflowIdForLeadPayload(
 	payload: Pick<LeadPayload, "workflowKey" | "message" | "service">,
 ): string | null {
 	if (shouldApplyPeptideWorkflow(payload)) return PEPTIDE_WORKFLOW_ID;
-	if (shouldApplyBaselineLeadTag(payload)) return PEPTIDE_WORKFLOW_ID;
+	if (shouldApplyBaselineLeadTag(payload)) return BASELINE_WORKFLOW_ID || null;
 
 	const serviceSlug = normalizedServiceSlug(payload);
 	if (STARTER_BASELINE_SERVICE_SLUGS.has(serviceSlug)) return PEPTIDE_WORKFLOW_ID;
@@ -430,7 +432,7 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
 	};
 
 	const workflowId = workflowIdForLeadPayload(payload);
-	const directGhlRequired = Boolean(workflowId);
+	const directGhlRequired = shouldApplyBaselineLeadTag(payload) || Boolean(workflowId);
 	const [webhookOk, directGhlOk] = await Promise.all([
 		directGhlRequired ? Promise.resolve(false) : postLeadWebhook(webhookUrl, payload),
 		upsertGhlContact(payload),
