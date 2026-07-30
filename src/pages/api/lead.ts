@@ -340,30 +340,6 @@ async function removeGhlContactFromWorkflow(token: string, contactId: string, wo
 	return response.ok;
 }
 
-async function logGhlSmsEligibility(token: string, contactId: string): Promise<void> {
-	const response = await fetch(`https://services.leadconnectorhq.com/contacts/${contactId}`, {
-		headers: {
-			accept: "application/json",
-			authorization: `Bearer ${token}`,
-			version: "2021-07-28",
-		},
-	});
-	const data = await response.json().catch(() => null);
-	const contact = data && typeof data === "object" && "contact" in data ? (data as { contact?: unknown }).contact : null;
-	const contactRecord = contact && typeof contact === "object" ? (contact as Record<string, unknown>) : null;
-	const dndSettings = contactRecord?.dndSettings;
-	const smsDnd =
-		dndSettings && typeof dndSettings === "object" && "SMS" in dndSettings
-			? (dndSettings as { SMS?: { status?: unknown } }).SMS?.status
-			: null;
-
-	console.info("GHL baseline SMS eligibility", {
-		status: response.status,
-		dnd: contactRecord?.dnd === true,
-		smsDnd,
-	});
-}
-
 async function upsertGhlContact(payload: LeadPayload): Promise<boolean> {
 	const token = import.meta.env.GHL_PRIVATE_INTEGRATION_TOKEN;
 	const locationId = import.meta.env.GHL_LOCATION_ID;
@@ -431,7 +407,6 @@ async function upsertGhlContact(payload: LeadPayload): Promise<boolean> {
 			removeGhlContactFromWorkflow(token, contactId, PEPTIDE_WORKFLOW_ID),
 			removeGhlContactTags(token, contactId, [PEPTIDE_LEAD_TAG]),
 		]);
-		await logGhlSmsEligibility(token, contactId);
 	}
 
 	if (tags.length) {
