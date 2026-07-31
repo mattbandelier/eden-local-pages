@@ -8,6 +8,8 @@ const canonical = canonicalUrl("/lp/longevity-baseline-starter");
 const title = "$299 Longevity Baseline Starter | Eden Health Club Greenwood Village";
 const description =
 	"Claim Eden's $299 Longevity Baseline Starter in Greenwood Village: lab work, InBody body composition, a clinician-guided plan, and up to $299 toward your first month of eligible treatment.";
+const instantBookingUrl =
+	"https://booking.edenhealthclubs.com/webstoreNew/a1fda69e-77f9-4077-bb8a-3b06349b6af3?serviceid=894f40cb-140b-4625-a730-7330edb58dad&utm_source=eden_landing&utm_medium=referral&utm_campaign=instant_booking&utm_content=secondary_below_form";
 
 const planSteps = [
 	{
@@ -176,6 +178,16 @@ const jsonLd: JsonLd[] = [
 							offerName="$299 Longevity Baseline Starter"
 							offerValue="lab_work_inbody_clinician_plan_299_treatment_credit"
 						/>
+						<p class="mt-3 text-center text-sm font-bold text-white/86">
+							Prefer to book instantly?
+							<a
+								href={instantBookingUrl}
+								data-instant-book-link
+								class="ml-1 underline decoration-[#d8bf78] decoration-2 underline-offset-4 hover:text-[#f4eedf]"
+							>
+								Book your baseline visit
+							</a>
+						</p>
 					</div>
 				</div>
 			</div>
@@ -316,6 +328,8 @@ const jsonLd: JsonLd[] = [
 		</div>
 
 	<script>
+		import { trackInstantBookingClick } from "../../lib/tracking";
+
 		const stickyClaim = document.querySelector<HTMLElement>("[data-sticky-claim]");
 		const syncStickyClaim = () => {
 			if (!stickyClaim) return;
@@ -327,5 +341,9 @@ const jsonLd: JsonLd[] = [
 		syncStickyClaim();
 		window.addEventListener("scroll", syncStickyClaim, { passive: true });
 		window.addEventListener("resize", syncStickyClaim);
+
+		document.querySelectorAll<HTMLAnchorElement>("[data-instant-book-link]").forEach((link) => {
+			link.addEventListener("click", () => trackInstantBookingClick("below_form"));
+		});
 	</script>
 </BaseLayout>

@@ -42,19 +42,22 @@ export function trackPhoneClick(phoneNumber: string): void {
 	pushEvent("phone_click", { phone_number: phoneNumber, page_path: window.location.pathname });
 }
 
-function leadParams(serviceSlug: string, suburbSlug: string | null): Record<string, unknown> {
-	return {
-		service_slug: serviceSlug,
-		suburb_slug: suburbSlug,
+export function trackInstantBookingClick(placement: string): void {
+	pushEvent("instant_booking_click", {
+		destination: "zenoti",
+		placement,
 		page_path: typeof window !== "undefined" ? window.location.pathname : null,
-		lead_category: leadCategory(serviceSlug),
-	};
+	});
 }
 
-function leadCategory(serviceSlug: string): string {
-	if (serviceSlug.includes("membership")) return "membership";
-	if (serviceSlug.includes("hormone") || serviceSlug.includes("bhrt") || serviceSlug.includes("trt")) return "hormones";
-	if (serviceSlug.includes("fitness") || serviceSlug.includes("training") || serviceSlug.includes("performance")) return "fitness";
-	if (serviceSlug.includes("botox") || serviceSlug.includes("filler") || serviceSlug.includes("facial") || serviceSlug.includes("microneedling") || serviceSlug.includes("bbl")) return "aesthetics";
-	return "wellness";
+function leadParams(serviceSlug: string, suburbSlug: string | null): Record<string, unknown> {
+	// Keep ad-platform-visible events generic. The lead payload sent to Eden can
+	// retain routing context, but GTM/Meta should not receive service interest or
+	// location fields that could reveal a visitor's health-related intent.
+	void serviceSlug;
+	void suburbSlug;
+	return {
+		page_path: typeof window !== "undefined" ? window.location.pathname : null,
+		form_context: "marketing_lead",
+	};
 }
