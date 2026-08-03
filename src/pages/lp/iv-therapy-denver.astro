@@ -56,11 +56,6 @@ const ivMenu = [
 		title: "B12 Visit",
 		body: "Ask about B12 availability and whether a focused visit or additional evaluation is the more appropriate next step.",
 	},
-	{
-		kicker: "Clinical request",
-		title: "Iron-infusion questions",
-		body: "Eden can review your request and explain whether the service is available or a different clinical path is needed.",
-	},
 ];
 
 const faqs = [
@@ -75,9 +70,9 @@ const faqs = [
 			"Yes. Eden is located in Greenwood Village near Denver Tech Center and offers in-person IV hydration and wellness visits by appointment.",
 	},
 	{
-		question: "Can I ask about B12 shots or an iron infusion?",
+		question: "Can I ask about B12 shots?",
 		answer:
-			"Yes. Submit the form with the service you are seeking. Availability and appropriateness are confirmed by the Eden team before treatment.",
+			"Yes. Submit the form with the support you are seeking. B12 availability and the appropriate next step are confirmed by the Eden team before treatment.",
 	},
 	{
 		question: "What does an IV visit cost?",
@@ -205,7 +200,7 @@ const jsonLd: JsonLd[] = [
 						One request. A clear answer on fit, availability, and price.
 					</h2>
 					<p class="mt-4 text-base leading-8 text-slate-700">
-						Whether you searched for IV hydration, a vitamin drip, B12 support, or an iron-infusion appointment, the team will review the request before scheduling.
+						Whether you searched for IV hydration, a vitamin drip, B12 support, or a provider-guided wellness visit, the team will review the request before scheduling.
 					</p>
 					<div class="mt-6 border-l-2 border-eden-green pl-5 text-sm leading-7 text-slate-700">
 						Private and in person at Eden's single Greenwood Village location near Denver Tech Center.
@@ -218,7 +213,7 @@ const jsonLd: JsonLd[] = [
 					subheading="Tell Eden what you are looking for. The team will follow up about fit, availability, and current pricing."
 					submitText="Request My IV Visit"
 					messageLabel="What are you looking for?"
-					goalOptions={["IV hydration", "Vitamin drip", "B12 support", "Iron-infusion question", "Wellness Wednesday option", "Not sure yet"]}
+					goalOptions={["IV hydration", "Vitamin drip", "B12 support", "Wellness Wednesday option", "Not sure yet"]}
 					offerName="IV Therapy Consultation"
 					underButtonText="Private. In person. One Greenwood Village location."
 				/>
