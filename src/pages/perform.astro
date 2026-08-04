@@ -1,0 +1,152 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const canonicalUrl = new URL("/perform/", Astro.site ?? "https://landing.edenhealthclubs.com").toString();
+const title = "Stronger After 40 | Perform at Eden | Greenwood Village";
+const description = "Four coached semi-private sessions and $149 in monthly Eden credits for $149/month in Greenwood Village.";
+const metaPixelId = "1380235093120832";
+---
+
+<BaseLayout title={title} description={description} canonicalUrl={canonicalUrl} noindex={true} metaPixelId={metaPixelId} preloadImages={["/assets/fitness-strength-class.avif"]}>
+	<main class="perform-page">
+		<section class="hero">
+			<div class="hero__image" aria-hidden="true"></div>
+			<div class="hero__veil"></div>
+			<div class="wrap hero__content">
+				<img class="logo" src="/assets/eden-health-club-logo-white-transparent-tight.png" alt="Eden Health Club" width="744" height="447" />
+				<p class="eyebrow">Greenwood Village / DTC</p>
+				<h1>Stronger<br />After 40</h1>
+				<p class="price">Perform at Eden <strong>$149/month</strong></p>
+				<p class="hero__lede">Four coached semi-private sessions plus $149 in monthly Eden credits that roll over and do not expire.</p>
+				<div class="proof">
+					<p><strong>4</strong><span>coached sessions each month</span></p>
+					<p><strong>$149</strong><span>in rolling Eden credits</span></p>
+				</div>
+				<a class="button button--light" href="#claim">Find My Starting Point</a>
+			</div>
+		</section>
+
+		<section class="section">
+			<div class="wrap">
+				<p class="eyebrow eyebrow--ink">A membership that follows your outcome</p>
+				<h2>Coaching is the start.<br />Your goal decides the path.</h2>
+				<div class="outcomes">
+					<article><h3>Build strength</h3><p>A coached routine with real structure and progression.</p></article>
+					<article><h3>Change body composition</h3><p>Make your weekly effort more intentional.</p></article>
+					<article><h3>Recover better</h3><p>Use recovery support as part of a plan you will keep.</p></article>
+					<article><h3>Feel refreshed</h3><p>Use your Eden credits toward eligible services that support your confidence and routine.</p></article>
+				</div>
+			</div>
+		</section>
+
+		<section class="section section--green">
+			<div class="wrap value-grid">
+				<div>
+					<p class="eyebrow">The Perform equation</p>
+					<h2>$149 in.<br />Coaching and credits back.</h2>
+					<p>More direction than a class. More flexibility than a one-note training package.</p>
+				</div>
+				<ul>
+					<li><strong>Four semi-private sessions</strong><span>Small-format coaching and a repeatable week.</span></li>
+					<li><strong>$149 monthly Eden credits</strong><span>Eligible credits roll over and never expire.</span></li>
+					<li><strong>One connected plan</strong><span>Start with coaching, then add the support that fits.</span></li>
+				</ul>
+			</div>
+		</section>
+
+		<section id="claim" class="section section--claim">
+			<div class="wrap claim-grid">
+				<div>
+					<p class="eyebrow eyebrow--ink">Your Eden starting point</p>
+					<h2>Perform at Eden<br /><span>$149/month</span></h2>
+					<p>Tell us what you want to improve. Felicia will text or call to walk you through the first visit.</p>
+					<p class="fine">Credits apply to eligible Eden services. Membership and cancellation details are provided before enrollment.</p>
+				</div>
+				<form class="form" data-perform-form novalidate>
+					<label>Name<input name="fullName" type="text" autocomplete="name" required /></label>
+					<label>Phone<input name="phone" type="tel" inputmode="tel" autocomplete="tel" required /></label>
+					<label>Email<input name="email" type="email" autocomplete="email" required /></label>
+					<label>What would you like to improve?
+						<select name="primaryGoal" required><option value="">Choose one</option><option value="Strength and consistency">Strength and consistency</option><option value="Body composition">Body composition</option><option value="Energy and recovery">Energy and recovery</option><option value="Aesthetic confidence">Aesthetic confidence</option></select>
+					</label>
+					<label>When would you like to start?
+						<select name="startTiming" required><option value="">Choose one</option><option value="This week">This week</option><option value="Next week">Next week</option><option value="Just looking">Just looking</option></select>
+					</label>
+					<div class="honeypot" aria-hidden="true"><input name="website" type="text" tabindex="-1" autocomplete="off" /></div>
+					<button class="button" type="submit">Find My Starting Point</button>
+					<p class="under-button">Tap and our team will text or call to schedule.</p>
+					<p class="status" data-success hidden>Thanks. Felicia will text or call shortly.</p>
+					<p class="status status--error" data-error hidden>Something went wrong. Please try again or call 720-605-7678.</p>
+				</form>
+			</div>
+		</section>
+	</main>
+	<div class="sticky"><span><strong>Perform $149/month</strong>4 sessions + $149 credits</span><a class="button button--light" href="#claim">Get Started</a></div>
+</BaseLayout>
+
+<script>
+	import { trackLeadSubmit, trackLeadSubmitAttempt, trackLeadSubmitError } from "../lib/tracking";
+
+	const form = document.querySelector<HTMLFormElement>("[data-perform-form]");
+	const params = new URLSearchParams(window.location.search);
+	const param = (name: string) => params.get(name) || "";
+
+	if (form) {
+		form.addEventListener("submit", async (event) => {
+			event.preventDefault();
+			const formData = new FormData(form);
+			const fullName = String(formData.get("fullName") || "").trim().split(/\s+/).filter(Boolean);
+			const button = form.querySelector<HTMLButtonElement>('button[type="submit"]');
+			const success = form.querySelector<HTMLElement>("[data-success]");
+			const error = form.querySelector<HTMLElement>("[data-error]");
+			if (button) button.disabled = true;
+			if (success) success.hidden = true;
+			if (error) error.hidden = true;
+			trackLeadSubmitAttempt("perform-149-stronger-after-40", "greenwood-village");
+
+			const goal = String(formData.get("primaryGoal") || "");
+			const timing = String(formData.get("startTiming") || "");
+			try {
+				const response = await fetch("/api/lead/", {
+					method: "POST",
+					headers: { "content-type": "application/json" },
+					body: JSON.stringify({
+						firstName: fullName[0] || "", lastName: fullName.slice(1).join(" "),
+						phone: formData.get("phone"), email: formData.get("email"),
+						service: "perform-149-stronger-after-40", suburb: "greenwood-village", sourcePage: window.location.href,
+						utmSource: param("utm_source"), utmMedium: param("utm_medium"), utmCampaign: param("utm_campaign"), utmTerm: param("utm_term"), utmContent: param("utm_content"),
+						gclid: param("gclid"), fbclid: param("fbclid"), workflowKey: "perform_149_stronger40",
+						offerName: "Perform at Eden - $149/month", offerValue: "149_credits_4_semiprivate_sessions_monthly",
+						message: `Perform at Eden lead. Goal: ${goal}. Timing: ${timing}. Four semi-private sessions plus $149 in monthly Eden credits.`,
+						website: formData.get("website"),
+					}),
+				});
+				const result = await response.json();
+				if (!response.ok || !result.success) throw new Error("lead_delivery_failed");
+				trackLeadSubmit("perform-149-stronger-after-40", "greenwood-village", false);
+				form.reset();
+				if (success) success.hidden = false;
+			} catch {
+				trackLeadSubmitError("perform-149-stronger-after-40", "greenwood-village", "delivery_failed");
+				if (error) error.hidden = false;
+			} finally { if (button) button.disabled = false; }
+		});
+	}
+</script>
+
+<style>
+	:global(body) { margin: 0; background: #f7f1e3; }
+	.perform-page { --ink: #092a1f; --cream: #f7f1e3; --gold: #c9ad62; --paper: #fffcf5; color: var(--ink); font-family: Inter, ui-sans-serif, system-ui, sans-serif; }
+	.perform-page * { box-sizing: border-box; } .wrap { width: min(1120px, calc(100% - 36px)); margin: 0 auto; } .hero { position: relative; min-height: 760px; overflow: hidden; color: var(--paper); background: var(--ink); }
+	.hero__image, .hero__veil { position: absolute; inset: 0; } .hero__image { background: url('/assets/fitness-strength-class.avif') center / cover no-repeat; } .hero__veil { background: linear-gradient(90deg, rgba(4,23,16,.96), rgba(4,23,16,.72) 54%, rgba(4,23,16,.25)), linear-gradient(0deg, rgba(4,23,16,.86), transparent 58%); }
+	.hero__content { position: relative; z-index: 1; padding: 30px 0 80px; } .logo { display: block; width: 132px; height: auto; margin-bottom: 62px; } .eyebrow { margin: 0 0 12px; color: var(--gold); font-size: .78rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; } .eyebrow--ink { color: #496b59; }
+	h1, h2, h3, p { margin-top: 0; } h1 { margin-bottom: 20px; font-size: clamp(3.9rem, 10vw, 7.3rem); line-height: .88; letter-spacing: 0; text-transform: uppercase; } h2 { margin-bottom: 20px; font-size: clamp(2.3rem, 6vw, 4.25rem); line-height: .96; letter-spacing: 0; } .price { margin-bottom: 18px; font-size: clamp(1.45rem, 4vw, 2.4rem); font-weight: 800; } .price strong, .claim-grid h2 span { color: var(--gold); }
+	.hero__lede { max-width: 610px; color: rgba(255,252,245,.91); font-size: 1.2rem; font-weight: 600; line-height: 1.45; } .proof { display: grid; grid-template-columns: repeat(2, minmax(0, 250px)); gap: 10px; margin: 28px 0; } .proof p { margin: 0; border: 1px solid rgba(255,252,245,.35); padding: 16px; background: rgba(255,252,245,.08); } .proof strong, .proof span { display: block; } .proof strong { font-size: 1.65rem; } .proof span { margin-top: 5px; color: rgba(255,252,245,.75); font-size: .86rem; font-weight: 600; }
+	.button { display: inline-flex; min-height: 52px; align-items: center; justify-content: center; border: 0; border-radius: 4px; padding: 0 20px; background: var(--ink); color: var(--cream); font: inherit; font-weight: 800; text-decoration: none; cursor: pointer; } .button--light { background: var(--cream); color: var(--ink); }
+	.section { padding: 78px 0; background: var(--paper); } .outcomes { display: grid; gap: 12px; } .outcomes article { min-height: 170px; border: 1px solid rgba(9,42,31,.15); padding: 22px; background: #fff; } .outcomes h3 { margin-bottom: 9px; font-size: 1.55rem; } .outcomes p { margin-bottom: 0; color: #52665a; font-weight: 600; line-height: 1.5; }
+	.section--green { background: var(--ink); color: var(--paper); } .value-grid { display: grid; gap: 30px; } .value-grid p { max-width: 540px; color: rgba(255,252,245,.8); font-size: 1.1rem; font-weight: 600; line-height: 1.5; } .value-grid ul { display: grid; gap: 1px; margin: 0; padding: 0; list-style: none; background: rgba(255,252,245,.22); } .value-grid li { padding: 18px; background: rgba(9,42,31,.92); } .value-grid strong, .value-grid span { display: block; } .value-grid span { margin-top: 5px; color: rgba(255,252,245,.74); }
+	.section--claim { background: #e9e0cd; } .claim-grid { display: grid; gap: 28px; align-items: start; } .claim-grid > div > p:not(.eyebrow):not(.fine) { max-width: 540px; color: #52665a; font-size: 1.15rem; font-weight: 600; line-height: 1.5; } .fine { color: #5d6f63; font-size: .84rem; line-height: 1.5; }
+	.form { padding: 22px; background: var(--paper); box-shadow: 0 18px 40px rgba(9,42,31,.16); } .form label { display: block; margin-top: 14px; font-size: .86rem; font-weight: 800; } .form input, .form select { display: block; width: 100%; min-height: 50px; margin-top: 6px; border: 1px solid #b9c5bc; border-radius: 3px; padding: 10px; background: #fff; color: var(--ink); font: inherit; } .form .button { width: 100%; margin-top: 22px; } .honeypot { position: absolute; left: -9999px; } .under-button { margin: 10px 0 0; color: #5d6f63; font-size: .82rem; font-weight: 600; text-align: center; } .status { margin: 14px 0 0; padding: 12px; background: #e4f0e7; color: #0c492d; font-weight: 600; } .status--error { background: #fde8e5; color: #972b1f; }
+	.sticky { position: fixed; z-index: 5; right: 0; bottom: 0; left: 0; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 14px; background: var(--ink); color: var(--paper); box-shadow: 0 -10px 28px rgba(0,0,0,.22); } .sticky span, .sticky strong { display: block; } .sticky span { color: rgba(255,252,245,.78); font-size: .76rem; } .sticky strong { color: var(--paper); font-size: .88rem; } .sticky .button { min-height: 44px; }
+	@media (min-width: 700px) { .outcomes { grid-template-columns: repeat(4, 1fr); } .value-grid, .claim-grid { grid-template-columns: minmax(0,1fr) minmax(340px,.9fr); } .sticky { display: none; } }
+</style>

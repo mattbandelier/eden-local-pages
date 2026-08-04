@@ -8,6 +8,8 @@ const rateLimit = new Map<string, { count: number; resetAt: number }>();
 const BASELINE_WORKFLOW_KEY = "longevity_baseline_299";
 const BASELINE_META_TAG = "baseline_lead_meta";
 const BASELINE_WORKFLOW_ID = import.meta.env.GHL_WORKFLOW_ID_LONGEVITY_BASELINE || "2fa02d3f-f4e2-4f63-89ea-3a3eae9610e1";
+const PERFORM_WORKFLOW_KEY = "perform_149_stronger40";
+const PERFORM_WORKFLOW_TAG = `workflow | ${PERFORM_WORKFLOW_KEY}`;
 const PEPTIDE_WORKFLOW_KEY = "peptide_299_therapy";
 const PEPTIDE_LEAD_TAG = "peptide_299_lead";
 // Keep the two $299 offers isolated even when a direct GHL enrollment is used.
@@ -224,10 +226,15 @@ function shouldApplyBaselineLeadTag(payload: LeadPayload): boolean {
 	return payload.workflowKey === BASELINE_WORKFLOW_KEY || payload.message?.includes(`WORKFLOW_KEY: ${BASELINE_WORKFLOW_KEY}`) === true;
 }
 
+function shouldApplyPerformWorkflow(payload: LeadPayload): boolean {
+	return payload.workflowKey === PERFORM_WORKFLOW_KEY || payload.message?.includes(`WORKFLOW_KEY: ${PERFORM_WORKFLOW_KEY}`) === true;
+}
+
 function tagsForLeadPayload(payload: LeadPayload): string[] {
 	const tags = new Set<string>();
 
 	if (shouldApplyBaselineLeadTag(payload)) tags.add(BASELINE_META_TAG);
+	if (shouldApplyPerformWorkflow(payload)) tags.add(PERFORM_WORKFLOW_TAG);
 	if (shouldApplyPeptideWorkflow(payload)) {
 		tags.add(PEPTIDE_LEAD_TAG);
 	}
