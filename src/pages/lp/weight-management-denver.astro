@@ -1,0 +1,158 @@
+---
+import LeadForm from "../../components/content/LeadForm.astro";
+import PaidServiceFooter from "../../components/layout/PaidServiceFooter.astro";
+import PremiumHeader from "../../components/layout/PremiumHeader.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import type { JsonLd } from "../../lib/schema-org";
+import { canonicalUrl } from "../../lib/urls";
+
+const canonical = canonicalUrl("/lp/weight-management-denver");
+const title = "Medical Weight Management Denver | $149 Health Baseline | Eden";
+const description =
+	"A private $149 health baseline near DTC with a provider consultation, InBody body-composition baseline, and a practical weight-management roadmap.";
+
+const includes = [
+	["Private health consultation", "Talk through goals, health history, daily routines, and the roadblocks that have made progress harder."],
+	["InBody baseline", "Start with useful body-composition context instead of relying on the scale alone."],
+	["Clear next-step roadmap", "Leave with priorities and a practical plan for what to address next, at a pace that fits your life."],
+];
+
+const faqs = [
+	{
+		question: "What is included in the $149 health baseline?",
+		answer:
+			"The new-client visit includes a private provider consultation, an InBody body-composition baseline, and a practical next-step roadmap for your goals.",
+	},
+	{
+		question: "Is this a good first visit if I am unsure where to begin?",
+		answer:
+			"Yes. The purpose is to clarify goals, relevant health context, and the next sensible step before committing to an ongoing program.",
+	},
+	{
+		question: "Is Eden near Denver Tech Center?",
+		answer:
+			"Yes. Eden is in Greenwood Village, minutes from Denver Tech Center and convenient to Centennial, Cherry Hills Village, Lone Tree, Highlands Ranch, and South Denver.",
+	},
+	{
+		question: "Does the visit guarantee a specific plan or result?",
+		answer:
+			"No. Recommendations depend on provider review, health history, and the information available at the visit. Results vary.",
+	},
+];
+
+const jsonLd: JsonLd[] = [
+	{
+		"@context": "https://schema.org",
+		"@type": "MedicalBusiness",
+		"@id": `${canonical}#medical-business`,
+		name: "Eden Health Club",
+		url: canonical,
+		telephone: "+17206057678",
+		address: {
+			"@type": "PostalAddress",
+			streetAddress: "5990 S University Blvd",
+			addressLocality: "Greenwood Village",
+			addressRegion: "CO",
+			postalCode: "80121",
+			addressCountry: "US",
+		},
+	},
+	{
+		"@context": "https://schema.org",
+		"@type": "Service",
+		"@id": `${canonical}#service`,
+		name: "$149 Health Baseline",
+		serviceType: "Medical weight management consultation and planning",
+		url: canonical,
+		description,
+		provider: { "@id": `${canonical}#medical-business`, "@type": "MedicalBusiness", name: "Eden Health Club" },
+		offers: { "@type": "Offer", price: "149", priceCurrency: "USD", availability: "https://schema.org/InStock" },
+	},
+	{
+		"@context": "https://schema.org",
+		"@type": "FAQPage",
+		"@id": `${canonical}#faq`,
+		mainEntity: faqs.map((faq) => ({
+			"@type": "Question",
+			name: faq.question,
+			acceptedAnswer: { "@type": "Answer", text: faq.answer },
+		})),
+	},
+];
+---
+
+<BaseLayout title={title} description={description} canonicalUrl={canonical} jsonLd={jsonLd} noindex preloadImages={["/assets/eden-health-club-reception.webp"]}>
+	<PremiumHeader brandHref={null} servicesHref="#baseline" servicesLabel="The Visit" pricingHref="#questions" pricingLabel="Questions" contactHref="#lead-form" ctaLabel="Request a Baseline" />
+	<main class="bg-eden-paper pb-20 md:pb-0">
+		<section class="relative overflow-hidden bg-eden-forest text-white">
+			<img src="/assets/eden-health-club-reception.webp" alt="" class="absolute inset-0 h-full w-full object-cover opacity-45" loading="eager" fetchpriority="high" decoding="async" width="1388" height="1000" />
+			<div class="absolute inset-0 bg-[linear-gradient(90deg,rgba(28,45,38,0.97),rgba(28,45,38,0.84)_52%,rgba(28,45,38,0.46))]"></div>
+			<div class="relative mx-auto grid min-h-[680px] max-w-6xl gap-10 px-6 py-14 lg:grid-cols-[1.08fr_0.92fr] lg:items-center">
+				<div class="max-w-2xl">
+					<p class="text-sm font-semibold uppercase text-eden-sage">Medical weight management · Greenwood Village near DTC</p>
+					<h1 class="mt-4 max-w-3xl text-4xl font-semibold leading-tight sm:text-5xl lg:text-6xl">Start with a $149 health baseline, not another generic plan.</h1>
+					<p class="mt-6 max-w-xl text-lg leading-8 text-white/82">A private consultation, InBody body-composition baseline, and clear roadmap for people who want a more organized approach to weight management.</p>
+					<div class="mt-7 flex flex-wrap gap-3 text-sm font-semibold text-white/88">
+						<span class="rounded-md border border-white/20 bg-white/10 px-3 py-2">$149 new-client visit</span>
+						<span class="rounded-md border border-white/20 bg-white/10 px-3 py-2">Private consult + InBody</span>
+						<span class="rounded-md border border-white/20 bg-white/10 px-3 py-2">A practical roadmap</span>
+					</div>
+					<p class="mt-6 text-sm leading-6 text-white/68">Recommendations depend on provider review, health history, and the information available at your visit.</p>
+				</div>
+
+				<LeadForm
+					serviceSlug="medical-weight-loss"
+					suburbSlug="denver"
+					heading="Request your $149 health baseline"
+					subheading="Eden will follow up with scheduling details and what to expect from your private consultation and InBody baseline."
+					submitText="Request My $149 Baseline"
+					messageLabel="What would you like help with?"
+					goalOptions={["Body composition", "Energy and routines", "Weight-management support", "I am not sure yet"]}
+					hiddenMessage="Medical Weight Management Denver paid landing page $149 health baseline request"
+					offerName="$149 Health Baseline"
+					offerValue="private_consult_inbody_provider_roadmap"
+				/>
+			</div>
+		</section>
+
+		<section id="baseline" class="px-6 py-14 sm:py-18">
+			<div class="mx-auto max-w-6xl">
+				<p class="text-sm font-semibold uppercase text-eden-green">A clearer first step</p>
+				<h2 class="mt-3 max-w-3xl text-3xl font-semibold leading-tight text-eden-navy sm:text-4xl">Understand your starting point before choosing the next program.</h2>
+				<div class="mt-8 grid gap-5 md:grid-cols-3">
+					{includes.map(([heading, body], index) => (
+						<article class="border-t-2 border-eden-green bg-white p-6 shadow-sm">
+							<p class="text-sm font-semibold text-eden-green">0{index + 1}</p>
+							<h3 class="mt-3 text-xl font-semibold text-eden-navy">{heading}</h3>
+							<p class="mt-3 text-sm leading-6 text-slate-700">{body}</p>
+						</article>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<section class="bg-white px-6 py-14 sm:py-18">
+			<div class="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[0.92fr_1.08fr] lg:items-center">
+				<div class="overflow-hidden rounded-lg"><img src="/assets/eden-health-club-office.webp" alt="Private consultation space at Eden Health Club in Greenwood Village" class="aspect-[4/3] h-full w-full object-cover" loading="lazy" decoding="async" width="1388" height="1000" /></div>
+				<div>
+					<p class="text-sm font-semibold uppercase text-eden-green">Private, local, practical</p>
+					<h2 class="mt-3 text-3xl font-semibold leading-tight text-eden-navy sm:text-4xl">A health conversation with more context than a scale reading.</h2>
+					<p class="mt-5 text-base leading-7 text-slate-700">Eden combines an in-person provider conversation with body-composition context and a plan that can connect wellness, recovery, and fitness when those pieces matter to you.</p>
+				</div>
+			</div>
+		</section>
+
+		<section id="questions" class="px-6 py-14 sm:py-18">
+			<div class="mx-auto max-w-4xl">
+				<p class="text-sm font-semibold uppercase text-eden-green">Questions before you book</p>
+				<h2 class="mt-3 text-3xl font-semibold leading-tight text-eden-navy sm:text-4xl">Medical weight management in Denver.</h2>
+				<div class="mt-8 divide-y divide-slate-200 border-y border-slate-200">
+					{faqs.map((faq) => (
+						<details class="group py-5"><summary class="cursor-pointer list-none pr-8 text-lg font-semibold text-eden-navy">{faq.question}</summary><p class="mt-3 max-w-3xl text-sm leading-7 text-slate-700">{faq.answer}</p></details>
+					))}
+				</div>
+			</div>
+		</section>
+	</main>
+	<PaidServiceFooter />
+</BaseLayout>

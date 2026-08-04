@@ -7,22 +7,22 @@ import type { JsonLd } from "../../lib/schema-org";
 import { canonicalUrl } from "../../lib/urls";
 
 const canonical = canonicalUrl("/lp/hormone-optimization-denver");
-const title = "Hormone Specialist Denver | Consult + Lab Review | Eden Health Club";
+const title = "Hormone Specialist Denver | $149 Consult + Hormone Panel | Eden";
 const description =
-	"Private hormone optimization consultations for women and men in Greenwood Village near DTC, with lab-guided review, provider guidance, and clear next steps.";
+	"A $149 new-client hormone baseline for women and men in Greenwood Village near DTC: private consultation, hormone panel, InBody, and a clear next-step plan.";
 
 const visitIncludes = [
 	{
 		title: "Private consultation",
-		body: "Discuss symptoms, goals, health history, medications, and the changes you want clarified.",
+		body: "Discuss symptoms, goals, health history, and the changes you want clarified in a private, in-person setting.",
 	},
 	{
-		title: "Lab-guided review",
-		body: "A provider reviews relevant bloodwork and identifies any additional information needed before treatment planning.",
+		title: "Hormone panel + InBody",
+		body: "Start with a hormone panel and body-composition baseline instead of guessing at what needs attention.",
 	},
 	{
 		title: "Personalized next-step plan",
-		body: "Understand candidacy, monitoring, timing, and care options without a one-size-fits-all protocol.",
+		body: "Leave with clear priorities, relevant next steps, and an informed decision about whether ongoing support fits.",
 	},
 ];
 
@@ -35,14 +35,14 @@ const comparisonPoints = [
 
 const faqs = [
 	{
-		question: "What happens at a hormone optimization consultation?",
+		question: "What is included in the $149 hormone baseline?",
 		answer:
-			"Your consultation covers symptoms, goals, health history, medications, relevant labs, and the questions that matter before any treatment decision. A provider then explains appropriate next steps and monitoring.",
+			"The $149 new-client baseline includes a private consultation, a hormone panel, an InBody body-composition baseline, and a provider-guided next-step plan.",
 	},
 	{
-		question: "Do I need bloodwork before a hormone plan is recommended?",
+		question: "Who is the hormone baseline for?",
 		answer:
-			"Relevant bloodwork is an important part of responsible hormone evaluation. Eden will review current results and explain what additional testing may be appropriate for your situation.",
+			"It is for women and men who want more clarity around symptoms, life stage, recovery, energy, sleep, body composition, or a possible hormone conversation.",
 	},
 	{
 		question: "Does Eden provide hormone care for women and men?",
@@ -50,9 +50,9 @@ const faqs = [
 			"Yes. Eden provides individualized hormone evaluation for women and men. The exact discussion depends on symptoms, life stage, health history, lab findings, and provider judgment.",
 	},
 	{
-		question: "Is treatment guaranteed after the consultation?",
+		question: "Does the baseline guarantee a specific recommendation?",
 		answer:
-			"No. A consultation is an evaluation, not a guarantee of treatment. Recommendations are made only when a provider determines that a care path is clinically appropriate.",
+			"No. The baseline is an evaluation and planning visit. Recommendations depend on the provider review, health history, and the information available at the visit.",
 	},
 	{
 		question: "Where is Eden Health Club located?",
@@ -144,27 +144,27 @@ const jsonLd: JsonLd[] = [
 				<div class="max-w-2xl">
 					<p class="text-sm font-semibold uppercase text-eden-sage">Hormone specialist · Greenwood Village near DTC</p>
 					<h1 class="mt-4 max-w-3xl text-4xl font-semibold leading-tight sm:text-5xl lg:text-6xl">
-						Hormone optimization in Denver for women and men.
+						A $149 hormone baseline for women and men in Denver.
 					</h1>
 					<p class="mt-6 max-w-xl text-lg leading-8 text-white/82">
-						Start with a private consultation and lab-guided review to clarify changes in energy, sleep, mood, libido, recovery, or body composition.
+						Start with a private consultation, hormone panel, InBody baseline, and a clear next-step plan for energy, sleep, mood, recovery, or body composition.
 					</p>
 					<div class="mt-7 flex flex-wrap gap-3 text-sm font-semibold text-white/88">
-						<span class="rounded-md border border-white/20 bg-white/10 px-3 py-2">Private consultation</span>
-						<span class="rounded-md border border-white/20 bg-white/10 px-3 py-2">Lab-guided review</span>
-						<span class="rounded-md border border-white/20 bg-white/10 px-3 py-2">Personalized next steps</span>
+						<span class="rounded-md border border-white/20 bg-white/10 px-3 py-2">$149 new-client visit</span>
+						<span class="rounded-md border border-white/20 bg-white/10 px-3 py-2">Hormone panel + InBody</span>
+						<span class="rounded-md border border-white/20 bg-white/10 px-3 py-2">Provider-led roadmap</span>
 					</div>
 					<p class="mt-6 text-sm leading-6 text-white/68">
-						Consultation does not guarantee treatment. Eligibility and recommendations depend on provider evaluation.
+						Recommendations depend on provider review, health history, and the information available at your visit.
 					</p>
 				</div>
 
 				<LeadForm
 					serviceSlug="hormone-optimization"
 					suburbSlug="denver"
-					heading="Request a private hormone consultation"
-					subheading="Tell us what you want clarified. Eden will follow up about the consultation, lab context, timing, and next steps."
-					submitText="Request My Consultation"
+					heading="Request your $149 hormone baseline"
+					subheading="Eden will follow up with scheduling details and what to expect from your consultation, hormone panel, InBody baseline, and review."
+					submitText="Request My $149 Baseline"
 					messageLabel="What would you like help with?"
 					goalOptions={[
 						"Energy, sleep, or recovery",
@@ -173,8 +173,9 @@ const jsonLd: JsonLd[] = [
 						"Body composition or weight changes",
 						"I am not sure yet",
 					]}
-					hiddenMessage="Hormone Optimization Denver paid landing page consultation request"
-					offerName="Hormone Optimization Consultation"
+					hiddenMessage="Hormone Optimization Denver paid landing page $149 baseline request"
+					offerName="$149 Hormone Baseline"
+					offerValue="private_consult_hormone_panel_inbody_provider_roadmap"
 				/>
 			</div>
 		</section>
@@ -184,10 +185,10 @@ const jsonLd: JsonLd[] = [
 				<div class="max-w-3xl">
 					<p class="text-sm font-semibold uppercase text-eden-green">A clear first step</p>
 					<h2 class="mt-3 text-3xl font-semibold leading-tight text-eden-navy sm:text-4xl">
-						Consult + lab review before any hormone plan.
+						A $149 starting point before any ongoing hormone decision.
 					</h2>
 					<p class="mt-4 text-base leading-7 text-slate-700">
-						Hormone care is personal. Eden starts with your experience and the clinical context needed to make a responsible recommendation.
+						Instead of starting with a generic protocol, Eden starts with your experience, a hormone panel, and body-composition context.
 					</p>
 				</div>
 				<div class="mt-8 grid gap-5 md:grid-cols-3">
