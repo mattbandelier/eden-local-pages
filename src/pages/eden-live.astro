@@ -145,9 +145,12 @@ const states = ["AL","AK","AZ","AR","CA","CO","CT","DE","FL","GA","HI","ID","IL"
         form.hidden = true;
         if (thankYou instanceof HTMLElement) { thankYou.hidden = false; thankYou.focus(); }
         const trackingWindow = window as typeof window & {
+          dataLayer?: Array<Record<string, unknown>>;
           fbq?: (...args: unknown[]) => void;
           gtag?: (...args: unknown[]) => void;
         };
+        trackingWindow.dataLayer = trackingWindow.dataLayer || [];
+        trackingWindow.dataLayer.push({ event: "lead_submit", form_name: "eden_live_trial" });
         trackingWindow.fbq?.("track", "Lead");
         trackingWindow.gtag?.("event", "generate_lead", { event_category: "Eden Live", value: 0, currency: "USD" });
       } catch (error) {

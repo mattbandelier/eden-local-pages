@@ -6,8 +6,9 @@ const {
   description = "Try Eden Live free for 7 days. Join live coached workouts, train on demand, and discover a fitness experience backed by Eden's care team."
 } = Astro.props;
 
-const metaPixelId = import.meta.env.PUBLIC_META_PIXEL_ID;
+const metaPixelId = import.meta.env.PUBLIC_META_PIXEL_ID || "1301043457641549";
 const googleTagId = import.meta.env.PUBLIC_GOOGLE_TAG_ID;
+const gtmId = import.meta.env.PUBLIC_GTM_CONTAINER_ID;
 ---
 <!doctype html>
 <html lang="en">
@@ -35,8 +36,8 @@ const googleTagId = import.meta.env.PUBLIC_GOOGLE_TAG_ID;
       telephone: "+1-720-605-7678",
       address: { "@type": "PostalAddress", addressLocality: "Greenwood Village", addressRegion: "CO", addressCountry: "US" }
     })}></script>
-    <script is:inline define:vars={{ metaPixelId, googleTagId }}>
-      window.edenTracking = { metaPixelId, googleTagId };
+    <script is:inline define:vars={{ metaPixelId, googleTagId, gtmId }}>
+      window.edenTracking = { metaPixelId, googleTagId, gtmId };
       const loadTracking = () => {
         if (googleTagId) {
           window.dataLayer = window.dataLayer || [];
@@ -47,6 +48,13 @@ const googleTagId = import.meta.env.PUBLIC_GOOGLE_TAG_ID;
           googleScript.async = true;
           googleScript.src = `https://www.googletagmanager.com/gtag/js?id=${googleTagId}`;
           document.head.appendChild(googleScript);
+        } else if (gtmId) {
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({ "gtm.start": Date.now(), event: "gtm.js" });
+          const gtmScript = document.createElement("script");
+          gtmScript.async = true;
+          gtmScript.src = `https://www.googletagmanager.com/gtm.js?id=${gtmId}`;
+          document.head.appendChild(gtmScript);
         }
         if (metaPixelId) {
           const pixel = function(){ pixel.callMethod ? pixel.callMethod.apply(pixel, arguments) : pixel.queue.push(arguments); };
