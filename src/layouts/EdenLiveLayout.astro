@@ -1,0 +1,74 @@
+---
+import "../styles/eden-live.css";
+
+const {
+  title = "Eden Live | Live Virtual Fitness and On-Demand Workouts",
+  description = "Try Eden Live free for 7 days. Join live coached workouts, train on demand, and discover a fitness experience backed by Eden's care team."
+} = Astro.props;
+
+const metaPixelId = import.meta.env.PUBLIC_META_PIXEL_ID;
+const googleTagId = import.meta.env.PUBLIC_GOOGLE_TAG_ID;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#1F4D3A" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content="https://landing.edenhealthclubs.com/eden-live/" />
+    <meta property="og:image" content="https://landing.edenhealthclubs.com/assets/eden-live-og-placeholder.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="canonical" href="https://landing.edenhealthclubs.com/eden-live/" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preload" href="/fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <title>{title}</title>
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "HealthClub",
+      name: "Eden Health Club",
+      url: "https://edenhealthclubs.com",
+      email: "care@edenhealthclubs.com",
+      telephone: "+1-720-605-7678",
+      address: { "@type": "PostalAddress", addressLocality: "Greenwood Village", addressRegion: "CO", addressCountry: "US" }
+    })}></script>
+    <script is:inline define:vars={{ metaPixelId, googleTagId }}>
+      window.edenTracking = { metaPixelId, googleTagId };
+      const loadTracking = () => {
+        if (googleTagId) {
+          window.dataLayer = window.dataLayer || [];
+          window.gtag = function(){ window.dataLayer.push(arguments); };
+          window.gtag("js", new Date());
+          window.gtag("config", googleTagId);
+          const googleScript = document.createElement("script");
+          googleScript.async = true;
+          googleScript.src = `https://www.googletagmanager.com/gtag/js?id=${googleTagId}`;
+          document.head.appendChild(googleScript);
+        }
+        if (metaPixelId) {
+          const pixel = function(){ pixel.callMethod ? pixel.callMethod.apply(pixel, arguments) : pixel.queue.push(arguments); };
+          pixel.queue = [];
+          pixel.loaded = true;
+          pixel.version = "2.0";
+          window.fbq = pixel;
+          pixel("init", metaPixelId);
+          pixel("track", "PageView");
+          const metaScript = document.createElement("script");
+          metaScript.async = true;
+          metaScript.src = "https://connect.facebook.net/en_US/fbevents.js";
+          document.head.appendChild(metaScript);
+        }
+      };
+      window.addEventListener("load", () => {
+        if ("requestIdleCallback" in window) window.requestIdleCallback(loadTracking);
+        else window.setTimeout(loadTracking, 1);
+      }, { once: true });
+    </script>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
