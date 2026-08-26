@@ -198,7 +198,7 @@ const {
 </section>
 
 <script>
-	import { getAttribution, initAttribution } from "../../lib/attribution";
+	import { getAttribution, getGoogleAttributionForSubmission, initAttribution } from "../../lib/attribution";
 	import { trackLeadSubmit, trackLeadSubmitAttempt, trackLeadSubmitError } from "../../lib/tracking";
 
 	type AttributionSnapshot = ReturnType<typeof getAttribution>;
@@ -218,6 +218,8 @@ const {
 		gadCampaignId: "gad_campaignid",
 	} as const;
 
+	const GOOGLE_TOUCH_FIELDS = new Set(["gclid", "gbraid", "wbraid", "gclsrc", "gadSource", "gadCampaignId"]);
+
 	function currentPage(): string {
 		return `${window.location.origin}${window.location.pathname}${window.location.search}${window.location.hash}`;
 	}
@@ -228,7 +230,11 @@ const {
 		return params.get(paramName) || attribution.lastTouch[paramName] || attribution.firstTouch[paramName] || null;
 	}
 
-	function syncHiddenAttributionFields(form: HTMLFormElement, attribution: AttributionSnapshot): void {
+	function syncHiddenAttributionFields(
+		form: HTMLFormElement,
+		attribution: AttributionSnapshot,
+		googleTouch: Record<string, string | null>,
+	): void {
 		form.querySelectorAll<HTMLInputElement>("[data-attribution-field]").forEach((input) => {
 			const field = input.dataset.attributionField || "";
 			if (field === "sourcePage") {
@@ -236,7 +242,11 @@ const {
 				return;
 			}
 			if (field in ATTRIBUTION_FIELD_MAP) {
-				input.value = attributionValue(attribution, field as keyof typeof ATTRIBUTION_FIELD_MAP) || "";
+				const key = field as keyof typeof ATTRIBUTION_FIELD_MAP;
+				const paramName = ATTRIBUTION_FIELD_MAP[key];
+				input.value = GOOGLE_TOUCH_FIELDS.has(field)
+					? googleTouch[paramName] || ""
+					: attributionValue(attribution, key) || "";
 			}
 		});
 	}
@@ -252,6 +262,11 @@ const {
 		}
 
 		return cookieValue || null;
+	}
+
+	function attributionEventId(): string {
+		if (typeof crypto !== "undefined" && "randomUUID" in crypto) return crypto.randomUUID();
+		return `eden-attribution-${Date.now()}-${Math.random().toString(36).slice(2)}`;
 	}
 
 	function combinedMessage(fd: FormData): string | null {
@@ -282,7 +297,8 @@ const {
 			trackLeadSubmitAttempt(serviceSlug, suburbSlug);
 
 			const attribution = getAttribution();
-			syncHiddenAttributionFields(form, attribution);
+			const googleTouch = getGoogleAttributionForSubmission(attribution);
+			syncHiddenAttributionFields(form, attribution, googleTouch);
 			const fd = new FormData(form);
 			const fullName = ((fd.get("fullName") as string) || "").trim();
 			const [derivedFirstName, ...derivedLastNameParts] = fullName.split(/\s+/).filter(Boolean);
@@ -315,6 +331,7 @@ const {
 				referrer: document.referrer || null,
 				firstTouch: attribution.firstTouch,
 				lastTouch: attribution.lastTouch,
+				attributionEventId: attributionEventId(),
 				submittedAt: new Date().toISOString(),
 				website: (fd.get("website") as string) || "",
 			};
