@@ -218,7 +218,20 @@ const {
 		gadCampaignId: "gad_campaignid",
 	} as const;
 
-	const GOOGLE_TOUCH_FIELDS = new Set(["gclid", "gbraid", "wbraid", "gclsrc", "gadSource", "gadCampaignId"]);
+	const GOOGLE_TOUCH_FIELDS = new Set([
+		"utmSource",
+		"utmMedium",
+		"utmCampaign",
+		"utmTerm",
+		"utmContent",
+		"gclid",
+		"gbraid",
+		"wbraid",
+		"gclsrc",
+		"gadSource",
+		"gadCampaignId",
+	]);
+	const GOOGLE_CLICK_PARAMS = ["gclid", "gbraid", "wbraid"];
 
 	function currentPage(): string {
 		return `${window.location.origin}${window.location.pathname}${window.location.search}${window.location.hash}`;
@@ -228,6 +241,17 @@ const {
 		const paramName = ATTRIBUTION_FIELD_MAP[key];
 		const params = new URLSearchParams(window.location.search);
 		return params.get(paramName) || attribution.lastTouch[paramName] || attribution.firstTouch[paramName] || null;
+	}
+
+	function submissionAttributionValue(
+		attribution: AttributionSnapshot,
+		googleTouch: Record<string, string | null>,
+		key: keyof typeof ATTRIBUTION_FIELD_MAP,
+	): string | null {
+		const paramName = ATTRIBUTION_FIELD_MAP[key];
+		const hasGoogleTouch = GOOGLE_CLICK_PARAMS.some((clickParam) => Boolean(googleTouch[clickParam]));
+		if (hasGoogleTouch && GOOGLE_TOUCH_FIELDS.has(key)) return googleTouch[paramName] || null;
+		return attributionValue(attribution, key);
 	}
 
 	function syncHiddenAttributionFields(
@@ -243,10 +267,7 @@ const {
 			}
 			if (field in ATTRIBUTION_FIELD_MAP) {
 				const key = field as keyof typeof ATTRIBUTION_FIELD_MAP;
-				const paramName = ATTRIBUTION_FIELD_MAP[key];
-				input.value = GOOGLE_TOUCH_FIELDS.has(field)
-					? googleTouch[paramName] || ""
-					: attributionValue(attribution, key) || "";
+				input.value = submissionAttributionValue(attribution, googleTouch, key) || "";
 			}
 		});
 	}
@@ -312,18 +333,18 @@ const {
 				service: serviceSlug,
 				suburb: suburbSlug,
 				sourcePage: currentPage(),
-				utmSource: attributionValue(attribution, "utmSource"),
-				utmMedium: attributionValue(attribution, "utmMedium"),
-				utmCampaign: attributionValue(attribution, "utmCampaign"),
-				utmTerm: attributionValue(attribution, "utmTerm"),
-				utmContent: attributionValue(attribution, "utmContent"),
-				gclid: attributionValue(attribution, "gclid"),
-				gbraid: attributionValue(attribution, "gbraid"),
-				wbraid: attributionValue(attribution, "wbraid"),
+				utmSource: submissionAttributionValue(attribution, googleTouch, "utmSource"),
+				utmMedium: submissionAttributionValue(attribution, googleTouch, "utmMedium"),
+				utmCampaign: submissionAttributionValue(attribution, googleTouch, "utmCampaign"),
+				utmTerm: submissionAttributionValue(attribution, googleTouch, "utmTerm"),
+				utmContent: submissionAttributionValue(attribution, googleTouch, "utmContent"),
+				gclid: submissionAttributionValue(attribution, googleTouch, "gclid"),
+				gbraid: submissionAttributionValue(attribution, googleTouch, "gbraid"),
+				wbraid: submissionAttributionValue(attribution, googleTouch, "wbraid"),
 				fbclid: attributionValue(attribution, "fbclid"),
-				gclsrc: attributionValue(attribution, "gclsrc"),
-				gadSource: attributionValue(attribution, "gadSource"),
-				gadCampaignId: attributionValue(attribution, "gadCampaignId"),
+				gclsrc: submissionAttributionValue(attribution, googleTouch, "gclsrc"),
+				gadSource: submissionAttributionValue(attribution, googleTouch, "gadSource"),
+				gadCampaignId: submissionAttributionValue(attribution, googleTouch, "gadCampaignId"),
 				workflowKey: (fd.get("workflowKey") as string) || null,
 				offerName: (fd.get("offerName") as string) || null,
 				offerValue: (fd.get("offerValue") as string) || null,
