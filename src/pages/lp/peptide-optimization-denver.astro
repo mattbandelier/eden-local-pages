@@ -358,31 +358,6 @@ const jsonLd: JsonLd[] = [
 			</div>
 		</section>
 
-		<section id="clinical-fit" class="px-6 py-12 sm:py-16">
-			<div class="mx-auto max-w-6xl">
-				<div class="grid gap-8 lg:grid-cols-[0.82fr_1.18fr] lg:items-end">
-					<div>
-						<p class="text-sm font-semibold uppercase text-eden-green">Clinical fit</p>
-						<h2 class="mt-3 text-3xl font-semibold leading-tight text-eden-navy sm:text-4xl">
-							One peptide-first starting point before choosing a protocol.
-						</h2>
-					</div>
-					<p class="text-base leading-8 text-slate-700">
-						This visit is built for adults weighing peptide therapy against their goals: recovery, body composition, sleep, skin quality, and long-term health.
-					</p>
-				</div>
-				<div class="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-					{lanes.map((item) => (
-						<div class="rounded-lg border border-eden-line bg-white p-5 shadow-sm">
-							<p class="text-xs font-semibold uppercase text-eden-green">Care path</p>
-							<h3 class="mt-2 text-xl font-semibold text-eden-navy">{item.label}</h3>
-							<p class="mt-3 text-sm leading-6 text-slate-700">{item.body}</p>
-						</div>
-					))}
-				</div>
-			</div>
-		</section>
-
 		<section id="why-eden" class="bg-white px-6 py-12 sm:py-16">
 			<div class="mx-auto max-w-6xl">
 				<div class="grid gap-8 lg:grid-cols-[0.82fr_1.18fr] lg:items-start">
@@ -443,6 +418,31 @@ const jsonLd: JsonLd[] = [
 							<div class="flex h-9 w-9 items-center justify-center rounded-full bg-eden-sage text-sm font-semibold text-eden-forest">{index + 1}</div>
 							<h3 class="mt-4 text-xl font-semibold">{item.step}</h3>
 							<p class="mt-3 text-sm leading-6 text-white/74">{item.body}</p>
+						</div>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<section id="clinical-fit" class="px-6 py-12 sm:py-16">
+			<div class="mx-auto max-w-6xl">
+				<div class="grid gap-8 lg:grid-cols-[0.82fr_1.18fr] lg:items-end">
+					<div>
+						<p class="text-sm font-semibold uppercase text-eden-green">Clinical fit</p>
+						<h2 class="mt-3 text-3xl font-semibold leading-tight text-eden-navy sm:text-4xl">
+							One peptide-first starting point before choosing a protocol.
+						</h2>
+					</div>
+					<p class="text-base leading-8 text-slate-700">
+						This visit is built for adults weighing peptide therapy against their goals: recovery, body composition, sleep, skin quality, and long-term health.
+					</p>
+				</div>
+				<div class="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+					{lanes.map((item) => (
+						<div class="rounded-lg border border-eden-line bg-white p-5 shadow-sm">
+							<p class="text-xs font-semibold uppercase text-eden-green">Care path</p>
+							<h3 class="mt-2 text-xl font-semibold text-eden-navy">{item.label}</h3>
+							<p class="mt-3 text-sm leading-6 text-slate-700">{item.body}</p>
 						</div>
 					))}
 				</div>
