@@ -21,6 +21,8 @@ const ATTRIBUTION_KEYS = [
 	"msclkid",
 ] as const;
 
+const GOOGLE_CLICK_ID_KEYS = ["gclid", "gbraid", "wbraid"] as const;
+
 const FIRST_TOUCH_KEY = "eden_first_touch";
 const LAST_TOUCH_KEY = "eden_last_touch";
 const ATTRIBUTION_TTL_MS = 90 * 24 * 60 * 60 * 1000;
@@ -115,6 +117,19 @@ function hasCampaignSignal(touch: Record<string, string | null>): boolean {
 	return ATTRIBUTION_KEYS.some((key) => Boolean(touch[key]));
 }
 
+function hasGoogleClickSignal(touch: Record<string, string | null>): boolean {
+	return GOOGLE_CLICK_ID_KEYS.some((key) => Boolean(touch[key]));
+}
+
+function normalizeGoogleClickIds(touch: Record<string, string | null>): Record<string, string | null> {
+	const normalized = { ...touch };
+	const selectedKey = GOOGLE_CLICK_ID_KEYS.find((key) => Boolean(normalized[key]));
+	for (const key of GOOGLE_CLICK_ID_KEYS) {
+		normalized[key] = key === selectedKey ? normalized[key] : null;
+	}
+	return normalized;
+}
+
 export function initAttribution(): AttributionSnapshot {
 	if (typeof window === "undefined") return { firstTouch: {}, lastTouch: {} };
 
@@ -140,4 +155,16 @@ export function getAttribution(): AttributionSnapshot {
 		firstTouch: readStoredAttribution(FIRST_TOUCH_KEY),
 		lastTouch: readStoredAttribution(LAST_TOUCH_KEY),
 	};
+}
+
+export function getGoogleAttributionForSubmission(
+	attribution: AttributionSnapshot = getAttribution(),
+): Record<string, string | null> {
+	if (typeof window === "undefined") return {};
+
+	const currentTouch = captureCurrentTouch();
+	const selectedTouch = [currentTouch, attribution.lastTouch, attribution.firstTouch]
+		.find(hasGoogleClickSignal);
+
+	return selectedTouch ? normalizeGoogleClickIds(selectedTouch) : {};
 }

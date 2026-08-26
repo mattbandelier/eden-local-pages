@@ -1,4 +1,5 @@
 import type { APIRoute } from "astro";
+import { createHash, randomUUID } from "node:crypto";
 
 export const prerender = false;
 
@@ -71,6 +72,8 @@ const GHL_CUSTOM_FIELD_IDS = {
 	gbraid: "n4cxQWLMuSWgKDiVt4lY",
 	wbraid: "PkdeczvbdVMUyFKuJxBq",
 } as const;
+const ATTRIBUTION_NOTE_SCHEMA = "eden_google_attribution_event_v1";
+const ATTRIBUTION_NOTE_TITLE = "Eden Google attribution event";
 
 interface LeadRequestBody {
 	firstName?: unknown;
@@ -101,6 +104,7 @@ interface LeadRequestBody {
 	referrer?: unknown;
 	firstTouch?: unknown;
 	lastTouch?: unknown;
+	attributionEventId?: unknown;
 	website?: unknown;
 }
 
@@ -133,6 +137,7 @@ interface LeadPayload {
 	referrer: string | null;
 	firstTouch: Record<string, string | null> | null;
 	lastTouch: Record<string, string | null> | null;
+	attributionEventId: string;
 	submittedAt: string;
 }
 
@@ -209,6 +214,59 @@ function customField(
 function optionalCustomField(id: string | undefined, value: string | null): { id: string; field_value: string } | null {
 	if (!id) return null;
 	return customField(id, value);
+}
+
+function attributionEventBody(payload: LeadPayload): string {
+	const eventPayload = {
+		event_id: payload.attributionEventId,
+		submitted_at: payload.submittedAt,
+		source_page: payload.sourcePage,
+		referrer: payload.referrer,
+		utm_source: payload.utmSource,
+		utm_medium: payload.utmMedium,
+		utm_campaign: payload.utmCampaign,
+		utm_term: payload.utmTerm,
+		utm_content: payload.utmContent,
+		gclid: payload.gclid,
+		gbraid: payload.gbraid,
+		wbraid: payload.wbraid,
+		gclsrc: payload.gclsrc,
+		gad_source: payload.gadSource,
+		gad_campaignid: payload.gadCampaignId,
+		first_touch: payload.firstTouch,
+		last_touch: payload.lastTouch,
+	};
+	const canonical = JSON.stringify(eventPayload);
+	return JSON.stringify({
+		schema: ATTRIBUTION_NOTE_SCHEMA,
+		payload: eventPayload,
+		sha256: createHash("sha256").update(canonical).digest("hex"),
+	});
+}
+
+async function appendGhlAttributionEvent(
+	token: string,
+	contactId: string,
+	userId: string | undefined,
+	payload: LeadPayload,
+): Promise<boolean> {
+	if (!userId) return false;
+	const response = await fetch(`https://services.leadconnectorhq.com/contacts/${contactId}/notes`, {
+		method: "POST",
+		headers: {
+			accept: "application/json",
+			authorization: `Bearer ${token}`,
+			"content-type": "application/json",
+			version: "v3",
+		},
+		body: JSON.stringify({
+			userId,
+			title: ATTRIBUTION_NOTE_TITLE,
+			body: attributionEventBody(payload),
+			pinned: false,
+		}),
+	});
+	return response.ok;
 }
 
 async function postLeadWebhook(webhookUrl: string | undefined, payload: LeadPayload): Promise<boolean> {
@@ -398,13 +456,21 @@ async function upsertGhlContact(payload: LeadPayload): Promise<boolean> {
 	});
 
 	if (!response.ok) return false;
-	const tags = tagsForLeadPayload(payload);
-	const workflowId = workflowIdForLeadPayload(payload);
-	if (!tags.length && !workflowId) return true;
-
 	const responseData = await response.json().catch(() => null);
 	const contactId = ghlContactIdFromResponse(responseData);
 	if (!contactId) return false;
+	const attributionArchived = await appendGhlAttributionEvent(
+		token,
+		contactId,
+		import.meta.env.GHL_CONCIERGE_COORDINATOR_USER_ID,
+		payload,
+	);
+	if (!attributionArchived) {
+		console.error("GHL attribution event archive failed", { contactId, eventId: payload.attributionEventId });
+	}
+	const tags = tagsForLeadPayload(payload);
+	const workflowId = workflowIdForLeadPayload(payload);
+	if (!tags.length && !workflowId) return true;
 	const isBaselineLead = shouldApplyBaselineLeadTag(payload);
 
 	// A baseline request is a new acquisition lane, never a peptide follow-up.
@@ -486,6 +552,7 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
 		referrer: stringOrNull(body.referrer),
 		firstTouch: attributionOrNull(body.firstTouch),
 		lastTouch: attributionOrNull(body.lastTouch),
+		attributionEventId: stringOrNull(body.attributionEventId) || randomUUID(),
 		submittedAt: new Date().toISOString(),
 	};
 
