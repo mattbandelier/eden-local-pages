@@ -24,8 +24,8 @@ const demandPathLinks =
 	variant === "wellness"
 		? [
 				{ label: "Longevity Clinic Denver", href: "/longevity/" },
-				{ label: "Longevity Baseline Visit", href: "/longevity-baseline-visit/" },
-				{ label: "TRT Denver", href: "/male-trt/denver/" },
+				{ label: "Longevity Baseline Visit", href: "/longevity-baseline-visit/", fullRow: true },
+				{ label: "TRT Denver", href: "/male-trt/denver/", fullRow: true },
 				{ label: "Men's Hormone Optimization", href: "/mens-hormone-optimization/" },
 				{ label: "Women's Hormone Optimization", href: "/womens-hormone-optimization/" },
 				{ label: "Medical Weight Loss Denver", href: "/medical-weight-loss/denver/" },
@@ -96,7 +96,7 @@ const demandPathLinks =
 		<p class="text-sm font-semibold uppercase text-white">{variant === "wellness" ? "Denver wellness demand paths" : "Denver demand paths"}</p>
 		<div class="mt-4 flex flex-wrap gap-x-5 gap-y-2">
 			{demandPathLinks.map((link) => (
-				<a href={link.href} class="text-sm text-white/75 hover:text-white">{link.label}</a>
+				<a href={link.href} class:list={["text-sm text-white/75 hover:text-white", link.fullRow && "basis-full"]}>{link.label}</a>
 			))}
 		</div>
 	</div>
