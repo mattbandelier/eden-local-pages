@@ -42,7 +42,7 @@ const offerIncludes = [
 	},
 	{
 		title: "Lab work",
-		body: "Your $299 starter includes lab work so the peptide conversation starts with clinical context, not guesswork.",
+		body: "Your starter includes lab work so the peptide conversation starts with clinical context, not guesswork.",
 	},
 	{
 		title: "Personalized health roadmap",
@@ -60,10 +60,27 @@ const pricingIncludes = [
 	"Personalized next-step plan",
 ];
 
-const googleReviewSnippets = [
-	"The space itself is beautiful, clean, and relaxing - such a great atmosphere.",
-	"Amazing place, just got a facial done and it felt like heaven!",
-	"This is a full body workout with some added weights and great music!",
+const careReviewSnippets = [
+	{
+		quote: "I saw Lindsay to get my blood work checked.",
+		author: "Andrea A.",
+	},
+	{
+		quote: "I can't rave enough on how wonderful my experience was with Eden.",
+		author: "Kolby S.",
+	},
+	{
+		quote: "Need Daxxify or RHA filler - Christy is your gal!",
+		author: "Shannon R.",
+	},
+	{
+		quote: "I had Daxxify with Christy M. She executed the work perfectly.",
+		author: "Sarah K.",
+	},
+	{
+		quote: "I loved my time at Eden from the friendly staff, helpful advice, to high quality services and products are incredible!",
+		author: "Katherine A.",
+	},
 ];
 
 const lanes = [
@@ -327,16 +344,15 @@ const jsonLd: JsonLd[] = [
 			<section class="bg-eden-forest px-6 py-12 text-white sm:py-16" aria-labelledby="guest-feedback-heading" data-review-carousel>
 				<div class="mx-auto max-w-4xl">
 					<div class="text-center">
-						<p class="text-sm font-semibold uppercase text-eden-sage">Reviews</p>
-						<h2 id="guest-feedback-heading" class="mt-3 text-3xl font-semibold sm:text-4xl">What guests say about Eden.</h2>
-						<a href="https://www.google.com/search?q=Eden+Health+Clubs+Google+reviews" class="mt-4 inline-block text-sm font-semibold text-eden-sage underline decoration-white/35 underline-offset-4" target="_blank" rel="noreferrer">Read reviews on Google</a>
+						<p class="text-sm font-semibold uppercase text-eden-sage">Guest stories</p>
+						<h2 id="guest-feedback-heading" class="mt-3 text-3xl font-semibold sm:text-4xl">Care that feels personal.</h2>
 					</div>
 					<div class="mt-8 flex snap-x snap-mandatory overflow-x-auto scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden" data-review-track>
-						{googleReviewSnippets.map((quote) => (
+						{careReviewSnippets.map((review) => (
 							<figure class="w-full shrink-0 snap-start px-1 sm:px-4" data-review-card>
 								<div class="rounded-lg border border-white/15 bg-white/8 p-7 text-center shadow-2xl backdrop-blur sm:p-10">
-									<blockquote class="mx-auto max-w-2xl text-xl font-medium leading-8 text-white sm:text-2xl sm:leading-9">&ldquo;{quote}&rdquo;</blockquote>
-									<figcaption class="mt-6 text-xs font-semibold uppercase text-eden-sage">Google review</figcaption>
+									<blockquote class="mx-auto max-w-2xl text-xl font-medium leading-8 text-white sm:text-2xl sm:leading-9">&ldquo;{review.quote}&rdquo;</blockquote>
+									<figcaption class="mt-6 text-xs font-semibold uppercase text-eden-sage">{review.author}</figcaption>
 								</div>
 							</figure>
 						))}
@@ -344,7 +360,7 @@ const jsonLd: JsonLd[] = [
 					<div class="mt-6 flex items-center justify-center gap-4">
 						<button type="button" class="grid h-10 w-10 place-items-center rounded-full border border-white/25 text-lg text-white transition hover:bg-white/10" aria-label="Previous review" data-review-prev>&larr;</button>
 						<div class="flex gap-2" aria-label="Review carousel pages">
-							{googleReviewSnippets.map((_, index) => (
+							{careReviewSnippets.map((_, index) => (
 								<button type="button" class:list={["h-2.5 w-2.5 rounded-full transition", index === 0 ? "bg-eden-sage" : "bg-white/30 hover:bg-white/60"]} aria-label={`Show review ${index + 1}`} aria-current={index === 0 ? "true" : undefined} data-review-dot={index}></button>
 							))}
 						</div>
@@ -364,7 +380,7 @@ const jsonLd: JsonLd[] = [
 						One clear first step: a private consultation with a licensed provider, baseline lab work, and a personalized next-step plan. No treatment purchase is included or required.
 					</p>
 					<div class="mt-6 rounded-lg border border-eden-line bg-eden-paper p-5 shadow-sm">
-							<p class="text-sm font-semibold uppercase text-eden-green">$299 - Peptide Starter</p>
+							<p class="text-sm font-semibold uppercase text-eden-green">Peptide Starter</p>
 						<ul class="mt-4 grid gap-3 text-sm leading-6 text-slate-700">
 							{pricingIncludes.map((item) => (
 								<li class="flex gap-3">
