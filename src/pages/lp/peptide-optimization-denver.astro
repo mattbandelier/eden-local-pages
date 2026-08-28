@@ -60,6 +60,12 @@ const pricingIncludes = [
 	"Personalized next-step plan",
 ];
 
+const googleReviewSnippets = [
+	"The space itself is beautiful, clean, and relaxing - such a great atmosphere.",
+	"Amazing place, just got a facial done and it felt like heaven!",
+	"This is a full body workout with some added weights and great music!",
+];
+
 const lanes = [
 	{
 		label: "Peptide therapy",
@@ -77,13 +83,6 @@ const lanes = [
 		label: "Longevity support",
 		body: "For adults comparing peptide therapy, biomarkers, recovery, sleep, skin quality, and premium wellness support near DTC.",
 	},
-];
-
-const differentiators = [
-	["First step", "$299 Peptide Starter with an in-person consultation, baseline labs, and a personalized plan", "A menu of options before anyone understands fit"],
-	["Environment", "Greenwood Village health club with recovery, training, body composition, and clinical wellness in one location", "A single-service clinic or remote-only program"],
-	["Clinical path", "Provider review connects your goals, labs, and health history to the right next step", "Product-first messaging that can skip the why"],
-	["Follow-through", "Eden One and Elevate can connect ongoing care, credits, training, recovery, bloodwork rhythm, and support", "A one-off visit with no day-to-day system"],
 ];
 
 const process = [
@@ -325,12 +324,32 @@ const jsonLd: JsonLd[] = [
 			</div>
 		</section>
 
+		<section class="border-y border-eden-line bg-white px-6 py-8 sm:py-10" aria-labelledby="guest-feedback-heading">
+			<div class="mx-auto max-w-6xl">
+				<div class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+					<div>
+						<p class="text-sm font-semibold uppercase text-eden-green">Guest feedback</p>
+						<h2 id="guest-feedback-heading" class="mt-2 text-2xl font-semibold text-eden-navy sm:text-3xl">A premium Eden experience, beyond the consult room.</h2>
+					</div>
+					<a href="https://www.google.com/search?q=Eden+Health+Clubs+Google+reviews" class="text-sm font-semibold text-eden-green underline decoration-eden-sage underline-offset-4" target="_blank" rel="noreferrer">Read reviews on Google</a>
+				</div>
+				<div class="mt-6 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-3 [scrollbar-width:thin]">
+					{googleReviewSnippets.map((quote) => (
+						<figure class="w-[min(20rem,82vw)] shrink-0 snap-start rounded-lg border border-eden-line bg-eden-paper p-5 shadow-sm">
+							<blockquote class="text-base leading-7 text-slate-700">&ldquo;{quote}&rdquo;</blockquote>
+							<figcaption class="mt-4 text-xs font-semibold uppercase tracking-normal text-eden-green">Google review</figcaption>
+						</figure>
+					))}
+				</div>
+			</div>
+		</section>
+
 		<section id="offer" class="bg-white px-6 py-12 sm:py-16">
 			<div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.82fr_1.18fr] lg:items-start">
 				<div>
-					<p class="text-sm font-semibold uppercase text-eden-green">$299 Peptide Starter</p>
+					<p class="text-sm font-semibold uppercase text-eden-green">Why Eden</p>
 					<h2 class="mt-3 text-3xl font-semibold leading-tight text-eden-navy sm:text-4xl">
-						Know where to start for $299.
+						A clear, provider-guided place to start.
 					</h2>
 					<p class="mt-4 text-base leading-8 text-slate-700">
 						One clear first step: a private consultation with a licensed provider, baseline lab work, and a personalized next-step plan. No treatment purchase is included or required.
@@ -354,51 +373,6 @@ const jsonLd: JsonLd[] = [
 							<p class="mt-3 text-sm leading-6 text-slate-700">{item.body}</p>
 						</div>
 					))}
-				</div>
-			</div>
-		</section>
-
-		<section id="why-eden" class="bg-white px-6 py-12 sm:py-16">
-			<div class="mx-auto max-w-6xl">
-				<div class="grid gap-8 lg:grid-cols-[0.82fr_1.18fr] lg:items-start">
-					<div>
-						<p class="text-sm font-semibold uppercase text-eden-green">Why Eden</p>
-						<h2 class="mt-3 text-3xl font-semibold leading-tight text-eden-navy sm:text-4xl">
-							The advantage is what happens after the review.
-						</h2>
-						<p class="mt-4 text-base leading-8 text-slate-700">
-							Online clinics can sell access. Single-service clinics can sell one modality. Eden can connect provider-guided wellness with recovery, training, InBody, labs, and a premium local facility.
-						</p>
-					</div>
-					<div class="hidden overflow-hidden rounded-lg border border-eden-line bg-eden-paper shadow-sm md:block">
-						<div class="grid grid-cols-[0.72fr_1fr_1fr] bg-eden-forest text-sm font-semibold text-white">
-							<div class="p-4">Decision point</div>
-							<div class="border-l border-white/10 p-4">Eden path</div>
-							<div class="border-l border-white/10 p-4">Generic alternative</div>
-						</div>
-						{differentiators.map(([label, eden, other]) => (
-							<div class="grid grid-cols-[0.72fr_1fr_1fr] border-t border-eden-line text-sm">
-								<div class="bg-white p-4 font-semibold text-eden-navy">{label}</div>
-								<div class="border-l border-eden-line p-4 leading-6 text-slate-700">{eden}</div>
-								<div class="border-l border-eden-line p-4 leading-6 text-slate-600">{other}</div>
-							</div>
-						))}
-					</div>
-					<div class="grid gap-4 md:hidden">
-						{differentiators.map(([label, eden, other]) => (
-							<div class="rounded-lg border border-eden-line bg-eden-paper p-5">
-								<p class="text-sm font-semibold uppercase text-eden-green">{label}</p>
-								<div class="mt-4 rounded-md bg-white p-4">
-									<p class="text-sm font-semibold text-eden-navy">Eden path</p>
-									<p class="mt-2 text-sm leading-6 text-slate-700">{eden}</p>
-								</div>
-								<div class="mt-3 rounded-md border border-eden-line p-4">
-									<p class="text-sm font-semibold text-eden-navy">Generic alternative</p>
-									<p class="mt-2 text-sm leading-6 text-slate-600">{other}</p>
-								</div>
-							</div>
-						))}
-					</div>
 				</div>
 			</div>
 		</section>
