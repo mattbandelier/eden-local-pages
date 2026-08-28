@@ -4,9 +4,10 @@ import { serviceHubUrl, suburbHubUrl } from "../../lib/urls";
 
 interface Props {
 	variant?: "default" | "wellness";
+	showLocationLinks?: boolean;
 }
 
-const { variant = "default" } = Astro.props;
+const { variant = "default", showLocationLinks = true } = Astro.props;
 const phone = "720-605-7678";
 const defaultServiceLinks = services.slice(0, 6).map((service) => ({
 	label: service.name,
@@ -58,7 +59,7 @@ const demandPathLinks =
 ---
 
 <footer class="bg-eden-navy px-6 py-12 text-white">
-	<div class="mx-auto grid max-w-6xl gap-10 md:grid-cols-4">
+	<div class:list={["mx-auto grid max-w-6xl gap-10", showLocationLinks ? "md:grid-cols-4" : "md:grid-cols-3"]}>
 		<div class="md:col-span-2">
 			<p class="text-lg font-semibold">Eden Health Club</p>
 			<p class="mt-3 max-w-md text-sm leading-6 text-white/75">
@@ -83,14 +84,16 @@ const demandPathLinks =
 				))}
 			</div>
 		</div>
-		<div>
-			<p class="text-sm font-semibold uppercase text-white">Locations</p>
-			<div class="mt-4 grid gap-2">
-				{suburbs.slice(0, 6).map((suburb) => (
-					<a href={suburbHubUrl(suburb.slug)} class="text-sm text-white/75 hover:text-white">{suburb.name}</a>
-				))}
+		{showLocationLinks && (
+			<div>
+				<p class="text-sm font-semibold uppercase text-white">Locations</p>
+				<div class="mt-4 grid gap-2">
+					{suburbs.slice(0, 6).map((suburb) => (
+						<a href={suburbHubUrl(suburb.slug)} class="text-sm text-white/75 hover:text-white">{suburb.name}</a>
+					))}
+				</div>
 			</div>
-		</div>
+		)}
 	</div>
 	<div class="mx-auto mt-8 max-w-6xl border-t border-white/10 pt-6">
 		<p class="text-sm font-semibold uppercase text-white">{variant === "wellness" ? "Denver wellness demand paths" : "Denver demand paths"}</p>
