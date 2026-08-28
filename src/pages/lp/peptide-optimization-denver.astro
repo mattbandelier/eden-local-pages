@@ -332,11 +332,11 @@ const jsonLd: JsonLd[] = [
 						<a href="https://www.google.com/search?q=Eden+Health+Clubs+Google+reviews" class="mt-4 inline-block text-sm font-semibold text-eden-sage underline decoration-white/35 underline-offset-4" target="_blank" rel="noreferrer">Read reviews on Google</a>
 					</div>
 					<div class="mt-8 flex snap-x snap-mandatory overflow-x-auto scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden" data-review-track>
-						{googleReviewSnippets.map((quote, index) => (
+						{googleReviewSnippets.map((quote) => (
 							<figure class="w-full shrink-0 snap-start px-1 sm:px-4" data-review-card>
 								<div class="rounded-lg border border-white/15 bg-white/8 p-7 text-center shadow-2xl backdrop-blur sm:p-10">
 									<blockquote class="mx-auto max-w-2xl text-xl font-medium leading-8 text-white sm:text-2xl sm:leading-9">&ldquo;{quote}&rdquo;</blockquote>
-									<figcaption class="mt-6 text-xs font-semibold uppercase text-eden-sage">Google review {index + 1} of {googleReviewSnippets.length}</figcaption>
+									<figcaption class="mt-6 text-xs font-semibold uppercase text-eden-sage">Google review</figcaption>
 								</div>
 							</figure>
 						))}
