@@ -1,5 +1,6 @@
 ---
 import LeadForm from "../../components/content/LeadForm.astro";
+import DeferredHeroVideo from "../../components/content/DeferredHeroVideo.astro";
 import GuestReviewStrip from "../../components/content/GuestReviewStrip.astro";
 import StickyMobileLeadActions from "../../components/content/StickyMobileLeadActions.astro";
 import PaidServiceFooter from "../../components/layout/PaidServiceFooter.astro";
@@ -134,14 +135,15 @@ const jsonLd: JsonLd[] = [
 	canonicalUrl={canonical}
 	jsonLd={jsonLd}
 	noindex={true}
-	ogImage="/assets/eden-functional-consult-air.webp"
-	preloadImages={["/assets/eden-health-club-reception.webp", "/assets/eden-functional-consult-air.webp", "/assets/eden-health-club-logo-white-transparent-tight.png"]}
+	ogImage="/assets/eden-provider-consult-air.webp"
+	preloadImages={["/assets/eden-health-club-reception.webp", "/assets/eden-provider-consult-air.webp", "/assets/eden-health-club-logo-white-transparent-tight.png"]}
 >
 	<PremiumHeader brandHref={null} servicesHref="#fit" servicesLabel="The Visit" pricingHref="#lead-form" contactHref="#lead-form" ctaLabel="Consult" />
 	<main class="bg-eden-paper pb-24 md:pb-0">
 		<section class="relative overflow-hidden bg-eden-forest text-white">
 			<div class="absolute inset-0">
 				<img src="/assets/eden-health-club-reception.webp" alt="" class="h-full w-full object-cover opacity-30" loading="eager" fetchpriority="high" decoding="async" width="1388" height="1000" />
+				<DeferredHeroVideo poster="/assets/eden-health-club-reception.webp" />
 				<div class="absolute inset-0 bg-[linear-gradient(90deg,rgba(28,45,38,0.98),rgba(25,79,57,0.9)_48%,rgba(25,79,57,0.48))]"></div>
 			</div>
 			<div class="relative mx-auto grid min-h-[calc(100vh-64px)] max-w-6xl gap-10 px-6 py-12 sm:py-16 lg:grid-cols-[1.02fr_0.98fr] lg:items-center">
@@ -179,7 +181,7 @@ const jsonLd: JsonLd[] = [
 					<div class="overflow-hidden rounded-lg border border-white/15 bg-white/10 p-3 shadow-2xl backdrop-blur">
 						<div class="grid gap-3 sm:grid-cols-[1.12fr_0.88fr]">
 							<div class="overflow-hidden rounded-md">
-								<img src="/assets/eden-functional-consult-air.webp" alt="Eden provider meeting with a guest during a private consultation" class="h-full min-h-72 w-full object-cover object-center" loading="eager" fetchpriority="high" decoding="async" width="900" height="1600" />
+								<img src="/assets/eden-provider-consult-air.webp" alt="Eden provider meeting with a guest during a private consultation" class="h-full min-h-72 w-full object-cover object-[center_30%]" loading="eager" fetchpriority="high" decoding="async" width="1012" height="1800" />
 							</div>
 							<div class="grid gap-3">
 								<div class="overflow-hidden rounded-md">

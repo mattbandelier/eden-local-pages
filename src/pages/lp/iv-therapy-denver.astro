@@ -1,5 +1,6 @@
 ---
 import LeadForm from "../../components/content/LeadForm.astro";
+import CategoryComparison from "../../components/content/CategoryComparison.astro";
 import GuestReviewStrip from "../../components/content/GuestReviewStrip.astro";
 import StickyMobileLeadActions from "../../components/content/StickyMobileLeadActions.astro";
 import PaidServiceFooter from "../../components/layout/PaidServiceFooter.astro";
@@ -83,6 +84,24 @@ const faqs = [
 	},
 ];
 
+const comparisonRows = [
+	{
+		label: "First decision",
+		eden: "Start with your goal, then confirm the right visit, availability, and price before treatment.",
+		alternative: "Choose from a long ingredient menu before knowing which visit fits.",
+	},
+	{
+		label: "Setting",
+		eden: "Visit Eden's real IV lounge in Greenwood Village, minutes from DTC.",
+		alternative: "Book without seeing the space or understanding how the visit works.",
+	},
+	{
+		label: "New-guest offer",
+		eden: "$129 for a qualifying first wellness IV, with exclusions stated before you request.",
+		alternative: "Pricing or eligibility becomes clear later in the booking path.",
+	},
+];
+
 const jsonLd: JsonLd[] = [
 	{
 		"@context": "https://schema.org",
@@ -137,14 +156,14 @@ const jsonLd: JsonLd[] = [
 	canonicalUrl={canonical}
 	jsonLd={jsonLd}
 	noindex={true}
-	ogImage="/assets/iv-therapy-clinic-hero.webp"
-	preloadImages={["/assets/iv-therapy-clinic-hero.webp", "/assets/eden-health-club-logo-white-transparent-tight.png"]}
+	ogImage="/assets/eden-iv-visit-air.webp"
+	preloadImages={["/assets/eden-iv-visit-air.webp", "/assets/eden-health-club-logo-white-transparent-tight.png"]}
 >
 	<PremiumHeader brandHref={null} servicesHref="#visit" servicesLabel="IV Visit" pricingHref="#lead-form" pricingLabel="Pricing" contactHref="#lead-form" ctaLabel="Request IV Visit" />
 	<main class="bg-eden-paper pb-24 md:pb-0">
 		<section class="relative overflow-hidden bg-eden-forest text-white">
 			<div class="absolute inset-0">
-				<img src="/assets/eden-health-club-reception.webp" alt="" class="h-full w-full object-cover opacity-20" loading="eager" fetchpriority="low" decoding="async" width="1388" height="1000" />
+				<img src="/assets/eden-iv-lounge-air.webp" alt="" class="h-full w-full object-cover opacity-26" loading="eager" fetchpriority="low" decoding="async" width="1800" height="1200" />
 				<div class="absolute inset-0 bg-[linear-gradient(90deg,rgba(15,35,29,0.99),rgba(18,68,50,0.95)_52%,rgba(18,68,50,0.76))]"></div>
 			</div>
 			<div class="relative mx-auto grid min-h-[calc(100vh-64px)] max-w-6xl gap-10 px-6 py-12 sm:py-16 lg:grid-cols-[1.02fr_0.98fr] lg:items-center">
@@ -184,7 +203,7 @@ const jsonLd: JsonLd[] = [
 					</div>
 				</div>
 				<div class="overflow-hidden rounded-lg border border-white/15 bg-white/10 p-3 shadow-2xl backdrop-blur">
-					<img src="/assets/iv-therapy-clinic-hero.webp" alt="Adult patient meeting with a provider during an IV hydration visit" class="h-[28rem] w-full rounded-md object-cover object-center" loading="eager" fetchpriority="high" decoding="async" width="1440" height="960" />
+					<img src="/assets/eden-iv-visit-air.webp" alt="Guest beginning an IV visit with an Eden team member" class="h-[28rem] w-full rounded-md object-cover object-[center_36%]" loading="eager" fetchpriority="high" decoding="async" width="1013" height="1800" />
 					<div class="mt-3 rounded-md bg-white p-5 text-eden-navy">
 						<p class="text-xs font-semibold uppercase text-eden-green">$129 first IV visit</p>
 						<p class="mt-2 text-xl font-semibold leading-tight">
@@ -294,6 +313,14 @@ const jsonLd: JsonLd[] = [
 				</div>
 			</div>
 		</section>
+
+		<CategoryComparison
+			eyebrow="Why start at Eden"
+			heading="A defined IV visit in a place you can actually see."
+			intro="The strongest alternative to ingredient shopping is a clear offer, a real setting, and a team that confirms fit before treatment."
+			alternativeLabel="A menu-first path"
+			rows={comparisonRows}
+		/>
 
 		<section class="bg-white px-6 py-12 sm:py-16" aria-labelledby="iv-faq-heading">
 			<div class="mx-auto max-w-4xl">
