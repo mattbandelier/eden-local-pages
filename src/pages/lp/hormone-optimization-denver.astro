@@ -117,7 +117,7 @@ const jsonLd: JsonLd[] = [
 	jsonLd={jsonLd}
 	noindex
 	ogImage="/assets/eden-functional-consult-air.webp"
-	preloadImages={["/assets/eden-functional-consult-air.webp", "/assets/eden-health-club-logo-white-transparent-tight.png"]}
+	preloadImages={["/assets/eden-health-club-logo-white-transparent-tight.png"]}
 >
 	<PremiumHeader
 		brandHref={null}
@@ -167,9 +167,11 @@ const jsonLd: JsonLd[] = [
 				<div class="relative hidden lg:block">
 					<div class="overflow-hidden rounded-lg border border-white/15 bg-white/10 p-3 shadow-2xl backdrop-blur">
 						<div class="grid gap-3 sm:grid-cols-[1.12fr_0.88fr]">
-							<div class="overflow-hidden rounded-md">
-								<img src="/assets/eden-functional-consult-air.webp" alt="Eden provider meeting with a guest during a private consultation" class="h-full min-h-72 w-full object-cover object-center" loading="eager" fetchpriority="high" decoding="async" width="900" height="1600" />
-							</div>
+							<div
+								role="img"
+								aria-label="Eden provider meeting with a guest during a private consultation"
+								class="min-h-72 overflow-hidden rounded-md bg-[url('/assets/eden-functional-consult-air.webp')] bg-cover bg-center"
+							></div>
 							<div class="grid gap-3">
 								<div class="overflow-hidden rounded-md">
 									<img src="/assets/eden-health-club-reception.webp" alt="" class="h-40 w-full object-cover sm:h-full" loading="lazy" width="1388" height="1000" />
