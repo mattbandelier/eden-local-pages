@@ -27,11 +27,11 @@ const visitIncludes = [
 	},
 ];
 
-const comparisonPoints = [
-	["Starting point", "Symptoms, history, goals, and relevant labs", "A preset protocol selected before evaluation"],
-	["Setting", "In-person care inside a private Greenwood Village health club", "Remote-only or high-volume care"],
-	["Planning", "Provider-guided eligibility and safety review", "Treatment-first messaging"],
-	["Follow-up", "Ongoing visits and lab monitoring when care moves forward", "A one-time transaction"],
+const edenDifferences = [
+	["Start with context", "Symptoms, health history, goals, and the relevant baseline panel shape the first conversation."],
+	["Meet in person", "Private care inside Eden's Greenwood Village health club, minutes from DTC."],
+	["Review before treatment", "Eligibility, safety, and the next step are considered before any ongoing plan."],
+	["Build accountable follow-through", "Ongoing visits and lab monitoring can continue when care moves forward."],
 ];
 
 const faqs = [
@@ -117,7 +117,7 @@ const jsonLd: JsonLd[] = [
 	jsonLd={jsonLd}
 	noindex
 	ogImage="/assets/eden-functional-consult-air.webp"
-	preloadImages={["/assets/eden-health-club-reception.webp"]}
+	preloadImages={["/assets/eden-functional-consult-air.webp", "/assets/eden-health-club-logo-white-transparent-tight.png"]}
 >
 	<PremiumHeader
 		brandHref={null}
@@ -131,73 +131,109 @@ const jsonLd: JsonLd[] = [
 
 	<main class="bg-eden-paper pb-24 md:pb-0">
 		<section class="relative overflow-hidden bg-eden-forest text-white">
-			<img
-				src="/assets/eden-health-club-reception.webp"
-				alt=""
-				class="absolute inset-0 h-full w-full object-cover opacity-45"
-				loading="eager"
-				fetchpriority="high"
-				decoding="async"
-				width="1388"
-				height="1000"
-			/>
-			<div class="absolute inset-0 bg-[linear-gradient(90deg,rgba(28,45,38,0.97),rgba(28,45,38,0.84)_52%,rgba(28,45,38,0.46))]"></div>
-			<div class="relative mx-auto grid min-h-[680px] max-w-6xl gap-10 px-6 py-14 lg:grid-cols-[1.08fr_0.92fr] lg:items-center">
-				<div class="max-w-2xl">
+			<div class="absolute inset-0 bg-[linear-gradient(112deg,#1c2d26,rgba(25,79,57,0.96)_48%,#173b2c)]"></div>
+			<div class="relative mx-auto grid max-w-6xl gap-10 px-6 py-4 sm:py-12 lg:min-h-[calc(100vh-150px)] lg:grid-cols-[1.02fr_0.98fr] lg:items-center lg:py-8">
+				<div>
+					<img
+						src="/assets/eden-health-club-logo-white-transparent-tight.png"
+						alt="Eden Health Club"
+						class="mb-4 h-auto w-24 sm:w-40 lg:mb-8 lg:w-44"
+						loading="eager"
+						fetchpriority="high"
+						decoding="async"
+						width="744"
+						height="447"
+					/>
 					<p class="text-sm font-semibold uppercase text-eden-sage">Hormone specialist · Greenwood Village near DTC</p>
-					<h1 class="mt-4 max-w-3xl text-4xl font-semibold leading-tight sm:text-5xl lg:text-6xl">
+					<h1 class="mt-4 max-w-3xl text-3xl font-semibold leading-tight sm:text-5xl">
 						A $175 hormone consultation for women and men in Denver.
 					</h1>
-					<p class="mt-6 max-w-xl text-lg leading-8 text-white/82">
-						Start with a private consultation, hormone lab work, and a clear next-step plan for energy, sleep, mood, recovery, or body-composition questions.
+					<p class="mt-5 max-w-2xl text-base leading-7 text-white/86 sm:text-lg sm:leading-8">
+						<span class="sm:hidden">Start with a private consultation, the appropriate hormone panel, and a clear next-step plan.</span>
+						<span class="hidden sm:inline">Start with a private consultation, hormone lab work, and a clear next-step plan for energy, sleep, mood, recovery, or body-composition questions.</span>
 					</p>
-					<div class="mt-7 flex flex-wrap gap-3 text-sm font-semibold text-white/88">
-						<span class="rounded-md border border-white/20 bg-white/10 px-3 py-2">$175 new-client visit</span>
-						<span class="rounded-md border border-white/20 bg-white/10 px-3 py-2">$100 consult + $75 panel</span>
-						<span class="rounded-md border border-white/20 bg-white/10 px-3 py-2">Provider-led roadmap</span>
+					<div class="mt-8 grid grid-cols-2 gap-3 sm:flex sm:flex-row">
+						<a href="#lead-form" class="rounded-md bg-eden-sage px-4 py-3 text-center text-sm font-semibold text-eden-forest shadow-sm sm:px-6 sm:text-base">
+							<span class="sm:hidden">Request Visit</span><span class="hidden sm:inline">Request My $175 Consultation</span>
+						</a>
+						<a href="tel:+17206057678" data-phone-link class="rounded-md border border-white/35 px-4 py-3 text-center text-sm font-semibold text-white hover:bg-white/10 sm:px-6 sm:text-base">
+							<span class="sm:hidden">Call Eden</span><span class="hidden sm:inline">Call 720-605-7678</span>
+						</a>
 					</div>
-					<p class="mt-6 text-sm leading-6 text-white/68">
-						Recommendations depend on provider review, health history, and the information available at your visit.
+					<p class="mt-5 hidden max-w-2xl text-xs leading-6 text-white/62 sm:block">
+						Treatment is not included. Recommendations depend on provider review, health history, and the information available at your visit.
 					</p>
 				</div>
-
-				<LeadForm
-					serviceSlug="hormone-optimization"
-					suburbSlug="denver"
-					heading="Request your $175 hormone consultation"
-					subheading="Eden will follow up with scheduling details and what to expect from your consultation, lab work, and review."
-					submitText="Request My $175 Consultation"
-					messageLabel="What would you like help with?"
-					goalOptions={[
-						"Energy, sleep, or recovery",
-						"Menopause or perimenopause support",
-						"Men's hormone evaluation",
-						"Body composition or weight changes",
-						"I am not sure yet",
-					]}
-					hiddenMessage="Hormone Optimization Denver paid landing page $175 consultation and lab work request"
-					offerName="$175 Hormone Consultation + Lab Work"
-					offerValue="private_consult_hormone_lab_work_provider_roadmap_175"
-				/>
+				<div class="relative hidden lg:block">
+					<div class="overflow-hidden rounded-lg border border-white/15 bg-white/10 p-3 shadow-2xl backdrop-blur">
+						<div class="grid gap-3 sm:grid-cols-[1.12fr_0.88fr]">
+							<div class="overflow-hidden rounded-md">
+								<img src="/assets/eden-functional-consult-air.webp" alt="Eden provider meeting with a guest during a private consultation" class="h-full min-h-72 w-full object-cover object-center" loading="eager" fetchpriority="high" decoding="async" width="900" height="1600" />
+							</div>
+							<div class="grid gap-3">
+								<div class="overflow-hidden rounded-md">
+									<img src="/assets/eden-health-club-reception.webp" alt="" class="h-40 w-full object-cover sm:h-full" loading="lazy" width="1388" height="1000" />
+								</div>
+								<div class="grid grid-cols-2 gap-3">
+									<div class="rounded-md bg-white p-4 text-eden-navy">
+										<p class="text-xs font-semibold uppercase text-eden-green">Women's panel</p>
+										<p class="mt-2 text-sm font-semibold leading-5">FSH, estradiol, total + free testosterone with SHBG.</p>
+									</div>
+									<div class="rounded-md bg-eden-sage p-4 text-eden-forest">
+										<p class="text-xs font-semibold uppercase">Men's panel</p>
+										<p class="mt-2 text-sm font-semibold leading-5">CBC, estradiol, total + free testosterone with SHBG.</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="mt-3 rounded-md border border-eden-line bg-white p-5 text-eden-navy shadow-sm">
+							<p class="text-sm font-semibold uppercase text-eden-green">Clarity before a care plan</p>
+							<p class="mt-2 text-xl font-semibold leading-tight">One transparent visit with the right baseline panel for your hormone path.</p>
+						</div>
+					</div>
+				</div>
 			</div>
 		</section>
 
 		<GuestReviewStrip />
 
-		<section id="visit" class="px-6 py-14 sm:py-18">
+		<section id="visit" class="border-b border-eden-line bg-white px-6 py-12 sm:py-16">
 			<div class="mx-auto max-w-6xl">
-				<div class="max-w-3xl">
-					<p class="text-sm font-semibold uppercase text-eden-green">A clear first step</p>
-					<h2 class="mt-3 text-3xl font-semibold leading-tight text-eden-navy sm:text-4xl">
-						A $175 starting point before any ongoing hormone decision.
-					</h2>
-					<p class="mt-4 text-base leading-7 text-slate-700">
-						Your $175 starting visit combines a $100 private consultation with the $75 hormone panel. Eden starts with your experience, relevant lab work, and the questions you want clarified.
-					</p>
+				<div class="grid gap-8 lg:grid-cols-[0.92fr_1.08fr] lg:items-start">
+					<div class="max-w-xl">
+						<p class="text-sm font-semibold uppercase text-eden-green">A clear first step</p>
+						<h2 class="mt-3 text-3xl font-semibold leading-tight text-eden-navy sm:text-4xl">
+							A $175 starting point before any ongoing hormone decision.
+						</h2>
+						<p class="mt-4 text-base leading-8 text-slate-700">
+							The visit combines a $100 private consultation with the appropriate $75 hormone panel. Eden starts with your experience, relevant lab work, and the questions you want clarified.
+						</p>
+						<div class="mt-6 border-l-2 border-eden-green pl-5 text-sm leading-7 text-slate-700">
+							Private and in person at Eden's Greenwood Village location, minutes from Denver Tech Center.
+						</div>
+					</div>
+					<LeadForm
+						serviceSlug="hormone-optimization"
+						suburbSlug="denver"
+						heading="Request your $175 hormone consultation"
+						subheading="Eden will follow up with scheduling details and what to expect from your consultation, lab work, and review."
+						submitText="Request My $175 Consultation"
+						messageLabel="What would you like help with?"
+						goalOptions={[
+							"Energy, sleep, or recovery",
+							"Menopause or perimenopause support",
+							"Men's hormone evaluation",
+							"Body composition or weight changes",
+							"I am not sure yet",
+						]}
+						hiddenMessage="Hormone Optimization Denver paid landing page $175 consultation and lab work request"
+						offerName="$175 Hormone Consultation + Lab Work"
+						offerValue="private_consult_hormone_lab_work_provider_roadmap_175"
+					/>
 				</div>
-				<div class="mt-8 grid gap-5 md:grid-cols-3">
+				<div class="mt-10 grid gap-5 md:grid-cols-3">
 					{visitIncludes.map((item, index) => (
-						<article class="border-t-2 border-eden-green bg-white p-6 shadow-sm">
+						<article class="rounded-lg border border-eden-line bg-eden-paper p-6 shadow-sm">
 							<p class="text-sm font-semibold text-eden-green">0{index + 1}</p>
 							<h3 class="mt-3 text-xl font-semibold text-eden-navy">{item.title}</h3>
 							<p class="mt-3 text-sm leading-6 text-slate-700">{item.body}</p>
@@ -246,25 +282,13 @@ const jsonLd: JsonLd[] = [
 						A private local alternative to one-size-fits-all hormone care.
 					</h2>
 				</div>
-				<div class="mt-8 overflow-x-auto">
-					<table class="w-full min-w-[720px] border-collapse text-left text-sm">
-						<thead>
-							<tr class="border-b border-white/20">
-								<th class="px-4 py-4 font-semibold text-eden-sage">Compare</th>
-								<th class="px-4 py-4 font-semibold text-white">Eden Health Club</th>
-								<th class="px-4 py-4 font-semibold text-white/65">What clients often want to avoid</th>
-							</tr>
-						</thead>
-						<tbody>
-							{comparisonPoints.map((row) => (
-								<tr class="border-b border-white/10 align-top">
-									<th class="px-4 py-4 font-semibold text-white">{row[0]}</th>
-									<td class="px-4 py-4 leading-6 text-white/82">{row[1]}</td>
-									<td class="px-4 py-4 leading-6 text-white/58">{row[2]}</td>
-								</tr>
-							))}
-						</tbody>
-					</table>
+				<div class="mt-8 grid gap-4 sm:grid-cols-2">
+					{edenDifferences.map(([title, body]) => (
+						<article class="rounded-lg border border-white/15 bg-white/8 p-5 backdrop-blur">
+							<h3 class="text-xl font-semibold text-white">{title}</h3>
+							<p class="mt-3 text-sm leading-7 text-white/72">{body}</p>
+						</article>
+					))}
 				</div>
 			</div>
 		</section>
@@ -302,16 +326,41 @@ const jsonLd: JsonLd[] = [
 	</main>
 
 	<nav
-		class="fixed inset-x-0 bottom-0 z-30 grid grid-cols-2 border-t border-slate-200 bg-white/95 px-4 py-3 shadow-[0_-10px_30px_rgba(15,39,51,0.12)] backdrop-blur md:hidden"
+		class="pointer-events-none fixed inset-x-0 bottom-0 z-30 grid translate-y-full grid-cols-2 border-t border-slate-200 bg-white/95 px-4 py-3 opacity-0 shadow-[0_-10px_30px_rgba(15,39,51,0.12)] backdrop-blur transition duration-200 md:hidden"
 		aria-label="Contact Eden"
+		aria-hidden="true"
+		data-mobile-sticky
 	>
-		<a href="tel:+17206057678" class="mr-2 rounded-md border border-eden-navy/15 px-4 py-3 text-center text-sm font-semibold text-eden-navy">
+		<a href="tel:+17206057678" tabindex="-1" class="mr-2 rounded-md border border-eden-navy/15 px-4 py-3 text-center text-sm font-semibold text-eden-navy">
 			Call
 		</a>
-		<a href="#lead-form" class="ml-2 rounded-md bg-eden-sage px-4 py-3 text-center text-sm font-semibold text-eden-forest">
+		<a href="#lead-form" tabindex="-1" class="ml-2 rounded-md bg-eden-sage px-4 py-3 text-center text-sm font-semibold text-eden-forest">
 			Consult
 		</a>
 	</nav>
+
+	<script>
+		const mobileSticky = document.querySelector<HTMLElement>("[data-mobile-sticky]");
+		const leadForm = document.querySelector<HTMLElement>("#lead-form");
+		const paidFooter = document.querySelector<HTMLElement>("footer");
+		const stickyLinks = mobileSticky?.querySelectorAll<HTMLAnchorElement>("a") ?? [];
+
+		const updateMobileSticky = () => {
+			if (!mobileSticky) return;
+			const formVisible = leadForm ? leadForm.getBoundingClientRect().top < window.innerHeight && leadForm.getBoundingClientRect().bottom > 0 : false;
+			const footerVisible = paidFooter ? paidFooter.getBoundingClientRect().top < window.innerHeight : false;
+			const shouldShow = window.scrollY > 160 && !formVisible && !footerVisible;
+			mobileSticky.classList.toggle("pointer-events-none", !shouldShow);
+			mobileSticky.classList.toggle("translate-y-full", !shouldShow);
+			mobileSticky.classList.toggle("opacity-0", !shouldShow);
+			mobileSticky.setAttribute("aria-hidden", String(!shouldShow));
+			stickyLinks.forEach((link) => link.setAttribute("tabindex", shouldShow ? "0" : "-1"));
+		};
+
+		updateMobileSticky();
+		window.addEventListener("scroll", updateMobileSticky, { passive: true });
+		window.addEventListener("resize", updateMobileSticky);
+	</script>
 
 	<PaidServiceFooter />
 </BaseLayout>

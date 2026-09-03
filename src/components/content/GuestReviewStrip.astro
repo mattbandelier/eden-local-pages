@@ -1,39 +1,100 @@
 ---
 const reviews = [
 	{
-		quote: "Everyone there is professional, friendly, non-judgmental, down to earth.",
-		author: "Chris Eich",
+		quote: "Professional, friendly, non-judgmental, and down to earth.",
+		author: "Chris E.",
 	},
 	{
-		quote: "She's given me answers where I needed hope and has been thorough with my lab results.",
-		author: "Nicole King",
+		quote: "Thorough with my lab results.",
+		author: "Nicole K.",
 	},
 	{
-		quote: "I never felt rushed or like just another appointment on the schedule.",
-		author: "Amy White",
+		quote: "I never felt rushed.",
+		author: "Amy W.",
+	},
+	{
+		quote: "Knowledgeable and attentive.",
+		author: "Kristina H.",
+	},
+	{
+		quote: "Really heard my concerns.",
+		author: "Sarah K.",
 	},
 ];
 const googleMapsUrl = "https://www.google.com/maps?cid=12311342436061718588";
 ---
 
-<section class="border-y border-eden-line bg-white px-6 py-8 sm:py-10" aria-label="Guest feedback">
+<section class="border-y border-eden-line bg-white px-6 py-4 sm:py-10" aria-label="Guest feedback" data-review-carousel>
 	<div class="mx-auto max-w-6xl">
 		<div class="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
 			<div>
 				<p class="text-sm font-semibold uppercase text-eden-green">Guest feedback</p>
-				<p class="mt-1 text-sm leading-6 text-slate-700">Recent public feedback from Google reviewers.</p>
+				<p class="mt-1 text-sm leading-6 text-slate-700">What guests say about their experience at Eden.</p>
 			</div>
-			<a href={googleMapsUrl} target="_blank" rel="noreferrer" class="text-sm font-semibold text-eden-green underline underline-offset-4">
-				Read reviews on Google
-			</a>
+			<div class="flex items-center gap-2 sm:gap-3">
+				<a href={googleMapsUrl} target="_blank" rel="noreferrer" class="inline-flex min-h-11 items-center text-sm font-semibold text-eden-green underline underline-offset-4">
+					Read guest feedback
+				</a>
+				<button type="button" data-review-previous aria-label="Previous review" title="Previous review" class="grid size-11 shrink-0 place-items-center rounded-full border border-eden-line text-lg text-eden-green hover:bg-eden-paper">&larr;</button>
+				<button type="button" data-review-next aria-label="Next review" title="Next review" class="grid size-11 shrink-0 place-items-center rounded-full border border-eden-line text-lg text-eden-green hover:bg-eden-paper">&rarr;</button>
+			</div>
 		</div>
-		<div class="mt-6 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2">
+		<div data-review-track class="mt-6 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
 			{reviews.map((review) => (
 				<figure class="w-[min(22rem,85vw)] shrink-0 snap-start border-l-2 border-eden-sage bg-eden-paper p-5">
 					<blockquote class="text-base leading-7 text-eden-navy">&ldquo;{review.quote}&rdquo;</blockquote>
-					<figcaption class="mt-4 text-sm font-semibold text-eden-green">{review.author}, Google review</figcaption>
+					<figcaption class="mt-4 text-sm font-semibold text-eden-green">{review.author}</figcaption>
 				</figure>
 			))}
 		</div>
 	</div>
 </section>
+
+<script>
+	const carousels = document.querySelectorAll<HTMLElement>("[data-review-carousel]");
+
+	carousels.forEach((carousel) => {
+		const track = carousel.querySelector<HTMLElement>("[data-review-track]");
+		const previous = carousel.querySelector<HTMLButtonElement>("[data-review-previous]");
+		const next = carousel.querySelector<HTMLButtonElement>("[data-review-next]");
+		if (!track || !previous || !next) return;
+
+		const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+		let timer: number | undefined;
+
+		const cardWidth = () => {
+			const firstCard = track.firstElementChild as HTMLElement | null;
+			return firstCard ? firstCard.offsetWidth + 16 : track.clientWidth;
+		};
+
+		const move = (direction: 1 | -1) => {
+			const atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 8;
+			const atStart = track.scrollLeft <= 8;
+			const left = direction === 1 && atEnd ? 0 : direction === -1 && atStart ? track.scrollWidth : track.scrollLeft + cardWidth() * direction;
+			track.scrollTo({ left, behavior: prefersReducedMotion ? "auto" : "smooth" });
+		};
+
+		const stop = () => window.clearInterval(timer);
+		const start = () => {
+			if (prefersReducedMotion) return;
+			stop();
+			timer = window.setInterval(() => move(1), 5500);
+		};
+
+		previous.addEventListener("click", () => {
+			move(-1);
+			start();
+		});
+		next.addEventListener("click", () => {
+			move(1);
+			start();
+		});
+		carousel.addEventListener("mouseenter", stop);
+		carousel.addEventListener("mouseleave", start);
+		carousel.addEventListener("focusin", stop);
+		carousel.addEventListener("focusout", start);
+		track.addEventListener("pointerdown", stop);
+		track.addEventListener("pointerup", start);
+		start();
+	});
+</script>
