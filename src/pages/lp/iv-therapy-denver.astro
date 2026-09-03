@@ -1,5 +1,6 @@
 ---
 import LeadForm from "../../components/content/LeadForm.astro";
+import StickyMobileLeadActions from "../../components/content/StickyMobileLeadActions.astro";
 import PaidServiceFooter from "../../components/layout/PaidServiceFooter.astro";
 import PremiumHeader from "../../components/layout/PremiumHeader.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
@@ -135,10 +136,11 @@ const jsonLd: JsonLd[] = [
 	canonicalUrl={canonical}
 	jsonLd={jsonLd}
 	noindex={true}
+	ogImage="/assets/iv-therapy-clinic-hero.webp"
 	preloadImages={["/assets/iv-therapy-clinic-hero.webp", "/assets/eden-health-club-logo-white-transparent-tight.png"]}
 >
 	<PremiumHeader brandHref={null} servicesHref="#visit" servicesLabel="IV Visit" pricingHref="#lead-form" pricingLabel="Pricing" contactHref="#lead-form" ctaLabel="Book IV" />
-	<main class="bg-eden-paper">
+	<main class="bg-eden-paper pb-24 md:pb-0">
 		<section class="relative overflow-hidden bg-eden-forest text-white">
 			<div class="absolute inset-0">
 				<img src="/assets/eden-health-club-reception.webp" alt="" class="h-full w-full object-cover opacity-20" loading="eager" fetchpriority="low" decoding="async" width="1388" height="1000" />
@@ -320,6 +322,7 @@ const jsonLd: JsonLd[] = [
 			</div>
 		</section>
 	</main>
+	<StickyMobileLeadActions primaryLabel="Request an IV visit" ariaLabel="Request an IV therapy visit" />
 
 	<PaidServiceFooter
 		serviceName="IV Therapy Denver"

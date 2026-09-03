@@ -1,5 +1,6 @@
 ---
 import LeadForm from "../../components/content/LeadForm.astro";
+import StickyMobileLeadActions from "../../components/content/StickyMobileLeadActions.astro";
 import PremiumHeader from "../../components/layout/PremiumHeader.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { ORIGIN } from "../../lib/urls";
@@ -47,6 +48,16 @@ const faqs = [
 	{
 		question: "Can I ask about non-surgical options?",
 		answer: "Yes. The visit is designed to review non-surgical options privately and help you understand fit, expectations, and timing.",
+	},
+	{
+		question: "How is pricing handled after the assessment?",
+		answer:
+			"If a clinic-based option is a fit, Eden explains the recommended plan, timing, and complete quote before you decide whether to move forward.",
+	},
+	{
+		question: "Can I ask about payment options?",
+		answer:
+			"Yes. If a treatment plan is recommended, ask the Eden team about current payment options and what may apply to that plan before making a decision.",
 	},
 ];
 
@@ -97,10 +108,11 @@ const jsonLd: JsonLd[] = [
 	canonicalUrl={canonical}
 	jsonLd={jsonLd}
 	noindex={true}
+	ogImage={heroImage}
 	preloadImages={[heroImage]}
 >
 	<PremiumHeader servicesHref="#evaluation" servicesLabel="Evaluation" pricingHref="#included" pricingLabel="What's Included" contactHref="#lead-form" ctaLabel="Free Assessment" />
-	<main class="bg-eden-paper">
+	<main class="bg-eden-paper pb-24 md:pb-0">
 		<section class="relative overflow-hidden bg-eden-forest text-white">
 			<div class="absolute inset-0">
 				<img
@@ -255,6 +267,7 @@ const jsonLd: JsonLd[] = [
 			</div>
 		</section>
 	</main>
+	<StickyMobileLeadActions primaryLabel="Request free assessment" ariaLabel="Request a free hair loss assessment" />
 
 	<footer class="bg-eden-navy px-6 py-10 text-white">
 		<div class="mx-auto grid max-w-6xl gap-8 md:grid-cols-[1.2fr_0.8fr_0.8fr]">
