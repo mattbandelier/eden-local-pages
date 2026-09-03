@@ -16,7 +16,6 @@ import MoneyPageLayer from "../../components/content/MoneyPageLayer.astro";
 import PricingCard from "../../components/content/PricingCard.astro";
 import PremiumConversionBlock from "../../components/content/PremiumConversionBlock.astro";
 import PremiumHeader from "../../components/layout/PremiumHeader.astro";
-import PremiumStickyConsult from "../../components/content/PremiumStickyConsult.astro";
 import PriorityMoneyLinks from "../../components/content/PriorityMoneyLinks.astro";
 import RelatedServices from "../../components/content/RelatedServices.astro";
 import TreatmentSnapshot from "../../components/content/TreatmentSnapshot.astro";
@@ -95,6 +94,7 @@ const pageJsonLd = isPolicySeparatedPaidPage
 	{!isPolicySeparatedPaidPage && <Breadcrumbs items={breadcrumbItems} />}
 	<main class="pb-20 md:pb-0">
 		<Hero variant="combo" service={service} suburb={suburb} premium={isPremiumMoneyPage} />
+		{service.slug === "male-trt" && suburb.slug === "denver" && <GuestReviewStrip />}
 		<LocalProximity suburb={suburb} />
 		<TrustBar />
 		{isPremiumMoneyPage && <PremiumConversionBlock service={service} suburb={suburb} />}
@@ -109,7 +109,6 @@ const pageJsonLd = isPolicySeparatedPaidPage
 				</div>
 			</section>
 		)}
-		{service.slug === "male-trt" && suburb.slug === "denver" && <GuestReviewStrip />}
 		{!isPremiumMoneyPage && (
 			<CTAStrip
 				serviceSlug={service.slug}
@@ -172,7 +171,6 @@ const pageJsonLd = isPolicySeparatedPaidPage
 			/>
 		)}
 	</main>
-	{isPremiumMoneyPage && <PremiumStickyConsult service={service} />}
 	<MobileActionBar service={service} />
 	{isPolicySeparatedPaidPage ? <PaidServiceFooter /> : <Footer variant={isWellnessPaidPage ? "wellness" : "default"} />}
 </BaseLayout>

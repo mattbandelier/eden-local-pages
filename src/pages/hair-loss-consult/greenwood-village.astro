@@ -12,7 +12,8 @@ const title = "Free Hair Loss Assessment in Greenwood Village | Eden Health Club
 const description =
 	"Free hair loss assessment near DTC. Review thinning, shedding, hairline, crown density, candidacy, timeline, and next steps with Eden Health Club.";
 const heroImage = "/assets/hair-consult-clinic-hero.jpg";
-const consultImage = "/assets/eden-private-treatment-room-air.webp";
+const heroConsultImage = "/assets/eden-provider-consult-air.webp";
+const consultImage = "/assets/eden-provider-review-air.webp";
 
 const checkpoints = [
 	"Thinning or shedding timeline",
@@ -128,7 +129,7 @@ const jsonLd: JsonLd[] = [
 	jsonLd={jsonLd}
 	noindex={true}
 	ogImage={heroImage}
-	preloadImages={[heroImage]}
+	preloadImages={[heroImage, heroConsultImage]}
 >
 	<PremiumHeader servicesHref="#evaluation" servicesLabel="Evaluation" pricingHref="#included" pricingLabel="What's Included" contactHref="#lead-form" ctaLabel="Free Assessment" />
 	<main class="bg-eden-paper pb-24 md:pb-0">
@@ -170,6 +171,16 @@ const jsonLd: JsonLd[] = [
 					</div>
 				</div>
 				<div class="rounded-lg border border-white/15 bg-white/95 p-5 text-eden-navy shadow-xl sm:p-6">
+					<img
+						src={heroConsultImage}
+						alt="Eden provider meeting with a guest during a private consultation"
+						class="mb-5 h-44 w-full rounded-md object-cover object-[center_30%]"
+						loading="eager"
+						fetchpriority="high"
+						decoding="async"
+						width="1012"
+						height="1800"
+					/>
 					<p class="text-sm font-semibold uppercase text-eden-green">What the visit covers</p>
 					<div class="mt-4 grid gap-3">
 						{checkpoints.map((item) => (
@@ -185,6 +196,8 @@ const jsonLd: JsonLd[] = [
 				</div>
 			</div>
 		</section>
+
+		<GuestReviewStrip />
 
 		<section id="evaluation" class="bg-white px-6 py-12 sm:py-16">
 			<div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.86fr_1.14fr] lg:items-start">
@@ -208,19 +221,17 @@ const jsonLd: JsonLd[] = [
 			</div>
 		</section>
 
-		<GuestReviewStrip />
-
 		<section class="px-6 py-12 sm:py-16">
 			<div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[1fr_0.82fr] lg:items-center">
 				<div class="overflow-hidden rounded-lg border border-eden-line bg-white shadow-sm">
 					<img
 						src={consultImage}
-						alt="Private consultation room at Eden Health Club"
+						alt="Eden provider reviewing goals and next steps with a guest"
 						class="h-80 w-full object-cover sm:h-[30rem]"
 						loading="lazy"
 						decoding="async"
-						width="1200"
-						height="800"
+						width="1012"
+						height="1800"
 					/>
 				</div>
 				<div>
