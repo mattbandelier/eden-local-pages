@@ -1,5 +1,6 @@
 ---
 import LeadForm from "../../components/content/LeadForm.astro";
+import GuestReviewStrip from "../../components/content/GuestReviewStrip.astro";
 import Footer from "../../components/layout/Footer.astro";
 import PremiumHeader from "../../components/layout/PremiumHeader.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
@@ -19,9 +20,9 @@ const description =
 
 const proofPoints = [
 	{
-		kicker: "$299 peptide starter",
+		kicker: "Peptide starter",
 		title: "Consult + labs + plan",
-		body: "One clear first step: an in-person provider consultation, baseline lab work, and a personalized next-step plan.",
+		body: "One clear first step: an in-person provider consultation, Eden's peptide baseline panel, and a personalized next-step plan.",
 	},
 	{
 		kicker: "Clinician-guided",
@@ -41,8 +42,8 @@ const offerIncludes = [
 		body: "Meet with Eden's clinical team to review goals, health history, current routines, and why you are considering peptide therapy.",
 	},
 	{
-		title: "Lab work",
-		body: "Your $299 starter includes lab work so the peptide conversation starts with clinical context, not guesswork.",
+		title: "Peptide baseline panel",
+		body: "Your starter includes CBC, a comprehensive metabolic panel (CMP), and IGF-1 measured as a lab marker.",
 	},
 	{
 		title: "Personalized health roadmap",
@@ -56,7 +57,7 @@ const offerIncludes = [
 
 const pricingIncludes = [
 	"Private consultation with a licensed provider",
-	"Baseline lab work",
+	"Peptide baseline panel: CBC, CMP, and IGF-1",
 	"Personalized next-step plan",
 ];
 
@@ -77,13 +78,6 @@ const lanes = [
 		label: "Longevity support",
 		body: "For adults comparing peptide therapy, biomarkers, recovery, sleep, skin quality, and premium wellness support near DTC.",
 	},
-];
-
-const differentiators = [
-	["First step", "$299 Peptide Starter with an in-person consultation, baseline labs, and a personalized plan", "A menu of options before anyone understands fit"],
-	["Environment", "Greenwood Village health club with recovery, training, body composition, and clinical wellness in one location", "A single-service clinic or remote-only program"],
-	["Clinical path", "Provider review connects your goals, labs, and health history to the right next step", "Product-first messaging that can skip the why"],
-	["Follow-through", "Eden One and Elevate can connect ongoing care, credits, training, recovery, bloodwork rhythm, and support", "A one-off visit with no day-to-day system"],
 ];
 
 const process = [
@@ -128,7 +122,7 @@ const faqs = [
 	{
 		question: "What is the $299 Peptide Starter?",
 		answer:
-			"It is an in-person first visit designed for people exploring peptide therapy, recovery, body composition, sleep, and longevity-minded wellness planning. It includes a private provider consultation, baseline lab work, and a personalized next-step plan.",
+			"It is an in-person first visit designed for people exploring peptide therapy, recovery, body composition, sleep, and longevity-minded wellness planning. It includes a private provider consultation, Eden's peptide baseline panel, and a personalized next-step plan.",
 	},
 	{
 		question: "Does the $299 include treatment?",
@@ -136,9 +130,9 @@ const faqs = [
 			"No. The $299 covers the consultation, baseline lab work, and personalized plan. Any additional service is separate and depends on clinical eligibility and provider review.",
 	},
 	{
-		question: "Why start with labs?",
+		question: "Which lab markers are included?",
 		answer:
-			"Peptide therapy should be matched to the person. Labs, biomarkers, health history, goals, and provider review help Eden avoid guesswork before recommending any protocol.",
+			"The included peptide baseline panel covers CBC (complete blood count), CMP (comprehensive metabolic panel), and IGF-1 as a measured lab marker. These results provide clinical context for the consultation and provider review.",
 	},
 	{
 		question: "What happens after the starter visit?",
@@ -245,10 +239,11 @@ const jsonLd: JsonLd[] = [
 	canonicalUrl={canonical}
 	jsonLd={jsonLd}
 	noindex={true}
+	ogImage="/assets/eden-functional-consult-air.webp"
 	preloadImages={["/assets/eden-functional-consult-air.webp", "/assets/eden-health-club-logo-white-transparent-tight.png"]}
 >
 	<PremiumHeader servicesHref="#offer" servicesLabel="Programs" pricingHref="#lead-form" contactHref="#lead-form" ctaLabel="Request my $299 starter" />
-	<main class="bg-eden-paper">
+	<main class="bg-eden-paper pb-24 md:pb-0">
 		<section class="relative overflow-hidden bg-eden-forest text-white">
 			<div class="absolute inset-0 bg-[linear-gradient(112deg,#1c2d26,rgba(25,79,57,0.96)_48%,#173b2c)]"></div>
 			<div class="relative mx-auto grid min-h-[calc(100vh-64px)] max-w-6xl gap-10 px-6 py-12 sm:py-16 lg:grid-cols-[1.02fr_0.98fr] lg:items-center">
@@ -304,7 +299,7 @@ const jsonLd: JsonLd[] = [
 								<div class="grid grid-cols-2 gap-3">
 									<div class="rounded-md bg-white p-4 text-eden-navy">
 										<p class="text-xs font-semibold uppercase text-eden-green">Offer</p>
-										<p class="mt-2 text-lg font-semibold">$299 Peptide Starter.</p>
+										<p class="mt-2 text-lg font-semibold">Peptide Starter.</p>
 										<p class="mt-2 text-xs leading-5 text-slate-600">Consult + baseline labs + personalized plan.</p>
 									</div>
 									<div class="rounded-md bg-eden-sage p-4 text-eden-forest">
@@ -325,10 +320,12 @@ const jsonLd: JsonLd[] = [
 			</div>
 		</section>
 
+		<GuestReviewStrip />
+
 		<section id="offer" class="bg-white px-6 py-12 sm:py-16">
 			<div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.82fr_1.18fr] lg:items-start">
 				<div>
-					<p class="text-sm font-semibold uppercase text-eden-green">$299 Peptide Starter</p>
+					<p class="text-sm font-semibold uppercase text-eden-green">Why Eden</p>
 					<h2 class="mt-3 text-3xl font-semibold leading-tight text-eden-navy sm:text-4xl">
 						Know where to start for $299.
 					</h2>
@@ -354,51 +351,6 @@ const jsonLd: JsonLd[] = [
 							<p class="mt-3 text-sm leading-6 text-slate-700">{item.body}</p>
 						</div>
 					))}
-				</div>
-			</div>
-		</section>
-
-		<section id="why-eden" class="bg-white px-6 py-12 sm:py-16">
-			<div class="mx-auto max-w-6xl">
-				<div class="grid gap-8 lg:grid-cols-[0.82fr_1.18fr] lg:items-start">
-					<div>
-						<p class="text-sm font-semibold uppercase text-eden-green">Why Eden</p>
-						<h2 class="mt-3 text-3xl font-semibold leading-tight text-eden-navy sm:text-4xl">
-							The advantage is what happens after the review.
-						</h2>
-						<p class="mt-4 text-base leading-8 text-slate-700">
-							Online clinics can sell access. Single-service clinics can sell one modality. Eden can connect provider-guided wellness with recovery, training, InBody, labs, and a premium local facility.
-						</p>
-					</div>
-					<div class="hidden overflow-hidden rounded-lg border border-eden-line bg-eden-paper shadow-sm md:block">
-						<div class="grid grid-cols-[0.72fr_1fr_1fr] bg-eden-forest text-sm font-semibold text-white">
-							<div class="p-4">Decision point</div>
-							<div class="border-l border-white/10 p-4">Eden path</div>
-							<div class="border-l border-white/10 p-4">Generic alternative</div>
-						</div>
-						{differentiators.map(([label, eden, other]) => (
-							<div class="grid grid-cols-[0.72fr_1fr_1fr] border-t border-eden-line text-sm">
-								<div class="bg-white p-4 font-semibold text-eden-navy">{label}</div>
-								<div class="border-l border-eden-line p-4 leading-6 text-slate-700">{eden}</div>
-								<div class="border-l border-eden-line p-4 leading-6 text-slate-600">{other}</div>
-							</div>
-						))}
-					</div>
-					<div class="grid gap-4 md:hidden">
-						{differentiators.map(([label, eden, other]) => (
-							<div class="rounded-lg border border-eden-line bg-eden-paper p-5">
-								<p class="text-sm font-semibold uppercase text-eden-green">{label}</p>
-								<div class="mt-4 rounded-md bg-white p-4">
-									<p class="text-sm font-semibold text-eden-navy">Eden path</p>
-									<p class="mt-2 text-sm leading-6 text-slate-700">{eden}</p>
-								</div>
-								<div class="mt-3 rounded-md border border-eden-line p-4">
-									<p class="text-sm font-semibold text-eden-navy">Generic alternative</p>
-									<p class="mt-2 text-sm leading-6 text-slate-600">{other}</p>
-								</div>
-							</div>
-						))}
-					</div>
 				</div>
 			</div>
 		</section>

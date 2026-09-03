@@ -1,5 +1,7 @@
 ---
 import LeadForm from "../../components/content/LeadForm.astro";
+import GuestReviewStrip from "../../components/content/GuestReviewStrip.astro";
+import StickyMobileLeadActions from "../../components/content/StickyMobileLeadActions.astro";
 import PaidServiceFooter from "../../components/layout/PaidServiceFooter.astro";
 import PremiumHeader from "../../components/layout/PremiumHeader.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
@@ -7,34 +9,34 @@ import { canonicalUrl } from "../../lib/urls";
 import type { JsonLd } from "../../lib/schema-org";
 
 const canonical = canonicalUrl("/lp/longevity-clinic-denver");
-const title = "Longevity Clinic Denver | $299 Health Baseline Near DTC | Eden";
+const title = "Longevity Clinic Denver | $175 Consult + Lab Work Near DTC | Eden";
 const description =
-	"Start with Eden's $299 Longevity Baseline in Greenwood Village: lab work, InBody body composition, provider review, and a clear health-optimization plan.";
+	"Start with Eden's $175 longevity consultation in Greenwood Village: private consultation, lab work, provider review, and a clear next-step plan.";
 
 const included = [
 	{
-		title: "Lab work + review",
-		body: "Start with real inputs and a provider-led review instead of another generic wellness checklist.",
+		title: "Private consultation",
+		body: "Start with an in-person conversation about goals, health context, and the questions you want clarified.",
 	},
 	{
-		title: "InBody baseline",
-		body: "Capture body-composition measurements that make progress easier to understand over time.",
+		title: "Lab work + review",
+		body: "Start with real inputs and a provider-led review instead of another generic wellness checklist.",
 	},
 	{
 		title: "Your health roadmap",
 		body: "Connect goals, routines, lab context, and body composition into one practical next-step plan.",
 	},
 	{
-		title: "One connected baseline",
-		body: "Bring lab context, body composition, provider review, and practical next steps into one private visit.",
+		title: "Clear next steps",
+		body: "Bring lab context, provider review, and practical next steps into one private visit.",
 	},
 ];
 
 const visitSteps = [
 	{
 		number: "01",
-		title: "Measure",
-		body: "Complete the agreed lab work and body-composition baseline so the conversation starts with useful context.",
+		title: "Start",
+		body: "Complete the consultation and agreed lab work so the conversation starts with useful context.",
 	},
 	{
 		number: "02",
@@ -59,9 +61,9 @@ const reasons = [
 
 const faqs = [
 	{
-		question: "What is included in the $299 Longevity Baseline?",
+		question: "What is included in the $175 longevity consultation?",
 		answer:
-			"The visit includes agreed lab work, an InBody body-composition baseline, provider review, and a personalized health-optimization roadmap.",
+			"The visit includes a private consultation, agreed lab work, provider review, and a personalized next-step plan.",
 	},
 	{
 		question: "Is Eden a longevity clinic near Denver Tech Center?",
@@ -102,8 +104,8 @@ const jsonLd: JsonLd[] = [
 		"@context": "https://schema.org",
 		"@type": "Service",
 		"@id": `${canonical}#service`,
-		name: "$299 Longevity Baseline",
-		serviceType: "Longevity baseline and health optimization planning",
+		name: "$175 Longevity Consultation + Lab Work",
+		serviceType: "Longevity consultation and health optimization planning",
 		url: canonical,
 		description,
 		provider: {
@@ -113,7 +115,7 @@ const jsonLd: JsonLd[] = [
 		},
 		offers: {
 			"@type": "Offer",
-			price: "299",
+			price: "175",
 			priceCurrency: "USD",
 			availability: "https://schema.org/InStock",
 		},
@@ -140,10 +142,11 @@ const jsonLd: JsonLd[] = [
 	canonicalUrl={canonical}
 	jsonLd={jsonLd}
 	noindex={true}
+	ogImage="/assets/longevity-baseline-clinic-hero.webp"
 	preloadImages={["/assets/longevity-baseline-clinic-hero.webp", "/assets/eden-health-club-logo-white-transparent-tight.png"]}
 >
-	<PremiumHeader brandHref={null} servicesHref="#baseline" servicesLabel="Baseline" pricingHref="#lead-form" pricingLabel="$299 Visit" contactHref="#lead-form" ctaLabel="Start" />
-	<main class="bg-eden-paper">
+	<PremiumHeader brandHref={null} servicesHref="#baseline" servicesLabel="The Visit" pricingHref="#lead-form" pricingLabel="$175 Visit" contactHref="#lead-form" ctaLabel="Start" />
+	<main class="bg-eden-paper pb-24 md:pb-0">
 		<section class="relative overflow-hidden bg-eden-forest text-white">
 			<div class="absolute inset-0">
 				<img src="/assets/eden-health-club-reception.webp" alt="" class="h-full w-full object-cover opacity-20" loading="eager" fetchpriority="low" decoding="async" width="1388" height="1000" />
@@ -152,16 +155,16 @@ const jsonLd: JsonLd[] = [
 			<div class="relative mx-auto grid min-h-[calc(100vh-64px)] max-w-6xl gap-10 px-6 py-12 sm:py-16 lg:grid-cols-[1.02fr_0.98fr] lg:items-center">
 				<div>
 					<img src="/assets/eden-health-club-logo-white-transparent-tight.png" alt="Eden Health Club" class="mb-8 h-auto w-36 sm:w-44" loading="eager" fetchpriority="high" decoding="async" width="744" height="447" />
-					<p class="text-sm font-semibold uppercase tracking-normal text-eden-sage">$299 longevity baseline in Greenwood Village</p>
+					<p class="text-sm font-semibold uppercase tracking-normal text-eden-sage">$175 longevity consultation in Greenwood Village</p>
 					<h1 class="mt-4 max-w-3xl text-4xl font-semibold leading-tight sm:text-5xl lg:text-6xl">
-						Longevity clinic Denver: start with a $299 baseline.
+						Longevity clinic Denver: start with a $175 consult and lab work.
 					</h1>
 					<p class="mt-5 max-w-2xl text-base leading-8 text-white/86 sm:text-lg">
-						Your visit includes lab work, an InBody body-composition baseline, provider review, and a clear health-optimization roadmap.
+						Your visit includes a private consultation, lab work, provider review, and a clear health-optimization plan.
 					</p>
 					<div class="mt-8 flex flex-col gap-3 sm:flex-row">
 						<a href="#lead-form" class="rounded-md bg-eden-sage px-6 py-3 text-center text-base font-semibold text-eden-forest shadow-sm">
-							Request My $299 Baseline
+							Request My $175 Consultation
 						</a>
 						<a href="tel:+17206057678" data-phone-link class="rounded-md border border-white/35 px-6 py-3 text-center text-base font-semibold text-white hover:bg-white/10">
 							Call 720-605-7678
@@ -172,8 +175,8 @@ const jsonLd: JsonLd[] = [
 					</p>
 					<div class="mt-7 grid max-w-2xl gap-3 text-sm sm:grid-cols-3">
 						<div class="rounded-lg border border-white/15 bg-white/8 p-4 backdrop-blur">
-							<p class="text-xs font-semibold uppercase text-eden-sage">Measure</p>
-							<p class="mt-2 text-lg font-semibold">Labs + InBody</p>
+							<p class="text-xs font-semibold uppercase text-eden-sage">Start</p>
+							<p class="mt-2 text-lg font-semibold">Consult + labs</p>
 						</div>
 						<div class="rounded-lg border border-white/15 bg-white/8 p-4 backdrop-blur">
 							<p class="text-xs font-semibold uppercase text-eden-sage">Understand</p>
@@ -188,21 +191,23 @@ const jsonLd: JsonLd[] = [
 				<div class="overflow-hidden rounded-lg border border-white/15 bg-white/10 p-3 shadow-2xl backdrop-blur">
 					<img src="/assets/longevity-baseline-clinic-hero.webp" alt="Adult patient reviewing a health baseline with a provider" class="h-[28rem] w-full rounded-md object-cover object-center" loading="eager" fetchpriority="high" decoding="async" width="1440" height="960" />
 					<div class="mt-3 rounded-md bg-white p-5 text-eden-navy">
-						<p class="text-xs font-semibold uppercase text-eden-green">Included in your $299 baseline</p>
+						<p class="text-xs font-semibold uppercase text-eden-green">Included in your $175 visit</p>
 						<p class="mt-2 text-xl font-semibold leading-tight">
-							Labs + InBody + provider review + your next-step roadmap.
+							Consult + labs + provider review + your next-step roadmap.
 						</p>
 					</div>
 				</div>
 			</div>
 		</section>
 
+		<GuestReviewStrip />
+
 		<section class="border-b border-eden-line bg-white px-6 py-12 sm:py-16">
 			<div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.92fr_1.08fr] lg:items-start">
 				<div class="max-w-xl">
-					<p class="text-sm font-semibold uppercase text-eden-green">Your $299 starting point</p>
+					<p class="text-sm font-semibold uppercase text-eden-green">Your $175 starting point</p>
 					<h2 class="mt-3 text-3xl font-semibold leading-tight text-eden-navy sm:text-4xl">
-						Your $299 Longevity Baseline, clearly defined.
+						Your $175 longevity consultation, clearly defined.
 					</h2>
 					<p class="mt-4 text-base leading-8 text-slate-700">
 						Most wellness plans start by selling the plan. Eden starts by understanding the person, the baseline, and the decision that actually needs to be made.
@@ -214,15 +219,15 @@ const jsonLd: JsonLd[] = [
 				<LeadForm
 					serviceSlug="longevity-baseline-starter-299"
 					suburbSlug="greenwood-village"
-					heading="Request your $299 Longevity Baseline"
+					heading="Request your $175 longevity consultation"
 					subheading="Tell Eden what you want to understand or improve. The team will follow up with scheduling details and what to expect."
 					submitText="Request My Baseline"
 					messageLabel="What would you like your baseline to clarify?"
 					goalOptions={["Energy and recovery", "Body composition", "Performance and strength", "Lab context", "Long-term health planning", "Not sure yet"]}
 					workflowKey="longevity_baseline_299"
-					offerName="$299 Longevity Baseline"
-					offerValue="labs_inbody_provider_roadmap_299"
-					hiddenMessage="WORKFLOW_KEY: longevity_baseline_299. $299 Longevity Baseline request: lab work, InBody body composition, provider review, and health-optimization roadmap."
+					offerName="$175 Longevity Consultation + Lab Work"
+					offerValue="consult_lab_work_provider_roadmap_175"
+					hiddenMessage="WORKFLOW_KEY: longevity_baseline_299. $175 longevity consultation request: private consultation, lab work, provider review, and a health-optimization roadmap."
 					underButtonText="Private. In person. One Greenwood Village location."
 				/>
 			</div>
@@ -234,7 +239,7 @@ const jsonLd: JsonLd[] = [
 					<div>
 						<p class="text-sm font-semibold uppercase text-eden-green">What is included</p>
 						<h2 class="mt-3 text-3xl font-semibold leading-tight text-eden-navy sm:text-4xl">
-							A baseline built to lead somewhere useful.
+					A consultation built to lead somewhere useful.
 						</h2>
 					</div>
 					<p class="text-base leading-8 text-slate-700">
@@ -254,7 +259,7 @@ const jsonLd: JsonLd[] = [
 
 		<section class="bg-eden-forest px-6 py-12 text-white sm:py-16">
 			<div class="mx-auto max-w-6xl">
-				<p class="text-sm font-semibold uppercase text-eden-sage">The Eden baseline</p>
+					<p class="text-sm font-semibold uppercase text-eden-sage">The Eden consultation</p>
 				<h2 class="mt-3 max-w-3xl text-3xl font-semibold leading-tight sm:text-4xl">
 					Measure. Understand. Plan.
 				</h2>
@@ -311,14 +316,15 @@ const jsonLd: JsonLd[] = [
 			<div class="mx-auto flex max-w-6xl flex-col gap-6 rounded-lg bg-eden-sage p-8 text-eden-forest sm:p-10 lg:flex-row lg:items-center lg:justify-between">
 				<div class="max-w-3xl">
 					<p class="text-sm font-semibold uppercase">Longevity clinic near Denver Tech Center</p>
-					<h2 class="mt-3 text-3xl font-semibold leading-tight sm:text-4xl">Start with the baseline. Keep the next decision yours.</h2>
+					<h2 class="mt-3 text-3xl font-semibold leading-tight sm:text-4xl">Start with the consult. Keep the next decision yours.</h2>
 				</div>
 				<a href="#lead-form" class="rounded-md bg-eden-forest px-6 py-3 text-center text-base font-semibold text-white">
-					Request My $299 Baseline
+					Request My $175 Consultation
 				</a>
 			</div>
 		</section>
 	</main>
+	<StickyMobileLeadActions primaryLabel="Request my $175 consultation" ariaLabel="Request a longevity consultation" />
 
 	<PaidServiceFooter
 		serviceName="Longevity Clinic Denver"

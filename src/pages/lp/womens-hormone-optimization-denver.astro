@@ -1,5 +1,6 @@
 ---
 import LeadForm from "../../components/content/LeadForm.astro";
+import GuestReviewStrip from "../../components/content/GuestReviewStrip.astro";
 import PaidServiceFooter from "../../components/layout/PaidServiceFooter.astro";
 import PremiumHeader from "../../components/layout/PremiumHeader.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
@@ -35,8 +36,8 @@ const includes = [
 		body: "Talk through symptoms, goals, life stage, cycle or menopause context, prior labs, current medications, and what feels different.",
 	},
 	{
-		title: "Lab-guided next step",
-		body: "Confirm what bloodwork is available, what may still be needed, and whether BHRT, menopause support, or another path is appropriate.",
+		title: "Included baseline panel",
+		body: "Your $175 visit includes FSH, estradiol, and total and free testosterone with SHBG, followed by a provider-guided next step.",
 	},
 	{
 		title: "Treatment-fit conversation",
@@ -62,9 +63,9 @@ const faqs = [
 			"Yes. This consultation is built around women's hormone questions, including BHRT, menopause, perimenopause, symptoms, lab context, and the next steps a provider considers appropriate.",
 	},
 	{
-		question: "Do I need labs before women's hormone treatment?",
+		question: "Which lab markers are included in the $175 visit?",
 		answer:
-			"Yes. Bloodwork and provider review are required before any treatment plan is recommended. The consult helps determine what labs are already useful and what may still be needed.",
+			"The $175 starting visit combines a $100 consultation with Eden's $75 women's hormone panel. The panel covers FSH (follicle-stimulating hormone), estradiol, and total and free testosterone with SHBG. Treatment is not included and is considered separately after the consultation, lab work, and provider review.",
 	},
 	{
 		question: "Does Eden offer BHRT or hormone pellets for women?",
@@ -132,10 +133,11 @@ const jsonLd: JsonLd[] = [
 	canonicalUrl={canonical}
 	jsonLd={jsonLd}
 	noindex={true}
-	preloadImages={["/assets/eden-health-club-reception.webp", "/assets/fitness-community.webp", "/assets/eden-health-club-logo-white-transparent-tight.png"]}
+	ogImage="/assets/eden-functional-consult-air.webp"
+	preloadImages={["/assets/eden-health-club-reception.webp", "/assets/eden-functional-consult-air.webp", "/assets/eden-health-club-logo-white-transparent-tight.png"]}
 >
 	<PremiumHeader brandHref={null} servicesHref="#fit" servicesLabel="The Visit" pricingHref="#lead-form" contactHref="#lead-form" ctaLabel="Consult" />
-	<main class="bg-eden-paper">
+	<main class="bg-eden-paper pb-24 md:pb-0">
 		<section class="relative overflow-hidden bg-eden-forest text-white">
 			<div class="absolute inset-0">
 				<img src="/assets/eden-health-club-reception.webp" alt="" class="h-full w-full object-cover opacity-30" loading="eager" fetchpriority="high" decoding="async" width="1388" height="1000" />
@@ -146,14 +148,14 @@ const jsonLd: JsonLd[] = [
 					<img src="/assets/eden-health-club-logo-white-transparent-tight.png" alt="Eden Health Club" class="mb-8 h-auto w-36 sm:w-44" loading="eager" fetchpriority="high" decoding="async" width="744" height="447" />
 					<p class="text-sm font-semibold uppercase tracking-normal text-eden-sage">Women's hormone care near Denver / DTC</p>
 					<h1 class="mt-4 max-w-3xl text-4xl font-semibold leading-tight sm:text-5xl lg:text-6xl">
-						Women's hormone care, made clear.
+						A $175 hormone consultation with lab work, made clear.
 					</h1>
 					<p class="mt-5 max-w-2xl text-base leading-8 text-white/86 sm:text-lg">
-						A private, provider-led consultation for menopause, perimenopause, and BHRT questions, with symptoms, lab context, and next steps considered together.
+						A private, provider-led consultation for menopause, perimenopause, and BHRT questions, with lab work and next steps considered together.
 					</p>
 					<div class="mt-8 flex flex-col gap-3 sm:flex-row">
 						<a href="#lead-form" class="rounded-md bg-eden-sage px-6 py-3 text-center text-base font-semibold text-eden-forest shadow-sm">
-							Request My Clarity Consultation
+							Request My $175 Consultation
 						</a>
 						<a href="tel:+17206057678" data-phone-link class="rounded-md border border-white/35 px-6 py-3 text-center text-base font-semibold text-white hover:bg-white/10">
 							Call 720-605-7678
@@ -176,7 +178,7 @@ const jsonLd: JsonLd[] = [
 					<div class="overflow-hidden rounded-lg border border-white/15 bg-white/10 p-3 shadow-2xl backdrop-blur">
 						<div class="grid gap-3 sm:grid-cols-[1.12fr_0.88fr]">
 							<div class="overflow-hidden rounded-md">
-								<img src="/assets/fitness-community.webp" alt="Women connecting inside a premium wellness and fitness setting" class="h-full min-h-72 w-full object-cover object-center" loading="eager" fetchpriority="high" decoding="async" width="1000" height="1500" />
+								<img src="/assets/eden-functional-consult-air.webp" alt="Eden provider meeting with a guest during a private consultation" class="h-full min-h-72 w-full object-cover object-center" loading="eager" fetchpriority="high" decoding="async" width="900" height="1600" />
 							</div>
 							<div class="grid gap-3">
 								<div class="overflow-hidden rounded-md">
@@ -205,6 +207,8 @@ const jsonLd: JsonLd[] = [
 			</div>
 		</section>
 
+		<GuestReviewStrip />
+
 		<section class="border-b border-eden-line bg-white px-6 py-12 sm:py-16">
 			<div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.92fr_1.08fr] lg:items-start">
 				<div class="max-w-xl">
@@ -213,7 +217,7 @@ const jsonLd: JsonLd[] = [
 						Bring the symptoms. Bring any labs. Start with a clearer next step.
 					</h2>
 					<p class="mt-4 text-base leading-8 text-slate-700">
-						The consultation is designed to organize the full picture: what you are noticing, what has already been tested, what may still need evaluation, and whether hormone care fits.
+						The $175 starting visit combines a $100 private consultation with Eden's $75 women's hormone panel. Together, they organize what you are noticing, what the baseline shows, what may still need evaluation, and whether hormone care fits.
 					</p>
 					<div class="mt-6 border-l-2 border-eden-green pl-5 text-sm leading-7 text-slate-700">
 						Private and in person at Eden's single Greenwood Village location, minutes from Denver Tech Center.
@@ -222,12 +226,13 @@ const jsonLd: JsonLd[] = [
 				<LeadForm
 					serviceSlug="womens-hormone-optimization-paid"
 					suburbSlug="greenwood-village"
-					heading="Request a women's hormone clarity consultation"
-					subheading="Tell Eden what you want to review. The team will follow up about symptoms, labs, provider review, and next steps."
-					submitText="Request My Consultation"
+					heading="Request a $175 women's hormone consultation"
+					subheading="Tell Eden what you want to review. The team will follow up about symptoms, lab work, provider review, and next steps."
+					submitText="Request My $175 Consultation"
 					messageLabel="What are you hoping to improve?"
 					goalOptions={["Sleep or fatigue", "Mood or focus", "Menopause or perimenopause changes", "Libido or recovery", "Body composition or weight", "BHRT or hormone pellets", "Not sure yet"]}
-					offerName="Women's Hormone Clarity Consultation"
+					offerName="$175 Women's Hormone Consultation + Lab Work"
+					offerValue="womens_hormone_consult_lab_work_175"
 					underButtonText="Private. In person. One Greenwood Village location."
 				/>
 			</div>

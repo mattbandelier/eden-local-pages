@@ -1,0 +1,39 @@
+---
+const reviews = [
+	{
+		quote: "Everyone there is professional, friendly, non-judgmental, down to earth.",
+		author: "Chris Eich",
+	},
+	{
+		quote: "She's given me answers where I needed hope and has been thorough with my lab results.",
+		author: "Nicole King",
+	},
+	{
+		quote: "I never felt rushed or like just another appointment on the schedule.",
+		author: "Amy White",
+	},
+];
+const googleMapsUrl = "https://www.google.com/maps?cid=12311342436061718588";
+---
+
+<section class="border-y border-eden-line bg-white px-6 py-8 sm:py-10" aria-label="Guest feedback">
+	<div class="mx-auto max-w-6xl">
+		<div class="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
+			<div>
+				<p class="text-sm font-semibold uppercase text-eden-green">Guest feedback</p>
+				<p class="mt-1 text-sm leading-6 text-slate-700">Recent public feedback from Google reviewers.</p>
+			</div>
+			<a href={googleMapsUrl} target="_blank" rel="noreferrer" class="text-sm font-semibold text-eden-green underline underline-offset-4">
+				Read reviews on Google
+			</a>
+		</div>
+		<div class="mt-6 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2">
+			{reviews.map((review) => (
+				<figure class="w-[min(22rem,85vw)] shrink-0 snap-start border-l-2 border-eden-sage bg-eden-paper p-5">
+					<blockquote class="text-base leading-7 text-eden-navy">&ldquo;{review.quote}&rdquo;</blockquote>
+					<figcaption class="mt-4 text-sm font-semibold text-eden-green">{review.author}, Google review</figcaption>
+				</figure>
+			))}
+		</div>
+	</div>
+</section>

@@ -1,5 +1,6 @@
 ---
 import LeadForm from "../../components/content/LeadForm.astro";
+import GuestReviewStrip from "../../components/content/GuestReviewStrip.astro";
 import PaidServiceFooter from "../../components/layout/PaidServiceFooter.astro";
 import PremiumHeader from "../../components/layout/PremiumHeader.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
@@ -7,9 +8,9 @@ import type { JsonLd } from "../../lib/schema-org";
 import { canonicalUrl } from "../../lib/urls";
 
 const canonical = canonicalUrl("/lp/hormone-optimization-denver");
-const title = "Hormone Specialist Denver | $149 Consult + Hormone Panel | Eden";
+const title = "Hormone Specialist Denver | $175 Consult + Lab Work | Eden";
 const description =
-	"A $149 new-client hormone baseline for women and men in Greenwood Village near DTC: private consultation, hormone panel, InBody, and a clear next-step plan.";
+	"A $175 new-client hormone consultation for women and men in Greenwood Village near DTC: private consultation, lab work, and a clear next-step plan.";
 
 const visitIncludes = [
 	{
@@ -17,8 +18,8 @@ const visitIncludes = [
 		body: "Discuss symptoms, goals, health history, and the changes you want clarified in a private, in-person setting.",
 	},
 	{
-		title: "Hormone panel + InBody",
-		body: "Start with a hormone panel and body-composition baseline instead of guessing at what needs attention.",
+		title: "Relevant baseline panel",
+		body: "Women's panel: FSH, estradiol, and total and free testosterone with SHBG. Men's panel: CBC, estradiol, and total and free testosterone with SHBG.",
 	},
 	{
 		title: "Personalized next-step plan",
@@ -35,9 +36,9 @@ const comparisonPoints = [
 
 const faqs = [
 	{
-		question: "What is included in the $149 hormone baseline?",
+		question: "What is included in the $175 hormone consultation?",
 		answer:
-			"The $149 new-client baseline includes a private consultation, a hormone panel, an InBody body-composition baseline, and a provider-guided next-step plan.",
+			"The $175 new-client visit combines a $100 private consultation with the $75 hormone panel and a provider-guided next-step plan. The women's panel includes FSH, estradiol, and total and free testosterone with SHBG. The men's panel includes CBC, estradiol, and total and free testosterone with SHBG. Treatment is not included and is considered separately after provider review.",
 	},
 	{
 		question: "Who is the hormone baseline for?",
@@ -115,6 +116,7 @@ const jsonLd: JsonLd[] = [
 	canonicalUrl={canonical}
 	jsonLd={jsonLd}
 	noindex
+	ogImage="/assets/eden-functional-consult-air.webp"
 	preloadImages={["/assets/eden-health-club-reception.webp"]}
 >
 	<PremiumHeader
@@ -127,7 +129,7 @@ const jsonLd: JsonLd[] = [
 		ctaLabel="Request a Consult"
 	/>
 
-	<main class="bg-eden-paper pb-20 md:pb-0">
+	<main class="bg-eden-paper pb-24 md:pb-0">
 		<section class="relative overflow-hidden bg-eden-forest text-white">
 			<img
 				src="/assets/eden-health-club-reception.webp"
@@ -144,14 +146,14 @@ const jsonLd: JsonLd[] = [
 				<div class="max-w-2xl">
 					<p class="text-sm font-semibold uppercase text-eden-sage">Hormone specialist · Greenwood Village near DTC</p>
 					<h1 class="mt-4 max-w-3xl text-4xl font-semibold leading-tight sm:text-5xl lg:text-6xl">
-						A $149 hormone baseline for women and men in Denver.
+						A $175 hormone consultation for women and men in Denver.
 					</h1>
 					<p class="mt-6 max-w-xl text-lg leading-8 text-white/82">
-						Start with a private consultation, hormone panel, InBody baseline, and a clear next-step plan for energy, sleep, mood, recovery, or body composition.
+						Start with a private consultation, hormone lab work, and a clear next-step plan for energy, sleep, mood, recovery, or body-composition questions.
 					</p>
 					<div class="mt-7 flex flex-wrap gap-3 text-sm font-semibold text-white/88">
-						<span class="rounded-md border border-white/20 bg-white/10 px-3 py-2">$149 new-client visit</span>
-						<span class="rounded-md border border-white/20 bg-white/10 px-3 py-2">Hormone panel + InBody</span>
+						<span class="rounded-md border border-white/20 bg-white/10 px-3 py-2">$175 new-client visit</span>
+						<span class="rounded-md border border-white/20 bg-white/10 px-3 py-2">$100 consult + $75 panel</span>
 						<span class="rounded-md border border-white/20 bg-white/10 px-3 py-2">Provider-led roadmap</span>
 					</div>
 					<p class="mt-6 text-sm leading-6 text-white/68">
@@ -162,9 +164,9 @@ const jsonLd: JsonLd[] = [
 				<LeadForm
 					serviceSlug="hormone-optimization"
 					suburbSlug="denver"
-					heading="Request your $149 hormone baseline"
-					subheading="Eden will follow up with scheduling details and what to expect from your consultation, hormone panel, InBody baseline, and review."
-					submitText="Request My $149 Baseline"
+					heading="Request your $175 hormone consultation"
+					subheading="Eden will follow up with scheduling details and what to expect from your consultation, lab work, and review."
+					submitText="Request My $175 Consultation"
 					messageLabel="What would you like help with?"
 					goalOptions={[
 						"Energy, sleep, or recovery",
@@ -173,22 +175,24 @@ const jsonLd: JsonLd[] = [
 						"Body composition or weight changes",
 						"I am not sure yet",
 					]}
-					hiddenMessage="Hormone Optimization Denver paid landing page $149 baseline request"
-					offerName="$149 Hormone Baseline"
-					offerValue="private_consult_hormone_panel_inbody_provider_roadmap"
+					hiddenMessage="Hormone Optimization Denver paid landing page $175 consultation and lab work request"
+					offerName="$175 Hormone Consultation + Lab Work"
+					offerValue="private_consult_hormone_lab_work_provider_roadmap_175"
 				/>
 			</div>
 		</section>
+
+		<GuestReviewStrip />
 
 		<section id="visit" class="px-6 py-14 sm:py-18">
 			<div class="mx-auto max-w-6xl">
 				<div class="max-w-3xl">
 					<p class="text-sm font-semibold uppercase text-eden-green">A clear first step</p>
 					<h2 class="mt-3 text-3xl font-semibold leading-tight text-eden-navy sm:text-4xl">
-						A $149 starting point before any ongoing hormone decision.
+						A $175 starting point before any ongoing hormone decision.
 					</h2>
 					<p class="mt-4 text-base leading-7 text-slate-700">
-						Instead of starting with a generic protocol, Eden starts with your experience, a hormone panel, and body-composition context.
+						Your $175 starting visit combines a $100 private consultation with the $75 hormone panel. Eden starts with your experience, relevant lab work, and the questions you want clarified.
 					</p>
 				</div>
 				<div class="mt-8 grid gap-5 md:grid-cols-3">
@@ -207,13 +211,13 @@ const jsonLd: JsonLd[] = [
 			<div class="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[0.92fr_1.08fr] lg:items-center">
 				<div class="overflow-hidden rounded-lg">
 					<img
-						src="/assets/eden-health-club-office.webp"
-						alt="Private consultation space at Eden Health Club in Greenwood Village"
-						class="aspect-[4/3] h-full w-full object-cover"
+						src="/assets/eden-functional-consult-air.webp"
+						alt="Eden provider meeting with a guest during a private consultation"
+						class="aspect-[4/3] w-full object-cover object-center"
 						loading="lazy"
 						decoding="async"
-						width="1388"
-						height="1000"
+						width="900"
+						height="1600"
 					/>
 				</div>
 				<div>

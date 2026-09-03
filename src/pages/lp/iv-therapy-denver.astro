@@ -1,5 +1,7 @@
 ---
 import LeadForm from "../../components/content/LeadForm.astro";
+import GuestReviewStrip from "../../components/content/GuestReviewStrip.astro";
+import StickyMobileLeadActions from "../../components/content/StickyMobileLeadActions.astro";
 import PaidServiceFooter from "../../components/layout/PaidServiceFooter.astro";
 import PremiumHeader from "../../components/layout/PremiumHeader.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
@@ -7,9 +9,9 @@ import { canonicalUrl } from "../../lib/urls";
 import type { JsonLd } from "../../lib/schema-org";
 
 const canonical = canonicalUrl("/lp/iv-therapy-denver");
-const title = "IV Therapy Denver | $129 Wellness Wednesday Near DTC | Eden";
+const title = "IV Therapy Denver | First IV Visit $129 Near DTC | Eden";
 const description =
-	"Request IV therapy in Greenwood Village near Denver Tech Center. Explore IV hydration, vitamin drips, B12 support, and select $129 Wellness Wednesday visits.";
+	"Request IV therapy in Greenwood Village near Denver Tech Center. New guests can ask about a $129 first IV visit for qualifying wellness IVs; NAD+ and Niagen are excluded.";
 
 const visitSteps = [
 	{
@@ -46,9 +48,9 @@ const ivMenu = [
 		body: "A provider-guided conversation for guests who want an in-person wellness visit without choosing ingredients on their own.",
 	},
 	{
-		kicker: "Weekly offer",
-		title: "Wellness Wednesday",
-		body: "Select IV visits are $129 on Wednesdays. Qualifying options and appointment availability are confirmed by the Eden team.",
+		kicker: "New guest offer",
+		title: "First IV visit",
+		body: "Qualifying wellness IVs are $129 for a first visit. NAD+ and Niagen IVs are excluded; Eden confirms fit and availability before booking.",
 		price: "$129",
 	},
 	{
@@ -77,7 +79,7 @@ const faqs = [
 	{
 		question: "What does an IV visit cost?",
 		answer:
-			"Pricing depends on the selected service. Ask about current Wellness Wednesday options and receive clear pricing before you book.",
+			"Qualifying wellness IVs are $129 for a first visit. NAD+ and Niagen IVs are excluded. Eden confirms the correct visit, availability, and final price before booking.",
 	},
 ];
 
@@ -135,10 +137,11 @@ const jsonLd: JsonLd[] = [
 	canonicalUrl={canonical}
 	jsonLd={jsonLd}
 	noindex={true}
+	ogImage="/assets/iv-therapy-clinic-hero.webp"
 	preloadImages={["/assets/iv-therapy-clinic-hero.webp", "/assets/eden-health-club-logo-white-transparent-tight.png"]}
 >
-	<PremiumHeader brandHref={null} servicesHref="#visit" servicesLabel="IV Visit" pricingHref="#lead-form" pricingLabel="Pricing" contactHref="#lead-form" ctaLabel="Book IV" />
-	<main class="bg-eden-paper">
+	<PremiumHeader brandHref={null} servicesHref="#visit" servicesLabel="IV Visit" pricingHref="#lead-form" pricingLabel="Pricing" contactHref="#lead-form" ctaLabel="Request IV Visit" />
+	<main class="bg-eden-paper pb-24 md:pb-0">
 		<section class="relative overflow-hidden bg-eden-forest text-white">
 			<div class="absolute inset-0">
 				<img src="/assets/eden-health-club-reception.webp" alt="" class="h-full w-full object-cover opacity-20" loading="eager" fetchpriority="low" decoding="async" width="1388" height="1000" />
@@ -152,7 +155,7 @@ const jsonLd: JsonLd[] = [
 						IV therapy in Denver, without the guesswork.
 					</h1>
 					<p class="mt-5 max-w-2xl text-base leading-8 text-white/86 sm:text-lg">
-						Choose a private IV hydration or wellness visit with clear guidance and pricing. Ask about select $129 Wellness Wednesday IVs.
+						Choose a private IV hydration or wellness visit with clear guidance and pricing. New guests can ask about a $129 first IV visit for qualifying wellness IVs.
 					</p>
 					<div class="mt-8 flex flex-col gap-3 sm:flex-row">
 						<a href="#lead-form" class="rounded-md bg-eden-sage px-6 py-3 text-center text-base font-semibold text-eden-forest shadow-sm">
@@ -175,22 +178,24 @@ const jsonLd: JsonLd[] = [
 							<p class="mt-2 text-lg font-semibold">In-person care</p>
 						</div>
 						<div class="rounded-lg border border-white/15 bg-white/8 p-4 backdrop-blur">
-							<p class="text-xs font-semibold uppercase text-eden-sage">Wednesday</p>
-							<p class="mt-2 text-lg font-semibold">Select IVs $129</p>
+							<p class="text-xs font-semibold uppercase text-eden-sage">New guest</p>
+							<p class="mt-2 text-lg font-semibold">First IV $129</p>
 						</div>
 					</div>
 				</div>
 				<div class="overflow-hidden rounded-lg border border-white/15 bg-white/10 p-3 shadow-2xl backdrop-blur">
 					<img src="/assets/iv-therapy-clinic-hero.webp" alt="Adult patient meeting with a provider during an IV hydration visit" class="h-[28rem] w-full rounded-md object-cover object-center" loading="eager" fetchpriority="high" decoding="async" width="1440" height="960" />
 					<div class="mt-3 rounded-md bg-white p-5 text-eden-navy">
-						<p class="text-xs font-semibold uppercase text-eden-green">$129 Wellness Wednesday</p>
+						<p class="text-xs font-semibold uppercase text-eden-green">$129 first IV visit</p>
 						<p class="mt-2 text-xl font-semibold leading-tight">
-							Ask which select IV visits qualify, then confirm fit and availability with Eden.
+							Qualifying wellness IVs only. NAD+ and Niagen are excluded.
 						</p>
 					</div>
 				</div>
 			</div>
 		</section>
+
+		<GuestReviewStrip />
 
 		<section class="border-b border-eden-line bg-white px-6 py-12 sm:py-16">
 			<div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.92fr_1.08fr] lg:items-start">
@@ -213,8 +218,9 @@ const jsonLd: JsonLd[] = [
 					subheading="Tell Eden what you are looking for. The team will follow up about fit, availability, and current pricing."
 					submitText="Request My IV Visit"
 					messageLabel="What are you looking for?"
-					goalOptions={["IV hydration", "Vitamin drip", "B12 support", "Wellness Wednesday option", "Not sure yet"]}
-					offerName="IV Therapy Consultation"
+					goalOptions={["$129 first IV visit", "IV hydration", "Vitamin drip", "B12 support", "Not sure yet"]}
+					offerName="$129 First IV Visit"
+					offerValue="first_iv_129_qualifying_wellness_ivs"
 					underButtonText="Private. In person. One Greenwood Village location."
 				/>
 			</div>
@@ -320,6 +326,7 @@ const jsonLd: JsonLd[] = [
 			</div>
 		</section>
 	</main>
+	<StickyMobileLeadActions primaryLabel="Request an IV visit" ariaLabel="Request an IV therapy visit" />
 
 	<PaidServiceFooter
 		serviceName="IV Therapy Denver"
