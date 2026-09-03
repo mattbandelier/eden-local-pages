@@ -6,6 +6,7 @@ import CTAStrip from "../../components/content/CTAStrip.astro";
 import DecisionSupport from "../../components/content/DecisionSupport.astro";
 import FAQAccordion from "../../components/content/FAQAccordion.astro";
 import Hero from "../../components/content/Hero.astro";
+import GuestReviewStrip from "../../components/content/GuestReviewStrip.astro";
 import HowItWorks from "../../components/content/HowItWorks.astro";
 import LocalProximity from "../../components/content/LocalProximity.astro";
 import LocalAnswerBlock from "../../components/content/LocalAnswerBlock.astro";
@@ -81,6 +82,7 @@ const pageJsonLd = isPolicySeparatedPaidPage
 	canonicalUrl={comboUrl(service.slug, suburb.slug)}
 	jsonLd={pageJsonLd}
 	noindex={!isPremiumMoneyPage}
+	ogImage={isPremiumMoneyPage ? premiumHeroImages[service.slug] : undefined}
 	preloadImages={preloadImages}
 >
 	{isPremiumMoneyPage ? (
@@ -96,6 +98,18 @@ const pageJsonLd = isPolicySeparatedPaidPage
 		<LocalProximity suburb={suburb} />
 		<TrustBar />
 		{isPremiumMoneyPage && <PremiumConversionBlock service={service} suburb={suburb} />}
+		{service.slug === "male-trt" && suburb.slug === "denver" && (
+			<section class="border-y border-eden-line bg-white px-6 py-10 sm:py-14">
+				<div class="mx-auto grid max-w-6xl gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
+					<div>
+						<p class="text-sm font-semibold uppercase text-eden-green">TRT pellet pricing</p>
+						<h2 class="mt-3 text-3xl font-semibold leading-tight text-eden-navy sm:text-4xl">Pricing stated before you decide.</h2>
+					</div>
+					<p class="text-base leading-8 text-slate-700">Male TRT pellet placement starts at $500 for modified dosing and $700 for full dosing. The $100 consultation and required bloodwork are separate.</p>
+				</div>
+			</section>
+		)}
+		{service.slug === "male-trt" && suburb.slug === "denver" && <GuestReviewStrip />}
 		{!isPremiumMoneyPage && (
 			<CTAStrip
 				serviceSlug={service.slug}

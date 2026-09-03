@@ -1,7 +1,9 @@
 ---
 import LeadForm from "../../components/content/LeadForm.astro";
+import GuestReviewStrip from "../../components/content/GuestReviewStrip.astro";
 import PaidServiceFooter from "../../components/layout/PaidServiceFooter.astro";
 import PremiumHeader from "../../components/layout/PremiumHeader.astro";
+import StickyMobileLeadActions from "../../components/content/StickyMobileLeadActions.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import type { JsonLd } from "../../lib/schema-org";
 import { canonicalUrl } from "../../lib/urls";
@@ -81,9 +83,9 @@ const jsonLd: JsonLd[] = [
 ];
 ---
 
-<BaseLayout title={title} description={description} canonicalUrl={canonical} jsonLd={jsonLd} noindex preloadImages={["/assets/eden-health-club-reception.webp"]}>
+<BaseLayout title={title} description={description} canonicalUrl={canonical} jsonLd={jsonLd} noindex ogImage="/assets/eden-health-club-office.webp" preloadImages={["/assets/eden-health-club-reception.webp"]}>
 	<PremiumHeader brandHref={null} servicesHref="#baseline" servicesLabel="The Visit" pricingHref="#questions" pricingLabel="Questions" contactHref="#lead-form" ctaLabel="Request a Baseline" />
-	<main class="bg-eden-paper pb-20 md:pb-0">
+	<main class="bg-eden-paper pb-24 md:pb-0">
 		<section class="relative overflow-hidden bg-eden-forest text-white">
 			<img src="/assets/eden-health-club-reception.webp" alt="" class="absolute inset-0 h-full w-full object-cover opacity-45" loading="eager" fetchpriority="high" decoding="async" width="1388" height="1000" />
 			<div class="absolute inset-0 bg-[linear-gradient(90deg,rgba(28,45,38,0.97),rgba(28,45,38,0.84)_52%,rgba(28,45,38,0.46))]"></div>
@@ -114,6 +116,8 @@ const jsonLd: JsonLd[] = [
 				/>
 			</div>
 		</section>
+
+		<GuestReviewStrip />
 
 		<section id="baseline" class="px-6 py-14 sm:py-18">
 			<div class="mx-auto max-w-6xl">
@@ -154,5 +158,6 @@ const jsonLd: JsonLd[] = [
 			</div>
 		</section>
 	</main>
+	<StickyMobileLeadActions primaryLabel="Request a baseline" ariaLabel="Request a medical weight-management baseline" />
 	<PaidServiceFooter />
 </BaseLayout>

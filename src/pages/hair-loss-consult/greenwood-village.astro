@@ -1,5 +1,6 @@
 ---
 import LeadForm from "../../components/content/LeadForm.astro";
+import GuestReviewStrip from "../../components/content/GuestReviewStrip.astro";
 import StickyMobileLeadActions from "../../components/content/StickyMobileLeadActions.astro";
 import PremiumHeader from "../../components/layout/PremiumHeader.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
@@ -32,6 +33,24 @@ const visitSteps = [
 	{
 		title: "Leave with next steps",
 		body: "Timing, expectations, and follow-up are reviewed before any commitment is made.",
+	},
+];
+
+const comparisonRows = [
+	{
+		label: "Starting point",
+		inPerson: "Discuss the pattern, timeline, goals, and candidacy in a private visit.",
+		online: "Sort through general information without a clinician seeing your specific concern.",
+	},
+	{
+		label: "Decision",
+		inPerson: "Review realistic timing, price context, and whether a clinic-based option is worth pursuing.",
+		online: "Compare offers without knowing whether they match your situation.",
+	},
+	{
+		label: "Next step",
+		inPerson: "Leave with a written plan and a clear recommendation about what to do next.",
+		online: "Keep researching without a personal care path.",
 	},
 ];
 
@@ -189,6 +208,8 @@ const jsonLd: JsonLd[] = [
 			</div>
 		</section>
 
+		<GuestReviewStrip />
+
 		<section class="px-6 py-12 sm:py-16">
 			<div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[1fr_0.82fr] lg:items-center">
 				<div class="overflow-hidden rounded-lg border border-eden-line bg-white shadow-sm">
@@ -213,6 +234,31 @@ const jsonLd: JsonLd[] = [
 					<div class="mt-6 grid gap-3">
 						{["No commitment before the assessment", "Private visit minutes from DTC", "Written personal plan"].map((item) => (
 							<div class="rounded-md border border-eden-line bg-white px-4 py-3 text-sm font-semibold text-eden-navy shadow-sm">{item}</div>
+						))}
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="bg-eden-forest px-6 py-12 text-white sm:py-16">
+			<div class="mx-auto max-w-6xl">
+				<div class="max-w-3xl">
+					<p class="text-sm font-semibold uppercase text-eden-sage">Why start in person</p>
+					<h2 class="mt-3 text-3xl font-semibold leading-tight sm:text-4xl">A local assessment gives you more than a generic online answer.</h2>
+				</div>
+				<div class="mt-8 overflow-x-auto">
+					<div class="min-w-[680px] overflow-hidden rounded-lg border border-white/15">
+						<div class="grid grid-cols-[0.78fr_1fr_1fr] bg-white/10 text-sm font-semibold">
+							<div class="p-4 text-eden-sage">Compare</div>
+							<div class="border-l border-white/15 p-4">In-person at Eden</div>
+							<div class="border-l border-white/15 p-4 text-white/78">Trying to decide online</div>
+						</div>
+						{comparisonRows.map((row) => (
+							<div class="grid grid-cols-[0.78fr_1fr_1fr] border-t border-white/15 text-sm">
+								<div class="bg-white/6 p-4 font-semibold text-eden-sage">{row.label}</div>
+								<div class="border-l border-white/15 p-4 leading-6 text-white/88">{row.inPerson}</div>
+								<div class="border-l border-white/15 p-4 leading-6 text-white/68">{row.online}</div>
+							</div>
 						))}
 					</div>
 				</div>

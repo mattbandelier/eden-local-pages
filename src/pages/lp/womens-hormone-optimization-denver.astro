@@ -1,5 +1,6 @@
 ---
 import LeadForm from "../../components/content/LeadForm.astro";
+import GuestReviewStrip from "../../components/content/GuestReviewStrip.astro";
 import PaidServiceFooter from "../../components/layout/PaidServiceFooter.astro";
 import PremiumHeader from "../../components/layout/PremiumHeader.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
@@ -132,10 +133,11 @@ const jsonLd: JsonLd[] = [
 	canonicalUrl={canonical}
 	jsonLd={jsonLd}
 	noindex={true}
+	ogImage="/assets/fitness-community.webp"
 	preloadImages={["/assets/eden-health-club-reception.webp", "/assets/fitness-community.webp", "/assets/eden-health-club-logo-white-transparent-tight.png"]}
 >
 	<PremiumHeader brandHref={null} servicesHref="#fit" servicesLabel="The Visit" pricingHref="#lead-form" contactHref="#lead-form" ctaLabel="Consult" />
-	<main class="bg-eden-paper">
+	<main class="bg-eden-paper pb-24 md:pb-0">
 		<section class="relative overflow-hidden bg-eden-forest text-white">
 			<div class="absolute inset-0">
 				<img src="/assets/eden-health-club-reception.webp" alt="" class="h-full w-full object-cover opacity-30" loading="eager" fetchpriority="high" decoding="async" width="1388" height="1000" />
@@ -146,14 +148,14 @@ const jsonLd: JsonLd[] = [
 					<img src="/assets/eden-health-club-logo-white-transparent-tight.png" alt="Eden Health Club" class="mb-8 h-auto w-36 sm:w-44" loading="eager" fetchpriority="high" decoding="async" width="744" height="447" />
 					<p class="text-sm font-semibold uppercase tracking-normal text-eden-sage">Women's hormone care near Denver / DTC</p>
 					<h1 class="mt-4 max-w-3xl text-4xl font-semibold leading-tight sm:text-5xl lg:text-6xl">
-						Women's hormone care, made clear.
+						A $175 hormone consultation with lab work, made clear.
 					</h1>
 					<p class="mt-5 max-w-2xl text-base leading-8 text-white/86 sm:text-lg">
-						A private, provider-led consultation for menopause, perimenopause, and BHRT questions, with symptoms, lab context, and next steps considered together.
+						A private, provider-led consultation for menopause, perimenopause, and BHRT questions, with lab work and next steps considered together.
 					</p>
 					<div class="mt-8 flex flex-col gap-3 sm:flex-row">
 						<a href="#lead-form" class="rounded-md bg-eden-sage px-6 py-3 text-center text-base font-semibold text-eden-forest shadow-sm">
-							Request My Clarity Consultation
+							Request My $175 Consultation
 						</a>
 						<a href="tel:+17206057678" data-phone-link class="rounded-md border border-white/35 px-6 py-3 text-center text-base font-semibold text-white hover:bg-white/10">
 							Call 720-605-7678
@@ -205,6 +207,8 @@ const jsonLd: JsonLd[] = [
 			</div>
 		</section>
 
+		<GuestReviewStrip />
+
 		<section class="border-b border-eden-line bg-white px-6 py-12 sm:py-16">
 			<div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.92fr_1.08fr] lg:items-start">
 				<div class="max-w-xl">
@@ -222,12 +226,13 @@ const jsonLd: JsonLd[] = [
 				<LeadForm
 					serviceSlug="womens-hormone-optimization-paid"
 					suburbSlug="greenwood-village"
-					heading="Request a women's hormone clarity consultation"
-					subheading="Tell Eden what you want to review. The team will follow up about symptoms, labs, provider review, and next steps."
-					submitText="Request My Consultation"
+					heading="Request a $175 women's hormone consultation"
+					subheading="Tell Eden what you want to review. The team will follow up about symptoms, lab work, provider review, and next steps."
+					submitText="Request My $175 Consultation"
 					messageLabel="What are you hoping to improve?"
 					goalOptions={["Sleep or fatigue", "Mood or focus", "Menopause or perimenopause changes", "Libido or recovery", "Body composition or weight", "BHRT or hormone pellets", "Not sure yet"]}
-					offerName="Women's Hormone Clarity Consultation"
+					offerName="$175 Women's Hormone Consultation + Lab Work"
+					offerValue="womens_hormone_consult_lab_work_175"
 					underButtonText="Private. In person. One Greenwood Village location."
 				/>
 			</div>
