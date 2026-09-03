@@ -1,6 +1,7 @@
 ---
 import LeadForm from "../../components/content/LeadForm.astro";
 import GuestReviewStrip from "../../components/content/GuestReviewStrip.astro";
+import StickyMobileLeadActions from "../../components/content/StickyMobileLeadActions.astro";
 import Footer from "../../components/layout/Footer.astro";
 import PremiumHeader from "../../components/layout/PremiumHeader.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
@@ -183,7 +184,12 @@ const jsonLd: JsonLd[] = [
 			<div class="mx-auto max-w-4xl"><p class="text-sm font-semibold uppercase text-eden-green">FAQ</p><h2 id="microneedling-faq-heading" class="mt-3 text-3xl font-semibold leading-tight text-eden-navy sm:text-4xl">Questions before your consult.</h2><div class="mt-8 divide-y divide-eden-line rounded-lg border border-eden-line bg-white">{faqs.map((faq) => <details class="group p-5"><summary class="cursor-pointer list-none text-lg font-semibold text-eden-navy">{faq.question}</summary><p class="mt-3 text-sm leading-7 text-slate-700">{faq.answer}</p></details>)}</div></div>
 		</section>
 	</main>
-	<div class="fixed inset-x-0 bottom-0 z-40 border-t border-eden-line bg-white/96 p-3 shadow-lg backdrop-blur md:hidden"><div class="mx-auto flex max-w-md gap-2"><a href="#lead-form" class="flex-1 rounded-md bg-eden-green px-4 py-3 text-center text-sm font-semibold text-white">Request a consult</a><a href="tel:+17206057678" data-phone-link class="rounded-md border border-eden-line px-4 py-3 text-center text-sm font-semibold text-eden-navy">Call</a></div></div>
+	<StickyMobileLeadActions
+		primaryLabel="Request a Consultation"
+		ariaLabel="Request a microneedling consultation"
+		desktopEyebrow="Microneedling Consultation"
+		desktopBody="Review texture, pores, fine lines, timing, and treatment fit with Eden."
+	/>
 	<Footer />
 </BaseLayout>
 
