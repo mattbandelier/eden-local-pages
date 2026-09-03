@@ -1,23 +1,28 @@
 ---
 const reviews = [
 	{
-		quote: "Professional, friendly, non-judgmental, and down to earth.",
+		quote: "Professional, friendly, non-judgmental, down to earth.",
+		context: "He also praised the clean, relaxing setting and how Eden's staff works together to create a thoughtful experience.",
 		author: "Chris E.",
 	},
 	{
 		quote: "Thorough with my lab results.",
+		context: "She valued receiving clear answers, thoughtful options, and care that never felt like a sales pitch.",
 		author: "Nicole K.",
 	},
 	{
 		quote: "I never felt rushed.",
+		context: "Her consultation felt personal and unrushed, with real attention given to her history, concerns, and goals.",
 		author: "Amy W.",
 	},
 	{
 		quote: "Knowledgeable and attentive.",
+		context: "She highlighted clear treatment explanations, practical support, and an environment that keeps improving the guest experience.",
 		author: "Kristina H.",
 	},
 	{
-		quote: "Really heard my concerns.",
+		quote: "Sat with me to hear my concerns.",
+		context: "She appreciated a practitioner who listened, ordered relevant labs, and worked collaboratively toward a solution.",
 		author: "Sarah K.",
 	},
 ];
@@ -41,9 +46,10 @@ const googleMapsUrl = "https://www.google.com/maps?cid=12311342436061718588";
 		</div>
 		<div data-review-track class="mt-6 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
 			{reviews.map((review) => (
-				<figure class="w-[min(22rem,85vw)] shrink-0 snap-start border-l-2 border-eden-sage bg-eden-paper p-5">
-					<blockquote class="text-base leading-7 text-eden-navy">&ldquo;{review.quote}&rdquo;</blockquote>
-					<figcaption class="mt-4 text-sm font-semibold text-eden-green">{review.author}</figcaption>
+				<figure class="flex min-h-72 w-[min(22rem,85vw)] shrink-0 snap-start flex-col border-l-2 border-eden-sage bg-eden-paper p-5 sm:min-h-64">
+					<blockquote class="text-base font-semibold leading-7 text-eden-navy">&ldquo;{review.quote}&rdquo;</blockquote>
+					<p class="mt-3 text-sm leading-6 text-slate-700">{review.context}</p>
+					<figcaption class="mt-auto pt-5 text-sm font-semibold text-eden-green">{review.author}</figcaption>
 				</figure>
 			))}
 		</div>
