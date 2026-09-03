@@ -1,0 +1,21 @@
+---
+interface Props {
+	poster: string;
+}
+
+const { poster } = Astro.props;
+---
+
+<video
+	class="absolute inset-0 hidden h-full w-full object-cover opacity-[0.22] md:block"
+	data-deferred-hero-video
+	autoplay
+	muted
+	loop
+	playsinline
+	preload="none"
+	poster={poster}
+	aria-hidden="true"
+>
+	<source data-src="https://edenhealthclubs.com/wp-content/uploads/2025/07/edenhealth-hero-video.mp4" type="video/mp4" />
+</video>

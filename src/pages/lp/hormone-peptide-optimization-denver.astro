@@ -1,5 +1,6 @@
 ---
 import LeadForm from "../../components/content/LeadForm.astro";
+import GuestReviewStrip from "../../components/content/GuestReviewStrip.astro";
 import StickyMobileLeadActions from "../../components/content/StickyMobileLeadActions.astro";
 import Footer from "../../components/layout/Footer.astro";
 import PremiumHeader from "../../components/layout/PremiumHeader.astro";
@@ -10,7 +11,7 @@ import type { JsonLd } from "../../lib/schema-org";
 const canonical = canonicalUrl("/lp/hormone-peptide-optimization-denver");
 const title = "$299 Peptide + Longevity Starter Denver | Peptides, Hormones & HRT | Eden";
 const description =
-	"Start with Eden's $299 Peptide + Longevity Starter near Denver: private consult, lab or biomarker review, peptide therapy planning, and hormone or longevity context when appropriate.";
+	"Start with Eden's $299 Peptide + Longevity Starter near Denver: private consultation, baseline lab work, and a personalized next-step plan.";
 
 const proofPoints = [
 	{
@@ -59,8 +60,8 @@ const offerIncludes = [
 		body: "Discuss peptide therapy, medical peptide therapy, peptide injections, recovery, body composition, sleep, skin quality, and wellness support when clinically appropriate.",
 	},
 	{
-		title: "First-month peptide credit",
-		body: "If a provider determines a peptide protocol is appropriate, a first-month peptide or wellness protocol credit can be applied to the next step.",
+		title: "Personalized next-step plan",
+		body: "Leave with a provider-guided roadmap shaped by your goals, health history, and baseline information.",
 	},
 ];
 
@@ -132,12 +133,12 @@ const faqs = [
 	{
 		question: "What is the $299 Peptide + Longevity Starter?",
 		answer:
-			"It is a private first visit designed for people exploring peptide therapy, peptide injections, recovery, body composition, skin quality, sleep, and longevity-minded wellness planning. It includes a consultation, lab or biomarker review when appropriate, and a first-month peptide or wellness protocol credit if a provider determines a next step is clinically appropriate.",
+			"It is a private first visit designed for people exploring peptide therapy, peptide injections, recovery, body composition, skin quality, sleep, and longevity-minded wellness planning. It includes a consultation, baseline lab work, and a personalized next-step plan.",
 	},
 	{
 		question: "Does the $299 starter include peptide treatment?",
 		answer:
-			"The starter does not guarantee medication, a vial, peptide therapy, hormone therapy, GLP-1 support, or any specific protocol. Eligibility and recommendations are determined by provider review. If a peptide protocol is clinically appropriate, the starter can support the first-month next step.",
+			"No. The starter does not include or guarantee medication, a vial, peptide therapy, hormone therapy, GLP-1 support, or any specific protocol. Eligibility and recommendations are determined by provider review.",
 	},
 	{
 		question: "Why start with labs or biomarkers?",
@@ -287,7 +288,7 @@ const jsonLd: JsonLd[] = [
 						$299 Peptide + Longevity Starter in Denver.
 					</h1>
 					<p class="mt-5 max-w-2xl text-base leading-8 text-white/86 sm:text-lg">
-						Begin with a private peptide consultation, baseline lab or biomarker review, and a first-month peptide or wellness protocol credit if clinically appropriate.
+						Begin with a private consultation, baseline lab work, and a personalized next-step plan.
 					</p>
 					<div class="mt-8 flex flex-col gap-3 sm:flex-row">
 						<a href="#lead-form" class="rounded-md bg-eden-sage px-6 py-3 text-center text-base font-semibold text-eden-forest shadow-sm">
@@ -322,7 +323,7 @@ const jsonLd: JsonLd[] = [
 					<div class="overflow-hidden rounded-lg border border-white/15 bg-white/10 p-3 shadow-2xl backdrop-blur">
 						<div class="grid gap-3 sm:grid-cols-[0.88fr_1.12fr]">
 							<div class="overflow-hidden rounded-md">
-								<img src="/assets/mens-hormone-optimization.webp" alt="" class="h-full min-h-72 w-full object-cover object-center" loading="lazy" decoding="async" width="1024" height="1536" />
+								<img src="/assets/eden-provider-consult-air.webp" alt="Eden provider meeting with a guest during a private consultation" class="h-full min-h-72 w-full object-cover object-[center_30%]" loading="lazy" decoding="async" width="1012" height="1800" />
 							</div>
 							<div class="grid gap-3">
 								<div class="overflow-hidden rounded-md">
@@ -350,6 +351,8 @@ const jsonLd: JsonLd[] = [
 				</div>
 			</div>
 		</section>
+
+		<GuestReviewStrip />
 
 		<section id="offer" class="bg-white px-6 py-12 sm:py-16">
 			<div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.82fr_1.18fr] lg:items-start">
@@ -493,10 +496,10 @@ const jsonLd: JsonLd[] = [
 					heading="Request the $299 Peptide + Longevity Starter"
 					subheading="Tell Eden what you want to explore. The team will follow up about fit, labs or biomarker review, peptide next steps, and longevity context."
 					submitText="Request my $299 starter"
-					hiddenMessage="WORKFLOW_KEY: peptide_299_therapy. SOURCE_LANE: src_google_iw. $299 Peptide + Longevity Starter requested from the Google Ads peptide/longevity-intent page: consult, lab or biomarker review when appropriate, peptide therapy planning, and first-month peptide support if prescribed and clinically appropriate."
+					hiddenMessage="WORKFLOW_KEY: peptide_299_therapy. SOURCE_LANE: src_google_iw. $299 Peptide + Longevity Starter requested from the Google Ads peptide/longevity-intent page: private consultation, baseline lab work, and a personalized next-step plan. Treatment is not included."
 					workflowKey="peptide_299_therapy"
 					offerName="$299 Peptide + Longevity Starter"
-					offerValue="consult_lab_or_biomarker_review_peptide_plan_first_month_if_prescribed"
+					offerValue="consult_baseline_lab_work_personalized_plan"
 				/>
 			</div>
 		</section>

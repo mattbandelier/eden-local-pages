@@ -1,5 +1,6 @@
 ---
 import LeadForm from "../../components/content/LeadForm.astro";
+import DeferredHeroVideo from "../../components/content/DeferredHeroVideo.astro";
 import GuestReviewStrip from "../../components/content/GuestReviewStrip.astro";
 import StickyMobileLeadActions from "../../components/content/StickyMobileLeadActions.astro";
 import PaidServiceFooter from "../../components/layout/PaidServiceFooter.astro";
@@ -117,8 +118,8 @@ const jsonLd: JsonLd[] = [
 	canonicalUrl={canonical}
 	jsonLd={jsonLd}
 	noindex
-	ogImage="/assets/eden-functional-consult-air.webp"
-	preloadImages={["/assets/eden-health-club-logo-white-transparent-tight.png"]}
+	ogImage="/assets/eden-provider-consult-air.webp"
+	preloadImages={["/assets/eden-provider-consult-air.webp", "/assets/eden-health-club-logo-white-transparent-tight.png"]}
 >
 	<PremiumHeader
 		brandHref={null}
@@ -132,6 +133,7 @@ const jsonLd: JsonLd[] = [
 
 	<main class="bg-eden-paper pb-24 md:pb-0">
 		<section class="relative overflow-hidden bg-eden-forest text-white">
+			<DeferredHeroVideo poster="/assets/eden-health-club-reception.webp" />
 			<div class="absolute inset-0 bg-[linear-gradient(112deg,#1c2d26,rgba(25,79,57,0.96)_48%,#173b2c)]"></div>
 			<div class="relative mx-auto grid max-w-6xl gap-10 px-6 py-4 sm:py-12 lg:min-h-[calc(100vh-150px)] lg:grid-cols-[1.02fr_0.98fr] lg:items-center lg:py-8">
 				<div>
@@ -171,7 +173,7 @@ const jsonLd: JsonLd[] = [
 							<div
 								role="img"
 								aria-label="Eden provider meeting with a guest during a private consultation"
-								class="min-h-72 overflow-hidden rounded-md bg-[url('/assets/eden-functional-consult-air.webp')] bg-cover bg-center"
+								class="min-h-72 overflow-hidden rounded-md bg-[url('/assets/eden-provider-consult-air.webp')] bg-cover bg-[center_30%]"
 							></div>
 							<div class="grid gap-3">
 								<div class="overflow-hidden rounded-md">
@@ -250,13 +252,13 @@ const jsonLd: JsonLd[] = [
 			<div class="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[0.92fr_1.08fr] lg:items-center">
 				<div class="overflow-hidden rounded-lg">
 					<img
-						src="/assets/eden-functional-consult-air.webp"
+						src="/assets/eden-provider-review-air.webp"
 						alt="Eden provider meeting with a guest during a private consultation"
 						class="aspect-[4/3] w-full object-cover object-center"
 						loading="lazy"
 						decoding="async"
-						width="900"
-						height="1600"
+						width="1012"
+						height="1800"
 					/>
 				</div>
 				<div>
