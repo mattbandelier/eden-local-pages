@@ -57,6 +57,14 @@ const googleMapsUrl = "https://www.google.com/maps?cid=12311342436061718588";
 </section>
 
 <script>
+	const resetInitialScroll = () => {
+		if (!window.location.hash) window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+	};
+
+	if ("scrollRestoration" in window.history) window.history.scrollRestoration = "manual";
+	resetInitialScroll();
+	window.addEventListener("pageshow", resetInitialScroll, { once: true });
+
 	const carousels = document.querySelectorAll<HTMLElement>("[data-review-carousel]");
 
 	carousels.forEach((carousel) => {
@@ -101,6 +109,15 @@ const googleMapsUrl = "https://www.google.com/maps?cid=12311342436061718588";
 		carousel.addEventListener("focusout", start);
 		track.addEventListener("pointerdown", stop);
 		track.addEventListener("pointerup", start);
-		start();
+
+		if ("IntersectionObserver" in window) {
+			const observer = new IntersectionObserver(([entry]) => {
+				if (entry?.isIntersecting) start();
+				else stop();
+			}, { threshold: 0.25 });
+			observer.observe(carousel);
+		} else {
+			start();
+		}
 	});
 </script>

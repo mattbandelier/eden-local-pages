@@ -1,6 +1,7 @@
 ---
 import LeadForm from "../../components/content/LeadForm.astro";
 import GuestReviewStrip from "../../components/content/GuestReviewStrip.astro";
+import StickyMobileLeadActions from "../../components/content/StickyMobileLeadActions.astro";
 import PaidServiceFooter from "../../components/layout/PaidServiceFooter.astro";
 import PremiumHeader from "../../components/layout/PremiumHeader.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
@@ -325,11 +326,11 @@ const jsonLd: JsonLd[] = [
 			</div>
 		</section>
 	</main>
-	<div class="fixed inset-x-0 bottom-0 z-40 border-t border-eden-line bg-white/96 p-3 shadow-lg backdrop-blur md:hidden">
-		<div class="mx-auto flex max-w-md gap-2">
-			<a href="#lead-form" class="flex-1 rounded-md bg-eden-green px-4 py-3 text-center text-sm font-semibold text-white">Hormone consult</a>
-			<a href="tel:+17206057678" data-phone-link class="rounded-md border border-eden-line px-4 py-3 text-center text-sm font-semibold text-eden-navy">Call</a>
-		</div>
-	</div>
+	<StickyMobileLeadActions
+		primaryLabel="Request $175 Visit"
+		ariaLabel="Request a women's hormone consultation"
+		desktopEyebrow="$175 Women's Hormone Visit"
+		desktopBody="Private consultation, women's hormone panel, and a provider-guided next step."
+	/>
 		<PaidServiceFooter />
 	</BaseLayout>

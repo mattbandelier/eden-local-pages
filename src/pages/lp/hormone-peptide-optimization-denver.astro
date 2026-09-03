@@ -1,5 +1,6 @@
 ---
 import LeadForm from "../../components/content/LeadForm.astro";
+import StickyMobileLeadActions from "../../components/content/StickyMobileLeadActions.astro";
 import Footer from "../../components/layout/Footer.astro";
 import PremiumHeader from "../../components/layout/PremiumHeader.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
@@ -531,36 +532,11 @@ const jsonLd: JsonLd[] = [
 			</div>
 		</section>
 	</main>
-	<div
-		data-peptide-starter-sticky
-		class="pointer-events-none fixed bottom-5 right-5 z-40 hidden max-w-xs translate-y-3 rounded-lg border border-white/20 bg-eden-forest/95 p-3 text-white opacity-0 shadow-2xl backdrop-blur transition duration-200 md:block"
-	>
-		<p class="text-xs font-semibold uppercase text-eden-sage">$299 Peptide + Longevity Starter</p>
-		<p class="mt-1 text-sm leading-5 text-white/82">Private peptide consult, lab or biomarker review, longevity context, and a protocol credit if clinically appropriate.</p>
-		<a href="#lead-form" class="mt-3 block rounded-md bg-eden-sage px-4 py-3 text-center text-sm font-semibold text-eden-forest">
-			Request my $299 starter
-		</a>
-	</div>
-	<div class="fixed inset-x-0 bottom-0 z-40 border-t border-eden-line bg-white/96 p-3 shadow-lg backdrop-blur md:hidden">
-		<div class="mx-auto flex max-w-md gap-2">
-			<a href="#lead-form" class="flex-1 rounded-md bg-eden-green px-4 py-3 text-center text-sm font-semibold text-white">$299 peptide + longevity</a>
-			<a href="tel:+17206057678" data-phone-link class="rounded-md border border-eden-line px-4 py-3 text-center text-sm font-semibold text-eden-navy">Call</a>
-		</div>
-	</div>
+	<StickyMobileLeadActions
+		primaryLabel="Request My $299 Starter"
+		ariaLabel="Request a $299 peptide and longevity starter"
+		desktopEyebrow="$299 Peptide + Longevity Starter"
+		desktopBody="Private consultation, lab or biomarker review, and a personalized next-step plan."
+	/>
 	<Footer variant="wellness" />
 </BaseLayout>
-
-<script>
-	const starterSticky = document.querySelector<HTMLElement>("[data-peptide-starter-sticky]");
-	const updateStarterSticky = () => {
-		if (!starterSticky) return;
-		const shouldShow = window.scrollY > window.innerHeight * 0.55;
-		starterSticky.classList.toggle("opacity-0", !shouldShow);
-		starterSticky.classList.toggle("translate-y-3", !shouldShow);
-		starterSticky.classList.toggle("pointer-events-none", !shouldShow);
-	};
-
-	updateStarterSticky();
-	window.addEventListener("scroll", updateStarterSticky, { passive: true });
-	window.addEventListener("resize", updateStarterSticky);
-</script>

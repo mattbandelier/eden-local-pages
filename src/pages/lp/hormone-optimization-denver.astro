@@ -1,6 +1,7 @@
 ---
 import LeadForm from "../../components/content/LeadForm.astro";
 import GuestReviewStrip from "../../components/content/GuestReviewStrip.astro";
+import StickyMobileLeadActions from "../../components/content/StickyMobileLeadActions.astro";
 import PaidServiceFooter from "../../components/layout/PaidServiceFooter.astro";
 import PremiumHeader from "../../components/layout/PremiumHeader.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
@@ -327,42 +328,12 @@ const jsonLd: JsonLd[] = [
 		</section>
 	</main>
 
-	<nav
-		class="pointer-events-none fixed inset-x-0 bottom-0 z-30 grid translate-y-full grid-cols-2 border-t border-slate-200 bg-white/95 px-4 py-3 opacity-0 shadow-[0_-10px_30px_rgba(15,39,51,0.12)] backdrop-blur transition duration-200 md:hidden"
-		aria-label="Contact Eden"
-		aria-hidden="true"
-		data-mobile-sticky
-	>
-		<a href="tel:+17206057678" tabindex="-1" class="mr-2 rounded-md border border-eden-navy/15 px-4 py-3 text-center text-sm font-semibold text-eden-navy">
-			Call
-		</a>
-		<a href="#lead-form" tabindex="-1" class="ml-2 rounded-md bg-eden-sage px-4 py-3 text-center text-sm font-semibold text-eden-forest">
-			Consult
-		</a>
-	</nav>
-
-	<script>
-		const mobileSticky = document.querySelector<HTMLElement>("[data-mobile-sticky]");
-		const leadForm = document.querySelector<HTMLElement>("#lead-form");
-		const paidFooter = document.querySelector<HTMLElement>("footer");
-		const stickyLinks = mobileSticky?.querySelectorAll<HTMLAnchorElement>("a") ?? [];
-
-		const updateMobileSticky = () => {
-			if (!mobileSticky) return;
-			const formVisible = leadForm ? leadForm.getBoundingClientRect().top < window.innerHeight && leadForm.getBoundingClientRect().bottom > 0 : false;
-			const footerVisible = paidFooter ? paidFooter.getBoundingClientRect().top < window.innerHeight : false;
-			const shouldShow = window.scrollY > 160 && !formVisible && !footerVisible;
-			mobileSticky.classList.toggle("pointer-events-none", !shouldShow);
-			mobileSticky.classList.toggle("translate-y-full", !shouldShow);
-			mobileSticky.classList.toggle("opacity-0", !shouldShow);
-			mobileSticky.setAttribute("aria-hidden", String(!shouldShow));
-			stickyLinks.forEach((link) => link.setAttribute("tabindex", shouldShow ? "0" : "-1"));
-		};
-
-		updateMobileSticky();
-		window.addEventListener("scroll", updateMobileSticky, { passive: true });
-		window.addEventListener("resize", updateMobileSticky);
-	</script>
+	<StickyMobileLeadActions
+		primaryLabel="Request $175 Visit"
+		ariaLabel="Request a hormone consultation"
+		desktopEyebrow="$175 Hormone Consultation"
+		desktopBody="Private consultation, hormone panel, and a clear provider-guided plan."
+	/>
 
 	<PaidServiceFooter />
 </BaseLayout>
