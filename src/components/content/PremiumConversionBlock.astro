@@ -1,5 +1,6 @@
 ---
 import type { Service, Suburb } from "../../data/types";
+import { HAIR_RESTORATION_CONSULT_URL } from "../../lib/booking";
 import LeadForm from "./LeadForm.astro";
 
 interface Props {
@@ -441,6 +442,9 @@ const pathway = content.pathway && content.pathway.length ? content.pathway : de
 					heading={content.formHeading}
 					subheading={content.formSubheading}
 					submitText={service.ctaText}
+					successMessage={service.slug === "prf-hair-restoration" ? "Thanks—your request is in. Choose a convenient time now for your complimentary Hair Restoration Consultation." : undefined}
+					successCtaHref={service.slug === "prf-hair-restoration" ? HAIR_RESTORATION_CONSULT_URL : undefined}
+					successCtaText={service.slug === "prf-hair-restoration" ? "Choose a consultation time" : undefined}
 				/>
 			</div>
 		</div>

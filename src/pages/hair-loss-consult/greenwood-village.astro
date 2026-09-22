@@ -4,6 +4,7 @@ import GuestReviewStrip from "../../components/content/GuestReviewStrip.astro";
 import StickyMobileLeadActions from "../../components/content/StickyMobileLeadActions.astro";
 import PremiumHeader from "../../components/layout/PremiumHeader.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import { HAIR_RESTORATION_CONSULT_URL } from "../../lib/booking";
 import { ORIGIN } from "../../lib/urls";
 import type { JsonLd } from "../../lib/schema-org";
 
@@ -320,6 +321,9 @@ const jsonLd: JsonLd[] = [
 					hiddenMessage="SOURCE_LANE: src_google_medspa_hair_loss_consult"
 					offerName="Free Hair Loss Assessment"
 					offerValue="provider_guided_hair_loss_assessment"
+					successMessage="Thanks—your request is in. Choose a convenient time now for your complimentary Hair Restoration Consultation."
+					successCtaHref={HAIR_RESTORATION_CONSULT_URL}
+					successCtaText="Choose a consultation time"
 				/>
 			</div>
 		</section>

@@ -13,6 +13,9 @@ interface Props {
 	workflowKey?: string;
 	offerName?: string;
 	offerValue?: string;
+	successMessage?: string;
+	successCtaHref?: string;
+	successCtaText?: string;
 }
 
 const {
@@ -29,6 +32,9 @@ const {
 	workflowKey = "",
 	offerName = "",
 	offerValue = "",
+	successMessage = "Thanks. We received your information and will reach out within one business day.",
+	successCtaHref = "",
+	successCtaText = "Book your consultation",
 } = Astro.props;
 ---
 
@@ -184,7 +190,15 @@ const {
 			hidden
 			class="rounded-md border border-eden-green bg-eden-green/5 p-4 text-sm text-eden-navy"
 		>
-			Thanks. We received your information and will reach out within one business day.
+			<p>{successMessage}</p>
+			{successCtaHref && (
+				<a
+					href={successCtaHref}
+					class="mt-3 inline-flex w-full items-center justify-center rounded-md bg-eden-green px-5 py-3 text-center text-sm font-semibold text-white shadow-sm transition hover:bg-eden-green/90"
+				>
+					{successCtaText}
+				</a>
+			)}
 		</div>
 
 		<div
