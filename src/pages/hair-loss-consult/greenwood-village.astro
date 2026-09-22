@@ -13,8 +13,8 @@ const title = "Free Hair Loss Assessment in Greenwood Village | Eden Health Club
 const description =
 	"Free hair loss assessment near DTC. Review thinning, shedding, hairline, crown density, candidacy, timeline, and next steps with Eden Health Club.";
 const heroImage = "/assets/hair-consult-clinic-hero.jpg";
-const heroConsultImage = "/assets/eden-provider-consult-air.webp";
-const consultImage = "/assets/eden-provider-review-air.webp";
+const heroConsultImage = "/assets/prf-hair-restoration-clinical-hero.jpg";
+const consultImage = "/assets/prf-hair-restoration-consult.jpg";
 
 const checkpoints = [
 	"Thinning or shedding timeline",
@@ -174,13 +174,13 @@ const jsonLd: JsonLd[] = [
 				<div class="rounded-lg border border-white/15 bg-white/95 p-5 text-eden-navy shadow-xl sm:p-6">
 					<img
 						src={heroConsultImage}
-						alt="Eden provider meeting with a guest during a private consultation"
-						class="mb-5 h-44 w-full rounded-md object-cover object-[center_30%]"
+						alt="A provider examining a man's thinning hair in a clinical setting"
+						class="mb-5 aspect-[2/1] w-full rounded-md object-cover object-center"
 						loading="eager"
 						fetchpriority="high"
 						decoding="async"
-						width="1012"
-						height="1800"
+						width="1788"
+						height="880"
 					/>
 					<p class="text-sm font-semibold uppercase text-eden-green">What the visit covers</p>
 					<div class="mt-4 grid gap-3">
@@ -227,12 +227,12 @@ const jsonLd: JsonLd[] = [
 				<div class="overflow-hidden rounded-lg border border-eden-line bg-white shadow-sm">
 					<img
 						src={consultImage}
-						alt="Eden provider reviewing goals and next steps with a guest"
-						class="h-80 w-full object-cover sm:h-[30rem]"
+						alt="A man discussing his hair-loss concerns during a private consultation"
+						class="h-80 w-full object-cover object-[center_35%] sm:h-[30rem]"
 						loading="lazy"
 						decoding="async"
-						width="1012"
-						height="1800"
+						width="960"
+						height="1200"
 					/>
 				</div>
 				<div>
@@ -370,3 +370,9 @@ const jsonLd: JsonLd[] = [
 		</div>
 	</footer>
 </BaseLayout>
+
+<style>
+	:global(#lead-form) {
+		scroll-margin-top: 6rem;
+	}
+</style>
