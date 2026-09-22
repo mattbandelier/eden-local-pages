@@ -1,4 +1,5 @@
 ---
+import { HAIR_RESTORATION_CONSULT_URL } from "../../lib/booking";
 import LeadForm from "./LeadForm.astro";
 
 interface Props {
@@ -35,6 +36,7 @@ const formSubheading = consultRequired
 		? "We'll help you choose the right next step."
 		: "We'll reach out within one business day."
 	: "Share your details and our team will confirm the right timing, fit, and next available option.";
+const isHairRestoration = serviceSlug === "prf-hair-restoration";
 ---
 
 <section class={isSecondary ? "bg-eden-navy px-6 py-14" : "bg-slate-50 px-6 py-12"}>
@@ -57,6 +59,9 @@ const formSubheading = consultRequired
 			heading={formHeading}
 			subheading={formSubheading}
 			submitText={ctaText}
+			successMessage={isHairRestoration ? "Thanks—your request is in. Choose a convenient time now for your complimentary Hair Restoration Consultation." : undefined}
+			successCtaHref={isHairRestoration ? HAIR_RESTORATION_CONSULT_URL : undefined}
+			successCtaText={isHairRestoration ? "Choose a consultation time" : undefined}
 		/>
 	</div>
 </section>
