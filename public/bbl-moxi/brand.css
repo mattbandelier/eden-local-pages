@@ -1,0 +1,81 @@
+@font-face{font-family:Satoshi;src:url('assets/satoshi-500.woff2') format('woff2');font-weight:500;font-display:swap}
+.service-links{display:flex;flex-wrap:wrap;gap:16px 28px;margin-top:28px;color:#256648;text-underline-offset:4px}
+body,h1,h2,h3,.price-card .price,.review blockquote,.step span{font-family:Satoshi,Arial,sans-serif}
+body{background:#fff;color:#1a1a1a;font-weight:500}
+.header{background:#101617;color:#fff;border-color:#256648}
+.brand{width:82px;height:82px;padding:0;background:#101617;object-fit:contain}
+.header .cta,.hero .cta{background:#a9ce88;color:#163c2b;border-color:#a9ce88}
+.hero{min-height:565px;background:#101617;color:#fff}
+.hero:after{background:linear-gradient(90deg,rgba(16,22,23,.96),rgba(16,22,23,.83) 38%,rgba(16,22,23,.12) 80%)}
+.hero-copy{max-width:660px;padding:38px 0 40px}
+.hero-copy h1{max-width:660px;font-size:54px;line-height:1.08;font-weight:500}
+.hero-copy .offer-line{font-size:23px;line-height:1.35;font-weight:500;max-width:500px;margin:22px 0 0}
+.hero-copy .description{font-size:16px;line-height:1.6;max-width:470px;color:#e5ede8;margin-top:15px}
+.offer-details{display:block;margin-top:12px;font-size:13px;text-underline-offset:4px;color:#e5ede8}
+.pills{color:#a9ce88}.photo-caption{font-size:10px;background:#101617}
+.section h2{font-size:36px;line-height:1.15}.green{background:#eef5e8}
+.cta{background:#256648;border-color:#256648}.benefit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+.reception{height:auto;aspect-ratio:1.388;object-fit:cover}
+.review{background:#f9f9f9}.review blockquote{font-size:20px}.request{background:#256648}.request h2{color:#fff}
+.review-page h1,.review-page h2{font-family:Satoshi,Arial,sans-serif}
+.treatment-hero .hero-photo{object-position:center bottom}
+.treatment-hero:after{background:linear-gradient(90deg,rgba(16,22,23,.97),rgba(16,22,23,.88) 38%,rgba(16,22,23,.12) 75%)}
+@media(max-width:800px){.hero.treatment-hero{display:block;padding-top:170px}.hero.treatment-hero .hero-photo{height:170px;object-position:center bottom}.hero.treatment-hero:after{display:none}.hero.treatment-hero .hero-copy{padding:24px 0}.hero.treatment-hero .photo-caption{top:138px;bottom:auto;right:12px}.hero.treatment-hero .hero-copy h1{font-size:34px}.hero.treatment-hero .pills{margin-top:18px}}
+@media(max-width:800px){.header-inner{min-height:70px}.brand{width:66px;height:66px}.hero{min-height:0}.hero-photo{top:0;bottom:auto;height:100%;object-position:65% center}.hero:after{background:rgba(16,22,23,.8)}.hero-copy{padding:30px 0 52px}.hero-copy h1{font-size:40px;line-height:1.1}.hero-copy .offer-line{font-size:20px}.hero-copy .description{font-size:15px;max-width:100%}.hero-copy .cta{min-height:48px}.hero .pills{font-size:11px}.section h2{font-size:30px}.benefit-grid{grid-template-columns:1fr;gap:0}.review-page h1{font-size:36px}}
+
+/* Peptide-page rhythm and navigation, retaining the approved treatment-led hero. */
+.wrap{width:min(1104px,calc(100% - 48px))}
+.header{background:#305440;border-color:#4d6b53}
+.header-inner{min-height:70px}
+.brand-name{font-size:15px;font-weight:500;text-decoration:none;white-space:nowrap}
+.header-actions{display:flex;gap:16px;align-items:center}
+.header .cta{min-height:44px;padding:10px 16px}
+.header .phone{font-size:14px;text-decoration:none;white-space:nowrap}
+.hero-copy h1{font-family:Satoshi,Arial,sans-serif;font-size:50px;line-height:1.12;letter-spacing:0;font-weight:500;text-wrap:balance}
+.hero-copy{max-width:640px}
+.hero.media-pending{background:#203e31}
+.hero.media-pending:after{display:none}
+.media-pending .photo-caption{background:transparent;color:#d2dfcd}
+.review-band{padding:36px 0 42px;background:#f9fbf7}
+.section-top h2{font-size:27px;max-width:540px}
+.section-top .eyebrow{margin-bottom:10px;color:#305440}
+.review-context{font-size:13px;color:#59695e;margin-bottom:20px;max-width:690px}
+.review{flex-basis:calc((100% - 16px)/2);min-height:310px;padding:26px;border:1px solid #dce8d6;background:#fff;gap:22px}
+.review-service{font-size:12px;color:#49654f;margin-bottom:14px}
+.review blockquote{font-family:Satoshi,Arial,sans-serif;font-size:21px;line-height:1.4;margin-bottom:16px}
+.review-summary{font-size:15px;line-height:1.6;color:#58615a}
+.review figcaption{font-size:14px;font-weight:500}
+.mobile-review-link{display:none}
+.request{background:#203e31}
+.section{padding:72px 0}
+/* Preserve the handpiece and eye protection instead of enlarging the lower face. */
+.hero.treatment-hero .hero-photo{left:auto;right:0;width:72%;object-position:center 35%;mask-image:linear-gradient(to right,transparent,#000 22%)}
+/* Reversible display-only grading; original photographs and skin texture remain untouched. */
+.hero.treatment-hero .hero-photo{filter:brightness(1.06) contrast(1.025) saturate(.94)}
+body[data-variant="moxi"] .hero.treatment-hero .hero-photo{filter:brightness(1.035) contrast(1.02) saturate(.92)}
+.treatment-hero:after{background:linear-gradient(90deg,rgba(16,22,23,.97),rgba(16,22,23,.88) 38%,rgba(16,22,23,.04) 75%)}
+@media(max-width:800px){
+ .hero.treatment-hero{padding-top:230px}
+ .hero.treatment-hero .hero-photo{width:100%;height:230px;object-position:center;mask-image:none}
+ .hero.treatment-hero .photo-caption{top:198px}
+ body[data-variant="moxi"] .hero.treatment-hero .hero-photo{width:100%;height:250px;object-position:center 35%;mask-image:none}
+ body[data-variant="moxi"] .hero.treatment-hero{padding-top:250px}
+ body[data-variant="moxi"] .hero .photo-caption{top:218px}
+ .wrap{width:calc(100% - 36px)}
+ .header-actions{gap:8px}.header .phone{display:none}
+ .header-inner{gap:10px;min-height:66px}
+ .brand-name{font-size:13px}
+ .header .cta{font-size:12px;padding:10px 12px;min-height:44px}
+ .hero-copy h1,.hero.treatment-hero .hero-copy h1{font-size:34px;line-height:1.12}
+ .hero-copy .offer-line{font-size:20px}
+ .hero.media-pending .hero-copy{padding:32px 0 62px}
+ .section{padding:48px 0}
+ .section-top h2{font-size:24px}
+ .review-band{padding:28px 0}
+ .review{flex-basis:90%;min-height:370px;padding:22px}
+ .review blockquote{font-size:20px}
+ .review-controls a{display:none}
+ .mobile-review-link{display:inline-block;margin-top:16px;font-size:13px}
+ .review-controls{flex-shrink:0}
+}
+@media(max-width:360px){.section-top{flex-wrap:wrap}.hero-copy h1,.hero.treatment-hero .hero-copy h1{font-size:31px}.brand-name{max-width:100px;white-space:normal}}
