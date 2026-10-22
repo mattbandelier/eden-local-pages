@@ -4,8 +4,8 @@ interface Props { variant: 'bbl' | 'moxi' | 'offer'; slug: string; }
 const { variant, slug } = Astro.props;
 const service = variant === 'bbl' ? 'BBL HEROic' : variant === 'moxi' ? 'MOXI' : 'BBL or MOXI';
 ---
-<BaseLayout title={`50% Off Your First ${service} Face Treatment | Eden Health Clubs`}
-  description={`Explore ${service} in Greenwood Village. Request 50% off your first standalone face treatment. Provider consultation and clinical eligibility required.`}
+<BaseLayout title={`50% Off Your First ${service} Treatment | Eden Health Clubs`}
+  description={`Explore ${service} in Greenwood Village. 50% off your first BBL or MOXI treatment. Any treatment area. Excludes combined BBL + MOXI sessions. Provider consultation and clinical eligibility required.`}
   canonicalUrl={`https://landing.edenhealthclubs.com/lp/${slug}/`} noindex={true}>
   <link rel="stylesheet" href="/bbl-moxi/styles.css" />
   <link rel="stylesheet" href="/bbl-moxi/brand.css" />
