@@ -39,7 +39,7 @@ document.getElementById('prev').onclick=()=>move(-1);document.getElementById('ne
 const formId='OVCZlcoUEmNs8dPaZuhw';
 const formUrl=new URL(`https://api.leadconnectorhq.com/widget/form/${formId}`);
 const incoming=new URLSearchParams(window.location.search);
-for(const name of ['gclid','gbraid','wbraid','utm_source','utm_medium','utm_campaign','utm_content','utm_term']){
+for(const name of ['gclid','gbraid','wbraid','fbclid','utm_source','utm_medium','utm_campaign','utm_content','utm_term']){
   const value=incoming.get(name);
   if(value) formUrl.searchParams.set(name,value);
 }
