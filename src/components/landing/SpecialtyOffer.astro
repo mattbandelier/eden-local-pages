@@ -1,0 +1,17 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+interface Props { variant: 'hair' | 'acne' | 'skintyte'; slug: string; }
+const { variant, slug } = Astro.props;
+const service = { hair: 'Forever BARE BBL Hair Reduction', acne: 'Forever Clear BBL Acne Care', skintyte: 'SkinTyte' }[variant];
+---
+<BaseLayout title={`50% Off Your First ${service} Treatment | Eden Health Clubs`}
+  description={`Explore ${service} in Greenwood Village. 50% off your first treatment, with a provider-led plan and clear pricing before you decide. Results vary.`}
+  canonicalUrl={`https://landing.edenhealthclubs.com/lp/${slug}/`} noindex={true}>
+  <link rel="stylesheet" href="/bbl-moxi/styles.css" />
+  <link rel="stylesheet" href="/bbl-moxi/brand.css" />
+  <link rel="stylesheet" href="/sciton-specialty/specialty.css" />
+  <div id="app" data-variant={variant}></div>
+  <noscript>Please enable JavaScript to request this offer, or call <a href="tel:+17206057678">720-605-7678</a>.</noscript>
+  <script is:inline src="/sciton-specialty/specialty.js"></script>
+  <script is:inline src="/sciton-specialty/connect.js"></script>
+</BaseLayout>
