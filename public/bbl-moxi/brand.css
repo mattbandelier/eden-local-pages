@@ -79,3 +79,4 @@ body[data-variant="moxi"] .hero.treatment-hero .hero-photo{filter:brightness(1.0
  .review-controls{flex-shrink:0}
 }
 @media(max-width:360px){.section-top{flex-wrap:wrap}.hero-copy h1,.hero.treatment-hero .hero-copy h1{font-size:31px}.brand-name{max-width:100px;white-space:normal}}
+.call-enabled .header .phone{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;min-height:44px;padding:6px 8px;border:1px solid #a9ce88;border-radius:4px;font-size:13px;line-height:1.3}.call-enabled .call-number{font-size:11px}.call-enabled .header-inner{flex-wrap:wrap}@media(max-width:800px){.call-enabled .header-inner{padding-top:6px;padding-bottom:6px}.call-enabled .brand-name{max-width:72px;white-space:normal}.call-enabled .header-actions{gap:6px}.call-enabled .header .cta{padding:10px 8px}}
