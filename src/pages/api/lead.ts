@@ -1,5 +1,7 @@
 import type { APIRoute } from "astro";
 import { createHash, randomUUID } from "node:crypto";
+import { websiteFollowupRoute, isWebsiteFollowupKey } from "../../lib/website-followup";
+import { routeWebsiteFollowup } from "../../lib/server/website-followup";
 
 export const prerender = false;
 
@@ -81,6 +83,8 @@ interface LeadRequestBody {
 	phone?: unknown;
 	email?: unknown;
 	smsOptIn?: unknown;
+	followupConsent?: unknown;
+	consentVersion?: unknown;
 	message?: unknown;
 	service?: unknown;
 	suburb?: unknown;
@@ -114,6 +118,8 @@ interface LeadPayload {
 	phone: string;
 	email: string;
 	smsOptIn: boolean;
+	followupConsent: boolean;
+	consentVersion: string | null;
 	message: string | null;
 	service: string | null;
 	suburb: string | null;
@@ -459,6 +465,13 @@ async function upsertGhlContact(payload: LeadPayload): Promise<boolean> {
 	const responseData = await response.json().catch(() => null);
 	const contactId = ghlContactIdFromResponse(responseData);
 	if (!contactId) return false;
+	if (websiteFollowupRoute(payload)) {
+		return routeWebsiteFollowup({
+			token, contactId, payload,
+			enabled: import.meta.env.GHL_ENABLE_WEBSITE_HAIR_IV_FOLLOWUP === "true",
+			assignedTo: import.meta.env.GHL_CONCIERGE_COORDINATOR_USER_ID,
+		});
+	}
 	const attributionArchived = await appendGhlAttributionEvent(
 		token,
 		contactId,
@@ -529,6 +542,8 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
 		phone,
 		email: body.email.trim(),
 		smsOptIn: body.smsOptIn === true,
+		followupConsent: body.followupConsent === true,
+		consentVersion: stringOrNull(body.consentVersion),
 		message: stringOrNull(body.message),
 		service: stringOrNull(body.service),
 		suburb: stringOrNull(body.suburb),
@@ -556,8 +571,12 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
 		submittedAt: new Date().toISOString(),
 	};
 
+	const websiteRoute = websiteFollowupRoute(payload);
+	if (isWebsiteFollowupKey(payload.workflowKey) && !websiteRoute) {
+		return jsonResponse({ success: false, error: "Invalid inquiry route." }, 400);
+	}
 	const workflowId = workflowIdForLeadPayload(payload);
-	const directGhlRequired = shouldApplyBaselineLeadTag(payload) || Boolean(workflowId);
+	const directGhlRequired = Boolean(websiteRoute) || shouldApplyBaselineLeadTag(payload) || Boolean(workflowId);
 	const [webhookOk, directGhlOk] = await Promise.all([
 		directGhlRequired ? Promise.resolve(false) : postLeadWebhook(webhookUrl, payload),
 		upsertGhlContact(payload),
