@@ -474,7 +474,9 @@ async function upsertGhlContact(payload: LeadPayload): Promise<boolean> {
 		if (!attributionArchived) return false;
 		return routeWebsiteFollowup({
 			token, contactId, payload,
-			enabled: import.meta.env.GHL_ENABLE_WEBSITE_HAIR_IV_FOLLOWUP === "true",
+			// Approved release: only the two explicit website routes reach this branch.
+			// An explicit false environment value remains an immediate release switch.
+			enabled: (import.meta.env.GHL_ENABLE_WEBSITE_HAIR_IV_FOLLOWUP ?? "true") === "true",
 			assignedTo: import.meta.env.GHL_CONCIERGE_COORDINATOR_USER_ID,
 		});
 	}
