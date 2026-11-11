@@ -415,6 +415,7 @@ async function upsertGhlContact(payload: LeadPayload): Promise<boolean> {
 	const token = import.meta.env.GHL_PRIVATE_INTEGRATION_TOKEN;
 	const locationId = import.meta.env.GHL_LOCATION_ID;
 	if (!token || !locationId) return false;
+	const websiteRoute = websiteFollowupRoute(payload);
 
 	const customFields = [
 		customField(GHL_CUSTOM_FIELD_IDS.gaClientId, payload.gaClientId),
@@ -456,8 +457,9 @@ async function upsertGhlContact(payload: LeadPayload): Promise<boolean> {
 			lastName: payload.lastName ?? undefined,
 			email: payload.email,
 			phone: payload.phone,
-			source: payload.utmSource || "Eden local landing page",
-			customFields,
+			// Website repeat inquiries are archived as events below. Do not erase a
+			// prior Google/Meta source, click ID, or first-touch fields on the contact.
+			...(websiteRoute ? {} : { source: payload.utmSource || "Eden local landing page", customFields }),
 		}),
 	});
 
@@ -465,7 +467,11 @@ async function upsertGhlContact(payload: LeadPayload): Promise<boolean> {
 	const responseData = await response.json().catch(() => null);
 	const contactId = ghlContactIdFromResponse(responseData);
 	if (!contactId) return false;
-	if (websiteFollowupRoute(payload)) {
+	if (websiteRoute) {
+		const attributionArchived = await appendGhlAttributionEvent(
+			token, contactId, import.meta.env.GHL_CONCIERGE_COORDINATOR_USER_ID, payload,
+		);
+		if (!attributionArchived) return false;
 		return routeWebsiteFollowup({
 			token, contactId, payload,
 			enabled: import.meta.env.GHL_ENABLE_WEBSITE_HAIR_IV_FOLLOWUP === "true",
