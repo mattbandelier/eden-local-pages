@@ -1,6 +1,6 @@
 # GLP-1 lead follow-up | draft for GHL
 
-These messages are for the two GLP-1 landing pages only. The isolated GHL workflow (`9b637d94-b172-4a35-bafb-8403a4761575`) is Published with no trigger, re-entry off, stop-on-response off, five Eden-branded emails at days 0, 2, 4, 7, and 12, a day-0 callback, and a tag-gated day-0 SMS. Direct enrollment is performed by the site's lead endpoint. The emails use the live Eden logo in a deep-green banner, light-green service strip, full clinic address, and GHL's enabled default unsubscribe footer. Their buttons call Eden to arrange the private $0 consultation; do not claim online self-booking. The older copied GLP drafts are not targets. Production form gates remain off. A preview-only flag is staged for testing, but end-to-end delivery, call routing, and booking stop are not proven yet. Never imply that a lower dose, medication, or prescription is guaranteed. Do not put health history, dose, or other sensitive details in SMS or subject lines.
+These messages are for the two GLP-1 landing pages only. The isolated GHL workflow (`9b637d94-b172-4a35-bafb-8403a4761575`) is Published with no trigger, re-entry off, stop-on-response off, five Eden-branded emails at days 0, 2, 4, 7, and 12, a day-0 callback, and a tag-gated day-0 SMS. Direct enrollment is performed by the site's lead endpoint. The emails use the live Eden logo in a deep-green banner, light-green service strip, full clinic address, and GHL's enabled default unsubscribe footer. Their dark-green `Call Eden now` buttons use `tel:+17206057678` to arrange the private $0 consultation; do not claim online self-booking. The older copied GLP drafts are not targets. Both pages and the form gate are still on the Vercel preview branch, not production. On Nov 12, one QA lead submitted the intro form, entered this workflow, received the opening email and opt-in SMS, and reached the wait step; a second submission on the microdosing page skipped duplicate enrollment because re-entry is off. The assigned-user call action executed, but a completed human connection was not established. Never imply that a lower dose, medication, or prescription is guaranteed. Do not put health history, dose, or other sensitive details in SMS or subject lines.
 
 ## Zenoti consultation routing
 
@@ -28,7 +28,7 @@ We received your request for an in-person GLP-1 consultation at Eden in Greenwoo
 
 You do not need to choose a medication or dose first. Your provider will review your goals and whether treatment or lab work is appropriate.
 
-**Button:** Call to schedule my visit → `tel:+17206057678`
+**Button:** Call Eden now → `tel:+17206057678`
 
 Prefer email? Reply here and tell us a good time to reach you.
 
@@ -46,7 +46,7 @@ At your visit, an Eden provider will review your goals, health history, and ques
 
 Call to reserve a time, or reply with your preferred day. There is no obligation to start treatment and no prescription is guaranteed. If labs are needed, we will explain the cost before ordering them.
 
-**Button:** Call to schedule my visit → `tel:+17206057678`
+**Button:** Call Eden now → `tel:+17206057678`
 
 ## Email 3 | Day 4
 
@@ -62,7 +62,7 @@ Your first three months of prescribed compounded medication are $99/month for se
 
 Ready to take the first step? Call to schedule your complimentary in-person consultation in Greenwood Village, or reply with a day that works for you.
 
-**Button:** Call to book my consultation → `tel:+17206057678`
+**Button:** Call Eden now → `tel:+17206057678`
 
 After month 3, regular medication pricing without membership is $249/$349 per month. Optional membership credits may lower the net cost. Treatment and dose depend on provider assessment; a prescription is not guaranteed. Provider-required lab work may cost extra. Compounded drugs are not FDA-approved.
 
@@ -84,7 +84,7 @@ It is okay to come in with questions rather than a decision. You might ask:
 
 Reply with a day that works or call us to schedule. Your provider can help you weigh those answers; treatment, dose, and any needed testing are clinical decisions.
 
-**Button:** Call to schedule my visit → `tel:+17206057678`
+**Button:** Call Eden now → `tel:+17206057678`
 
 ## Email 5 | Day 12
 
@@ -100,9 +100,11 @@ If you are still interested in GLP-1 care, we can help you schedule a compliment
 
 Reply with a day that works or call our team. If now is not the right time, no action is needed.
 
-**Button:** Call to schedule my visit → `tel:+17206057678`
+**Button:** Call Eden now → `tel:+17206057678`
 
 ## SMS | Opt-in only
+
+Only the immediate SMS is live. Day 3 and Day 8 are proposed copy, not published workflow actions.
 
 **Immediate:** Hi {{contact.first_name}}, this is Eden Health Club. We received your consultation request. We can help find an in-person time in Greenwood Village. Reply with a good time to call, or call 720-605-7678. Reply STOP to opt out.
 
@@ -112,14 +114,16 @@ Reply with a day that works or call our team. If now is not the right time, no a
 
 ## Calls and internal alert
 
+Only the Day 0 assigned-user callback is live. The Day 3 call is a proposed follow-up, not a published workflow action.
+
 - Day 0: one assigned-user callback attempt during staffed hours. Internal label: `GLP-1 intro | {{contact.name}}` or `GLP-1 lower-dose question | {{contact.name}}`.
 - Day 3: one additional call only if no answered conversation or booking. Leave one concise voicemail if appropriate: "Hi, this is Eden Health Club returning your consultation request. Please call us at 720-605-7678."
 - Do not place another automated call after a confirmed answered conversation. A voicemail does not count as answered. Do not place calls after a verified booking or call opt-out.
 
 ## Launch checks
 
-1. The new isolated workflow is Published. Non-SMS leads rejoin the email sequence via Go To. GHL Business Profile has its default unsubscribe link enabled and lists the clinic at 5990 S University Blvd, Greenwood Village, CO 80121; verify the actual delivered footer, sender, and assigned-user call routing. Do not publish the copied general-weight-loss drafts.
-2. Send one test lead per page and confirm exactly one workflow enrollment, one first email, and SMS only when opted in.
-3. Verify sender, formatting, call assignment, channel opt-outs, and booking-stop timing before publishing workflows or enabling the forms.
+1. The new isolated workflow is Published. Non-SMS leads rejoin the email sequence via Go To. GHL Business Profile has its default unsubscribe link enabled and lists the clinic at 5990 S University Blvd, Greenwood Village, CO 80121. The five email buttons were changed to a dark-green `Call Eden now` button; a fresh Day 0 test email was sent. Confirm its actual inbox rendering and assigned-user call routing before paid launch. Do not publish the copied general-weight-loss drafts.
+2. Both preview forms submitted successfully; one QA contact enrolled and the second submission skipped duplicate enrollment because re-entry is off. The first email and opt-in SMS executed. Channel opt-outs still need separate live verification.
+3. The QA lead was Waiting For Time before the Zenoti booking. [Apply run 43314024156](https://github.com/mattbandelier/zenoti-google-tracking/actions/runs/43314024156) succeeded, and the same GHL enrollment changed to Finished with no next execution. The QA Zenoti appointment was canceled after this check. This proves a booking-stop transition for this test; ongoing scheduled-run health still needs monitoring.
 4. Matt confirmed clinical/legal approval of the compounded semaglutide/tirzepatide any-prescribed-dose introductory offer and pharmacy-vial imagery. Google emailed on Nov 12 that Dietz account 311-270-1872 was certified for Healthcare and medicines on the requested domain(s), with up to 24 hours for propagation. This is not approval of the new ads or their destinations; verify those separately before paid launch.
-5. The existing Zenoti paid-booking-stop job uses an explicit GHL workflow allowlist. [PR #1](https://github.com/mattbandelier/zenoti-google-tracking/pull/1) adding the GLP workflow ID was merged Nov 12; 13 focused tests passed locally. A read-only run of the new version and a real active-to-past transition on a QA booking remain to be verified before claiming the stop works end to end.
+5. The existing Zenoti paid-booking-stop job uses an explicit GHL workflow allowlist. [PR #1](https://github.com/mattbandelier/zenoti-google-tracking/pull/1) adding the GLP workflow ID was merged Nov 12; 13 focused tests passed locally. The Nov 12 manual apply run and GHL active-to-finished transition were verified with the QA booking. The workflow is scheduled with apply mode configured; the next unattended run should be checked separately.
