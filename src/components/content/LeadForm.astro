@@ -1,4 +1,5 @@
 ---
+import { WEBSITE_FOLLOWUP_CONSENT_TEXT } from "../../lib/website-followup";
 interface Props {
 	serviceSlug: string;
 	suburbSlug: string | null;
@@ -132,7 +133,7 @@ const isGlp = variant === "glp";
 		</label>
 
 		{!compact && !isGlp && (
-			<label class="flex items-start gap-3">
+			<label class="flex items-start gap-3" data-legacy-sms-consent>
 				<input
 					type="checkbox"
 					name="smsOptIn"
@@ -143,6 +144,13 @@ const isGlp = variant === "glp";
 				</span>
 			</label>
 		)}
+		<div data-website-followup-consent hidden>
+			<label class="flex items-start gap-3">
+				<input type="checkbox" name="followupConsent" class="mt-1 h-4 w-4 shrink-0 rounded border-slate-300 text-eden-green focus:ring-eden-green" />
+				<span class="text-sm text-slate-700">{WEBSITE_FOLLOWUP_CONSENT_TEXT}</span>
+			</label>
+			<p class="mt-2 text-xs text-slate-600"><a href="https://edenhealthclubs.com/terms/" class="underline">Terms</a> · <a href="https://edenhealthclubs.com/privacy-policy/" class="underline">Privacy Policy</a></p>
+		</div>
 
 		{!compact && (
 			<label class="block">
@@ -232,6 +240,7 @@ const isGlp = variant === "glp";
 </section>
 
 <script>
+	import { websiteFollowupRoute, WEBSITE_FOLLOWUP_CONSENT_VERSION } from "../../lib/website-followup";
 	import { getAttribution, getGoogleAttributionForSubmission, initAttribution } from "../../lib/attribution";
 	import { trackLeadSubmit, trackLeadSubmitAttempt, trackLeadSubmitError } from "../../lib/tracking";
 
@@ -339,6 +348,14 @@ const isGlp = variant === "glp";
 		initAttribution();
 		const serviceSlug = form.dataset.serviceSlug || "";
 		const suburbSlug = form.dataset.suburbSlug || null;
+		const bannerKey = new URLSearchParams(window.location.search).get("eden_workflow");
+		const bannerRoute = websiteFollowupRoute({ workflowKey: bannerKey, service: serviceSlug, sourcePage: window.location.href });
+		if (bannerRoute) {
+			const legacyConsent = form.querySelector<HTMLElement>("[data-legacy-sms-consent]");
+			const bannerConsent = form.querySelector<HTMLElement>("[data-website-followup-consent]");
+			if (legacyConsent) legacyConsent.style.display = "none";
+			if (bannerConsent) bannerConsent.hidden = false;
+		}
 		const successEl = form.querySelector<HTMLElement>("[data-lead-form-success]");
 		const errorEl = form.querySelector<HTMLElement>("[data-lead-form-error]");
 		const submitBtn = form.querySelector<HTMLButtonElement>('button[type="submit"]');
@@ -364,7 +381,11 @@ const isGlp = variant === "glp";
 				phone: (fd.get("phone") as string) || "",
 				email: (fd.get("email") as string) || "",
 				smsOptIn: fd.get("smsOptIn") === "on",
-				message: combinedMessage(fd),
+				followupConsent: bannerRoute ? fd.get("followupConsent") === "on" : false,
+				consentVersion: bannerRoute ? WEBSITE_FOLLOWUP_CONSENT_VERSION : null,
+				message: bannerRoute
+					? [((fd.get("message") as string) || "").trim(), `Website ${bannerRoute.label} inquiry; source: Eden desktop banner`].filter(Boolean).join("\n\n")
+					: combinedMessage(fd),
 				service: serviceSlug,
 				suburb: suburbSlug,
 				sourcePage: currentPage(),
@@ -380,7 +401,7 @@ const isGlp = variant === "glp";
 				gclsrc: submissionAttributionValue(attribution, googleTouch, "gclsrc"),
 				gadSource: submissionAttributionValue(attribution, googleTouch, "gadSource"),
 				gadCampaignId: submissionAttributionValue(attribution, googleTouch, "gadCampaignId"),
-				workflowKey: (fd.get("workflowKey") as string) || null,
+				workflowKey: bannerRoute ? bannerKey : (fd.get("workflowKey") as string) || null,
 				offerName: (fd.get("offerName") as string) || null,
 				offerValue: (fd.get("offerValue") as string) || null,
 				gaClientId: getGaClientId(),
@@ -403,7 +424,7 @@ const isGlp = variant === "glp";
 					trackLeadSubmit(serviceSlug, suburbSlug, payload.smsOptIn);
 					if (successEl) successEl.hidden = false;
 					form.querySelectorAll<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>("input, textarea, select").forEach((el) => {
-						if (el.type !== "hidden") el.value = "";
+						if (el.type !== "hidden" && (!bannerRoute || el.type !== "checkbox")) el.value = "";
 						if (el.type === "checkbox") (el as HTMLInputElement).checked = false;
 					});
 				} else {
