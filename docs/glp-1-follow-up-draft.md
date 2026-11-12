@@ -1,6 +1,10 @@
 # GLP-1 lead follow-up | draft for GHL
 
-These messages are for the two GLP-1 landing pages only. They are not live in GHL. A new isolated workflow (`9b637d94-b172-4a35-bafb-8403a4761575`) is in Draft with no trigger, re-entry off, stop-on-response off, and five saved, Eden-branded emails at days 0, 2, 4, 7, and 12. The emails use the live Eden logo in a deep-green banner, light-green service strip, full clinic address, and GHL's enabled default unsubscribe footer. One offer-email test was accepted by GHL for delivery to Matt's approved personal inbox; actual inbox rendering is awaiting confirmation. Both new form slugs route to that workflow in the branch; the older copied GLP drafts are not targets. Both public form gates remain off. The SMS, calls, enrollment test, and booking stop are not verified or live. Use the lead's page and selected interest to choose the opening line; never imply that a lower dose, medication, or prescription is guaranteed. Do not put health history, dose, or other sensitive details in SMS or subject lines.
+These messages are for the two GLP-1 landing pages only. They are not live in GHL. A new isolated workflow (`9b637d94-b172-4a35-bafb-8403a4761575`) is in Draft with no trigger, re-entry off, stop-on-response off, and five saved, Eden-branded emails at days 0, 2, 4, 7, and 12. The emails use the live Eden logo in a deep-green banner, light-green service strip, full clinic address, and GHL's enabled default unsubscribe footer. One offer-email test reached Matt's approved personal inbox; Matt rejected its pricing-led language. Days 0, 2, 4, and 7 were revised toward a scheduling CTA in the saved GHL draft, but Matt then requested a stronger "Your next step" CTA to a free consultation deep link. That final copy and destination are still blocked. Both new form slugs route to that workflow in the branch; the older copied GLP drafts are not targets. Both public form gates remain off. The SMS, calls, enrollment test, and booking stop are not verified or live. Use the lead's page and selected interest to choose the opening line; never imply that a lower dose, medication, or prescription is guaranteed. Do not put health history, dose, or other sensitive details in SMS or subject lines.
+
+## Launch blocker: complimentary consult does not match Zenoti
+
+On Nov 12, the public Zenoti WEIGHT LOSS category showed only Medical Weight Loss Consultation, Virtual Medical Weight Loss Consultation, and Medical Weight Loss Panel. Selecting the in-person 45-minute consultation and a time displayed a **$100.00** total before BOOK NOW. No complimentary GLP-1 consultation or direct-booking URL was verified. Both GLP preview pages and the GHL draft currently say the initial consultation is complimentary. Do not publish those claims or link an email to the $100 booking as if it were free. Create or configure a genuinely $0 directly bookable GLP-1/medical-weight-loss consultation, verify the checkout total and deep link, then update the landing pages and emails to use that destination. Alternatively, revise all complimentary claims to the actual booked price after Matt approves the different offer.
 
 ## Send rules
 
@@ -8,65 +12,67 @@ These messages are for the two GLP-1 landing pages only. They are not live in GH
 - Emails may go to form submitters who provided an email and have not unsubscribed. SMS requires the optional SMS checkbox and no SMS opt-out. Calls require appropriate contact permission and no call opt-out.
 - Stop all follow-up on a verified booking. Stop each channel on its own opt-out. An answered call can end future call attempts without ending permitted email or SMS. A voicemail is not an answered call.
 - Use Eden's approved sender domain and existing brand email shell: white body, forest-green header/button, dark-green text, Eden logo, readable mobile font, postal address, and unsubscribe footer. No brown text on green backgrounds.
-- Booking CTA remains **reply or call 720-605-7678** until a direct, working Zenoti consultation link and booking-stop event are verified. Do not send a lead back to the form they already completed.
+- Matt wants an actionable **Your next step** CTA to a directly bookable complimentary consultation, not a "talk through pricing" CTA. The direct link is a launch blocker until Zenoti's checkout shows $0 and the booking-stop event is verified. Do not send a lead back to the form they already completed.
 
 ## Email 1 | Immediately
 
-**Subject:** Your consultation request at Eden
+**Subject:** Let's schedule your Eden visit
 
-**Preview:** We received your request. Here is the next step.
+**Preview:** Your complimentary first conversation starts here.
 
-**Heading:** Let's talk through your options.
+**Heading:** Let's get your first visit on the calendar.
 
 Hi {{contact.first_name}},
 
-Thanks for reaching out to Eden Health Club. Our Greenwood Village team received your request for an in-person GLP-1 consultation. We will follow up to help find a time that works for you.
+We received your request for an in-person GLP-1 consultation at Eden in Greenwood Village. The first conversation is complimentary. Call us to find a time, or reply with a day that works and our team will follow up.
 
-You do not need to choose a medication or dose before meeting a provider. The initial conversation is complimentary; your provider will review whether treatment and any lab work are appropriate.
+You do not need to choose a medication or dose first. Your provider will review your goals and whether treatment or lab work is appropriate.
 
-**Button:** Call Eden to find a time → `tel:+17206057678`
+**Button:** Call to schedule my visit → `tel:+17206057678`
 
 Prefer email? Reply here and tell us a good time to reach you.
 
 ## Email 2 | Day 2
 
-**Subject:** What happens at your first Eden visit
+**Subject:** What to expect at your first visit
 
 **Preview:** A real conversation before any treatment decision.
 
-**Heading:** Start with the whole picture.
+**Heading:** Your visit starts with you.
 
 Hi {{contact.first_name}},
 
-Your first visit is a chance to discuss your goals, health history, and questions with an Eden provider in Greenwood Village. If you asked about a lower-dose approach, bring that up. The evidence for GLP-1 microdosing is limited, and your provider can explain what is known and what remains uncertain.
+At your visit, an Eden provider will review your goals, health history, and questions. Curious about a lower-dose approach? Bring it up; the evidence for GLP-1 microdosing is limited, and your provider can explain what is known and uncertain.
 
-There is no obligation to start treatment, and no prescription is guaranteed. If labs are needed, the team will explain the cost before ordering them.
+Call to reserve a time, or reply with your preferred day. There is no obligation to start treatment and no prescription is guaranteed. If labs are needed, we will explain the cost before ordering them.
 
-**Button:** Call about my consultation → `tel:+17206057678`
+**Button:** Call to schedule my visit → `tel:+17206057678`
 
 ## Email 3 | Day 4
 
-**Subject:** A clearer look at your options
+**Subject:** Your first 3 months at Eden
 
-**Preview:** The first three months and the month-four choices, clearly.
+**Preview:** See the introductory offer, then book your first visit.
 
-**Heading:** No guessing about the offer.
+**Heading:** Start with an in-person visit.
 
 Hi {{contact.first_name}},
 
-If a provider prescribes an eligible compounded GLP-1 medication, Eden's introductory medication price is $99 per month for compounded semaglutide or $129 per month for compounded tirzepatide for months 1 through 3. The introductory price is the same for any dose the provider prescribes within Eden's available options. Asking about a lower-dose approach does not create a separate price.
+Your first three months of prescribed compounded medication are $99/month for semaglutide or $129/month for tirzepatide, at any dose your provider prescribes from Eden's available options.
 
-After month 3, the regular medication prices are $249 or $349 per month without membership. Membership pricing and credits may change your net medication cost; our team can explain the complete billing before you decide. Provider-required lab work may cost extra. Compounded drugs are not FDA-approved.
+Ready to take the first step? Call to schedule your complimentary in-person consultation in Greenwood Village, or reply with a day that works for you.
 
-**Button:** Talk through the pricing → `tel:+17206057678`
+**Button:** Call to book my consultation → `tel:+17206057678`
+
+After month 3, regular medication pricing without membership is $249/$349 per month. Optional membership credits may lower the net cost. Treatment and dose depend on provider assessment; a prescription is not guaranteed. Provider-required lab work may cost extra. Compounded drugs are not FDA-approved.
 
 ## Email 4 | Day 7
 
-**Subject:** Questions worth bringing to your visit
+**Subject:** Ready to book your Eden visit?
 
-**Preview:** Three useful questions for your provider.
+**Preview:** Bring your questions; we'll help with the next step.
 
-**Heading:** Make the visit yours.
+**Heading:** Bring your questions. We'll make time.
 
 Hi {{contact.first_name}},
 
@@ -76,25 +82,25 @@ It is okay to come in with questions rather than a decision. You might ask:
 2. What are the known risks and uncertainties, especially if I am curious about a lower-dose approach?
 3. What would the complete cost be after the three-month introductory period?
 
-Your provider can help you weigh those answers. Treatment, dose, and any needed testing are clinical decisions, not promises made by this email.
+Reply with a day that works or call us to schedule. Your provider can help you weigh those answers; treatment, dose, and any needed testing are clinical decisions.
 
-**Button:** Call Eden with a question → `tel:+17206057678`
+**Button:** Call to schedule my visit → `tel:+17206057678`
 
 ## Email 5 | Day 12
 
-**Subject:** Still want to talk through your options?
+**Subject:** Your Eden consultation is still available
 
-**Preview:** We are here when you are ready for a conversation.
+**Preview:** Reply with a day or call to schedule.
 
-**Heading:** A conversation is a good first step.
+**Heading:** Ready for your first visit?
 
 Hi {{contact.first_name}},
 
-If GLP-1 care is still on your mind, we would be glad to help you arrange a complimentary initial consultation in Greenwood Village. You can ask about standard treatment, lower-dose questions, or whether a different next step makes more sense.
+If you are still interested in GLP-1 care, we can help you schedule a complimentary initial consultation in Greenwood Village. Bring questions about treatment, a lower-dose approach, or whether another next step is more appropriate.
 
-Just reply to this email or call our team. If now is not the right time, no action is needed.
+Reply with a day that works or call our team. If now is not the right time, no action is needed.
 
-**Button:** Call Eden → `tel:+17206057678`
+**Button:** Call to schedule my visit → `tel:+17206057678`
 
 ## SMS | Opt-in only
 
