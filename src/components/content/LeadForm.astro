@@ -18,6 +18,7 @@ interface Props {
 	successCtaText?: string;
 	previewOnly?: boolean;
 	variant?: "default" | "glp";
+	introNote?: string;
 }
 
 const {
@@ -39,6 +40,7 @@ const {
 	successCtaText = "Book your consultation",
 	previewOnly = false,
 	variant = "default",
+	introNote = "If prescribed, the first 3 months are $99/mo for compounded semaglutide or $129/mo for compounded tirzepatide.",
 } = Astro.props;
 const isGlp = variant === "glp";
 ---
@@ -49,7 +51,7 @@ const isGlp = variant === "glp";
 		{isGlp && <p class="text-xs font-semibold uppercase text-[#18765c]">Your complimentary consultation</p>}
 		<h2 class:list={["font-semibold text-eden-navy", isGlp ? "mt-2 text-2xl leading-tight sm:text-3xl" : "text-2xl tracking-tight"]}>{heading}</h2>
 		<p class:list={["text-slate-600", isGlp ? "mt-2 max-w-lg text-base leading-6" : "mt-1 text-sm"]}>{subheading}</p>
-		{isGlp && <p class="mt-4 border-l-2 border-[#1fa465] pl-3 text-sm leading-6 text-[#315d55]">If prescribed, the same 3-month intro applies to a lower dose: compounded semaglutide $99/mo or tirzepatide $129/mo. <a href="#offer" class="font-semibold underline underline-offset-2">See full pricing</a>.</p>}
+		{isGlp && <p class="mt-4 border-l-2 border-[#1fa465] pl-3 text-sm leading-6 text-[#315d55]">{introNote} <a href="#offer" class="font-semibold underline underline-offset-2">See full pricing</a>.</p>}
 
 	<form
 		class:list={["space-y-4", isGlp ? "mt-7" : "mt-6"]}
