@@ -1,6 +1,6 @@
 # GLP-1 lead follow-up | draft for GHL
 
-These messages are for the two GLP-1 landing pages only. They are not live in GHL. Use the lead's page and selected interest to choose the opening line; never imply that a lower dose, medication, or prescription is guaranteed. Do not put health history, dose, or other sensitive details in SMS or subject lines.
+These messages are for the two GLP-1 landing pages only. They are not live in GHL. A new isolated workflow (`9b637d94-b172-4a35-bafb-8403a4761575`) is in Draft with no trigger, re-entry off, stop-on-response off, the opening email, and a two-day wait. Both new form slugs now route to that workflow in the branch; the older copied GLP drafts are not targets. Both public form gates remain off. Use the lead's page and selected interest to choose the opening line; never imply that a lower dose, medication, or prescription is guaranteed. Do not put health history, dose, or other sensitive details in SMS or subject lines.
 
 ## Send rules
 
@@ -112,7 +112,7 @@ Just reply to this email or call our team. If now is not the right time, no acti
 
 ## Launch checks
 
-1. Replace copied general-weight-loss conditions and messages in the two draft workflows. Ensure direct enrollment from each page reaches the first action.
+1. Finish the new isolated workflow. Confirm its email sender, branded template, full mailing address, unsubscribe handling, timing, opt-in-only SMS, assigned-user calls, and booking stop. Do not publish the copied general-weight-loss drafts.
 2. Send one test lead per page and confirm exactly one workflow enrollment, one first email, and SMS only when opted in.
 3. Verify sender, formatting, call assignment, channel opt-outs, and booking-stop timing before publishing workflows or enabling the forms.
-4. Confirm the applicable Google Ads healthcare certification and page review status separately. A draft or acknowledged application is not approval.
+4. Obtain clinical/legal review of the compounded semaglutide/tirzepatide any-dose offer and imagery, then confirm the applicable Google Ads healthcare certification and page review status separately. LegitScript approval or an acknowledged Google application is not Google Ads approval.
