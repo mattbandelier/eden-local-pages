@@ -7,6 +7,8 @@ interface Props {
 	pricingLabel?: string;
 	contactHref?: string;
 	ctaLabel?: string;
+	light?: boolean;
+	brandLogoSrc?: string;
 }
 
 const {
@@ -17,26 +19,28 @@ const {
 	pricingLabel = "Get Pricing",
 	contactHref = "#lead-form",
 	ctaLabel = "Book a Consult",
+	light = false,
+	brandLogoSrc = "",
 } = Astro.props;
 const phone = "720-605-7678";
 const phoneHref = "tel:+17206057678";
 ---
 
-<header class="sticky top-0 z-50 border-b border-white/10 bg-eden-forest/96 text-white shadow-sm backdrop-blur">
+<header class:list={["sticky top-0 z-50 border-b shadow-sm backdrop-blur", light ? "border-slate-200 bg-white/95 text-eden-forest" : "border-white/10 bg-eden-forest/96 text-white"]}>
 	<div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-3 text-sm">
 		{brandHref ? (
-			<a href={brandHref} class="font-semibold tracking-normal">Eden Health Club</a>
+			<a href={brandHref} class="font-semibold tracking-normal">{brandLogoSrc ? <img src={brandLogoSrc} alt="Eden Health Club" class:list={["h-9 w-auto", light && "brightness-0"]} width="744" height="447" /> : "Eden Health Club"}</a>
 		) : (
-			<span class="font-semibold tracking-normal">Eden Health Club</span>
+			<span class="font-semibold tracking-normal">{brandLogoSrc ? <img src={brandLogoSrc} alt="Eden Health Club" class:list={["h-9 w-auto", light && "brightness-0"]} width="744" height="447" /> : "Eden Health Club"}</span>
 		)}
 		<nav class="hidden items-center gap-6 md:flex" aria-label="Premium landing page navigation">
-			<a href={servicesHref} class="text-white/80 hover:text-white">{servicesLabel}</a>
-			<a href={contactHref} class="text-white/80 hover:text-white">Contact Us</a>
-			<a href={pricingHref} class="text-white/80 hover:text-white">{pricingLabel}</a>
+			<a href={servicesHref} class:list={[light ? "text-eden-forest/75 hover:text-eden-forest" : "text-white/80 hover:text-white"]}>{servicesLabel}</a>
+			<a href={contactHref} class:list={[light ? "text-eden-forest/75 hover:text-eden-forest" : "text-white/80 hover:text-white"]}>Contact Us</a>
+			<a href={pricingHref} class:list={[light ? "text-eden-forest/75 hover:text-eden-forest" : "text-white/80 hover:text-white"]}>{pricingLabel}</a>
 		</nav>
 		<div class="flex items-center gap-3">
-			<a href={phoneHref} data-phone-link class="hidden font-semibold text-white sm:inline">{phone}</a>
-			<a href="#lead-form" class="inline-flex min-h-11 items-center rounded-md bg-eden-sage px-4 py-2 text-sm font-semibold text-eden-forest">
+			<a href={phoneHref} data-phone-link class:list={["hidden font-semibold sm:inline", light ? "text-eden-forest" : "text-white"]}>{phone}</a>
+			<a href="#lead-form" class:list={["inline-flex min-h-11 items-center rounded-md px-4 py-2 text-sm font-semibold", light ? "bg-eden-forest text-white" : "bg-eden-sage text-eden-forest"]}>
 				<span class="sm:hidden">Consult</span><span class="hidden sm:inline">{ctaLabel}</span>
 			</a>
 		</div>

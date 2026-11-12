@@ -18,6 +18,9 @@ const PEPTIDE_WORKFLOW_ID = "a9f9adfe-efd1-4cb0-bbcc-6eebc1b0181b";
 const HAIR_RESTORATION_WORKFLOW_ID = "69ce52fb-8bd9-429e-994c-a2d033e43437";
 const MED_SPA_WORKFLOW_ID = "b496b143-dacc-4b7f-8112-239dd040b360";
 const IW_WORKFLOW_ID = "672c856a-bafe-47a2-9c7f-d23b071127a8";
+const GLP_INTRO_WORKFLOW_ID = "f95e20e0-4d87-4cb8-a2a8-c2517a54f653";
+const GLP_LOWER_DOSE_WORKFLOW_ID = "c80288d9-0f37-43dd-b948-9b16c390836d";
+const GLP_SERVICE_SLUGS = new Set(["glp-1-intro-offer", "glp-1-microdosing-inquiry"]);
 const STARTER_BASELINE_SERVICE_SLUGS = new Set([
 	"longevity-baseline-visit",
 	"longevity-baseline-starter",
@@ -315,6 +318,9 @@ export function workflowIdForLeadPayload(
 	if (shouldApplyPerformWorkflow(payload)) return PERFORM_WORKFLOW_ID;
 
 	const serviceSlug = normalizedServiceSlug(payload);
+	if (serviceSlug === "glp-1-intro-offer" && payload.workflowKey === "glp1_intro_3_month") return GLP_INTRO_WORKFLOW_ID;
+	if (serviceSlug === "glp-1-microdosing-inquiry" && payload.workflowKey === "glp1_lower_dose_inquiry") return GLP_LOWER_DOSE_WORKFLOW_ID;
+	if (GLP_SERVICE_SLUGS.has(serviceSlug)) return null;
 	if (STARTER_BASELINE_SERVICE_SLUGS.has(serviceSlug)) return PEPTIDE_WORKFLOW_ID;
 	if (HAIR_RESTORATION_SERVICE_SLUGS.has(serviceSlug)) return HAIR_RESTORATION_WORKFLOW_ID;
 	if (MED_SPA_SERVICE_SLUGS.has(serviceSlug)) return MED_SPA_WORKFLOW_ID;
@@ -557,6 +563,9 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
 	};
 
 	const workflowId = workflowIdForLeadPayload(payload);
+	if (GLP_SERVICE_SLUGS.has(normalizedServiceSlug(payload)) && (import.meta.env.GLP_LEADS_ENABLED !== "true" || !workflowId)) {
+		return jsonResponse({ success: false, error: "This consultation form is not available yet." }, 503);
+	}
 	const directGhlRequired = shouldApplyBaselineLeadTag(payload) || Boolean(workflowId);
 	const [webhookOk, directGhlOk] = await Promise.all([
 		directGhlRequired ? Promise.resolve(false) : postLeadWebhook(webhookUrl, payload),
