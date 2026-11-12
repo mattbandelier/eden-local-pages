@@ -570,8 +570,13 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
 	};
 
 	const workflowId = workflowIdForLeadPayload(payload);
-	if (GLP_SERVICE_SLUGS.has(normalizedServiceSlug(payload)) && (import.meta.env.GLP_LEADS_ENABLED !== "true" || !workflowId)) {
-		return jsonResponse({ success: false, error: "This consultation form is not available yet." }, 503);
+	if (GLP_SERVICE_SLUGS.has(normalizedServiceSlug(payload))) {
+		const glpLeadsEnabled =
+			import.meta.env.GLP_LEADS_ENABLED === "true" || process.env.GLP_LEADS_ENABLED === "true";
+		if (!glpLeadsEnabled || !workflowId) {
+			console.warn("GLP lead gate rejected", { enabled: glpLeadsEnabled, workflowConfigured: Boolean(workflowId) });
+			return jsonResponse({ success: false, error: "This consultation form is not available yet." }, 503);
+		}
 	}
 	const directGhlRequired = shouldApplyBaselineLeadTag(payload) || Boolean(workflowId);
 	const [webhookOk, directGhlOk] = await Promise.all([
