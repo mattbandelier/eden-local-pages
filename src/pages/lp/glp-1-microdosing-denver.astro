@@ -1,0 +1,173 @@
+---
+import LeadForm from "../../components/content/LeadForm.astro";
+import GuestReviewStrip from "../../components/content/GuestReviewStrip.astro";
+import GlpCareBenefits from "../../components/content/GlpCareBenefits.astro";
+import GlpMemberStories from "../../components/content/GlpMemberStories.astro";
+import PaidServiceFooter from "../../components/layout/PaidServiceFooter.astro";
+import PremiumHeader from "../../components/layout/PremiumHeader.astro";
+import StickyMobileLeadActions from "../../components/content/StickyMobileLeadActions.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { canonicalUrl } from "../../lib/urls";
+
+const canonical = canonicalUrl("/lp/glp-1-microdosing-denver");
+const leadCaptureReady = import.meta.env.PUBLIC_GLP_LEADS_ENABLED === "true";
+const title = "GLP-1 Microdosing Consultation Denver | Eden Health Club";
+const description = "Curious about GLP-1 microdosing? Discuss lower-dose questions with an Eden provider in Greenwood Village. Review the evidence, eligibility, and complete GLP-1 offer terms before deciding.";
+
+const questions = [
+	{
+		question: "Will a lower dose mean fewer side effects?",
+		answer: "Not necessarily. Eden does not promise fewer side effects or a particular result from a lower-dose approach. Your provider can discuss known risks, uncertainties, and options relevant to your health history.",
+	},
+	{
+		question: "Is a prescription guaranteed?",
+		answer: "No. A licensed provider determines whether any prescription is appropriate after a clinical review. Compounded medications are not FDA-approved and are not the same as FDA-approved brand-name products.",
+	},
+	{
+		question: "Does the introductory price change with the prescribed dose?",
+		answer: "The introductory price is the same for any dose your provider prescribes within Eden's available treatment options during the first three months.",
+	},
+	{
+		question: "Will I need lab work?",
+		answer: "Lab work may be required based on your provider's assessment. If a panel is needed, Eden will explain its price before ordering it.",
+	},
+	{
+		question: "Does Eden guarantee a microdosing plan?",
+		answer: "No. Evidence for microdosing as a weight-management strategy is limited. Your provider may recommend a standard approach, another option, or no prescription. A specific dose or result is not guaranteed.",
+	},
+	{
+		question: "What happens after the first three months?",
+		answer: "The introductory price ends after month three. Without membership, medication is $249/month for compounded semaglutide or $349/month for compounded tirzepatide. Perform is $149/month and includes $149 in monthly Eden credits. Eden applies those credits automatically toward eligible member-priced medication when used for that purpose, making the net monthly cost $149 or $249 respectively. You can instead use the credits for other eligible Eden services; they cannot offset both at once. Perform also includes four coached sessions. Confirm your complete cost before enrolling.",
+	},
+];
+---
+
+<BaseLayout title={title} description={description} canonicalUrl={canonical} noindex ogImage="/assets/eden-pharmacy-glp1-vial-hero.avif" preloadImages={["/assets/eden-pharmacy-glp1-vial-hero.avif"]}>
+	<PremiumHeader brandHref="https://edenhealthclubs.com/" brandLogoSrc="/assets/eden-health-club-logo-white-transparent-tight.png" servicesHref="#care" servicesLabel="Why Eden" pricingHref="#offer" pricingLabel="Pricing" contactHref="#lead-form" ctaLabel="Get started" light />
+	<main data-glp-page class="bg-white pb-20 md:pb-0">
+		<section class="relative isolate overflow-hidden bg-[#f7faf9] text-eden-forest">
+			<img src="/assets/eden-pharmacy-glp1-vial-hero.avif" alt="Eden Pharmacy GLP-1 medication vial" class="absolute inset-0 h-full w-full object-cover object-[66%_center] sm:object-center" width="2944" height="1718" fetchpriority="high" decoding="async" />
+			<div class="absolute inset-0 bg-white/10 sm:bg-gradient-to-r sm:from-white/35 sm:via-white/10 sm:to-transparent"></div>
+			<div class="relative mx-auto flex min-h-[690px] max-w-6xl flex-col justify-center px-6 pb-16 pt-16 sm:min-h-[670px] sm:py-20">
+				<p class="text-xs font-semibold uppercase text-[#256648]">In-person GLP-1 care · Greenwood Village</p>
+				<h1 class="mt-5 max-w-[680px] text-4xl font-semibold leading-tight text-[#1A1A1A] sm:text-5xl lg:text-6xl">Curious about GLP-1 microdosing?</h1>
+				<ul class="mt-5 hidden max-w-lg space-y-2 text-sm leading-6 text-[#284b49] sm:block sm:text-base"><li><span class="font-semibold text-[#1FA465]">✓</span> Complimentary initial provider consultation</li><li><span class="font-semibold text-[#1FA465]">✓</span> A conversation about lower-dose options</li><li><span class="font-semibold text-[#1FA465]">✓</span> A local team you can meet face to face</li></ul>
+				<p class="sr-only sm:hidden">Ask about lower-dose options with a local provider.</p>
+				<div class="h-56 sm:hidden" aria-hidden="true"></div>
+				<div class="mt-7 w-full max-w-[490px] overflow-hidden rounded-md border border-[#b5d4d2] bg-white/95 shadow-lg shadow-[#174f4e]/10">
+					<p class="border-b border-[#dce8e7] bg-[#e9f4f2] px-5 py-3 text-center text-sm font-semibold text-[#12545a]">Months 1–3 · same intro price at any prescribed dose</p>
+					<div class="grid grid-cols-2 divide-x divide-[#dce8e7] px-3 py-5 text-center">
+						<p><span class="flex min-h-10 items-center justify-center text-sm leading-5 text-[#476460]">Semaglutide</span><span class="mt-1 block text-4xl font-semibold text-[#113e3a]">$99<span class="text-sm font-normal">/mo</span></span></p>
+						<p><span class="flex min-h-10 items-center justify-center text-sm leading-5 text-[#476460]">Tirzepatide</span><span class="mt-1 block text-4xl font-semibold text-[#113e3a]">$129<span class="text-sm font-normal">/mo</span></span></p>
+					</div>
+						<p class="px-4 pb-3 text-center text-xs leading-5 text-[#284b49]">Prices shown are for compounded medication, if prescribed.</p>
+						<div class="px-4 pb-4"><a href="#start" class="flex min-h-12 items-center justify-center rounded-md bg-[#102422] px-5 py-3 text-center text-sm font-semibold text-white transition hover:bg-[#255650]">Explore my options <span aria-hidden="true" class="ml-2">→</span></a></div>
+				</div>
+				<p class="mt-3 max-w-[490px] text-xs leading-5 text-[#284b49]">Intro price ends after month 3. <a href="#offer" class="font-semibold underline underline-offset-2">See month-four medication and membership costs.</a> Provider approval required; lab work may cost extra. Compounded drugs are not FDA-approved. Product image is representative; labeling may vary.</p>
+			</div>
+		</section>
+		<div class="border-y border-[#d7e8e5] bg-[#ebf5f3] px-6 py-4 text-center text-sm font-medium text-[#28554e]">In-person provider care <span class="mx-3 text-[#79aaa5]">·</span> Local Greenwood Village team <span class="mx-3 text-[#79aaa5]">·</span> Complimentary first consultation</div>
+
+		<GuestReviewStrip />
+
+		<GlpCareBenefits />
+		<GlpMemberStories />
+
+		<section id="start" class="scroll-mt-24 bg-[#f8fbfa] px-6 py-14 sm:py-20">
+			<div class="mx-auto max-w-6xl">
+				<p class="text-xs font-semibold uppercase text-[#147e81]">Your first step · 1 of 2</p>
+				<h2 class="mt-3 max-w-2xl text-3xl font-semibold leading-tight text-eden-navy sm:text-4xl">What would you like to explore?</h2>
+				<p class="mt-3 max-w-2xl text-base leading-7 text-slate-700">No need to decide on a dose or medication now. Ask a provider about lower-dose options. If treatment is prescribed, the same three-month introductory prices apply: $99/month for compounded semaglutide or $129/month for compounded tirzepatide.</p>
+				<div class="mt-7 grid gap-3 md:grid-cols-3" data-glp-choice-group>
+					<button type="button" data-glp-choice="Semaglutide" aria-pressed="false" class="min-h-28 rounded-md border-2 border-[#a9cbb6] bg-[#eff8f1] p-5 text-left transition hover:border-[#147e81] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#147e81] aria-pressed:border-[#147e81] aria-pressed:bg-[#dff3e5]"><span class="block text-lg font-semibold text-eden-navy">Semaglutide</span><span class="mt-2 block text-sm text-slate-700">Compare the $99/month intro</span></button>
+					<button type="button" data-glp-choice="Tirzepatide" aria-pressed="false" class="min-h-28 rounded-md border-2 border-[#aacfe0] bg-[#eef6fa] p-5 text-left transition hover:border-[#147e81] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#147e81] aria-pressed:border-[#147e81] aria-pressed:bg-[#dfeff7]"><span class="block text-lg font-semibold text-eden-navy">Tirzepatide</span><span class="mt-2 block text-sm text-slate-700">Compare the $129/month intro</span></button>
+					<button type="button" data-glp-choice="Ask about a lower-dose approach" aria-pressed="false" class="min-h-28 rounded-md border-2 border-[#c7d3d1] bg-white p-5 text-left transition hover:border-[#147e81] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#147e81] aria-pressed:border-[#147e81] aria-pressed:bg-[#edf7f5]"><span class="block text-lg font-semibold text-eden-navy">Help me decide</span><span class="mt-2 block text-sm text-slate-700">Discuss lower-dose options</span></button>
+				</div>
+				<div class="mt-6 flex flex-wrap items-center gap-4"><a href="#lead-form" data-glp-next class="pointer-events-none inline-flex min-h-12 items-center justify-center rounded-md bg-[#102422] px-6 py-3 text-sm font-semibold text-white opacity-50" aria-disabled="true">Continue <span aria-hidden="true" class="ml-2">→</span></a><span class="text-sm text-slate-600">No medical history requested here.</span></div>
+				<div class="mx-auto mt-14 max-w-2xl border-t border-[#d7e8e5] pt-8"><p class="mb-4 text-xs font-semibold uppercase text-[#147e81]">Your next step · 2 of 2</p><LeadForm variant="glp" introNote="If a lower dose is prescribed, the same 3-month intro applies: compounded semaglutide $99/mo or tirzepatide $129/mo." serviceSlug="glp-1-microdosing-inquiry" suburbSlug="denver" heading="Ask about lower-dose options" subheading="Share your details and our Greenwood Village team will help arrange your in-person provider consultation." submitText="Request my complimentary consult" messageLabel="What would you like to discuss?" goalOptions={["Semaglutide", "Tirzepatide", "Ask about a lower-dose approach"]} hiddenMessage="GLP-1 lower-dose inquiry. Provider consultation only. No microdosing regimen, result, or prescription promised." workflowKey="glp1_lower_dose_inquiry" offerName="GLP-1 Lower-Dose Consultation" offerValue="complimentary_consult_no_regimen_promise" previewOnly={!leadCaptureReady} /></div>
+			</div>
+		</section>
+
+		<section id="offer" class="scroll-mt-24 bg-[#eef6f5] px-6 py-14 sm:py-20">
+			<div class="mx-auto max-w-6xl">
+				<p class="text-xs font-semibold uppercase text-[#147e81]">Your pricing path</p>
+				<div class="mt-3 flex flex-col justify-between gap-5 md:flex-row md:items-end">
+					<h2 class="max-w-2xl text-3xl font-semibold leading-tight text-eden-navy sm:text-4xl">Know what each month costs.</h2>
+					<p class="max-w-sm text-sm leading-6 text-slate-700">These are Eden's GLP-1 intro terms, not a separate microdosing product or price. Your provider will explain whether any treatment is appropriate.</p>
+				</div>
+				<p class="mt-5 text-sm font-medium leading-6 text-[#244843]">Prices shown are for compounded medication, if prescribed.</p>
+				<div class="mt-8 grid gap-5 lg:grid-cols-2">
+					{[
+						{ name: "Semaglutide", intro: "$99", regular: "$249", memberMedication: "$149", memberTotal: "$149" },
+						{ name: "Tirzepatide", intro: "$129", regular: "$349", memberMedication: "$249", memberTotal: "$249" },
+					].map((plan) => <div class:list={["overflow-hidden rounded-md border-2 bg-white", plan.name === "Semaglutide" ? "border-[#256648]" : "border-[#3F98C4]"]}>
+						<h3 class:list={["px-5 py-4 text-xl font-semibold text-white", plan.name === "Semaglutide" ? "bg-[#256648]" : "bg-[#236987]"]}>{plan.name}</h3>
+						<ol class="grid grid-cols-3 divide-x divide-[#dce8e6] border-b border-[#dce8e6] bg-white text-center">
+							{[1, 2, 3].map((month) => <li class="px-2 py-4"><span class="block text-xs font-semibold uppercase text-[#476460]">Month {month}</span><strong class="mt-1 block text-2xl text-[#113e3a]">{plan.intro}</strong><span class="text-xs text-[#476460]">per month</span></li>)}
+						</ol>
+						<div class="bg-[#f8faf9] px-5 py-5"><p class="text-xs font-semibold uppercase text-[#147e81]">Month 4 onward</p><div class="mt-4 grid gap-3 sm:grid-cols-2"><div class="rounded-md border border-[#d4dfdd] bg-white p-4"><p class="text-sm font-semibold text-[#113e3a]">Without membership</p><p class="mt-1 text-xl font-semibold text-[#113e3a]">{plan.regular}/mo</p><p class="text-xs text-[#476460]">Medication price</p></div><div class:list={["rounded-md border p-4", plan.name === "Semaglutide" ? "border-[#8bc5a4] bg-[#e8f5ec]" : "border-[#a1cce0] bg-[#eaf4f9]"]}><p class="text-sm font-semibold text-[#113e3a]">With membership</p><p class="mt-1 text-xl font-semibold text-[#113e3a]">{plan.memberTotal}/mo net</p><p class="text-xs leading-5 text-[#476460]">When $149 Perform credits are applied to member-priced medication</p></div></div></div>
+				</div>)}
+				</div>
+				<div class="mt-5 border-l-2 border-[#1FA465] pl-4 text-sm leading-6 text-[#244843]"><strong>What membership adds:</strong> Four coached semi-private sessions and $149 in monthly Eden credits that roll over. Credits may be used for eligible medication or other eligible Eden services, but not both at once.</div>
+				<p class="mt-5 max-w-4xl text-sm leading-6 text-slate-700">The net figures assume all $149 in monthly credits are applied automatically toward the medication. If you use credits for other services, your medication balance will be higher. Membership and medication may be billed separately; confirm the complete billing details before enrolling. The initial consultation is complimentary, and provider-required lab work may cost extra. Treatment and dose depend on clinical assessment; a prescription is not guaranteed. Compounded drugs are not FDA-approved.</p>
+				<a href="#start" class="mt-6 inline-flex min-h-12 items-center justify-center rounded-md bg-[#102422] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#255650]">Explore my options</a>
+			</div>
+		</section>
+
+		<section id="care" class="scroll-mt-24 bg-[#143c33] text-white">
+			<div class="mx-auto grid max-w-6xl lg:grid-cols-2 lg:items-stretch">
+				<div class="px-6 py-14 sm:py-20 lg:pr-12">
+					<p class="text-xs font-semibold uppercase text-[#a9ce88]">The Eden difference</p>
+					<h2 class="mt-3 max-w-lg text-3xl font-semibold leading-tight sm:text-4xl">A thoughtful plan starts with a conversation.</h2>
+					<p class="mt-5 max-w-lg text-base leading-7 text-white/85">Meet with an Eden provider in Greenwood Village. Talk through your questions about lower-dose options and the available evidence before deciding whether treatment is right for you.</p>
+					<div class="mt-8 divide-y divide-white/20 border-y border-white/20">
+						<p class="py-3 text-sm leading-6"><strong class="mr-3 text-[#a9ce88]">01</strong> Complimentary initial consultation</p>
+						<p class="py-3 text-sm leading-6"><strong class="mr-3 text-[#a9ce88]">02</strong> An honest review of evidence and risks</p>
+						<p class="py-3 text-sm leading-6"><strong class="mr-3 text-[#a9ce88]">03</strong> Clear next steps, with no prescription promised</p>
+					</div>
+					<a href="#start" class="mt-8 inline-flex min-h-12 items-center justify-center rounded-md bg-white px-6 py-3 text-sm font-semibold text-[#143c33] transition hover:bg-[#e8f5ec]">Start with a conversation</a>
+				</div>
+					<div class="flex items-center bg-[#dfe9e3] p-4 sm:p-8"><img src="/assets/eden-glp1-consult-illustrative.jpg" alt="Edited Eden consultation scene with a provider and guest" class="aspect-[3/2] w-full object-cover" width="1536" height="1024" loading="lazy" decoding="async" /></div>
+			</div>
+		</section>
+
+		<section class="px-6 py-14 sm:py-20">
+			<div class="mx-auto max-w-6xl">
+				<div class="max-w-3xl">
+					<p class="text-xs font-semibold uppercase text-eden-green">Questions</p>
+					<h2 class="mt-3 text-3xl font-semibold text-eden-navy sm:text-4xl">Questions worth asking first.</h2>
+					<div class="mt-6 divide-y divide-eden-line border-y border-eden-line">
+						{questions.map(({ question, answer }) => <details class="group py-4"><summary class="cursor-pointer pr-5 text-base font-semibold text-eden-navy">{question}</summary><p class="mt-3 text-sm leading-6 text-slate-700">{answer}</p></details>)}
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+	<StickyMobileLeadActions primaryLabel="Ask a provider" ariaLabel="Request an Eden GLP-1 lower-dose consultation" />
+	<PaidServiceFooter />
+</BaseLayout>
+
+<style is:global>
+	@font-face {
+		font-family: "Eden Satoshi";
+		src: url("/fonts/satoshi-500.woff2") format("woff2");
+		font-style: normal;
+		font-weight: 500;
+		font-display: swap;
+	}
+	body:has(main[data-glp-page]) {
+		font-family: "Eden Satoshi", Arial, sans-serif;
+	}
+</style>
+
+<script>
+	const choices = document.querySelectorAll<HTMLButtonElement>("[data-glp-choice]");
+	const next = document.querySelector<HTMLAnchorElement>("[data-glp-next]");
+	const interest = document.querySelector<HTMLSelectElement>("#lead-form select[name='message']");
+	choices.forEach((choice) => choice.addEventListener("click", () => {
+		choices.forEach((option) => option.setAttribute("aria-pressed", String(option === choice)));
+		if (interest) interest.value = choice.dataset.glpChoice ?? "";
+		next?.classList.remove("pointer-events-none", "opacity-50");
+		next?.removeAttribute("aria-disabled");
+	}));
+</script>

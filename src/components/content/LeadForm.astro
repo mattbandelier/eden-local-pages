@@ -17,6 +17,9 @@ interface Props {
 	successMessage?: string;
 	successCtaHref?: string;
 	successCtaText?: string;
+	previewOnly?: boolean;
+	variant?: "default" | "glp";
+	introNote?: string;
 }
 
 const {
@@ -36,15 +39,23 @@ const {
 	successMessage = "Thanks. We received your information and will reach out within one business day.",
 	successCtaHref = "",
 	successCtaText = "Book your consultation",
+	previewOnly = false,
+	variant = "default",
+	introNote = "If prescribed, the first 3 months are $99/mo for compounded semaglutide or $129/mo for compounded tirzepatide.",
 } = Astro.props;
+const isGlp = variant === "glp";
 ---
 
-<section id="lead-form" class="rounded-lg border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
-	<h2 class="text-2xl font-semibold tracking-tight text-eden-navy">{heading}</h2>
-	<p class="mt-1 text-sm text-slate-600">{subheading}</p>
+<section id="lead-form" class:list={["scroll-mt-24 overflow-hidden border bg-white", isGlp ? "rounded-md border-[#bfd8d2] shadow-[0_20px_50px_rgba(17,62,58,0.10)]" : "rounded-lg border-slate-200 p-6 shadow-sm sm:p-8"]}>
+	{isGlp && <div class="h-1.5 bg-[#1fa465]" aria-hidden="true"></div>}
+	<div class:list={[isGlp && "px-5 pb-6 pt-6 sm:px-8 sm:pb-8 sm:pt-8"]}>
+		{isGlp && <p class="text-xs font-semibold uppercase text-[#18765c]">Your complimentary consultation</p>}
+		<h2 class:list={["font-semibold text-eden-navy", isGlp ? "mt-2 text-2xl leading-tight sm:text-3xl" : "text-2xl tracking-tight"]}>{heading}</h2>
+		<p class:list={["text-slate-600", isGlp ? "mt-2 max-w-lg text-base leading-6" : "mt-1 text-sm"]}>{subheading}</p>
+		{isGlp && <p class="mt-4 border-l-2 border-[#1fa465] pl-3 text-sm leading-6 text-[#315d55]">{introNote} <a href="#offer" class="font-semibold underline underline-offset-2">See full pricing</a>.</p>}
 
 	<form
-		class="mt-6 space-y-4"
+		class:list={["space-y-4", isGlp ? "mt-7" : "mt-6"]}
 		data-lead-form
 		data-service-slug={serviceSlug}
 		data-suburb-slug={suburbSlug ?? ""}
@@ -64,21 +75,23 @@ const {
 		) : (
 			<div class="grid gap-4 sm:grid-cols-2">
 				<label class="block">
-					<span class="text-sm font-medium text-eden-navy">First name</span>
+					<span class="text-sm font-medium text-eden-navy">First name{isGlp && " *"}</span>
 					<input
 						type="text"
 						name="firstName"
+						required={isGlp}
 						autocomplete="given-name"
-						class="mt-1 block min-h-11 w-full rounded-md border border-slate-300 px-3 py-2 text-sm focus:border-eden-green focus:outline-none focus:ring-1 focus:ring-eden-green"
+						class:list={["mt-1 block w-full rounded-md border px-3 focus:border-eden-green focus:outline-none focus:ring-2 focus:ring-eden-green/25", isGlp ? "min-h-12 border-[#c8d8d3] bg-[#fbfdfc] py-3 text-base" : "min-h-11 border-slate-300 py-2 text-sm"]}
 					/>
 				</label>
 				<label class="block">
-					<span class="text-sm font-medium text-eden-navy">Last name</span>
+					<span class="text-sm font-medium text-eden-navy">Last name{isGlp && " *"}</span>
 					<input
 						type="text"
 						name="lastName"
+						required={isGlp}
 						autocomplete="family-name"
-						class="mt-1 block min-h-11 w-full rounded-md border border-slate-300 px-3 py-2 text-sm focus:border-eden-green focus:outline-none focus:ring-1 focus:ring-eden-green"
+						class:list={["mt-1 block w-full rounded-md border px-3 focus:border-eden-green focus:outline-none focus:ring-2 focus:ring-eden-green/25", isGlp ? "min-h-12 border-[#c8d8d3] bg-[#fbfdfc] py-3 text-base" : "min-h-11 border-slate-300 py-2 text-sm"]}
 					/>
 				</label>
 			</div>
@@ -96,7 +109,8 @@ const {
 				inputmode="tel"
 				class:list={[
 					"mt-1 block min-h-11 w-full rounded-md border border-slate-300 px-3 focus:border-eden-green focus:outline-none focus:ring-1 focus:ring-eden-green",
-					compact ? "py-3 text-base" : "py-2 text-sm",
+					compact || isGlp ? "py-3 text-base" : "py-2 text-sm",
+					isGlp && "min-h-12 border-[#c8d8d3] bg-[#fbfdfc] focus:ring-2 focus:ring-eden-green/25",
 				]}
 			/>
 		</label>
@@ -112,12 +126,13 @@ const {
 				autocomplete="email"
 				class:list={[
 					"mt-1 block min-h-11 w-full rounded-md border border-slate-300 px-3 focus:border-eden-green focus:outline-none focus:ring-1 focus:ring-eden-green",
-					compact ? "py-3 text-base" : "py-2 text-sm",
+					compact || isGlp ? "py-3 text-base" : "py-2 text-sm",
+					isGlp && "min-h-12 border-[#c8d8d3] bg-[#fbfdfc] focus:ring-2 focus:ring-eden-green/25",
 				]}
 			/>
 		</label>
 
-		{!compact && (
+		{!compact && !isGlp && (
 			<label class="flex items-start gap-3" data-legacy-sms-consent>
 				<input
 					type="checkbox"
@@ -143,7 +158,7 @@ const {
 				{goalOptions.length ? (
 					<select
 						name="message"
-						class="mt-1 block min-h-11 w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm focus:border-eden-green focus:outline-none focus:ring-1 focus:ring-eden-green"
+						class:list={["mt-1 block w-full rounded-md border bg-white px-3 focus:border-eden-green focus:outline-none focus:ring-2 focus:ring-eden-green/25", isGlp ? "min-h-12 border-[#c8d8d3] py-3 text-base" : "min-h-11 border-slate-300 py-2 text-sm"]}
 					>
 						<option value="">Choose one</option>
 						{goalOptions.map((option) => (
@@ -159,6 +174,7 @@ const {
 				)}
 			</label>
 		)}
+		{isGlp && <label class="flex items-start gap-3 border-t border-[#e3eeeb] pt-5"><input type="checkbox" name="smsOptIn" class="mt-1 h-5 w-5 shrink-0 rounded border-[#a9c7be] text-eden-green focus:ring-eden-green" /><span class="text-sm leading-5 text-[#3b5e57]">Yes, Eden may send me automated texts about this request and appointments. Optional; consent is not required for care. Message and data rates may apply. Reply STOP to opt out.</span></label>}
 
 		<div class="hidden" aria-hidden="true">
 			<label>
@@ -186,12 +202,15 @@ const {
 
 		<button
 			type="submit"
-			class="w-full rounded-md bg-eden-green px-6 py-3 text-base font-semibold text-white shadow-sm transition hover:bg-eden-green/90 focus:outline-none focus:ring-2 focus:ring-eden-green focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60"
+			disabled={previewOnly}
+			class:list={["w-full rounded-md bg-eden-green px-6 text-base font-semibold text-white shadow-sm transition hover:bg-eden-green/90 focus:outline-none focus:ring-2 focus:ring-eden-green focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60", isGlp ? "min-h-14 py-4" : "py-3"]}
 		>
 			{submitText}
 		</button>
+		{previewOnly && <p class="text-center text-xs text-slate-600">Preview only. Lead capture is not active yet.</p>}
 
 		{underButtonText && <p class="text-center text-sm font-semibold text-slate-600">{underButtonText}</p>}
+		{isGlp && <p class="text-center text-xs leading-5 text-[#56716a]">By submitting, you authorize Eden Health Club to call or email about your request. No payment is required to ask; treatment depends on clinical review. <a href="/paid-privacy/" class="underline underline-offset-2">Privacy</a> · <a href="/paid-terms/" class="underline underline-offset-2">Terms</a></p>}
 
 		<div
 			data-lead-form-success
@@ -217,6 +236,7 @@ const {
 			{compact ? "Something went wrong. Please try again." : <span>Something went wrong. Please try again, or call us at <a href="tel:+17206057678" class="underline">720-605-7678</a>.</span>}
 		</div>
 	</form>
+	</div>
 </section>
 
 <script>
@@ -342,6 +362,7 @@ const {
 
 		form.addEventListener("submit", async (e) => {
 			e.preventDefault();
+			if (!form.reportValidity()) return;
 			if (successEl) successEl.hidden = true;
 			if (errorEl) errorEl.hidden = true;
 			if (submitBtn) submitBtn.disabled = true;

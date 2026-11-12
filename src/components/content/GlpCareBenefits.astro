@@ -1,0 +1,56 @@
+<section class="border-b border-[#d7e8e5] bg-white px-6 py-12 sm:py-16" aria-labelledby="glp-care-benefits-heading" data-glp-benefits>
+	<div class="mx-auto max-w-6xl">
+		<p class="text-xs font-semibold uppercase text-[#147e81]">Beyond the vial</p>
+		<div class="mt-2 flex flex-col justify-between gap-3 md:flex-row md:items-end">
+			<h2 id="glp-care-benefits-heading" class="max-w-2xl text-3xl font-semibold leading-tight text-[#1A1A1A] sm:text-4xl">Care for the life around treatment.</h2>
+			<p class="max-w-sm text-sm leading-6 text-[#39524d]">Start with a provider conversation. Explore more support when it fits your plan.</p>
+		</div>
+		<div class="glp-benefit-track mt-8 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-4 md:grid md:grid-cols-3 md:overflow-visible md:pb-0" data-glp-benefit-track>
+			<article class="min-w-[82vw] snap-start overflow-hidden rounded-md border border-[#d7e8e5] bg-[#f8fbfa] md:min-w-0">
+				<img src="/assets/eden-health-club-reception.webp" alt="Eden Health Club reception in Greenwood Village" class="aspect-[4/3] w-full object-cover" loading="lazy" decoding="async" />
+				<div class="p-5"><p class="text-xs font-semibold uppercase text-[#147e81]">01 · In person</p><h3 class="mt-2 text-xl font-semibold text-[#113e3a]">Start with a real conversation.</h3><p class="mt-2 text-sm leading-6 text-[#39524d]">Meet an Eden provider in Greenwood Village before making a treatment decision.</p></div>
+			</article>
+			<article class="min-w-[82vw] snap-start overflow-hidden rounded-md border border-[#d7e8e5] bg-[#f8fbfa] md:min-w-0">
+				<img src="/assets/fitness-strength-class.avif" alt="Person stretching during a group strength class" class="aspect-[4/3] w-full object-cover" loading="lazy" decoding="async" />
+				<div class="p-5"><p class="text-xs font-semibold uppercase text-[#147e81]">02 · Strength</p><h3 class="mt-2 text-xl font-semibold text-[#113e3a]">Build a stronger routine.</h3><p class="mt-2 text-sm leading-6 text-[#39524d]">Explore coached strength at the club when you are ready to add it.</p></div>
+			</article>
+			<article class="min-w-[82vw] snap-start overflow-hidden rounded-md border border-[#d7e8e5] bg-[#f8fbfa] md:min-w-0">
+				<img src="/assets/eden-live-virtual-workouts.avif" alt="Eden virtual workout on a tablet" class="aspect-[4/3] w-full object-cover" loading="lazy" decoding="async" />
+				<div class="p-5"><p class="text-xs font-semibold uppercase text-[#147e81]">03 · Eden Live</p><h3 class="mt-2 text-xl font-semibold text-[#113e3a]">Keep moving between visits.</h3><p class="mt-2 text-sm leading-6 text-[#39524d]">Eden Live offers classes and on-demand workouts for active Eden account holders.</p></div>
+			</article>
+		</div>
+		<div class="mt-1 flex items-center justify-between gap-4 md:mt-4">
+			<p class="max-w-3xl text-xs leading-5 text-[#476460]">The initial provider consultation is complimentary. In-club coaching requires an optional membership with a separate fee. Treatment depends on provider approval.</p>
+			<div class="flex shrink-0 gap-2 md:hidden">
+				<button type="button" data-glp-benefit-previous aria-label="Previous benefit" title="Previous benefit" class="grid size-11 place-items-center rounded-full border border-[#b5d4d2] text-xl text-[#12545a] hover:bg-[#e9f4f2]">&larr;</button>
+				<button type="button" data-glp-benefit-next aria-label="Next benefit" title="Next benefit" class="grid size-11 place-items-center rounded-full border border-[#b5d4d2] text-xl text-[#12545a] hover:bg-[#e9f4f2]">&rarr;</button>
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.glp-benefit-track { scrollbar-width: none; }
+	.glp-benefit-track::-webkit-scrollbar { display: none; }
+</style>
+
+<script>
+	document.querySelectorAll<HTMLElement>("[data-glp-benefits]").forEach((section) => {
+		const track = section.querySelector<HTMLElement>("[data-glp-benefit-track]");
+		const previous = section.querySelector<HTMLButtonElement>("[data-glp-benefit-previous]");
+		const next = section.querySelector<HTMLButtonElement>("[data-glp-benefit-next]");
+		if (!track || !previous || !next) return;
+
+		const move = (direction: 1 | -1) => {
+			const card = track.firstElementChild as HTMLElement | null;
+			if (!card) return;
+			const step = card.offsetWidth + 16;
+			const last = track.scrollWidth - track.clientWidth;
+			const target = track.scrollLeft + step * direction;
+			track.scrollTo({ left: target > last + 8 ? 0 : target < -8 ? last : target, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+		};
+
+		previous.addEventListener("click", () => move(-1));
+		next.addEventListener("click", () => move(1));
+	});
+</script>

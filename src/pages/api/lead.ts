@@ -20,6 +20,9 @@ const PEPTIDE_WORKFLOW_ID = "a9f9adfe-efd1-4cb0-bbcc-6eebc1b0181b";
 const HAIR_RESTORATION_WORKFLOW_ID = "69ce52fb-8bd9-429e-994c-a2d033e43437";
 const MED_SPA_WORKFLOW_ID = "b496b143-dacc-4b7f-8112-239dd040b360";
 const IW_WORKFLOW_ID = "672c856a-bafe-47a2-9c7f-d23b071127a8";
+const GLP_FOLLOW_UP_WORKFLOW_ID = "9b637d94-b172-4a35-bafb-8403a4761575";
+const GLP_SMS_CONSENT_TAG = "glp1_sms_opt_in";
+const GLP_SERVICE_SLUGS = new Set(["glp-1-intro-offer", "glp-1-microdosing-inquiry"]);
 const STARTER_BASELINE_SERVICE_SLUGS = new Set([
 	"longevity-baseline-visit",
 	"longevity-baseline-starter",
@@ -301,6 +304,9 @@ function tagsForLeadPayload(payload: LeadPayload): string[] {
 	if (shouldApplyPeptideWorkflow(payload)) {
 		tags.add(PEPTIDE_LEAD_TAG);
 	}
+	if (GLP_SERVICE_SLUGS.has(normalizedServiceSlug(payload)) && payload.smsOptIn) {
+		tags.add(GLP_SMS_CONSENT_TAG);
+	}
 
 	return [...tags];
 }
@@ -316,11 +322,14 @@ function normalizedServiceSlug(payload: LeadPayload): string {
 export function workflowIdForLeadPayload(
 	payload: Pick<LeadPayload, "workflowKey" | "message" | "service">,
 ): string | null {
+	const serviceSlug = normalizedServiceSlug(payload);
+	if (serviceSlug === "glp-1-intro-offer" && payload.workflowKey === "glp1_intro_3_month") return GLP_FOLLOW_UP_WORKFLOW_ID;
+	if (serviceSlug === "glp-1-microdosing-inquiry" && payload.workflowKey === "glp1_lower_dose_inquiry") return GLP_FOLLOW_UP_WORKFLOW_ID;
+	if (GLP_SERVICE_SLUGS.has(serviceSlug)) return null;
 	if (shouldApplyPeptideWorkflow(payload)) return PEPTIDE_WORKFLOW_ID;
 	if (shouldApplyBaselineLeadTag(payload)) return BASELINE_WORKFLOW_ID || null;
 	if (shouldApplyPerformWorkflow(payload)) return PERFORM_WORKFLOW_ID;
 
-	const serviceSlug = normalizedServiceSlug(payload);
 	if (STARTER_BASELINE_SERVICE_SLUGS.has(serviceSlug)) return PEPTIDE_WORKFLOW_ID;
 	if (HAIR_RESTORATION_SERVICE_SLUGS.has(serviceSlug)) return HAIR_RESTORATION_WORKFLOW_ID;
 	if (MED_SPA_SERVICE_SLUGS.has(serviceSlug)) return MED_SPA_WORKFLOW_ID;
@@ -502,6 +511,10 @@ async function upsertGhlContact(payload: LeadPayload): Promise<boolean> {
 			removeGhlContactTags(token, contactId, [PEPTIDE_LEAD_TAG]),
 		]);
 	}
+	if (GLP_SERVICE_SLUGS.has(normalizedServiceSlug(payload)) && !payload.smsOptIn) {
+		const consentTagRemoved = await removeGhlContactTags(token, contactId, [GLP_SMS_CONSENT_TAG]);
+		if (!consentTagRemoved) return false;
+	}
 
 	if (tags.length) {
 		const tagsAdded = await addGhlContactTags(token, contactId, tags);
@@ -584,6 +597,14 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
 		return jsonResponse({ success: false, error: "Invalid inquiry route." }, 400);
 	}
 	const workflowId = workflowIdForLeadPayload(payload);
+	if (GLP_SERVICE_SLUGS.has(normalizedServiceSlug(payload))) {
+		const glpLeadsEnabled =
+			import.meta.env.GLP_LEADS_ENABLED === "true" || process.env.GLP_LEADS_ENABLED === "true";
+		if (!glpLeadsEnabled || !workflowId) {
+			console.warn("GLP lead gate rejected", { enabled: glpLeadsEnabled, workflowConfigured: Boolean(workflowId) });
+			return jsonResponse({ success: false, error: "This consultation form is not available yet." }, 503);
+		}
+	}
 	const directGhlRequired = Boolean(websiteRoute) || shouldApplyBaselineLeadTag(payload) || Boolean(workflowId);
 	const [webhookOk, directGhlOk] = await Promise.all([
 		directGhlRequired ? Promise.resolve(false) : postLeadWebhook(webhookUrl, payload),
