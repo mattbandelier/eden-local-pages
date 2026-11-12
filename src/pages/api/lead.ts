@@ -22,7 +22,7 @@ const MED_SPA_WORKFLOW_ID = "b496b143-dacc-4b7f-8112-239dd040b360";
 const IW_WORKFLOW_ID = "672c856a-bafe-47a2-9c7f-d23b071127a8";
 const GLP_FOLLOW_UP_WORKFLOW_ID = "9b637d94-b172-4a35-bafb-8403a4761575";
 const GLP_SMS_CONSENT_TAG = "glp1_sms_opt_in";
-const GLP_SERVICE_SLUGS = new Set(["glp-1-intro-offer", "glp-1-microdosing-inquiry"]);
+const GLP_SERVICE_SLUGS = new Set(["glp-1-intro-offer", "glp-1-microdosing-inquiry", "glp-1-semaglutide-offer", "glp-1-tirzepatide-offer"]);
 const STARTER_BASELINE_SERVICE_SLUGS = new Set([
 	"longevity-baseline-visit",
 	"longevity-baseline-starter",
@@ -325,6 +325,8 @@ export function workflowIdForLeadPayload(
 	const serviceSlug = normalizedServiceSlug(payload);
 	if (serviceSlug === "glp-1-intro-offer" && payload.workflowKey === "glp1_intro_3_month") return GLP_FOLLOW_UP_WORKFLOW_ID;
 	if (serviceSlug === "glp-1-microdosing-inquiry" && payload.workflowKey === "glp1_lower_dose_inquiry") return GLP_FOLLOW_UP_WORKFLOW_ID;
+	if (serviceSlug === "glp-1-semaglutide-offer" && payload.workflowKey === "glp1_semaglutide_3_month") return GLP_FOLLOW_UP_WORKFLOW_ID;
+	if (serviceSlug === "glp-1-tirzepatide-offer" && payload.workflowKey === "glp1_tirzepatide_3_month") return GLP_FOLLOW_UP_WORKFLOW_ID;
 	if (GLP_SERVICE_SLUGS.has(serviceSlug)) return null;
 	if (shouldApplyPeptideWorkflow(payload)) return PEPTIDE_WORKFLOW_ID;
 	if (shouldApplyBaselineLeadTag(payload)) return BASELINE_WORKFLOW_ID || null;
