@@ -51,7 +51,7 @@ const questions = [
 				<p class="mt-3 max-w-[490px] text-xs leading-5 text-[#284b49]">Intro ends after month 3. <a href="#offer" class="font-semibold underline underline-offset-2">See ongoing costs and membership terms.</a> If prescribed, medication is fulfilled by Eden Pharmacy. Provider approval required; lab work may cost extra. Compounded drugs are not FDA-approved. Product image is representative; labeling may vary.</p>
 			</div>
 		</section>
-		<div class="border-y border-[#d7e8e5] bg-[#ebf5f3] px-6 py-4 text-center text-sm font-medium text-[#28554e]">Complimentary first consultation · Virtual or in person · Greenwood Village</div>
+		<div data-glp-proof-bar class="border-y border-[#d7e8e5] bg-[#ebf5f3] px-6 py-4 text-center text-sm font-medium text-[#28554e]">Complimentary first consultation · Virtual or in person · Greenwood Village</div>
 		<GlpReviewStrip />
 		<GlpCareBenefits />
 		<GlpProviderTeam />
@@ -106,9 +106,12 @@ const questions = [
 	main[data-glp-preview="true"] #care p { color: #102422; }
 	main[data-glp-preview="true"] #care a { background: #102422; color: white; border-radius: 999px; }
 	@media (max-width: 640px) {
+		main[data-glp-preview="true"] .glp-med-hero > div:nth-child(2) { background: rgba(255,255,255,.84); }
 		main[data-glp-preview="true"] { display: flex; flex-direction: column; }
 		main[data-glp-preview="true"] .glp-med-hero { order: -2; }
 		main[data-glp-preview="true"] #start { order: -1; padding-top: 32px; padding-bottom: 48px; }
+		main[data-glp-preview="true"] [data-glp-proof-bar],
+		main[data-glp-preview="true"] #start > div > div:first-child { display: none; }
 		main[data-glp-preview="true"] .glp-med-hero h1 { font-size: 40px; line-height: 1.08; }
 		main[data-glp-preview="true"] .glp-med-pricing { padding-top: 58px; padding-bottom: 58px; }
 	}
