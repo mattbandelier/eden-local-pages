@@ -1,6 +1,6 @@
 # GLP-1 lead follow-up | draft for GHL
 
-These messages are for the two GLP-1 landing pages only. The isolated GHL workflow (`9b637d94-b172-4a35-bafb-8403a4761575`) is Published with no trigger, re-entry off, stop-on-response off, five Eden-branded emails at days 0, 2, 4, 7, and 12, a day-0 callback, and a tag-gated day-0 SMS. Direct enrollment is performed by the site's lead endpoint. The emails use the live Eden logo in a deep-green banner, light-green service strip, full clinic address, and GHL's enabled default unsubscribe footer. Their dark-green `Call Eden now` buttons use `tel:+17206057678` to arrange the private $0 consultation; do not claim online self-booking. The older copied GLP drafts are not targets. Both pages and the form gate are still on the Vercel preview branch, not production. On Nov 12, one QA lead submitted the intro form, entered this workflow, received the opening email and opt-in SMS, and reached the wait step; a second submission on the microdosing page skipped duplicate enrollment because re-entry is off. The assigned-user call action executed, but a completed human connection was not established. Never imply that a lower dose, medication, or prescription is guaranteed. Do not put health history, dose, or other sensitive details in SMS or subject lines.
+The four GLP-1 landing pages (intro, lower-dose, semaglutide, and tirzepatide) route to one isolated GHL workflow (`9b637d94-b172-4a35-bafb-8403a4761575`). It is Published with no trigger, re-entry off, stop-on-response off, five Eden-branded emails at days 0, 2, 4, 7, and 12, two assigned-user call actions at days 0 and 1, and five opt-in-tag-gated texts at days 0, 3, 5, 8, and 12. Non-SMS contacts rejoin the shared email path after each SMS gate. Direct enrollment is performed by the site's lead endpoint. The emails use the live Eden logo in a deep-green banner, light-green service strip, full clinic address, and GHL's enabled default unsubscribe footer. Their dark-green `Call Eden now` buttons use `tel:+17206057678` to arrange the private $0 consultation; do not claim online self-booking. The older copied GLP drafts are not targets. On Nov 12, one QA lead submitted the intro form, entered this workflow, received the opening email and opt-in SMS, and reached the wait step; a second submission on the lower-dose page skipped duplicate enrollment because re-entry is off. The assigned-user call action executed, but a completed human connection was not established. Never imply that a lower dose, medication, or prescription is guaranteed. Do not put health history, dose, or other sensitive details in SMS or subject lines.
 
 ## Zenoti consultation routing
 
@@ -104,20 +104,24 @@ Reply with a day that works or call our team. If now is not the right time, no a
 
 ## SMS | Opt-in only
 
-Only the immediate SMS is live. Day 3 and Day 8 are proposed copy, not published workflow actions.
+Five texts are in the published workflow at days 0, 3, 5, 8, and 12. Each is gated by `glp1_sms_opt_in`; the two new texts were saved in GHL on Nov 12, but their delayed delivery has not yet been observed in a live test.
 
 **Immediate:** Hi {{contact.first_name}}, this is Eden Health Club. We received your consultation request. We can help find an in-person time in Greenwood Village. Reply with a good time to call, or call 720-605-7678. Reply STOP to opt out.
 
 **Day 3:** Hi {{contact.first_name}}, Eden here. Have questions before scheduling your complimentary consultation? Reply here and our team can help. Reply STOP to opt out.
 
+**Day 5:** Hi {{contact.first_name}}, your Eden GLP-1 offer is still available. Ready to take the next step? Reply with a good time for a complimentary virtual or in-person consult, or call 720-605-7678.
+
 **Day 8:** Hi {{contact.first_name}}, checking in from Eden. If you still want to talk with a provider, reply here or call 720-605-7678. Reply STOP to opt out.
+
+**Day 12:** Hi {{contact.first_name}}, Eden here. Still considering your three-month offer? Reply with a time to talk or call 720-605-7678. Virtual and in-person visits available.
 
 ## Calls and internal alert
 
-Only the Day 0 assigned-user callback is live. The Day 3 call is a proposed follow-up, not a published workflow action.
+The Day 0 and Day 1 assigned-user call actions are in the published workflow.
 
 - Day 0: one assigned-user callback attempt during staffed hours. Internal label: `GLP-1 intro | {{contact.name}}` or `GLP-1 lower-dose question | {{contact.name}}`.
-- Day 3: one additional call only if no answered conversation or booking. Leave one concise voicemail if appropriate: "Hi, this is Eden Health Club returning your consultation request. Please call us at 720-605-7678."
+- Day 1: one additional assigned-user call action if the lead remains in the workflow. Leave one concise voicemail if appropriate: "Hi, this is Eden Health Club returning your consultation request. Please call us at 720-605-7678."
 - Do not place another automated call after a confirmed answered conversation. A voicemail does not count as answered. Do not place calls after a verified booking or call opt-out.
 
 ## Launch checks
