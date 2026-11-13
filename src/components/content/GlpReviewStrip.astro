@@ -1,10 +1,8 @@
 ---
 const reviews = [
-	{ name: "Nick G.", summary: "The team took time to explain his lab results marker by marker and gave him a clear plan." },
-	{ name: "Gustavo M.", summary: "He describes Christina as approachable and professional during his visit." },
-	{ name: "Erika A.", summary: "Christina listened to her concerns, answered questions, and helped her feel informed before treatment." },
-	{ name: "Kat C.", summary: "She highlights a kind, knowledgeable front-desk team and a welcoming experience." },
-	{ name: "Julia W.", summary: "She describes an attentive team and a clean, well-equipped space for functional health and fitness." },
+	{ name: "Nick G.", context: "Comprehensive health visit", excerpt: "For the first time, I left a clinic actually understanding what was going on with my health and with a clear plan to improve it." },
+	{ name: "Erika A.", context: "In-person consultation", excerpt: "They exuded professionalism while also making me feel entirely at ease throughout the entire process." },
+	{ name: "Julia W.", context: "Functional health", excerpt: "Eden surpasses all expectations for a proactive functional health experience." },
 ];
 ---
 
@@ -17,11 +15,12 @@ const reviews = [
 			</div>
 			<a href="https://www.google.com/maps?cid=12311342436061718588" target="_blank" rel="noreferrer" class="text-sm font-semibold text-[#246747] underline underline-offset-2">Read Google reviews</a>
 		</div>
-		<p class="mt-3 text-sm text-[#476460]">Highlights paraphrased from guest reviews; individual experiences vary.</p>
+		<p class="mt-3 text-sm text-[#476460]">Excerpts from guests' published reviews. <a href="https://edenhealthclubs.com/about/testimonials/" class="font-semibold underline underline-offset-2">Read the full reviews</a>.</p>
 		<div class="mt-6 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-3">
 			{reviews.map((review) => (
-				<article class="flex min-h-48 w-[min(20rem,82vw)] shrink-0 snap-start flex-col rounded-md border border-[#d8e4df] bg-[#f7faf8] p-5">
-					<p class="text-base leading-7 text-[#193b34]">{review.summary}</p>
+				<article class="flex min-h-56 w-[min(22rem,82vw)] shrink-0 snap-start flex-col rounded-md border border-[#d8e4df] bg-[#f7faf8] p-5">
+					<p class="text-xs font-semibold uppercase text-[#246747]">{review.context}</p>
+					<blockquote class="mt-4 text-base leading-7 text-[#193b34]">“{review.excerpt}”</blockquote>
 					<p class="mt-auto pt-4 text-sm font-semibold text-[#246747]">{review.name}</p>
 				</article>
 			))}
