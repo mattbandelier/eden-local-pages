@@ -97,40 +97,42 @@ const isGlp = variant === "glp";
 			</div>
 		)}
 
-		<label class="block">
-			<span class="text-sm font-medium text-eden-navy">
-				Phone <span class="text-eden-green">*</span>
-			</span>
-			<input
-				type="tel"
-				name="phone"
-				required
-				autocomplete="tel"
-				inputmode="tel"
-				class:list={[
-					"mt-1 block min-h-11 w-full rounded-md border border-slate-300 px-3 focus:border-eden-green focus:outline-none focus:ring-1 focus:ring-eden-green",
-					compact || isGlp ? "py-3 text-base" : "py-2 text-sm",
-					isGlp && "min-h-12 border-[#c8d8d3] bg-[#fbfdfc] focus:ring-2 focus:ring-eden-green/25",
-				]}
-			/>
-		</label>
+		<div class:list={["grid gap-4", isGlp && "sm:grid-cols-2"]}>
+			<label class="block min-w-0">
+				<span class="text-sm font-medium text-eden-navy">
+					Phone <span class="text-eden-green">*</span>
+				</span>
+				<input
+					type="tel"
+					name="phone"
+					required
+					autocomplete="tel"
+					inputmode="tel"
+					class:list={[
+						"mt-1 block min-h-11 w-full rounded-md border border-slate-300 px-3 focus:border-eden-green focus:outline-none focus:ring-1 focus:ring-eden-green",
+						compact || isGlp ? "py-3 text-base" : "py-2 text-sm",
+						isGlp && "min-h-12 border-[#c8d8d3] bg-[#fbfdfc] focus:ring-2 focus:ring-eden-green/25",
+					]}
+				/>
+			</label>
 
-		<label class="block">
-			<span class="text-sm font-medium text-eden-navy">
-				Email <span class="text-eden-green">*</span>
-			</span>
-			<input
-				type="email"
-				name="email"
-				required
-				autocomplete="email"
-				class:list={[
-					"mt-1 block min-h-11 w-full rounded-md border border-slate-300 px-3 focus:border-eden-green focus:outline-none focus:ring-1 focus:ring-eden-green",
-					compact || isGlp ? "py-3 text-base" : "py-2 text-sm",
-					isGlp && "min-h-12 border-[#c8d8d3] bg-[#fbfdfc] focus:ring-2 focus:ring-eden-green/25",
-				]}
-			/>
-		</label>
+			<label class="block min-w-0">
+				<span class="text-sm font-medium text-eden-navy">
+					Email <span class="text-eden-green">*</span>
+				</span>
+				<input
+					type="email"
+					name="email"
+					required
+					autocomplete="email"
+					class:list={[
+						"mt-1 block min-h-11 w-full rounded-md border border-slate-300 px-3 focus:border-eden-green focus:outline-none focus:ring-1 focus:ring-eden-green",
+						compact || isGlp ? "py-3 text-base" : "py-2 text-sm",
+						isGlp && "min-h-12 border-[#c8d8d3] bg-[#fbfdfc] focus:ring-2 focus:ring-eden-green/25",
+					]}
+				/>
+			</label>
+		</div>
 
 		{!compact && !isGlp && (
 			<label class="flex items-start gap-3" data-legacy-sms-consent>

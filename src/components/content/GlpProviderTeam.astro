@@ -7,6 +7,7 @@ const providers = [
 		focus: "A collaborative approach shaped by primary care, women's health, and longevity wellness.",
 		plaqueLabel: "Education",
 		plaque: "BSN + MSN · Saint Louis University",
+		badge: "SLU",
 		image: "/assets/glp-provider-cat-cutout.webp",
 	},
 	{
@@ -16,6 +17,7 @@ const providers = [
 		focus: "Medical weight loss and hormone optimization with a personal, whole-person approach.",
 		plaqueLabel: "Education",
 		plaque: "MSN · Chamberlain University",
+		badge: "CU",
 		image: "/assets/glp-provider-mya-cutout.webp",
 	},
 	{
@@ -25,6 +27,7 @@ const providers = [
 		focus: "Medical weight management and metabolic health, grounded in years of clinical practice.",
 		plaqueLabel: "Clinical experience",
 		plaque: "Internal + family medicine · Since 2014",
+		badge: "2014",
 		image: "/assets/glp-provider-katie-cutout.webp",
 	},
 ];
@@ -38,16 +41,19 @@ const providers = [
 		<div class="mt-10 grid gap-6 sm:grid-cols-3">
 			{providers.map((provider) => (
 				<article class="min-w-0 pt-32">
-					<div class="relative h-[270px] rounded-t-[6px] bg-[#e5eae7] sm:h-[300px]">
+					<div class="relative h-[270px] rounded-t-[20px] bg-[#e5eae7] sm:h-[300px]">
 						<img src={provider.image} alt={provider.name} class="absolute bottom-0 left-1/2 h-[170%] w-auto max-w-none origin-bottom -translate-x-1/2 scale-[1.12] object-contain object-bottom" width="720" height="960" loading="lazy" decoding="async" />
 					</div>
-					<div class="min-h-44 bg-white px-5 pb-6 pt-5">
+					<div class="min-h-44 rounded-b-[20px] bg-white px-5 pb-6 pt-5">
 						<h3 class="text-xl font-semibold leading-tight text-[#102422]">{provider.name}, <span class="text-base font-medium">{provider.credentials}</span></h3>
 						<p class="mt-1 text-sm font-medium text-[#476460]">{provider.role}</p>
 						<p class="mt-4 text-sm leading-6 text-[#284b49]">{provider.focus}</p>
-						<div class="mt-5 border-t border-[#e1e8e3] pt-4">
-							<p class="text-[11px] font-semibold uppercase text-[#246747]">{provider.plaqueLabel}</p>
-							<p class="mt-1 text-xs font-medium leading-5 text-[#284b49]">{provider.plaque}</p>
+						<div class="mt-5 flex items-center gap-3 border-t border-[#e1e8e3] pt-4">
+							<span aria-hidden="true" class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[#789586] text-[10px] font-bold text-[#1d4d3f]">{provider.badge}</span>
+							<div>
+								<p class="text-[11px] font-semibold uppercase text-[#246747]">{provider.plaqueLabel}</p>
+								<p class="mt-1 text-xs font-medium leading-5 text-[#284b49]">{provider.plaque}</p>
+							</div>
 						</div>
 					</div>
 				</article>
