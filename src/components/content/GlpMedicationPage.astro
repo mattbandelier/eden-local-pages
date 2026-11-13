@@ -9,8 +9,9 @@ import StickyMobileLeadActions from "./StickyMobileLeadActions.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { canonicalUrl } from "../../lib/urls";
 
-interface Props { medication: "Semaglutide" | "Tirzepatide" }
-const { medication } = Astro.props;
+interface Props { medication: "Semaglutide" | "Tirzepatide"; preview?: boolean }
+const { medication, preview = false } = Astro.props;
+const updatedDesign = true;
 const semaglutide = medication === "Semaglutide";
 const slug = semaglutide ? "semaglutide-denver" : "tirzepatide-denver";
 const serviceSlug = semaglutide ? "glp-1-semaglutide-offer" : "glp-1-tirzepatide-offer";
@@ -24,25 +25,26 @@ const leadCaptureReady = import.meta.env.PUBLIC_GLP_LEADS_ENABLED === "true";
 const questions = [
 	{ question: `Is ${medication.toLowerCase()} guaranteed?`, answer: "No. A licensed provider reviews your health history and determines whether a prescription is appropriate. Compounded medications are not FDA-approved and are not the same as FDA-approved brand-name products." },
 	{ question: "What does the three-month price cover?", answer: `If prescribed, the introductory compounded medication price is ${intro} per month in months one through three at any provider-prescribed dose available through Eden. A complimentary first consultation is available. Provider-required lab work may cost extra.` },
-	{ question: "What happens after month three?", answer: `The introductory price ends after month three. From month four, compounded ${medication.toLowerCase()} is ${regular}/month without membership. With Perform membership, $149/month in Eden credits can be applied automatically toward eligible member-priced medication, resulting in ${memberNet}/month net when all credits are used that way. Membership may be billed separately. Credits cannot be used for medication and other services at the same time.` },
+	{ question: "What happens after month three?", answer: updatedDesign ? `The intro ends after month three. Without membership, medication is ${regular}/month. With membership, it is ${memberNet}/month including membership when the $149 Eden credit goes toward eligible medication. Lab work may cost extra.` : `The introductory price ends after month three. From month four, compounded ${medication.toLowerCase()} is ${regular}/month without membership. With Perform membership, $149/month in Eden credits can be applied automatically toward eligible member-priced medication, resulting in ${memberNet}/month net when all credits are used that way. Membership may be billed separately. Credits cannot be used for medication and other services at the same time.` },
 	{ question: "Can I start with a virtual visit?", answer: "You can ask our team for a virtual or in-person first provider visit. Your provider will decide what evaluation and follow-up are appropriate before any treatment." },
 ];
 ---
 
 <BaseLayout title={title} description={description} canonicalUrl={canonicalUrl(`/lp/${slug}`)} noindex ogImage="/assets/eden-pharmacy-glp1-vial-hero.avif" preloadImages={["/assets/eden-pharmacy-glp1-vial-hero.avif"]}>
+	{preview && <div class="bg-[#102422] px-4 py-2 text-center text-xs font-semibold text-white">DESIGN PREVIEW ONLY · FORMS DISABLED · NOT PUBLISHED</div>}
 	<PremiumHeader brandHref="https://edenhealthclubs.com/" brandLogoSrc="/assets/eden-health-club-logo-white-transparent-tight.png" servicesHref="#care" servicesLabel="Why Eden" pricingHref="#offer" pricingLabel="Pricing" contactHref="#lead-form" ctaLabel="Get started" light />
-	<main data-glp-page class="bg-white pb-20 md:pb-0">
-		<section class="relative isolate overflow-hidden bg-[#f7faf9] text-eden-forest">
+	<main data-glp-page data-glp-preview={updatedDesign} class="bg-white pb-20 md:pb-0">
+		<section class="glp-med-hero relative isolate overflow-hidden bg-[#f7faf9] text-eden-forest">
 			<img src="/assets/eden-pharmacy-glp1-vial-hero.avif" alt="Eden Pharmacy GLP-1 medication vial" class="absolute inset-0 h-full w-full object-cover object-[66%_center] sm:object-center" width="2944" height="1718" fetchpriority="high" decoding="async" />
 			<div class="absolute inset-0 bg-white/10 sm:bg-gradient-to-r sm:from-white/35 sm:via-white/10 sm:to-transparent"></div>
 			<div class="relative mx-auto flex min-h-[690px] max-w-6xl flex-col justify-center px-6 pb-16 pt-16 sm:min-h-[670px] sm:py-20">
 				<p class="text-xs font-semibold uppercase text-[#256648]">Provider-led GLP-1 care · Greenwood Village</p>
-				<h1 class="mt-5 max-w-[600px] text-4xl font-semibold leading-tight text-[#1A1A1A] sm:text-5xl lg:text-6xl">Explore {medication}. Start with a real conversation.</h1>
+				<h1 class="mt-5 max-w-[600px] text-4xl font-semibold leading-tight text-[#1A1A1A] sm:text-5xl lg:text-6xl">{updatedDesign ? <>{medication} care, built around you.</> : <>Explore {medication}. Start with a real conversation.</>}</h1>
 				<ul class="mt-5 hidden max-w-lg space-y-2 text-sm leading-6 text-[#284b49] sm:block sm:text-base"><li>Complimentary first provider consultation</li><li>Virtual or in-person first visit options</li><li>Local care in Greenwood Village</li></ul>
 				<div class="h-40 sm:hidden" aria-hidden="true"></div>
-				<div class="mt-7 w-full max-w-[490px] overflow-hidden rounded-md border border-[#b5d4d2] bg-white/95 shadow-lg shadow-[#174f4e]/10">
+				<div class="glp-med-offer mt-7 w-full max-w-[490px] overflow-hidden rounded-md border border-[#b5d4d2] bg-white/95 shadow-lg shadow-[#174f4e]/10">
 					<p class="border-b border-[#dce8e7] bg-[#e9f4f2] px-5 py-3 text-center text-sm font-semibold text-[#12545a]">Months 1–3 · if prescribed</p>
-					<div class="px-5 py-5 text-center"><p class="text-base font-semibold text-[#476460]">Compounded {medication.toLowerCase()}</p><p class="mt-1 text-4xl font-semibold text-[#113e3a]">{intro}<span class="text-sm font-normal">/month</span></p><p class="mt-2 text-sm text-[#476460]">Same intro price at any available provider-prescribed dose</p></div>
+					<div class="px-5 py-5 text-center"><p class="text-base font-semibold text-[#476460]">{updatedDesign ? medication : `Compounded ${medication.toLowerCase()}`}</p><p class="mt-1 text-4xl font-semibold text-[#113e3a]">{intro}<span class="text-sm font-normal">/month</span></p><p class="mt-2 text-sm text-[#476460]">Same intro price at any available provider-prescribed dose</p>{updatedDesign && <p class="mt-2 text-xs text-[#244843]">For compounded {medication.toLowerCase()}, if prescribed. No membership required.</p>}</div>
 					<div class="px-4 pb-4"><a href="#lead-form" class="flex min-h-12 items-center justify-center rounded-md bg-[#102422] px-5 py-3 text-center text-sm font-semibold text-white transition hover:bg-[#255650]">Explore the offer <span aria-hidden="true" class="ml-2">→</span></a></div>
 				</div>
 				<p class="mt-3 max-w-[490px] text-xs leading-5 text-[#284b49]">Intro ends after month 3. <a href="#offer" class="font-semibold underline underline-offset-2">See ongoing costs and membership terms.</a> If prescribed, medication is fulfilled by Eden Pharmacy. Provider approval required; lab work may cost extra. Compounded drugs are not FDA-approved. Product image is representative; labeling may vary.</p>
@@ -55,13 +57,13 @@ const questions = [
 		<section id="start" class="scroll-mt-24 bg-[#f8fbfa] px-6 py-14 sm:py-20">
 			<div class="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
 				<div><p class="text-xs font-semibold uppercase text-[#147e81]">Your first step</p><h2 class="mt-3 text-3xl font-semibold leading-tight text-eden-navy sm:text-4xl">See whether {medication.toLowerCase()} fits your plan.</h2><p class="mt-4 text-base leading-7 text-slate-700">Talk with an Eden provider about your goals, medical history and treatment options. There is no payment to ask, and no prescription is promised.</p><p class="mt-6 text-sm leading-6 text-slate-700">Prefer to talk now? <a href="tel:+17206057678" class="font-semibold underline underline-offset-2">Call Eden at 720-605-7678</a>.</p></div>
-				<LeadForm variant="glp" introNote={`If prescribed, the first three months of compounded ${medication.toLowerCase()} are ${intro}/month. Lab work may cost extra.`} serviceSlug={serviceSlug} suburbSlug="denver" heading={`Ask about ${medication.toLowerCase()}`} subheading="Our team can help arrange a complimentary virtual or in-person first provider visit." submitText="Explore my first visit" messageLabel="What would you like to discuss?" goalOptions={[medication, "Ask about a lower-dose approach", "Help me decide"]} hiddenMessage={`${medication} three-month introductory offer inquiry. Provider assessment required; no prescription or result promised.`} workflowKey={workflowKey} offerName={`${medication} Three-Month Intro`} offerValue={`${semaglutide ? "sema_99" : "tirz_129"}_any_available_prescribed_dose`} previewOnly={!leadCaptureReady} />
+				<LeadForm variant="glp" introNote={`If prescribed, the first three months of compounded ${medication.toLowerCase()} are ${intro}/month. Lab work may cost extra.`} serviceSlug={serviceSlug} suburbSlug="denver" heading={`Ask about ${medication.toLowerCase()}`} subheading="Our team can help arrange a complimentary virtual or in-person first provider visit." submitText="Explore my first visit" messageLabel="What would you like to discuss?" goalOptions={[medication, "Ask about a lower-dose approach", "Help me decide"]} hiddenMessage={`${medication} three-month introductory offer inquiry. Provider assessment required; no prescription or result promised.`} workflowKey={workflowKey} offerName={`${medication} Three-Month Intro`} offerValue={`${semaglutide ? "sema_99" : "tirz_129"}_any_available_prescribed_dose`} previewOnly={preview || !leadCaptureReady} />
 			</div>
 		</section>
-		<section id="offer" class="scroll-mt-24 bg-[#eef6f5] px-6 py-14 sm:py-20">
-			<div class="mx-auto max-w-6xl"><p class="text-xs font-semibold uppercase text-[#147e81]">Your pricing path</p><h2 class="mt-3 text-3xl font-semibold text-eden-navy sm:text-4xl">Know what each month costs.</h2><p class="mt-4 text-sm text-[#244843]">Prices are for compounded {medication.toLowerCase()} medication, if prescribed.</p>
-				<div class="mt-8 grid gap-5 lg:grid-cols-2"><div class="overflow-hidden rounded-md border border-[#a9cbb6] bg-white"><h3 class="bg-[#256648] px-5 py-4 text-xl font-semibold text-white">Months 1–3</h3><div class="grid grid-cols-3 divide-x divide-[#dce8e6] text-center">{[1,2,3].map(month => <div class="px-2 py-5"><span class="block text-xs font-semibold uppercase text-[#476460]">Month {month}</span><strong class="mt-1 block text-2xl text-[#113e3a]">{intro}</strong><span class="text-xs text-[#476460]">per month</span></div>)}</div></div><div class="overflow-hidden rounded-md border border-[#a1cce0] bg-white"><h3 class="bg-[#236987] px-5 py-4 text-xl font-semibold text-white">Month 4 onward</h3><div class="grid grid-cols-2 divide-x divide-[#dce8e6] text-center"><div class="px-3 py-5"><span class="block text-sm text-[#476460]">Without membership</span><strong class="mt-1 block text-2xl text-[#113e3a]">{regular}</strong><span class="block text-xs text-[#476460]">per month</span></div><div class="px-3 py-5"><span class="block text-sm text-[#476460]">With Perform credits</span><strong class="mt-1 block text-2xl text-[#113e3a]">{memberNet}</strong><span class="block text-xs text-[#476460]">per month net*</span></div></div></div></div>
-				<p class="mt-5 max-w-4xl text-sm leading-6 text-slate-700">*Perform membership is $149/month and includes $149 in monthly Eden credits plus four coached semi-private sessions. Credits roll over and may be used for eligible medication or other eligible Eden services, but not both at once. The net figure assumes all $149 in credits are applied automatically toward eligible member-priced medication; if you use credits elsewhere, the medication balance is higher. Membership and medication may be billed separately. Confirm complete costs before enrolling. The first consultation is complimentary; provider-required lab work may cost extra. Treatment and dose depend on clinical assessment. Compounded drugs are not FDA-approved.</p>
+		<section id="offer" class="glp-med-pricing scroll-mt-24 bg-[#eef6f5] px-6 py-14 sm:py-20">
+			<div class="mx-auto max-w-6xl"><p class="text-xs font-semibold uppercase text-[#147e81]">Your pricing path</p><h2 class="mt-3 text-3xl font-semibold text-eden-navy sm:text-4xl">Know what each month costs.</h2><p class="mt-4 text-sm text-[#244843]">Prices are for compounded {medication.toLowerCase()} medication, if prescribed. {updatedDesign && "The first three months do not require membership."}</p>
+				<div class="glp-med-pricing-grid mt-8 grid gap-5 lg:grid-cols-2"><div class="overflow-hidden rounded-md border border-[#a9cbb6] bg-white"><h3 class="bg-[#256648] px-5 py-4 text-xl font-semibold text-white">Months 1–3</h3><div class="grid grid-cols-3 divide-x divide-[#dce8e6] text-center">{[1,2,3].map(month => <div class="px-2 py-5"><span class="block text-xs font-semibold uppercase text-[#476460]">Month {month}</span><strong class="mt-1 block text-2xl text-[#113e3a]">{intro}</strong><span class="text-xs text-[#476460]">per month</span></div>)}</div></div><div class="overflow-hidden rounded-md border border-[#a1cce0] bg-white"><h3 class="bg-[#236987] px-5 py-4 text-xl font-semibold text-white">Month 4 onward</h3><div class="grid grid-cols-2 divide-x divide-[#dce8e6] text-center"><div class="px-3 py-5"><span class="block text-sm text-[#476460]">Without membership</span><strong class="mt-1 block text-2xl text-[#113e3a]">{regular}</strong><span class="block text-xs text-[#476460]">per month</span></div><div class="px-3 py-5"><span class="block text-sm text-[#476460]">{updatedDesign ? "With membership" : "With Perform credits"}</span><strong class="mt-1 block text-2xl text-[#113e3a]">{memberNet}</strong><span class="block text-xs text-[#476460]">{updatedDesign ? "per month*" : "per month net*"}</span></div></div></div></div>
+				{updatedDesign ? <p class="mt-5 max-w-4xl text-sm leading-6 text-slate-700">*Membership is $149/month and includes $149 in Eden credits plus four coached sessions. The member price shown includes membership and eligible medication when the credit goes toward medication. Credits can be used for other eligible Eden services instead; then medication costs more. Credits roll over. Lab work may cost extra; treatment requires provider approval. Compounded drugs are not FDA-approved.</p> : <p class="mt-5 max-w-4xl text-sm leading-6 text-slate-700">*Perform membership is $149/month and includes $149 in monthly Eden credits plus four coached semi-private sessions. Credits roll over and may be used for eligible medication or other eligible Eden services, but not both at once. The net figure assumes all $149 in credits are applied automatically toward eligible member-priced medication; if you use credits elsewhere, the medication balance is higher. Membership and medication may be billed separately. Confirm complete costs before enrolling. The first consultation is complimentary; provider-required lab work may cost extra. Treatment and dose depend on clinical assessment. Compounded drugs are not FDA-approved.</p>}
 				<a href="#lead-form" class="mt-6 inline-flex min-h-12 items-center justify-center rounded-md bg-[#102422] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#255650]">Explore my first visit</a>
 			</div>
 		</section>
@@ -75,4 +77,35 @@ const questions = [
 <style is:global>
 	@font-face { font-family: "Eden Satoshi"; src: url("/fonts/satoshi-500.woff2") format("woff2"); font-style: normal; font-weight: 500; font-display: swap; }
 	body:has(main[data-glp-page]) { font-family: "Eden Satoshi", Arial, sans-serif; }
+	@font-face { font-family: "Eden Inter Tight"; src: url("/fonts/inter-tight-latin.woff2") format("woff2"); font-style: normal; font-weight: 100 900; font-display: swap; }
+	main[data-glp-preview="true"] { color: #183c34; }
+	main[data-glp-preview="true"] h1,
+	main[data-glp-preview="true"] h2,
+	main[data-glp-preview="true"] h3 { font-family: "Eden Inter Tight", Arial, sans-serif; letter-spacing: 0; }
+	main[data-glp-preview="true"] .glp-med-hero > div:nth-child(2) { background: linear-gradient(90deg, rgba(255,255,255,.36), rgba(255,255,255,.04)); }
+	main[data-glp-preview="true"] .glp-med-hero h1 { max-width: 610px; font-size: 60px; font-weight: 750; line-height: 1.04; color: #102422; }
+	main[data-glp-preview="true"] .glp-med-hero ul { font-size: 16px; }
+	main[data-glp-preview="true"] .glp-med-offer { border: 0; border-radius: 8px; box-shadow: 0 18px 48px rgba(16,36,34,.17); }
+	main[data-glp-preview="true"] .glp-med-offer > p:first-child { background: #e9e6f3; border: 0; color: #1b2929; }
+	main[data-glp-preview="true"] .glp-med-offer a { border-radius: 999px; background: #101716; }
+	main[data-glp-preview="true"] [data-glp-benefits] { background: #fff; border: 0; padding-top: 84px; padding-bottom: 84px; }
+	main[data-glp-preview="true"] [data-glp-benefits] article { border: 0; border-radius: 8px; background: #f4f7f6; box-shadow: 0 12px 32px rgba(16,36,34,.07); }
+	main[data-glp-preview="true"] [data-glp-benefits] article img { aspect-ratio: 5/4; }
+	main[data-glp-preview="true"] [data-glp-benefits] article:nth-child(2) { background: #eaf2fa; }
+	main[data-glp-preview="true"] [data-glp-benefits] article:nth-child(3) { background: #e9f3e9; }
+	main[data-glp-preview="true"] .glp-med-pricing { background: #f3f5f5; padding-top: 92px; padding-bottom: 92px; }
+	main[data-glp-preview="true"] .glp-med-pricing-grid > div { border: 0; border-radius: 8px; box-shadow: 0 10px 30px rgba(16,36,34,.08); }
+	main[data-glp-preview="true"] .glp-med-pricing-grid h3 { background: #e5f2ea; color: #102422; font-size: 22px; }
+	main[data-glp-preview="true"] .glp-med-pricing-grid > div:nth-child(2) h3 { background: #e9e6f3; }
+	main[data-glp-preview="true"] .glp-med-pricing-grid strong { color: #102422; font-size: 30px; }
+	main[data-glp-preview="true"] .glp-med-pricing-grid a,
+	main[data-glp-preview="true"] .glp-med-pricing > div > a { border-radius: 999px; background: #101716; }
+	main[data-glp-preview="true"] #care { background: #e7eee9; color: #102422; }
+	main[data-glp-preview="true"] #care h2,
+	main[data-glp-preview="true"] #care p { color: #102422; }
+	main[data-glp-preview="true"] #care a { background: #102422; color: white; border-radius: 999px; }
+	@media (max-width: 640px) {
+		main[data-glp-preview="true"] .glp-med-hero h1 { font-size: 40px; line-height: 1.08; }
+		main[data-glp-preview="true"] .glp-med-pricing { padding-top: 58px; padding-bottom: 58px; }
+	}
 </style>
