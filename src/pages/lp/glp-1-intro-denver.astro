@@ -78,7 +78,17 @@ const questions = [
 					<button type="button" data-glp-choice="Ask about a lower-dose approach" aria-pressed="false" class="min-h-28 rounded-md border-2 border-[#c7d3d1] bg-white p-5 text-left transition hover:border-[#147e81] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#147e81] aria-pressed:border-[#147e81] aria-pressed:bg-[#edf7f5]"><span class="block text-lg font-semibold text-eden-navy">Help me decide</span><span class="mt-2 block text-sm text-slate-700">Ask about a lower-dose approach</span></button>
 				</div>
 				<div class="mt-6 flex flex-wrap items-center gap-4"><a href="#lead-form" data-glp-next class="pointer-events-none inline-flex min-h-12 items-center justify-center rounded-md bg-[#102422] px-6 py-3 text-sm font-semibold text-white opacity-50" aria-disabled="true">Continue <span aria-hidden="true" class="ml-2">→</span></a><span class="text-sm text-slate-600">No medical history requested here.</span></div>
-				<div data-glp-form-wrap class="mx-auto mt-14 max-w-2xl border-t border-[#d7e8e5] pt-8"><p class="mb-4 text-xs font-semibold uppercase text-[#147e81]">Request your first visit</p><LeadForm variant="glp" serviceSlug="glp-1-intro-offer" suburbSlug="denver" heading="Let's talk through your options" subheading="Share your details and our Greenwood Village team will help arrange your in-person provider consultation." submitText="Request my complimentary consult" messageLabel="What would you like to discuss?" goalOptions={["Semaglutide", "Tirzepatide", "Ask about a lower-dose approach"]} hiddenMessage="GLP-1 three-month introductory offer inquiry. Provider assessment required. Do not promise treatment or enrollment." workflowKey="glp1_intro_3_month" offerName="GLP-1 Three-Month Intro" offerValue="sema_99_tirz_129_any_clinically_prescribed_dose" previewOnly={preview || !leadCaptureReady} /></div>
+				<div data-glp-form-wrap class="mt-14 border-t border-[#d7e8e5] pt-8">
+					<p class="mb-4 text-xs font-semibold uppercase text-[#147e81]">Request your first visit</p>
+					<div class="grid gap-6 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,0.85fr)] lg:items-stretch">
+						<div class="mx-auto w-full max-w-2xl lg:max-w-none">
+							<LeadForm variant="glp" serviceSlug="glp-1-intro-offer" suburbSlug="denver" heading="Let's talk through your options" subheading="Share your details and our Greenwood Village team will help arrange your in-person provider consultation." submitText="Request my complimentary consult" messageLabel="What would you like to discuss?" goalOptions={["Semaglutide", "Tirzepatide", "Ask about a lower-dose approach"]} hiddenMessage="GLP-1 three-month introductory offer inquiry. Provider assessment required. Do not promise treatment or enrollment." workflowKey="glp1_intro_3_month" offerName="GLP-1 Three-Month Intro" offerValue="sema_99_tirz_129_any_clinically_prescribed_dose" previewOnly={preview || !leadCaptureReady} />
+						</div>
+						<div class="relative hidden overflow-hidden rounded-[20px] lg:block">
+							<img src="/assets/eden-provider-review-air.webp" alt="Eden provider speaking with a guest in the clinic" class="absolute inset-0 h-full w-full scale-[1.12] object-cover object-[center_58%]" width="1012" height="1800" loading="lazy" decoding="async" />
+						</div>
+					</div>
+				</div>
 			</div>
 		</section>
 
