@@ -1,8 +1,8 @@
 ---
 import LeadForm from "./LeadForm.astro";
-import GuestReviewStrip from "./GuestReviewStrip.astro";
+import GlpReviewStrip from "./GlpReviewStrip.astro";
 import GlpCareBenefits from "./GlpCareBenefits.astro";
-import GlpMemberStories from "./GlpMemberStories.astro";
+import GlpProviderTeam from "./GlpProviderTeam.astro";
 import PaidServiceFooter from "../layout/PaidServiceFooter.astro";
 import PremiumHeader from "../layout/PremiumHeader.astro";
 import StickyMobileLeadActions from "./StickyMobileLeadActions.astro";
@@ -24,7 +24,7 @@ const description = `Explore compounded ${medication.toLowerCase()} with Eden He
 const leadCaptureReady = import.meta.env.PUBLIC_GLP_LEADS_ENABLED === "true";
 const questions = [
 	{ question: `Is ${medication.toLowerCase()} guaranteed?`, answer: "No. A licensed provider reviews your health history and determines whether a prescription is appropriate. Compounded medications are not FDA-approved and are not the same as FDA-approved brand-name products." },
-	{ question: "What does the three-month price cover?", answer: `If prescribed, the introductory compounded medication price is ${intro} per month in months one through three at any provider-prescribed dose available through Eden. A complimentary first consultation is available. Provider-required lab work may cost extra.` },
+	{ question: "What does the three-month price cover?", answer: `If prescribed, the introductory compounded medication price is ${intro} per month in months one through three at any provider-prescribed dose available through Eden. The first consultation is complimentary. If labs are needed, panel prices vary and Eden will confirm the exact cost before ordering.` },
 	{ question: "What happens after month three?", answer: updatedDesign ? `The intro ends after month three. Without membership, medication is ${regular}/month. With membership, it is ${memberNet}/month including membership when the $149 Eden credit goes toward eligible medication. Lab work may cost extra.` : `The introductory price ends after month three. From month four, compounded ${medication.toLowerCase()} is ${regular}/month without membership. With Perform membership, $149/month in Eden credits can be applied automatically toward eligible member-priced medication, resulting in ${memberNet}/month net when all credits are used that way. Membership may be billed separately. Credits cannot be used for medication and other services at the same time.` },
 	{ question: "Can I start with a virtual visit?", answer: "You can ask our team for a virtual or in-person first provider visit. Your provider will decide what evaluation and follow-up are appropriate before any treatment." },
 ];
@@ -40,7 +40,8 @@ const questions = [
 			<div class="relative mx-auto flex min-h-[690px] max-w-6xl flex-col justify-center px-6 pb-16 pt-16 sm:min-h-[670px] sm:py-20">
 				<p class="text-xs font-semibold uppercase text-[#256648]">Provider-led GLP-1 care · Greenwood Village</p>
 				<h1 class="mt-5 max-w-[600px] text-4xl font-semibold leading-tight text-[#1A1A1A] sm:text-5xl lg:text-6xl">{updatedDesign ? <>{medication} care, built around you.</> : <>Explore {medication}. Start with a real conversation.</>}</h1>
-				<ul class="mt-5 hidden max-w-lg space-y-2 text-sm leading-6 text-[#284b49] sm:block sm:text-base"><li>Complimentary first provider consultation</li><li>Virtual or in-person first visit options</li><li>Local care in Greenwood Village</li></ul>
+				<ul class="mt-5 max-w-lg space-y-2 text-sm leading-6 text-[#284b49] sm:text-base"><li>Complimentary first provider consultation</li><li>Virtual or in-person first visit options</li><li>Local care in Greenwood Village</li></ul>
+				<p class="mt-3 max-w-lg text-sm leading-6 text-[#284b49]">First consultation: $0. If labs are needed, we will confirm the panel price before ordering.</p>
 				<div class="h-40 sm:hidden" aria-hidden="true"></div>
 				<div class="glp-med-offer mt-7 w-full max-w-[490px] overflow-hidden rounded-md border border-[#b5d4d2] bg-white/95 shadow-lg shadow-[#174f4e]/10">
 					<p class="border-b border-[#dce8e7] bg-[#e9f4f2] px-5 py-3 text-center text-sm font-semibold text-[#12545a]">Months 1–3 · if prescribed</p>
@@ -50,10 +51,10 @@ const questions = [
 				<p class="mt-3 max-w-[490px] text-xs leading-5 text-[#284b49]">Intro ends after month 3. <a href="#offer" class="font-semibold underline underline-offset-2">See ongoing costs and membership terms.</a> If prescribed, medication is fulfilled by Eden Pharmacy. Provider approval required; lab work may cost extra. Compounded drugs are not FDA-approved. Product image is representative; labeling may vary.</p>
 			</div>
 		</section>
-		<div class="border-y border-[#d7e8e5] bg-[#ebf5f3] px-6 py-4 text-center text-sm font-medium text-[#28554e]">Complimentary first consultation · Virtual or in person · Greenwood Village</div>
-		<GuestReviewStrip />
+		<div data-glp-proof-bar class="border-y border-[#d7e8e5] bg-[#ebf5f3] px-6 py-4 text-center text-sm font-medium text-[#28554e]">Complimentary first consultation · Virtual or in person · Greenwood Village</div>
+		<GlpReviewStrip />
 		<GlpCareBenefits />
-		<GlpMemberStories />
+		<GlpProviderTeam />
 		<section id="start" class="scroll-mt-24 bg-[#f8fbfa] px-6 py-14 sm:py-20">
 			<div class="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
 				<div><p class="text-xs font-semibold uppercase text-[#147e81]">Your first step</p><h2 class="mt-3 text-3xl font-semibold leading-tight text-eden-navy sm:text-4xl">See whether {medication.toLowerCase()} fits your plan.</h2><p class="mt-4 text-base leading-7 text-slate-700">Talk with an Eden provider about your goals, medical history and treatment options. There is no payment to ask, and no prescription is promised.</p><p class="mt-6 text-sm leading-6 text-slate-700">Prefer to talk now? <a href="tel:+17206057678" class="font-semibold underline underline-offset-2">Call Eden at 720-605-7678</a>.</p></div>
@@ -105,6 +106,12 @@ const questions = [
 	main[data-glp-preview="true"] #care p { color: #102422; }
 	main[data-glp-preview="true"] #care a { background: #102422; color: white; border-radius: 999px; }
 	@media (max-width: 640px) {
+		main[data-glp-preview="true"] .glp-med-hero > div:nth-child(2) { background: rgba(255,255,255,.84); }
+		main[data-glp-preview="true"] { display: flex; flex-direction: column; }
+		main[data-glp-preview="true"] .glp-med-hero { order: -2; }
+		main[data-glp-preview="true"] #start { order: -1; padding-top: 32px; padding-bottom: 48px; }
+		main[data-glp-preview="true"] [data-glp-proof-bar],
+		main[data-glp-preview="true"] #start > div > div:first-child { display: none; }
 		main[data-glp-preview="true"] .glp-med-hero h1 { font-size: 40px; line-height: 1.08; }
 		main[data-glp-preview="true"] .glp-med-pricing { padding-top: 58px; padding-bottom: 58px; }
 	}
