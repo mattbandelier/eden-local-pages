@@ -1,39 +1,43 @@
 ---
 const providers = [
 	{
-		name: "Cat Hosteny, MSN, APRN, FNP-BC",
+		name: "Cat Hosteny",
+		credentials: "MSN, APRN, FNP-BC",
 		role: "Family Nurse Practitioner",
-		focus: "A collaborative approach to longevity and wellness care.",
+		focus: "Primary care, women's health, and longevity-focused care.",
 		image: "/assets/glp-provider-cat-light.webp",
 	},
 	{
-		name: "Mya Sedillo, FNP-C",
+		name: "Mya Sedillo",
+		credentials: "FNP-C",
 		role: "Family Nurse Practitioner",
-		focus: "Experience in medical weight loss and whole-person wellness.",
+		focus: "Medical weight loss, hormone optimization, and wellness.",
 		image: "/assets/glp-provider-mya-light.webp",
 	},
 	{
-		name: "Katie Morrison, MMS, PA-C",
+		name: "Katie Morrison",
+		credentials: "MMS, PA-C",
 		role: "Physician Associate",
-		focus: "A background in medical weight management and metabolic health.",
+		focus: "Medical weight management and metabolic health.",
 		image: "/assets/glp-provider-katie-light.webp",
 	},
 ];
 ---
 
-<section class="bg-white px-6 py-14 sm:py-20" aria-labelledby="glp-provider-heading">
+<section class="bg-[#f6f8f7] px-6 py-14 sm:py-20" aria-labelledby="glp-provider-heading">
 	<div class="mx-auto max-w-6xl">
-		<p class="text-xs font-semibold uppercase text-[#147e81]">The people behind your care</p>
-		<h2 id="glp-provider-heading" class="mt-3 text-3xl font-semibold text-[#102422] sm:text-4xl">Meet Eden's care team.</h2>
+		<p class="text-xs font-semibold uppercase text-[#246747]">In-person care at Eden</p>
+		<h2 id="glp-provider-heading" class="mt-3 text-3xl font-semibold text-[#102422] sm:text-4xl">Meet the people behind your care.</h2>
 		<p class="mt-3 max-w-2xl text-base leading-7 text-[#284b49]">Your first visit is a conversation with a licensed provider about your history, goals, and options.</p>
-		<div class="mt-8 grid gap-5 sm:grid-cols-3">
+		<div class="mt-9 grid gap-6 sm:grid-cols-3">
 			{providers.map((provider) => (
-				<article class="overflow-hidden rounded-md bg-white">
-					<img src={provider.image} alt={provider.name} class="aspect-[4/5] w-full object-cover object-top" width="450" height="562" loading="lazy" decoding="async" />
-					<div class="p-5">
-						<h3 class="text-lg font-semibold leading-snug text-[#102422]">{provider.name}</h3>
-						<p class="mt-1 text-sm font-medium text-[#246747]">{provider.role}</p>
-						<p class="mt-3 text-sm leading-6 text-[#476460]">{provider.focus}</p>
+				<article class="min-w-0 overflow-hidden rounded-[4px] bg-white">
+					<img src={provider.image} alt={provider.name} class="aspect-[5/4] w-full bg-[#f3f2f0] object-cover object-[center_23%]" width="720" height="960" loading="lazy" decoding="async" />
+					<div class="border-t border-[#e3e9e5] px-5 pb-6 pt-5">
+						<h3 class="text-xl font-semibold leading-tight text-[#102422]">{provider.name}</h3>
+						<p class="mt-1 text-xs font-semibold text-[#246747]">{provider.credentials}</p>
+						<p class="mt-4 text-sm font-semibold text-[#102422]">{provider.role}</p>
+						<p class="mt-2 text-sm leading-6 text-[#476460]">{provider.focus}</p>
 					</div>
 				</article>
 			))}
