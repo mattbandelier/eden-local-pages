@@ -44,6 +44,7 @@ const {
 	introNote = "If prescribed, the first 3 months are $99/mo for compounded semaglutide or $129/mo for compounded tirzepatide.",
 } = Astro.props;
 const isGlp = variant === "glp";
+const isPeptideFirstMonth = serviceSlug === "peptide-starter-first-month-299";
 ---
 
 <section id="lead-form" class:list={["scroll-mt-24 overflow-hidden border bg-white", isGlp ? "rounded-md border-[#bfd8d2] shadow-[0_20px_50px_rgba(17,62,58,0.10)]" : "rounded-lg border-slate-200 p-6 shadow-sm sm:p-8"]}>
@@ -213,6 +214,7 @@ const isGlp = variant === "glp";
 
 		{underButtonText && <p class="text-center text-sm font-semibold text-slate-600">{underButtonText}</p>}
 		{isGlp && <p class="text-center text-xs leading-5 text-[#56716a]">By submitting, you authorize Eden Health Club to call or email about your request. No payment is required to ask; treatment depends on clinical review. <a href="/paid-privacy/" class="underline underline-offset-2">Privacy</a> · <a href="/paid-terms/" class="underline underline-offset-2">Terms</a></p>}
+		{isPeptideFirstMonth && <p class="text-center text-xs leading-5 text-slate-600">By submitting, you authorize Eden Health Club to call or email about your request. Text messages are optional and require the checkbox above. Treatment is subject to provider review. <a href="/paid-privacy/" class="underline underline-offset-2">Privacy</a> · <a href="/paid-terms/" class="underline underline-offset-2">Terms</a></p>}
 
 		<div
 			data-lead-form-success

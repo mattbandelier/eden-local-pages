@@ -15,6 +15,10 @@ const PERFORM_WORKFLOW_KEY = "perform_149_stronger40";
 const PERFORM_WORKFLOW_ID = "a5bfae43-4e92-4aca-9775-9b4028a7c850";
 const PEPTIDE_WORKFLOW_KEY = "peptide_299_therapy";
 const PEPTIDE_LEAD_TAG = "peptide_299_lead";
+const PEPTIDE_FIRST_MONTH_WORKFLOW_KEY = "peptide_starter_first_month";
+const PEPTIDE_FIRST_MONTH_SERVICE_SLUG = "peptide-starter-first-month-299";
+const PEPTIDE_FIRST_MONTH_LEAD_TAG = "peptide_starter_first_month_lead";
+const PEPTIDE_FIRST_MONTH_SMS_CONSENT_TAG = "peptide_starter_first_month_sms_opt_in";
 // Keep the two $299 offers isolated even when a direct GHL enrollment is used.
 const PEPTIDE_WORKFLOW_ID = "a9f9adfe-efd1-4cb0-bbcc-6eebc1b0181b";
 const HAIR_RESTORATION_WORKFLOW_ID = "69ce52fb-8bd9-429e-994c-a2d033e43437";
@@ -309,6 +313,10 @@ function tagsForLeadPayload(payload: LeadPayload): string[] {
 	if (shouldApplyPeptideWorkflow(payload)) {
 		tags.add(PEPTIDE_LEAD_TAG);
 	}
+	if (isPeptideFirstMonthLead(payload)) {
+		tags.add(PEPTIDE_FIRST_MONTH_LEAD_TAG);
+		if (payload.smsOptIn) tags.add(PEPTIDE_FIRST_MONTH_SMS_CONSENT_TAG);
+	}
 	if (GLP_SERVICE_SLUGS.has(normalizedServiceSlug(payload)) && payload.smsOptIn) {
 		tags.add(GLP_SMS_CONSENT_TAG);
 	}
@@ -326,10 +334,15 @@ function normalizedServiceSlug(payload: LeadPayload): string {
 	return payload.service?.trim().toLowerCase() ?? "";
 }
 
+function isPeptideFirstMonthLead(payload: Pick<LeadPayload, "workflowKey" | "service">): boolean {
+	return payload.workflowKey === PEPTIDE_FIRST_MONTH_WORKFLOW_KEY && normalizedServiceSlug(payload) === PEPTIDE_FIRST_MONTH_SERVICE_SLUG;
+}
+
 export function workflowIdForLeadPayload(
 	payload: Pick<LeadPayload, "workflowKey" | "message" | "service">,
 ): string | null {
 	const serviceSlug = normalizedServiceSlug(payload);
+	if (isPeptideFirstMonthLead(payload)) return import.meta.env.GHL_WORKFLOW_ID_PEPTIDE_FIRST_MONTH || null;
 	if (serviceSlug === "glp-1-intro-offer" && payload.workflowKey === "glp1_intro_3_month") return GLP_FOLLOW_UP_WORKFLOW_ID;
 	if (serviceSlug === "glp-1-microdosing-inquiry" && payload.workflowKey === "glp1_lower_dose_inquiry") return GLP_FOLLOW_UP_WORKFLOW_ID;
 	if (serviceSlug === "glp-1-semaglutide-offer" && payload.workflowKey === "glp1_semaglutide_3_month") return GLP_FOLLOW_UP_WORKFLOW_ID;
@@ -526,6 +539,10 @@ async function upsertGhlContact(payload: LeadPayload): Promise<boolean> {
 		const consentTagRemoved = await removeGhlContactTags(token, contactId, [GLP_SMS_CONSENT_TAG]);
 		if (!consentTagRemoved) return false;
 	}
+	if (isPeptideFirstMonthLead(payload) && !payload.smsOptIn) {
+		const consentTagRemoved = await removeGhlContactTags(token, contactId, [PEPTIDE_FIRST_MONTH_SMS_CONSENT_TAG]);
+		if (!consentTagRemoved) return false;
+	}
 
 	if (tags.length) {
 		const tagsAdded = await addGhlContactTags(token, contactId, tags);
@@ -608,6 +625,14 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
 		return jsonResponse({ success: false, error: "Invalid inquiry route." }, 400);
 	}
 	const workflowId = workflowIdForLeadPayload(payload);
+	if (payload.workflowKey === PEPTIDE_FIRST_MONTH_WORKFLOW_KEY || normalizedServiceSlug(payload) === PEPTIDE_FIRST_MONTH_SERVICE_SLUG) {
+		if (!isPeptideFirstMonthLead(payload)) {
+			return jsonResponse({ success: false, error: "Invalid inquiry route." }, 400);
+		}
+		if (!workflowId) {
+			return jsonResponse({ success: false, error: "This consultation form is not available yet." }, 503);
+		}
+	}
 	if (GLP_SERVICE_SLUGS.has(normalizedServiceSlug(payload))) {
 		const glpLeadsEnabled =
 			import.meta.env.GLP_LEADS_ENABLED === "true" || process.env.GLP_LEADS_ENABLED === "true";

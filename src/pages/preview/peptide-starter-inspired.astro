@@ -1,0 +1,494 @@
+---
+import LeadForm from "../../components/content/LeadForm.astro";
+import GlpReviewStrip from "../../components/content/GlpReviewStrip.astro";
+import GlpProviderTeam from "../../components/content/GlpProviderTeam.astro";
+import StickyMobileLeadActions from "../../components/content/StickyMobileLeadActions.astro";
+import PaidServiceFooter from "../../components/layout/PaidServiceFooter.astro";
+import PremiumHeader from "../../components/layout/PremiumHeader.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { canonicalUrl, homeUrl } from "../../lib/urls";
+import type { JsonLd } from "../../lib/schema-org";
+
+const PROVIDER_VERIFIED = false;
+// {{CLINICAL_REVIEW}} Verify the first-month offer, eligible treatments, and all financial terms before publication.
+// TODO: PROVIDER_VERIFIED - confirm named provider, credentials, photo, and bio link before publishing a provider-name trust block.
+// TODO: CONFIRM membership / contract / insurance terms before adding "no membership required" or similar copy.
+// TODO: CONFIRM peptide sourcing, testing, pharmacy, 503A/503B, or pharmaceutical-grade claims before adding any supply-chain language.
+
+const live = Astro.props.live === true;
+const canonical = canonicalUrl("/lp/peptide-starter-denver");
+const title = live ? "$299 Peptide Starter | Eden Health Club" : "Peptide Starter Design Preview | Eden Health Club";
+const description =
+	"Explore Eden's $299 Peptide Starter near Denver: an in-person or virtual provider consultation, baseline lab work, a personalized plan, and a first month of treatment if prescribed.";
+
+const offerIncludes = [
+	{
+		title: "Private peptide consultation",
+		body: "Meet with Eden's clinical team to review goals, health history, current routines, and why you are considering peptide therapy.",
+	},
+	{
+		title: "Peptide baseline panel",
+		body: "Your starter includes CBC, a comprehensive metabolic panel (CMP), and IGF-1 measured as a lab marker.",
+	},
+	{
+		title: "Personalized health roadmap",
+		body: "Leave with a provider-guided roadmap shaped by your goals, health history, and baseline lab results.",
+	},
+	{
+		title: "Clear next steps",
+		body: "Understand what the clinical team recommends next, what is optional, and what any additional care would cost before moving forward.",
+	},
+	{
+		title: "Your first month, if prescribed",
+		body: "The starter includes the first month of a provider-prescribed peptide treatment when clinically appropriate. Your provider will review eligibility and the plan with you.",
+	},
+];
+
+// {{CLINICAL_REVIEW}} Confirm featured treatments, availability, and marketing clearance before publication.
+const featuredPeptides = [
+	{ name: "BPC-157", interest: "Discuss recovery and digestive-health questions", image: "/assets/fitness-recovery.webp", alt: "Woman stretching outdoors" },
+	{ name: "TB-500", interest: "Discuss movement and recovery goals", image: "/assets/peptide-goals-trail-preview.png", alt: "Man pausing on a Colorado trail" },
+	{ name: "Epitalon", interest: "Discuss sleep and healthy-aging questions", image: "/assets/peptide-goals-lounge-preview.png", alt: "Woman relaxing in a bright lounge" },
+	{ name: "Semax", interest: "Discuss focus and cognitive-health questions", image: "/assets/peptide-goals-window-preview.png", alt: "Woman taking a quiet moment by a sunlit window" },
+	{ name: "KPV", interest: "Discuss digestive and skin-health questions", image: "/assets/fitness-community.webp", alt: "Two women smiling together after a class" },
+	{ name: "MOTS-c", interest: "Discuss metabolic-health questions", image: "/assets/peptide-mots-c-lifestyle-preview.webp", alt: "Illustrative lifestyle image of a woman outdoors in Colorado" },
+];
+
+const visitGoals = ["Recovery and training", "Energy and daily routine", "Body composition", "Focus and clarity"];
+
+const process = [
+	{
+		step: "Tell us your goals",
+		body: "Request your first visit and share what you are hoping to explore.",
+	},
+	{
+		step: "Meet your provider",
+		body: "Choose an in-person or virtual consultation to discuss your history and review your baseline labs.",
+	},
+	{
+		step: "Choose your next step",
+		body: "Understand your plan and any separate costs before you decide what comes next.",
+	},
+];
+
+const faqs = [
+	{
+		question: "What is the $299 Peptide Starter?",
+		answer:
+			"It is a first visit for people exploring peptide care, offered in person or virtually. It includes a provider consultation, Eden's baseline panel, a personalized next-step plan, and the first month of treatment if a provider prescribes it.",
+	},
+	{
+		question: "Does the $299 include treatment?",
+		answer:
+			"Yes, the first month of provider-prescribed peptide treatment is included when clinically appropriate. A prescription is not guaranteed; the consultation, baseline lab work, and plan are included either way. Any care after the first month is priced separately.",
+	},
+	{
+		question: "Which lab markers are included?",
+		answer:
+			"The included peptide baseline panel covers CBC (complete blood count), CMP (comprehensive metabolic panel), and IGF-1 as a measured lab marker. These results provide clinical context for the consultation and provider review.",
+	},
+	{
+		question: "What happens after the starter visit?",
+		answer:
+			"Eden reviews the findings and explains the recommended next steps. If treatment is prescribed, your first month is included in the starter. Continuing care is optional and priced separately before you move forward.",
+	},
+	{
+		question: "Can I meet with a provider virtually?",
+		answer:
+			"Yes. You can request an in-person consultation at Eden in Greenwood Village or a virtual consultation. Our team will explain how the included baseline labs are completed for your visit.",
+	},
+	{
+		question: "Where is Eden located?",
+		answer:
+			"Eden Health Club is located at 5990 S University Blvd in Greenwood Village, close to Denver Tech Center, Cherry Hills Village, Centennial, Englewood, Littleton, Lone Tree, Highlands Ranch, and South Denver.",
+	},
+];
+
+const jsonLd: JsonLd[] = [
+	{
+		"@context": "https://schema.org",
+		"@type": "MedicalBusiness",
+		"@id": `${canonical}#medical-business`,
+		name: "Eden Health Club",
+		url: canonical,
+		telephone: "+17206057678",
+		address: {
+			"@type": "PostalAddress",
+			streetAddress: "5990 S University Blvd",
+			addressLocality: "Greenwood Village",
+			addressRegion: "CO",
+			postalCode: "80121",
+			addressCountry: "US",
+		},
+		geo: {
+			"@type": "GeoCoordinates",
+			latitude: 39.6088,
+			longitude: -104.9583,
+		},
+		priceRange: "$$",
+		medicalSpecialty: ["FunctionalMedicine", "SportsMedicine"],
+		areaServed: [
+			{ "@type": "City", name: "Denver", addressRegion: "CO" },
+			{ "@type": "City", name: "Greenwood Village", addressRegion: "CO" },
+			{ "@type": "City", name: "Centennial", addressRegion: "CO" },
+			{ "@type": "City", name: "Littleton", addressRegion: "CO" },
+		],
+		sameAs: [
+			"https://edenhealthclubs.com/",
+			"https://www.facebook.com/edenhealthclubs",
+			"https://www.instagram.com/edenhealthclubs",
+			"https://www.tiktok.com/@edenhealthclubs",
+		],
+	},
+	{
+		"@context": "https://schema.org",
+		"@type": "Service",
+		"@id": `${canonical}#service`,
+		name: "$299 Peptide Starter",
+		serviceType: "In-person or virtual peptide consultation, baseline lab work, and personalized wellness planning",
+		url: canonical,
+		description,
+		offers: {
+			"@type": "Offer",
+			price: "299",
+			priceCurrency: "USD",
+			availability: "https://schema.org/InStock",
+		},
+		provider: {
+			"@id": `${canonical}#medical-business`,
+			"@type": "MedicalBusiness",
+			name: "Eden Health Club",
+		},
+		areaServed:
+			"Denver, Greenwood Village, Denver Tech Center, Cherry Hills Village, Centennial, Englewood, Littleton, Lone Tree, Highlands Ranch, and South Denver",
+	},
+	{
+		"@context": "https://schema.org",
+		"@type": "FAQPage",
+		"@id": `${canonical}#faq`,
+		mainEntity: faqs.map((faq) => ({
+			"@type": "Question",
+			name: faq.question,
+			acceptedAnswer: {
+				"@type": "Answer",
+				text: faq.answer,
+			},
+		})),
+	},
+	{
+		"@context": "https://schema.org",
+		"@type": "BreadcrumbList",
+		itemListElement: [
+			{ "@type": "ListItem", position: 1, name: "Home", item: homeUrl() },
+			{ "@type": "ListItem", position: 2, name: "Peptide Optimization Denver", item: canonical },
+		],
+	},
+];
+---
+
+<BaseLayout
+	title={title}
+	description={description}
+	canonicalUrl={canonical}
+		jsonLd={[]}
+	noindex={true}
+	ogImage="/assets/peptide-starter-energy-hero-preview.png"
+	preloadImages={["/assets/peptide-starter-energy-hero-preview.png", "/assets/eden-health-club-logo-white-transparent-tight.png"]}
+>
+	{!live && <div class="bg-[#102422] px-4 py-2 text-center text-xs font-semibold text-white">DESIGN PREVIEW ONLY · FORM DISABLED · NOT PUBLISHED</div>}
+	<PremiumHeader brandHref="https://edenhealthclubs.com/" brandLogoSrc="/assets/eden-health-club-logo-white-transparent-tight.png" servicesHref="#why-eden" servicesLabel="Why Eden" pricingHref="#offer" pricingLabel="The Starter" contactHref="#lead-form" ctaLabel="Get started" light />
+	<main data-peptide-page class="bg-white pb-20 md:pb-0">
+		<section class="relative isolate mx-3 mt-3 overflow-hidden rounded-[28px] bg-[#eef6ef] text-[#102422] sm:mx-5 sm:mt-5 lg:mx-8">
+			<div class="mx-auto grid max-w-6xl gap-8 px-5 py-9 sm:px-8 sm:py-14 lg:grid-cols-2 lg:items-center lg:gap-12 lg:py-16">
+				<div class="min-w-0">
+					<p class="text-xs font-semibold uppercase text-[#256648]">Peptide care · In person or virtual</p>
+					<h1 class="mt-4 text-4xl font-semibold leading-tight sm:text-5xl">A clear start to <span class="peptide-title-accent">peptide care.</span></h1>
+					<p class="mt-4 text-base leading-7 text-[#284b49]">Meet a provider, review baseline labs, and get a personal plan. If treatment is prescribed, your first month is included.</p>
+					<img src="/assets/peptide-starter-energy-hero-preview.png" alt="Illustrative lifestyle image of a woman in a bright wellness setting" class="mt-6 aspect-[2/1] w-full rounded-[22px] object-cover object-top sm:aspect-[4/3] lg:hidden" loading="eager" fetchpriority="high" decoding="async" width="1152" height="1536" />
+					<div class="mt-6 overflow-hidden rounded-[26px] border border-white/80 bg-white/95 shadow-[0_18px_48px_rgba(16,36,34,0.12)]">
+					<p class="bg-[#e7f2ea] px-5 py-3 text-center text-sm font-semibold text-[#174734]">One clear first step</p>
+					<div class="px-6 py-5">
+						<div class="flex items-center justify-between gap-4 border-b border-[#dce8e7] pb-4">
+							<p class="text-lg font-semibold text-[#102422]">Peptide Starter<span class="mt-1 block text-xs font-medium text-[#476460]">Consult + labs + plan + first month*</span></p>
+							<p class="text-4xl font-semibold text-[#113e3a]">$299</p>
+						</div>
+						<ul class="mt-4 grid gap-2 text-sm text-[#284b49]">
+							<li><span class="mr-2 font-semibold text-[#1fa465]" aria-hidden="true">✓</span>In-person or virtual provider consultation</li>
+							<li><span class="mr-2 font-semibold text-[#1fa465]" aria-hidden="true">✓</span>CBC, CMP, and IGF-1 baseline labs</li>
+							<li><span class="mr-2 font-semibold text-[#1fa465]" aria-hidden="true">✓</span>Personalized next-step plan</li>
+							<li><span class="mr-2 font-semibold text-[#1fa465]" aria-hidden="true">✓</span>First month of treatment, if prescribed</li>
+						</ul>
+						<a href="#lead-form" class="mt-5 flex min-h-12 items-center justify-center rounded-full bg-[#102422] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#255650]">Start with Eden <span aria-hidden="true" class="ml-2">→</span></a>
+					</div>
+					</div>
+					<p class="mt-3 text-xs leading-5 text-[#284b49]">*A prescription is not guaranteed. Additional care after the first month is priced separately.</p>
+				</div>
+				<div class="hidden lg:block">
+					<img src="/assets/peptide-starter-energy-hero-preview.png" alt="Illustrative lifestyle image of a woman in a bright wellness setting" class="aspect-[4/5] w-full rounded-[26px] object-cover object-center" loading="eager" fetchpriority="high" decoding="async" width="1152" height="1536" />
+				</div>
+			</div>
+		</section>
+
+		<section class="bg-[#f8faf7] px-3 py-5 sm:px-6 sm:py-12">
+			<div class="relative mx-auto max-w-6xl overflow-hidden rounded-[28px] bg-[#eaf2ed] lg:min-h-[640px]">
+				<img src="/assets/eden-reception-polished-peptide-preview.webp" alt="Eden Health Club reception in Greenwood Village" class="absolute inset-y-0 right-0 hidden h-full w-[48%] object-cover object-center lg:block" width="1477" height="1103" loading="lazy" decoding="async" />
+				<div class="relative z-10 w-full p-4 sm:p-7 lg:w-[56%] lg:p-9">
+					<p class="mb-4 text-xs font-semibold uppercase text-[#147e81]">Request your first visit</p>
+					<LeadForm
+					serviceSlug="peptide-starter-first-month-299"
+					suburbSlug="greenwood-village"
+					heading="Let's talk through your goals"
+					subheading="Share your details and our team will help arrange your Peptide Starter, in person or virtually."
+					submitText="Request my starter"
+					messageLabel="What would you like to explore?"
+					goalOptions={["Recovery and training", "Body composition", "Sleep and wellness", "Help me decide"]}
+					previewOnly={!live}
+					hiddenMessage="WORKFLOW_KEY: peptide_starter_first_month. PAGE_VARIANT: peptide_starter_inspired. $299 Peptide Starter requested: in-person or virtual consultation, CBC/CMP/IGF-1 baseline labs, personalized next-step plan, and first month of provider-prescribed treatment if clinically appropriate. No prescription is guaranteed; continuing care is separate."
+					workflowKey="peptide_starter_first_month"
+					offerName="$299 Peptide Starter"
+					offerValue="consult_labs_plan_first_month_if_prescribed"
+					successMessage="Thanks. Eden received your request and will reach out to help arrange your Peptide Starter."
+					/>
+				</div>
+			</div>
+		</section>
+
+		<section id="peptide-options" class="scroll-mt-20 border-y border-[#d7e8e5] bg-[#f0f6ed] px-6 py-9 sm:py-12" aria-labelledby="peptide-options-heading">
+			<div class="mx-auto max-w-6xl" data-peptide-gallery>
+				<div class="flex items-end justify-between gap-4">
+					<div>
+						<p class="text-xs font-semibold uppercase text-[#8e5642]">Peptides to explore</p>
+						<h2 id="peptide-options-heading" class="mt-3 text-3xl font-semibold leading-tight text-[#102422] sm:text-4xl">Start with what matters to you.</h2>
+						<p class="mt-3 max-w-3xl text-sm leading-6 text-[#365956]">A few of the peptides you can ask us about. Your provider can walk you through Eden's broader options and what, if anything, fits your plan.</p>
+					</div>
+					<div class="hidden shrink-0 gap-2 sm:flex">
+						<button type="button" data-gallery-previous aria-label="Previous peptide" title="Previous peptide" class="grid size-11 place-items-center rounded-full border border-[#aac9c2] bg-white text-xl text-[#143c33] transition hover:bg-[#e7f2ea] disabled:cursor-not-allowed disabled:opacity-40">&larr;</button>
+						<button type="button" data-gallery-next aria-label="Next peptide" title="Next peptide" class="grid size-11 place-items-center rounded-full border border-[#aac9c2] bg-white text-xl text-[#143c33] transition hover:bg-[#e7f2ea] disabled:cursor-not-allowed disabled:opacity-40">&rarr;</button>
+					</div>
+				</div>
+				<ul data-gallery-track tabindex="0" aria-label="Peptides to discuss with an Eden provider" class="mt-6 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+					{featuredPeptides.map((peptide) => (
+						<li class="w-[min(76vw,19rem)] shrink-0 snap-start sm:w-[19rem]">
+							<div class="relative aspect-[4/5] overflow-hidden rounded-[22px] bg-[#dcebe5]">
+								<img src={peptide.image} alt={peptide.alt} class="h-full w-full object-cover" width="960" height="1200" loading="lazy" decoding="async" />
+								<div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#102422]/90 via-[#102422]/55 to-transparent px-5 pb-5 pt-24 text-white">
+									<h3 class="text-2xl font-semibold">{peptide.name}</h3>
+									<p class="mt-1 text-sm font-medium leading-5 text-[#edf7ed]">{peptide.interest}</p>
+								</div>
+							</div>
+						</li>
+					))}
+				</ul>
+				<div class="mt-1 flex justify-end gap-2 sm:hidden">
+					<button type="button" data-gallery-previous aria-label="Previous peptide" title="Previous peptide" class="grid size-11 place-items-center rounded-full border border-[#aac9c2] bg-white text-xl text-[#143c33] disabled:opacity-40">&larr;</button>
+					<button type="button" data-gallery-next aria-label="Next peptide" title="Next peptide" class="grid size-11 place-items-center rounded-full border border-[#aac9c2] bg-white text-xl text-[#143c33] disabled:opacity-40">&rarr;</button>
+				</div>
+				<p class="mt-4 max-w-3xl text-sm leading-6 text-[#476460]">Availability and suitability require provider review. The starter does not guarantee a prescription or a particular treatment.</p>
+			</div>
+		</section>
+
+		<div class="border-y border-[#d7e8e5] bg-[#ebf5f3] px-6 py-4 text-center text-sm font-medium text-[#28554e]">In person or virtual <span class="mx-2 text-[#79aaa5]">·</span> Baseline labs included <span class="mx-2 text-[#79aaa5]">·</span> Eden provider care</div>
+		<GlpReviewStrip variant="peptide" />
+		<section id="why-eden" class="scroll-mt-24 bg-[#f9faf6] px-6 py-10 sm:py-14" aria-labelledby="why-eden-heading">
+			<div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[1fr_0.92fr] lg:items-center lg:gap-14">
+				<div>
+				<p class="text-xs font-semibold uppercase text-[#286c67]">Why Eden</p>
+				<h2 id="why-eden-heading" class="mt-3 max-w-2xl text-3xl font-semibold leading-tight text-[#102422] sm:text-4xl">A real visit. A clear first step.</h2>
+				<p class="mt-4 max-w-2xl text-base leading-7 text-[#365956]">Meet an Eden provider in person or virtually, review your baseline labs, and understand your plan before moving forward.</p>
+				<div class="mt-7 divide-y divide-[#d7e8e5] border-y border-[#d7e8e5]">
+					<div class="py-4"><h3 class="text-base font-semibold text-[#143c33]">A visit that fits your day</h3><p class="mt-1 text-sm leading-6 text-[#476460]">Meet at Eden in Greenwood Village or connect virtually.</p></div>
+					<div class="py-4"><h3 class="text-base font-semibold text-[#143c33]">Labs with context</h3><p class="mt-1 text-sm leading-6 text-[#476460]">Review CBC, CMP, and IGF-1 with your provider.</p></div>
+					<div class="py-4"><h3 class="text-base font-semibold text-[#143c33]">A first month, when prescribed</h3><p class="mt-1 text-sm leading-6 text-[#476460]">If treatment is right for you, the first month is included in your starter.</p></div>
+				</div>
+				</div>
+				<img src="/assets/peptide-why-eden-clinical-preview.webp" alt="Illustrative scene of a clinician discussing a care plan with a guest" class="aspect-[4/3] w-full rounded-[24px] object-cover object-center" width="1456" height="1090" loading="lazy" decoding="async" />
+			</div>
+		</section>
+		<div id="care"><GlpProviderTeam eyebrow="In-person or virtual care at Eden" /></div>
+
+		<section id="goals" class="border-y border-[#d7e8e5] bg-[#e8f2ed] px-6 py-10 sm:py-14" aria-labelledby="goals-heading">
+			<div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.88fr_1.12fr] lg:items-center lg:gap-14">
+				<img src="/assets/glp-lead-lifestyle-draft.webp" alt="Illustrative image of a woman walking outdoors in Colorado" class="aspect-[4/3] w-full rounded-[24px] object-cover object-[70%_center] lg:aspect-[5/6]" width="1664" height="941" loading="lazy" decoding="async" />
+				<div>
+				<p class="text-xs font-semibold uppercase text-[#8e5642]">Start with your goals</p>
+				<h2 id="goals-heading" class="mt-3 max-w-3xl text-3xl font-semibold leading-tight text-[#102422] sm:text-4xl">Tell us what you want to work on.</h2>
+				<p class="mt-4 max-w-3xl text-base leading-7 text-[#365956]">Bring your questions about recovery, energy, body composition, or focus. We start with your history, labs, and a provider conversation. Your plan may or may not include peptide treatment.</p>
+				<ul class="mt-7 grid gap-x-8 border-t border-[#d7e8e5] sm:grid-cols-2">
+					{visitGoals.map((goal) => (
+						<li class="border-b border-[#d7e8e5] py-4 text-base font-semibold text-[#143c33]">{goal}</li>
+					))}
+				</ul>
+				</div>
+			</div>
+		</section>
+
+		<section id="offer" class="bg-[#edf4e9] px-6 py-10 sm:py-14">
+			<div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.82fr_1.18fr] lg:items-start">
+				<div>
+					<p class="text-xs font-semibold uppercase text-[#8e5642]">The Peptide Starter</p>
+					<h2 class="mt-3 text-3xl font-semibold leading-tight text-[#102422] sm:text-4xl">
+						Know what your first visit includes.
+					</h2>
+					<p class="mt-4 text-base leading-7 text-[#365956]">One defined first step to review your goals, labs, and treatment options with an Eden provider.</p>
+					<p class="mt-6 border-t border-[#d4dfdd] pt-5 text-5xl font-semibold leading-none text-[#123c35]">$299 <span class="block pt-2 text-sm font-medium leading-6 text-[#365956]">Consult + labs + plan + first month if prescribed</span></p>
+					<p class="mt-4 text-sm leading-6 text-[#476460]">A prescription is not guaranteed. Continuing care after the first month is optional and priced separately.</p>
+					<a href="#lead-form" class="mt-6 inline-flex min-h-12 items-center justify-center rounded-full bg-[#102422] px-6 py-3 text-sm font-semibold text-white">Get started <span aria-hidden="true" class="ml-2">→</span></a>
+					<img src="/assets/peptide-starter-vial-illustrative.png" alt="Illustrative unlabeled treatment vial in a clinical setting" class="mt-8 aspect-[16/10] w-full rounded-[22px] object-cover object-center" width="1456" height="1090" loading="lazy" decoding="async" />
+				</div>
+				<div class="divide-y divide-[#d4dfdd] border-y border-[#d4dfdd]">
+					{offerIncludes.map((item, index) => (
+						<div class="grid gap-2 py-5 sm:grid-cols-[2rem_1fr] sm:gap-5">
+							<span class="text-sm font-semibold text-[#8e5642]">{String(index + 1).padStart(2, "0")}</span>
+							<div><h3 class="text-lg font-semibold text-[#102422]">{item.title}</h3><p class="mt-2 text-sm leading-6 text-[#365956]">{item.body}</p></div>
+						</div>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<section id="how-it-works" class="relative mx-3 my-4 overflow-hidden rounded-[28px] bg-[#174a3b] px-6 py-10 text-white sm:mx-5 sm:py-14 lg:mx-8">
+			<div class="relative mx-auto max-w-6xl">
+				<div class="max-w-3xl">
+					<p class="text-xs font-semibold uppercase text-[#d8e9be]">Your path</p>
+					<h2 class="mt-3 text-3xl font-semibold leading-tight sm:text-4xl">It starts with a conversation.</h2>
+					<p class="mt-4 text-base leading-8 text-[#e1efe6]">
+						A real visit, useful context, and room to decide what feels right.
+					</p>
+				</div>
+				<div class="relative mt-8 grid gap-4 md:grid-cols-3">
+					{process.map((item, index) => (
+						<div class="rounded-[24px] bg-[#f8faf5] p-6 text-[#102422]">
+							<p class="text-sm font-semibold text-[#8e5642]">0{index + 1}</p>
+							<h3 class="mt-5 text-xl font-semibold">{item.step}</h3>
+							<p class="mt-2 text-sm leading-6 text-[#365956]">{item.body}</p>
+						</div>
+					))}
+				</div>
+				<a href="#lead-form" class="mt-7 inline-flex min-h-12 items-center justify-center rounded-full bg-[#e6efdc] px-7 py-3 text-sm font-semibold text-[#174a3b] transition hover:bg-white">Request my first visit <span aria-hidden="true" class="ml-2">→</span></a>
+			</div>
+		</section>
+
+		<section class="bg-white px-6 py-10 sm:py-14" aria-labelledby="peptide-starter-faq-heading">
+			<div class="mx-auto max-w-4xl">
+				<p class="text-sm font-semibold uppercase text-[#8e5642]">FAQ</p>
+				<h2 id="peptide-starter-faq-heading" class="mt-3 text-3xl font-semibold leading-tight text-[#102422] sm:text-4xl">
+					Questions before you start.
+				</h2>
+				<div class="mt-8 divide-y divide-eden-line overflow-hidden rounded-[24px] border border-eden-line bg-eden-paper">
+					{faqs.map((faq) => (
+						<details class="group p-5">
+							<summary class="cursor-pointer list-none text-lg font-semibold text-eden-navy">
+								{faq.question}
+							</summary>
+							<p class="mt-3 text-sm leading-7 text-slate-700">{faq.answer}</p>
+						</details>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<section class="bg-eden-forest px-6 py-12 text-white">
+			<div class="mx-auto flex max-w-6xl flex-col gap-5 md:flex-row md:items-center md:justify-between">
+				<div>
+					<p class="text-sm font-semibold uppercase text-eden-sage">$299 Peptide Starter</p>
+					<h2 class="mt-2 text-3xl font-semibold">Start with peptide fit. Move with a plan.</h2>
+				</div>
+				<a href="#lead-form" class="rounded-full bg-eden-sage px-6 py-3 text-center text-base font-semibold text-eden-forest">
+					Request my $299 Peptide Starter
+				</a>
+			</div>
+		</section>
+	</main>
+	<StickyMobileLeadActions
+		primaryLabel="Request My $299 Starter"
+		ariaLabel="Request a $299 peptide starter"
+		desktopEyebrow="$299 Peptide Starter"
+		desktopBody="In-person or virtual consultation, baseline lab work, and a personalized next-step plan."
+	/>
+	<div class="bg-eden-navy px-6 py-5 text-white">
+		<p class="mx-auto max-w-6xl text-xs leading-6 text-white/62">
+			Eligibility and recommendations depend on provider review. Individual results are not guaranteed. This page is for general educational purposes and is not medical advice.
+		</p>
+	</div>
+	<PaidServiceFooter />
+</BaseLayout>
+
+<style is:global>
+	@font-face {
+		font-family: "Eden Satoshi";
+		src: url("/fonts/satoshi-500.woff2") format("woff2");
+		font-style: normal;
+		font-weight: 500;
+		font-display: swap;
+	}
+	main[data-peptide-page] {
+		font-family: "Eden Satoshi", Arial, sans-serif;
+	}
+	main[data-peptide-page] h1,
+	main[data-peptide-page] h2,
+	main[data-peptide-page] h3 {
+		font-family: "Eden Satoshi", Arial, sans-serif;
+		letter-spacing: 0;
+	}
+	main[data-peptide-page] .peptide-title-accent {
+		background: linear-gradient(100deg, #237b5d 0%, #588b57 56%, #a65e42 100%);
+		background-clip: text;
+		-webkit-background-clip: text;
+		color: transparent;
+	}
+	main[data-peptide-page] section[aria-labelledby="glp-reviews-heading"] {
+		background: #f8faf5;
+	}
+	main[data-peptide-page] section[aria-labelledby="glp-reviews-heading"] article {
+		background: #ffffff;
+	}
+	main[data-peptide-page] #care > section {
+		background: #e9f1e9;
+	}
+	main[data-peptide-page] #lead-form {
+		border-color: #bfd8d2;
+		border-radius: 24px;
+		box-shadow: 0 20px 50px rgba(17, 62, 58, 0.1);
+	}
+	main[data-peptide-page] #lead-form h2 {
+		font-size: clamp(1.65rem, 2.2vw, 2.25rem);
+	}
+	main[data-peptide-page] #lead-form input,
+	main[data-peptide-page] #lead-form select {
+		min-height: 48px;
+		border-radius: 14px;
+		font-size: 16px;
+	}
+	main[data-peptide-page] #lead-form button[type="submit"] {
+		min-height: 52px;
+		border-radius: 999px;
+	}
+	main[data-peptide-page] #glp-reviews-heading + a,
+	main[data-peptide-page] a {
+		text-underline-offset: 3px;
+	}
+</style>
+
+<script>
+	const gallery = document.querySelector<HTMLElement>("[data-peptide-gallery]");
+	const track = gallery?.querySelector<HTMLElement>("[data-gallery-track]");
+	if (gallery && track) {
+		const previous = gallery.querySelectorAll<HTMLButtonElement>("[data-gallery-previous]");
+		const next = gallery.querySelectorAll<HTMLButtonElement>("[data-gallery-next]");
+		const updateControls = () => {
+			const atStart = track.scrollLeft <= 4;
+			const atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
+			previous.forEach((button) => (button.disabled = atStart));
+			next.forEach((button) => (button.disabled = atEnd));
+		};
+		const move = (direction: number) => {
+			const card = track.firstElementChild as HTMLElement | null;
+			track.scrollBy({ left: direction * ((card?.offsetWidth ?? track.clientWidth) + 16), behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" });
+		};
+		previous.forEach((button) => button.addEventListener("click", () => move(-1)));
+		next.forEach((button) => button.addEventListener("click", () => move(1)));
+		track.addEventListener("scroll", updateControls, { passive: true });
+		window.addEventListener("resize", updateControls);
+		updateControls();
+	}
+</script>
