@@ -234,7 +234,7 @@ h1 { max-width: 650px; font-family: var(--sans); font-size: 62px; line-height: 1
 .hero-points { gap: 8px 20px; font-size: 14px; }
 .hero-points li::before { color: #d7eda0; }
 .hero-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 16px; margin-top: 31px; }
-.hero-actions .button { min-height: 52px; }
+.hero-actions .button { min-height: 52px; flex-basis: 100%; max-width: 270px; }
 .store-link { min-height: 50px; display: inline-flex; align-items: center; }
 .store-link img { width: 150px; height: 50px; object-fit: contain; }
 .store-link:focus-visible { outline: 3px solid #e9c35e; outline-offset: 4px; }
