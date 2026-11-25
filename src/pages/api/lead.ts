@@ -24,7 +24,13 @@ const PEPTIDE_WORKFLOW_ID = "a9f9adfe-efd1-4cb0-bbcc-6eebc1b0181b";
 const HAIR_RESTORATION_WORKFLOW_ID = "69ce52fb-8bd9-429e-994c-a2d033e43437";
 const MED_SPA_WORKFLOW_ID = "b496b143-dacc-4b7f-8112-239dd040b360";
 const IW_WORKFLOW_ID = "672c856a-bafe-47a2-9c7f-d23b071127a8";
-const GLP_FOLLOW_UP_WORKFLOW_ID = "9b637d94-b172-4a35-bafb-8403a4761575";
+// New website inquiries route by the exact page/service pair. Existing enrollments stay in their current workflow.
+const GLP_PAGE_WORKFLOW_IDS = {
+ intro: "a6319875-f4f3-4bc9-b67d-fef23981b1d4",
+ lowerDose: "1526f6a7-c4cd-48e9-9de9-f9b59e3a9e63",
+ semaglutide: "570cbcdf-9adf-45a9-9b72-42705fc33ebc",
+ tirzepatide: "515e8efe-a4d4-4c99-9fcd-f4c7d3deb971",
+};
 const GLP_SMS_CONSENT_TAG = "glp1_sms_opt_in";
 const GLP_LEAD_OFFER_FIELD_ID = "praFKSA8J4PW5Zl6S5Ul";
 const GLP_MEDICATION_SOURCE_TAGS: Record<string, string> = {
@@ -343,10 +349,10 @@ export function workflowIdForLeadPayload(
 ): string | null {
 	const serviceSlug = normalizedServiceSlug(payload);
 	if (isPeptideFirstMonthLead(payload)) return import.meta.env.GHL_WORKFLOW_ID_PEPTIDE_FIRST_MONTH || null;
-	if (serviceSlug === "glp-1-intro-offer" && payload.workflowKey === "glp1_intro_3_month") return GLP_FOLLOW_UP_WORKFLOW_ID;
-	if (serviceSlug === "glp-1-microdosing-inquiry" && payload.workflowKey === "glp1_lower_dose_inquiry") return GLP_FOLLOW_UP_WORKFLOW_ID;
-	if (serviceSlug === "glp-1-semaglutide-offer" && payload.workflowKey === "glp1_semaglutide_3_month") return GLP_FOLLOW_UP_WORKFLOW_ID;
-	if (serviceSlug === "glp-1-tirzepatide-offer" && payload.workflowKey === "glp1_tirzepatide_3_month") return GLP_FOLLOW_UP_WORKFLOW_ID;
+	if (serviceSlug === "glp-1-intro-offer" && payload.workflowKey === "glp1_intro_3_month") return GLP_PAGE_WORKFLOW_IDS.intro;
+	if (serviceSlug === "glp-1-microdosing-inquiry" && payload.workflowKey === "glp1_lower_dose_inquiry") return GLP_PAGE_WORKFLOW_IDS.lowerDose;
+	if (serviceSlug === "glp-1-semaglutide-offer" && payload.workflowKey === "glp1_semaglutide_3_month") return GLP_PAGE_WORKFLOW_IDS.semaglutide;
+	if (serviceSlug === "glp-1-tirzepatide-offer" && payload.workflowKey === "glp1_tirzepatide_3_month") return GLP_PAGE_WORKFLOW_IDS.tirzepatide;
 	if (GLP_SERVICE_SLUGS.has(serviceSlug)) return null;
 	if (shouldApplyPeptideWorkflow(payload)) return PEPTIDE_WORKFLOW_ID;
 	if (shouldApplyBaselineLeadTag(payload)) return BASELINE_WORKFLOW_ID || null;

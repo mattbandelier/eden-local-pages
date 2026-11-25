@@ -27,9 +27,11 @@ globalThis.fetch = async (url, init = {}) => {
 
 try {
   const { POST } = await server.ssrLoadModule('/src/pages/api/lead.ts');
-  for (const [service, workflowKey, offerName, sourceTag] of [
-    ['glp-1-semaglutide-offer', 'glp1_semaglutide_3_month', 'Semaglutide Three-Month Intro', 'glp1_sema_3_month_inquiry'],
-    ['glp-1-tirzepatide-offer', 'glp1_tirzepatide_3_month', 'Tirzepatide Three-Month Intro', 'glp1_tirz_3_month_inquiry'],
+  for (const [service, workflowKey, offerName, sourceTag, workflowId] of [
+    ['glp-1-intro-offer', 'glp1_intro_3_month', 'GLP-1 Three-Month Intro', null, 'a6319875-f4f3-4bc9-b67d-fef23981b1d4'],
+    ['glp-1-microdosing-inquiry', 'glp1_lower_dose_inquiry', 'GLP-1 Lower-Dose Consultation', null, '1526f6a7-c4cd-48e9-9de9-f9b59e3a9e63'],
+    ['glp-1-semaglutide-offer', 'glp1_semaglutide_3_month', 'Semaglutide Three-Month Intro', 'glp1_sema_3_month_inquiry', '570cbcdf-9adf-45a9-9b72-42705fc33ebc'],
+    ['glp-1-tirzepatide-offer', 'glp1_tirzepatide_3_month', 'Tirzepatide Three-Month Intro', 'glp1_tirz_3_month_inquiry', '515e8efe-a4d4-4c99-9fcd-f4c7d3deb971'],
   ]) {
     calls = [];
     const response = await POST({
@@ -49,11 +51,11 @@ try {
       { id: 'praFKSA8J4PW5Zl6S5Ul', field_value: offerName },
     ]);
     const tags = calls.find(({ endpoint, method }) => endpoint.endsWith('/tags') && method === 'POST');
-    assert.ok(tags.body.tags.includes(sourceTag));
+    if (sourceTag) assert.ok(tags.body.tags.includes(sourceTag));
     assert.ok(tags.body.tags.includes('glp1_sms_opt_in'));
     assert.equal(calls.filter(({ endpoint }) => endpoint.endsWith('/notes')).length, 1);
     assert.equal(calls.filter(({ endpoint }) => endpoint.includes('/workflow/')).length, 1);
-    assert.ok(calls.some(({ endpoint }) => endpoint.endsWith('/workflow/9b637d94-b172-4a35-bafb-8403a4761575')));
+    assert.ok(calls.some(({ endpoint }) => endpoint.endsWith(`/workflow/${workflowId}`)));
   }
 } finally {
   globalThis.fetch = realFetch;
