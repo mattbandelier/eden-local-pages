@@ -361,8 +361,8 @@ h1, h2, h3 { font-family: var(--sans); letter-spacing: 0; }
 input, select { border-radius: 8px; }
 .stat-strip { background: #a9ce88; }
 .app-showcase { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); background: #fff; }
-.app-device { width: min(100%, 560px); justify-self: center; padding: 15px; border-radius: 24px; background: #eef5ec; }
-.app-device img { display: block; width: 100%; height: auto; aspect-ratio: 822 / 548; object-fit: contain; border-radius: 15px; }
+.app-device { width: min(100%, 560px); justify-self: center; overflow: hidden; border-radius: 24px; box-shadow: 0 18px 40px rgba(23,61,46,.12); }
+.app-device img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
 .workout-gallery { overflow: hidden; background: #dcedf5; }
 .gallery-heading { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 26px; }
 .gallery-heading h2 { max-width: 620px; margin-bottom: 0; font-size: 48px; line-height: 1.08; }
@@ -422,6 +422,14 @@ input, select { border-radius: 8px; }
 .signup-visual { display: flex; align-items: center; justify-content: center; gap: 16px; min-width: 0; }
 .signup-visual img { width: min(50%, 235px); height: auto; aspect-ratio: 1; border: 6px solid #fff; border-radius: 22px; box-shadow: 0 15px 38px rgba(23,61,46,.15); object-fit: cover; }
 .signup-visual img:nth-child(2) { transform: translateY(24px); }
+.signup-section { grid-template-columns: minmax(0, 1fr) minmax(400px, 540px); gap: 50px; }
+.coach-reel { width: 100%; aspect-ratio: 16 / 9; overflow: hidden; border: 7px solid #fff; border-radius: 28px; box-shadow: 0 18px 40px rgba(23,61,46,.13); background: #173d2e; }
+.coach-reel video, .coach-reel img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.coach-reel .motion-poster { display: none; }
+@media (prefers-reduced-motion: reduce) {
+  .coach-reel video { display: none; }
+  .coach-reel .motion-poster { display: block; }
+}
 .stat-strip strong { font-size: clamp(23px, 3vw, 35px); }
 .gallery-item { flex-basis: min(340px, 82vw); min-height: 0; background: #fff; color: #173d2e; }
 .gallery-item > img { width: 100%; height: auto; min-height: 0; aspect-ratio: 1; object-fit: contain; }
@@ -432,15 +440,21 @@ input, select { border-radius: 8px; }
 .gallery-caption p { color: #4b6758; font-size: 14px; }
 .day-featured { grid-column: auto; }
 @media (max-width: 600px) {
-  .hero-actions { grid-template-columns: 135px 190px; gap: 8px; }
+  .hero-image { object-position: 70% 42%; }
+  .hero-actions { grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); max-width: 335px; gap: 8px; }
   .hero-actions .button { width: 100%; justify-content: center; }
   .hero-actions .store-link { min-height: 45px; }
+  .hero-actions .store-link img { max-width: 100%; height: auto; }
   .hero-actions .play-store-link img, .signup-actions .play-store-link img { width: 190px; height: 57px; }
   .signup-actions { gap: 7px 10px; }
   .signup-actions .button { flex-basis: 100%; justify-content: center; }
   .signup-visual { gap: 9px; padding-bottom: 24px; }
   .signup-visual img { width: min(49%, 205px); border-width: 4px; border-radius: 15px; }
   .signup-visual img:nth-child(2) { transform: translateY(16px); }
+  .coach-reel { border-width: 4px; border-radius: 20px; }
   .gallery-item { flex-basis: 78vw; min-height: 0; }
   .gallery-item > img { min-height: 0; }
+}
+@media (max-width: 900px) {
+  .signup-section { grid-template-columns: 1fr; }
 }

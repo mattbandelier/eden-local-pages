@@ -29,7 +29,7 @@ const workoutScenes = [
 
   <main id="top">
     <section class="hero" aria-labelledby="hero-title">
-      <img class="hero-image" src="/assets/fitness-strength-class.avif" width="1502" height="1001" alt="A guided strength workout" loading="eager" fetchpriority="high" />
+      <img class="hero-image" src="/assets/eden-fitness-class-polished.jpg" width="1536" height="1024" alt="An Eden fitness class in the club" loading="eager" fetchpriority="high" />
       <div class="hero-shade"></div>
       <div class="hero-inner">
         <div class="hero-copy">
@@ -53,13 +53,18 @@ const workoutScenes = [
 
     <section class="signup-section" id="get-app" aria-labelledby="join-title">
       <div class="signup-intro">
-        <p class="kicker">A good place to start</p>
-        <h2 id="join-title">Make room for movement.</h2>
-        <p>Meet Eden's coaches in real workouts and choose what fits your energy today.</p>
-        <div class="signup-benefits"><span>Strength</span><span>Recovery</span><span>Live sessions</span></div>
-        <div class="signup-actions"><a class="button" href={freeSignupUrl} data-app-cta="signup">Join Free <span aria-hidden="true">→</span></a><a class="store-link signup-store" href={appStoreUrl} data-app-cta="ios" target="_blank" rel="noopener noreferrer" aria-label="Download the Eden app on the App Store"><img src={appStoreBadge} width="150" height="50" alt="Download on the App Store" /></a><a class="store-link play-store-link" href={playStoreUrl} data-app-cta="android" target="_blank" rel="noopener noreferrer" aria-label="Get the Eden fitness app on Google Play"><img src={playStoreBadge} width="170" height="51" alt="Get it on Google Play" /></a></div>
+        <p class="kicker">Real Eden coaches</p>
+        <h2 id="join-title">Coached by Eden. Ready when you are.</h2>
+        <p>See the real coaches behind Eden's on-demand workouts. Pick a session that fits your day, press play, and move with us wherever you are.</p>
+        <div class="signup-benefits"><span>Real coaches</span><span>On-demand workouts</span><span>Free to join now</span></div>
+        <div class="signup-actions"><a class="button" href={freeSignupUrl} data-app-cta="signup">Start Your Free Workout <span aria-hidden="true">→</span></a></div>
       </div>
-      <div class="signup-visual"><img src="/assets/eden-fitness-functional-strength.jpg" alt="An Eden Functional Strength workout in the app" loading="lazy" /><img src="/assets/eden-fitness-foam-roller.jpg" alt="An Eden recovery workout in the app" loading="lazy" /></div>
+      <div class="coach-reel">
+        <video autoplay muted loop playsinline preload="metadata" poster="/assets/eden-coaches-on-demand-poster.jpg" aria-label="Preview of real Eden coaches leading on-demand workouts">
+          <source src="/assets/eden-coaches-on-demand-reel.mp4" type="video/mp4" />
+        </video>
+        <img class="motion-poster" src="/assets/eden-coaches-on-demand-poster.jpg" width="1280" height="720" alt="An Eden coach leading an on-demand workout" loading="lazy" />
+      </div>
     </section>
 
     <section class="stat-strip" aria-label="Eden fitness app at a glance">
@@ -73,7 +78,7 @@ const workoutScenes = [
         <p>At home, on the road, or between everything else: press play when you have time. And when you want company, join a live class with an Eden coach.</p>
         <a class="button" href={freeSignupUrl} data-app-cta="signup">Join Free <span aria-hidden="true">→</span></a>
       </div>
-      <div class="app-device"><img src="/assets/eden-live-virtual-workouts.avif" width="822" height="548" loading="lazy" alt="A strength workout playing on a tablet" /></div>
+      <div class="app-device"><img src="/assets/eden-on-demand-functional-strength.jpg" width="1920" height="1080" loading="lazy" alt="An Eden on-demand functional strength workout in progress" /></div>
     </section>
 
     <section class="workout-gallery section-pad" aria-labelledby="gallery-title">
