@@ -233,8 +233,8 @@ h1 { max-width: 650px; font-family: var(--sans); font-size: 62px; line-height: 1
 .hero-lede { max-width: 590px; color: #f4faf3; font-size: 21px; line-height: 1.4; }
 .hero-points { gap: 8px 20px; font-size: 14px; }
 .hero-points li::before { color: #d7eda0; }
-.hero-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 16px; margin-top: 31px; }
-.hero-actions .button { min-height: 52px; flex-basis: 100%; max-width: 270px; }
+.hero-actions { display: grid; grid-template-columns: 150px 220px; align-items: center; gap: 16px; margin-top: 31px; }
+.hero-actions .button { min-height: 52px; grid-column: 1 / -1; width: min(270px, 100%); }
 .store-link { min-height: 50px; display: inline-flex; align-items: center; }
 .store-link img { width: 150px; height: 50px; object-fit: contain; }
 .store-link:focus-visible { outline: 3px solid #e9c35e; outline-offset: 4px; }
@@ -432,8 +432,8 @@ input, select { border-radius: 8px; }
 .gallery-caption p { color: #4b6758; font-size: 14px; }
 .day-featured { grid-column: auto; }
 @media (max-width: 600px) {
-  .hero-actions { column-gap: 8px; }
-  .hero-actions .button { flex-basis: 100%; justify-content: center; }
+  .hero-actions { grid-template-columns: 135px 190px; gap: 8px; }
+  .hero-actions .button { width: 100%; justify-content: center; }
   .hero-actions .store-link { min-height: 45px; }
   .hero-actions .play-store-link img, .signup-actions .play-store-link img { width: 190px; height: 57px; }
   .signup-actions { gap: 7px 10px; }
