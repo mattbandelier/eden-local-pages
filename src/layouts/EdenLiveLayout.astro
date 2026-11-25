@@ -2,8 +2,8 @@
 import "../styles/eden-live.css";
 
 const {
-  title = "Eden Live | Live Virtual Fitness and On-Demand Workouts",
-  description = "Try Eden Live free for 7 days. Join live coached workouts, train on demand, and discover a fitness experience backed by Eden's care team."
+  title = "Eden Fitness App | On-Demand Workouts and Live Classes",
+  description = "Join the Eden fitness app free right now. Train on demand anywhere and check the schedule for live coached sessions."
 } = Astro.props;
 
 const metaPixelId = import.meta.env.PUBLIC_META_PIXEL_ID || "1301043457641549";
@@ -16,7 +16,7 @@ const gtmId = import.meta.env.PUBLIC_GTM_CONTAINER_ID;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#1F4D3A" />
+    <meta name="theme-color" content="#256648" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -25,7 +25,7 @@ const gtmId = import.meta.env.PUBLIC_GTM_CONTAINER_ID;
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="canonical" href="https://landing.edenhealthclubs.com/eden-live/" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <link rel="preload" href="/fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/satoshi-500.woff2" as="font" type="font/woff2" crossorigin />
     <title>{title}</title>
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",

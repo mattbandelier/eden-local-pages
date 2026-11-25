@@ -1,100 +1,119 @@
 ---
 import EdenLiveLayout from "../layouts/EdenLiveLayout.astro";
-import { faqs, itinerary, providers, stats } from "../data/eden-live-content";
-import { Image } from "astro:assets";
-import heroImage from "../assets/eden-live-performance-floor.jpg";
-
-const states = ["AL","AK","AZ","AR","CA","CO","CT","DE","FL","GA","HI","ID","IL","IN","IA","KS","KY","LA","ME","MD","MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM","NY","NC","ND","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VT","VA","WA","WV","WI","WY","DC"];
+import { faqs, itinerary, stats } from "../data/eden-live-content";
+const appStoreUrl = "https://apps.apple.com/us/app/eden-look-feel-perform/id6788305713";
+const appStoreBadge = "https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83";
+const playStoreUrl = "https://play.google.com/store/apps/details?id=com.edenhealthclubs.fit.own";
+const playStoreBadge = "https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png";
+const freeSignupUrl = "https://fit.edenhealthclubs.com/users/sign_up";
+const workoutScenes = [
+  { image: "/assets/eden-fitness-functional-strength.jpg", alt: "Eden Functional Strength workout with Coach Monica", label: "Strength", title: "Functional Strength", detail: "A coached workout from Eden's current video library." },
+  { image: "/assets/eden-fitness-foam-roller.jpg", alt: "Eden Foam Roller Recovery workout with Coach Lyndsay", label: "Recovery", title: "Foam Roller Recovery", detail: "Make room for a short recovery session." },
+  { image: "/assets/eden-fitness-upper-body.jpg", alt: "Eden Upper Body Strength workout tile", label: "Upper body", title: "Upper Body Strength", detail: "Pick a workout that fits your day." },
+  { image: "/assets/eden-fitness-pilates-arms.jpg", alt: "Eden Pilates Arms workout with Coach Monica", label: "Pilates", title: "Pilates Arms", detail: "A guided session with light dumbbells." },
+  { image: "/assets/eden-fitness-cardio.jpg", alt: "Eden bodyweight cardio workout with Coach Spenser", label: "Cardio", title: "Bodyweight Cardio", detail: "Move with Coach Spenser, wherever you are." },
+  { image: "/assets/eden-fitness-restorative.jpg", alt: "Eden restorative recovery workout with Coach Lyndsay", label: "Recovery", title: "Restorative Recovery", detail: "Slow down with a guided recovery session." },
+];
 ---
 <EdenLiveLayout>
   <header class="site-nav">
-    <a class="brand" href="#top" aria-label="Eden Live home">
+    <a class="brand" href="#top" aria-label="Eden fitness app home">
       <img src="/assets/eden-live-logo-white.png" width="180" height="64" alt="Eden Health Club" />
-      <span>LIVE</span>
+      <span>FITNESS APP</span>
     </a>
     <div class="nav-actions">
       <a class="member-link" href="https://fit.edenhealthclubs.com" rel="external">Member login</a>
-      <a class="button button-small" href="#trial">Start Free Trial</a>
+      <a class="button button-small" href="#get-app">Get the app</a>
     </div>
   </header>
 
   <main id="top">
     <section class="hero" aria-labelledby="hero-title">
-      <Image class="hero-image" src={heroImage} width={724} height={904} alt="The strength training floor at Eden Health Club" format="webp" quality={68} loading="eager" fetchpriority="high" />
+      <img class="hero-image" src="/assets/fitness-strength-class.avif" width="1502" height="1001" alt="A guided strength workout" loading="eager" fetchpriority="high" />
       <div class="hero-shade"></div>
       <div class="hero-inner">
         <div class="hero-copy">
-          <p class="eyebrow">Seven days. No card. Start anywhere.</p>
-          <h1 id="hero-title">Live workouts. Real coaches. Real care.</h1>
-          <p class="hero-lede">A virtual fitness studio built around your whole health, with live weekday classes and workouts ready whenever you are.</p>
-          <ul class="hero-points" aria-label="Trial benefits">
-            <li>5 live coached classes every week</li>
-            <li>100+ workouts on demand</li>
-            <li>Free for 7 days, no credit card</li>
+          <p class="eyebrow">The Eden fitness app · Free now</p>
+          <h1 id="hero-title">Your workout, wherever life takes you.</h1>
+          <p class="hero-lede">Press play on Eden workouts whenever it works for you. Join live coached sessions when you want to move together.</p>
+          <ul class="hero-points" aria-label="Fitness app highlights">
+            <li>On-demand workouts</li>
+            <li>Live coached sessions</li>
+            <li>Free to join right now</li>
           </ul>
-        </div>
-
-        <div class="trial-panel" id="trial">
-          <div class="form-intro">
-            <p class="kicker">Your free week starts here</p>
-            <h2>Create your Eden account</h2>
-            <p>No credit card required.</p>
+          <div class="hero-actions">
+            <a class="button" href={freeSignupUrl} data-app-cta="signup">Create Your Free Account <span aria-hidden="true">→</span></a>
+            <a class="store-link" href={appStoreUrl} data-app-cta="ios" target="_blank" rel="noopener noreferrer" aria-label="Download the Eden app on the App Store"><img src={appStoreBadge} width="150" height="50" alt="Download on the App Store" /></a>
+            <a class="store-link play-store-link" href={playStoreUrl} data-app-cta="android" target="_blank" rel="noopener noreferrer" aria-label="Get the Eden fitness app on Google Play"><img src={playStoreBadge} width="170" height="51" alt="Get it on Google Play" /></a>
           </div>
-          <form data-trial-form novalidate>
-            <div class="name-row">
-              <label><span>First name</span><input name="first_name" autocomplete="given-name" required /></label>
-              <label><span>Last name</span><input name="last_name" autocomplete="family-name" required /></label>
-            </div>
-            <label><span>Email</span><input name="email" type="email" autocomplete="email" inputmode="email" required /></label>
-            <div class="phone-row">
-              <label><span>Mobile phone</span><input name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="(555) 555-5555" pattern="[0-9()+ .-]{10,}" required /></label>
-              <label><span>State</span><select name="state" autocomplete="address-level1" required><option value="">Select</option>{states.map((state) => <option value={state}>{state}</option>)}</select></label>
-            </div>
-            <button class="button form-submit" type="submit">Start My Free Trial <span aria-hidden="true">→</span></button>
-            <p class="form-note">By continuing, you agree to receive account and trial messages from Eden. Message and data rates may apply.</p>
-            <p class="form-status" data-form-status aria-live="polite"></p>
-          </form>
-          <div class="thank-you" data-thank-you hidden tabindex="-1">
-            <p class="kicker">You are in</p>
-            <h2>Your free week is ready.</h2>
-            <p>Check your email and phone for the next step to activate your Eden account.</p>
-            <a class="button" href="https://fit.edenhealthclubs.com">Open Eden Live</a>
-          </div>
+          <p class="download-note">Free access is available now. Create an account, then open the app or train on the web.</p>
         </div>
       </div>
     </section>
 
-    <section class="stat-strip" aria-label="Eden Live at a glance">
+    <section class="signup-section" id="get-app" aria-labelledby="join-title">
+      <div class="signup-intro">
+        <p class="kicker">A good place to start</p>
+        <h2 id="join-title">Make room for movement.</h2>
+        <p>Meet Eden's coaches in real workouts and choose what fits your energy today.</p>
+        <div class="signup-benefits"><span>Strength</span><span>Recovery</span><span>Live sessions</span></div>
+        <div class="signup-actions"><a class="button" href={freeSignupUrl} data-app-cta="signup">Join Free <span aria-hidden="true">→</span></a><a class="store-link signup-store" href={appStoreUrl} data-app-cta="ios" target="_blank" rel="noopener noreferrer" aria-label="Download the Eden app on the App Store"><img src={appStoreBadge} width="150" height="50" alt="Download on the App Store" /></a><a class="store-link play-store-link" href={playStoreUrl} data-app-cta="android" target="_blank" rel="noopener noreferrer" aria-label="Get the Eden fitness app on Google Play"><img src={playStoreBadge} width="170" height="51" alt="Get it on Google Play" /></a></div>
+      </div>
+      <div class="signup-visual"><img src="/assets/eden-fitness-functional-strength.jpg" alt="An Eden Functional Strength workout in the app" loading="lazy" /><img src="/assets/eden-fitness-foam-roller.jpg" alt="An Eden recovery workout in the app" loading="lazy" /></div>
+    </section>
+
+    <section class="stat-strip" aria-label="Eden fitness app at a glance">
       {stats.map((stat) => <div><strong>{stat.value}</strong><span>{stat.label}</span></div>)}
+    </section>
+
+    <section class="app-showcase section-pad" aria-labelledby="app-title">
+      <div class="app-showcase-copy">
+        <p class="kicker">Your studio, in your pocket</p>
+        <h2 id="app-title">Find a workout that fits today.</h2>
+        <p>At home, on the road, or between everything else: press play when you have time. And when you want company, join a live class with an Eden coach.</p>
+        <a class="button" href={freeSignupUrl} data-app-cta="signup">Join Free <span aria-hidden="true">→</span></a>
+      </div>
+      <div class="app-device"><img src="/assets/eden-live-virtual-workouts.avif" width="822" height="548" loading="lazy" alt="A strength workout playing on a tablet" /></div>
+    </section>
+
+    <section class="workout-gallery section-pad" aria-labelledby="gallery-title">
+      <div class="gallery-heading">
+        <div><p class="kicker">A workout for your day</p><h2 id="gallery-title">Start wherever you are.</h2></div>
+        <div class="gallery-controls" aria-label="Workout gallery controls"><button type="button" data-gallery-prev aria-label="Previous workout">←</button><button type="button" data-gallery-next aria-label="Next workout">→</button></div>
+      </div>
+      <div class="gallery-track" data-gallery-track tabindex="0" aria-label="Ways to work out with Eden">
+        {workoutScenes.map((scene) => <article class="gallery-item"><img src={scene.image} alt={scene.alt} loading="lazy" /><div class="gallery-caption"><span>{scene.label}</span><h3>{scene.title}</h3><p>{scene.detail}</p></div></article>)}
+      </div>
     </section>
 
     <section class="comparison section-pad">
       <div class="section-heading split-heading">
-        <div><p class="kicker">Not another fitness app</p><h2>Your workout can know the rest of you.</h2></div>
-        <p>Most platforms stop at movement. Eden connects a coach-led fitness habit to a trusted health and wellness team, all within one relationship.</p>
+        <div><p class="kicker">More than a workout library</p><h2>Move your way. Feel part of something.</h2></div>
+        <p>On-demand freedom meets familiar live coaches and a real Eden Health Club in Greenwood Village. Start wherever you are; connect with more support when you need it.</p>
       </div>
-      <div class="comparison-table" role="table" aria-label="Eden Live compared with fitness apps">
-        <div class="comparison-row comparison-head" role="row"><span role="columnheader">What matters</span><span role="columnheader">Typical apps</span><span role="columnheader">Eden Live</span></div>
-        <div class="comparison-row" role="row"><span role="cell">Live, familiar coaching</span><span role="cell">Sometimes</span><strong role="cell">Every weekday</strong></div>
-        <div class="comparison-row" role="row"><span role="cell">On-demand training</span><span role="cell">Yes</span><strong role="cell">Yes, built around real members</strong></div>
-        <div class="comparison-row" role="row"><span role="cell">Provider-backed education</span><span role="cell">No</span><strong role="cell">Built into the experience</strong></div>
-        <div class="comparison-row" role="row"><span role="cell">In-person path</span><span role="cell">No</span><strong role="cell">Eden Health Club</strong></div>
-        <div class="comparison-row" role="row"><span role="cell">Cost to try</span><span role="cell">Card required</span><strong role="cell">$0, no card</strong></div>
+      <div class="value-grid">
+        <article><span>01</span><h3>Press play anywhere</h3><p>Make a workout fit your day, not the other way around. Choose from Eden's current on-demand sessions.</p></article>
+        <article><span>02</span><h3>Show up live</h3><p>Check the schedule for coached sessions and real-time energy.</p></article>
+        <article><span>03</span><h3>Go beyond the app</h3><p>Connect your routine to Eden's fitness, performance, and wellness experience in Greenwood Village.</p></article>
       </div>
     </section>
 
     <section class="week section-pad" aria-labelledby="week-title">
-      <div class="section-heading"><p class="kicker">Your first week</p><h2 id="week-title">Seven days to find your rhythm.</h2><p>A useful week, not a tour. Join live, train on demand, and experience the full platform.</p></div>
+      <div class="section-heading"><p class="kicker">Find your rhythm</p><h2 id="week-title">Start small. Keep moving.</h2><p>Join live or choose a workout on demand. There is no countdown on your free access right now.</p></div>
       <div class="itinerary">
         {itinerary.map((item, index) => <article class:list={["day", index === 0 && "day-featured"]}><span>{item.day}</span><h3>{item.title}</h3><p>{item.detail}</p></article>)}
       </div>
     </section>
 
+    <section class="coming-next section-pad" aria-labelledby="next-title">
+      <p class="kicker">Coming next</p>
+      <h2 id="next-title">More ways to train with Eden.</h2>
+      <p>An exercise library and focused programs are in development. Programs such as HIIT Level One and GLP-1 muscle preservation will be separate purchases when available.</p>
+    </section>
+
     <section class="trust section-pad" aria-labelledby="trust-title">
-      <div class="trust-intro"><p class="kicker">Fitness, with a care team behind it</p><h2 id="trust-title">Built by people who see the whole picture.</h2><p>Eden Live gives members credible, practical education alongside training. Christina, Shannon, and Beth bring the perspective of Eden's medical team to the experience.</p><p class="clinical-note">Clinical services are separate from fitness membership and depend on eligibility, licensure, and provider evaluation.</p></div>
-      <div class="providers">
-        {providers.map((provider) => <article class="provider"><div class="provider-mark" aria-hidden="true">{provider.initials}</div><div><h3>{provider.name}</h3><p>{provider.role}</p></div></article>)}
-      </div>
+      <div class="trust-photo"><img src="/assets/eden-health-club-reception.webp" alt="Inside Eden Health Club" loading="lazy" /></div>
+      <div class="trust-intro"><p class="kicker">More than a screen</p><h2 id="trust-title">A real club behind the app.</h2><p>Train wherever you are, knowing Eden has a real home in Greenwood Village. Live classes connect you with coaches, while the club offers more ways to pursue your goals when you are ready.</p><p class="clinical-note">In-club and clinical services are separate from the free fitness app.</p></div>
     </section>
 
     <section class="faq section-pad" aria-labelledby="faq-title">
@@ -103,61 +122,37 @@ const states = ["AL","AK","AZ","AR","CA","CO","CT","DE","FL","GA","HI","ID","IL"
     </section>
 
     <section class="final-cta">
-      <div><p class="kicker">Your first week is on us</p><h2>Start where you are. We will meet you there.</h2><p>Seven days of Eden Live, no credit card required.</p></div>
-      <a class="button button-light" href="#trial">Start My Free Trial <span aria-hidden="true">→</span></a>
+      <div><p class="kicker">Free to join now</p><h2>Start where you are. We will meet you there.</h2><p>Create your Eden fitness account and move on your own time.</p></div>
+      <a class="button button-light" href={freeSignupUrl} data-app-cta="signup">Join Free <span aria-hidden="true">→</span></a>
     </section>
   </main>
 
   <footer>
-    <a class="brand footer-brand" href="#top"><img src="/assets/eden-live-logo-white.png" width="180" height="64" alt="Eden Health Club" /><span>LIVE</span></a>
+    <a class="brand footer-brand" href="#top"><img src="/assets/eden-live-logo-white.png" width="180" height="64" alt="Eden Health Club" /><span>FITNESS APP</span></a>
     <div><p>Eden Wellness LLC</p><p>Greenwood Village, Colorado</p></div>
     <div class="footer-links"><a href="https://edenhealthclubs.com/privacy-policy/">Privacy</a><a href="https://edenhealthclubs.com/terms-and-conditions/">Terms</a><a href="mailto:care@edenhealthclubs.com">care@edenhealthclubs.com</a></div>
   </footer>
 
   <script>
-    const form = document.querySelector("[data-trial-form]");
-    const status = document.querySelector("[data-form-status]");
-    const thankYou = document.querySelector("[data-thank-you]");
-    const params = new URLSearchParams(window.location.search);
-    const utmKeys = ["utm_source", "utm_medium", "utm_campaign"];
-    const storageKey = "eden_live_utm";
-    let saved: Record<string, string> = {};
-    try { saved = JSON.parse(localStorage.getItem(storageKey) || "{}"); } catch {}
-    const attribution = Object.fromEntries(utmKeys.map((key) => [key, params.get(key) || saved[key] || ""]));
-    if (utmKeys.some((key) => params.get(key))) {
-      try { localStorage.setItem(storageKey, JSON.stringify(attribution)); } catch {}
-    }
-
-    form?.addEventListener("submit", async (event) => {
-      event.preventDefault();
-      if (!(form instanceof HTMLFormElement)) return;
-      if (!form.checkValidity()) { form.reportValidity(); return; }
-
-      const button = form.querySelector("button[type='submit']");
-      const payload = { ...Object.fromEntries(new FormData(form)), ...attribution, submitted_at: new Date().toISOString() };
-      if (button instanceof HTMLButtonElement) { button.disabled = true; button.textContent = "Starting your trial..."; }
-      if (status) status.textContent = "Creating your Eden trial...";
-
-      try {
-        const response = await fetch("/api/trial/", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) });
-        const result = await response.json();
-        if (!response.ok) throw new Error(result.error || "We could not start your trial.");
-        form.hidden = true;
-        if (thankYou instanceof HTMLElement) { thankYou.hidden = false; thankYou.focus(); }
-        const trackingWindow = window as typeof window & {
-          dataLayer?: Array<Record<string, unknown>>;
-          fbq?: (...args: unknown[]) => void;
-          gtag?: (...args: unknown[]) => void;
-        };
-        trackingWindow.dataLayer = trackingWindow.dataLayer || [];
-        trackingWindow.dataLayer.push({ event: "lead_submit", form_name: "eden_live_trial" });
-        trackingWindow.fbq?.("track", "Lead");
-        trackingWindow.gtag?.("event", "generate_lead", { event_category: "Eden Live", value: 0, currency: "USD" });
-      } catch (error) {
-        if (status) status.textContent = error instanceof Error ? error.message : "Please try again or call 720-605-7678.";
-      } finally {
-        if (button instanceof HTMLButtonElement) { button.disabled = false; button.innerHTML = "Start My Free Trial <span aria-hidden='true'>→</span>"; }
+    const gallery = document.querySelector("[data-gallery-track]");
+    document.querySelector("[data-gallery-prev]")?.addEventListener("click", () => gallery?.scrollBy({ left: -(gallery?.clientWidth || 0) * .85, behavior: "smooth" }));
+    document.querySelector("[data-gallery-next]")?.addEventListener("click", () => gallery?.scrollBy({ left: (gallery?.clientWidth || 0) * .85, behavior: "smooth" }));
+    const clickParams = new URLSearchParams(window.location.search);
+    document.querySelectorAll<HTMLAnchorElement>('[data-app-cta]').forEach((link) => {
+      if (link.dataset.appCta === 'signup') {
+        const url = new URL(link.href);
+        for (const key of ['utm_source', 'utm_medium', 'utm_campaign', 'gclid', 'gbraid', 'wbraid', 'fbclid']) {
+          const value = clickParams.get(key);
+          if (value) url.searchParams.set(key, value);
+        }
+        link.href = url.toString();
       }
+      link.addEventListener('click', () => {
+        const event = link.dataset.appCta === 'ios' ? 'fitness_app_ios_click' : link.dataset.appCta === 'android' ? 'fitness_app_android_click' : 'fitness_app_signup_click';
+        const trackedWindow = window as typeof window & { dataLayer?: Array<Record<string, unknown>> };
+        trackedWindow.dataLayer = trackedWindow.dataLayer || [];
+        trackedWindow.dataLayer.push({ event });
+      });
     });
   </script>
 </EdenLiveLayout>
